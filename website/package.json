@@ -19,10 +19,9 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": ["prettier --write"],
-      "*.md": ["prettier --write --parser=markdown"],
-      "*.json": ["prettier --write --parser=json"],
-      "*": ["git add"]
+      "*.js": ["prettier --write", "git add"],
+      "*.md": ["prettier --write --parser=markdown", "git add"],
+      "*.json": ["prettier --write --parser=json", "git add"]
     }
   },
   "husky": {

@@ -58,54 +58,59 @@ facilitate testing implementation details). Read more about this in
 ## What is react-testing-library?
 
 Have a look at the video below for an explanation. <br/><br/>
-[![what is react testing library](https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg)](https://youtu.be/JKOwJUM4_RM 'what is react testing library')
+[![what is react testing library](https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg)](https://youtu.be/JKOwJUM4_RM "what is react testing library")
 
 ## Example
 
 ```javascript
 // __tests__/fetch.js
-import React from 'react'
-import {render, fireEvent, cleanup, waitForElement} from 'react-testing-library'
+import React from "react";
+import {
+  render,
+  fireEvent,
+  cleanup,
+  waitForElement
+} from "react-testing-library";
 // this adds custom jest matchers from jest-dom
-import 'jest-dom/extend-expect'
+import "jest-dom/extend-expect";
 
 // the mock lives in a __mocks__ directory
 // to know more about manual mocks, access: https://jestjs.io/docs/en/manual-mocks
-import axiosMock from 'axios'
-import Fetch from '../fetch' // see the tests for a full implementation
+import axiosMock from "axios";
+import Fetch from "../fetch"; // see the tests for a full implementation
 
 // automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
+afterEach(cleanup);
 
-test('Fetch makes an API call and displays the greeting when load-greeting is clicked', async () => {
+test("Fetch makes an API call and displays the greeting when load-greeting is clicked", async () => {
   // Arrange
-  axiosMock.get.mockResolvedValueOnce({data: {greeting: 'hello there'}})
-  const url = '/greeting'
-  const {getByText, getByTestId, container, asFragment} = render(
-    <Fetch url={url} />,
-  )
+  axiosMock.get.mockResolvedValueOnce({ data: { greeting: "hello there" } });
+  const url = "/greeting";
+  const { getByText, getByTestId, container, asFragment } = render(
+    <Fetch url={url} />
+  );
 
   // Act
-  fireEvent.click(getByText('Load Greeting'))
+  fireEvent.click(getByText("Load Greeting"));
 
   // Let's wait until our mocked `get` request promise resolves and
   // the component calls setState and re-renders.
   // getByTestId throws an error if it cannot find an element with the given ID
   // and waitForElement will wait until the callback doesn't throw an error
   const greetingTextNode = await waitForElement(() =>
-    getByTestId('greeting-text'),
-  )
+    getByTestId("greeting-text")
+  );
 
   // Assert
-  expect(axiosMock.get).toHaveBeenCalledTimes(1)
-  expect(axiosMock.get).toHaveBeenCalledWith(url)
-  expect(getByTestId('greeting-text')).toHaveTextContent('hello there')
-  expect(getByTestId('ok-button')).toHaveAttribute('disabled')
+  expect(axiosMock.get).toHaveBeenCalledTimes(1);
+  expect(axiosMock.get).toHaveBeenCalledWith(url);
+  expect(getByTestId("greeting-text")).toHaveTextContent("hello there");
+  expect(getByTestId("ok-button")).toHaveAttribute("disabled");
   // snapshots work great with regular DOM nodes!
-  expect(container.firstChild).toMatchSnapshot()
+  expect(container.firstChild).toMatchSnapshot();
   // you can also use get a `DocumentFragment`, which is useful if you want to compare nodes across render
-  expect(asFragment()).toMatchSnapshot()
-})
+  expect(asFragment()).toMatchSnapshot();
+});
 ```
 
 ## Table of Contents
@@ -185,19 +190,19 @@ setup code there.
 ```javascript
 // jest.config.js
 module.exports = {
-  setupTestFrameworkScriptFile: require.resolve('./jest.setup.js'),
+  setupTestFrameworkScriptFile: require.resolve("./jest.setup.js")
   // ... other options ...
-}
+};
 ```
 
 ```javascript
 // jest.setup.js
 
 // add some helpful assertions
-import 'jest-dom/extend-expect'
+import "jest-dom/extend-expect";
 
 // this is basically: afterEach(cleanup)
-import 'react-testing-library/cleanup-after-each'
+import "react-testing-library/cleanup-after-each";
 ```
 
 ### Custom Render
@@ -216,10 +221,10 @@ all your imports.
 
 ```js
 // test-utils.js
-import {render} from 'react-testing-library'
-import {ThemeProvider} from 'my-ui-lib'
-import {TranslationProvider} from 'my-i18n-lib'
-import defaultStrings from 'i18n/en-x-default'
+import { render } from "react-testing-library";
+import { ThemeProvider } from "my-ui-lib";
+import { TranslationProvider } from "my-i18n-lib";
+import defaultStrings from "i18n/en-x-default";
 
 const customRender = (node, options) => {
   return render(
@@ -228,15 +233,15 @@ const customRender = (node, options) => {
         {node}
       </TranslationProvider>
     </ThemeProvider>,
-    options,
-  )
-}
+    options
+  );
+};
 
 // re-export everything
-export * from 'react-testing-library'
+export * from "react-testing-library";
 
 // override render method
-export {customRender as render}
+export { customRender as render };
 ```
 
 To make this file accessible without using relative imports, add the folder
@@ -294,16 +299,16 @@ return value of the customRender.
 // test-utils.js
 
 const customRender = (ui, options) => {
-  const rendered = render(<div>{ui}</div>, options)
+  const rendered = render(<div>{ui}</div>, options);
   return {
     ...rendered,
     rerender: newUi =>
       customRender(newUi, {
         container: rendered.container,
-        baseElement: rendered.baseElement,
-      }),
-  }
-}
+        baseElement: rendered.baseElement
+      })
+  };
+};
 ```
 
 #### Export Issue with Babel Versions Lower Than 7
@@ -319,16 +324,16 @@ You can use CommonJS modules instead of ES modules, which should work in Node:
 
 ```js
 // test-utils.js
-const rtl = require('react-testing-library')
+const rtl = require("react-testing-library");
 
 const customRender = (node, options) => {
-  return rtl.render(<Something>{node}</Something>)
-}
+  return rtl.render(<Something>{node}</Something>);
+};
 
 module.exports = {
   ...rtl,
-  render: customRender,
-}
+  render: customRender
+};
 ```
 
 </details>
@@ -344,17 +349,17 @@ function render(
   ui: React.ReactElement<any>,
   options?: {
     /* You won't often use this, expand below for docs on options */
-  },
-): RenderResult
+  }
+): RenderResult;
 ```
 
 Render into a container which is appended to `document.body`. It should be used
 with [cleanup](#cleanup):
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-render(<div />)
+render(<div />);
 ```
 
 <details>
@@ -373,11 +378,11 @@ For Example: If you are unit testing a `tablebody` element, it cannot be a child
 of a `div`. In this case, you can specify a `table` as the render `container`.
 
 ```javascript
-const table = document.createElement('table')
+const table = document.createElement("table");
 
-const {container} = render(<TableBody {...props} />, {
-  container: document.body.appendChild(table),
-})
+const { container } = render(<TableBody {...props} />, {
+  container: document.body.appendChild(table)
+});
 ```
 
 **baseElement**: If the `container` is specified, then this defaults to that,
@@ -431,12 +436,12 @@ renders it's HTML directly in the body.
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```javascript
-import React from 'react'
-import {render} from 'react-testing-library'
+import React from "react";
+import { render } from "react-testing-library";
 
-const HelloWorld = () => <h1>Hello World</h1>
-const {debug} = render(<HelloWorld />)
-debug()
+const HelloWorld = () => <h1>Hello World</h1>;
+const { debug } = render(<HelloWorld />);
+debug();
 // <div>
 //   <h1>Hello World</h1>
 // </div>
@@ -455,12 +460,12 @@ prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {rerender} = render(<NumberDisplay number={1} />)
+const { rerender } = render(<NumberDisplay number={1} />);
 
 // re-render the same component with different props
-rerender(<NumberDisplay number={2} />)
+rerender(<NumberDisplay number={2} />);
 ```
 
 [Open the tests](https://github.com/kentcdodds/react-testing-library/blob/master/examples/__tests__/update-props.js)
@@ -476,10 +481,10 @@ that you don't leave event handlers hanging around causing memory leaks).
 > `ReactDOM.unmountComponentAtNode`
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {container, unmount} = render(<Login />)
-unmount()
+const { container, unmount } = render(<Login />);
+unmount();
 // your component has been unmounted and now: container.innerHTML === ''
 ```
 
@@ -492,10 +497,10 @@ This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {getByLabelText} = render(<Login />)
-const inputNode = getByLabelText('Username')
+const { getByLabelText } = render(<Login />);
+const inputNode = getByLabelText("Username");
 
 // this would find the input node for the following DOM structures:
 // The "for" attribute (NOTE: in JSX with React you'll write "htmlFor" rather than "for")
@@ -513,7 +518,7 @@ const inputNode = getByLabelText('Username')
 // <label><span>Username</span> <input /></label>
 //
 // For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText('username', {selector: 'input'})
+const inputNode = getByLabelText("username", { selector: "input" });
 // and that would work
 // Note that <input aria-label="username" /> will also work, but take
 // care because this is not a label that users can see on the page. So
@@ -532,10 +537,10 @@ This will search for all elements with a placeholder attribute and find one that
 matches the given [`TextMatch`](#textmatch).
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {getByPlaceholderText} = render(<input placeholder="Username" />)
-const inputNode = getByPlaceholderText('Username')
+const { getByPlaceholderText } = render(<input placeholder="Username" />);
+const inputNode = getByPlaceholderText("Username");
 ```
 
 > NOTE: a placeholder is not a good substitute for a label so you should
@@ -550,10 +555,10 @@ This will search for all elements that have a text node with `textContent`
 matching the given [`TextMatch`](#textmatch).
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {getByText} = render(<a href="/about">About ℹ️</a>)
-const aboutAnchorNode = getByText('about')
+const { getByText } = render(<a href="/about">About ℹ️</a>);
+const aboutAnchorNode = getByText("about");
 ```
 
 #### `getByAltText(text: TextMatch, options): HTMLElement`
@@ -570,12 +575,12 @@ and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
 as it's deprecated).
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {getByAltText} = render(
-  <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />,
-)
-const incrediblesPosterImg = getByAltText(/incredibles.*poster$/i)
+const { getByAltText } = render(
+  <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
+);
+const incrediblesPosterImg = getByAltText(/incredibles.*poster$/i);
 ```
 
 #### `getByTestId(text: TextMatch, options): HTMLElement`
@@ -586,10 +591,10 @@ A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {getByTestId} = render(<input data-testid="username-input" />)
-const usernameInputElement = getByTestId('username-input')
+const { getByTestId } = render(<input data-testid="username-input" />);
+const usernameInputElement = getByTestId("username-input");
 ```
 
 > In the spirit of [the guiding principles](#guiding-principles), it is
@@ -613,8 +618,8 @@ purpose, you can use the `configure` function of `dom-testing-library` to change
 the attribute that is used. This requires `dom-testing-library` version 3.13:
 
 ```javascript
-import {configure} from 'dom-testing-library'
-configure({testIdAttribute: 'data-test-id'})
+import { configure } from "dom-testing-library";
+configure({ testIdAttribute: "data-test-id" });
 ```
 
 </details>
@@ -625,34 +630,34 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```javascript
-import {render, fireEvent} from 'react-testing-library'
+import { render, fireEvent } from "react-testing-library";
 
 class TestComponent extends React.Component {
   constructor() {
-    super()
-    this.state = {count: 0}
+    super();
+    this.state = { count: 0 };
   }
 
   render() {
-    const {count} = this.state
+    const { count } = this.state;
 
     return (
-      <button onClick={() => this.setState({count: count + 1})}>
+      <button onClick={() => this.setState({ count: count + 1 })}>
         Click to increase: {count}
       </button>
-    )
+    );
   }
 }
 
-const {getByText, asFragment} = render(<TestComponent />)
-const firstRender = asFragment()
+const { getByText, asFragment } = render(<TestComponent />);
+const firstRender = asFragment();
 
-fireEvent.click(getByText(/Click to increase/))
+fireEvent.click(getByText(/Click to increase/));
 
 // This will snapshot only the difference between the first render, and the
 // state of the DOM after the click event.
 // See https://github.com/jest-community/snapshot-diff
-expect(firstRender).toMatchDiffSnapshot(asFragment())
+expect(firstRender).toMatchDiffSnapshot(asFragment());
 ```
 
 ### `cleanup`
@@ -660,14 +665,14 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 Unmounts React trees that were mounted with [render](#render).
 
 ```javascript
-import {cleanup, render} from 'react-testing-library'
+import { cleanup, render } from "react-testing-library";
 
-afterEach(cleanup) // <-- add this
+afterEach(cleanup); // <-- add this
 
-test('renders into document', () => {
-  render(<div />)
+test("renders into document", () => {
+  render(<div />);
   // ...
-})
+});
 
 // ... more tests ...
 ```
@@ -714,18 +719,18 @@ instead of Synthetic Events. This aligns better with
 > [facebook/react#2043](https://github.com/facebook/react/issues/2043)
 
 ```javascript
-import {render, cleanup, fireEvent} from 'react-testing-library'
+import { render, cleanup, fireEvent } from "react-testing-library";
 
 // don't forget to clean up the document.body
-afterEach(cleanup)
+afterEach(cleanup);
 
-test('clicks submit button', () => {
-  const handleClick = jest.fn()
-  const {getByText} = render(<button onClick={handleClick}>Submit</button>)
+test("clicks submit button", () => {
+  const handleClick = jest.fn();
+  const { getByText } = render(<button onClick={handleClick}>Submit</button>);
 
-  fireEvent.click(getByText('Submit'))
-  expect(handleClick).toHaveBeenCalledTimes(1)
-})
+  fireEvent.click(getByText("Submit"));
+  expect(handleClick).toHaveBeenCalledTimes(1);
+});
 ```
 
 #### `fireEvent[eventName](node: HTMLElement, eventProperties: Object)`
@@ -735,14 +740,14 @@ Convenience methods for firing DOM events. Check out
 for a full list as well as default `eventProperties`.
 
 ```javascript
-import {render, fireEvent} from 'react-testing-library'
+import { render, fireEvent } from "react-testing-library";
 
-const {getByText} = render(<Form />)
+const { getByText } = render(<Form />);
 
 // similar to the above example
 // click will bubble for React to see it
-const rightClick = {button: 2}
-fireEvent.click(getByText('Submit'), rightClick)
+const rightClick = { button: 2 };
+fireEvent.click(getByText("Submit"), rightClick);
 // default `button` property for click events is set to `0` which is a left click.
 ```
 
@@ -754,25 +759,25 @@ won't work like it does with `Simulate`. You need to use `fireEvent` to fire a
 `change` DOM event with `value` property set on `target`
 
 ```javascript
-import {render, fireEvent} from 'react-testing-library'
+import { render, fireEvent } from "react-testing-library";
 
-const {getByLabelText} = render(<Form />)
+const { getByLabelText } = render(<Form />);
 
-const comment = getByLabelText('Comment')
+const comment = getByLabelText("Comment");
 fireEvent.change(comment, {
-  target: {value: 'Great advice, I love your posts!'},
-})
+  target: { value: "Great advice, I love your posts!" }
+});
 ```
 
 Note that if you want to trigger `onChange` handler on a checkbox, you should
 fire a `click` event instead of `change`.
 
 ```javascript
-import {render, fireEvent} from 'react-testing-library'
+import { render, fireEvent } from "react-testing-library";
 
-const {getByLabelText} = render(<Checkbox />)
+const { getByLabelText } = render(<Checkbox />);
 
-fireEvent.click(getByLabelText('Checkbox'))
+fireEvent.click(getByLabelText("Checkbox"));
 ```
 
 ### `waitForElement`
@@ -780,13 +785,13 @@ fireEvent.click(getByLabelText('Checkbox'))
 > [Read full docs from `dom-testing-library`](https://github.com/kentcdodds/dom-testing-library/blob/master/README.md#waitforelement)
 
 ```js
-import {render, waitForElement} from 'react-testing-library'
+import { render, waitForElement } from "react-testing-library";
 
-test('waiting for an element', async () => {
-  const {getByText} = render(<SearchForm />)
+test("waiting for an element", async () => {
+  const { getByText } = render(<SearchForm />);
 
-  await waitForElement(() => getByText('Search'))
-})
+  await waitForElement(() => getByText("Search"));
+});
 ```
 
 ### `wait`
@@ -796,20 +801,20 @@ test('waiting for an element', async () => {
 It's recommended to prefer `waitForElement`, but this can be helpful on occasion
 
 ```javascript
-import 'jest-dom/extend-expect'
-import {render, wait} from 'react-testing-library'
+import "jest-dom/extend-expect";
+import { render, wait } from "react-testing-library";
 
-test('can fill in the form after loaded', async () => {
-  const {queryByText, getByLabelText} = render(<Login />)
+test("can fill in the form after loaded", async () => {
+  const { queryByText, getByLabelText } = render(<Login />);
 
   // wait until the callback does not throw an error. In this case, that means
   // it'll wait until the element with the text that says "loading..." is gone.
   await wait(() =>
-    expect(queryByText(/loading\.\.\./i)).not.toBeInTheDocument(),
-  )
-  getByLabelText('username').value = 'chucknorris'
+    expect(queryByText(/loading\.\.\./i)).not.toBeInTheDocument()
+  );
+  getByLabelText("username").value = "chucknorris";
   // continue doing stuff
-})
+});
 ```
 
 ### `within`
@@ -826,13 +831,13 @@ Example: To get the text 'hello' only within a section called 'messages', you
 could do:
 
 ```javascript
-import {render, within} from 'react-testing-library'
+import { render, within } from "react-testing-library";
 
 // ...
 
-const {getByTestId} = render(/* stuff */)
-const messagesSection = getByTestId('messages')
-const hello = within(messagesSection).getByText('hello')
+const { getByTestId } = render(/* stuff */);
+const messagesSection = getByTestId("messages");
+const hello = within(messagesSection).getByText("hello");
 ```
 
 ## `TextMatch`
@@ -845,34 +850,36 @@ See [dom-testing-library#textmatch][dom-testing-lib-textmatch] for options.
 Examples:
 
 ```javascript
-import {render, getByText} from 'react-testing-library'
+import { render, getByText } from "react-testing-library";
 
-const {container} = render(<div>Hello World</div>)
+const { container } = render(<div>Hello World</div>);
 
 // WILL find the div:
 
 // Matching a string:
-getByText(container, 'Hello World') // full string match
-getByText(container, 'llo Worl', {exact: false}) // substring match
-getByText(container, 'hello world', {exact: false}) // ignore case
+getByText(container, "Hello World"); // full string match
+getByText(container, "llo Worl", { exact: false }); // substring match
+getByText(container, "hello world", { exact: false }); // ignore case
 
 // Matching a regex:
-getByText(container, /World/) // substring match
-getByText(container, /world/i) // substring match, ignore case
-getByText(container, /^hello world$/i) // full string match, ignore case
-getByText(container, /Hello W?oRlD/i) // advanced regex
+getByText(container, /World/); // substring match
+getByText(container, /world/i); // substring match, ignore case
+getByText(container, /^hello world$/i); // full string match, ignore case
+getByText(container, /Hello W?oRlD/i); // advanced regex
 
 // Matching with a custom function:
-getByText(container, (content, element) => content.startsWith('Hello'))
+getByText(container, (content, element) => content.startsWith("Hello"));
 
 // WILL NOT find the div:
 
-getByText(container, 'Goodbye World') // full string does not match
-getByText(container, /hello world/) // case-sensitive regex with different case
+getByText(container, "Goodbye World"); // full string does not match
+getByText(container, /hello world/); // case-sensitive regex with different case
 // function looking for a span when it's actually a div:
 getByText(container, (content, element) => {
-  return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
-})
+  return (
+    element.tagName.toLowerCase() === "span" && content.startsWith("Hello")
+  );
+});
 ```
 
 ## `query` APIs
@@ -884,11 +891,11 @@ make an assertion that an element is _not_ present in the DOM, then you can use
 the `query` API instead:
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {queryByText} = render(<Form />)
-const submitButton = queryByText('submit')
-expect(submitButton).toBeNull() // it doesn't exist
+const { queryByText } = render(<Form />);
+const submitButton = queryByText("submit");
+expect(submitButton).toBeNull(); // it doesn't exist
 ```
 
 ## `queryAll` and `getAll` APIs
@@ -898,12 +905,12 @@ returns an Array of matching nodes. `getAll` is the same but throws when the
 array has a length of 0.
 
 ```javascript
-import {render} from 'react-testing-library'
+import { render } from "react-testing-library";
 
-const {queryAllByText} = render(<Forms />)
-const submitButtons = queryAllByText('submit')
-expect(submitButtons).toHaveLength(3) // expect 3 elements
-expect(submitButtons[0]).toBeInTheDocument()
+const { queryAllByText } = render(<Forms />);
+const submitButtons = queryAllByText("submit");
+expect(submitButtons).toHaveLength(3); // expect 3 elements
+expect(submitButtons[0]).toBeInTheDocument();
 ```
 
 ## Examples
@@ -969,35 +976,37 @@ TL;DR:
 In summary:
 
 ```javascript
-import React from 'react'
-import 'react-testing-library/cleanup-after-each'
-import {render, fireEvent} from 'react-testing-library'
+import React from "react";
+import "react-testing-library/cleanup-after-each";
+import { render, fireEvent } from "react-testing-library";
 
-test('change values via the fireEvent.change method', () => {
-  const handleChange = jest.fn()
-  const {container} = render(<input type="text" onChange={handleChange} />)
-  const input = container.firstChild
-  fireEvent.change(input, {target: {value: 'a'}})
-  expect(handleChange).toHaveBeenCalledTimes(1)
-  expect(input.value).toBe('a')
-})
+test("change values via the fireEvent.change method", () => {
+  const handleChange = jest.fn();
+  const { container } = render(<input type="text" onChange={handleChange} />);
+  const input = container.firstChild;
+  fireEvent.change(input, { target: { value: "a" } });
+  expect(handleChange).toHaveBeenCalledTimes(1);
+  expect(input.value).toBe("a");
+});
 
-test('checkboxes (and radios) must use fireEvent.click', () => {
-  const handleChange = jest.fn()
-  const {container} = render(<input type="checkbox" onChange={handleChange} />)
-  const checkbox = container.firstChild
-  fireEvent.click(checkbox)
-  expect(handleChange).toHaveBeenCalledTimes(1)
-  expect(checkbox.checked).toBe(true)
-})
+test("checkboxes (and radios) must use fireEvent.click", () => {
+  const handleChange = jest.fn();
+  const { container } = render(
+    <input type="checkbox" onChange={handleChange} />
+  );
+  const checkbox = container.firstChild;
+  fireEvent.click(checkbox);
+  expect(handleChange).toHaveBeenCalledTimes(1);
+  expect(checkbox.checked).toBe(true);
+});
 ```
 
 If you've used enzyme or React's TestUtils, you may be accustomed to changing
 inputs like so:
 
 ```javascript
-input.value = 'a'
-Simulate.change(input)
+input.value = "a";
+Simulate.change(input);
 ```
 
 We can't do this with react-testing-library because React actually keeps track
@@ -1082,26 +1091,26 @@ One case that I've found mocking to be especially useful is for animation
 libraries. I don't want my tests to wait for animations to end.
 
 ```javascript
-jest.mock('react-transition-group', () => {
-  const FakeTransition = jest.fn(({children}) => children)
+jest.mock("react-transition-group", () => {
+  const FakeTransition = jest.fn(({ children }) => children);
   const FakeCSSTransition = jest.fn(props =>
-    props.in ? <FakeTransition>{props.children}</FakeTransition> : null,
-  )
-  return {CSSTransition: FakeCSSTransition, Transition: FakeTransition}
-})
+    props.in ? <FakeTransition>{props.children}</FakeTransition> : null
+  );
+  return { CSSTransition: FakeCSSTransition, Transition: FakeTransition };
+});
 
-test('you can mock things with jest.mock', () => {
-  const {getByTestId, queryByTestId} = render(
-    <HiddenMessage initialShow={true} />,
-  )
-  expect(queryByTestId('hidden-message')).toBeTruthy() // we just care it exists
+test("you can mock things with jest.mock", () => {
+  const { getByTestId, queryByTestId } = render(
+    <HiddenMessage initialShow={true} />
+  );
+  expect(queryByTestId("hidden-message")).toBeTruthy(); // we just care it exists
   // hide the message
-  fireEvent.click(getByTestId('toggle-message'))
+  fireEvent.click(getByTestId("toggle-message"));
   // in the real world, the CSSTransition component would take some time
   // before finishing the animation which would actually hide the message.
   // So we've mocked it out for our tests to make it happen instantly
-  expect(queryByTestId('hidden-message')).toBeNull() // we just care it doesn't exist
-})
+  expect(queryByTestId("hidden-message")).toBeNull(); // we just care it doesn't exist
+});
 ```
 
 Note that because they're Jest mock functions (`jest.fn()`), you could also make
@@ -1134,7 +1143,7 @@ use the `queryByTestId` utility which will return the element if found or `null`
 if not.
 
 ```javascript
-expect(queryByTestId('thing-that-does-not-exist')).toBeNull()
+expect(queryByTestId("thing-that-does-not-exist")).toBeNull();
 ```
 
 </details>
@@ -1161,9 +1170,9 @@ If you don't want to use them at all, then you can simply use regular DOM
 methods and properties to query elements off your container.
 
 ```javascript
-const firstLiInDiv = container.querySelector('div li')
-const allLisInDiv = container.querySelectorAll('div li')
-const rootElement = container.firstChild
+const firstLiInDiv = container.querySelector("div li");
+const allLisInDiv = container.querySelectorAll("div li");
+const rootElement = container.firstChild;
 ```
 
 </details>
@@ -1176,7 +1185,7 @@ You can make your selector just choose the one you want by including :nth-child
 in the selector.
 
 ```javascript
-const thirdLiInUl = container.querySelector('ul > li:nth-child(3)')
+const thirdLiInUl = container.querySelector("ul > li:nth-child(3)");
 ```
 
 Or you could include the index or an ID in your attribute:
@@ -1190,9 +1199,9 @@ And then you could use the `getByTestId` utility:
 ```javascript
 const items = [
   /* your items */
-]
-const {getByTestId} = render(/* your component with the items */)
-const thirdItem = getByTestId(`item-${items[2].id}`)
+];
+const { getByTestId } = render(/* your component with the items */);
+const thirdItem = getByTestId(`item-${items[2].id}`);
 ```
 
 </details>
@@ -1238,9 +1247,9 @@ Luckily there's an easy way to make it work: clone the DOM when passing it into
 snapshot-diff. It looks like this:
 
 ```js
-const firstVersion = container.cloneNode(true)
+const firstVersion = container.cloneNode(true);
 // Do some changes
-snapshotDiff(firstVersion, container.cloneNode(true))
+snapshotDiff(firstVersion, container.cloneNode(true));
 ```
 
 </details>
