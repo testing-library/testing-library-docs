@@ -1,0 +1,19 @@
+{
+  "version-5.4.2-docs": {
+    "Getting Started": [
+      "version-5.4.2-readme"
+    ],
+    "Examples": [
+      "version-5.4.2-readme"
+    ],
+    "API": [
+      "version-5.4.2-readme"
+    ]
+  },
+  "version-5.4.2-docs-other": {
+    "README": [
+      "version-5.4.2-readme",
+      "version-5.4.2-readme"
+    ]
+  }
+}
