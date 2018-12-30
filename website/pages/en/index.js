@@ -74,6 +74,18 @@ class HomeSplash extends React.Component {
   }
 }
 
+const exampleCode =
+  "```js\n\
+import {render} from 'react-testing-library'; \n\
+import 'jest-dom/expect'; \n\
+\n\
+test('renders greeting', () => {\n\
+  const {getByText} = render(<MyComponent />);\n\
+  expect(getByText('Hello, World!')).toBeInTheDocument();\n\
+});\n\
+```\
+";
+
 class Index extends React.Component {
   render() {
     const { config: siteConfig, language = "" } = this.props;
@@ -86,8 +98,8 @@ class Index extends React.Component {
         background={props.background}
       >
         <GridBlock
-          align="left"
-          imageAlign="center"
+          align={props.align || "center"}
+          imageAlign={props.imageAlign || "center"}
           contents={props.children}
           layout={props.layout}
         />
@@ -95,21 +107,27 @@ class Index extends React.Component {
     );
 
     const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{ textAlign: "center" }}
-      >
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
-      </div>
+      <Container className="" background={"light"} padding={["top", "bottom"]}>
+        <div style={{ textAlign: "center" }}>
+          <p>
+            <i>
+              The more your tests resemble the way your software is used, <br />
+              the more confidence they can give you.
+            </i>
+          </p>
+          <MarkdownBlock>
+            `npm install --save-dev react-testing-library`
+          </MarkdownBlock>
+        </div>
+      </Container>
     );
 
     const TryOut = () => (
       <Block id="try">
         {[
           {
-            content: "Talk about trying this out",
-            image: `${baseUrl}img/logo-large.png`,
+            content: exampleCode,
+            image: `${baseUrl}img/hammer-wrench-128x128.png`,
             imageAlign: "left",
             title: "Try it Out"
           }
@@ -118,50 +136,64 @@ class Index extends React.Component {
     );
 
     const Problem = () => (
-      <Block background={"light"}>
-        {[
-          {
-            content:
-              "You want to write maintainable tests for your React components. As a part of this goal, you want your tests to avoid including implementation details of your components and rather focus on making your tests give you the confidence for which they are intended. As part of this, you want your testbase to be maintainable in the long run so refactors of your components (changes to implementation but not functionality) don't break your tests and slow you and your team down.",
-            image: `${baseUrl}img/interrobang-128x128.png`,
-            imageAlign: "left",
-            title: "Problem"
-          }
-        ]}
-      </Block>
+      <React.Fragment>
+        <Block background={"light"} align="left">
+          {[
+            {
+              title: "",
+              content:
+                "## The Problem \n - You want tests for your React components that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+              image: `${baseUrl}img/interrobang-128x128.png`,
+              imageAlt: "The problem (picture of a question mark)",
+              imageAlign: "left"
+            }
+          ]}
+        </Block>
+      </React.Fragment>
     );
 
     const Solution = () => (
-      <Block background={null}>
+      <Block background={null} align="left">
         {[
           {
-            title: "Solution",
+            title: "",
             image: `${baseUrl}img/star-128x128.png`,
             imageAlign: "right",
+            imageAlt: "The solution (picture of a star)",
             content:
-              'The react-testing-library is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices. Its primary guiding principle is: "The more your tests resemble the way your software is used, the more confidence they can give you."'
+              "## The Solution \n `react-testing-library` is a very light-weight solution for testing React components. It provides utility functions on top of react-dom and react-dom/test-utils in a way that encourages better testing practices. Its primary guiding principle is: \n > The more your tests resemble the way your software is used, the more confidence they can give you."
           }
         ]}
       </Block>
     );
 
     const Features = () => (
-      <Block layout="fourColumn">
-        {[
-          {
-            content: "This is the content of my feature",
-            image: `${baseUrl}img/logo-large.png`,
-            imageAlign: "top",
-            title: "Feature One"
-          },
-          {
-            content: "The content of my second feature",
-            image: `${baseUrl}img/logo-large.png`,
-            imageAlign: "top",
-            title: "Feature Two"
-          }
-        ]}
-      </Block>
+      <React.Fragment>
+        <Block layout="twoColumn">
+          {[
+            {
+              content:
+                "Tests only break when your app breaks, not implementation details",
+              image: `${baseUrl}img/wrench-128x128.png`,
+              imageAlign: "top",
+              title: "Write Maintainable Tests"
+            },
+            {
+              content: "Interact with your app the same way as your users",
+              image: `${baseUrl}img/check-128x128.png`,
+              imageAlign: "top",
+              title: "Develop with Confidence"
+            },
+            {
+              content:
+                "Built-in selectors use semantic HTML and ARIA roles to help you write inclusive code",
+              image: `${baseUrl}img/tada-128x128.png`,
+              imageAlign: "top",
+              title: "Accessible by Default"
+            }
+          ]}
+        </Block>
+      </React.Fragment>
     );
 
     const Showcase = () => {
@@ -196,8 +228,8 @@ class Index extends React.Component {
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
-          {/* <Features /> */}
-          {/* <FeatureCallout /> */}
+          <FeatureCallout />
+          <Features />
           {/* <TryOut /> */}
           <Problem />
           <Solution />

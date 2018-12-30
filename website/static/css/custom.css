@@ -22,6 +22,9 @@ pre, code {
 
 .imageAlignSide .blockImage {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Reset link styling because they aren't visible with a dark primary color */
