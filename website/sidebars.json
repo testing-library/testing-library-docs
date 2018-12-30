@@ -1,0 +1,10 @@
+{
+  "docs": {
+    "Getting Started": ["readme"],
+    "Examples": ["readme"],
+    "API": ["readme"]
+  },
+  "docs-other": {
+    "README": ["readme", "readme"]
+  }
+}

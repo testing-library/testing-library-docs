@@ -1,0 +1,54 @@
+/* your custom css */
+body {
+  font-family: $fontMain;
+  font-size: 18px;
+}
+
+
+pre, code {
+  font-family: $fontCode;
+}
+
+.projectTaglineWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.projectTagline {
+  max-width: 500px;
+  flex: 1;
+  font-size: 115%;
+}
+
+.imageAlignSide .blockImage {
+  text-align: center;
+}
+
+/* Reset link styling because they aren't visible with a dark primary color */
+a { 
+  color: $secondaryColor;
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+  .projectTitle {
+    margin-top: 80px;
+  }  
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1200px) {
+  .homeContainer .homeWrapper .projectLogo img {
+    max-height: 128px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
