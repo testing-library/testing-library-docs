@@ -56,7 +56,10 @@ function Help(props) {
           <GridBlock contents={supportLinks} layout="fourColumn" align="left" />
           <section>
             <h2 align="center">Buy a Course</h2>
-            <p align="center">Learn how to test React with Kent Dodds, the creator of react-testing-library</p>
+            <p align="center">
+              Learn how to test React with Kent Dodds, the creator of
+              react-testing-library
+            </p>
             <div align="center">
               <a href="https://testingjavascript.com">
                 <img

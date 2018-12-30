@@ -5,23 +5,25 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require('react');
+const React = require("react");
 
-const ExternalLink = (props) => <a target="_blank" rel="noreferrer noopener" {...props} />
-const Link = (props) => <a {...props} />
+const ExternalLink = props => (
+  <a target="_blank" rel="noreferrer noopener" {...props} />
+);
+const Link = props => <a {...props} />;
 
 class Footer extends React.Component {
   docUrl(doc, language) {
     const baseUrl = this.props.config.baseUrl;
     const docsUrl = this.props.config.docsUrl;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
+    const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
+    const langPart = `${language ? `${language}/` : ""}`;
     return `${baseUrl}${docsPart}${langPart}${doc}`;
   }
 
   pageUrl(doc, language) {
     const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? `${language}/` : '') + doc;
+    return baseUrl + (language ? `${language}/` : "") + doc;
   }
 
   render() {
@@ -40,13 +42,13 @@ class Footer extends React.Component {
           </Link>
           <div>
             <h5>Docs</h5>
-            <Link href={this.docUrl('readme.html', this.props.language)}>
+            <Link href={this.docUrl("readme.html", this.props.language)}>
               Getting Started (or other categories)
             </Link>
-            <Link href={this.docUrl('readme.html', this.props.language)}>
+            <Link href={this.docUrl("readme.html", this.props.language)}>
               Guides (or other categories)
             </Link>
-            <Link href={this.docUrl('readme.html', this.props.language)}>
+            <Link href={this.docUrl("readme.html", this.props.language)}>
               API Reference (or other categories)
             </Link>
           </div>
@@ -56,7 +58,9 @@ class Footer extends React.Component {
             <ExternalLink href="https://stackoverflow.com/questions/tagged/react-testing-library">
               Stack Overflow
             </ExternalLink>
-            <ExternalLink href="https://www.reactiflux.com/">Reactiflux on Discord</ExternalLink>
+            <ExternalLink href="https://www.reactiflux.com/">
+              Reactiflux on Discord
+            </ExternalLink>
             <ExternalLink href="https://spectrum.chat/react-testing-library">
               Spectrum
             </ExternalLink>
@@ -70,16 +74,19 @@ class Footer extends React.Component {
               data-count-href="/kentcdodds/react-testing-library/stargazers"
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
+              aria-label="Star this project on GitHub"
+            >
               Star
             </ExternalLink>
-            <ExternalLink href={`${this.props.config.repoUrl}`}>GitHub</ExternalLink>
-            <ExternalLink href={`${this.props.config.docsRepoUrl}`}>Edit Docs on GitHub</ExternalLink>
+            <ExternalLink href={`${this.props.config.repoUrl}`}>
+              GitHub
+            </ExternalLink>
+            <ExternalLink href={`${this.props.config.docsRepoUrl}`}>
+              Edit Docs on GitHub
+            </ExternalLink>
           </div>
         </section>
-        <section className="copyright">
-          {this.props.config.copyright}
-        </section>
+        <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );
   }
