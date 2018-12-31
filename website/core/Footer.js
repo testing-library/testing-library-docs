@@ -5,25 +5,25 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require("react");
+const React = require('react')
 
 const ExternalLink = props => (
   <a target="_blank" rel="noreferrer noopener" {...props} />
-);
-const Link = props => <a {...props} />;
+)
+const Link = props => <a {...props} />
 
 class Footer extends React.Component {
   docUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
-    const docsUrl = this.props.config.docsUrl;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
-    const langPart = `${language ? `${language}/` : ""}`;
-    return `${baseUrl}${docsPart}${langPart}${doc}`;
+    const baseUrl = this.props.config.baseUrl
+    const docsUrl = this.props.config.docsUrl
+    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
+    const langPart = `${language ? `${language}/` : ''}`
+    return `${baseUrl}${docsPart}${langPart}${doc}`
   }
 
   pageUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? `${language}/` : "") + doc;
+    const baseUrl = this.props.config.baseUrl
+    return baseUrl + (language ? `${language}/` : '') + doc
   }
 
   render() {
@@ -42,10 +42,10 @@ class Footer extends React.Component {
           </Link>
           <div>
             <h5>Docs</h5>
-            <Link href={this.docUrl("intro")}>Getting Started</Link>
-            <Link href={this.docUrl("example-codesandbox")}>Examples</Link>
-            <Link href={this.docUrl("api-queries")}>API</Link>
-            <Link href={this.docUrl("faq")}>Help</Link>
+            <Link href={this.docUrl('intro')}>Getting Started</Link>
+            <Link href={this.docUrl('example-codesandbox')}>Examples</Link>
+            <Link href={this.docUrl('api-queries')}>API</Link>
+            <Link href={this.docUrl('faq')}>Help</Link>
           </div>
           <div>
             <h5>Community</h5>
@@ -66,7 +66,7 @@ class Footer extends React.Component {
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
-              data-count-href="/kentcdodds/dom-testing-library/stargazers"
+              data-count-href="/kentcdodds/react-testing-library/stargazers"
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub"
@@ -83,8 +83,8 @@ class Footer extends React.Component {
         </section>
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
-    );
+    )
   }
 }
 
-module.exports = Footer;
+module.exports = Footer
