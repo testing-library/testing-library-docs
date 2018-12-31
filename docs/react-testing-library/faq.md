@@ -1,8 +1,6 @@
 ---
-id: version-5.4.1-faq
+id: faq
 title: FAQ
-sidebar_label: FAQ
-original_id: faq
 ---
 
 <details>
@@ -15,37 +13,35 @@ TL;DR:
 In summary:
 
 ```javascript
-import React from "react";
-import "react-testing-library/cleanup-after-each";
-import { render, fireEvent } from "react-testing-library";
+import React from 'react'
+import 'react-testing-library/cleanup-after-each'
+import {render, fireEvent} from 'react-testing-library'
 
-test("change values via the fireEvent.change method", () => {
-  const handleChange = jest.fn();
-  const { container } = render(<input type="text" onChange={handleChange} />);
-  const input = container.firstChild;
-  fireEvent.change(input, { target: { value: "a" } });
-  expect(handleChange).toHaveBeenCalledTimes(1);
-  expect(input.value).toBe("a");
-});
+test('change values via the fireEvent.change method', () => {
+  const handleChange = jest.fn()
+  const {container} = render(<input type="text" onChange={handleChange} />)
+  const input = container.firstChild
+  fireEvent.change(input, {target: {value: 'a'}})
+  expect(handleChange).toHaveBeenCalledTimes(1)
+  expect(input.value).toBe('a')
+})
 
-test("checkboxes (and radios) must use fireEvent.click", () => {
-  const handleChange = jest.fn();
-  const { container } = render(
-    <input type="checkbox" onChange={handleChange} />
-  );
-  const checkbox = container.firstChild;
-  fireEvent.click(checkbox);
-  expect(handleChange).toHaveBeenCalledTimes(1);
-  expect(checkbox.checked).toBe(true);
-});
+test('checkboxes (and radios) must use fireEvent.click', () => {
+  const handleChange = jest.fn()
+  const {container} = render(<input type="checkbox" onChange={handleChange} />)
+  const checkbox = container.firstChild
+  fireEvent.click(checkbox)
+  expect(handleChange).toHaveBeenCalledTimes(1)
+  expect(checkbox.checked).toBe(true)
+})
 ```
 
 If you've used enzyme or React's TestUtils, you may be accustomed to changing
 inputs like so:
 
 ```javascript
-input.value = "a";
-Simulate.change(input);
+input.value = 'a'
+Simulate.change(input)
 ```
 
 We can't do this with react-testing-library because React actually keeps track
@@ -130,26 +126,26 @@ One case that I've found mocking to be especially useful is for animation
 libraries. I don't want my tests to wait for animations to end.
 
 ```javascript
-jest.mock("react-transition-group", () => {
-  const FakeTransition = jest.fn(({ children }) => children);
+jest.mock('react-transition-group', () => {
+  const FakeTransition = jest.fn(({children}) => children)
   const FakeCSSTransition = jest.fn(props =>
-    props.in ? <FakeTransition>{props.children}</FakeTransition> : null
-  );
-  return { CSSTransition: FakeCSSTransition, Transition: FakeTransition };
-});
+    props.in ? <FakeTransition>{props.children}</FakeTransition> : null,
+  )
+  return {CSSTransition: FakeCSSTransition, Transition: FakeTransition}
+})
 
-test("you can mock things with jest.mock", () => {
-  const { getByTestId, queryByTestId } = render(
-    <HiddenMessage initialShow={true} />
-  );
-  expect(queryByTestId("hidden-message")).toBeTruthy(); // we just care it exists
+test('you can mock things with jest.mock', () => {
+  const {getByTestId, queryByTestId} = render(
+    <HiddenMessage initialShow={true} />,
+  )
+  expect(queryByTestId('hidden-message')).toBeTruthy() // we just care it exists
   // hide the message
-  fireEvent.click(getByTestId("toggle-message"));
+  fireEvent.click(getByTestId('toggle-message'))
   // in the real world, the CSSTransition component would take some time
   // before finishing the animation which would actually hide the message.
   // So we've mocked it out for our tests to make it happen instantly
-  expect(queryByTestId("hidden-message")).toBeNull(); // we just care it doesn't exist
-});
+  expect(queryByTestId('hidden-message')).toBeNull() // we just care it doesn't exist
+})
 ```
 
 Note that because they're Jest mock functions (`jest.fn()`), you could also make
@@ -183,7 +179,7 @@ use the `queryByTestId` utility which will return the element if found or `null`
 if not.
 
 ```javascript
-expect(queryByTestId("thing-that-does-not-exist")).toBeNull();
+expect(queryByTestId('thing-that-does-not-exist')).toBeNull()
 ```
 
 </details>
@@ -210,9 +206,9 @@ If you don't want to use them at all, then you can simply use regular DOM
 methods and properties to query elements off your container.
 
 ```javascript
-const firstLiInDiv = container.querySelector("div li");
-const allLisInDiv = container.querySelectorAll("div li");
-const rootElement = container.firstChild;
+const firstLiInDiv = container.querySelector('div li')
+const allLisInDiv = container.querySelectorAll('div li')
+const rootElement = container.firstChild
 ```
 
 </details>
@@ -225,7 +221,7 @@ You can make your selector just choose the one you want by including :nth-child
 in the selector.
 
 ```javascript
-const thirdLiInUl = container.querySelector("ul > li:nth-child(3)");
+const thirdLiInUl = container.querySelector('ul > li:nth-child(3)')
 ```
 
 Or you could include the index or an ID in your attribute:
@@ -239,9 +235,9 @@ And then you could use the `getByTestId` utility:
 ```javascript
 const items = [
   /* your items */
-];
-const { getByTestId } = render(/* your component with the items */);
-const thirdItem = getByTestId(`item-${items[2].id}`);
+]
+const {getByTestId} = render(/* your component with the items */)
+const thirdItem = getByTestId(`item-${items[2].id}`)
 ```
 
 </details>
@@ -287,9 +283,9 @@ Luckily there's an easy way to make it work: clone the DOM when passing it into
 snapshot-diff. It looks like this:
 
 ```js
-const firstVersion = container.cloneNode(true);
+const firstVersion = container.cloneNode(true)
 // Do some changes
-snapshotDiff(firstVersion, container.cloneNode(true));
+snapshotDiff(firstVersion, container.cloneNode(true))
 ```
 
 </details>
@@ -322,6 +318,7 @@ which aims to test React Native apps without mentioned tradeoffs, having the API
 inspired by and mostly compatible with this library.
 
 </details>
+
 
 <!--
 Links:

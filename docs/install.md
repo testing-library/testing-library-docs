@@ -8,13 +8,22 @@ This module is distributed via [npm][npm] which is bundled with [node][node] and
 should be installed as one of your project's `devDependencies`:
 
 ```
-npm install --save-dev react-testing-library
+npm install --save-dev dom-testing-library
 ```
 
-This library has a `peerDependencies` listing for `react-dom`.
+## Wrappers
 
-You may also be interested in installing `jest-dom` so you can use
-[the custom jest matchers](https://github.com/gnapse/jest-dom#readme).
+If you are using a framework such as React, you will likely want to install the wrapper:
+
+- [React Testing Library](react-testing-library/intro.md)
+- [Cypress Testing Library](cypress-testing-library/intro.md)
+
+## Ecosystem
+
+`dom-testing-library` works well with these companion libraries:
+
+- [user-event](ecosystem-user-event.md) browser event simulation
+- [jest-dom](ecosystem-jest-dom.md) custom Jest matchers
 
 <!--
 Links

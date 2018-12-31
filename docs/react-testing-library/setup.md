@@ -1,8 +1,7 @@
 ---
-id: version-5.4.1-setup
+id: setup
 title: Setup
 sidebar_label: Setup
-original_id: setup
 ---
 
 `react-testing-library` does not require any configuration to be used (as
@@ -16,7 +15,7 @@ you use Jest).
 
 There are several options you can add to your global test config that simplify
 the setup and teardown of tests in individual files. For example, you can ensure
-[`cleanup`](./usage#cleanup) is called after each test and import additional
+[`cleanup`](./api#cleanup) is called after each test and import additional
 assertions.
 
 To do this with Jest, you can add the
@@ -31,19 +30,19 @@ setup code there.
 ```javascript
 // jest.config.js
 module.exports = {
-  setupTestFrameworkScriptFile: require.resolve("./jest.setup.js")
+  setupTestFrameworkScriptFile: require.resolve('./jest.setup.js'),
   // ... other options ...
-};
+}
 ```
 
 ```javascript
 // jest.setup.js
 
 // add some helpful assertions
-import "jest-dom/extend-expect";
+import 'jest-dom/extend-expect'
 
 // this is basically: afterEach(cleanup)
-import "react-testing-library/cleanup-after-each";
+import 'react-testing-library/cleanup-after-each'
 ```
 
 ## Custom Render
@@ -62,10 +61,10 @@ all your imports.
 
 ```js
 // test-utils.js
-import { render } from "react-testing-library";
-import { ThemeProvider } from "my-ui-lib";
-import { TranslationProvider } from "my-i18n-lib";
-import defaultStrings from "i18n/en-x-default";
+import {render} from 'react-testing-library'
+import {ThemeProvider} from 'my-ui-lib'
+import {TranslationProvider} from 'my-i18n-lib'
+import defaultStrings from 'i18n/en-x-default'
 
 const customRender = (node, options) => {
   return render(
@@ -74,15 +73,15 @@ const customRender = (node, options) => {
         {node}
       </TranslationProvider>
     </ThemeProvider>,
-    options
-  );
-};
+    options,
+  )
+}
 
 // re-export everything
-export * from "react-testing-library";
+export * from 'react-testing-library'
 
 // override render method
-export { customRender as render };
+export {customRender as render}
 ```
 
 To make this file accessible without using relative imports, add the folder
@@ -140,16 +139,16 @@ return value of the customRender.
 // test-utils.js
 
 const customRender = (ui, options) => {
-  const rendered = render(<div>{ui}</div>, options);
+  const rendered = render(<div>{ui}</div>, options)
   return {
     ...rendered,
     rerender: newUi =>
       customRender(newUi, {
         container: rendered.container,
-        baseElement: rendered.baseElement
-      })
-  };
-};
+        baseElement: rendered.baseElement,
+      }),
+  }
+}
 ```
 
 ### Export Issue with Babel Versions Lower Than 7
@@ -165,16 +164,16 @@ You can use CommonJS modules instead of ES modules, which should work in Node:
 
 ```js
 // test-utils.js
-const rtl = require("react-testing-library");
+const rtl = require('react-testing-library')
 
 const customRender = (node, options) => {
-  return rtl.render(<Something>{node}</Something>);
-};
+  return rtl.render(<Something>{node}</Something>)
+}
 
 module.exports = {
   ...rtl,
-  render: customRender
-};
+  render: customRender,
+}
 ```
 
 </details>

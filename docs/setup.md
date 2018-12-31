@@ -15,7 +15,7 @@ you use Jest).
 
 There are several options you can add to your global test config that simplify
 the setup and teardown of tests in individual files. For example, you can ensure
-[`cleanup`](./usage#cleanup) is called after each test and import additional
+[`cleanup`](./ecosystem-react-testng-library#cleanup) is called after each test and import additional
 assertions.
 
 To do this with Jest, you can add the

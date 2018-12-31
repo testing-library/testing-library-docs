@@ -1,14 +1,10 @@
 ---
-id: version-5.4.1-queries
+id: queries
 title: Queries
 sidebar_label: Queries
-original_id: queries
 ---
 
 ## Queries
-
-The `render` function returns the queries from
-[`dom-testing-library`](https://github.com/kentcdodds/dom-testing-library) bound to the created element:
 
 ### `getByLabelText`
 
@@ -23,10 +19,10 @@ This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { getByLabelText } = render(<Login />);
-const inputNode = getByLabelText("Username");
+const {getByLabelText} = render(<Login />)
+const inputNode = getByLabelText('Username')
 
 // this would find the input node for the following DOM structures:
 // The "for" attribute (NOTE: in JSX with React you'll write "htmlFor" rather than "for")
@@ -44,7 +40,7 @@ const inputNode = getByLabelText("Username");
 // <label><span>Username</span> <input /></label>
 //
 // For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText("username", { selector: "input" });
+const inputNode = getByLabelText('username', {selector: 'input'})
 // and that would work
 // Note that <input aria-label="username" /> will also work, but take
 // care because this is not a label that users can see on the page. So
@@ -67,10 +63,10 @@ This will search for all elements with a placeholder attribute and find one that
 matches the given [`TextMatch`](#textmatch).
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { getByPlaceholderText } = render(<input placeholder="Username" />);
-const inputNode = getByPlaceholderText("Username");
+const {getByPlaceholderText} = render(<input placeholder="Username" />)
+const inputNode = getByPlaceholderText('Username')
 ```
 
 > NOTE: a placeholder is not a good substitute for a label so you should
@@ -89,10 +85,10 @@ This will search for all elements that have a text node with `textContent`
 matching the given [`TextMatch`](#textmatch).
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { getByText } = render(<a href="/about">About ℹ️</a>);
-const aboutAnchorNode = getByText("about");
+const {getByText} = render(<a href="/about">About ℹ️</a>)
+const aboutAnchorNode = getByText('about')
 ```
 
 ### `getByAltText`
@@ -113,12 +109,12 @@ and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
 as it's deprecated).
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { getByAltText } = render(
-  <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
-);
-const incrediblesPosterImg = getByAltText(/incredibles.*poster$/i);
+const {getByAltText} = render(
+  <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />,
+)
+const incrediblesPosterImg = getByAltText(/incredibles.*poster$/i)
 ```
 
 ### `getByTestId`
@@ -133,10 +129,10 @@ A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { getByTestId } = render(<input data-testid="username-input" />);
-const usernameInputElement = getByTestId("username-input");
+const {getByTestId} = render(<input data-testid="username-input" />)
+const usernameInputElement = getByTestId('username-input')
 ```
 
 > In the spirit of [the guiding principles](#guiding-principles), it is
@@ -160,11 +156,12 @@ purpose, you can use the `configure` function of `dom-testing-library` to change
 the attribute that is used. This requires `dom-testing-library` version 3.13:
 
 ```jsx
-import { configure } from "dom-testing-library";
-configure({ testIdAttribute: "data-test-id" });
+import {configure} from 'dom-testing-library'
+configure({testIdAttribute: 'data-test-id'})
 ```
 
 </details>
+
 
 ## `TextMatch`
 
@@ -176,36 +173,34 @@ See [dom-testing-library#textmatch][dom-testing-lib-textmatch] for options.
 Examples:
 
 ```jsx
-import { render, getByText } from "react-testing-library";
+import {render, getByText} from 'react-testing-library'
 
-const { container } = render(<div>Hello World</div>);
+const {container} = render(<div>Hello World</div>)
 
 // WILL find the div:
 
 // Matching a string:
-getByText(container, "Hello World"); // full string match
-getByText(container, "llo Worl", { exact: false }); // substring match
-getByText(container, "hello world", { exact: false }); // ignore case
+getByText(container, 'Hello World') // full string match
+getByText(container, 'llo Worl', {exact: false}) // substring match
+getByText(container, 'hello world', {exact: false}) // ignore case
 
 // Matching a regex:
-getByText(container, /World/); // substring match
-getByText(container, /world/i); // substring match, ignore case
-getByText(container, /^hello world$/i); // full string match, ignore case
-getByText(container, /Hello W?oRlD/i); // advanced regex
+getByText(container, /World/) // substring match
+getByText(container, /world/i) // substring match, ignore case
+getByText(container, /^hello world$/i) // full string match, ignore case
+getByText(container, /Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
-getByText(container, (content, element) => content.startsWith("Hello"));
+getByText(container, (content, element) => content.startsWith('Hello'))
 
 // WILL NOT find the div:
 
-getByText(container, "Goodbye World"); // full string does not match
-getByText(container, /hello world/); // case-sensitive regex with different case
+getByText(container, 'Goodbye World') // full string does not match
+getByText(container, /hello world/) // case-sensitive regex with different case
 // function looking for a span when it's actually a div:
 getByText(container, (content, element) => {
-  return (
-    element.tagName.toLowerCase() === "span" && content.startsWith("Hello")
-  );
-});
+  return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
+})
 ```
 
 ## `query` APIs
@@ -217,11 +212,11 @@ make an assertion that an element is _not_ present in the DOM, then you can use
 the `query` API instead:
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { queryByText } = render(<Form />);
-const submitButton = queryByText("submit");
-expect(submitButton).toBeNull(); // it doesn't exist
+const {queryByText} = render(<Form />)
+const submitButton = queryByText('submit')
+expect(submitButton).toBeNull() // it doesn't exist
 ```
 
 ## `queryAll` and `getAll` APIs
@@ -231,12 +226,12 @@ returns an Array of matching nodes. `getAll` is the same but throws when the
 array has a length of 0.
 
 ```jsx
-import { render } from "react-testing-library";
+import {render} from 'react-testing-library'
 
-const { queryAllByText } = render(<Forms />);
-const submitButtons = queryAllByText("submit");
-expect(submitButtons).toHaveLength(3); // expect 3 elements
-expect(submitButtons[0]).toBeInTheDocument();
+const {queryAllByText} = render(<Forms />)
+const submitButtons = queryAllByText('submit')
+expect(submitButtons).toHaveLength(3) // expect 3 elements
+expect(submitButtons[0]).toBeInTheDocument()
 ```
 
 <!--

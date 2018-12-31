@@ -1,9 +1,9 @@
 {
-  "docs-other": {
+  "docs": {
     "Getting Started": [
       "intro",
-      "example-intro",
       "install",
+      "example-intro",
       "setup",
       "guiding-principles"
     ],
@@ -18,12 +18,26 @@
       "example-reach-transition-group",
       "example-external"
     ],
-    "API": ["usage", "queries"],
-    "Help": ["faq", "learning"],
-    "Ecosystem": [
-      "ecosystem-user-event",
-      "ecosystem-cypress-testing-library",
-      "ecosystem-dom-testing-library"
-    ]
+    "API": ["api-events", "api-async", "queries"],
+    "Wrappers": [
+      {
+        "type": "subcategory",
+        "label": "React Testing Library",
+        "ids": [
+          "react-testing-library/intro",
+          "react-testing-library/example-intro",
+          "react-testing-library/setup",
+          "react-testing-library/api",
+          "react-testing-library/faq"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Cypress Testing Library",
+        "ids": ["cypress-testing-library/intro"]
+      }
+    ],
+    "Ecosystem": ["ecosystem-user-event", "ecosystem-jest-dom"],
+    "Help": ["faq", "learning"]
   }
 }

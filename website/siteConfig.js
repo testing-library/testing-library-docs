@@ -21,9 +21,9 @@ const users = [
 ];
 
 const siteConfig = {
-  title: "React Testing Library", // Title for your website.
+  title: "DOM Testing Library", // Title for your website.
   tagline:
-    "Simple and complete React DOM testing utilities that encourage good testing practices",
+    "Simple and complete DOM testing utilities that encourage good testing practices",
   url: "https://react-testing-library.netlify.com", // Your website URL
   baseUrl: "/", // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -48,9 +48,9 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: "img/goat-64x64.png",
-  footerIcon: "img/goat-128x128.png",
-  favicon: "img/goat-32x32.png",
+  headerIcon: "img/octopus-64x64.png",
+  footerIcon: "img/octopus-128x128.png",
+  favicon: "img/octopus-32x32.png",
 
   /* Colors for website */
   colors: {
@@ -98,8 +98,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: "img/logo-128x128.png",
-  twitterImage: "img/goat-128x128.png",
+  ogImage: "img/octopus-128x128.png",
+  twitterImage: "img/octopus-128x128.png",
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
@@ -109,7 +109,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  repoUrl: "https://github.com/kentcdodds/react-testing-library",
+  repoUrl: "https://github.com/kentcdodds/dom-testing-library",
   docsRepoUrl: "https://github.com/alexkrolick/react-testing-library-docs"
 };
 

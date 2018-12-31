@@ -37,9 +37,12 @@ class HomeSplash extends React.Component {
 
     const ProjectTitle = () => (
       <div>
-        <h2 className="projectTitle">{siteConfig.title}</h2>
+        <h2 className="projectTitle">React Testing Library</h2>
         <div className="projectTaglineWrapper">
-          <p className="projectTagline">{siteConfig.tagline}</p>
+          <p className="projectTagline">
+            Simple and complete React DOM testing utilities that encourage good
+            testing practices
+          </p>
         </div>
       </div>
     );
@@ -62,11 +65,13 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/logo-large.png`} />
+        <Logo img_src={`${baseUrl}img/react-128x128.png`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl("intro")}>Get Started</Button>
+            <Button href={docUrl("react-testing-library/intro")}>
+              Read the Docs
+            </Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -104,7 +109,7 @@ class Index extends React.Component {
             </i>
           </p>
           <MarkdownBlock>
-            `npm install --save-dev dom-testing-library`
+            `npm install --save-dev react-testing-library`
           </MarkdownBlock>
         </div>
       </Container>
@@ -143,84 +148,40 @@ class Index extends React.Component {
     );
 
     const Features = () => (
-      <Block layout="twoColumn">
-        {[
-          {
-            content:
-              "Tests only break when your app breaks, not implementation details",
-            image: `${baseUrl}img/wrench-128x128.png`,
-            imageAlign: "top",
-            title: "Write Maintainable Tests"
-          },
-          {
-            content: "Interact with your app the same way as your users",
-            image: `${baseUrl}img/check-128x128.png`,
-            imageAlign: "top",
-            title: "Develop with Confidence"
-          },
-          {
-            content:
-              "Built-in selectors use semantic HTML and ARIA roles to help you write inclusive code",
-            image: `${baseUrl}img/tada-128x128.png`,
-            imageAlign: "top",
-            title: "Accessible by Default"
-          }
-        ]}
-      </Block>
+      <React.Fragment>
+        <Block layout="twoColumn">
+          {[
+            {
+              content:
+                "Tests only break when your app breaks, not implementation details",
+              image: `${baseUrl}img/wrench-128x128.png`,
+              imageAlign: "top",
+              title: "Write Maintainable Tests"
+            },
+            {
+              content: "Interact with your app the same way as your users",
+              image: `${baseUrl}img/check-128x128.png`,
+              imageAlign: "top",
+              title: "Develop with Confidence"
+            },
+            {
+              content:
+                "Built-in selectors use semantic HTML and ARIA roles to help you write inclusive code",
+              image: `${baseUrl}img/tada-128x128.png`,
+              imageAlign: "top",
+              title: "Accessible by Default"
+            },
+            {
+              content:
+                "`react-testing-library` is an opinionated alternative to libraries like Enyzyme that provide too many ways to avoid testing like a user",
+              image: `${baseUrl}img/vs-128x128.png`,
+              imageAlign: "top",
+              title: "Alternative to Enzyme"
+            }
+          ]}
+        </Block>
+      </React.Fragment>
     );
-
-    const Ecosystem = () => (
-      <Block layout="threeColumn" background="light">
-        {[
-          {
-            content: "For testing React Components",
-            image: `${baseUrl}img/react-128x128.png`,
-            imageAlign: "top",
-            title: "[React Testing Library](./react)"
-          },
-          {
-            content: "End-to-End Tests",
-            image: `${baseUrl}img/evergreen-128x128.png`,
-            imageAlign: "top",
-            title: "[Cypress Testing Library](./cypress)"
-          },
-          {
-            content: "Explore the ecosystem",
-            image: `${baseUrl}img/construction-128x128.png`,
-            imageAlign: "top",
-            title: "[And more...](./docs/ecosystem-user-event)"
-          }
-        ]}
-      </Block>
-    );
-
-    const Showcase = () => {
-      if ((siteConfig.users || []).length === 0) {
-        return null;
-      }
-
-      const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
-          </a>
-        ));
-
-      const pageUrl = page => baseUrl + (language ? `${language}/` : "") + page;
-
-      return (
-        <div className="productShowcaseSection paddingBottom">
-          <h2>Who is Using This?</h2>
-          <div className="logos">{showcase}</div>
-          <div className="more-users">
-            <a className="button" href={pageUrl("users.html")}>
-              More {siteConfig.title} Users
-            </a>
-          </div>
-        </div>
-      );
-    };
 
     return (
       <div>
@@ -230,8 +191,6 @@ class Index extends React.Component {
           <Features />
           <Problem />
           <Solution />
-          <Showcase />
-          <Ecosystem />
         </div>
       </div>
     );

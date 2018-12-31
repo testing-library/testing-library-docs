@@ -52,6 +52,8 @@ a {
 @media only screen and (min-width: 1200px) {
   .homeContainer .homeWrapper .projectLogo img {
     max-height: 128px;
+    max-width: 128px;
+    height: auto;
   }
 }
 

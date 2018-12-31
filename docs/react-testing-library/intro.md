@@ -1,9 +1,17 @@
 ---
-id: version-5.4.1-intro
+id: intro
 title: Introduction
-sidebar_label: Introduction
-original_id: intro
 ---
+
+[`react-testing-library`][gh] builds on top of `dom-testing-library` by adding APIs for working with React components.
+
+```
+npm install --save-dev react-testing-library
+```
+
+- [react-testing-library on GitHub][gh]
+
+[gh]: https://github.com/kentcdodds/react-testing-library
 
 ## The problem
 
@@ -23,7 +31,7 @@ components. It provides light utility functions on top of `react-dom` and
 primary guiding principle is:
 
 > [The more your tests resemble the way your software is used, the more
-> confidence they can give you.][./guiding-principles]
+> confidence they can give you.](guiding-principles.md)
 
 So rather than dealing with instances of rendered react components, your tests
 will work with actual DOM nodes. The utilities this library provides facilitate
@@ -52,10 +60,10 @@ facilitate testing implementation details). Read more about this in
     [Using Without Jest](./setup#using-without-jest))
 
 > NOTE: This library is built on top of
-> [`dom-testing-library`](https://github.com/kentcdodds/dom-testing-library)
+> [`dom-testing-library`](/)
 > which is where most of the logic behind the queries is.
 
 ## What is react-testing-library?
 
 Have a look at the video below for an explanation. <br/><br/>
-[![what is react testing library](https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg)](https://youtu.be/JKOwJUM4_RM "what is react testing library")
+[![what is react testing library](https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg)](https://youtu.be/JKOwJUM4_RM 'what is react testing library')
