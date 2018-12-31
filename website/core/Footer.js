@@ -64,7 +64,7 @@ class Footer extends React.Component {
             <h5>More</h5>
             <ExternalLink
               className="github-button"
-              href={this.props.config.repoUrl}
+              href={'https:github.com/kentcdodds/react-testing-library'}
               data-icon="octicon-star"
               data-count-href="/kentcdodds/react-testing-library/stargazers"
               data-show-count="true"
