@@ -18,7 +18,7 @@
       "example-reach-transition-group",
       "example-external"
     ],
-    "API": ["api-events", "api-async", "api-queries", "api-helpers"],
+    "API": ["api-queries", "api-events", "api-async", "api-helpers"],
     "Wrappers": [
       {
         "type": "subcategory",

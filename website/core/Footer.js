@@ -44,7 +44,7 @@ class Footer extends React.Component {
             <h5>Docs</h5>
             <Link href={this.docUrl("intro")}>Getting Started</Link>
             <Link href={this.docUrl("example-codesandbox")}>Examples</Link>
-            <Link href={this.docUrl("usage")}>API</Link>
+            <Link href={this.docUrl("api-queries")}>API</Link>
             <Link href={this.docUrl("faq")}>Help</Link>
           </div>
           <div>
@@ -66,7 +66,7 @@ class Footer extends React.Component {
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
-              data-count-href="/kentcdodds/react-testing-library/stargazers"
+              data-count-href="/kentcdodds/dom-testing-library/stargazers"
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub"

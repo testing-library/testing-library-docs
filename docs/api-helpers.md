@@ -3,40 +3,6 @@ id: api-helpers
 title: Helpers
 ---
 
-## `getNodeText`
-
-```typescript
-getNodeText(node: HTMLElement)
-```
-
-Returns the complete text content of a html element, removing any extra
-whitespace. The intention is to treat text in nodes exactly as how it is
-perceived by users in a browser, where any extra whitespace within words in the
-html code is not meaningful when the text is rendered.
-
-```javascript
-// <div>
-//   Hello
-//     World  !
-// </div>
-const text = getNodeText(container.querySelector('div')) // "Hello World !"
-```
-
-This function is also used internally when querying nodes by their text content.
-This enables functions like `getByText` and `queryByText` to work as expected,
-finding elements in the DOM similarly to how users would do.
-
-The function has a special behavior for some input elements:
-
-```javascript
-// <input type="submit" value="Send data" />
-// <input type="button" value="Push me" />
-const submitText = getNodeText(container.querySelector('input[type=submit]')) // "Send data"
-const buttonText = getNodeText(container.querySelector('input[type=button]')) // "Push me"
-
-These elements use the attribute `value` and display its value to the user.
-```
-
 ## Custom Queries
 
 `dom-testing-library` exposes many of the helper functions that are used to implement the default queries. You can use the helpers to build custom queries. For example, the code below shows a way to override the default `testId` queries to use a different data-attribute. (Note: test files would import `test-utils.js` instead of using `dom-testing-library` directly).
@@ -91,6 +57,39 @@ for other popular assertion libraries:
 If you're aware of some other alternatives, please [make a pull request][prs]
 and add it here!
 
+## `getNodeText`
+
+```typescript
+getNodeText(node: HTMLElement)
+```
+
+Returns the complete text content of a html element, removing any extra
+whitespace. The intention is to treat text in nodes exactly as how it is
+perceived by users in a browser, where any extra whitespace within words in the
+html code is not meaningful when the text is rendered.
+
+```javascript
+// <div>
+//   Hello
+//     World  !
+// </div>
+const text = getNodeText(container.querySelector('div')) // "Hello World !"
+```
+
+This function is also used internally when querying nodes by their text content.
+This enables functions like `getByText` and `queryByText` to work as expected,
+finding elements in the DOM similarly to how users would do.
+
+The function has a special behavior for some input elements:
+
+```javascript
+// <input type="submit" value="Send data" />
+// <input type="button" value="Push me" />
+const submitText = getNodeText(container.querySelector('input[type=submit]')) // "Send data"
+const buttonText = getNodeText(container.querySelector('input[type=button]')) // "Push me"
+
+These elements use the attribute `value` and display its value to the user.
+```
 
 ## Debugging
 
