@@ -5,15 +5,15 @@ title: Queries
 
 ## Queries
 
-Note:
-
-- Each of the `get` APIs below have a matching
-  [`getAll`](#queryall-and-getall-apis) API that returns all elements instead of
-  just the first one, and
-  [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return
-  `null`/`[]` instead of throwing an error.
-- See [TextMatch](#textmatch) for details on the `exact`, `trim`, and
-  `collapseWhitespace` options.
+> **Note**
+>
+> - Each of the `get` APIs below have a matching
+>   [`getAll`](#queryall-and-getall-apis) API that returns all elements instead
+>   of just the first one, and
+>   [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return
+>   `null`/`[]` instead of throwing an error.
+> - See [TextMatch](#textmatch) for details on the `exact`, `trim`, and
+>   `collapseWhitespace` options.
 
 ### `getByLabelText`
 
@@ -63,9 +63,11 @@ const inputNode = getByLabelText(container, 'username', { selector: 'input' })
 // the purpose of your input should be obvious for those users.
 ```
 
-> Note: This method will throw an error if it cannot find the node. If you don't
-> want this behavior (for example you wish to assert that it doesn't exist),
-> then use `queryByLabelText` instead.
+> **Note**
+>
+> This method will throw an error if it cannot find the node. If you don't want
+> this behavior (for example you wish to assert that it doesn't exist), then use
+> `queryByLabelText` instead.
 
 ### `getByPlaceholderText`
 
@@ -87,8 +89,10 @@ matches the given [`TextMatch`](#textmatch).
 const inputNode = getByPlaceholderText(container, 'Username')
 ```
 
-> NOTE: a placeholder is not a good substitute for a label so you should
-> generally use `getByLabelText` instead.
+> **Note**
+>
+> A placeholder is not a good substitute for a label so you should generally use
+> `getByLabelText` instead.
 
 ### `getByText`
 
@@ -120,8 +124,10 @@ or `button`:
 const submitButton = getByText(container, /send data/i)
 ```
 
-> NOTE: see [`getByLabelText`](#getbylabeltext) for more details on how and when
-> to use the `selector` option
+> **Note**
+>
+> See [`getByLabelText`](#getbylabeltext) for more details on how and when to
+> use the `selector` option
 
 The `ignore` option accepts a query selector. If the
 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
