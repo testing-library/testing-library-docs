@@ -1,10 +1,14 @@
 {
-  "docs": {
-    "Getting Started": ["readme"],
-    "Examples": ["readme"],
-    "API": ["readme"]
-  },
   "docs-other": {
-    "README": ["readme", "readme"]
+    "Getting Started": [
+      "intro",
+      "example-intro",
+      "install",
+      "setup",
+      "guiding-principles"
+    ],
+    "Examples": ["example-external"],
+    "API": ["usage", "queries"],
+    "Help": ["faq", "learning"]
   }
 }
