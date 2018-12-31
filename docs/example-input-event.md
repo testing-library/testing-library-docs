@@ -6,7 +6,7 @@ sidebar_label: Input Event
 
 ```jsx
 import React from 'react'
-import {render, fireEvent, cleanup} from 'react-testing-library'
+import { render, fireEvent, cleanup } from 'react-testing-library'
 
 class CostInput extends React.Component {
   state = {
@@ -20,7 +20,7 @@ class CostInput extends React.Component {
     const inputtedValue = ev.currentTarget.value
     const noDollarSign = this.removeDollarSign(inputtedValue)
     if (isNaN(noDollarSign)) return
-    this.setState({value: this.getReturnValue(noDollarSign)})
+    this.setState({ value: this.getReturnValue(noDollarSign) })
   }
 
   render() {
@@ -46,28 +46,28 @@ const setup = () => {
 afterEach(cleanup)
 
 test('It should keep a $ in front of the input', () => {
-  const {input} = setup()
-  fireEvent.change(input, {target: {value: '23'}})
+  const { input } = setup()
+  fireEvent.change(input, { target: { value: '23' } })
   expect(input.value).toBe('$23')
 })
 test('It should allow a $ to be in the input when the value is changed', () => {
-  const {input} = setup()
-  fireEvent.change(input, {target: {value: '$23.0'}})
+  const { input } = setup()
+  fireEvent.change(input, { target: { value: '$23.0' } })
   expect(input.value).toBe('$23.0')
 })
 
 test('It should not allow letters to be inputted', () => {
-  const {input} = setup()
+  const { input } = setup()
   expect(input.value).toBe('') // empty before
-  fireEvent.change(input, {target: {value: 'Good Day'}})
+  fireEvent.change(input, { target: { value: 'Good Day' } })
   expect(input.value).toBe('') //empty after
 })
 
 test('It should allow the $ to be deleted', () => {
-  const {input} = setup()
-  fireEvent.change(input, {target: {value: '23'}})
+  const { input } = setup()
+  fireEvent.change(input, { target: { value: '23' } })
   expect(input.value).toBe('$23') // need to make a change so React registers "" as a change
-  fireEvent.change(input, {target: {value: ''}})
+  fireEvent.change(input, { target: { value: '' } })
   expect(input.value).toBe('')
 })
 ```

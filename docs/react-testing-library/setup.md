@@ -61,9 +61,9 @@ all your imports.
 
 ```js
 // test-utils.js
-import {render} from 'react-testing-library'
-import {ThemeProvider} from 'my-ui-lib'
-import {TranslationProvider} from 'my-i18n-lib'
+import { render } from 'react-testing-library'
+import { ThemeProvider } from 'my-ui-lib'
+import { TranslationProvider } from 'my-i18n-lib'
 import defaultStrings from 'i18n/en-x-default'
 
 const customRender = (node, options) => {
@@ -73,7 +73,7 @@ const customRender = (node, options) => {
         {node}
       </TranslationProvider>
     </ThemeProvider>,
-    options,
+    options
   )
 }
 
@@ -81,7 +81,7 @@ const customRender = (node, options) => {
 export * from 'react-testing-library'
 
 // override render method
-export {customRender as render}
+export { customRender as render }
 ```
 
 To make this file accessible without using relative imports, add the folder
@@ -180,9 +180,17 @@ module.exports = {
 
 ## Using without Jest
 
-If you're running your tests in the browser bundled with webpack (or similar) then `react-testing-library` should work out of the box for you. However, most people using react-testing-library are using it with the Jest testing framework with the `testEnvironment` set to `jest-environment-jsdom` (which is the default configuration with Jest).
+If you're running your tests in the browser bundled with webpack (or similar)
+then `react-testing-library` should work out of the box for you. However, most
+people using react-testing-library are using it with the Jest testing framework
+with the `testEnvironment` set to `jest-environment-jsdom` (which is the default
+configuration with Jest).
 
-`jsdom` is a pure JavaScript implementation of the DOM and browser APIs that runs in node. If you're not using Jest and you would like to run your tests in Node, then you must install jsdom yourself. There's also a package called `jsdom-global` which can be used to setup the global environment to simulate the browser APIs.
+`jsdom` is a pure JavaScript implementation of the DOM and browser APIs that
+runs in node. If you're not using Jest and you would like to run your tests in
+Node, then you must install jsdom yourself. There's also a package called
+`jsdom-global` which can be used to setup the global environment to simulate the
+browser APIs.
 
 First, install `jsdom` and `jsdom-global`.
 
@@ -196,4 +204,6 @@ With mocha, the test command would look something like this:
 mocha --require jsdom-global/register
 ```
 
-Note, depending on the version of Node you're running, you may also need to install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel 6).
+Note, depending on the version of Node you're running, you may also need to
+install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
+6).

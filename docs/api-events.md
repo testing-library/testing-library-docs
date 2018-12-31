@@ -18,7 +18,7 @@ fireEvent(
   new MouseEvent('click', {
     bubbles: true,
     cancelable: true,
-  }),
+  })
 )
 ```
 
@@ -34,7 +34,7 @@ for a full list as well as default `eventProperties`.
 
 ```javascript
 // <button>Submit</button>
-const rightClick = {button: 2}
+const rightClick = { button: 2 }
 fireEvent.click(getByText('Submit'), rightClick)
 // default `button` property for click events is set to `0` which is a left click.
 ```
@@ -47,22 +47,25 @@ those properties will be assigned to the node which is receiving the event.
 This is particularly useful for a change event:
 
 ```javascript
-fireEvent.change(getByLabelText(/username/i), {target: {value: 'a'}})
+fireEvent.change(getByLabelText(/username/i), { target: { value: 'a' } })
 
 // note: attempting to manually set the files property of an HTMLInputElement
 // results in an error as the files property is read-only.
 // this feature works around that by using Object.defineProperty.
 fireEvent.change(getByLabelText(/picture/i), {
   target: {
-    files: [new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})],
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
   },
 })
 ```
 
-**Keyboard events**: There are three event types related to keyboard input - `keyPress`, `keyDown`, and `keyUp`. When firing these you need to reference an element in the DOM and the key you want to fire.
+**Keyboard events**: There are three event types related to keyboard input -
+`keyPress`, `keyDown`, and `keyUp`. When firing these you need to reference an
+element in the DOM and the key you want to fire.
 
 ```javascript
-fireEvent.keyDown(domNode, {key: 'Enter', code: 13})
+fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
 ```
 
-You can find out which key code to use at [https://keycode.info/](https://keycode.info/).
+You can find out which key code to use at
+[https://keycode.info/](https://keycode.info/).

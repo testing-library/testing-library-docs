@@ -7,10 +7,10 @@ title: React Transition Group
 
 ```jsx
 import React from 'react'
-import {CSSTransition} from 'react-transition-group'
-import {render, fireEvent, cleanup} from 'react-testing-library'
+import { CSSTransition } from 'react-transition-group'
+import { render, fireEvent, cleanup } from 'react-testing-library'
 
-function Fade({children, ...props}) {
+function Fade({ children, ...props }) {
   return (
     <CSSTransition {...props} timeout={1000} className="fade">
       {children}
@@ -19,9 +19,9 @@ function Fade({children, ...props}) {
 }
 
 class HiddenMessage extends React.Component {
-  state = {show: this.props.initialShow || false}
+  state = { show: this.props.initialShow || false }
   toggle = () => {
-    this.setState(({show}) => ({show: !show}))
+    this.setState(({ show }) => ({ show: !show }))
   }
   render() {
     return (
@@ -38,16 +38,17 @@ class HiddenMessage extends React.Component {
 afterEach(cleanup)
 
 jest.mock('react-transition-group', () => {
-  const FakeTransition = jest.fn(({children}) => children)
-  const FakeCSSTransition = jest.fn(
-    props =>
-      props.in ? <FakeTransition>{props.children}</FakeTransition> : null,
+  const FakeTransition = jest.fn(({ children }) => children)
+  const FakeCSSTransition = jest.fn(props =>
+    props.in ? <FakeTransition>{props.children}</FakeTransition> : null
   )
-  return {CSSTransition: FakeCSSTransition, Transition: FakeTransition}
+  return { CSSTransition: FakeCSSTransition, Transition: FakeTransition }
 })
 
 test('you can mock things with jest.mock', () => {
-  const {getByText, queryByText} = render(<HiddenMessage initialShow={true} />)
+  const { getByText, queryByText } = render(
+    <HiddenMessage initialShow={true} />
+  )
   expect(getByText('Hello world')).toBeTruthy() // we just care it exists
   // hide the message
   fireEvent.click(getByText('Toggle'))
@@ -62,10 +63,10 @@ test('you can mock things with jest.mock', () => {
 
 ```jsx
 import React from 'react'
-import {CSSTransition} from 'react-transition-group'
-import {render, fireEvent, cleanup} from 'react-testing-library'
+import { CSSTransition } from 'react-transition-group'
+import { render, fireEvent, cleanup } from 'react-testing-library'
 
-function Fade({children, ...props}) {
+function Fade({ children, ...props }) {
   return (
     <CSSTransition {...props} timeout={1000} className="fade">
       {children}
@@ -74,9 +75,9 @@ function Fade({children, ...props}) {
 }
 
 class HiddenMessage extends React.Component {
-  state = {show: this.props.initialShow || false}
+  state = { show: this.props.initialShow || false }
   toggle = () => {
-    this.setState(({show}) => ({show: !show}))
+    this.setState(({ show }) => ({ show: !show }))
   }
   render() {
     return (
@@ -94,22 +95,22 @@ afterEach(cleanup)
 
 jest.mock('react-transition-group', () => {
   const FakeCSSTransition = jest.fn(() => null)
-  return {CSSTransition: FakeCSSTransition}
+  return { CSSTransition: FakeCSSTransition }
 })
 
 test('you can mock things with jest.mock', () => {
-  const {getByText} = render(<HiddenMessage initialShow={true} />)
+  const { getByText } = render(<HiddenMessage initialShow={true} />)
   const context = expect.any(Object)
   const children = expect.any(Object)
-  const defaultProps = {children, timeout: 1000, className: 'fade'}
+  const defaultProps = { children, timeout: 1000, className: 'fade' }
   expect(CSSTransition).toHaveBeenCalledWith(
-    {in: true, ...defaultProps},
-    context,
+    { in: true, ...defaultProps },
+    context
   )
   fireEvent.click(getByText(/toggle/i))
   expect(CSSTransition).toHaveBeenCalledWith(
-    {in: true, ...defaultProps},
-    expect.any(Object),
+    { in: true, ...defaultProps },
+    expect.any(Object)
   )
 })
 ```

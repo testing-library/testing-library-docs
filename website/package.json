@@ -9,7 +9,8 @@
     "build": "docusaurus-build",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
-    "rename-version": "docusaurus-rename-version"
+    "rename-version": "docusaurus-rename-version",
+    "format-docs": "prettier --write '../docs/**/*.md'"
   },
   "devDependencies": {
     "docusaurus": "^1.6.2",
@@ -20,14 +21,8 @@
   "lint-staged": {
     "linters": {
       "*.js": ["prettier --write", "git add"],
-      "../docs/*.md": [
-        "prettier --write --parser=markdown --prose-wrap=always",
-        "git add"
-      ],
-      "*.md": [
-        "prettier --write --parser=markdown --prose-wrap=always",
-        "git add"
-      ],
+      "../docs/*.md": ["prettier --write --parser=markdown", "git add"],
+      "*.md": ["prettier --write --parser=markdown", "git add"],
       "*.json": ["prettier --write --parser=json", "git add"]
     }
   },

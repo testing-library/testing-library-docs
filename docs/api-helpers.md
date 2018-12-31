@@ -5,20 +5,24 @@ title: Helpers
 
 ## Custom Queries
 
-`dom-testing-library` exposes many of the helper functions that are used to implement the default queries. You can use the helpers to build custom queries. For example, the code below shows a way to override the default `testId` queries to use a different data-attribute. (Note: test files would import `test-utils.js` instead of using `dom-testing-library` directly).
+`dom-testing-library` exposes many of the helper functions that are used to
+implement the default queries. You can use the helpers to build custom queries.
+For example, the code below shows a way to override the default `testId` queries
+to use a different data-attribute. (Note: test files would import
+`test-utils.js` instead of using `dom-testing-library` directly).
 
 ```js
 // test-utils.js
 const domTestingLib = require('dom-testing-library')
-const {queryHelpers} = domTestingLib
+const { queryHelpers } = domTestingLib
 
 export const queryByTestId = queryHelpers.queryByAttribute.bind(
   null,
-  'data-test-id',
+  'data-test-id'
 )
 export const queryAllByTestId = queryHelpers.queryAllByAttribute.bind(
   null,
-  'data-test-id',
+  'data-test-id'
 )
 
 export function getAllByTestId(container, id, ...rest) {
@@ -26,7 +30,7 @@ export function getAllByTestId(container, id, ...rest) {
   if (!els.length) {
     throw queryHelpers.getElementError(
       `Unable to find an element by: [data-test-id="${id}"]`,
-      container,
+      container
     )
   }
   return els
@@ -93,16 +97,16 @@ These elements use the attribute `value` and display its value to the user.
 
 ## Debugging
 
-When you use any `get` calls in your test cases, the current state of the `container`
-(DOM) gets printed on the console. For example:
+When you use any `get` calls in your test cases, the current state of the
+`container` (DOM) gets printed on the console. For example:
 
 ```javascript
 // <div>Hello world</div>
 getByText(container, 'Goodbye world') // will fail by throwing error
 ```
 
-The above test case will fail, however it prints the state of your DOM under test,
-so you will get to see:
+The above test case will fail, however it prints the state of your DOM under
+test, so you will get to see:
 
 ```
 Unable to find an element with the text: Goodbye world. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
@@ -114,18 +118,19 @@ Here is the state of your container:
 </div>
 ```
 
-Note: Since the DOM size can get really large, you can set the limit of DOM content
-to be printed via environment variable `DEBUG_PRINT_LIMIT`. The default value is
-`7000`. You will see `...` in the console, when the DOM content is stripped off,
-because of the length you have set or due to default size limit. Here's how you
-might increase this limit when running tests:
+Note: Since the DOM size can get really large, you can set the limit of DOM
+content to be printed via environment variable `DEBUG_PRINT_LIMIT`. The default
+value is `7000`. You will see `...` in the console, when the DOM content is
+stripped off, because of the length you have set or due to default size limit.
+Here's how you might increase this limit when running tests:
 
 ```
 DEBUG_PRINT_LIMIT=10000 npm test
 ```
 
-This works on macOS/linux, you'll need to do something else for windows. If you'd
-like a solution that works for both, see [`cross-env`](https://www.npmjs.com/package/cross-env)
+This works on macOS/linux, you'll need to do something else for windows. If
+you'd like a solution that works for both, see
+[`cross-env`](https://www.npmjs.com/package/cross-env)
 
 ### `prettyDOM`
 
@@ -153,4 +158,5 @@ console.log(prettyDOM(div))
 // </div>
 ```
 
-This function is what also powers [the automatic debugging output described above](#debugging).
+This function is what also powers
+[the automatic debugging output described above](#debugging).

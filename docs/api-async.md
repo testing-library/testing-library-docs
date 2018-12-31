@@ -11,7 +11,7 @@ function wait(
   options?: {
     timeout?: number
     interval?: number
-  },
+  }
 ): Promise<void>
 ```
 
@@ -30,8 +30,8 @@ getByLabelText(container, 'username').value = 'chucknorris'
 // ...
 ```
 
-This can be useful if you have a unit test that mocks API calls and you need
-to wait for your mock promises to all resolve.
+This can be useful if you have a unit test that mocks API calls and you need to
+wait for your mock promises to all resolve.
 
 The default `callback` is a no-op function (used like `await wait()`). This can
 be helpful if you only need to wait for one tick of the event loop (in the case
@@ -53,12 +53,14 @@ function waitForElement<T>(
     container?: HTMLElement
     timeout?: number
     mutationObserverOptions?: MutationObserverInit
-  },
+  }
 ): Promise<T>
 ```
 
-When in need to wait for DOM elements to appear, disappear, or change you can use `waitForElement`.
-The `waitForElement` function is a small wrapper around the [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
+When in need to wait for DOM elements to appear, disappear, or change you can
+use `waitForElement`. The `waitForElement` function is a small wrapper around
+the
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 
 Here's a simple example:
 
@@ -71,7 +73,7 @@ Here's a simple example:
 // and returns the value returned by the callback.
 const usernameElement = await waitForElement(
   () => getByLabelText(container, 'username'),
-  {container},
+  { container }
 )
 usernameElement.value = 'chucknorris'
 // ...
@@ -85,19 +87,30 @@ const [usernameElement, passwordElement] = await waitForElement(
     getByLabelText(container, 'username'),
     getByLabelText(container, 'password'),
   ],
-  {container},
+  { container }
 )
 ```
 
-Using [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) is more efficient than polling the DOM at regular intervals with `wait`. This library sets up a [`'mutationobserver-shim'`](https://github.com/megawac/MutationObserver.js) on the global `window` object for cross-platform compatibility with older browsers and the [`jsdom`](https://github.com/jsdom/jsdom/issues/639) that is usually used in Node-based tests.
+Using
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+is more efficient than polling the DOM at regular intervals with `wait`. This
+library sets up a
+[`'mutationobserver-shim'`](https://github.com/megawac/MutationObserver.js) on
+the global `window` object for cross-platform compatibility with older browsers
+and the [`jsdom`](https://github.com/jsdom/jsdom/issues/639) that is usually
+used in Node-based tests.
 
-The default `container` is the global `document`. Make sure the elements you wait for will be attached to it, or set a different `container`.
+The default `container` is the global `document`. Make sure the elements you
+wait for will be attached to it, or set a different `container`.
 
 The default `timeout` is `4500ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://facebook.github.io/jest/docs/en/jest-object.html#jestsettimeouttimeout).
 
-<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is `{subtree: true, childList: true, attributes: true, characterData: true}` which will detect
-additions and removals of child elements (including text nodes) in the `container` and any of its descendants. It will also detect attribute changes.
+<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
+`{subtree: true, childList: true, attributes: true, characterData: true}` which
+will detect additions and removals of child elements (including text nodes) in
+the `container` and any of its descendants. It will also detect attribute
+changes.
 
 ### `waitForDomChange`
 
@@ -109,15 +122,16 @@ function waitForDomChange<T>(options?: {
 }): Promise<T>
 ```
 
-When in need to wait for the DOM to change you can use `waitForDomChange`. The `waitForDomChange`
-function is a small wrapper around the
+When in need to wait for the DOM to change you can use `waitForDomChange`. The
+`waitForDomChange` function is a small wrapper around the
 [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 
-Here is an example where the promise will be resolved because the container is changed:
+Here is an example where the promise will be resolved because the container is
+changed:
 
 ```javascript
 const container = document.createElement('div')
-waitForDomChange({container})
+waitForDomChange({ container })
   .then(() => console.log('DOM changed!'))
   .catch(err => console.log(`Error you need to deal with: ${err}`))
 container.append(document.createElement('p'))
@@ -125,17 +139,20 @@ container.append(document.createElement('p'))
 // waitForDomChange would throw an error
 ```
 
-The promise will resolve with a [`mutationsList`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver) which you can use to determine what kind of a change (or changes) affected the container
+The promise will resolve with a
+[`mutationsList`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver)
+which you can use to determine what kind of a change (or changes) affected the
+container
 
 ```javascript
 const container = document.createElement('div')
 container.setAttribute('data-cool', 'true')
-waitForDomChange({container}).then(mutationsList => {
+waitForDomChange({ container }).then(mutationsList => {
   const mutation = mutationsList[0]
   console.log(
     `was cool: ${mutation.oldValue}\ncurrently cool: ${
       mutation.target.dataset.cool
-    }`,
+    }`
   )
 })
 container.setAttribute('data-cool', 'false')
@@ -146,12 +163,23 @@ container.setAttribute('data-cool', 'false')
 */
 ```
 
-Using [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) is more efficient than polling the DOM at regular intervals with `wait`. This library sets up a [`'mutationobserver-shim'`](https://github.com/megawac/MutationObserver.js) on the global `window` object for cross-platform compatibility with older browsers and the [`jsdom`](https://github.com/jsdom/jsdom/issues/639) that is usually used in Node-based tests.
+Using
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+is more efficient than polling the DOM at regular intervals with `wait`. This
+library sets up a
+[`'mutationobserver-shim'`](https://github.com/megawac/MutationObserver.js) on
+the global `window` object for cross-platform compatibility with older browsers
+and the [`jsdom`](https://github.com/jsdom/jsdom/issues/639) that is usually
+used in Node-based tests.
 
-The default `container` is the global `document`. Make sure the elements you wait for will be attached to it, or set a different `container`.
+The default `container` is the global `document`. Make sure the elements you
+wait for will be attached to it, or set a different `container`.
 
 The default `timeout` is `4500ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://facebook.github.io/jest/docs/en/jest-object.html#jestsettimeouttimeout).
 
-<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is `{subtree: true, childList: true, attributes: true, characterData: true}` which will detect
-additions and removals of child elements (including text nodes) in the `container` and any of its descendants. It will also detect attribute changes.
+<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
+`{subtree: true, childList: true, attributes: true, characterData: true}` which
+will detect additions and removals of child elements (including text nodes) in
+the `container` and any of its descendants. It will also detect attribute
+changes.

@@ -7,8 +7,13 @@ title: Queries
 
 Note:
 
-- Each of the `get` APIs below have a matching [`getAll`](#queryall-and-getall-apis) API that returns all elements instead of just the first one, and [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return `null`/`[]` instead of throwing an error.
-- See [TextMatch](#textmatch) for details on the `exact`, `trim`, and `collapseWhitespace` options.
+- Each of the `get` APIs below have a matching
+  [`getAll`](#queryall-and-getall-apis) API that returns all elements instead of
+  just the first one, and
+  [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return
+  `null`/`[]` instead of throwing an error.
+- See [TextMatch](#textmatch) for details on the `exact`, `trim`, and
+  `collapseWhitespace` options.
 
 ### `getByLabelText`
 
@@ -51,7 +56,7 @@ const inputNode = getByLabelText(container, 'Username')
 // <label><span>Username</span> <input /></label>
 //
 // For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText(container, 'username', {selector: 'input'})
+const inputNode = getByLabelText(container, 'username', { selector: 'input' })
 // and that would work
 // Note that <input aria-label="username" /> will also work, but take
 // care because this is not a label that users can see on the page. So
@@ -74,8 +79,8 @@ getByPlaceholderText(
   }): HTMLElement
 ```
 
-This will search for all elements with a placeholder attribute and find one
-that matches the given [`TextMatch`](#textmatch).
+This will search for all elements with a placeholder attribute and find one that
+matches the given [`TextMatch`](#textmatch).
 
 ```javascript
 // <input placeholder="Username" />
@@ -115,7 +120,8 @@ or `button`:
 const submitButton = getByText(container, /send data/i)
 ```
 
-> NOTE: see [`getByLabelText`](#getbylabeltext) for more details on how and when to use the `selector` option
+> NOTE: see [`getByLabelText`](#getbylabeltext) for more details on how and when
+> to use the `selector` option
 
 The `ignore` option accepts a query selector. If the
 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
@@ -142,7 +148,9 @@ text. Note that it only supports elements which accept an `alt` attribute:
 [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img),
 [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input),
 and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
-(intentionally excluding [`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet) as it's deprecated).
+(intentionally excluding
+[`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet)
+as it's deprecated).
 
 ```javascript
 // <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
@@ -187,7 +195,8 @@ getByDisplayValue(
   }): HTMLElement
 ```
 
-Returns the `input`, `textarea`, or `select` element that has the matching display value.
+Returns the `input`, `textarea`, or `select` element that has the matching
+display value.
 
 #### `input`
 
@@ -220,7 +229,8 @@ const messageTextArea = getByDisplayValue(container, 'Hello World')
 const selectElement = getByDisplayName(container, 'Alaska')
 ```
 
-In case of `select`, this will search for a `<select>` whose selected `<option>` matches the given [`TextMatch`](#textmatch).
+In case of `select`, this will search for a `<select>` whose selected `<option>`
+matches the given [`TextMatch`](#textmatch).
 
 ### `getByRole`
 
@@ -234,8 +244,8 @@ getByRole(
   }): HTMLElement
 ```
 
-A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it
-also accepts a [`TextMatch`](#textmatch)).
+A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it also
+accepts a [`TextMatch`](#textmatch)).
 
 ```javascript
 // <div role="dialog">...</div>
@@ -267,18 +277,18 @@ const usernameInputElement = getByTestId(container, 'username-input')
 > case. Using data-testid attributes do not resemble how your software is used
 > and should be avoided if possible. That said, they are _way_ better than
 > querying based on DOM structure or styling css class names. Learn more about
-> `data-testid`s from the blog post
-> ["Making your UI tests resilient to change"][data-testid-blog-post]
+> `data-testid`s from the blog post ["Making your UI tests resilient to
+> change"][data-testid-blog-post]
 
 #### Overriding `data-testid`
 
-The `...ByTestId` functions in `dom-testing-library` use the attribute `data-testid`
-by default, following the precedent set by
+The `...ByTestId` functions in `dom-testing-library` use the attribute
+`data-testid` by default, following the precedent set by
 [React Native Web](https://github.com/kentcdodds/react-testing-library/issues/1)
-which uses a `testID` prop to emit a `data-testid` attribute on the element,
-and we recommend you adopt that attribute where possible.
-But if you already have an existing codebase that uses a different attribute
-for this purpose, you can override this value via
+which uses a `testID` prop to emit a `data-testid` attribute on the element, and
+we recommend you adopt that attribute where possible. But if you already have an
+existing codebase that uses a different attribute for this purpose, you can
+override this value via
 `configure({testIdAttribute: 'data-my-test-attribute'})`.
 
 ## `TextMatch`
@@ -296,8 +306,8 @@ affect the precision of string matching:
   - `exact` has no effect on `regex` or `function` arguments.
   - In most cases using a regex instead of a string gives you more control over
     fuzzy matching and should be preferred over `{ exact: false }`.
-- `normalizer`: An optional function which overrides normalization behavior.
-  See [`Normalization`](#normalization).
+- `normalizer`: An optional function which overrides normalization behavior. See
+  [`Normalization`](#normalization).
 
 ### Normalization
 
@@ -306,34 +316,37 @@ automatically normalizes that text. By default, normalization consists of
 trimming whitespace from the start and end of text, and collapsing multiple
 adjacent whitespace characters into a single space.
 
-If you want to prevent that normalization, or provide alternative
-normalization (e.g. to remove Unicode control characters), you can provide a
-`normalizer` function in the options object. This function will be given
-a string and is expected to return a normalized version of that string.
+If you want to prevent that normalization, or provide alternative normalization
+(e.g. to remove Unicode control characters), you can provide a `normalizer`
+function in the options object. This function will be given a string and is
+expected to return a normalized version of that string.
 
-Note: Specifying a value for `normalizer` _replaces_ the built-in normalization, but
-you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
+Note: Specifying a value for `normalizer` _replaces_ the built-in normalization,
+but you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
 to adjust that normalization or to call it from your own normalizer.
 
-`getDefaultNormalizer` takes an options object which allows the selection of behaviour:
+`getDefaultNormalizer` takes an options object which allows the selection of
+behaviour:
 
 - `trim`: Defaults to `true`. Trims leading and trailing whitespace
-- `collapseWhitespace`: Defaults to `true`. Collapses inner whitespace (newlines, tabs, repeated spaces) into a single space.
+- `collapseWhitespace`: Defaults to `true`. Collapses inner whitespace
+  (newlines, tabs, repeated spaces) into a single space.
 
 #### Normalization Examples
 
 To perform a match against text without trimming:
 
 ```javascript
-getByText(node, 'text', {normalizer: getDefaultNormalizer({trim: false})})
+getByText(node, 'text', { normalizer: getDefaultNormalizer({ trim: false }) })
 ```
 
-To override normalization to remove some Unicode characters whilst keeping some (but not all) of the built-in normalization behavior:
+To override normalization to remove some Unicode characters whilst keeping some
+(but not all) of the built-in normalization behavior:
 
 ```javascript
 getByText(node, 'text', {
   normalizer: str =>
-    getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
+    getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```
 
@@ -348,8 +361,8 @@ getByText(node, 'text', {
 
 // Matching a string:
 getByText(container, 'Hello World') // full string match
-getByText(container, 'llo Worl', {exact: false}) // substring match
-getByText(container, 'hello world', {exact: false}) // ignore case
+getByText(container, 'llo Worl', { exact: false }) // substring match
+getByText(container, 'hello world', { exact: false }) // ignore case
 
 // Matching a regex:
 getByText(container, /World/) // substring match
@@ -387,7 +400,9 @@ expect(submitButton).not.toBeTruthy()
 
 ## `queryAll` and `getAll` APIs
 
-Each of the `query` APIs have a corresponsing `queryAll` version that always returns an Array of matching nodes. `getAll` is the same but throws when the array has a length of 0.
+Each of the `query` APIs have a corresponsing `queryAll` version that always
+returns an Array of matching nodes. `getAll` is the same but throws when the
+array has a length of 0.
 
 ```javascript
 const submitButtons = queryAllByText(container, 'submit')
@@ -397,15 +412,17 @@ expect(submitButtons[0]).toBeTruthy()
 
 ## `within` and `getQueriesForElement` APIs
 
-`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it to the raw query functions, allowing them
-to be used without specifying a container. It is the recommended approach for libraries built on this API
-and is in use in `react-testing-library` and `vue-testing-library`.
+`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
+to the raw query functions, allowing them to be used without specifying a
+container. It is the recommended approach for libraries built on this API and is
+in use in `react-testing-library` and `vue-testing-library`.
 
-Example: To get the text 'hello' only within a section called 'messages', you could do:
+Example: To get the text 'hello' only within a section called 'messages', you
+could do:
 
 ```javascript
-import {within} from 'dom-testing-library'
+import { within } from 'dom-testing-library'
 
-const {getByText} = within(document.getElementById('messages'))
+const { getByText } = within(document.getElementById('messages'))
 const helloMessage = getByText('hello')
 ```

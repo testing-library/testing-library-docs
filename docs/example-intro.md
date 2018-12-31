@@ -58,13 +58,13 @@ test('examples of some things', async () => {
   getByText(container, 'Print Username').click()
 
   await wait(() =>
-    expect(queryByTestId(container, 'printed-username')).toBeTruthy(),
+    expect(queryByTestId(container, 'printed-username')).toBeTruthy()
   )
 
   // getByTestId and queryByTestId are an escape hatch to get elements
   // by a test id (could also attempt to get this element by it's text)
   expect(getByTestId(container, 'printed-username')).toHaveTextContent(
-    famousWomanInHistory,
+    famousWomanInHistory
   )
   // jest snapshots work great with regular DOM nodes!
   expect(container).toMatchSnapshot()

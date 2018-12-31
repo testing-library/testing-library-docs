@@ -5,7 +5,7 @@ title: Reach Router
 
 ```jsx
 import React from 'react'
-import {render, cleanup} from 'react-testing-library'
+import { render, cleanup } from 'react-testing-library'
 import {
   Router,
   Link,
@@ -41,7 +41,7 @@ afterEach(cleanup)
 // that relies on the router being in context
 function renderWithRouter(
   ui,
-  {route = '/', history = createHistory(createMemorySource(route))} = {},
+  { route = '/', history = createHistory(createMemorySource(route)) } = {}
 ) {
   return {
     ...render(<LocationProvider history={history}>{ui}</LocationProvider>),
@@ -55,7 +55,7 @@ function renderWithRouter(
 test('full app rendering/navigating', async () => {
   const {
     container,
-    history: {navigate},
+    history: { navigate },
   } = renderWithRouter(<App />)
   const appContainer = container
   // normally I'd use a data-testid, but just wanted to show this is also possible
@@ -68,7 +68,7 @@ test('full app rendering/navigating', async () => {
 })
 
 test('landing on a bad page', () => {
-  const {container} = renderWithRouter(<App />, {
+  const { container } = renderWithRouter(<App />, {
     route: '/something-that-does-not-match',
   })
   // normally I'd use a data-testid, but just wanted to show this is also possible

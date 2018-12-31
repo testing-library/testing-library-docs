@@ -3,7 +3,8 @@ id: api
 title: API
 ---
 
-`react-testing-library` re-exports everything from `dom-testing-library` as well as these methods:
+`react-testing-library` re-exports everything from `dom-testing-library` as well
+as these methods:
 
 ## `render`
 
@@ -12,26 +13,26 @@ function render(
   ui: React.ReactElement<any>,
   options?: {
     /* You won't often use this, expand below for docs on options */
-  },
+  }
 ): RenderResult
 ```
 
 Render into a container which is appended to `document.body`.
 
 ```jsx
-import {render} from 'react-testing-library'
+import { render } from 'react-testing-library'
 
 render(<div />)
 ```
 
 ```jsx
-import {render, cleanup} from 'react-testing-library'
+import { render, cleanup } from 'react-testing-library'
 import 'jest-dom/extend-expect'
 afterEach(cleanup)
 
 test('renders a message', () => {
-  const {container, getByText} = render(<Greeting />)
-  expect(getbyText('Hello, world!')).toBeInTheDocument();
+  const { container, getByText } = render(<Greeting />)
+  expect(getbyText('Hello, world!')).toBeInTheDocument()
   expect(container.firstChild).toMatchInlineSnapshot(`
     <h1>Hello, World!</h1>
   `)
@@ -39,8 +40,9 @@ test('renders a message', () => {
 ```
 
 > Note
-> 
-> The [cleanup](#cleanup) function should be called between tests to remove the created DOM nodes and keep the tests isolated.
+>
+> The [cleanup](#cleanup) function should be called between tests to remove the
+> created DOM nodes and keep the tests isolated.
 
 ### `render` Options
 
@@ -62,7 +64,7 @@ of a `div`. In this case, you can specify a `table` as the render `container`.
 ```jsx
 const table = document.createElement('table')
 
-const {container} = render(<TableBody {...props} />, {
+const { container } = render(<TableBody {...props} />, {
   container: document.body.appendChild(table),
 })
 ```
@@ -84,14 +86,16 @@ The `render` method returns an object that has a few properties:
 
 ### `...queries`
 
-The most important feature of `render` is that the queries from [dom-testing-library](api-queries.md) are automatically returned with their first argument bound to the rendered container.
+The most important feature of `render` is that the queries from
+[dom-testing-library](api-queries.md) are automatically returned with their
+first argument bound to the rendered container.
 
 See [Queries](api-queries.md) for a complete list.
 
 **Example**
 
 ```jsx
-const { getByLabelText, queryAllByTestId } = render(<Component />);
+const { getByLabelText, queryAllByTestId } = render(<Component />)
 ```
 
 ### `container`
@@ -132,10 +136,10 @@ This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
 import React from 'react'
-import {render} from 'react-testing-library'
+import { render } from 'react-testing-library'
 
 const HelloWorld = () => <h1>Hello World</h1>
-const {debug} = render(<HelloWorld />)
+const { debug } = render(<HelloWorld />)
 debug()
 // <div>
 //   <h1>Hello World</h1>
@@ -155,9 +159,9 @@ prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
 ```jsx
-import {render} from 'react-testing-library'
+import { render } from 'react-testing-library'
 
-const {rerender} = render(<NumberDisplay number={1} />)
+const { rerender } = render(<NumberDisplay number={1} />)
 
 // re-render the same component with different props
 rerender(<NumberDisplay number={2} />)
@@ -175,9 +179,9 @@ that you don't leave event handlers hanging around causing memory leaks).
 > `ReactDOM.unmountComponentAtNode`
 
 ```jsx
-import {render} from 'react-testing-library'
+import { render } from 'react-testing-library'
 
-const {container, unmount} = render(<Login />)
+const { container, unmount } = render(<Login />)
 unmount()
 // your component has been unmounted and now: container.innerHTML === ''
 ```
@@ -188,26 +192,26 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
-import {render, fireEvent} from 'react-testing-library'
+import { render, fireEvent } from 'react-testing-library'
 
 class TestComponent extends React.Component {
   constructor() {
     super()
-    this.state = {count: 0}
+    this.state = { count: 0 }
   }
 
   render() {
-    const {count} = this.state
+    const { count } = this.state
 
     return (
-      <button onClick={() => this.setState({count: count + 1})}>
+      <button onClick={() => this.setState({ count: count + 1 })}>
         Click to increase: {count}
       </button>
     )
   }
 }
 
-const {getByText, asFragment} = render(<TestComponent />)
+const { getByText, asFragment } = render(<TestComponent />)
 const firstRender = asFragment()
 
 fireEvent.click(getByText(/Click to increase/))
@@ -223,7 +227,7 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 Unmounts React trees that were mounted with [render](#render).
 
 ```jsx
-import {cleanup, render} from 'react-testing-library'
+import { cleanup, render } from 'react-testing-library'
 
 afterEach(cleanup) // <-- add this
 
@@ -241,7 +245,8 @@ errors in your tests).
 
 **If you don't want to add this to _every single test file_** then we recommend
 that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](./setup) section for guidance on how to set up your framework.
+does this automatically. See the [setup](./setup) section for guidance on how to
+set up your framework.
 
 ## `flushEffects`
 
@@ -249,4 +254,3 @@ does this automatically. See the [setup](./setup) section for guidance on how to
 
 This experimental API is intended to be used to force React's `useEffect` hook
 to run synchronously.
-

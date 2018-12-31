@@ -5,9 +5,9 @@ title: React Context
 
 ```jsx
 import React from 'react'
-import {render, cleanup} from 'react-testing-library'
+import { render, cleanup } from 'react-testing-library'
 import 'jest-dom/extend-expect'
-import {NameContext, NameProvider, NameConsumer} from '../react-context'
+import { NameContext, NameProvider, NameConsumer } from '../react-context'
 
 afterEach(cleanup)
 
@@ -16,7 +16,7 @@ afterEach(cleanup)
  * matching provider
  */
 test('NameConsumer shows default value', () => {
-  const {getByText} = render(<NameConsumer />)
+  const { getByText } = render(<NameConsumer />)
   expect(getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: Unknown')
 })
 
@@ -30,7 +30,7 @@ test('NameConsumer shows value from provider', () => {
       <NameConsumer />
     </NameContext.Provider>
   )
-  const {getByText} = render(tree)
+  const { getByText } = render(tree)
   expect(getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: C3P0')
 })
 
@@ -46,7 +46,7 @@ test('NameProvider composes full name from first, last', () => {
       </NameContext.Consumer>
     </NameProvider>
   )
-  const {getByText} = render(tree)
+  const { getByText } = render(tree)
   expect(getByText(/^Received:/).textContent).toBe('Received: Boba Fett')
 })
 
@@ -59,7 +59,7 @@ test('NameProvider/Consumer shows name of character', () => {
       <NameConsumer />
     </NameProvider>
   )
-  const {getByText} = render(tree)
+  const { getByText } = render(tree)
   expect(getByText(/^My Name Is:/).textContent).toBe('My Name Is: Leia Organa')
 })
 ```

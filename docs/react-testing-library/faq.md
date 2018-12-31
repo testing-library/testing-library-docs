@@ -15,20 +15,22 @@ In summary:
 ```javascript
 import React from 'react'
 import 'react-testing-library/cleanup-after-each'
-import {render, fireEvent} from 'react-testing-library'
+import { render, fireEvent } from 'react-testing-library'
 
 test('change values via the fireEvent.change method', () => {
   const handleChange = jest.fn()
-  const {container} = render(<input type="text" onChange={handleChange} />)
+  const { container } = render(<input type="text" onChange={handleChange} />)
   const input = container.firstChild
-  fireEvent.change(input, {target: {value: 'a'}})
+  fireEvent.change(input, { target: { value: 'a' } })
   expect(handleChange).toHaveBeenCalledTimes(1)
   expect(input.value).toBe('a')
 })
 
 test('checkboxes (and radios) must use fireEvent.click', () => {
   const handleChange = jest.fn()
-  const {container} = render(<input type="checkbox" onChange={handleChange} />)
+  const { container } = render(
+    <input type="checkbox" onChange={handleChange} />
+  )
   const checkbox = container.firstChild
   fireEvent.click(checkbox)
   expect(handleChange).toHaveBeenCalledTimes(1)
@@ -127,16 +129,16 @@ libraries. I don't want my tests to wait for animations to end.
 
 ```javascript
 jest.mock('react-transition-group', () => {
-  const FakeTransition = jest.fn(({children}) => children)
+  const FakeTransition = jest.fn(({ children }) => children)
   const FakeCSSTransition = jest.fn(props =>
-    props.in ? <FakeTransition>{props.children}</FakeTransition> : null,
+    props.in ? <FakeTransition>{props.children}</FakeTransition> : null
   )
-  return {CSSTransition: FakeCSSTransition, Transition: FakeTransition}
+  return { CSSTransition: FakeCSSTransition, Transition: FakeTransition }
 })
 
 test('you can mock things with jest.mock', () => {
-  const {getByTestId, queryByTestId} = render(
-    <HiddenMessage initialShow={true} />,
+  const { getByTestId, queryByTestId } = render(
+    <HiddenMessage initialShow={true} />
   )
   expect(queryByTestId('hidden-message')).toBeTruthy() // we just care it exists
   // hide the message
@@ -151,17 +153,14 @@ test('you can mock things with jest.mock', () => {
 Note that because they're Jest mock functions (`jest.fn()`), you could also make
 assertions on those as well if you wanted.
 
-[Open full test](./example-react-transition-group)
-for the full example.
+[Open full test](./example-react-transition-group) for the full example.
 
 This looks like more work that shallow rendering (and it is), but it gives you
 more confidence so long as your mock resembles the thing you're mocking closely
 enough.
 
 If you want to make things more like shallow rendering, then you could do
-something more
-[like this]([Open full test](./example-react-transition-group)
-).
+something more [like this]([Open full test](./example-react-transition-group) ).
 
 Learn more about how Jest mocks work from my blog post:
 ["But really, what is a JavaScript mock?"](https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d)
@@ -236,7 +235,7 @@ And then you could use the `getByTestId` utility:
 const items = [
   /* your items */
 ]
-const {getByTestId} = render(/* your component with the items */)
+const { getByTestId } = render(/* your component with the items */)
 const thirdItem = getByTestId(`item-${items[2].id}`)
 ```
 
@@ -318,7 +317,6 @@ which aims to test React Native apps without mentioned tradeoffs, having the API
 inspired by and mostly compatible with this library.
 
 </details>
-
 
 <!--
 Links:
