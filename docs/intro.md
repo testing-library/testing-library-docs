@@ -23,7 +23,7 @@ elements on the page. In this way, the library helps ensure your tests give you
 confidence in your UI code. The `dom-testing-library`'s primary guiding
 principle is:
 
-> [The more your tests resemble the way your software is used, the more confidence they can give you.][guiding-principle]
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 
 As part of this goal, the utilities this library provides facilitate querying
 the DOM in the same way the user would. Finding for elements by their label text
