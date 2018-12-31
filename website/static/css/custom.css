@@ -10,8 +10,8 @@ pre, code {
 }
 
 /* highlighted code blocks */
-pre .hljs {
-  font-size: 16px;
+.hljs {
+  font-size: 14px;
 }
 
 .projectTaglineWrapper {

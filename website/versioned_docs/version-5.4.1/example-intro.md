@@ -85,6 +85,8 @@ test("loads and displays greeting", async () => {
 
 ### Arrange
 
+The [`render`](./usage#render) method renders a React element into the DOM and returns utility functions for testing the component.
+
 ```jsx
 const url = "/greeting";
 const { getByText, getByTestId, container, asFragment } = render(
@@ -93,6 +95,8 @@ const { getByText, getByTestId, container, asFragment } = render(
 ```
 
 ### Act
+
+The [`fireEvent`](./usage#fireEvent) method allows you to fire events to simulate user actions.
 
 ```jsx
 axiosMock.get.mockResolvedValueOnce({

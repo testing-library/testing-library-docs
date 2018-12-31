@@ -12,11 +12,11 @@ docs we'll demonstrate configuring Jest, but you should be able to do similar
 things with any testing framework (react-testing-library does not require that
 you use Jest).
 
-### Global Config
+## Global Config
 
 There are several options you can add to your global test config that simplify
 the setup and teardown of tests in individual files. For example, you can ensure
-[`cleanup`](#cleanup) is called after each test and import additional
+[`cleanup`](./usage#cleanup) is called after each test and import additional
 assertions.
 
 To do this with Jest, you can add the
@@ -46,7 +46,7 @@ import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
 ```
 
-### Custom Render
+## Custom Render
 
 It's often useful to define a custom render method that includes things like
 global context providers, data stores, etc. To make this available globally, one
@@ -152,7 +152,7 @@ const customRender = (ui, options) => {
 };
 ```
 
-#### Export Issue with Babel Versions Lower Than 7
+### Export Issue with Babel Versions Lower Than 7
 
 Babel versions lower than 7 throw an error when trying to override the named
 export in the example above. (See
@@ -179,47 +179,22 @@ module.exports = {
 
 </details>
 
-<!--
-Links:
--->
+## Using without Jest
 
-<!-- prettier-ignore-start -->
+If you're running your tests in the browser bundled with webpack (or similar) then `react-testing-library` should work out of the box for you. However, most people using react-testing-library are using it with the Jest testing framework with the `testEnvironment` set to `jest-environment-jsdom` (which is the default configuration with Jest).
 
-[npm]: https://www.npmjs.com/
-[node]: https://nodejs.org
-[build-badge]: https://img.shields.io/travis/kentcdodds/react-testing-library.svg?style=flat-square
-[build]: https://travis-ci.org/kentcdodds/react-testing-library
-[coverage-badge]: https://img.shields.io/codecov/c/github/kentcdodds/react-testing-library.svg?style=flat-square
-[coverage]: https://codecov.io/github/kentcdodds/react-testing-library
-[version-badge]: https://img.shields.io/npm/v/react-testing-library.svg?style=flat-square
-[package]: https://www.npmjs.com/package/react-testing-library
-[downloads-badge]: https://img.shields.io/npm/dm/react-testing-library.svg?style=flat-square
-[npmtrends]: http://www.npmtrends.com/react-testing-library
-[spectrum-badge]: https://withspectrum.github.io/badge/badge.svg
-[spectrum]: https://spectrum.chat/react-testing-library
-[license-badge]: https://img.shields.io/npm/l/react-testing-library.svg?style=flat-square
-[license]: https://github.com/kentcdodds/react-testing-library/blob/master/LICENSE
-[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
-[prs]: http://makeapullrequest.com
-[donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
-[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://github.com/kentcdodds/react-testing-library/blob/master/CODE_OF_CONDUCT.md
-[github-watch-badge]: https://img.shields.io/github/watchers/kentcdodds/react-testing-library.svg?style=social
-[github-watch]: https://github.com/kentcdodds/react-testing-library/watchers
-[github-star-badge]: https://img.shields.io/github/stars/kentcdodds/react-testing-library.svg?style=social
-[github-star]: https://github.com/kentcdodds/react-testing-library/stargazers
-[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20react-testing-library%20by%20%40kentcdodds%20https%3A%2F%2Fgithub.com%2Fkentcdodds%2Freact-testing-library%20%F0%9F%91%8D
-[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/kentcdodds/react-testing-library.svg?style=social
-[emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
-[all-contributors]: https://github.com/kentcdodds/all-contributors
-[set-immediate]: https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate
-[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
-[data-testid-blog-post]: https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269
-[dom-testing-lib-textmatch]: https://github.com/kentcdodds/dom-testing-library#textmatch
-[bugs]: https://github.com/kentcdodds/react-testing-library/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Acreated-desc
-[requests]: https://github.com/kentcdodds/react-testing-library/issues?q=is%3Aissue+sort%3Areactions-%2B1-desc+label%3Aenhancement+is%3Aopen
-[good-first-issue]: https://github.com/kentcdodds/react-testing-library/issues?utf8=✓&q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc+label%3A"good+first+issue"+
-[reactiflux]: https://www.reactiflux.com/
-[stackoverflow]: https://stackoverflow.com/questions/tagged/react-testing-library
+`jsdom` is a pure JavaScript implementation of the DOM and browser APIs that runs in node. If you're not using Jest and you would like to run your tests in Node, then you must install jsdom yourself. There's also a package called `jsdom-global` which can be used to setup the global environment to simulate the browser APIs.
 
-<!-- prettier-ignore-end -->
+First, install `jsdom` and `jsdom-global`.
+
+```
+npm install --save-dev jsdom jsdom-global
+```
+
+With mocha, the test command would look something like this:
+
+```
+mocha --require jsdom-global/register
+```
+
+Note, depending on the version of Node you're running, you may also need to install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel 6).

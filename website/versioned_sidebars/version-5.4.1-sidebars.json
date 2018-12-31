@@ -19,6 +19,11 @@
       "version-5.4.1-example-external"
     ],
     "API": ["version-5.4.1-usage", "version-5.4.1-queries"],
-    "Help": ["version-5.4.1-faq", "version-5.4.1-learning"]
+    "Help": ["version-5.4.1-faq", "version-5.4.1-learning"],
+    "Ecosystem": [
+      "version-5.4.1-ecosystem-user-event",
+      "version-5.4.1-ecosystem-cypress-testing-library",
+      "version-5.4.1-ecosystem-dom-testing-library"
+    ]
   }
 }
