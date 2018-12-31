@@ -7,7 +7,17 @@
       "setup",
       "guiding-principles"
     ],
-    "Examples": ["example-external"],
+    "Examples": [
+      "example-codesandbox",
+      "example-input-event",
+      "example-update-props",
+      "example-react-context",
+      "example-react-redux",
+      "example-react-router",
+      "example-reach-router",
+      "example-reach-transition-group",
+      "example-external"
+    ],
     "API": ["usage", "queries"],
     "Help": ["faq", "learning"]
   }

@@ -18,9 +18,7 @@ const versions = require(`${CWD}/versions.json`);
 function Versions(props) {
   const { config: siteConfig } = props;
   const latestVersion = versions[0];
-  const repoUrl = `https://github.com/${siteConfig.organizationName}/${
-    siteConfig.projectName
-  }`;
+  const repoUrl = siteConfig.repoUrl;
   return (
     <div className="docMainWrapper wrapper">
       <Container className="mainContainer versionsContainer">
@@ -29,60 +27,64 @@ function Versions(props) {
             <h1>{siteConfig.title} Versions</h1>
           </header>
           <h3 id="latest">Current version (Stable)</h3>
+          <p>
+            This is the latest release of the{" "}
+            <a href="https://npm.im/react-testing-library">NPM package</a>.
+          </p>
           <table className="versions">
             <tbody>
               <tr>
                 <th>{latestVersion}</th>
                 <td>
-                  <a href="">Documentation</a>
+                  <a href="/docs/intro">Documentation</a>
                 </td>
                 <td>
-                  <a href="">Release Notes</a>
+                  <a href={`${repoUrl}/releases/tag/v${latestVersion}`}>
+                    Release Notes
+                  </a>
                 </td>
               </tr>
             </tbody>
           </table>
-          <p>
-            This is the version that is configured automatically when you first
-            install this project.
-          </p>
           <h3 id="rc">Pre-release versions</h3>
           <table className="versions">
             <tbody>
               <tr>
                 <th>master</th>
                 <td>
-                  <a href="">Documentation</a>
+                  <a href="/docs/next/intro">Documentation</a>
                 </td>
                 <td>
-                  <a href="">Release Notes</a>
+                  <a href={`${repoUrl}/releases`}>Release Notes</a>
                 </td>
               </tr>
             </tbody>
           </table>
-          <h3 id="archive">Past Versions</h3>
+          <h3 id="archive">Previous Versions</h3>
+          <p>
+            You can find past versions of this project on{" "}
+            <a href={repoUrl}>GitHub</a>.
+          </p>
           <table className="versions">
             <tbody>
               {versions.map(
                 version =>
                   version !== latestVersion && (
-                    <tr>
+                    <tr key={version}>
                       <th>{version}</th>
                       <td>
-                        <a href="">Documentation</a>
+                        <a href={`/docs/${version}/intro`}>Documentation</a>
                       </td>
                       <td>
-                        <a href="">Release Notes</a>
+                        <a href={`${repoUrl}/releases/tag/v${version}`}>
+                          Release Notes
+                        </a>
                       </td>
                     </tr>
                   )
               )}
             </tbody>
           </table>
-          <p>
-            You can find past versions of this project on{" "}
-            <a href={repoUrl}>GitHub</a>.
-          </p>
         </div>
       </Container>
     </div>

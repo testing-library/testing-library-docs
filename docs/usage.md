@@ -17,14 +17,33 @@ function render(
 ): RenderResult
 ```
 
-Render into a container which is appended to `document.body`. It should be used
-with [cleanup](#cleanup):
+Render into a container which is appended to `document.body`.
 
-```javascript
+```jsx
 import {render} from 'react-testing-library'
 
 render(<div />)
 ```
+
+```jsx
+import {render, cleanup} from 'react-testing-library'
+import 'jest-dom/extend-expect'
+afterEach(cleanup)
+
+test('renders a message', () => {
+  const {container, getByText} = render(<Greeting />)
+  expect(getbyText('Hello, world!')).toBeInTheDocument();
+  expect(container.firstChild).toMatchInlineSnapshot(`
+    <h1>Hello, World!</h1>
+  `)
+})
+```
+
+> Note
+> 
+> The [cleanup](#cleanup) function should be called between tests to remove the created DOM nodes and keep the tests isolated.
+
+### `render` Options
 
 <details>
 
@@ -41,7 +60,7 @@ option, it will not be appended to the `document.body` automatically.
 For Example: If you are unit testing a `tablebody` element, it cannot be a child
 of a `div`. In this case, you can specify a `table` as the render `container`.
 
-```javascript
+```jsx
 const table = document.createElement('table')
 
 const {container} = render(<TableBody {...props} />, {
@@ -60,8 +79,21 @@ your components.
 
 </details>
 
-In the example above, the `render` method returns an object that has a few
-properties:
+---
+
+The `render` method returns an object that has a few properties:
+
+### `...queries`
+
+The most important feature of `render` is that the queries from [dom-testing-library][dom-testing-lib-queries] are automatically bound to the rendered container.
+
+See [Queries](./queries) for a complete list.
+
+**Example**
+
+```jsx
+const { getByLabelText, queryAllByTestId } = render(<Component />);
+```
 
 ### `container`
 
@@ -99,7 +131,7 @@ renders it's HTML directly in the body.
 
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
-```javascript
+```jsx
 import React from 'react'
 import {render} from 'react-testing-library'
 
@@ -123,7 +155,7 @@ to ensure that the props are being updated correctly (see
 prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
-```javascript
+```jsx
 import {render} from 'react-testing-library'
 
 const {rerender} = render(<NumberDisplay number={1} />)
@@ -132,8 +164,7 @@ const {rerender} = render(<NumberDisplay number={1} />)
 rerender(<NumberDisplay number={2} />)
 ```
 
-[Open the tests](https://github.com/kentcdodds/react-testing-library/blob/master/examples/__tests__/update-props.js)
-for a full example of this.
+[See the examples page](example-update-props)
 
 ### `unmount`
 
@@ -144,7 +175,7 @@ that you don't leave event handlers hanging around causing memory leaks).
 > This method is a pretty small abstraction over
 > `ReactDOM.unmountComponentAtNode`
 
-```javascript
+```jsx
 import {render} from 'react-testing-library'
 
 const {container, unmount} = render(<Login />)
@@ -157,7 +188,7 @@ unmount()
 Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
-```javascript
+```jsx
 import {render, fireEvent} from 'react-testing-library'
 
 class TestComponent extends React.Component {
@@ -192,7 +223,7 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 
 Unmounts React trees that were mounted with [render](#render).
 
-```javascript
+```jsx
 import {cleanup, render} from 'react-testing-library'
 
 afterEach(cleanup) // <-- add this
@@ -211,8 +242,7 @@ errors in your tests).
 
 **If you don't want to add this to _every single test file_** then we recommend
 that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](#setup) section for guidance on how to
-set up your framework.
+does this automatically. See the [setup](./setup) section for guidance on how to set up your framework.
 
 ## `flushEffects`
 
@@ -259,6 +289,7 @@ Links:
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
 [data-testid-blog-post]: https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269
 [dom-testing-lib-textmatch]: https://github.com/kentcdodds/dom-testing-library#textmatch
+[dom-testing-lib-queries]: https://github.com/kentcdodds/dom-testing-library#usage
 [bugs]: https://github.com/kentcdodds/react-testing-library/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Acreated-desc
 [requests]: https://github.com/kentcdodds/react-testing-library/issues?q=is%3Aissue+sort%3Areactions-%2B1-desc+label%3Aenhancement+is%3Aopen
 [good-first-issue]: https://github.com/kentcdodds/react-testing-library/issues?utf8=✓&q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc+label%3A"good+first+issue"+

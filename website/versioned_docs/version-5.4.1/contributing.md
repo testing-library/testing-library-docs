@@ -1,23 +1,40 @@
 ---
-id: version-5.4.2-example-external
-title: External Examples
-sidebar_label: External Examples
-original_id: example-external
+id: version-5.4.1-contributing
+title: Contributing
+sidebar_label: Contributing
+original_id: contributing
 ---
 
-> We're in the process of moving examples to
-> [`react-testing-library-examples`](https://codesandbox.io/s/github/kentcdodds/react-testing-library-examples).
+## License
 
-You'll find examples of testing with different libraries in
-[the `examples` directory](https://github.com/kentcdodds/react-testing-library/blob/master/examples).
-Some included are:
+`react-testing-library` is distributed under the open-source MIT license
 
-- [`react-redux`](https://github.com/kentcdodds/react-testing-library/blob/master/examples/__tests__/react-redux.js)
-- [`react-router`](https://github.com/kentcdodds/react-testing-library/blob/master/examples/__tests__/react-router.js)
-- [`react-context`](https://github.com/kentcdodds/react-testing-library/blob/master/examples/__tests__/react-context.js)
+## Issues
 
-You can also find react-testing-library examples at
-[react-testing-examples.com](https://react-testing-examples.com/jest-rtl/).
+_Looking to contribute? Look for the [Good First Issue][good-first-issue]
+label._
+
+### 🐛 Bugs
+
+Please file an issue for bugs, missing documentation, or unexpected behavior.
+
+[**See Bugs**][bugs]
+
+### 💡 Feature Requests
+
+Please file an issue to suggest new features. Vote on feature requests by adding
+a 👍. This helps maintainers prioritize what to work on.
+
+[**See Feature Requests**][requests]
+
+### ❓ Questions
+
+For questions related to using the library, please visit a support community
+instead of filing an issue on GitHub.
+
+- [Spectrum][spectrum]
+- [Reactiflux on Discord][reactiflux]
+- [Stack Overflow][stackoverflow]
 
 <!--
 Links:

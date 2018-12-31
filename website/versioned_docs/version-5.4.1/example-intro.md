@@ -1,11 +1,49 @@
 ---
-id: version-5.4.2-example-intro
+id: version-5.4.1-example-intro
 title: Example
 sidebar_label: Example
 original_id: example-intro
 ---
 
-Example file: `__tests__/fetch.test.js`
+## Full Example
+
+See the following sections for a detailed breakdown of the test
+
+```jsx
+// __tests__/fetch.test.js
+import React from "react";
+import {
+  render,
+  fireEvent,
+  cleanup,
+  waitForElement
+} from "react-testing-library";
+import "jest-dom/extend-expect";
+import axiosMock from "axios";
+import Fetch from "../fetch";
+
+afterEach(cleanup);
+
+test("loads and displays greeting", async () => {
+  const url = "/greeting";
+  const { getByText, getByTestId } = render(<Fetch url={url} />);
+
+  axiosMock.get.mockResolvedValueOnce({
+    data: { greeting: "hello there" }
+  });
+
+  fireEvent.click(getByText("Load Greeting"));
+
+  const greetingTextNode = await waitForElement(() =>
+    getByTestId("greeting-text")
+  );
+
+  expect(axiosMock.get).toHaveBeenCalledTimes(1);
+  expect(axiosMock.get).toHaveBeenCalledWith(url);
+  expect(getByTestId("greeting-text")).toHaveTextContent("hello there");
+  expect(getByTestId("ok-button")).toHaveAttribute("disabled");
+});
+```
 
 ## Imports
 
@@ -29,11 +67,10 @@ import "jest-dom/extend-expect";
 import axiosMock from "axios";
 
 // the component to test
-// see the tests for a full implementation
 import Fetch from "../fetch";
 ```
 
-## Tests
+## Test
 
 ```jsx
 // automatically unmount and cleanup DOM after the test is finished.
@@ -89,49 +126,3 @@ expect(container.firstChild).toMatchSnapshot();
 // which is useful if you want to compare nodes across render
 expect(asFragment()).toMatchSnapshot();
 ```
-
-## Full Example
-
-Tying it all together:
-
-<details>
-
-<summary>Full Example File</summary>
-
-```jsx
-// __tests__/fetch.test.js
-import React from "react";
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement
-} from "react-testing-library";
-import "jest-dom/extend-expect";
-import axiosMock from "axios";
-import Fetch from "../fetch";
-
-afterEach(cleanup);
-
-test("loads and displays greeting", async () => {
-  const url = "/greeting";
-  const { getByText, getByTestId } = render(<Fetch url={url} />);
-
-  axiosMock.get.mockResolvedValueOnce({
-    data: { greeting: "hello there" }
-  });
-
-  fireEvent.click(getByText("Load Greeting"));
-
-  const greetingTextNode = await waitForElement(() =>
-    getByTestId("greeting-text")
-  );
-
-  expect(axiosMock.get).toHaveBeenCalledTimes(1);
-  expect(axiosMock.get).toHaveBeenCalledWith(url);
-  expect(getByTestId("greeting-text")).toHaveTextContent("hello there");
-  expect(getByTestId("ok-button")).toHaveAttribute("disabled");
-});
-```
-
-</details>

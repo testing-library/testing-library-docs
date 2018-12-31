@@ -1,5 +1,5 @@
 ---
-id: version-5.4.2-queries
+id: version-5.4.1-queries
 title: Queries
 sidebar_label: Queries
 original_id: queries
@@ -10,7 +10,11 @@ original_id: queries
 The `render` function returns the queries from
 [`dom-testing-library`](https://github.com/kentcdodds/dom-testing-library) bound to the created element:
 
-### `getByLabelText(text: TextMatch, options): HTMLElement`
+### `getByLabelText`
+
+```ts
+getByLabelText(text: TextMatch, options): HTMLElement
+```
 
 > Options:
 > `{selector = '*', exact = true, collapseWhitespace = true, trim = true}`
@@ -18,7 +22,7 @@ The `render` function returns the queries from
 This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { getByLabelText } = render(<Login />);
@@ -51,14 +55,18 @@ const inputNode = getByLabelText("username", { selector: "input" });
 > want this behavior (for example you wish to assert that it doesn't exist),
 > then use `queryByLabelText` instead.
 
-### `getByPlaceholderText(text: TextMatch, options): HTMLElement`
+### `getByPlaceholderText`
+
+```ts
+getByPlaceholderText(text: TextMatch, options): HTMLElement
+```
 
 > Options: `{exact = true, collapseWhitespace = true, trim = true}`
 
 This will search for all elements with a placeholder attribute and find one that
 matches the given [`TextMatch`](#textmatch).
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { getByPlaceholderText } = render(<input placeholder="Username" />);
@@ -68,7 +76,11 @@ const inputNode = getByPlaceholderText("Username");
 > NOTE: a placeholder is not a good substitute for a label so you should
 > generally use `getByLabelText` instead.
 
-### `getByText(text: TextMatch, options): HTMLElement`
+### `getByText`
+
+```ts
+getByText(text: TextMatch, options): HTMLElement
+```
 
 > Options:
 > `{selector = '*', exact = true, collapseWhitespace = true, trim = true, ignore = 'script, style'}`
@@ -76,14 +88,18 @@ const inputNode = getByPlaceholderText("Username");
 This will search for all elements that have a text node with `textContent`
 matching the given [`TextMatch`](#textmatch).
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { getByText } = render(<a href="/about">About ℹ️</a>);
 const aboutAnchorNode = getByText("about");
 ```
 
-### `getByAltText(text: TextMatch, options): HTMLElement`
+### `getByAltText`
+
+```ts
+getByAltText(text: TextMatch, options): HTMLElement
+```
 
 > Options: `{exact = true, collapseWhitespace = true, trim = true}`
 
@@ -96,7 +112,7 @@ and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
 [`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet)
 as it's deprecated).
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { getByAltText } = render(
@@ -105,14 +121,18 @@ const { getByAltText } = render(
 const incrediblesPosterImg = getByAltText(/incredibles.*poster$/i);
 ```
 
-### `getByTestId(text: TextMatch, options): HTMLElement`
+### `getByTestId`
+
+```ts
+getByTestId(text: TextMatch, options): HTMLElement
+```
 
 > Options: `{exact = true, collapseWhitespace = true, trim = true}`
 
 A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { getByTestId } = render(<input data-testid="username-input" />);
@@ -139,7 +159,7 @@ but if you already have a codebase that uses a different attribute for this
 purpose, you can use the `configure` function of `dom-testing-library` to change
 the attribute that is used. This requires `dom-testing-library` version 3.13:
 
-```javascript
+```jsx
 import { configure } from "dom-testing-library";
 configure({ testIdAttribute: "data-test-id" });
 ```
@@ -152,7 +172,11 @@ configure({ testIdAttribute: "data-test-id" });
 [`dom-testing-library`](https://github.com/kentcdodds/dom-testing-library) and
 re-exports everything from `dom-testing-library`. Some notable included exports:
 
-### `fireEvent(node: HTMLElement, event: Event)`
+### `fireEvent`
+
+```ts
+fireEvent(node: HTMLElement, event: Event)
+```
 
 Fire DOM events.
 
@@ -173,7 +197,7 @@ instead of Synthetic Events. This aligns better with
 > rendered node rather than the `document`. Learn more here:
 > [facebook/react#2043](https://github.com/facebook/react/issues/2043)
 
-```javascript
+```jsx
 import { render, cleanup, fireEvent } from "react-testing-library";
 
 // don't forget to clean up the document.body
@@ -188,13 +212,17 @@ test("clicks submit button", () => {
 });
 ```
 
-#### `fireEvent[eventName](node: HTMLElement, eventProperties: Object)`
+#### `fireEvent[eventName]`
+
+```ts
+fireEvent[eventName](node: HTMLElement, eventProperties: Object)
+```
 
 Convenience methods for firing DOM events. Check out
 [dom-testing-library/src/events.js](https://github.com/kentcdodds/dom-testing-library/blob/master/src/events.js)
 for a full list as well as default `eventProperties`.
 
-```javascript
+```jsx
 import { render, fireEvent } from "react-testing-library";
 
 const { getByText } = render(<Form />);
@@ -213,7 +241,7 @@ with a different `event.target.value`, sending `value` through `eventProperties`
 won't work like it does with `Simulate`. You need to use `fireEvent` to fire a
 `change` DOM event with `value` property set on `target`
 
-```javascript
+```jsx
 import { render, fireEvent } from "react-testing-library";
 
 const { getByLabelText } = render(<Form />);
@@ -227,7 +255,7 @@ fireEvent.change(comment, {
 Note that if you want to trigger `onChange` handler on a checkbox, you should
 fire a `click` event instead of `change`.
 
-```javascript
+```jsx
 import { render, fireEvent } from "react-testing-library";
 
 const { getByLabelText } = render(<Checkbox />);
@@ -239,7 +267,7 @@ fireEvent.click(getByLabelText("Checkbox"));
 
 > [Read full docs from `dom-testing-library`](https://github.com/kentcdodds/dom-testing-library/blob/master/README.md#waitforelement)
 
-```js
+```jsx
 import { render, waitForElement } from "react-testing-library";
 
 test("waiting for an element", async () => {
@@ -255,7 +283,7 @@ test("waiting for an element", async () => {
 
 It's recommended to prefer `waitForElement`, but this can be helpful on occasion
 
-```javascript
+```jsx
 import "jest-dom/extend-expect";
 import { render, wait } from "react-testing-library";
 
@@ -285,7 +313,7 @@ function for this case.
 Example: To get the text 'hello' only within a section called 'messages', you
 could do:
 
-```javascript
+```jsx
 import { render, within } from "react-testing-library";
 
 // ...
@@ -304,7 +332,7 @@ See [dom-testing-library#textmatch][dom-testing-lib-textmatch] for options.
 
 Examples:
 
-```javascript
+```jsx
 import { render, getByText } from "react-testing-library";
 
 const { container } = render(<div>Hello World</div>);
@@ -345,7 +373,7 @@ cannot be found. This is normally the desired effect. However, if you want to
 make an assertion that an element is _not_ present in the DOM, then you can use
 the `query` API instead:
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { queryByText } = render(<Form />);
@@ -359,7 +387,7 @@ Each of the `query` APIs have a corresponding `queryAll` version that always
 returns an Array of matching nodes. `getAll` is the same but throws when the
 array has a length of 0.
 
-```javascript
+```jsx
 import { render } from "react-testing-library";
 
 const { queryAllByText } = render(<Forms />);
