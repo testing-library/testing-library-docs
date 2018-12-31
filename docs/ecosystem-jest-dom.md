@@ -17,6 +17,14 @@ expect(queryByTestId(container, 'not-empty')).not.toBeEmpty()
 expect(getByText(container, 'Visible Example')).toBeVisible()
 ```
 
+> Note: when using some of these matchers, you may need to make sure
+> you use a query function (like `queryByTestId`) rather than a get
+> function (like `getByTestId`). Otherwise the `get*` function could
+> throw an error before your assertion.
+
+Check out [jest-dom's documentation](gh)
+for a full list of available matchers.
+
 - [jest-dom on GitHub][gh]
 
 

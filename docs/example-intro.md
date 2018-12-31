@@ -4,128 +4,69 @@ title: Example
 sidebar_label: Example
 ---
 
-## Full Example
-
-See the following sections for a detailed breakdown of the test
-
-```jsx
-// __tests__/fetch.test.js
-import React from "react";
+```javascript
+// src/__tests__/example.js
+// query utilities:
 import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement
-} from "react-testing-library";
-import "jest-dom/extend-expect";
-import axiosMock from "axios";
-import Fetch from "../fetch";
+  getByLabelText,
+  getByText,
+  getByTestId,
+  queryByTestId,
+  // Tip: all queries are also exposed on an object
+  // called "queries" which you could import here as well
+  wait,
+} from 'dom-testing-library'
+// adds special assertions like toHaveTextContent
+import 'jest-dom/extend-expect'
 
-afterEach(cleanup);
+function getExampleDOM() {
+  // This is just a raw example of setting up some DOM
+  // that we can interact with. Swap this with your UI
+  // framework of choice 😉
+  const div = document.createElement('div')
+  div.innerHTML = `
+    <label for="username">Username</label>
+    <input id="username" />
+    <button>Print Username</button>
+  `
+  const button = div.querySelector('button')
+  const input = div.querySelector('input')
+  button.addEventListener('click', () => {
+    // let's pretend this is making a server request, so it's async
+    // (you'd want to mock this imaginary request in your unit tests)...
+    setTimeout(() => {
+      const printedUsernameContainer = document.createElement('div')
+      printedUsernameContainer.innerHTML = `
+        <div data-testid="printed-username">${input.value}</div>
+      `
+      div.appendChild(printedUsernameContainer)
+    }, Math.floor(Math.random() * 200))
+  })
+  return div
+}
 
-test("loads and displays greeting", async () => {
-  const url = "/greeting";
-  const { getByText, getByTestId } = render(<Fetch url={url} />);
+test('examples of some things', async () => {
+  const famousWomanInHistory = 'Ada Lovelace'
+  const container = getExampleDOM()
 
-  axiosMock.get.mockResolvedValueOnce({
-    data: { greeting: "hello there" }
-  });
+  // Get form elements by their label text.
+  // An error will be thrown if one cannot be found (accessibility FTW!)
+  const input = getByLabelText(container, 'Username')
+  input.value = famousWomanInHistory
 
-  fireEvent.click(getByText("Load Greeting"));
+  // Get elements by their text, just like a real user does.
+  getByText(container, 'Print Username').click()
 
-  const greetingTextNode = await waitForElement(() =>
-    getByTestId("greeting-text")
-  );
+  await wait(() =>
+    expect(queryByTestId(container, 'printed-username')).toBeTruthy(),
+  )
 
-  expect(axiosMock.get).toHaveBeenCalledTimes(1);
-  expect(axiosMock.get).toHaveBeenCalledWith(url);
-  expect(getByTestId("greeting-text")).toHaveTextContent("hello there");
-  expect(getByTestId("ok-button")).toHaveAttribute("disabled");
-});
-```
-
-## Imports
-
-```jsx
-// import dependencies
-import React from "react";
-
-// import react-testing methods
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement
-} from "react-testing-library";
-
-// add custom jest matchers from jest-dom
-import "jest-dom/extend-expect";
-
-// the axios mock is in __mocks__/
-// see https://jestjs.io/docs/en/manual-mocks
-import axiosMock from "axios";
-
-// the component to test
-import Fetch from "../fetch";
-```
-
-## Test
-
-```jsx
-// automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup);
-
-test("loads and displays greeting", async () => {
-  // Arrange
-  // Act
-  // Assert
-});
-```
-
-### Arrange
-
-The [`render`](react-testing-library/api.md#render) method renders a React element into the DOM and returns utility functions for testing the component.
-
-```jsx
-const url = "/greeting";
-const { getByText, getByTestId, container, asFragment } = render(
-  <Fetch url={url} />
-);
-```
-
-### Act
-
-The [`fireEvent`](./api-events#fireEvent) method allows you to fire events to simulate user actions.
-
-```jsx
-axiosMock.get.mockResolvedValueOnce({
-  data: { greeting: "hello there" }
-});
-
-fireEvent.click(getByText("Load Greeting"));
-
-// Wait until the mocked `get` request promise resolves and
-// the component calls setState and re-renders.
-// `waitForElement` waits until the callback doesn't throw an error
-
-const greetingTextNode = await waitForElement(() =>
-  // getByTestId throws an error if it cannot find an element
-  getByTestId("greeting-text")
-);
-```
-
-### Assert
-
-```jsx
-expect(axiosMock.get).toHaveBeenCalledTimes(1);
-expect(axiosMock.get).toHaveBeenCalledWith(url);
-expect(getByTestId("greeting-text")).toHaveTextContent("hello there");
-expect(getByTestId("ok-button")).toHaveAttribute("disabled");
-
-// snapshots work great with regular DOM nodes!
-expect(container.firstChild).toMatchSnapshot();
-
-// you can also use get a `DocumentFragment`,
-// which is useful if you want to compare nodes across render
-expect(asFragment()).toMatchSnapshot();
+  // getByTestId and queryByTestId are an escape hatch to get elements
+  // by a test id (could also attempt to get this element by it's text)
+  expect(getByTestId(container, 'printed-username')).toHaveTextContent(
+    famousWomanInHistory,
+  )
+  // jest snapshots work great with regular DOM nodes!
+  expect(container).toMatchSnapshot()
+})
 ```

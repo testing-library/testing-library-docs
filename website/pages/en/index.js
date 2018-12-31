@@ -117,7 +117,7 @@ class Index extends React.Component {
             {
               title: "",
               content:
-                "## The Problem \n - You want tests for your React components that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+                "## The Problem \n - You want tests for your web UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
               image: `${baseUrl}img/interrobang-128x128.png`,
               imageAlt: "The problem (picture of a question mark)",
               imageAlign: "left"
@@ -127,7 +127,7 @@ class Index extends React.Component {
       </React.Fragment>
     );
 
-    const Solution = () => (
+    const Solution = () => [
       <Block background={null} align="left">
         {[
           {
@@ -136,11 +136,23 @@ class Index extends React.Component {
             imageAlign: "right",
             imageAlt: "The solution (picture of a star)",
             content:
-              "## The Solution \n `react-testing-library` is a very light-weight solution for testing React components. It provides utility functions on top of react-dom and react-dom/test-utils in a way that encourages better testing practices. Its primary guiding principle is: \n > The more your tests resemble the way your software is used, the more confidence they can give you."
+              "## The Solution \n `dom-testing-library` is a very light-weight solution for testing DOM nodes (whether simulated with [JSDOM](https://github.com/jsdom/jsdom) in [Jest](https://jestjs.io) or in the browser). The main utilities it provides involve querying the DOM for nodes in a way that's similar to how the user finds elements on the page. In this way, the library helps ensure your tests give you confidence in your UI code."
+          }
+        ]}
+      </Block>,
+      <Block background={null} align="left">
+        {[
+          {
+            title: "Guiding Principle",
+            image: `${baseUrl}img/trophy-128x128.png`,
+            imageAlign: "left",
+            imageAlt: "The guiding principle (picture of a brick wall)",
+            content:
+              "_The more your tests resemble the way your software is used, the more confidence they can give you._"
           }
         ]}
       </Block>
-    );
+    ];
 
     const Features = () => (
       <Block layout="twoColumn">

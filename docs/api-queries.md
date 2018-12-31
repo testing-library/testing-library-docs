@@ -1,37 +1,48 @@
 ---
-id: queries
+id: api-queries
 title: Queries
-sidebar_label: Queries
 ---
 
 ## Queries
 
+Note:
+
+- Each of the `get` APIs below have a matching [`getAll`](#queryall-and-getall-apis) API that returns all elements instead of just the first one, and [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return `null`/`[]` instead of throwing an error.
+- See [TextMatch](#textmatch) for details on the `exact`, `trim`, and `collapseWhitespace` options.
+
 ### `getByLabelText`
 
 ```typescript
-getByLabelText(text: TextMatch, options): HTMLElement
+getByLabelText(
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    selector?: string = '*',
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
 ```
-
-> Options:
-> `{selector = '*', exact = true, collapseWhitespace = true, trim = true}`
 
 This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
-```jsx
-import {render} from 'react-testing-library'
-
-const {getByLabelText} = render(<Login />)
-const inputNode = getByLabelText('Username')
+```javascript
+const inputNode = getByLabelText(container, 'Username')
 
 // this would find the input node for the following DOM structures:
 // The "for" attribute (NOTE: in JSX with React you'll write "htmlFor" rather than "for")
 // <label for="username-input">Username</label>
 // <input id="username-input" />
 //
-// The aria-labelledby attribute
+// The aria-labelledby attribute with form elements
 // <label id="username-label">Username</label>
 // <input aria-labelledby="username-label" />
+//
+// The aria-labelledby attribute with other elements
+// <section aria-labelledby="section-one-header">
+//   <h3 id="section-one-header">Section One</h3>
+//   <p>some content...</p>
+// <section>
 //
 // Wrapper labels
 // <label>Username <input /></label>
@@ -40,7 +51,7 @@ const inputNode = getByLabelText('Username')
 // <label><span>Username</span> <input /></label>
 //
 // For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText('username', {selector: 'input'})
+const inputNode = getByLabelText(container, 'username', {selector: 'input'})
 // and that would work
 // Note that <input aria-label="username" /> will also work, but take
 // care because this is not a label that users can see on the page. So
@@ -54,19 +65,21 @@ const inputNode = getByLabelText('username', {selector: 'input'})
 ### `getByPlaceholderText`
 
 ```typescript
-getByPlaceholderText(text: TextMatch, options): HTMLElement
+getByPlaceholderText(
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
 ```
 
-> Options: `{exact = true, collapseWhitespace = true, trim = true}`
+This will search for all elements with a placeholder attribute and find one
+that matches the given [`TextMatch`](#textmatch).
 
-This will search for all elements with a placeholder attribute and find one that
-matches the given [`TextMatch`](#textmatch).
-
-```jsx
-import {render} from 'react-testing-library'
-
-const {getByPlaceholderText} = render(<input placeholder="Username" />)
-const inputNode = getByPlaceholderText('Username')
+```javascript
+// <input placeholder="Username" />
+const inputNode = getByPlaceholderText(container, 'Username')
 ```
 
 > NOTE: a placeholder is not a good substitute for a label so you should
@@ -75,107 +88,261 @@ const inputNode = getByPlaceholderText('Username')
 ### `getByText`
 
 ```typescript
-getByText(text: TextMatch, options): HTMLElement
+getByText(
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    selector?: string = '*',
+    exact?: boolean = true,
+    ignore?: string|boolean = 'script, style',
+    normalizer?: NormalizerFn,
+  }): HTMLElement
 ```
-
-> Options:
-> `{selector = '*', exact = true, collapseWhitespace = true, trim = true, ignore = 'script, style'}`
 
 This will search for all elements that have a text node with `textContent`
 matching the given [`TextMatch`](#textmatch).
 
-```jsx
-import {render} from 'react-testing-library'
-
-const {getByText} = render(<a href="/about">About ℹ️</a>)
-const aboutAnchorNode = getByText('about')
+```javascript
+// <a href="/about">About ℹ️</a>
+const aboutAnchorNode = getByText(container, /about/i)
 ```
+
+It also works properly with `input`s whose `type` attribute is either `submit`
+or `button`:
+
+```javascript
+// <input type="submit" value="Send data" />
+const submitButton = getByText(container, /send data/i)
+```
+
+> NOTE: see [`getByLabelText`](#getbylabeltext) for more details on how and when to use the `selector` option
+
+The `ignore` option accepts a query selector. If the
+[`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
+returns true for that selector, the node will be ignored. This defaults to
+`'script'` because generally you don't want to select script tags, but if your
+content is in an inline script file, then the script tag could be returned.
+
+If you'd rather disable this behavior, set `ignore` to `false`.
 
 ### `getByAltText`
 
 ```typescript
-getByAltText(text: TextMatch, options): HTMLElement
+getByAltText(
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
 ```
-
-> Options: `{exact = true, collapseWhitespace = true, trim = true}`
 
 This will return the element (normally an `<img>`) that has the given `alt`
 text. Note that it only supports elements which accept an `alt` attribute:
 [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img),
 [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input),
 and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
-(intentionally excluding
-[`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet)
-as it's deprecated).
+(intentionally excluding [`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet) as it's deprecated).
 
-```jsx
-import {render} from 'react-testing-library'
+```javascript
+// <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
+const incrediblesPosterImg = getByAltText(container, /incredibles.*poster$/i)
+```
 
-const {getByAltText} = render(
-  <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />,
-)
-const incrediblesPosterImg = getByAltText(/incredibles.*poster$/i)
+### `getByTitle`
+
+```typescript
+getByTitle(
+  container: HTMLElement,
+  title: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+Returns the element that has the matching `title` attribute.
+
+```javascript
+// <span title="Delete" id="2" />
+const deleteElement = getByTitle(container, 'Delete')
+```
+
+Will also find a `title` element within an SVG.
+
+```javascript
+// <svg> <title>Close</title> <g> <path /> </g> </svg>
+const closeElement = getByTitle(container, 'Close')
+```
+
+### `getByDisplayValue`
+
+```typescript
+getByDisplayValue(
+  container: HTMLElement,
+  value: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+Returns the `input`, `textarea`, or `select` element that has the matching display value.
+
+#### `input`
+
+```javascript
+// <input type="text" id="lastName" />
+// document.getElementById('lastName').value = 'Norris'
+
+const lastNameInput = getByDisplayValue(container, 'Norris')
+```
+
+#### `textarea`
+
+```javascript
+// <textarea id="messageTextArea"></textarea>
+// document.getElementById('messageTextArea').value = 'Hello World'
+
+const messageTextArea = getByDisplayValue(container, 'Hello World')
+```
+
+#### `select`
+
+```javascript
+// <select id="state-select" data-testid="state">
+//   <option value="">State</option>
+//   <option value="AL">Alabama</option>
+//   <option selected value="AK" >Alaska</option>
+//   <option value="AZ">Arizona</option>
+// </select>
+
+const selectElement = getByDisplayName(container, 'Alaska')
+```
+
+In case of `select`, this will search for a `<select>` whose selected `<option>` matches the given [`TextMatch`](#textmatch).
+
+### `getByRole`
+
+```typescript
+getByRole(
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it
+also accepts a [`TextMatch`](#textmatch)).
+
+```javascript
+// <div role="dialog">...</div>
+const dialogContainer = getByRole(container, 'dialog')
 ```
 
 ### `getByTestId`
 
 ```typescript
-getByTestId(text: TextMatch, options): HTMLElement
+getByTestId(
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
 ```
-
-> Options: `{exact = true, collapseWhitespace = true, trim = true}`
 
 A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
-```jsx
-import {render} from 'react-testing-library'
-
-const {getByTestId} = render(<input data-testid="username-input" />)
-const usernameInputElement = getByTestId('username-input')
+```javascript
+// <input data-testid="username-input" />
+const usernameInputElement = getByTestId(container, 'username-input')
 ```
 
 > In the spirit of [the guiding principles](#guiding-principles), it is
-> recommended to use this only after `getByLabel`, `getByPlaceholderText` or
-> `getByText` don't work for your use case. Using `data-testid` attributes do
-> not resemble how your software is used and should be avoided if possible. That
-> said, they are _way_ better than querying based on DOM structure. Learn more
-> about `data-testid`s from the blog post ["Making your UI tests resilient to
-> change"][data-testid-blog-post]
+> recommended to use this only after the other queries don't work for your use
+> case. Using data-testid attributes do not resemble how your software is used
+> and should be avoided if possible. That said, they are _way_ better than
+> querying based on DOM structure or styling css class names. Learn more about
+> `data-testid`s from the blog post
+> ["Making your UI tests resilient to change"][data-testid-blog-post]
 
-<details>
-  <summary>What if my project already uses <code>data-test-id</code> or another attribute?
-  Do I have to migrate to <code>data-testid</code>?
-</summary>
+#### Overriding `data-testid`
 
-If you're starting out with a new codebase, it's recommended that you stick with
-<code>data-testid</code>, following the precedent set by
-[React Native Web](https://github.com/kentcdodds/react-testing-library/issues/1),
-but if you already have a codebase that uses a different attribute for this
-purpose, you can use the `configure` function of `dom-testing-library` to change
-the attribute that is used. This requires `dom-testing-library` version 3.13:
-
-```jsx
-import {configure} from 'dom-testing-library'
-configure({testIdAttribute: 'data-test-id'})
-```
-
-</details>
-
+The `...ByTestId` functions in `dom-testing-library` use the attribute `data-testid`
+by default, following the precedent set by
+[React Native Web](https://github.com/kentcdodds/react-testing-library/issues/1)
+which uses a `testID` prop to emit a `data-testid` attribute on the element,
+and we recommend you adopt that attribute where possible.
+But if you already have an existing codebase that uses a different attribute
+for this purpose, you can override this value via
+`configure({testIdAttribute: 'data-my-test-attribute'})`.
 
 ## `TextMatch`
 
 Several APIs accept a `TextMatch` which can be a `string`, `regex` or a
 `function` which returns `true` for a match and `false` for a mismatch.
 
-See [dom-testing-library#textmatch][dom-testing-lib-textmatch] for options.
+### Precision
 
-Examples:
+Some APIs accept an object as the final argument that can contain options that
+affect the precision of string matching:
 
-```jsx
-import {render, getByText} from 'react-testing-library'
+- `exact`: Defaults to `true`; matches full strings, case-sensitive. When false,
+  matches substrings and is not case-sensitive.
+  - `exact` has no effect on `regex` or `function` arguments.
+  - In most cases using a regex instead of a string gives you more control over
+    fuzzy matching and should be preferred over `{ exact: false }`.
+- `normalizer`: An optional function which overrides normalization behavior.
+  See [`Normalization`](#normalization).
 
-const {container} = render(<div>Hello World</div>)
+### Normalization
+
+Before running any matching logic against text in the DOM, `dom-testing-library`
+automatically normalizes that text. By default, normalization consists of
+trimming whitespace from the start and end of text, and collapsing multiple
+adjacent whitespace characters into a single space.
+
+If you want to prevent that normalization, or provide alternative
+normalization (e.g. to remove Unicode control characters), you can provide a
+`normalizer` function in the options object. This function will be given
+a string and is expected to return a normalized version of that string.
+
+Note: Specifying a value for `normalizer` _replaces_ the built-in normalization, but
+you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
+to adjust that normalization or to call it from your own normalizer.
+
+`getDefaultNormalizer` takes an options object which allows the selection of behaviour:
+
+- `trim`: Defaults to `true`. Trims leading and trailing whitespace
+- `collapseWhitespace`: Defaults to `true`. Collapses inner whitespace (newlines, tabs, repeated spaces) into a single space.
+
+#### Normalization Examples
+
+To perform a match against text without trimming:
+
+```javascript
+getByText(node, 'text', {normalizer: getDefaultNormalizer({trim: false})})
+```
+
+To override normalization to remove some Unicode characters whilst keeping some (but not all) of the built-in normalization behavior:
+
+```javascript
+getByText(node, 'text', {
+  normalizer: str =>
+    getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
+})
+```
+
+### TextMatch Examples
+
+```javascript
+// <div>
+//  Hello World
+// </div>
 
 // WILL find the div:
 
@@ -205,42 +372,40 @@ getByText(container, (content, element) => {
 
 ## `query` APIs
 
-Each of the `get` APIs listed in [the `render`](#render) section above have a
+Each of the `get` APIs listed in [the 'Usage'](#usage) section above have a
 complimentary `query` API. The `get` APIs will throw errors if a proper node
 cannot be found. This is normally the desired effect. However, if you want to
 make an assertion that an element is _not_ present in the DOM, then you can use
 the `query` API instead:
 
-```jsx
-import {render} from 'react-testing-library'
-
-const {queryByText} = render(<Form />)
-const submitButton = queryByText('submit')
+```javascript
+const submitButton = queryByText(container, 'submit')
 expect(submitButton).toBeNull() // it doesn't exist
+// or if you're using the custom matchers:
+expect(submitButton).not.toBeTruthy()
 ```
 
 ## `queryAll` and `getAll` APIs
 
-Each of the `query` APIs have a corresponding `queryAll` version that always
-returns an Array of matching nodes. `getAll` is the same but throws when the
-array has a length of 0.
+Each of the `query` APIs have a corresponsing `queryAll` version that always returns an Array of matching nodes. `getAll` is the same but throws when the array has a length of 0.
 
-```jsx
-import {render} from 'react-testing-library'
-
-const {queryAllByText} = render(<Forms />)
-const submitButtons = queryAllByText('submit')
+```javascript
+const submitButtons = queryAllByText(container, 'submit')
 expect(submitButtons).toHaveLength(3) // expect 3 elements
-expect(submitButtons[0]).toBeInTheDocument()
+expect(submitButtons[0]).toBeTruthy()
 ```
 
-<!--
-Links:
--->
+## `within` and `getQueriesForElement` APIs
 
-<!-- prettier-ignore-start -->
+`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it to the raw query functions, allowing them
+to be used without specifying a container. It is the recommended approach for libraries built on this API
+and is in use in `react-testing-library` and `vue-testing-library`.
 
-[data-testid-blog-post]: https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269
-[dom-testing-lib-textmatch]: https://github.com/kentcdodds/dom-testing-library#textmatch
+Example: To get the text 'hello' only within a section called 'messages', you could do:
 
-<!-- prettier-ignore-end -->
+```javascript
+import {within} from 'dom-testing-library'
+
+const {getByText} = within(document.getElementById('messages'))
+const helloMessage = getByText('hello')
+```
