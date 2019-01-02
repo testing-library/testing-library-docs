@@ -5,5 +5,5 @@ Documentation site for [react-testing-library](https://github.com/kentcdodds/rea
 
 See [./website/README.md](./website/README.md) for instructions on building the site
 
-**Deployed on Netlify: https://testing-library.com/** / https://testing-library.netlify.com/**
+**Deployed on Netlify: https://testing-library.com/** / https://testing-library.netlify.com/
 
