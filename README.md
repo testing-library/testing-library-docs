@@ -1,5 +1,5 @@
-react-testing-library-docs
---------------------------
+testing-library-docs
+--------------------
 
 Documentation site for [react-testing-library](https://github.com/kentcdodds/react-testing-library), [dom-testing-library](https://github.com/kentcdodds/dom-testing-library), and related projects
 
