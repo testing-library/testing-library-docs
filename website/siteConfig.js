@@ -77,7 +77,7 @@ const siteConfig = {
   },
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © 2018-${new Date().getFullYear()} Kent Dodds and contributors`,
+  copyright: `Copyright © 2018-${new Date().getFullYear()} Kent C. Dodds and contributors`,
 
   // Highlight.js doesn't work well with JSX
   // pass an array of languages to use Prism, or true for all
