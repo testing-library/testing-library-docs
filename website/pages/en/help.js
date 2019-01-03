@@ -57,7 +57,7 @@ function Help(props) {
           <section>
             <h2 align="center">Buy a Course</h2>
             <p align="center">
-              Learn how to test React with Kent Dodds, the creator of
+              Learn how to test React with Kent C. Dodds, the creator of
               react-testing-library
             </p>
             <div align="center">
