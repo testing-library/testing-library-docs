@@ -173,7 +173,7 @@ class Index extends React.Component {
             },
             {
               content:
-                "`react-testing-library` is an opinionated alternative to libraries like Enyzyme that provide too many ways to avoid testing like a user",
+                "`react-testing-library` is an opinionated alternative to libraries like Enzyme that provide too many ways to avoid testing like a user",
               image: `${baseUrl}img/vs-128x128.png`,
               imageAlign: "top",
               title: "Alternative to Enzyme"
