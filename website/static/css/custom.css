@@ -33,7 +33,7 @@ pre, code {
 }
 
 /* Reset link styling because they aren't visible with a dark primary color */
-a { 
+a {
   color: $secondaryColor;
 }
 
@@ -60,13 +60,19 @@ a {
   left: -8px;
 }
 
+/* Change styling of logos in showcaseSection */
+.productShowcaseSection .logos img,
+.showcaseSection .logos img {
+  width: auto;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
 @media only screen and (min-width: 1024px) {
   .projectTitle {
     margin-top: 80px;
-  }  
+  }
 }
 
 @media only screen and (max-width: 1023px) {
