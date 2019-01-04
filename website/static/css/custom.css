@@ -38,18 +38,26 @@ a {
 }
 
 /* Change styling of selected navigation item */
-.navListItemActive {
-    display: flex;
+.container .docsNavContainer {
+  padding-left: 12px
 }
 
-.navListItemActive a {
-    color: red;
+.navListItemActive {
+  position: relative;
+}
+
+.navListItemActive a.navItem {
+  color: red !important;
+}
+
+.navListItem {
+  padding-left: 1rem !important;
 }
 
 .navListItem.navListItemActive:before {
-  padding-left: 0.5rem;
-  padding-right: 0.25rem;
-  content: '🐐';
+  content: "🐙";
+  position: absolute;
+  left: -8px;
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
