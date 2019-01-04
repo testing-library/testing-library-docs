@@ -38,6 +38,10 @@ a {
 }
 
 /* Change styling of selected navigation item */
+.container .docsNavContainer {
+  padding-left: 12px
+}
+
 .navListItemActive {
   position: relative;
 }
@@ -51,10 +55,9 @@ a {
 }
 
 .navListItem.navListItemActive:before {
-  content: '🐐';
+  content: "🐙";
   position: absolute;
-  left: -15px;
-  padding-left: 0.5rem !important;
+  left: -8px;
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
