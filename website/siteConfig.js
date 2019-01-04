@@ -16,6 +16,12 @@ const users = [
     infoLink: 'https://www.paypal.com',
     pinned: true,
   },
+  {
+    caption: 'Tiller',
+    image: '/img/users/tiller.svg',
+    infoLink: 'https://www.tillersystems.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
