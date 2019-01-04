@@ -10,14 +10,12 @@
 
 // List of projects/orgs using your project for the users page.
 const users = [
-  // {
-  //   caption: 'User1',
-  //   // You will need to prepend the image path with your baseUrl
-  //   // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-  //   image: '/img/docusaurus.svg',
-  //   infoLink: 'https://www.facebook.com',
-  //   pinned: true,
-  // },
+  {
+    caption: 'PayPal',
+    image: '/img/users/paypal.svg',
+    infoLink: 'https://www.paypal.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
