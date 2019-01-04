@@ -37,6 +37,21 @@ a {
   color: $secondaryColor;
 }
 
+/* Change styling of selected navigation item */
+.navListItemActive {
+    display: flex;
+}
+
+.navListItemActive a {
+    color: red;
+}
+
+.navListItem.navListItemActive:before {
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+  content: '🐐';
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
