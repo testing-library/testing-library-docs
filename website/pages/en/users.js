@@ -5,29 +5,29 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require("react");
+const React = require('react')
 
-const CompLibrary = require("../../core/CompLibrary.js");
+const CompLibrary = require('../../core/CompLibrary.js')
 
-const Container = CompLibrary.Container;
+const Container = CompLibrary.Container
 
 class Users extends React.Component {
   render() {
-    const { config: siteConfig } = this.props;
+    const { config: siteConfig } = this.props
     if ((siteConfig.users || []).length === 0) {
-      return null;
+      return null
     }
 
-    const editUrl = `${siteConfig.repoUrl}/edit/master/website/siteConfig.js`;
+    const editUrl = `${siteConfig.repoUrl}/edit/master/website/siteConfig.js`
     const showcase = siteConfig.users.map(user => (
       <a href={user.infoLink} key={user.infoLink}>
         <img src={user.image} alt={user.caption} title={user.caption} />
       </a>
-    ));
+    ))
 
     return (
       <div className="mainContainer">
-        <Container padding={["bottom", "top"]}>
+        <Container padding={['bottom', 'top']}>
           <div className="showcaseSection">
             <div className="prose">
               <h1>Who is Using This?</h1>
@@ -41,8 +41,8 @@ class Users extends React.Component {
           </div>
         </Container>
       </div>
-    );
+    )
   }
 }
 
-module.exports = Users;
+module.exports = Users

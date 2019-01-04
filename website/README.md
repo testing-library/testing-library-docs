@@ -72,11 +72,13 @@ title: This Doc Needs To Be Edited
 Edit me...
 ```
 
-For more information about docs, click [here](https://docusaurus.io/docs/en/navigation)
+For more information about docs, click
+[here](https://docusaurus.io/docs/en/navigation)
 
 ## Editing an existing blog post
 
-Edit blog posts by navigating to `website/blog` and editing the corresponding post:
+Edit blog posts by navigating to `website/blog` and editing the corresponding
+post:
 
 `website/blog/post-to-be-edited.md`
 
@@ -89,13 +91,15 @@ title: This Blog Post Needs To Be Edited
 Edit me...
 ```
 
-For more information about blog posts, click [here](https://docusaurus.io/docs/en/adding-blog)
+For more information about blog posts, click
+[here](https://docusaurus.io/docs/en/adding-blog)
 
 # Adding Content
 
 ## Adding a new docs page to an existing sidebar
 
-1. Create the doc as a new markdown file in `/docs`, example `docs/newly-created-doc.md`:
+1. Create the doc as a new markdown file in `/docs`, example
+   `docs/newly-created-doc.md`:
 
 ```md
 ---
@@ -122,7 +126,8 @@ My new content here..
 }
 ```
 
-For more information about adding new docs, click [here](https://docusaurus.io/docs/en/navigation)
+For more information about adding new docs, click
+[here](https://docusaurus.io/docs/en/navigation)
 
 ## Adding a new blog post
 
@@ -138,7 +143,8 @@ headerLinks: [
 ]
 ```
 
-2. Create the blog post with the format `YYYY-MM-DD-My-Blog-Post-Title.md` in `website/blog`:
+2. Create the blog post with the format `YYYY-MM-DD-My-Blog-Post-Title.md` in
+   `website/blog`:
 
 `website/blog/2018-05-21-New-Blog-Post.md`
 
@@ -153,11 +159,13 @@ title: New Blog Post
 Lorem Ipsum...
 ```
 
-For more information about blog posts, click [here](https://docusaurus.io/docs/en/adding-blog)
+For more information about blog posts, click
+[here](https://docusaurus.io/docs/en/adding-blog)
 
 ## Adding items to your site's top navigation bar
 
-1. Add links to docs, custom pages or external links by editing the headerLinks field of `website/siteConfig.js`:
+1. Add links to docs, custom pages or external links by editing the headerLinks
+   field of `website/siteConfig.js`:
 
 `website/siteConfig.js`
 
@@ -177,12 +185,15 @@ For more information about blog posts, click [here](https://docusaurus.io/docs/e
 }
 ```
 
-For more information about the navigation bar, click [here](https://docusaurus.io/docs/en/navigation)
+For more information about the navigation bar, click
+[here](https://docusaurus.io/docs/en/navigation)
 
 ## Adding custom pages
 
-1. Docusaurus uses React components to build pages. The components are saved as .js files in `website/pages/en`:
-1. If you want your page to show up in your navigation header, you will need to update `website/siteConfig.js` to add to the `headerLinks` element:
+1. Docusaurus uses React components to build pages. The components are saved as
+   .js files in `website/pages/en`:
+1. If you want your page to show up in your navigation header, you will need to
+   update `website/siteConfig.js` to add to the `headerLinks` element:
 
 `website/siteConfig.js`
 
@@ -197,7 +208,8 @@ For more information about the navigation bar, click [here](https://docusaurus.i
 }
 ```
 
-For more information about custom pages, click [here](https://docusaurus.io/docs/en/custom-pages).
+For more information about custom pages, click
+[here](https://docusaurus.io/docs/en/custom-pages).
 
 # Full Documentation
 

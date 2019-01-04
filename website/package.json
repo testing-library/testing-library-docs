@@ -21,7 +21,7 @@
   "lint-staged": {
     "linters": {
       "*.js": ["prettier --write", "git add"],
-      "../docs/*.md": ["prettier --write --parser=markdown", "git add"],
+      "../docs/**/*.md": ["prettier --write --parser=markdown", "git add"],
       "*.md": ["prettier --write --parser=markdown", "git add"],
       "*.json": ["prettier --write --parser=json", "git add"]
     }

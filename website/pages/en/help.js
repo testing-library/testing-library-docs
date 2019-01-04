@@ -5,46 +5,46 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require("react");
+const React = require('react')
 
-const CompLibrary = require("../../core/CompLibrary.js");
+const CompLibrary = require('../../core/CompLibrary.js')
 
-const Container = CompLibrary.Container;
-const GridBlock = CompLibrary.GridBlock;
+const Container = CompLibrary.Container
+const GridBlock = CompLibrary.GridBlock
 
 const ExternalLink = props => (
   <a target="_blank" rel="noreferrer noopener" {...props} />
-);
-const Link = props => <a {...props} />;
+)
+const Link = props => <a {...props} />
 
 function Help(props) {
-  const { config: siteConfig, language = "" } = props;
-  const { baseUrl, docsUrl } = siteConfig;
-  const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
-  const langPart = `${language ? `${language}/` : ""}`;
-  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+  const { config: siteConfig, language = '' } = props
+  const { baseUrl, docsUrl } = siteConfig
+  const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
+  const langPart = `${language ? `${language}/` : ''}`
+  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
 
   const supportLinks = [
     {
       content: `Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/react-testing-library)`,
-      title: "Stack Overflow"
+      title: 'Stack Overflow',
     },
     {
       content:
-        "Discuss issues with community members on [Spectrum](https://spectrum.chat/react-testing-library)",
-      title: "Spectrum"
+        'Discuss issues with community members on [Spectrum](https://spectrum.chat/react-testing-library)',
+      title: 'Spectrum',
     },
     {
       content: `Chat on [Discord](https://www.reactiflux.com/)`,
-      title: "Discord"
+      title: 'Discord',
     },
     {
       content: `Stay up to date by following the [blog](${
         props.config.baseUrl
       }blog)`,
-      title: "Blog"
-    }
-  ];
+      title: 'Blog',
+    },
+  ]
 
   return (
     <div className="docMainWrapper wrapper">
@@ -73,7 +73,7 @@ function Help(props) {
         </div>
       </Container>
     </div>
-  );
+  )
 }
 
-module.exports = Help;
+module.exports = Help
