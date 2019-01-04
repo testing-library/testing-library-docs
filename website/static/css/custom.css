@@ -37,6 +37,26 @@ a {
   color: $secondaryColor;
 }
 
+/* Change styling of selected navigation item */
+.navListItemActive {
+  position: relative;
+}
+
+.navListItemActive a.navItem {
+  color: red !important;
+}
+
+.navListItem {
+  padding-left: 1rem !important;
+}
+
+.navListItem.navListItemActive:before {
+  content: '🐐';
+  position: absolute;
+  left: -15px;
+  padding-left: 0.5rem !important;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
