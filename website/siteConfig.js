@@ -22,6 +22,12 @@ const users = [
     infoLink: 'https://www.tillersystems.com',
     pinned: true,
   },
+  {
+    caption: 'Codecademy',
+    image: '/img/users/codecademy.svg',
+    infoLink: 'https://www.codecademy.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
