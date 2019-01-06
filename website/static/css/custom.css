@@ -64,6 +64,7 @@ a {
 .productShowcaseSection .logos img,
 .showcaseSection .logos img {
   width: auto;
+  max-width: 250px;
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
