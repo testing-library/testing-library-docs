@@ -28,6 +28,12 @@ const users = [
     infoLink: 'https://www.codecademy.com',
     pinned: true,
   },
+  {
+    caption: 'Autodesk',
+    image: '/img/users/autodesk.svg',
+    infoLink: 'https://www.autodesk.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
