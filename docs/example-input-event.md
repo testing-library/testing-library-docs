@@ -4,6 +4,8 @@ title: Input Event
 sidebar_label: Input Event
 ---
 
+**Note**: If you want to resemble a more natural typing behaviour while testing your component, you can consider the `user-event`-library, a great companion for the testing library.
+
 ```jsx
 import React from 'react'
 import { render, fireEvent, cleanup } from 'react-testing-library'
