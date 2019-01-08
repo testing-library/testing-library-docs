@@ -34,6 +34,12 @@ const users = [
     infoLink: 'https://www.autodesk.com',
     pinned: true,
   },
+  {
+    caption: 'TravelPerk',
+    image: '/img/users/travelperk.svg',
+    infoLink: 'https://www.travelperk.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
