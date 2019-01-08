@@ -4,7 +4,9 @@ title: Input Event
 sidebar_label: Input Event
 ---
 
-**Note**: If you want to resemble a more natural typing behaviour while testing your component, you can consider the [user-event](ecosystem-user-event.md)-library, a great companion for the testing library.
+> **Note**
+>
+> If you want to simulate a more natural typing behaviour while testing your component, consider the companion library [`user-event`](ecosystem-user-event.md)
 
 ```jsx
 import React from 'react'
