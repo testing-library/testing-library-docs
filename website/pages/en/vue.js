@@ -65,7 +65,7 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/vue.png`} />
+        <Logo img_src={`${baseUrl}img/vue-400x400.png`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
