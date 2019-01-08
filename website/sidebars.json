@@ -35,6 +35,11 @@
         "type": "subcategory",
         "label": "Cypress Testing Library",
         "ids": ["cypress-testing-library/intro"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Vue Testing Library",
+        "ids": ["vue-testing-library/intro"]
       }
     ],
     "Ecosystem": ["ecosystem-user-event", "ecosystem-jest-dom"],
