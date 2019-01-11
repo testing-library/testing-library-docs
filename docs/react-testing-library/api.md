@@ -32,7 +32,7 @@ afterEach(cleanup)
 
 test('renders a message', () => {
   const { container, getByText } = render(<Greeting />)
-  expect(getbyText('Hello, world!')).toBeInTheDocument()
+  expect(getByText('Hello, world!')).toBeInTheDocument()
   expect(container.firstChild).toMatchInlineSnapshot(`
     <h1>Hello, World!</h1>
   `)
