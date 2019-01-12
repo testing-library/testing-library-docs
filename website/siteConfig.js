@@ -46,6 +46,12 @@ const users = [
     infoLink: 'https://www.travelperk.com',
     pinned: true,
   },
+  {
+    caption: 'Velo Payments',
+    image: '/img/users/velopayments.svg',
+    infoLink: 'https://www.velopayments.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
