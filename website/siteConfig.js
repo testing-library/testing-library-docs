@@ -52,6 +52,12 @@ const users = [
     infoLink: 'https://www.velopayments.com',
     pinned: true,
   },
+  {
+    caption: 'Expedia Group',
+    image: '/img/users/expediagroup.svg',
+    infoLink: 'https://www.expediagroup.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
