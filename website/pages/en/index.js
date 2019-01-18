@@ -182,7 +182,7 @@ class Index extends React.Component {
     )
 
     const Ecosystem = () => (
-      <Block layout="threeColumn" background={null}>
+      <Block layout="fourColumn" background={null}>
         {[
           {
             content: 'For testing React Components',
@@ -195,6 +195,12 @@ class Index extends React.Component {
             image: `${baseUrl}img/evergreen-128x128.png`,
             imageAlign: 'top',
             title: '[Cypress Testing Library](./cypress)',
+          },
+          {
+            content: 'For testing Vue Components',
+            image: `${baseUrl}img/vue-400x400.png`,
+            imageAlign: 'top',
+            title: '[Vue Testing Library](./vue)',
           },
           {
             content: 'Explore the ecosystem',
