@@ -65,6 +65,13 @@ element in the DOM and the key you want to fire.
 
 ```javascript
 fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
+
+// note: you should set the charCode or it will be fallback to 0
+// will Fire an KeyboardEvent with charCode = 0
+fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
+
+// will Fire an KeyboardEvent with charCode = 65
+fireEvent.keyDown(domNode, { key: 'A', code: 65, charCode: 65 })
 ```
 
 You can find out which key code to use at
