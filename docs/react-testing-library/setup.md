@@ -19,7 +19,7 @@ the setup and teardown of tests in individual files. For example, you can ensure
 assertions.
 
 To do this with Jest, you can add the
-[`setupTestFrameworkScriptFile`](https://facebook.github.io/jest/docs/en/configuration.html#setuptestframeworkscriptfile-string)
+[`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array)
 option to your Jest config. The setup file can be anywhere, for example
 `jest.setup.js` or `./utils/setupTests.js`.
 
@@ -30,7 +30,7 @@ setup code there.
 ```javascript
 // jest.config.js
 module.exports = {
-  setupTestFrameworkScriptFile: require.resolve('./jest.setup.js'),
+  setupFilesAfterEnv: [require.resolve('./jest.setup.js')],
   // ... other options ...
 }
 ```
