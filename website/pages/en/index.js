@@ -203,6 +203,12 @@ class Index extends React.Component {
             title: '[Vue Testing Library](./vue)',
           },
           {
+            content: 'For testing Angular Components',
+            image: `${baseUrl}img/angular-250x250.png`,
+            imageAlign: 'top',
+            title: '[Angular Testing Library](./angular)',
+          },
+          {
             content: 'Explore the ecosystem',
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
