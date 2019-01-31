@@ -40,6 +40,11 @@
         "type": "subcategory",
         "label": "Vue Testing Library",
         "ids": ["vue-testing-library/intro"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Angular Testing Library",
+        "ids": ["angular-testing-library/intro"]
       }
     ],
     "Ecosystem": ["ecosystem-user-event", "ecosystem-jest-dom"],
