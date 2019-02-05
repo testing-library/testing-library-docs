@@ -145,6 +145,12 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/kentcdodds/dom-testing-library',
   docsRepoUrl: 'https://github.com/alexkrolick/testing-library-docs',
+
+  // Algolia DocSearch config
+  algolia: {
+    apiKey: 'bda29e6557dc5be1ce5c05f2dbff8f33',
+    indexName: 'testing-library',
+  },
 }
 
 module.exports = siteConfig
