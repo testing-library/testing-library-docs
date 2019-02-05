@@ -167,7 +167,7 @@ const { rerender } = render(<NumberDisplay number={1} />)
 rerender(<NumberDisplay number={2} />)
 ```
 
-[See the examples page](example-update-props)
+[See the examples page](example-update-props.md)
 
 ### `unmount`
 
