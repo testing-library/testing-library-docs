@@ -248,9 +248,9 @@ that you configure your test framework to run a file before your tests which
 does this automatically. See the [setup](./setup) section for guidance on how to
 set up your framework.
 
-## `flushEffects`
+## `act`
 
-**Experimental**
-
-This experimental API is intended to be used to force React's `useEffect` hook
-to run synchronously.
+This is a light wrapper around the
+[`react-dom/test-utils` `act` function](https://reactjs.org/docs/test-utils.html#act).
+All it does is forward all arguments to the act function if your version of
+react supports `act`.
