@@ -52,6 +52,12 @@ const users = [
     infoLink: 'https://www.velopayments.com',
     pinned: true,
   },
+  {
+    caption: 'Parsley Health',
+    image: '/img/users/parsleyhealth.svg',
+    infoLink: 'https://www.parsleyhealth.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
