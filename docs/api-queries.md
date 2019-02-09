@@ -283,8 +283,8 @@ const usernameInputElement = getByTestId(container, 'username-input')
 > case. Using data-testid attributes do not resemble how your software is used
 > and should be avoided if possible. That said, they are _way_ better than
 > querying based on DOM structure or styling css class names. Learn more about
-> `data-testid`s from the blog post ["Making your UI tests resilient to
-> change"](https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269)
+> `data-testid`s from the blog post
+> ["Making your UI tests resilient to change"](https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269)
 
 #### Overriding `data-testid`
 

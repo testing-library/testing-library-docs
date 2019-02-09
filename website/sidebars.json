@@ -45,6 +45,17 @@
         "type": "subcategory",
         "label": "Angular Testing Library",
         "ids": ["angular-testing-library/intro"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Reason Testing Libraries",
+        "ids": [
+          "bs-dom-testing-library/intro",
+          "bs-dom-testing-library/example-intro",
+          "bs-react-testing-library/intro",
+          "bs-react-testing-library/example-intro",
+          "ecosystem-bs-jest-dom"
+        ]
       }
     ],
     "Ecosystem": ["ecosystem-user-event", "ecosystem-jest-dom"],
