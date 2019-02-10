@@ -48,17 +48,26 @@
       },
       {
         "type": "subcategory",
-        "label": "Reason Testing Libraries",
+        "label": "Reason Testing Library",
         "ids": [
           "bs-dom-testing-library/intro",
-          "bs-dom-testing-library/example-intro",
+          "bs-dom-testing-library/example-intro"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "ReasonReact Testing Library",
+        "ids": [
           "bs-react-testing-library/intro",
-          "bs-react-testing-library/example-intro",
-          "ecosystem-bs-jest-dom"
+          "bs-react-testing-library/example-intro"
         ]
       }
     ],
-    "Ecosystem": ["ecosystem-user-event", "ecosystem-jest-dom"],
+    "Ecosystem": [
+      "ecosystem-user-event",
+      "ecosystem-jest-dom",
+      "ecosystem-bs-jest-dom"
+    ],
     "Help": ["faq", "learning"]
   }
 }

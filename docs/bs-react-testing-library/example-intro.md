@@ -1,6 +1,6 @@
 ---
 id: example-intro
-title: With React Example
+title: Example
 ---
 
 ## Basic

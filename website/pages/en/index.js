@@ -209,6 +209,13 @@ class Index extends React.Component {
             title: '[Angular Testing Library](./angular)',
           },
           {
+            content: 'For testing ReasonReact Components',
+            image: `${baseUrl}img/reason-200x200.png`,
+            imageAlign: 'top',
+            title:
+              '[ReasonReact Testing Library](./docs/bs-react-testing-library/intro)',
+          },
+          {
             content: 'Explore the ecosystem',
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',

@@ -1,6 +1,6 @@
 ---
 id: intro
-title: With React
+title: Introduction
 ---
 
 [`bs-react-testing-library`][gh] contains
