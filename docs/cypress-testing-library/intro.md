@@ -29,7 +29,7 @@ and `queryAllBy` commands.
 ## Examples
 
 To show some simple examples (from
-[cypress/integration/commands.spec.js](cypress/integration/commands.spec.js)):
+[https://github.com/kentcdodds/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](cypress/integration/commands.spec.js)):
 
 ```javascript
 cy.getAllByText('Jackie Chan').click()
