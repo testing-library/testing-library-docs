@@ -23,6 +23,7 @@ test("Component renders", () =>
     <h1> {ReasonReact.string("Heading")} </h1>
   </div>
   |> render
+  |> container
   |> expect
   |> toMatchSnapshot
 );
