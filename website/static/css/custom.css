@@ -4,8 +4,8 @@ body {
   font-size: 18px;
 }
 
-
-pre, code {
+pre,
+code {
   font-family: $fontCode;
 }
 
@@ -39,7 +39,7 @@ a {
 
 /* Change styling of selected navigation item */
 .container .docsNavContainer {
-  padding-left: 12px
+  padding-left: 12px;
 }
 
 .navListItemActive {
@@ -50,14 +50,16 @@ a {
   color: red !important;
 }
 
-.navListItem {
+.navListItem,
+.subNavGroup {
   padding-left: 1rem !important;
 }
 
 .navListItem.navListItemActive:before {
-  content: "🐙";
+  content: '🐙';
   position: absolute;
-  left: -8px;
+  left: -0.5rem;
+  bottom: 0;
 }
 
 /* Change styling of logos in showcaseSection */
