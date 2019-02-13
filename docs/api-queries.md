@@ -3,17 +3,41 @@ id: api-queries
 title: Queries
 ---
 
-## Queries
+## Variants
 
-> **Note**
->
-> - Each of the `get` APIs below have a matching
->   [`getAll`](#queryall-and-getall-apis) API that returns all elements instead
->   of just the first one, and
->   [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return
->   `null`/`[]` instead of throwing an error.
-> - See [TextMatch](#textmatch) for details on the `exact`, `trim`, and
->   `collapseWhitespace` options.
+> `getBy` queries are shwon by default in the [query documentation](#queries)
+> below because returning a single element or throwing a debuggable error is the
+> most common case.
+
+### getBy
+
+[`getBy*`](#queries) queries returns the first matching node for a query, and
+throw an error if no elements match.
+
+### getAllBy
+
+[`getAllBy*`](#queryall-and-getall-apis) queries return an array of all matching
+nodes for a query, and throw an error if no elements match.
+
+### queryBy
+
+[`queryBy*`](#query-apis) queries returns the first matching node for a query,
+and return `null` if no elements match.
+
+### queryAllBy
+
+[`queryAllBy*`](#queryall-and-getall-apis) queries return an array of all
+matching nodes for a query, and return an empty array (`[]`) if no elements
+match.
+
+## Options
+
+The argument to a query can be a _string_, _regular expression_, or _function_.
+There are also options to adjust how node text is parsed.
+
+See [TextMatch](#textmatch) for documentation on what can be passed to a query.
+
+## Queries
 
 ### `getByLabelText`
 
@@ -391,7 +415,7 @@ getByText(container, (content, element) => {
 
 ## `query` APIs
 
-Each of the `get` APIs listed in [the 'Usage'](#usage) section above have a
+Each of the `get` APIs listed in the [queries](#queries) section above have a
 complimentary `query` API. The `get` APIs will throw errors if a proper node
 cannot be found. This is normally the desired effect. However, if you want to
 make an assertion that an element is _not_ present in the DOM, then you can use
@@ -414,21 +438,4 @@ array has a length of 0.
 const submitButtons = queryAllByText(container, 'submit')
 expect(submitButtons).toHaveLength(3) // expect 3 elements
 expect(submitButtons[0]).toBeTruthy()
-```
-
-## `within` and `getQueriesForElement` APIs
-
-`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
-to the raw query functions, allowing them to be used without specifying a
-container. It is the recommended approach for libraries built on this API and is
-in use in `react-testing-library` and `vue-testing-library`.
-
-Example: To get the text 'hello' only within a section called 'messages', you
-could do:
-
-```javascript
-import { within } from 'dom-testing-library'
-
-const { getByText } = within(document.getElementById('messages'))
-const helloMessage = getByText('hello')
 ```

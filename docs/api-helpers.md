@@ -95,6 +95,23 @@ const buttonText = getNodeText(container.querySelector('input[type=button]')) //
 These elements use the attribute `value` and display its value to the user.
 ```
 
+## `within` and `getQueriesForElement` APIs
+
+`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
+to the raw query functions, allowing them to be used without specifying a
+container. It is the recommended approach for libraries built on this API and is
+in use in `react-testing-library` and `vue-testing-library`.
+
+Example: To get the text 'hello' only within a section called 'messages', you
+could do:
+
+```javascript
+import { within } from 'dom-testing-library'
+
+const { getByText } = within(document.getElementById('messages'))
+const helloMessage = getByText('hello')
+```
+
 ## Debugging
 
 When you use any `get` calls in your test cases, the current state of the
