@@ -19,6 +19,7 @@
       "example-external"
     ],
     "API": ["api-queries", "api-events", "api-async", "api-helpers"],
+    "Guides": ["guide-which-query", "guide-disappearance"],
     "Wrappers": [
       {
         "type": "subcategory",
