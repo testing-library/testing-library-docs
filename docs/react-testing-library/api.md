@@ -254,3 +254,69 @@ This is a light wrapper around the
 [`react-dom/test-utils` `act` function](https://reactjs.org/docs/test-utils.html#act).
 All it does is forward all arguments to the act function if your version of
 react supports `act`.
+
+## `testHook`
+
+`testHook` is a utility to test custom hooks. It is designed to help test
+reusable hooks in isolation.
+
+You should also write integration tests for components using custom hooks, and
+one-off hooks should be tested as part of the component instead.
+
+**Usage**
+
+```jsx
+import { testHook } from 'react-testing-libary'
+
+testHook(hook[, renderOptions])
+```
+
+**Arguments**
+
+- `hook` customHook to test
+- `renderOptions` options object to pass to the underlying `render`. See
+  [render options](#render-options). This is mostly useful for wrapping the hook
+  with a context provider.
+
+**Returns**
+
+```jsx
+const { rerender, unmount, result } = testHook(hook)
+```
+
+- `rerender` Call this function to render the wrapper again, i.e., to test that
+  the hook handles props changes
+- `unmount` Call this to unmount the component, i.e., to test side-effects and
+  cleanup behavior
+- `result` An object that acts like a React ref with a `current` property
+  pointing to the last value the hook returned. For example:
+  `expect(result.current.count).toBe(0)`
+
+**Example**
+
+```jsx
+// Example custom hook
+function useCounter({ initialCount = 0, step = 1 } = {}) {
+  const [count, setCount] = React.useState(initialCount)
+  const increment = () => setCount(c => c + step)
+  const decrement = () => setCount(c => c - step)
+  return { count, increment, decrement }
+}
+```
+
+```jsx
+// Test using the `result` ref
+test('returns result ref with latest result from hook execution', () => {
+  const { result } = testHook(useCounter)
+
+  expect(result.current.count).toBe(0)
+  act(() => result.current.increment())
+  expect(result.current.count).toBe(1)
+})
+```
+
+**More**
+
+- [More Examples](/docs/example-react-hooks)
+- [Tests](https://github.com/kentcdodds/react-testing-library/blob/master/src/__tests__/test-hook.js)
+- [Types](https://github.com/kentcdodds/react-testing-library/blob/master/typings/index.d.ts)
