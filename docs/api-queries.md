@@ -3,19 +3,44 @@ id: api-queries
 title: Queries
 ---
 
+## Variants
+
+> `getBy` queries are shown by default in the [query documentation](#queries)
+> below.
+
+### getBy
+
+[`getBy*`](#query-apis) queries returns the first matching node for a query, and
+throw an error if no elements match.
+
+### getAllBy
+
+[`getAllBy*`](#queryall-and-getall-apis) queries return an array of all matching
+nodes for a query, and throw an error if no elements match.
+
+### queryBy
+
+[`queryBy*`](#query-apis) queries returns the first matching node for a query,
+and return `null` if no elements match.
+
+### queryAllBy
+
+[`queryAllBy*`](#queryall-and-getall-apis) queries return an array of all
+matching nodes for a query, and return an empty array (`[]`) if no elements
+match.
+
+## Options
+
+The argument to a query can be a _string_, _regular expression_, or _function_.
+There are also options to adjust how node text is parsed.
+
+See [TextMatch](#textmatch) for documentation on what can be passed to a query.
+
 ## Queries
 
-> **Note**
->
-> - Each of the `get` APIs below have a matching
->   [`getAll`](#queryall-and-getall-apis) API that returns all elements instead
->   of just the first one, and
->   [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return
->   `null`/`[]` instead of throwing an error.
-> - See [TextMatch](#textmatch) for details on the `exact`, `trim`, and
->   `collapseWhitespace` options.
+### `ByLabelText`
 
-### `getByLabelText`
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
 
 ```typescript
 getByLabelText(
@@ -69,7 +94,10 @@ const inputNode = getByLabelText(container, 'username', { selector: 'input' })
 > this behavior (for example you wish to assert that it doesn't exist), then use
 > `queryByLabelText` instead.
 
-### `getByPlaceholderText`
+### `ByPlaceholderText`
+
+> getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
+> queryAllByPlaceholderText
 
 ```typescript
 getByPlaceholderText(
@@ -94,7 +122,9 @@ const inputNode = getByPlaceholderText(container, 'Username')
 > A placeholder is not a good substitute for a label so you should generally use
 > `getByLabelText` instead.
 
-### `getByText`
+### `ByText`
+
+> getByText, queryByText, getAllByText, queryAllByText
 
 ```typescript
 getByText(
@@ -137,7 +167,9 @@ content is in an inline script file, then the script tag could be returned.
 
 If you'd rather disable this behavior, set `ignore` to `false`.
 
-### `getByAltText`
+### `ByAltText`
+
+> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText
 
 ```typescript
 getByAltText(
@@ -163,7 +195,9 @@ as it's deprecated).
 const incrediblesPosterImg = getByAltText(container, /incredibles.*poster$/i)
 ```
 
-### `getByTitle`
+### `ByTitle`
+
+> getByTitle, queryByTitle, getAllByTitle, queryAllByTitle
 
 ```typescript
 getByTitle(
@@ -189,7 +223,10 @@ Will also find a `title` element within an SVG.
 const closeElement = getByTitle(container, 'Close')
 ```
 
-### `getByDisplayValue`
+### `ByDisplayValue`
+
+> getByDisplayValue, queryByDisplayValue, getAllByDisplayValue,
+> queryAllByDisplayValue
 
 ```typescript
 getByDisplayValue(
@@ -238,7 +275,9 @@ const selectElement = getByDisplayName(container, 'Alaska')
 In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
 
-### `getByRole`
+### `ByRole`
+
+> getByRole, queryByRole, getAllByRole, queryAllByRole
 
 ```typescript
 getByRole(
@@ -258,7 +297,9 @@ accepts a [`TextMatch`](#textmatch)).
 const dialogContainer = getByRole(container, 'dialog')
 ```
 
-### `getByTestId`
+### `ByTestId`
+
+> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId
 
 ```typescript
 getByTestId(
@@ -391,7 +432,7 @@ getByText(container, (content, element) => {
 
 ## `query` APIs
 
-Each of the `get` APIs listed in [the 'Usage'](#usage) section above have a
+Each of the `get` APIs listed in the [queries](#queries) section above have a
 complimentary `query` API. The `get` APIs will throw errors if a proper node
 cannot be found. This is normally the desired effect. However, if you want to
 make an assertion that an element is _not_ present in the DOM, then you can use
@@ -414,21 +455,4 @@ array has a length of 0.
 const submitButtons = queryAllByText(container, 'submit')
 expect(submitButtons).toHaveLength(3) // expect 3 elements
 expect(submitButtons[0]).toBeTruthy()
-```
-
-## `within` and `getQueriesForElement` APIs
-
-`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
-to the raw query functions, allowing them to be used without specifying a
-container. It is the recommended approach for libraries built on this API and is
-in use in `react-testing-library` and `vue-testing-library`.
-
-Example: To get the text 'hello' only within a section called 'messages', you
-could do:
-
-```javascript
-import { within } from 'dom-testing-library'
-
-const { getByText } = within(document.getElementById('messages'))
-const helloMessage = getByText('hello')
 ```
