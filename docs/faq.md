@@ -7,27 +7,7 @@ title: FAQ
 
 <summary>Which get method should I use?</summary>
 
-Based on [the Guiding Principles](guiding-principles.md), your test should
-resemble how your code (component, page, etc.) as much as possible. With this in
-mind, we recommend this order of priority:
-
-1.  `getByLabelText`: Only really good for form fields, but this is the number 1
-    method a user finds those elements, so it should be your top preference.
-2.  `getByPlaceholderText`:
-    [A placeholder is not a substitute for a label](https://www.nngroup.com/articles/form-design-placeholders/).
-    But if that's all you have, then it's better than alternatives.
-3.  `getByText`: Not useful for forms, but this is the number 1 method a user
-    finds other elements (like buttons to click), so it should be your top
-    preference for non-form elements.
-4.  `getByAltText`: If your element is one which supports `alt` text (`img`,
-    `area`, and `input`), then you can use this to find that element.
-5.  `getByTestId`: The user cannot see (or hear) these, so this is only
-    recommended for cases where you can't match by text or it doesn't make sense
-    (the text is dynamic).
-
-Other than that, you can also use the `container` to query the rendered
-component as well (using the regular
-[`querySelector` API](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)).
+See [Which Query Should I Use](guide-which-query.md)
 
 </details>
 
@@ -35,8 +15,13 @@ component as well (using the regular
 
 <summary>Can I write unit tests with this library?</summary>
 
-Definitely yes! You can write unit, integration, functional, and end-to-end
-tests with this library.
+Definitely yes! You can write unit, integration, and end-to-end tests with this
+library.
+
+As you write your tests, keep in mind:
+
+> The more your tests resemble the way your software is used, the more
+> confidence they can give you. - [17 Feb 2018][guiding-principle]
 
 </details>
 
@@ -47,7 +32,7 @@ tests with this library.
 This is fairly common. Our first bit of advice is to try to get the default text
 used in your tests. That will make everything much easier (more than just using
 this utility). If that's not possible, then you're probably best to just stick
-with `data-testid`s (which is not too bad anyway).
+with `data-testid`s (which is not bad anyway).
 
 </details>
 

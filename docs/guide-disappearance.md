@@ -1,0 +1,79 @@
+---
+id: guide-disappearance
+title: Appearance and Disappearance
+---
+
+Sometimes you need to test that an element is present and then disappears or
+vice versa.
+
+## Waiting for appearance
+
+If you need to wait for an element to appear, the
+[async wait utilities](api-async.md) allow you to wait for an assertion to be
+satisfied before proceeding. The wait utilities retry until the query passes or
+times out.
+
+```jsx
+test('movie title appears', async () => {
+  // element is initially not present...
+
+  // wait for appearance
+  await wait(() => {
+    expect(getByText('the lion king')).toBeInTheDocument()
+  })
+
+  // wait for appearance and return the element
+  const movie = await waitForElement(() => getByText('the lion king'))
+})
+```
+
+## Waiting for disappearance
+
+The `wait` [async helper](api-async.md) function retries until the wrapped
+function stops throwing an error. This can be used to assert that an element
+disappears from the page.
+
+```jsx
+test('movie title goes away', async () => {
+  // element is initially present...
+  // note use of queryBy instead of getBy to return null
+  // instead of throwing in the query itself
+  await wait(() => {
+    expect(queryByText('i, robot')).not.toBeInTheDocument()
+  })
+})
+```
+
+## Asserting elements are not present
+
+The standard `getBy` methods throw an error when they can't find an element, so
+if you want to make an assertion that an element is _not_ present in the DOM,
+you can use `queryBy` APIs instead:
+
+```javascript
+const submitButton = queryByText(container, 'submit')
+expect(submitButton).toBeNull() // it doesn't exist
+```
+
+The `queryAll` APIs version return an array of matching nodes. The length of the
+array can be useful for assertions after elements are added or removed from the
+DOM.
+
+```javascript
+const submitButtons = queryAllByText(container, 'submit')
+expect(submitButtons).toHaveLength(2) // expect 2 elements
+```
+
+### `not.toBeInTheDocument`
+
+The [`jest-dom`](ecosystem-jest-dom.md) utility library provides the
+`.toBeInTheDocument()` matcher, which can be used to assert that an element is
+in the body of the document, or not. This can be more meaningful than asserting
+a query result is `null`.
+
+```javascript
+import 'jest-dom/extend-expect'
+// use `queryBy` to avoid throwing an error with `getBy`
+const submitButton = queryByText(container, 'submit')
+expect(submitButton).not.toBeInTheDocument()
+```
