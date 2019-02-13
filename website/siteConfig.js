@@ -95,7 +95,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: '#292422',
-    secondaryColor: '#3344bb',
+    secondaryColor: '#2468e5',
   },
 
   // Add custom scripts here that would be placed in <script> tags.
