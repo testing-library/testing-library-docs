@@ -1,6 +1,7 @@
 ---
 id: intro
-title: Introduction
+title: React Testing Library
+sidebar_label: Introduction
 ---
 
 [`react-testing-library`][gh] builds on top of `dom-testing-library` by adding

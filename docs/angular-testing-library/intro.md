@@ -1,6 +1,6 @@
 ---
 id: intro
-title: Introduction
+title: Angular Testing Library
 ---
 
 [`@angular-extensions/testing-library`][gh] is an [Angular][angular] adapter

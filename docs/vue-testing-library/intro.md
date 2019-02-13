@@ -1,6 +1,6 @@
 ---
 id: intro
-title: Introduction
+title: Vue Testing Library
 ---
 
 [`vue-testing-library`][gh] is a lightweight adapter allowing
