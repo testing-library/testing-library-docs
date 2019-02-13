@@ -32,35 +32,15 @@
           "react-testing-library/faq"
         ]
       },
-      {
-        "type": "subcategory",
-        "label": "Cypress Testing Library",
-        "ids": ["cypress-testing-library/intro"]
-      },
-      {
-        "type": "subcategory",
-        "label": "Vue Testing Library",
-        "ids": ["vue-testing-library/intro"]
-      },
-      {
-        "type": "subcategory",
-        "label": "Angular Testing Library",
-        "ids": ["angular-testing-library/intro"]
-      },
-      {
-        "type": "subcategory",
-        "label": "Reason Testing Library",
-        "ids": [
-          "bs-dom-testing-library/intro",
-          "bs-dom-testing-library/example-intro"
-        ]
-      },
+      "cypress-testing-library/intro",
+      "vue-testing-library/intro",
+      "angular-testing-library/intro",
       {
         "type": "subcategory",
         "label": "ReasonReact Testing Library",
         "ids": [
           "bs-react-testing-library/intro",
-          "bs-react-testing-library/example-intro"
+          "bs-react-testing-library/examples"
         ]
       }
     ],
