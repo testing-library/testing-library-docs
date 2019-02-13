@@ -5,13 +5,12 @@ title: Queries
 
 ## Variants
 
-> `getBy` queries are shwon by default in the [query documentation](#queries)
-> below because returning a single element or throwing a debuggable error is the
-> most common case.
+> `getBy` queries are shown by default in the [query documentation](#queries)
+> below.
 
 ### getBy
 
-[`getBy*`](#queries) queries returns the first matching node for a query, and
+[`getBy*`](#query-apis) queries returns the first matching node for a query, and
 throw an error if no elements match.
 
 ### getAllBy
@@ -39,7 +38,9 @@ See [TextMatch](#textmatch) for documentation on what can be passed to a query.
 
 ## Queries
 
-### `getByLabelText`
+### `ByLabelText`
+
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
 
 ```typescript
 getByLabelText(
@@ -93,7 +94,10 @@ const inputNode = getByLabelText(container, 'username', { selector: 'input' })
 > this behavior (for example you wish to assert that it doesn't exist), then use
 > `queryByLabelText` instead.
 
-### `getByPlaceholderText`
+### `ByPlaceholderText`
+
+> getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
+> queryAllByPlaceholderText
 
 ```typescript
 getByPlaceholderText(
@@ -118,7 +122,9 @@ const inputNode = getByPlaceholderText(container, 'Username')
 > A placeholder is not a good substitute for a label so you should generally use
 > `getByLabelText` instead.
 
-### `getByText`
+### `ByText`
+
+> getByText, queryByText, getAllByText, queryAllByText
 
 ```typescript
 getByText(
@@ -161,7 +167,9 @@ content is in an inline script file, then the script tag could be returned.
 
 If you'd rather disable this behavior, set `ignore` to `false`.
 
-### `getByAltText`
+### `ByAltText`
+
+> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText
 
 ```typescript
 getByAltText(
@@ -187,7 +195,9 @@ as it's deprecated).
 const incrediblesPosterImg = getByAltText(container, /incredibles.*poster$/i)
 ```
 
-### `getByTitle`
+### `ByTitle`
+
+> getByTitle, queryByTitle, getAllByTitle, queryAllByTitle
 
 ```typescript
 getByTitle(
@@ -213,7 +223,10 @@ Will also find a `title` element within an SVG.
 const closeElement = getByTitle(container, 'Close')
 ```
 
-### `getByDisplayValue`
+### `ByDisplayValue`
+
+> getByDisplayValue, queryByDisplayValue, getAllByDisplayValue,
+> queryAllByDisplayValue
 
 ```typescript
 getByDisplayValue(
@@ -262,7 +275,9 @@ const selectElement = getByDisplayName(container, 'Alaska')
 In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
 
-### `getByRole`
+### `ByRole`
+
+> getByRole, queryByRole, getAllByRole, queryAllByRole
 
 ```typescript
 getByRole(
@@ -282,7 +297,9 @@ accepts a [`TextMatch`](#textmatch)).
 const dialogContainer = getByRole(container, 'dialog')
 ```
 
-### `getByTestId`
+### `ByTestId`
+
+> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId
 
 ```typescript
 getByTestId(
