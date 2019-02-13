@@ -3,8 +3,10 @@ id: ecosystem-bs-jest-dom
 title: bs-jest-dom
 ---
 
-[`bs-jest-dom`][gh] is a companion library for `bs-react-testing-library` that
-provides custom DOM element matchers for Jest
+[`bs-jest-dom`][gh] is a companion library for
+[`bs-react-testing-library`](/docs/bs-react-testing-library/intro) that provides
+custom DOM element matchers for Jest in [ReasonML][re] via
+[BuckleScript][bucklescript].
 
 ```
 npm install --save-dev bs-jest-dom
@@ -57,3 +59,6 @@ test("renders with text", () =>
 
 You can find more bs-jest-dom examples at
 [wyze/bs-jest-dom/src/\_\_tests\_\_](https://github.com/wyze/bs-jest-dom/tree/master/src/__tests__).
+
+[re]: https://reasonml.github.io/
+[bucklescript]: https://bucklescript.github.io/
