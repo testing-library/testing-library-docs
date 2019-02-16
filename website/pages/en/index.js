@@ -211,6 +211,11 @@ class Index extends React.Component {
               '[ReasonReact Testing Library](./docs/bs-react-testing-library/intro)',
           },
           {
+            image: `${baseUrl}img/puppeteer-275x275.png`,
+            imageAlign: 'top',
+            title: '[Puppeteer Testing Library](./pptr)',
+          },
+          {
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
             title: '[And more...](./docs/ecosystem-user-event)',
