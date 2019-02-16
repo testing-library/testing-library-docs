@@ -100,7 +100,8 @@ The `render` method returns an object that has a few properties:
 
 The most important feature of `render` is that the queries from
 [dom-testing-library](api-queries.md) are automatically returned with their
-first argument bound to the document.
+first argument bound to the [baseElement](#baseelement), which defaults to
+`document.body`.
 
 See [Queries](api-queries.md) for a complete list.
 
