@@ -8,22 +8,19 @@ sidebar_label: Setup
 demonstrated in the example above). However, there are some things you can do
 when configuring your testing framework to reduce some boilerplate. In these
 docs we'll demonstrate configuring Jest, but you should be able to do similar
-things with [any testing framework](#using-without-jest) (react-testing-library
-does not require that you use Jest).
+things with any testing framework (react-testing-library does not require that
+you use Jest).
 
 ## Global Config
 
-Adding options to your global test config can simplify the setup and teardown of
-tests in individual files.
+There are several options you can add to your global test config that simplify
+the setup and teardown of tests in individual files. For example, you can ensure
+[`cleanup`](./api#cleanup) is called after each test and import additional
+assertions.
 
-### Cleanup
-
-You can ensure [`cleanup`](./api#cleanup) is called after each test and import
-additional assertions by adding it to the setup configuration in Jest.
-
-In Jest 24 and up, add the
+To do this with Jest 24 and up, you can add the
 [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array)
-option to your Jest config:
+option to your Jest config.
 
 ```javascript
 // jest.config.js
@@ -36,9 +33,9 @@ module.exports = {
 }
 ```
 
-<details>
+### Older versions of Jest
 
-<summary>Older versions of Jest</summary>
+<details>
 
 Jest versions 23 and below use the
 [`setupTestFrameworkScriptFile`](https://jestjs.io/docs/en/23.x/configuration#setuptestframeworkscriptfile-string)
@@ -75,11 +72,7 @@ It's often useful to define a custom render method that includes things like
 global context providers, data stores, etc. To make this available globally, one
 approach is to define a utility file that re-exports everything from
 `react-testing-library`. You can replace react-testing-library with this file in
-all your imports. See [below](#comfiguring-jest-with-test-utils) for a way to
-make your test util file accessible without using relative paths.
-
-The example below sets up data providers using the
-[`wrapper`](api.md#render-options) option to `render`.
+all your imports.
 
 ```diff
 // my-component.test.js
@@ -94,18 +87,16 @@ import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
 import defaultStrings from 'i18n/en-x-default'
 
-const AllTheProviders = ({ children }) => {
-  return (
+const customRender = (node, options) => {
+  return render(
     <ThemeProvider theme="light">
       <TranslationProvider messages={defaultStrings}>
-        {children}
+        {node}
       </TranslationProvider>
-    </ThemeProvider>
+    </ThemeProvider>,
+    options
   )
 }
-
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
 export * from 'react-testing-library'
@@ -114,44 +105,9 @@ export * from 'react-testing-library'
 export { customRender as render }
 ```
 
-> **Note**
->
-> Babel versions lower than 7 throw an error when trying to override the named
-> export in the example above. See
-> [#169](https://github.com/kentcdodds/react-testing-library/issues/169) and the
-> workaround below.
-
-<details>
-<summary>Workaround for Babel 6</summary>
-
-You can use CommonJS modules instead of ES modules, which should work in Node:
-
-```js
-// test-utils.js
-const rtl = require('react-testing-library')
-
-const customRender = (ui, options) =>
-  rtl.render(ui, {
-    myDefaultOption: 'something',
-    ...options,
-  })
-
-module.exports = {
-  ...rtl,
-  render: customRender,
-}
-```
-
-</details>
-
-### Configuring Jest with Test Utils
-
-To make your custom test file accessible in your Jest test files without using
-relative imports (`../../test-utils`), add the folder containing the file to the
-Jest `moduleDirectories` option.
-
-This will make all the `.js` files in the test-utils directory importable
-without `../`.
+To make this file accessible without using relative imports, add the folder
+containing the file to the Jest `moduleDirectories` option. Note: this will make
+_all_ the .js files in that directory importable without `../`.
 
 ```diff
 // my-component.test.js
@@ -172,11 +128,9 @@ module.exports = {
 }
 ```
 
-### Jest and Create React App
-
-If your project is based on top of Create React App, to make the `test-utils`
-file accessible without using relative imports, you just need to create a `.env`
-file in the root of your project with the following configuration:
+If your project is based on top of Create React App, to make the file accessible
+without using relative imports, you just need to create a `.env` file in the
+root of your project with the following configuration:
 
 ```
 // Create React App project structure
@@ -196,6 +150,54 @@ $ app
 // example if your utils folder is inside the /src directory.
 NODE_PATH=src/utils
 ```
+
+There is the case when you want to wrap your components in a `Provider`, this
+might cause conflicts when `rerender`ed. To achieve this, we suggest the
+`rerender` should be implemented the same way custom queries, by changing the
+return value of the customRender.
+
+```js
+// test-utils.js
+
+const customRender = (ui, options) => {
+  const rendered = render(<div>{ui}</div>, options)
+  return {
+    ...rendered,
+    rerender: newUi =>
+      customRender(newUi, {
+        container: rendered.container,
+        baseElement: rendered.baseElement,
+      }),
+  }
+}
+```
+
+### Export Issue with Babel Versions Lower Than 7
+
+Babel versions lower than 7 throw an error when trying to override the named
+export in the example above. (See
+[#169](https://github.com/kentcdodds/react-testing-library/issues/169).)
+
+<details>
+<summary>Workaround</summary>
+
+You can use CommonJS modules instead of ES modules, which should work in Node:
+
+```js
+// test-utils.js
+const rtl = require('react-testing-library')
+
+const customRender = (node, options) => {
+  return rtl.render(<Something>{node}</Something>)
+}
+
+module.exports = {
+  ...rtl,
+  render: customRender,
+}
+```
+
+</details>
 
 ## Using without Jest
 
