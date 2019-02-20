@@ -1,13 +1,41 @@
 ---
-id: example-intro
-title: Example
+id: examples
+title: Examples
 ---
+
+You can find more bs-dom-testing-library examples at
+[wyze/bs-dom-testing-library/src/\_\_tests\_\_](https://github.com/wyze/bs-dom-testing-library/tree/master/src/__tests__).
+
+You can find more bs-react-testing-library examples at
+[wyze/bs-react-testing-library/src/\_\_tests\_\_](https://github.com/wyze/bs-react-testing-library/tree/master/src/__tests__).
+
+## React Testing Library
+
+```reason
+/* Component_test.re */
+
+open Jest;
+open Expect;
+open ReactTestingLibrary;
+
+test("Component renders", () =>
+  <div style=ReactDOMRe.Style.make(~color="rebeccapurple", ())>
+    <h1> {ReasonReact.string("Heading")} </h1>
+  </div>
+  |> render
+  |> container
+  |> expect
+  |> toMatchSnapshot
+);
+```
+
+## DOM Testing Library
 
 The below examples use
 [`bs-webapi`](https://github.com/reasonml-community/bs-webapi-incubator) to help
 with typings and creating events.
 
-## getByText
+### getByText
 
 ```reason
 /* __tests__/example_test.re */
@@ -104,8 +132,3 @@ describe("FireEvent", () => {
   });
 });
 ```
-
-## More
-
-You can find more bs-dom-testing-library examples at
-[wyze/bs-dom-testing-library/src/\_\_tests\_\_](https://github.com/wyze/bs-dom-testing-library/tree/master/src/__tests__).

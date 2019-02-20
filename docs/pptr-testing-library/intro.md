@@ -1,0 +1,81 @@
+---
+id: intro
+title: Puppeteer Testing Library
+---
+
+[`pptr-testing-library`][gh] is a lightweight adapter allowing
+`dom-testing-library` to be used with [`puppeteer`][ghpuppeteer].
+
+```
+npm install --save-dev puppeteer pptr-testing-library
+```
+
+- [pptr-testing-library on GitHub][gh]
+
+## Usage
+
+```js
+const puppeteer = require('puppeteer')
+const { getDocument, queries, wait } = require('pptr-testing-library')
+
+const { getByTestId, getByLabelText } = queries
+
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+
+// Grab ElementHandle for document
+const $document = await getDocument(page)
+// Your favorite query methods are available
+const $form = await getByTestId($document, 'my-form')
+// returned elements are Puppeteer ElementHandles too!
+const $email = await getByLabelText($form, 'Email')
+// interact with puppeteer like usual
+await $email.type('pptr@example.com')
+// waiting works too!
+await wait(() => getByText('Loading...'))
+```
+
+A little too un-puppeteer for you? You can attach all the `dom-testing-library`
+methods directly onto puppeteer's `ElementHandle` instead!
+
+```js
+const puppeteer = require('puppeteer')
+require('pptr-testing-library/extend')
+
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+
+// getDocument is added to prototype of Page
+const $document = await page.getDocument()
+// query methods are added directly to prototype of ElementHandle
+const $form = await $document.getByTestId('my-form')
+// destructing works if you explicitly call getQueriesForElement
+const { getByLabelText } = $form.getQueriesForElement()
+// ...
+const $email = await getByLabelText('Email')
+```
+
+### API
+
+Unique methods, not part of `dom-testing-library`.
+
+- `getDocument(page: puppeteer.Page): ElementHandle` - get an ElementHandle for
+  the document
+
+### Forwarded methods
+
+`dom-testing-library` is injected into the page that puppeteer is controlling on
+each query, so all results will be async. It's still recommended that you use
+puppeteer's built-in methods for interaction rather than `fireEvent`.
+
+## Known Limitations
+
+- `waitForElement` method is not exposed. Puppeteer has its own set of wait
+  utilities that somewhat conflict with the style used in `dom-testing-library`.
+  See
+  [the issue on GitHub](https://github.com/patrickhulce/pptr-testing-library/issues/3).
+- `fireEvent` method is not exposed, use puppeteer's built-ins instead.
+- `expect` assertion extensions are not available.
+
+[gh]: https://github.com/patrickhulce/pptr-testing-library
+[ghpuppeteer]: https://github.com/GoogleChrome/puppeteer

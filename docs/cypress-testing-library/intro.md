@@ -1,6 +1,6 @@
 ---
 id: intro
-title: Introduction
+title: Cypress Testing Library
 ---
 
 [`cypress-testing-library`][gh] allows the use of dom-testing queries within

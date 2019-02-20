@@ -1,6 +1,6 @@
 ---
 id: api-events
-title: Events
+title: Firing Events
 ---
 
 ## `fireEvent`

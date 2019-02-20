@@ -1,7 +1,11 @@
 ---
 id: api-async
-title: Async
+title: Async Utilities
 ---
+
+Several utilities are provided for dealing with asynchronous code. These can be
+useful to wait for an element to appear or disappear in response to an action.
+(See the [guide to testing disappearance](guide-disappearance.md).)
 
 ### `wait`
 
