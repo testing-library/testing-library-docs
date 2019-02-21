@@ -32,6 +32,17 @@
           "react-testing-library/faq"
         ]
       },
+      {
+        "type": "subcategory",
+        "label": "Preact Testing Library",
+        "ids": [
+          "preact-testing-library/intro",
+          "preact-testing-library/example-intro",
+          "preact-testing-library/setup",
+          "preact-testing-library/api",
+          "preact-testing-library/faq"
+        ]
+      },
       "cypress-testing-library/intro",
       "vue-testing-library/intro",
       "angular-testing-library/intro",
