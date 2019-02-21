@@ -9,38 +9,58 @@ sidebar_label: Example
 See the following sections for a detailed breakdown of the test
 
 ```jsx
-// __tests__/fetch.test.js
-import React from 'react'
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement,
-} from 'react-testing-library'
-import 'jest-dom/extend-expect'
+// __tests__/fetch.js
+import preact from 'preact'
 import axiosMock from 'axios'
-import Fetch from '../fetch'
+import { cleanup, render, flushPromises, fireEvent } from '../'
+
+/** @jsx preact.h */
+class Fetch extends preact.Component {
+  state = {}
+  componentDidUpdate(prevProps) {
+    if (this.props.url !== prevProps.url) {
+      this.fetch()
+    }
+  }
+  fetch = async () => {
+    const response = await axiosMock.get(this.props.url)
+    this.setState({ data: response.data })
+  }
+  render() {
+    const { data } = this.state
+    return (
+      <div>
+        <button onClick={this.fetch}>Fetch</button>
+        {data ? <span>{data.greeting}</span> : null}
+      </div>
+    )
+  }
+}
 
 afterEach(cleanup)
 
-test('loads and displays greeting', async () => {
-  const url = '/greeting'
-  const { getByText, getByTestId } = render(<Fetch url={url} />)
-
-  axiosMock.get.mockResolvedValueOnce({
-    data: { greeting: 'hello there' },
-  })
-
-  fireEvent.click(getByText('Load Greeting'))
-
-  const greetingTextNode = await waitForElement(() =>
-    getByTestId('greeting-text')
+test('Fetch makes an API call and displays the greeting when load-greeting is clicked', async () => {
+  // Arrange
+  axiosMock.get.mockImplementationOnce(() =>
+    Promise.resolve({
+      data: { greeting: 'hello there' },
+    })
   )
+  const url = '/greeting'
+  const { getByText } = render(<Fetch url={url} />)
 
+  // Act
+  fireEvent.click(getByText('Fetch'))
+
+  await flushPromises()
+
+  // Assert
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith(url)
-  expect(getByTestId('greeting-text')).toHaveTextContent('hello there')
-  expect(getByTestId('ok-button')).toHaveAttribute('disabled')
+  // this assertion is funny because if the textContent were not "hello there"
+  // then the `getByText` would throw anyway... 🤔
+  expect(getByText('hello there').textContent).toBe('hello there')
+  // expect(container.firstChild).toMatchSnapshot()
 })
 ```
 
@@ -48,18 +68,10 @@ test('loads and displays greeting', async () => {
 
 ```jsx
 // import dependencies
-import React from 'react'
+import preact from 'preact'
 
-// import react-testing methods
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement,
-} from 'react-testing-library'
-
-// add custom jest matchers from jest-dom
-import 'jest-dom/extend-expect'
+// import preact-testing methods
+import { render, cleanup } from 'preact-testing-library'
 
 // the axios mock is in __mocks__/
 // see https://jestjs.io/docs/en/manual-mocks

@@ -1,23 +1,23 @@
 ---
 id: intro
-title: React Testing Library
+title: Preact Testing Library
 sidebar_label: Introduction
 ---
 
 [`react-testing-library`][gh] builds on top of `dom-testing-library` by adding
-APIs for working with React components.
+APIs for working with Preact components.
 
 ```
-npm install --save-dev react-testing-library
+npm install --save-dev preact-testing-library
 ```
 
-- [react-testing-library on GitHub][gh]
+- [preact-testing-library on GitHub][gh]
 
-[gh]: https://github.com/kentcdodds/react-testing-library
+[gh]: https://github.com/antsmartian/preact-testing-library
 
 ## The problem
 
-You want to write maintainable tests for your React components. As a part of
+You want to write maintainable tests for your Preact components. As a part of
 this goal, you want your tests to avoid including implementation details of your
 components and rather focus on making your tests give you the confidence for
 which they are intended. As part of this, you want your testbase to be
@@ -27,14 +27,13 @@ your team down.
 
 ## This solution
 
-The `react-testing-library` is a very light-weight solution for testing React
-components. It provides light utility functions on top of `react-dom` and
-`react-dom/test-utils`, in a way that encourages better testing practices. Its
-primary guiding principle is:
+The `preact-testing-library` is a very light-weight solution for testing Preact
+components. It provides light utility functions on top of `preact` in a way that
+encourages better testing practices. It's primary guiding principle is:
 
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 
-So rather than dealing with instances of rendered react components, your tests
+So rather than dealing with instances of rendered preact components, your tests
 will work with actual DOM nodes. The utilities this library provides facilitate
 querying the DOM in the same way the user would. Finding for elements by their
 label text (just like a user would), finding links and buttons from their text
@@ -47,23 +46,20 @@ to get your tests closer to using your components the way a user will, which
 allows your tests to give you more confidence that your application will work
 when a real user uses it.
 
-This library is a replacement for [Enzyme](http://airbnb.io/enzyme/). While you
-_can_ follow these guidelines using Enzyme itself, enforcing this is harder
-because of all the extra utilities that Enzyme provides (utilities which
+This library is a replacement for [enzyme](http://airbnb.io/enzyme/). While you
+_can_ follow these guidelines using enzyme itself, enforcing this is harder
+because of all the extra utilities that enzyme provides (utilities which
 facilitate testing implementation details). Read more about this in
-[the FAQ](./faq).
+[the FAQ](#faq) below.
 
 **What this library is not**:
 
 1.  A test runner or framework
 2.  Specific to a testing framework (though we recommend Jest as our preference,
-    the library works with any framework. See
-    [Using Without Jest](./setup#using-without-jest))
+    the library works with any framework)
 
-> NOTE: This library is built on top of [`dom-testing-library`](/) which is
-> where most of the logic behind the queries is.
-
-## What is react-testing-library?
-
-Have a look at the video below for an explanation. <br/><br/>
-[![what is react testing library](https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg)](https://youtu.be/JKOwJUM4_RM 'what is react testing library')
+> NOTE: This library is built on top of
+> [`dom-testing-library`](https://github.com/kentcdodds/dom-testing-library)
+> which is where most of the logic behind the queries is. Also this is inspired
+> from
+> [`react-testing-library`](https://github.com/kentcdodds/react-testing-library)

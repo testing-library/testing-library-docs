@@ -3,8 +3,8 @@ id: api
 title: API
 ---
 
-`react-testing-library` re-exports everything from `dom-testing-library` as well
-as these methods:
+`preact-testing-library` re-exports everything from `dom-testing-library` as
+well as these methods:
 
 - [`render`](#act)
 - [`cleanup`](#cleanup)
@@ -26,13 +26,13 @@ function render(
 Render into a container which is appended to `document.body`.
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from 'preact-testing-library'
 
 render(<div />)
 ```
 
 ```jsx
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from 'preact-testing-library'
 import 'jest-dom/extend-expect'
 afterEach(cleanup)
 
@@ -57,7 +57,7 @@ available options which you could provide as a second argument to `render`.
 
 ### `container`
 
-By default, `react-testing-library` will create a `div` and append that div to
+By default, `preact-testing-library` will create a `div` and append that div to
 the `document.body` and this is where your react component will be rendered. If
 you provide your own HTMLElement `container` via this option, it will not be
 appended to the `document.body` automatically.
@@ -149,7 +149,7 @@ This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
 import React from 'react'
-import { render } from 'react-testing-library'
+import { render } from 'preact-testing-library'
 
 const HelloWorld = () => <h1>Hello World</h1>
 const { debug } = render(<HelloWorld />)
@@ -172,7 +172,7 @@ prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from 'preact-testing-library'
 
 const { rerender } = render(<NumberDisplay number={1} />)
 
@@ -192,7 +192,7 @@ that you don't leave event handlers hanging around causing memory leaks).
 > `ReactDOM.unmountComponentAtNode`
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from 'preact-testing-library'
 
 const { container, unmount } = render(<Login />)
 unmount()
@@ -205,7 +205,7 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from 'preact-testing-library'
 
 class TestComponent extends React.Component {
   constructor() {
@@ -242,7 +242,7 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 Unmounts React trees that were mounted with [render](#render).
 
 ```jsx
-import { cleanup, render } from 'react-testing-library'
+import { cleanup, render } from 'preact-testing-library'
 
 afterEach(cleanup) // <-- add this
 
