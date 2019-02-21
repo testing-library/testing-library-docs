@@ -37,10 +37,10 @@ class HomeSplash extends React.Component {
 
     const ProjectTitle = () => (
       <div>
-        <h2 className="projectTitle">React Testing Library</h2>
+        <h2 className="projectTitle">Preact Testing Library</h2>
         <div className="projectTaglineWrapper">
           <p className="projectTagline">
-            Simple and complete React DOM testing utilities that encourage good
+            Simple and complete Preact DOM testing utilities that encourage good
             testing practices
           </p>
         </div>
@@ -69,7 +69,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('react-testing-library/intro')}>
+            <Button href={docUrl('preact-testing-library/intro')}>
               Read the Docs
             </Button>
           </PromoSection>
@@ -109,7 +109,7 @@ class Index extends React.Component {
             </i>
           </p>
           <MarkdownBlock>
-            `npm install --save-dev react-testing-library`
+            `npm install --save-dev preact-testing-library`
           </MarkdownBlock>
         </div>
       </Container>
@@ -122,7 +122,7 @@ class Index extends React.Component {
             {
               title: '',
               content:
-                "## The Problem \n - You want tests for your React components that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+                "## The Problem \n - You want tests for your Preact components that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
               image: `${baseUrl}img/interrobang-128x128.png`,
               imageAlt: 'The problem (picture of a question mark)',
               imageAlign: 'left',
@@ -141,7 +141,7 @@ class Index extends React.Component {
             imageAlign: 'right',
             imageAlt: 'The solution (picture of a star)',
             content:
-              '## The Solution \n `react-testing-library` is a very light-weight solution for testing React components. It provides utility functions on top of react-dom and react-dom/test-utils in a way that encourages better testing practices. Its primary guiding principle is: \n > The more your tests resemble the way your software is used, the more confidence they can give you.',
+              '## The Solution \n `preact-testing-library` is a very light-weight solution for testing Preact components. It provides utility functions on top of react-dom and react-dom/test-utils in a way that encourages better testing practices. Its primary guiding principle is: \n > The more your tests resemble the way your software is used, the more confidence they can give you. \n\n This library is heavily inspired by [react-testing-library](/react).',
           },
         ]}
       </Block>
@@ -173,7 +173,7 @@ class Index extends React.Component {
             },
             {
               content:
-                '`react-testing-library` is an opinionated alternative to libraries like Enzyme that provide too many ways to avoid testing like a user',
+                '`preact-testing-library` is an opinionated alternative to libraries like Enzyme that provide too many ways to avoid testing like a user',
               image: `${baseUrl}img/vs-128x128.png`,
               imageAlign: 'top',
               title: 'Alternative to Enzyme',
