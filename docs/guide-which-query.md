@@ -45,5 +45,5 @@ testid if you have to.
 ```jsx
 // react-testing-library
 const { container } = render(<MyComponent />)
-const foo = container.querySelector(['data-foo="bar"'])
+const foo = container.querySelector('[data-foo="bar"]')
 ```
