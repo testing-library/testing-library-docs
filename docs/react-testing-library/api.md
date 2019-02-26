@@ -6,7 +6,7 @@ title: API
 `react-testing-library` re-exports everything from `dom-testing-library` as well
 as these methods:
 
-- [`render`](#act)
+- [`render`](#render)
 - [`cleanup`](#cleanup)
 - [`act`](#act)
 
