@@ -58,6 +58,12 @@ const users = [
     infoLink: 'https://www.parsleyhealth.com',
     pinned: true,
   },
+  {
+    caption: 'Facebook Open Source',
+    image: '/img/users/facebook-open-source.png',
+    infoLink: 'https://opensource.facebook.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
