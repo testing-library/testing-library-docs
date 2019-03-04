@@ -156,7 +156,7 @@ const submitButton = getByText(container, /send data/i)
 
 > **Note**
 >
-> See [`getByLabelText`](#getbylabeltext) for more details on how and when to
+> See [`getByLabelText`](#bylabeltext) for more details on how and when to
 > use the `selector` option
 
 The `ignore` option accepts a query selector. If the
