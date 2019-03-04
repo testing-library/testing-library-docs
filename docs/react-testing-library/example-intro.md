@@ -84,7 +84,7 @@ test('loads and displays greeting', async () => {
 
 ### Arrange
 
-The [`render`](./ecosystem-react-testing-library#render) method renders a React
+The [`render`](./api#render) method renders a React
 element into the DOM and returns utility functions for testing the component.
 
 ```jsx
@@ -96,7 +96,7 @@ const { getByText, getByTestId, container, asFragment } = render(
 
 ### Act
 
-The [`fireEvent`](./api-events#fireEvent) method allows you to fire events to
+The [`fireEvent`](../api-events#fireEvent) method allows you to fire events to
 simulate user actions.
 
 ```jsx
