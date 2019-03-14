@@ -167,7 +167,7 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 
 It'd probably be better if you test the component that's doing the prop updating
 to ensure that the props are being updated correctly (see
-[the Guiding Principles section](#guiding-principles)). That said, if you'd
+[the Guiding Principles section](/docs/guiding-principles)). That said, if you'd
 prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
