@@ -92,6 +92,27 @@ Pass a React Component as the `wrapper` option to have it rendered around the
 inner element. This is most useful for creating reusable custom render functions
 for common data providers. See [setup](setup.md#custom-render) for examples.
 
+### `queries`
+
+Queries to bind. Overrides the default set from `dom-testing-library` unless
+merged.
+
+```js
+// Example, a function to traverse table contents
+import * as tableQueries from 'my-table-query-libary'
+import queries from 'react-testing-library'
+
+const { getByRowColumn, getByText } = render(<MyTable />, {
+  queries: { ...queries, ...tableQueries },
+})
+```
+
+See [helpers](../api-helpers.md) for guidance on using utility functions to
+create custom queries.
+
+Custom queries can also be added globally by following the
+[custom render guide](./setup#custom-render).
+
 ## `render` Result
 
 The `render` method returns an object that has a few properties:
