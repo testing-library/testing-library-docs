@@ -56,37 +56,68 @@ getByLabelText(
 This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
 ```javascript
+import {getByLabelText} from 'dom-testing-library'
+
+const container = document.body
 const inputNode = getByLabelText(container, 'Username')
 
-// this would find the input node for the following DOM structures:
-// The "for" attribute (NOTE: in JSX with React you'll write "htmlFor" rather than "for")
-// <label for="username-input">Username</label>
-// <input id="username-input" />
-//
+// This will find the input node for the following DOM structures:
+
+// for/htmlFor relationship between label and form element id
+<label for="username-input">Username</label>
+<input id="username-input" />
+
 // The aria-labelledby attribute with form elements
-// <label id="username-label">Username</label>
-// <input aria-labelledby="username-label" />
-//
-// The aria-labelledby attribute with other elements
-// <section aria-labelledby="section-one-header">
-//   <h3 id="section-one-header">Section One</h3>
-//   <p>some content...</p>
-// <section>
-//
+<label id="username-label">Username</label>
+<input aria-labelledby="username-label" />
+
+// The aria-labelledby attribute with non-form elements
+<section aria-labelledby="section-one-header">
+  <h3 id="section-one-header">Section One</h3>
+  <p>some content</p>
+</section>
+
 // Wrapper labels
-// <label>Username <input /></label>
-//
-// It will NOT find the input node for this:
-// <label><span>Username</span> <input /></label>
-//
+<label>Username <input /></label>
+
+// aria-label attributes
+// Take care because this is not a label that users can see on the page,
+// so the purpose of your input must be obvious to visual users.
+<input aria-label="username" />
+
+// It will NOT find the input node for label text broken up by elements,
+// like this:
+<label>
+  <span>Username</span> <input />
+</label>
 // For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText(container, 'username', { selector: 'input' })
-// and that would work
-// Note that <input aria-label="username" /> will also work, but take
-// care because this is not a label that users can see on the page. So
-// the purpose of your input should be obvious for those users.
+const inputNode = getByLabelText(container, 'username', {
+  selector: 'input',
+})
 ```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByLabelText } = render(<Login />)
+
+const inputNode = getByLabelText('username')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByLabelText('username').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 > **Note**
 >
@@ -112,10 +143,37 @@ getByPlaceholderText(
 This will search for all elements with a placeholder attribute and find one that
 matches the given [`TextMatch`](#textmatch).
 
-```javascript
-// <input placeholder="Username" />
+```html
+<input placeholder="Username" />
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByPlaceholderText } from 'dom-testing-library'
+
+const container = document.body
 const inputNode = getByPlaceholderText(container, 'Username')
 ```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByPlaceholderText } = render(<MyComponent />)
+const inputNode = getByPlaceholderText('Username')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByPlaceholderText('Username').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 > **Note**
 >
@@ -141,23 +199,49 @@ getByText(
 This will search for all elements that have a text node with `textContent`
 matching the given [`TextMatch`](#textmatch).
 
-```javascript
-// <a href="/about">About ℹ️</a>
+```html
+<a href="/about">About ℹ️</a>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByText } from 'dom-testing-library'
+
+const container = document.body
 const aboutAnchorNode = getByText(container, /about/i)
 ```
 
-It also works properly with `input`s whose `type` attribute is either `submit`
-or `button`:
+<!--React-->
 
-```javascript
-// <input type="submit" value="Send data" />
-const submitButton = getByText(container, /send data/i)
+```js
+import { render } from 'react-testing-library'
+
+const { getByText } = render(<MyComponent />)
+const aboutAnchorNode = getByText(/about/i)
+```
+
+<!--Cypress-->
+
+```js
+cy.getByText(/about/i).should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+It also works with `input`s whose `type` attribute is either `submit` or
+`button`:
+
+```js
+<input type="submit" value="Send data" />
 ```
 
 > **Note**
 >
-> See [`getByLabelText`](#bylabeltext) for more details on how and when to
-> use the `selector` option
+> See [`getByLabelText`](#bylabeltext) for more details on how and when to use
+> the `selector` option
 
 The `ignore` option accepts a query selector. If the
 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
@@ -190,10 +274,37 @@ and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
 [`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet)
 as it's deprecated).
 
-```javascript
-// <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
-const incrediblesPosterImg = getByAltText(container, /incredibles.*poster$/i)
+```html
+<img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
 ```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByAltText } from 'dom-testing-library'
+
+const container = document.body
+const incrediblesPosterImg = getByAltText(container, /incredibles.*png$/i)
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByAltText } = render(<MyComponent />)
+const incrediblesPosterImg = getByAltText(/incredibles.*png$/i)
+```
+
+<!--Cypress-->
+
+```js
+cy.getByAltText(/incredibles.*png$/i).should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### `ByTitle`
 
@@ -211,17 +322,46 @@ getByTitle(
 
 Returns the element that has the matching `title` attribute.
 
-```javascript
-// <span title="Delete" id="2" />
-const deleteElement = getByTitle(container, 'Delete')
-```
-
 Will also find a `title` element within an SVG.
 
-```javascript
-// <svg> <title>Close</title> <g> <path /> </g> </svg>
+```html
+<span title="Delete" id="2"></span>
+<svg>
+  <title>Close</title>
+  <g><path /></g>
+</svg>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByTitle } from 'dom-testing-library'
+
+const container = document.body
+const deleteElement = getByTitle(container, 'Delete')
 const closeElement = getByTitle(container, 'Close')
 ```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByTitle } = render(<MyComponent />)
+const deleteElement = getByTitle('Delete')
+const closeElement = getByTitle('Close')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByTitle('Delete').should('exist')
+cy.getByTitle('Close').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### `ByDisplayValue`
 
@@ -243,37 +383,115 @@ display value.
 
 #### `input`
 
-```javascript
-// <input type="text" id="lastName" />
-// document.getElementById('lastName').value = 'Norris'
+```js
+;<input type="text" id="lastName" />
+document.getElementById('lastName').value = 'Norris'
+```
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByDisplayValue } from 'dom-testing-library'
+
+const container = document.body
 const lastNameInput = getByDisplayValue(container, 'Norris')
 ```
 
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByDisplayValue } = render(<MyComponent />)
+const lastNameInput = getByDisplayValue('Norris')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByDisplayValue('Norris').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 #### `textarea`
 
-```javascript
-// <textarea id="messageTextArea"></textarea>
-// document.getElementById('messageTextArea').value = 'Hello World'
+```js
+;<textarea id="messageTextArea" />
+document.getElementById('messageTextArea').value = 'Hello World'
+```
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByDisplayValue } from 'dom-testing-library'
+
+const container = document.body
 const messageTextArea = getByDisplayValue(container, 'Hello World')
 ```
 
-#### `select`
+<!--React-->
 
-```javascript
-// <select id="state-select" data-testid="state">
-//   <option value="">State</option>
-//   <option value="AL">Alabama</option>
-//   <option selected value="AK" >Alaska</option>
-//   <option value="AZ">Arizona</option>
-// </select>
+```js
+import { render } from 'react-testing-library'
 
-const selectElement = getByDisplayName(container, 'Alaska')
+const { getByDisplayValue } = render(<MyComponent />)
+const messageTextArea = getByDisplayValue('Hello World')
 ```
+
+<!--Cypress-->
+
+```js
+cy.getByDisplayValue('Hello World').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+#### `select`
 
 In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
+
+```html
+<select id="state-select" data-testid="state">
+  <option value="">State</option>
+  <option value="AL">Alabama</option>
+  <option selected value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+</select>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByDisplayName } from 'dom-testing-library'
+
+const container = document.body
+const selectElement = getByDisplayName(container, 'Alaska')
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByDisplayName } = render(<MyComponent />)
+const selectElement = getByDisplayName('Alaska')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByDisplayName('Alaska').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### `ByRole`
 
@@ -292,10 +510,37 @@ getByRole(
 A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it also
 accepts a [`TextMatch`](#textmatch)).
 
-```javascript
-// <div role="dialog">...</div>
+```html
+<div role="dialog">...</div>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByRole } from 'dom-testing-library'
+
+const container = document.body
 const dialogContainer = getByRole(container, 'dialog')
 ```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByRole } = render(<MyComponent />)
+const dialogContainer = getByRole('dialog')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByRole('dialog').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### `ByTestId`
 
@@ -314,10 +559,37 @@ getByTestId(
 A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
-```javascript
-// <input data-testid="username-input" />
-const usernameInputElement = getByTestId(container, 'username-input')
+```html
+<input data-testid="username-input" />
 ```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByTestId } from 'dom-testing-library'
+
+const container = document.body
+const usernameInput = getByTestId(container, 'username-input')
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByTestId } = render(<MyComponent />)
+const usernameInput = getByTestId('username-input')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByTestId('username-input').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 > In the spirit of [the guiding principles](#guiding-principles), it is
 > recommended to use this only after the other queries don't work for your use
@@ -384,7 +656,9 @@ behaviour:
 To perform a match against text without trimming:
 
 ```javascript
-getByText(node, 'text', { normalizer: getDefaultNormalizer({ trim: false }) })
+getByText(node, 'text', {
+  normalizer: getDefaultNormalizer({ trim: false }),
+})
 ```
 
 To override normalization to remove some Unicode characters whilst keeping some
