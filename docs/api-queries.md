@@ -10,24 +10,24 @@ title: Queries
 
 ### getBy
 
-[`getBy*`](#query-apis) queries returns the first matching node for a query, and
-throw an error if no elements match.
+`getBy*` queries returns the first matching node for a query, and throws an
+error if no elements match.
 
 ### getAllBy
 
-[`getAllBy*`](#queryall-and-getall-apis) queries return an array of all matching
-nodes for a query, and throw an error if no elements match.
+`getAllBy*` queries return an array of all matching nodes for a query, and
+throws an error if no elements match.
 
 ### queryBy
 
-[`queryBy*`](#query-apis) queries returns the first matching node for a query,
-and return `null` if no elements match.
+`queryBy*` queries returns the first matching node for a query, and return
+`null` if no elements match. This is useful for asserting an element is not
+present.
 
 ### queryAllBy
 
-[`queryAllBy*`](#queryall-and-getall-apis) queries return an array of all
-matching nodes for a query, and return an empty array (`[]`) if no elements
-match.
+`queryAllBy*`queries return an array of all matching nodes for a query, and
+return an empty array (`[]`) if no elements match.
 
 ## Options
 
@@ -708,31 +708,4 @@ getByText(container, /hello world/) // case-sensitive regex with different case
 getByText(container, (content, element) => {
   return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
 })
-```
-
-## `query` APIs
-
-Each of the `get` APIs listed in the [queries](#queries) section above have a
-complimentary `query` API. The `get` APIs will throw errors if a proper node
-cannot be found. This is normally the desired effect. However, if you want to
-make an assertion that an element is _not_ present in the DOM, then you can use
-the `query` API instead:
-
-```javascript
-const submitButton = queryByText(container, 'submit')
-expect(submitButton).toBeNull() // it doesn't exist
-// or if you're using the custom matchers:
-expect(submitButton).not.toBeTruthy()
-```
-
-## `queryAll` and `getAll` APIs
-
-Each of the `query` APIs have a corresponsing `queryAll` version that always
-returns an Array of matching nodes. `getAll` is the same but throws when the
-array has a length of 0.
-
-```javascript
-const submitButtons = queryAllByText(container, 'submit')
-expect(submitButtons).toHaveLength(3) // expect 3 elements
-expect(submitButtons[0]).toBeTruthy()
 ```
