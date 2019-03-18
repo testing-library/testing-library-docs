@@ -44,7 +44,11 @@ test('loads and displays greeting', async () => {
 })
 ```
 
-## Imports
+---
+
+## Step-By-Step
+
+### Imports
 
 ```jsx
 // import dependencies
@@ -69,8 +73,6 @@ import axiosMock from 'axios'
 import Fetch from '../fetch'
 ```
 
-## Test
-
 ```jsx
 // automatically unmount and cleanup DOM after the test is finished.
 afterEach(cleanup)
@@ -84,8 +86,8 @@ test('loads and displays greeting', async () => {
 
 ### Arrange
 
-The [`render`](./api#render) method renders a React
-element into the DOM and returns utility functions for testing the component.
+The [`render`](./api#render) method renders a React element into the DOM and
+returns utility functions for testing the component.
 
 ```jsx
 const url = '/greeting'

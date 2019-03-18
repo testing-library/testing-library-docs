@@ -63,7 +63,11 @@ facilitate testing implementation details). Read more about this in
 > NOTE: This library is built on top of [`dom-testing-library`](/) which is
 > where most of the logic behind the queries is.
 
-## What is react-testing-library?
+## Video
 
-Have a look at the video below for an explanation. <br/><br/>
-[![what is react testing library](https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg)](https://youtu.be/JKOwJUM4_RM 'what is react testing library')
+Have a look at the "What is React Testing library?" video below for an
+introduction to the library.
+
+<a href="https://youtu.be/JKOwJUM4_RM">
+  <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style="margin-left: 0" />
+</a>
