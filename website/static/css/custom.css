@@ -11,7 +11,7 @@ code {
 
 /* highlighted code blocks */
 .hljs {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .projectTaglineWrapper {
@@ -68,6 +68,31 @@ a {
   width: auto;
   max-width: 250px;
 }
+
+/* Code Tabs */
+.nav-tabs {
+  background-color: #fff;
+  border-bottom: none;
+}
+
+.tabs .nav-tabs > div {
+  font-size: 12px;
+  padding: 6px 24px;
+  font-weight: 500;
+}
+
+.tabs .nav-tabs > div.active {
+  border-bottom: none;
+  background: #F0F0F0; /* same as code block */
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.tabs {
+  border-top: none;
+}
+
+/* Responsive */
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }

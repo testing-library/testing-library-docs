@@ -17,3 +17,35 @@ Configuration options:
 
 `testIdAttribute`: The attribute used by `getByTestId` and related queries.
 Defaults to `data-testid`. See [`getByTestId`](#getbytestid).
+
+```html
+
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+// setup-tests.js
+import { configure } from 'dom-testing-library'
+
+configure({testIdAttribute: 'my-data-test-id'})`
+```
+
+<!--React-->
+
+```js
+// setup-tests.js
+import { configure } from 'react-testing-library'
+
+configure({testIdAttribute: 'my-data-test-id'})`
+```
+
+<!--Cypress-->
+
+```
+The configuration object is not currently exposed to in Cypress Testing Library
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->

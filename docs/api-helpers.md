@@ -50,6 +50,12 @@ module.exports = {
 }
 ```
 
+> **Note**
+>
+> Custom queries can be added to `react-testing-library`'s `render` method by
+> adding `queries` to the options config object. See the render
+> [options](/docs/react-testing-library/api#render-options).
+
 ### Using other assertion libraries
 
 If you're not using jest, you may be able to find a similar set of custom
@@ -105,12 +111,36 @@ in use in `react-testing-library` and `vue-testing-library`.
 Example: To get the text 'hello' only within a section called 'messages', you
 could do:
 
-```javascript
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
 import { within } from 'dom-testing-library'
 
 const { getByText } = within(document.getElementById('messages'))
 const helloMessage = getByText('hello')
 ```
+
+<!--React-->
+
+```js
+import { render, within } from 'react-testing-library'
+
+const { getByLabelText } = render(<MyComponent />)
+const signinModal = getByLabelText('Sign In')
+within(signinModal).getByPlaceholderText('Username')
+```
+
+<!--Cypress-->
+
+```js
+cy.get('form').within(() => {
+  cy.getByText('Button Text').should('be.disabled')
+})
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Debugging
 
