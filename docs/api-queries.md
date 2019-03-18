@@ -679,13 +679,17 @@ getByText(node, 'text', {
 
 ### TextMatch Examples
 
+Given the following HTML:
+
+```html
+<div>
+  Hello World
+</div>
+```
+
+**_Will_ find the div:**
+
 ```javascript
-// <div>
-//  Hello World
-// </div>
-
-// WILL find the div:
-
 // Matching a string:
 getByText(container, 'Hello World') // full string match
 getByText(container, 'llo Worl', { exact: false }) // substring match
@@ -699,11 +703,17 @@ getByText(container, /Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
 getByText(container, (content, element) => content.startsWith('Hello'))
+```
 
-// WILL NOT find the div:
+**_Will not_ find the div:**
 
-getByText(container, 'Goodbye World') // full string does not match
-getByText(container, /hello world/) // case-sensitive regex with different case
+```javascript
+// full string does not match
+getByText(container, 'Goodbye World')
+
+// case-sensitive regex with different case
+getByText(container, /hello world/)
+
 // function looking for a span when it's actually a div:
 getByText(container, (content, element) => {
   return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
