@@ -22,11 +22,13 @@ possible. With this in mind, we recommend this order of priority:
       preference for non-form elements.
    1. `getByDisplayValue`: The current value of a form element can be useful
       when navigating a page with filled-in values.
-1. **Semantic Queries** HTML5 and ARIA compliant selectors
+1. **Semantic Queries** HTML5 and ARIA compliant selectors. Note that the user
+   experience of interacting with these attributes varies greatly across
+   browsers and assistive technology.
    1. `getByAltText`: If your element is one which supports `alt` text (`img`,
       `area`, and `input`), then you can use this to find that element.
-   1. `getByTitle`: The title attribute is usually more accessible by screen
-      readers than mouse/visual users
+   1. `getByTitle`: The title attribute is not consistently read by
+      screenreaders, and is not visible by default for sighted users
    1. `getByRole`: This can be used to select dialog boxes and other
       difficult-to-capture elements in a more semantic way
 1. **Test IDs**
