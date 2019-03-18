@@ -56,18 +56,9 @@ getByLabelText(
 This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
-<!--DOCUSAURUS_CODE_TABS-->
+The example below will find the input node for the following DOM structures:
 
-<!--Native-->
-
-```javascript
-import {getByLabelText} from 'dom-testing-library'
-
-const container = document.body
-const inputNode = getByLabelText(container, 'Username')
-
-// This will find the input node for the following DOM structures:
-
+```js
 // for/htmlFor relationship between label and form element id
 <label for="username-input">Username</label>
 <input id="username-input" />
@@ -89,16 +80,17 @@ const inputNode = getByLabelText(container, 'Username')
 // Take care because this is not a label that users can see on the page,
 // so the purpose of your input must be obvious to visual users.
 <input aria-label="username" />
+```
 
-// It will NOT find the input node for label text broken up by elements,
-// like this:
-<label>
-  <span>Username</span> <input />
-</label>
-// For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText(container, 'username', {
-  selector: 'input',
-})
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```javascript
+import { getByLabelText } from 'dom-testing-library'
+
+const container = document.body
+const inputNode = getByLabelText(container, 'Username')
 ```
 
 <!--React-->
@@ -119,11 +111,19 @@ cy.getByLabelText('username').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> **Note**
->
-> This method will throw an error if it cannot find the node. If you don't want
-> this behavior (for example you wish to assert that it doesn't exist), then use
-> `queryByLabelText` instead.
+It will NOT find the input node for label text broken up by elements. For this
+case, you can provide a `selector` in the options:
+
+```html
+<label> <span>Username</span> <input /> </label>
+```
+
+```js
+const container = document.body
+const inputNode = getByLabelText(container, 'username', {
+  selector: 'input',
+})
+```
 
 ### `ByPlaceholderText`
 
