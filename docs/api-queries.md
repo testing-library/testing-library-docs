@@ -383,8 +383,11 @@ display value.
 
 #### `input`
 
+```html
+<input type="text" id="lastName" />
+```
+
 ```js
-;<input type="text" id="lastName" />
 document.getElementById('lastName').value = 'Norris'
 ```
 
@@ -418,8 +421,11 @@ cy.getByDisplayValue('Norris').should('exist')
 
 #### `textarea`
 
+```html
+<textarea id="messageTextArea" />
+```
+
 ```js
-;<textarea id="messageTextArea" />
 document.getElementById('messageTextArea').value = 'Hello World'
 ```
 
