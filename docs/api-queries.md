@@ -58,6 +58,7 @@ See [TextMatch](#textmatch) for documentation on what can be passed to a query.
 ### `ByLabelText`
 
 > getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
+> findByLabelText, findAllByLabelText
 
 ```typescript
 getByLabelText(
@@ -145,7 +146,7 @@ const inputNode = getByLabelText(container, 'username', {
 ### `ByPlaceholderText`
 
 > getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
-> queryAllByPlaceholderText
+> queryAllByPlaceholderText, findByPlaceholderText, findAllByPlaceholderText
 
 ```typescript
 getByPlaceholderText(
@@ -199,7 +200,7 @@ cy.getByPlaceholderText('Username').should('exist')
 
 ### `ByText`
 
-> getByText, queryByText, getAllByText, queryAllByText
+> getByText, queryByText, getAllByText, queryAllByText, findByText, findAllByText
 
 ```typescript
 getByText(
@@ -270,7 +271,8 @@ If you'd rather disable this behavior, set `ignore` to `false`.
 
 ### `ByAltText`
 
-> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText
+> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText, findByAltText,
+> findAllByAltText
 
 ```typescript
 getByAltText(
@@ -325,7 +327,8 @@ cy.getByAltText(/incredibles.*png$/i).should('exist')
 
 ### `ByTitle`
 
-> getByTitle, queryByTitle, getAllByTitle, queryAllByTitle
+> getByTitle, queryByTitle, getAllByTitle, queryAllByTitle, findByTitle,
+> findAllByTitle
 
 ```typescript
 getByTitle(
@@ -383,7 +386,7 @@ cy.getByTitle('Close').should('exist')
 ### `ByDisplayValue`
 
 > getByDisplayValue, queryByDisplayValue, getAllByDisplayValue,
-> queryAllByDisplayValue
+> queryAllByDisplayValue, findByDisplayValue, findAllByDisplayValue
 
 ```typescript
 getByDisplayValue(
@@ -518,7 +521,8 @@ cy.getByDisplayName('Alaska').should('exist')
 
 ### `ByRole`
 
-> getByRole, queryByRole, getAllByRole, queryAllByRole
+> getByRole, queryByRole, getAllByRole, queryAllByRole, findByRole,
+> findAllByRole
 
 ```typescript
 getByRole(
@@ -567,7 +571,8 @@ cy.getByRole('dialog').should('exist')
 
 ### `ByTestId`
 
-> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId
+> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId, findByTestId,
+> findAllByTestId
 
 ```typescript
 getByTestId(
