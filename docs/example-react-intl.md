@@ -17,7 +17,7 @@ const setupTests = () => {
     Intl.NumberFormat = IntlPolyfill.NumberFormat
     Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
   } else {
-    global.Intl = require('intl')
+    global.Intl = IntlPolyfill
   }
 }
 
