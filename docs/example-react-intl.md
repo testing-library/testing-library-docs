@@ -3,6 +3,11 @@ id: example-react-intl
 title: React Intl
 ---
 
+> **Note**
+>
+> If you want to combine setupTests with another setup you should check
+> [`setup`](react-testing-library/setup.md)
+
 ```jsx
 import React from 'react'
 import 'jest-dom/extend-expect'
@@ -36,9 +41,7 @@ const FormatDateView = () => {
 }
 
 const renderWithReactIntl = component => {
-  return {
-    ...render(<IntlProvider locale="pt">{component}</IntlProvider>),
-  }
+  return render(<IntlProvider locale="pt">{component}</IntlProvider>)
 }
 
 setupTests()
