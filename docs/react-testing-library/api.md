@@ -6,6 +6,12 @@ title: API
 `react-testing-library` re-exports everything from `dom-testing-library` as well
 as these methods:
 
+- [`render`](#render)
+- [`cleanup`](#cleanup)
+- [`act`](#act)
+
+---
+
 ## `render`
 
 ```typescript
@@ -44,19 +50,17 @@ test('renders a message', () => {
 > The [cleanup](#cleanup) function should be called between tests to remove the
 > created DOM nodes and keep the tests isolated.
 
-### `render` Options
-
-<details>
-
-<summary>Expand to see documentation on the options</summary>
+## `render` Options
 
 You wont often need to specify options, but if you ever do, here are the
 available options which you could provide as a second argument to `render`.
 
-**container**: By default, `react-testing-library` will create a `div` and
-append that div to the `document.body` and this is where your react component
-will be rendered. If you provide your own HTMLElement `container` via this
-option, it will not be appended to the `document.body` automatically.
+### `container`
+
+By default, `react-testing-library` will create a `div` and append that div to
+the `document.body` and this is where your react component will be rendered. If
+you provide your own HTMLElement `container` via this option, it will not be
+appended to the `document.body` automatically.
 
 For Example: If you are unit testing a `tablebody` element, it cannot be a child
 of a `div`. In this case, you can specify a `table` as the render `container`.
@@ -69,18 +73,47 @@ const { container } = render(<TableBody {...props} />, {
 })
 ```
 
-**baseElement**: If the `container` is specified, then this defaults to that,
-otherwise this defaults to `document.documentElement`. This is used as the base
-element for the queries as well as what is printed when you use `debug()`.
+### `baseElement`
 
-**hydrate**: If hydrate is set to true, then it will render with
+If the `container` is specified, then this defaults to that, otherwise this
+defaults to `document.documentElement`. This is used as the base element for the
+queries as well as what is printed when you use `debug()`.
+
+### `hydrate`
+
+If hydrate is set to true, then it will render with
 [ReactDOM.hydrate](https://reactjs.org/docs/react-dom.html#hydrate). This may be
 useful if you are using server-side rendering and use ReactDOM.hydrate to mount
 your components.
 
-</details>
+### `wrapper`
 
----
+Pass a React Component as the `wrapper` option to have it rendered around the
+inner element. This is most useful for creating reusable custom render functions
+for common data providers. See [setup](setup.md#custom-render) for examples.
+
+### `queries`
+
+Queries to bind. Overrides the default set from `dom-testing-library` unless
+merged.
+
+```js
+// Example, a function to traverse table contents
+import * as tableQueries from 'my-table-query-libary'
+import queries from 'react-testing-library'
+
+const { getByRowColumn, getByText } = render(<MyTable />, {
+  queries: { ...queries, ...tableQueries },
+})
+```
+
+See [helpers](../api-helpers.md) for guidance on using utility functions to
+create custom queries.
+
+Custom queries can also be added globally by following the
+[custom render guide](./setup#custom-render).
+
+## `render` Result
 
 The `render` method returns an object that has a few properties:
 
@@ -88,7 +121,8 @@ The `render` method returns an object that has a few properties:
 
 The most important feature of `render` is that the queries from
 [dom-testing-library](api-queries.md) are automatically returned with their
-first argument bound to the rendered container.
+first argument bound to the [baseElement](#baseelement), which defaults to
+`document.body`.
 
 See [Queries](api-queries.md) for a complete list.
 
@@ -154,7 +188,7 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 
 It'd probably be better if you test the component that's doing the prop updating
 to ensure that the props are being updated correctly (see
-[the Guiding Principles section](#guiding-principles)). That said, if you'd
+[the Guiding Principles section](/docs/guiding-principles)). That said, if you'd
 prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
@@ -167,7 +201,7 @@ const { rerender } = render(<NumberDisplay number={1} />)
 rerender(<NumberDisplay number={2} />)
 ```
 
-[See the examples page](example-update-props)
+[See the examples page](example-update-props.md)
 
 ### `unmount`
 
@@ -222,6 +256,8 @@ fireEvent.click(getByText(/Click to increase/))
 expect(firstRender).toMatchDiffSnapshot(asFragment())
 ```
 
+---
+
 ## `cleanup`
 
 Unmounts React trees that were mounted with [render](#render).
@@ -248,9 +284,11 @@ that you configure your test framework to run a file before your tests which
 does this automatically. See the [setup](./setup) section for guidance on how to
 set up your framework.
 
-## `flushEffects`
+---
 
-**Experimental**
+## `act`
 
-This experimental API is intended to be used to force React's `useEffect` hook
-to run synchronously.
+This is a light wrapper around the
+[`react-dom/test-utils` `act` function](https://reactjs.org/docs/test-utils.html#act).
+All it does is forward all arguments to the act function if your version of
+react supports `act`.

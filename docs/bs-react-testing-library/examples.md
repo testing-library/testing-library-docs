@@ -1,0 +1,134 @@
+---
+id: examples
+title: Examples
+---
+
+You can find more bs-dom-testing-library examples at
+[wyze/bs-dom-testing-library/src/\_\_tests\_\_](https://github.com/wyze/bs-dom-testing-library/tree/master/src/__tests__).
+
+You can find more bs-react-testing-library examples at
+[wyze/bs-react-testing-library/src/\_\_tests\_\_](https://github.com/wyze/bs-react-testing-library/tree/master/src/__tests__).
+
+## React Testing Library
+
+```reason
+/* Component_test.re */
+
+open Jest;
+open Expect;
+open ReactTestingLibrary;
+
+test("Component renders", () =>
+  <div style=ReactDOMRe.Style.make(~color="rebeccapurple", ())>
+    <h1> {ReasonReact.string("Heading")} </h1>
+  </div>
+  |> render
+  |> container
+  |> expect
+  |> toMatchSnapshot
+);
+```
+
+## DOM Testing Library
+
+The below examples use
+[`bs-webapi`](https://github.com/reasonml-community/bs-webapi-incubator) to help
+with typings and creating events.
+
+### getByText
+
+```reason
+/* __tests__/example_test.re */
+open Jest;
+open DomTestingLibrary;
+open Expect;
+
+type parser;
+
+[@bs.new]
+external domParser : unit => parser = "DOMParser";
+
+[@bs.send.pipe : parser]
+external parseFromString : ( string, [@bs.as "text/html"] _) => Dom.element = "";
+
+[@bs.get]
+external body : Dom.element => Dom.element = "";
+
+[@bs.get]
+external firstChild : Dom.element => Dom.element = "";
+
+let div = domParser()
+  |> parseFromString({j|
+      <div>
+        <b title="greeting">Hello,</b>
+        <p data-testid="world"> World!</p>
+        <input type="text" placeholder="Enter something" />
+        <input type="text" value="Some value" />
+        <img src="" alt="Alt text" />
+      </div>
+    |j})
+  |> body
+  |> firstChild;
+
+describe("getByText", () => {
+  test("works with string matcher", () => {
+    let actual = div |> getByText(~matcher=`Str("Hello,"));
+
+    expect(actual) |> toMatchSnapshot;
+  });
+
+  test("works with regex matcher", () => {
+    let actual = div |> getByText(~matcher=`RegExp([%bs.re "/\\w!/"]));
+
+    expect(actual) |> toMatchSnapshot;
+  });
+
+  test("works with function matcher", () => {
+    let matcher = ( _text, node ) => (node |> tagName) === "P";
+    let actual = div |> getByText(~matcher=`Func(matcher));
+
+    expect(actual) |> toMatchSnapshot;
+  });
+});
+```
+
+## FireEvent
+
+```reason
+open Jest;
+open DomTestingLibrary;
+open Expect;
+
+describe("FireEvent", () => {
+  test("click works", () => {
+    open Webapi.Dom;
+
+    let node = document |> Document.createElement("button");
+    let spy = JestJs.inferred_fn();
+    let fn = spy |> MockJs.fn;
+    let clickHandler = _ => [@bs] fn("clicked!") |> ignore;
+
+    node |> Element.addEventListener("click", clickHandler);
+
+    FireEvent.click(node);
+
+    expect(spy |> MockJs.calls) |> toEqual([|"clicked!"|]);
+  });
+
+  test("change works", () => {
+    open Webapi.Dom;
+
+    let node = document |> Document.createElement("input");
+    let spy = JestJs.inferred_fn();
+    let fn = spy |> MockJs.fn;
+    let changeHandler = _ => [@bs] fn("changed!") |> ignore;
+    let event = Event.makeWithOptions("change", { "target": { "value": "1" } });
+
+    node |> Element.addEventListener("change", changeHandler);
+
+    FireEvent.change(node, event);
+
+    expect(spy |> MockJs.calls) |> toEqual([|"changed!"|]);
+  });
+});
+```

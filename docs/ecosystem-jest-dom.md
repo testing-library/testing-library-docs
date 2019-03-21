@@ -23,7 +23,7 @@ expect(getByText(container, 'Visible Example')).toBeVisible()
 > `getByTestId`). Otherwise the `get*` function could throw an error before your
 > assertion.
 
-Check out [jest-dom's documentation](gh) for a full list of available matchers.
+Check out [jest-dom's documentation][gh] for a full list of available matchers.
 
 - [jest-dom on GitHub][gh]
 

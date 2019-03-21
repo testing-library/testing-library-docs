@@ -1,0 +1,76 @@
+---
+id: intro
+title: Reason Testing Library
+sidebar_label: Introduction
+---
+
+Bindings for several testing libraries have been ported to [ReasonML][re].
+
+[`bs-react-testing-library`][gh-react] contains
+[BuckleScript](https://bucklescript.github.io/) bindings for
+`react-testing-library`.
+
+[`bs-dom-testing-library`][gh-dom] contains [BuckleScript][bs] bindings for
+`dom-testing-library`.
+
+```
+npm install --save-dev bs-dom-testing-library
+npm install --save-dev bs-react-testing-library
+```
+
+- [bs-react-testing-library on GitHub][gh-react]
+- [bs-dom-testing-library on GitHub][gh-dom]
+
+[gh-dom]: https://github.com/wyze/bs-dom-testing-library
+[gh-react]: https://github.com/wyze/bs-react-testing-library
+
+## Setup
+
+After installation, you will need the packages `bsconfig.json` file like so:
+
+```json
+{
+  "bs-dev-dependencies": ["bs-react-testing-library"]
+}
+```
+
+_or_
+
+```json
+{
+  "bs-dev-dependencies": ["bs-dom-testing-library"]
+}
+```
+
+## Other Dependencies
+
+### bs-platform
+
+This is what [BuckleScript][bs] uses to compile the [Reason][re] code to JS. If
+it is not in your project you can install it like so:
+
+```
+npm install --save-dev bs-platform
+```
+
+### bs-jest
+
+This is the recommended test runner and is a wrapper around Jest. All of the
+examples here will be using it.
+
+- [bs-jest on GitHub](https://github.com/glennsl/bs-jest)
+
+```
+npm install --save-dev @glennsl/bs-jest
+```
+
+Then update `bsconfig.json`:
+
+```json
+{
+  "bs-dev-dependencies": ["@glennsl/bs-jest"]
+}
+```
+
+[bs]: https://bucklescript.github.io/
+[re]: https://reasonml.github.io/

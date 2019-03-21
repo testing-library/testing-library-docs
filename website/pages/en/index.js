@@ -185,19 +185,37 @@ class Index extends React.Component {
       <Block layout="threeColumn" background={null}>
         {[
           {
-            content: 'For testing React Components',
             image: `${baseUrl}img/react-128x128.png`,
             imageAlign: 'top',
             title: '[React Testing Library](./react)',
           },
           {
-            content: 'End-to-End Tests',
             image: `${baseUrl}img/evergreen-128x128.png`,
             imageAlign: 'top',
             title: '[Cypress Testing Library](./cypress)',
           },
           {
-            content: 'Explore the ecosystem',
+            image: `${baseUrl}img/vue-400x400.png`,
+            imageAlign: 'top',
+            title: '[Vue Testing Library](./vue)',
+          },
+          {
+            image: `${baseUrl}img/angular-250x250.png`,
+            imageAlign: 'top',
+            title: '[Angular Testing Library](./angular)',
+          },
+          {
+            image: `${baseUrl}img/reason-200x200.png`,
+            imageAlign: 'top',
+            title:
+              '[ReasonReact Testing Library](./docs/bs-react-testing-library/intro)',
+          },
+          {
+            image: `${baseUrl}img/puppeteer-275x275.png`,
+            imageAlign: 'top',
+            title: '[Puppeteer Testing Library](./pptr)',
+          },
+          {
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
             title: '[And more...](./docs/ecosystem-user-event)',

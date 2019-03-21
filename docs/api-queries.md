@@ -3,19 +3,62 @@ id: api-queries
 title: Queries
 ---
 
+## Variants
+
+> `getBy` queries are shown by default in the [query documentation](#queries)
+> below.
+
+### getBy
+
+`getBy*` queries returns the first matching node for a query, and throws an
+error if no elements match.
+
+### getAllBy
+
+`getAllBy*` queries return an array of all matching nodes for a query, and
+throws an error if no elements match.
+
+### queryBy
+
+`queryBy*` queries returns the first matching node for a query, and return
+`null` if no elements match. This is useful for asserting an element is not
+present.
+
+### queryAllBy
+
+`queryAllBy*` queries return an array of all matching nodes for a query, and
+return an empty array (`[]`) if no elements match.
+
+### findBy
+
+`findBy*` queries return a promise which resolves when an element is found which
+matches the given query. The promise is rejected if no element is found after
+a default timeout of `4500`ms.
+
+> Note, this is a simple combination of `getBy*` queries and
+> [`waitForElement`](/docs/api-async#waitforelement). The `findBy*` queries
+> accept the `waitForElement` options as the last argument. (i.e.
+> `findByText(container, 'text', queryOptions, waitForElementOptions)`)
+
+### findAllBy
+
+`findAllBy*` queries return a promise which resolves to an array of elements when
+any elements are found which match the given query. The promise is rejected if no
+elements are found after a default timeout of `4500`ms.
+
+## Options
+
+The argument to a query can be a _string_, _regular expression_, or _function_.
+There are also options to adjust how node text is parsed.
+
+See [TextMatch](#textmatch) for documentation on what can be passed to a query.
+
 ## Queries
 
-> **Note**
->
-> - Each of the `get` APIs below have a matching
->   [`getAll`](#queryall-and-getall-apis) API that returns all elements instead
->   of just the first one, and
->   [`query`](#query-apis)/[`queryAll`](#queryall-and-getall-apis) that return
->   `null`/`[]` instead of throwing an error.
-> - See [TextMatch](#textmatch) for details on the `exact`, `trim`, and
->   `collapseWhitespace` options.
+### `ByLabelText`
 
-### `getByLabelText`
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
+> findByLabelText, findAllByLabelText
 
 ```typescript
 getByLabelText(
@@ -31,45 +74,79 @@ getByLabelText(
 This will search for the label that matches the given [`TextMatch`](#textmatch),
 then find the element associated with that label.
 
-```javascript
-const inputNode = getByLabelText(container, 'Username')
+The example below will find the input node for the following DOM structures:
 
-// this would find the input node for the following DOM structures:
-// The "for" attribute (NOTE: in JSX with React you'll write "htmlFor" rather than "for")
-// <label for="username-input">Username</label>
-// <input id="username-input" />
-//
+```js
+// for/htmlFor relationship between label and form element id
+<label for="username-input">Username</label>
+<input id="username-input" />
+
 // The aria-labelledby attribute with form elements
-// <label id="username-label">Username</label>
-// <input aria-labelledby="username-label" />
-//
-// The aria-labelledby attribute with other elements
-// <section aria-labelledby="section-one-header">
-//   <h3 id="section-one-header">Section One</h3>
-//   <p>some content...</p>
-// <section>
-//
+<label id="username-label">Username</label>
+<input aria-labelledby="username-label" />
+
+// The aria-labelledby attribute with non-form elements
+<section aria-labelledby="section-one-header">
+  <h3 id="section-one-header">Section One</h3>
+  <p>some content</p>
+</section>
+
 // Wrapper labels
-// <label>Username <input /></label>
-//
-// It will NOT find the input node for this:
-// <label><span>Username</span> <input /></label>
-//
-// For this case, you can provide a `selector` in the options:
-const inputNode = getByLabelText(container, 'username', { selector: 'input' })
-// and that would work
-// Note that <input aria-label="username" /> will also work, but take
-// care because this is not a label that users can see on the page. So
-// the purpose of your input should be obvious for those users.
+<label>Username <input /></label>
+
+// aria-label attributes
+// Take care because this is not a label that users can see on the page,
+// so the purpose of your input must be obvious to visual users.
+<input aria-label="username" />
 ```
 
-> **Note**
->
-> This method will throw an error if it cannot find the node. If you don't want
-> this behavior (for example you wish to assert that it doesn't exist), then use
-> `queryByLabelText` instead.
+<!--DOCUSAURUS_CODE_TABS-->
 
-### `getByPlaceholderText`
+<!--Native-->
+
+```javascript
+import { getByLabelText } from 'dom-testing-library'
+
+const container = document.body
+const inputNode = getByLabelText(container, 'Username')
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByLabelText } = render(<Login />)
+
+const inputNode = getByLabelText('username')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByLabelText('username').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+It will NOT find the input node for label text broken up by elements. For this
+case, you can provide a `selector` in the options:
+
+```html
+<label> <span>Username</span> <input /> </label>
+```
+
+```js
+const container = document.body
+const inputNode = getByLabelText(container, 'username', {
+  selector: 'input',
+})
+```
+
+### `ByPlaceholderText`
+
+> getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
+> queryAllByPlaceholderText, findByPlaceholderText, findAllByPlaceholderText
 
 ```typescript
 getByPlaceholderText(
@@ -84,17 +161,46 @@ getByPlaceholderText(
 This will search for all elements with a placeholder attribute and find one that
 matches the given [`TextMatch`](#textmatch).
 
-```javascript
-// <input placeholder="Username" />
+```html
+<input placeholder="Username" />
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByPlaceholderText } from 'dom-testing-library'
+
+const container = document.body
 const inputNode = getByPlaceholderText(container, 'Username')
 ```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByPlaceholderText } = render(<MyComponent />)
+const inputNode = getByPlaceholderText('Username')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByPlaceholderText('Username').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 > **Note**
 >
 > A placeholder is not a good substitute for a label so you should generally use
 > `getByLabelText` instead.
 
-### `getByText`
+### `ByText`
+
+> getByText, queryByText, getAllByText, queryAllByText, findByText, findAllByText
 
 ```typescript
 getByText(
@@ -111,23 +217,49 @@ getByText(
 This will search for all elements that have a text node with `textContent`
 matching the given [`TextMatch`](#textmatch).
 
-```javascript
-// <a href="/about">About ℹ️</a>
+```html
+<a href="/about">About ℹ️</a>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByText } from 'dom-testing-library'
+
+const container = document.body
 const aboutAnchorNode = getByText(container, /about/i)
 ```
 
-It also works properly with `input`s whose `type` attribute is either `submit`
-or `button`:
+<!--React-->
 
-```javascript
-// <input type="submit" value="Send data" />
-const submitButton = getByText(container, /send data/i)
+```js
+import { render } from 'react-testing-library'
+
+const { getByText } = render(<MyComponent />)
+const aboutAnchorNode = getByText(/about/i)
+```
+
+<!--Cypress-->
+
+```js
+cy.getByText(/about/i).should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+It also works with `input`s whose `type` attribute is either `submit` or
+`button`:
+
+```js
+<input type="submit" value="Send data" />
 ```
 
 > **Note**
 >
-> See [`getByLabelText`](#getbylabeltext) for more details on how and when to
-> use the `selector` option
+> See [`getByLabelText`](#bylabeltext) for more details on how and when to use
+> the `selector` option
 
 The `ignore` option accepts a query selector. If the
 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
@@ -137,7 +269,10 @@ content is in an inline script file, then the script tag could be returned.
 
 If you'd rather disable this behavior, set `ignore` to `false`.
 
-### `getByAltText`
+### `ByAltText`
+
+> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText, findByAltText,
+> findAllByAltText
 
 ```typescript
 getByAltText(
@@ -158,12 +293,42 @@ and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
 [`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet)
 as it's deprecated).
 
-```javascript
-// <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
-const incrediblesPosterImg = getByAltText(container, /incredibles.*poster$/i)
+```html
+<img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
 ```
 
-### `getByTitle`
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByAltText } from 'dom-testing-library'
+
+const container = document.body
+const incrediblesPosterImg = getByAltText(container, /incredibles.*png$/i)
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByAltText } = render(<MyComponent />)
+const incrediblesPosterImg = getByAltText(/incredibles.*png$/i)
+```
+
+<!--Cypress-->
+
+```js
+cy.getByAltText(/incredibles.*png$/i).should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### `ByTitle`
+
+> getByTitle, queryByTitle, getAllByTitle, queryAllByTitle, findByTitle,
+> findAllByTitle
 
 ```typescript
 getByTitle(
@@ -177,19 +342,51 @@ getByTitle(
 
 Returns the element that has the matching `title` attribute.
 
-```javascript
-// <span title="Delete" id="2" />
-const deleteElement = getByTitle(container, 'Delete')
-```
-
 Will also find a `title` element within an SVG.
 
-```javascript
-// <svg> <title>Close</title> <g> <path /> </g> </svg>
+```html
+<span title="Delete" id="2"></span>
+<svg>
+  <title>Close</title>
+  <g><path /></g>
+</svg>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByTitle } from 'dom-testing-library'
+
+const container = document.body
+const deleteElement = getByTitle(container, 'Delete')
 const closeElement = getByTitle(container, 'Close')
 ```
 
-### `getByDisplayValue`
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByTitle } = render(<MyComponent />)
+const deleteElement = getByTitle('Delete')
+const closeElement = getByTitle('Close')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByTitle('Delete').should('exist')
+cy.getByTitle('Close').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### `ByDisplayValue`
+
+> getByDisplayValue, queryByDisplayValue, getAllByDisplayValue,
+> queryAllByDisplayValue, findByDisplayValue, findAllByDisplayValue
 
 ```typescript
 getByDisplayValue(
@@ -206,39 +403,126 @@ display value.
 
 #### `input`
 
-```javascript
-// <input type="text" id="lastName" />
-// document.getElementById('lastName').value = 'Norris'
+```html
+<input type="text" id="lastName" />
+```
 
+```js
+document.getElementById('lastName').value = 'Norris'
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByDisplayValue } from 'dom-testing-library'
+
+const container = document.body
 const lastNameInput = getByDisplayValue(container, 'Norris')
 ```
 
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByDisplayValue } = render(<MyComponent />)
+const lastNameInput = getByDisplayValue('Norris')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByDisplayValue('Norris').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 #### `textarea`
 
-```javascript
-// <textarea id="messageTextArea"></textarea>
-// document.getElementById('messageTextArea').value = 'Hello World'
+```html
+<textarea id="messageTextArea" />
+```
 
+```js
+document.getElementById('messageTextArea').value = 'Hello World'
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByDisplayValue } from 'dom-testing-library'
+
+const container = document.body
 const messageTextArea = getByDisplayValue(container, 'Hello World')
 ```
 
-#### `select`
+<!--React-->
 
-```javascript
-// <select id="state-select" data-testid="state">
-//   <option value="">State</option>
-//   <option value="AL">Alabama</option>
-//   <option selected value="AK" >Alaska</option>
-//   <option value="AZ">Arizona</option>
-// </select>
+```js
+import { render } from 'react-testing-library'
 
-const selectElement = getByDisplayName(container, 'Alaska')
+const { getByDisplayValue } = render(<MyComponent />)
+const messageTextArea = getByDisplayValue('Hello World')
 ```
+
+<!--Cypress-->
+
+```js
+cy.getByDisplayValue('Hello World').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+#### `select`
 
 In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
 
-### `getByRole`
+```html
+<select id="state-select" data-testid="state">
+  <option value="">State</option>
+  <option value="AL">Alabama</option>
+  <option selected value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+</select>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByDisplayName } from 'dom-testing-library'
+
+const container = document.body
+const selectElement = getByDisplayName(container, 'Alaska')
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByDisplayName } = render(<MyComponent />)
+const selectElement = getByDisplayName('Alaska')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByDisplayName('Alaska').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### `ByRole`
+
+> getByRole, queryByRole, getAllByRole, queryAllByRole, findByRole,
+> findAllByRole
 
 ```typescript
 getByRole(
@@ -253,12 +537,42 @@ getByRole(
 A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it also
 accepts a [`TextMatch`](#textmatch)).
 
-```javascript
-// <div role="dialog">...</div>
+```html
+<div role="dialog">...</div>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByRole } from 'dom-testing-library'
+
+const container = document.body
 const dialogContainer = getByRole(container, 'dialog')
 ```
 
-### `getByTestId`
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByRole } = render(<MyComponent />)
+const dialogContainer = getByRole('dialog')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByRole('dialog').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### `ByTestId`
+
+> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId, findByTestId,
+> findAllByTestId
 
 ```typescript
 getByTestId(
@@ -273,18 +587,45 @@ getByTestId(
 A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
-```javascript
-// <input data-testid="username-input" />
-const usernameInputElement = getByTestId(container, 'username-input')
+```html
+<input data-testid="username-input" />
 ```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByTestId } from 'dom-testing-library'
+
+const container = document.body
+const usernameInput = getByTestId(container, 'username-input')
+```
+
+<!--React-->
+
+```js
+import { render } from 'react-testing-library'
+
+const { getByTestId } = render(<MyComponent />)
+const usernameInput = getByTestId('username-input')
+```
+
+<!--Cypress-->
+
+```js
+cy.getByTestId('username-input').should('exist')
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 > In the spirit of [the guiding principles](#guiding-principles), it is
 > recommended to use this only after the other queries don't work for your use
 > case. Using data-testid attributes do not resemble how your software is used
 > and should be avoided if possible. That said, they are _way_ better than
 > querying based on DOM structure or styling css class names. Learn more about
-> `data-testid`s from the blog post ["Making your UI tests resilient to
-> change"][data-testid-blog-post]
+> `data-testid`s from the blog post
+> ["Making your UI tests resilient to change"](https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269)
 
 #### Overriding `data-testid`
 
@@ -343,7 +684,9 @@ behaviour:
 To perform a match against text without trimming:
 
 ```javascript
-getByText(node, 'text', { normalizer: getDefaultNormalizer({ trim: false }) })
+getByText(node, 'text', {
+  normalizer: getDefaultNormalizer({ trim: false }),
+})
 ```
 
 To override normalization to remove some Unicode characters whilst keeping some
@@ -358,13 +701,17 @@ getByText(node, 'text', {
 
 ### TextMatch Examples
 
+Given the following HTML:
+
+```html
+<div>
+  Hello World
+</div>
+```
+
+**_Will_ find the div:**
+
 ```javascript
-// <div>
-//  Hello World
-// </div>
-
-// WILL find the div:
-
 // Matching a string:
 getByText(container, 'Hello World') // full string match
 getByText(container, 'llo Worl', { exact: false }) // substring match
@@ -378,57 +725,19 @@ getByText(container, /Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
 getByText(container, (content, element) => content.startsWith('Hello'))
+```
 
-// WILL NOT find the div:
+**_Will not_ find the div:**
 
-getByText(container, 'Goodbye World') // full string does not match
-getByText(container, /hello world/) // case-sensitive regex with different case
+```javascript
+// full string does not match
+getByText(container, 'Goodbye World')
+
+// case-sensitive regex with different case
+getByText(container, /hello world/)
+
 // function looking for a span when it's actually a div:
 getByText(container, (content, element) => {
   return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
 })
-```
-
-## `query` APIs
-
-Each of the `get` APIs listed in [the 'Usage'](#usage) section above have a
-complimentary `query` API. The `get` APIs will throw errors if a proper node
-cannot be found. This is normally the desired effect. However, if you want to
-make an assertion that an element is _not_ present in the DOM, then you can use
-the `query` API instead:
-
-```javascript
-const submitButton = queryByText(container, 'submit')
-expect(submitButton).toBeNull() // it doesn't exist
-// or if you're using the custom matchers:
-expect(submitButton).not.toBeTruthy()
-```
-
-## `queryAll` and `getAll` APIs
-
-Each of the `query` APIs have a corresponsing `queryAll` version that always
-returns an Array of matching nodes. `getAll` is the same but throws when the
-array has a length of 0.
-
-```javascript
-const submitButtons = queryAllByText(container, 'submit')
-expect(submitButtons).toHaveLength(3) // expect 3 elements
-expect(submitButtons[0]).toBeTruthy()
-```
-
-## `within` and `getQueriesForElement` APIs
-
-`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
-to the raw query functions, allowing them to be used without specifying a
-container. It is the recommended approach for libraries built on this API and is
-in use in `react-testing-library` and `vue-testing-library`.
-
-Example: To get the text 'hello' only within a section called 'messages', you
-could do:
-
-```javascript
-import { within } from 'dom-testing-library'
-
-const { getByText } = within(document.getElementById('messages'))
-const helloMessage = getByText('hello')
 ```

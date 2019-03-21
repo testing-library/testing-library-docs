@@ -53,10 +53,21 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Parsley Health',
+    image: '/img/users/parsleyhealth.svg',
+    infoLink: 'https://www.parsleyhealth.com',
+    pinned: true,
+  },
+  {
+    caption: 'Facebook Open Source',
+    image: '/img/users/facebook-open-source.png',
+    infoLink: 'https://opensource.facebook.com',
+    pinned: true,
+  },
+  {
     caption: 'Expedia Group',
     image: '/img/users/expediagroup.svg',
     infoLink: 'https://www.expediagroup.com',
-    pinned: true,
   },
 ]
 
@@ -95,7 +106,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: '#292422',
-    secondaryColor: '#3344bb',
+    secondaryColor: '#2468e5',
   },
 
   // Add custom scripts here that would be placed in <script> tags.
@@ -103,6 +114,7 @@ const siteConfig = {
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
     '/js/code-block-buttons.js',
+    '/js/sidenav.js',
   ],
 
   stylesheets: [
@@ -151,6 +163,12 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/kentcdodds/dom-testing-library',
   docsRepoUrl: 'https://github.com/alexkrolick/testing-library-docs',
+
+  // Algolia DocSearch config
+  algolia: {
+    apiKey: 'bda29e6557dc5be1ce5c05f2dbff8f33',
+    indexName: 'testing-library',
+  },
 }
 
 module.exports = siteConfig

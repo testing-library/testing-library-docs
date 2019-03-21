@@ -12,6 +12,7 @@
       "example-input-event",
       "example-update-props",
       "example-react-context",
+      "example-react-intl",
       "example-react-redux",
       "example-react-router",
       "example-reach-router",
@@ -19,6 +20,7 @@
       "example-external"
     ],
     "API": ["api-queries", "api-events", "api-async", "api-helpers"],
+    "Guides": ["guide-which-query", "guide-disappearance"],
     "Wrappers": [
       {
         "type": "subcategory",
@@ -31,13 +33,23 @@
           "react-testing-library/faq"
         ]
       },
+      "cypress-testing-library/intro",
+      "vue-testing-library/intro",
+      "angular-testing-library/intro",
       {
         "type": "subcategory",
-        "label": "Cypress Testing Library",
-        "ids": ["cypress-testing-library/intro"]
+        "label": "ReasonReact Testing Library",
+        "ids": [
+          "bs-react-testing-library/intro",
+          "bs-react-testing-library/examples"
+        ]
       }
     ],
-    "Ecosystem": ["ecosystem-user-event", "ecosystem-jest-dom"],
+    "Ecosystem": [
+      "ecosystem-user-event",
+      "ecosystem-jest-dom",
+      "ecosystem-bs-jest-dom"
+    ],
     "Help": ["faq", "learning"]
   }
 }
