@@ -38,7 +38,7 @@ either configure your testing framework to resolve to the right file when you re
 `dom-testing-library` or you can import the file you need more explicitly. For example:
 
 ```js
-import {within} from 'dom-testing-library/dist/dom-testing-library.umd.js`
+import {within} from 'dom-testing-library/dist/dom-testing-library.umd.js'
 ```
 
 You can
