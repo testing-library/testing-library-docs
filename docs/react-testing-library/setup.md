@@ -226,29 +226,3 @@ mocha --require jsdom-global/register
 Note, depending on the version of Node you're running, you may also need to
 install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
 6).
-
-## Configuring React-Intl Polyfills
-
-If you're using React-Intl in your project, and you need to load a locale, you
-must load the Polyfills according to that language.
-
-In order to do so, you may use this small setup and/or combine it with other
-setups.
-
-```
-// src/setupTests.js
-import IntlPolyfill from 'intl'
-import 'intl/locale-data/jsonp/pt'
-
-const setupTests = () => {
- // https://formatjs.io/guides/runtime-environments/#server
- if (global.Intl) {
-   Intl.NumberFormat = IntlPolyfill.NumberFormat
-   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
- } else {
-   global.Intl = IntlPolyfill
- }
-}
-
-setupTests();
-```

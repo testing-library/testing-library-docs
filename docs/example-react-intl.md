@@ -8,6 +8,34 @@ title: React Intl
 > If you want to combine setupTests with another setup you should check
 > [`setup`](react-testing-library/setup.md)
 
+## Configuring React-Intl Polyfills
+
+If you're using React-Intl in your project, and you need to load a locale, you
+must load the Polyfills according to that language.
+
+In order to do so, you may use this small setup and/or combine it with other
+setups.
+
+```
+// src/setupTests.js
+import IntlPolyfill from 'intl'
+import 'intl/locale-data/jsonp/pt'
+
+const setupTests = () => {
+ // https://formatjs.io/guides/runtime-environments/#server
+ if (global.Intl) {
+   Intl.NumberFormat = IntlPolyfill.NumberFormat
+   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
+ } else {
+   global.Intl = IntlPolyfill
+ }
+}
+
+setupTests();
+```
+
+A complete example:
+
 ```jsx
 import React from 'react'
 import 'jest-dom/extend-expect'
