@@ -68,6 +68,7 @@ const users = [
     caption: 'Expedia Group',
     image: '/img/users/expediagroup.svg',
     infoLink: 'https://www.expediagroup.com',
+    pinned: true,
   },
 ]
 
