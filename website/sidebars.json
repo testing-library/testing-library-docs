@@ -12,6 +12,7 @@
       "example-input-event",
       "example-update-props",
       "example-react-context",
+      "example-react-intl",
       "example-react-redux",
       "example-react-router",
       "example-reach-router",
