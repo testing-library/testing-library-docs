@@ -84,7 +84,7 @@ As you write your tests, keep in mind:
 <summary>If I can't use shallow rendering, how do I mock out components in tests?</summary>
 
 In general, you should avoid mocking out components (see
-[the Guiding Principles section](./guiding-principles)). However if you need to,
+[the Guiding Principles section](../guiding-principles)). However if you need to,
 then it's pretty trivial using
 [Jest's mocking feature](https://facebook.github.io/jest/docs/en/manual-mocks.html).
 One case that I've found mocking to be especially useful is for animation
@@ -116,14 +116,14 @@ test('you can mock things with jest.mock', () => {
 Note that because they're Jest mock functions (`jest.fn()`), you could also make
 assertions on those as well if you wanted.
 
-[Open full test](./example-react-transition-group) for the full example.
+[Open full test](../example-react-transition-group) for the full example.
 
 This looks like more work that shallow rendering (and it is), but it gives you
 more confidence so long as your mock resembles the thing you're mocking closely
 enough.
 
 If you want to make things more like shallow rendering, then you could do
-something more [like this]([Open full test](./example-react-transition-group) ).
+something more [like this]([Open full test](../example-react-transition-group) ).
 
 Learn more about how Jest mocks work from my blog post:
 ["But really, what is a JavaScript mock?"](https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d)

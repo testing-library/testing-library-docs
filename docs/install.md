@@ -26,6 +26,28 @@ wrapper:
 - [user-event](ecosystem-user-event.md) browser event simulation
 - [jest-dom](ecosystem-jest-dom.md) custom Jest matchers
 
+## Main Exports
+
+You can
+[review the `dom-testing-library` package.json here](https://unpkg.com/dom-testing-library/package.json).
+
+In particular, the `main`, `module`, and `umd:main` fileds are useful. Each of these
+points to a file that's useful in certain situations. Typically, your testing framework
+will resolve to the correct one for your situation, but if it does not, then you can
+either configure your testing framework to resolve to the right file when you require/import
+`dom-testing-library` or you can import the file you need more explicitly. For example:
+
+```js
+import {within} from 'dom-testing-library/dist/dom-testing-library.umd.js'
+```
+
+You can
+[review the published `dist` files here](https://unpkg.com/dom-testing-library/dist).
+
+The `main` file is configured to compile down to support the version of node that is
+referenced in the `package.json` `engines.node` field. But the `module` and `umd:main`
+files are configured to compile down to support browsers as old as IE 10.
+
 <!--
 Links
 -->

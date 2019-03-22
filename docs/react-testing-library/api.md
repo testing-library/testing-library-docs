@@ -92,6 +92,27 @@ Pass a React Component as the `wrapper` option to have it rendered around the
 inner element. This is most useful for creating reusable custom render functions
 for common data providers. See [setup](setup.md#custom-render) for examples.
 
+### `queries`
+
+Queries to bind. Overrides the default set from `dom-testing-library` unless
+merged.
+
+```js
+// Example, a function to traverse table contents
+import * as tableQueries from 'my-table-query-libary'
+import queries from 'react-testing-library'
+
+const { getByRowColumn, getByText } = render(<MyTable />, {
+  queries: { ...queries, ...tableQueries },
+})
+```
+
+See [helpers](../api-helpers.md) for guidance on using utility functions to
+create custom queries.
+
+Custom queries can also be added globally by following the
+[custom render guide](./setup#custom-render).
+
 ## `render` Result
 
 The `render` method returns an object that has a few properties:
@@ -167,7 +188,7 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 
 It'd probably be better if you test the component that's doing the prop updating
 to ensure that the props are being updated correctly (see
-[the Guiding Principles section](#guiding-principles)). That said, if you'd
+[the Guiding Principles section](/docs/guiding-principles)). That said, if you'd
 prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 

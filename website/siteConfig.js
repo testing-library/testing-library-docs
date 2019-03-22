@@ -58,6 +58,18 @@ const users = [
     infoLink: 'https://www.parsleyhealth.com',
     pinned: true,
   },
+  {
+    caption: 'Facebook Open Source',
+    image: '/img/users/facebook-open-source.png',
+    infoLink: 'https://opensource.facebook.com',
+    pinned: true,
+  },
+  {
+    caption: 'Expedia Group',
+    image: '/img/users/expediagroup.svg',
+    infoLink: 'https://www.expediagroup.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
@@ -103,6 +115,7 @@ const siteConfig = {
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
     '/js/code-block-buttons.js',
+    '/js/sidenav.js',
   ],
 
   stylesheets: [

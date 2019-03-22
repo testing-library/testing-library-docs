@@ -1,0 +1,13 @@
+---
+title: Multi-Framework Code Blocks
+author: Alex Krolick
+authorURL: http://github.com/alexkrolick
+---
+
+Many of the code samples have been updated to include tabs to switch between
+"plain" DOM Testing Library syntax and the wrappers for React, Cypress, etc.
+
+Thanks to [@tylerthehaas](https://github.com/tylerthehaas) for pointing out that
+the previous examples could be confusing if you were targeting a specific
+library, and to the Docusaurus team for adding support for code tabs in version
+[1.7.2](https://github.com/facebook/Docusaurus/blob/master/CHANGELOG.md#170---2019-1-23).
