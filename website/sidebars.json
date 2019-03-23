@@ -16,6 +16,7 @@
       "example-react-redux",
       "example-react-router",
       "example-reach-router",
+      "example-react-transition-group",
       "example-external"
     ],
     "API": ["api-queries", "api-events", "api-async", "api-helpers"],
