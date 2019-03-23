@@ -3,9 +3,7 @@ id: example-react-hooks
 title: React Hooks
 ---
 
-`react-testing-library` provides the
-[`testHook`](/docs/react-testing-library/api#testhook) utility to test custom
-hooks.
+[`react-hooks-testing-library`](https://github.com/mpeyper/react-hooks-testing-library) is built on top of [`react-testing-library`](/react) to create a simple test harness for [React hooks](https://reactjs.org/docs/hooks-intro.html) that handles running them within the body of a function component, as well as providing various useful utility functions for updating the inputs and retrieving the outputs of your [custom hook](https://reactjs.org/docs/hooks-custom.html).
 
 > **Note**
 >
@@ -14,189 +12,60 @@ hooks.
 > hooks. Typically those are better tested by testing the component that is
 > using it.
 
-## Using `result`
-
-Testing the last returned value of a hook using the `result` ref
-
-```jsx
-function useCounter({ initialCount = 0, step = 1 } = {}) {
-  const [count, setCount] = React.useState(initialCount)
-  const increment = () => setCount(c => c + step)
-  const decrement = () => setCount(c => c - step)
-  return { count, increment, decrement }
-}
+```
+npm install --save-dev react-hooks-testing-library
 ```
 
-```jsx
-test('returns result ref with latest result from hook execution', () => {
-  const { result } = testHook(useCounter)
-  expect(result.current.count).toBe(0)
-  act(() => {
-    result.current.increment()
-  })
-  expect(result.current.count).toBe(1)
-})
-```
-
-## State
-
-Testing a hook that provides state
-
-```jsx
+```js
+// useCounter.js
 import { useState } from 'react'
 
-export function useCounter({ initialCount = 0, step = 1 } = {}) {
+function useCounter(initialCount = 0) {
   const [count, setCount] = useState(initialCount)
-  const increment = () => setCount(c => c + step)
-  const decrement = () => setCount(c => c - step)
-  return { count, increment, decrement }
+
+  const incrementBy = useCallback((n) => setCount(count + n), [count])
+  const decrementBy = useCallback((n) => setCount(count - n), [count])
+
+  return { count, incrementBy, decrementBy }
 }
+
+export default useCounter
 ```
 
-```jsx
-import { testHook, act, cleanup } from 'react-testing-library'
+```js
+// useCounter.test.js
+import { renderHook, cleanup, act } from 'react-hooks-testing-library'
+import useCounter from './useCounter'
+
 afterEach(cleanup)
 
-describe('useCounter', () => {
-  test('accepts default initial values', () => {
-    let count
-    testHook(() => ({ count } = useCounter()))
+test('should create counter', () => {
+  const { result } = renderHook(() => useCounter())
 
-    expect(count).toBe(0)
-  })
-
-  test('accepts a default initial value for `count`', () => {
-    let count
-    testHook(() => ({ count } = useCounter({})))
-
-    expect(count).toBe(0)
-  })
-
-  test('provides an `increment` function', () => {
-    let count, increment
-    testHook(() => ({ count, increment } = useCounter({ step: 2 })))
-
-    expect(count).toBe(0)
-    act(() => {
-      increment()
-    })
-    expect(count).toBe(2)
-  })
-
-  test('provides an `decrement` function', () => {
-    let count, decrement
-    testHook(() => ({ count, decrement } = useCounter({ step: 2 })))
-
-    expect(count).toBe(0)
-    act(() => {
-      decrement()
-    })
-    expect(count).toBe(-2)
-  })
-
-  test('accepts a default initial value for `step`', () => {
-    let count, increment
-    testHook(() => ({ count, increment } = useCounter({})))
-
-    expect(count).toBe(0)
-    act(() => {
-      increment()
-    })
-    expect(count).toBe(1)
-  })
+  expect(result.current.count).toBe(0)
 })
-```
 
-## Unmount Side-Effects
+test('should increment counter', () => {
+  const { result } = renderHook(() => useCounter())
 
-Using the `unmount` function to check useEffect behavior when unmounting
+  act(() => result.current.incrementBy(1))
 
-```jsx
-import { useState, useEffect } from 'react'
+  expect(result.current.count).toBe(1)
 
-export function useDocumentTitle(title) {
-  const [originalTitle, setOriginalTitle] = useState(document.title)
-  useEffect(() => {
-    setOriginalTitle(document.title)
-    document.title = title
-    return () => {
-      document.title = originalTitle
-    }
-  }, [title])
-}
-```
+  act(() => result.current.incrementBy(2))
 
-```jsx
-describe('useDocumentTitle', () => {
-  test('sets a title', () => {
-    document.title = 'original title'
-    testHook(() => {
-      useDocumentTitle('modified title')
-    })
-
-    expect(document.title).toBe('modified title')
-  })
-
-  test('returns to original title when component is unmounted', () => {
-    document.title = 'original title'
-    const { unmount } = testHook(() => {
-      useDocumentTitle('modified title')
-    })
-
-    unmount()
-    expect(document.title).toBe('original title')
-  })
+  expect(result.current.count).toBe(3)
 })
-```
 
-## Rerender Side-Effects
+test('should decrement counter', () => {
+  const { result } = renderHook(() => useCounter())
 
-Using the `rerender` function to test calling useEffect multiple times
+  act(() => result.current.decrementBy(1))
 
-```jsx
-import { useEffect } from 'react'
+  expect(result.current.count).toBe(-1)
 
-export function useCall(callback, deps) {
-  useEffect(() => {
-    callback()
-  }, deps)
-}
-```
+  act(() => result.current.decrementBy(2))
 
-```jsx
-describe('useCall', () => {
-  test('calls once on render', () => {
-    const spy = jest.fn()
-    testHook(() => {
-      useCall(spy, [])
-    })
-    expect(spy).toHaveBeenCalledTimes(1)
-  })
-
-  test('calls again if deps change', () => {
-    let deps = [false]
-    const spy = jest.fn()
-    const { rerender } = testHook(() => {
-      useCall(spy, deps)
-    })
-    expect(spy).toHaveBeenCalledTimes(1)
-
-    deps = [true]
-    rerender()
-    expect(spy).toHaveBeenCalledTimes(2)
-  })
-
-  test('does not call again if deps are the same', () => {
-    let deps = [false]
-    const spy = jest.fn()
-    const { rerender } = testHook(() => {
-      useCall(spy, deps)
-    })
-    expect(spy).toHaveBeenCalledTimes(1)
-
-    deps = [false]
-    rerender()
-    expect(spy).toHaveBeenCalledTimes(1)
-  })
+  expect(result.current.count).toBe(-3)
 })
 ```
