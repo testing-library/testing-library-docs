@@ -3,7 +3,7 @@ id: example-react-hooks
 title: React Hooks
 ---
 
-[`react-hooks-testing-library`][gh] is built on top of [`react-testing-library`](/react) to create a simple test harness for [React hooks](https://reactjs.org/docs/hooks-intro.html) that handles running them within the body of a function component, as well as providing various useful utility functions for updating the inputs and retrieving the outputs of your [custom hook](https://reactjs.org/docs/hooks-custom.html).
+[`react-hooks-testing-library`](https://github.com/mpeyper/react-hooks-testing-library) is built on top of [`react-testing-library`](/react) to create a simple test harness for [React hooks](https://reactjs.org/docs/hooks-intro.html) that handles running them within the body of a function component, as well as providing various useful utility functions for updating the inputs and retrieving the outputs of your [custom hook](https://reactjs.org/docs/hooks-custom.html).
 
 > **Note**
 >
