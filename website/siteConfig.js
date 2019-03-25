@@ -70,6 +70,12 @@ const users = [
     infoLink: 'https://www.expediagroup.com',
     pinned: true,
   },
+  {
+    caption: 'Wix.com',
+    image: '/img/users/wix.svg',
+    infoLink: 'https://www.wix.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
