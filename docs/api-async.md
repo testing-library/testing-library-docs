@@ -7,7 +7,7 @@ Several utilities are provided for dealing with asynchronous code. These can be
 useful to wait for an element to appear or disappear in response to an action.
 (See the [guide to testing disappearance](guide-disappearance.md).)
 
-### `wait`
+## `wait`
 
 ```typescript
 function wait(
@@ -48,7 +48,7 @@ The default `interval` is `50ms`. However it will run your callback immediately
 on the next tick of the event loop (in a `setTimeout`) before starting the
 intervals.
 
-### `waitForElement`
+## `waitForElement`
 
 ```typescript
 function waitForElement<T>(
@@ -116,7 +116,7 @@ will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
 changes.
 
-### `waitForDomChange`
+## `waitForDomChange`
 
 ```typescript
 function waitForDomChange<T>(options?: {
