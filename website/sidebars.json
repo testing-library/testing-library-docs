@@ -43,7 +43,7 @@
           "bs-react-testing-library/intro",
           "bs-react-testing-library/examples"
         ]
-      },
+      }
     ],
     "Ecosystem": [
       "ecosystem-user-event",
