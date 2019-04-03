@@ -84,8 +84,8 @@ As you write your tests, keep in mind:
 <summary>If I can't use shallow rendering, how do I mock out components in tests?</summary>
 
 In general, you should avoid mocking out components (see
-[the Guiding Principles section](../guiding-principles)). However if you need to,
-then it's pretty trivial using
+[the Guiding Principles section](../guiding-principles)). However if you need
+to, then it's pretty trivial using
 [Jest's mocking feature](https://facebook.github.io/jest/docs/en/manual-mocks.html).
 One case that I've found mocking to be especially useful is for animation
 libraries. I don't want my tests to wait for animations to end.
@@ -123,7 +123,8 @@ more confidence so long as your mock resembles the thing you're mocking closely
 enough.
 
 If you want to make things more like shallow rendering, then you could do
-something more [like this]([Open full test](../example-react-transition-group) ).
+something more [like this]([Open full test](../example-react-transition-group)
+).
 
 Learn more about how Jest mocks work from my blog post:
 ["But really, what is a JavaScript mock?"](https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d)
@@ -182,28 +183,27 @@ snapshotDiff(firstVersion, container.cloneNode(true))
 
 <summary>Does this library work with React Native?</summary>
 
-> This is still quite experimental - please contribute with your own
-> results/findings!
+In short, no, but the philosophy and guiding principles still can! That said,
+any implementation likely can't be a member of the `dom-testing-library` family
+because they shouldn't render to, or use, the DOM. There are major differences
+in the way things such as rendering and events are handled between native and
+web, and as a result those libraries have their own core implementations.
 
-The short answer is yes, but with a few caveats. It's possible to replicate a
-lot of DOM functionality with
-[`react-native-web`](https://github.com/necolas/react-native-web), allowing you
-to use the query APIs like `getByText`. You can then add a `press` event to
-`fireEvent` that simulates a mouseDown immediately followed by a mouseUp, and
-call this with Touchable\* components.
+The best a React Native implementation can do is strive to mimic the core API of
+this library by invoking/mimicking comparable functionality in a native
+environment while following the guiding principles. Feel free to explore the
+following React Native implementations of testing library and choose the one
+your team is more comfortable using:
 
-One thing this approach does _not_ support is any kind of native module
-functionality (like native navigation modules). The way around this is to design
-your components so that as much of the functionality you need tested is
-encapsulated outside of any native module functionality.
+- [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
+- [native-testing-library](https://github.com/bcarroll22/native-testing-library)
 
-For a barebones example of testing a React Native component,
-[see here](https://github.com/thchia/rn-testing-library-example).
-
-There is also a sibling project called
-[react-native-testing-library](https://github.com/callstack/react-native-testing-library)
-which aims to test React Native apps without mentioned tradeoffs, having the API
-inspired by and mostly compatible with this library.
+Additionally, if you're not satisfied with either of these libraries, you could
+use [react-native-web][rnw] to render your native components to an emulated DOM
+and theoretically make assertions that way. Please just note that this approach
+is not recommended, because it certainly cannot give you true confidence that
+your app is working as intended. If you'd like to see an example of how this
+would work, check [here](https://github.com/thchia/rn-testing-library-example).
 
 </details>
 
@@ -214,6 +214,7 @@ Links:
 <!-- prettier-ignore-start -->
 
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
+[rnw]: https://github.com/necolas/react-native-web
 [data-testid-blog-post]: https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269
 [dom-testing-lib-textmatch]: https://github.com/kentcdodds/dom-testing-library#textmatch
 
