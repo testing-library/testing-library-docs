@@ -11,4 +11,21 @@
   publish = "website/build/react-testing-library-docs"
 
   # Default build command.
-  command = "cd website; npm install; npm run build; cp _redirects website/build/react-testing-library-docs/_redirects"
+  command = "cd website; npm install; npm run build"
+
+[[redirects]]
+  from = "https://testing-library.netlify.com/*"
+  to = "https://testing-library.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://react-testing-library.com/*"
+  to = "https://testing-library.com/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://react-testing-library.com/"
+  to = "https://testing-library.com/react/"
+  status = 301
+  force = true
