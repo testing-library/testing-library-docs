@@ -48,7 +48,8 @@
     "Ecosystem": [
       "ecosystem-user-event",
       "ecosystem-jest-dom",
-      "ecosystem-bs-jest-dom"
+      "ecosystem-bs-jest-dom",
+      "ecosystem-native-testing-library"
     ],
     "Help": ["faq", "learning"]
   }
