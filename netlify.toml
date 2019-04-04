@@ -16,13 +16,13 @@
 [[redirects]]
   from = "https://testing-library.netlify.com/*"
   to = "https://testing-library.com/:splat"
-  status = 200
+  status = 301
   force = true
 
 [[redirects]]
   from = "https://react-testing-library.com/*"
   to = "https://testing-library.com/:splat"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "https://react-testing-library.com/"
