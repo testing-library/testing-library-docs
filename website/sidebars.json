@@ -21,7 +21,7 @@
     ],
     "API": ["api-queries", "api-events", "api-async", "api-helpers"],
     "Guides": ["guide-which-query", "guide-disappearance"],
-    "Wrappers": [
+    "Frameworks": [
       {
         "type": "subcategory",
         "label": "React Testing Library",
