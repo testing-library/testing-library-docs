@@ -11,4 +11,4 @@
   publish = "website/build/react-testing-library-docs"
 
   # Default build command.
-  command = "cd website; npm install; npm run build;"
+  command = "cd website; npm install; npm run build; cp _redirects website/build/react-testing-library-docs/_redirects"
