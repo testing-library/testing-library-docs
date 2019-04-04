@@ -13,19 +13,23 @@
   # Default build command.
   command = "cd website; npm install; npm run build"
 
+# React root to React landing page 
 [[redirects]]
-  from = "https://testing-library.netlify.com/*"
-  to = "https://testing-library.com/:splat"
+  from = "https://react-testing-library.com/"
+  to = "https://testing-library.com/react/"
   status = 301
   force = true
 
+# React to main domain
 [[redirects]]
   from = "https://react-testing-library.com/*"
   to = "https://testing-library.com/:splat"
   status = 301
+  force = true
 
+# Netlify subdomain to main domain
 [[redirects]]
-  from = "https://react-testing-library.com/"
-  to = "https://testing-library.com/react/"
+  from = "https://testing-library.netlify.com/*"
+  to = "https://testing-library.com/:splat"
   status = 301
   force = true
