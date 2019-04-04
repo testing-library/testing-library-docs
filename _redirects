@@ -1,0 +1,9 @@
+# Netlify redirects
+# https://www.netlify.com/docs/redirects/
+
+# Redirect domain aliases to primary domain
+https://react-testing-library.com/ https://testing-library.com/react/ 301!
+https://react-testing-library.com/* https://testing-library.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://testing-library.netlify.com/* https://testing-library.com/:splat 301!
