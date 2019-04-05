@@ -32,8 +32,8 @@ return an empty array (`[]`) if no elements match.
 ### findBy
 
 `findBy*` queries return a promise which resolves when an element is found which
-matches the given query. The promise is rejected if no element is found after
-a default timeout of `4500`ms.
+matches the given query. The promise is rejected if no element is found after a
+default timeout of `4500`ms.
 
 > Note, this is a simple combination of `getBy*` queries and
 > [`waitForElement`](/docs/api-async#waitforelement). The `findBy*` queries
@@ -42,9 +42,9 @@ a default timeout of `4500`ms.
 
 ### findAllBy
 
-`findAllBy*` queries return a promise which resolves to an array of elements when
-any elements are found which match the given query. The promise is rejected if no
-elements are found after a default timeout of `4500`ms.
+`findAllBy*` queries return a promise which resolves to an array of elements
+when any elements are found which match the given query. The promise is rejected
+if no elements are found after a default timeout of `4500`ms.
 
 ## Options
 
@@ -200,7 +200,8 @@ cy.getByPlaceholderText('Username').should('exist')
 
 ### `ByText`
 
-> getByText, queryByText, getAllByText, queryAllByText, findByText, findAllByText
+> getByText, queryByText, getAllByText, queryAllByText, findByText,
+> findAllByText
 
 ```typescript
 getByText(
@@ -271,8 +272,8 @@ If you'd rather disable this behavior, set `ignore` to `false`.
 
 ### `ByAltText`
 
-> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText, findByAltText,
-> findAllByAltText
+> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText,
+> findByAltText, findAllByAltText
 
 ```typescript
 getByAltText(
@@ -704,9 +705,7 @@ getByText(node, 'text', {
 Given the following HTML:
 
 ```html
-<div>
-  Hello World
-</div>
+<div>Hello World</div>
 ```
 
 **_Will_ find the div:**

@@ -98,8 +98,8 @@ const { getByText, getByTestId, container, asFragment } = render(
 
 ### Act
 
-The [`fireEvent`](../api-events#fireEvent) method allows you to fire events to
-simulate user actions.
+The [`fireEvent`](dom-testing-library/api-events.md) method allows you to fire
+events to simulate user actions.
 
 ```jsx
 axiosMock.get.mockResolvedValueOnce({

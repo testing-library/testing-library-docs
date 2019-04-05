@@ -1,27 +1,23 @@
 {
   "docs": {
-    "Getting Started": [
-      "intro",
-      "install",
-      "example-intro",
-      "setup",
-      "guiding-principles"
-    ],
-    "Examples": [
-      "example-codesandbox",
-      "example-input-event",
-      "example-update-props",
-      "example-react-context",
-      "example-react-intl",
-      "example-react-redux",
-      "example-react-router",
-      "example-reach-router",
-      "example-react-transition-group",
-      "example-external"
-    ],
-    "API": ["api-queries", "api-events", "api-async", "api-helpers"],
-    "Guides": ["guide-which-query", "guide-disappearance"],
+    "Getting Started": ["intro", "guiding-principles"],
     "Frameworks": [
+      {
+        "type": "subcategory",
+        "label": "DOM Testing Library",
+        "ids": [
+          "dom-testing-library/intro",
+          "dom-testing-library/install",
+          "dom-testing-library/example-intro",
+          "dom-testing-library/setup",
+          "dom-testing-library/api-queries",
+          "dom-testing-library/api-events",
+          "dom-testing-library/api-async",
+          "dom-testing-library/api-helpers",
+          "dom-testing-library/faq",
+          "dom-testing-library/cheatsheet"
+        ]
+      },
       {
         "type": "subcategory",
         "label": "React Testing Library",
@@ -30,7 +26,8 @@
           "react-testing-library/example-intro",
           "react-testing-library/setup",
           "react-testing-library/api",
-          "react-testing-library/faq"
+          "react-testing-library/faq",
+          "react-testing-library/cheatsheet"
         ]
       },
       "cypress-testing-library/intro",
@@ -52,6 +49,22 @@
       "ecosystem-bs-jest-dom",
       "ecosystem-native-testing-library"
     ],
-    "Help": ["faq", "learning"]
+    "Help": ["faq", "learning", "contributing"]
+  },
+  "recipes": {
+    "Guides": ["recipes", "guide-which-query", "guide-disappearance"],
+    "Examples": [
+      "example-codesandbox",
+      "example-input-event",
+      "example-update-props",
+      "example-react-context",
+      "example-react-intl",
+      "example-react-redux",
+      "example-react-router",
+      "example-reach-router",
+      "example-react-transition-group",
+      "example-external"
+    ],
+    "Help": ["faq", "learning", "contributing"]
   }
 }

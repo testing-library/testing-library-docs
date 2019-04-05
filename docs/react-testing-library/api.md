@@ -107,8 +107,8 @@ const { getByRowColumn, getByText } = render(<MyTable />, {
 })
 ```
 
-See [helpers](../api-helpers.md) for guidance on using utility functions to
-create custom queries.
+See [helpers](dom-testing-library/api-helpers.md) for guidance on using utility
+functions to create custom queries.
 
 Custom queries can also be added globally by following the
 [custom render guide](./setup#custom-render).
@@ -120,11 +120,11 @@ The `render` method returns an object that has a few properties:
 ### `...queries`
 
 The most important feature of `render` is that the queries from
-[dom-testing-library](api-queries.md) are automatically returned with their
-first argument bound to the [baseElement](#baseelement), which defaults to
-`document.body`.
+[dom-testing-library](dom-testing-library/api-queries.md) are automatically
+returned with their first argument bound to the [baseElement](#baseelement),
+which defaults to `document.body`.
 
-See [Queries](api-queries.md) for a complete list.
+See [Queries](dom-testing-library/api-queries.md) for a complete list.
 
 **Example**
 
@@ -188,7 +188,7 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 
 It'd probably be better if you test the component that's doing the prop updating
 to ensure that the props are being updated correctly (see
-[the Guiding Principles section](/docs/guiding-principles)). That said, if you'd
+[the Guiding Principles section](guiding-principles.md)). That said, if you'd
 prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 

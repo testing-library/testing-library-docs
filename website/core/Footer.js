@@ -44,8 +44,10 @@ class Footer extends React.Component {
             <h5>Docs</h5>
             <Link href={this.docUrl('intro')}>Getting Started</Link>
             <Link href={this.docUrl('example-codesandbox')}>Examples</Link>
-            <Link href={this.docUrl('api-queries')}>API</Link>
-            <Link href={this.docUrl('faq')}>Help</Link>
+            <Link href={this.docUrl('dom-testing-library/api-queries')}>
+              API
+            </Link>
+            <Link href={this.docUrl('dom-testing-library/faq')}>Help</Link>
           </div>
           <div>
             <h5>Community</h5>
