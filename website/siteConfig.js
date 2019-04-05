@@ -98,6 +98,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: 'intro', label: 'Docs' },
+    { doc: 'recipes', label: 'Recipes' },
     { page: 'help', label: 'Help' },
     { blog: true, label: 'Blog' },
   ],
@@ -156,12 +157,16 @@ const siteConfig = {
   // No .html extensions for paths.
   cleanUrl: true,
 
+  // Allow collapsing left nav headings
+  // if true, all but focused section collapse by default
+  docsSideNavCollapsible: false,
+
   // Open Graph and Twitter card images.
   ogImage: 'img/octopus-128x128.png',
   twitterImage: 'img/octopus-128x128.png',
 
   // Show documentation's last contributor's name.
-  // enableUpdateBy: true,
+  enableUpdateBy: false,
 
   // Show documentation's last update time.
   enableUpdateTime: true,
@@ -170,12 +175,17 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/kentcdodds/dom-testing-library',
   docsRepoUrl: 'https://github.com/alexkrolick/testing-library-docs',
+  editUrl:
+    'https://github.com/alexkrolick/testing-library-docs/blob/master/docs/',
 
   // Algolia DocSearch config
   algolia: {
     apiKey: 'bda29e6557dc5be1ce5c05f2dbff8f33',
     indexName: 'testing-library',
   },
+
+  // Google Analytics
+  gaTrackingId: 'UA-137787095-1',
 }
 
 module.exports = siteConfig

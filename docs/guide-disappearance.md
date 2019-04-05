@@ -8,10 +8,9 @@ vice versa.
 
 ## Waiting for appearance
 
-If you need to wait for an element to appear, the
-[async wait utilities](api-async.md) allow you to wait for an assertion to be
-satisfied before proceeding. The wait utilities retry until the query passes or
-times out.
+If you need to wait for an element to appear, the [async wait
+utilities][async-api] allow you to wait for an assertion to be satisfied before
+proceeding. The wait utilities retry until the query passes or times out.
 
 ```jsx
 test('movie title appears', async () => {
@@ -29,9 +28,9 @@ test('movie title appears', async () => {
 
 ## Waiting for disappearance
 
-The `wait` [async helper](api-async.md) function retries until the wrapped
-function stops throwing an error. This can be used to assert that an element
-disappears from the page.
+The `wait` [async helper][async-api] function retries until the wrapped function
+stops throwing an error. This can be used to assert that an element disappears
+from the page.
 
 ```jsx
 test('movie title goes away', async () => {
@@ -77,3 +76,5 @@ import 'jest-dom/extend-expect'
 const submitButton = queryByText(container, 'submit')
 expect(submitButton).not.toBeInTheDocument()
 ```
+
+[async-api]: dom-testing-library/api-async.md

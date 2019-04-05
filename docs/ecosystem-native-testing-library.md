@@ -1,27 +1,25 @@
 ---
 id: ecosystem-native-testing-library
-title: (React) Native Testing Library
+title: Native Testing Library
 sidebar_label: Native Testing Library
 ---
 
-## Docs site and Github
+Native Testing Library is a testing library for **React Native** inspired by
+`dom-testing-library`. Because React Native does not run in a browser
+environment, the core queries are implemented independently, unlike other
+wrappers that user dom-testing-library as the base. You'll find much more
+information about the library, including examples, on the project website:
 
-Native Testing Library is different from DOM Testing Library in a few important
-ways, and for that reason has its own docs site. You'll find much more
-information about the library, including examples, there.
-
-### [Read the docs](https://native-testing-library.com)
-
-### [Docs repo](https://github.com/bcarroll22/native-testing-library-docs)
-
-### [Project repo](https://github.com/bcarroll22/native-testing-library)
+- [Docs](https://native-testing-library.com)
+- [Docs repo](https://github.com/bcarroll22/native-testing-library-docs)
+- [Project repo](https://github.com/bcarroll22/native-testing-library)
 
 ## Installation
 
 This module should be installed in your project's `devDependencies`:
 
 ```
-npm i -D native-testing-library
+npm --save-dev native-testing-library
 ```
 
 You will also need `react` and `react-native` installed as `dependencies` in

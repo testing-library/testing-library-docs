@@ -44,6 +44,14 @@ function Help(props) {
       }blog)`,
       title: 'Blog',
     },
+    {
+      content: `Browse [Learning Material](/docs/learning)`,
+      title: 'Resources',
+    },
+    {
+      content: `Get support on [GitHub](${props.config.repoUrl})`,
+      title: 'GitHub',
+    },
   ]
 
   return (
@@ -53,7 +61,11 @@ function Help(props) {
           <header className="postHeader">
             <h1>Need help?</h1>
           </header>
-          <GridBlock contents={supportLinks} layout="fourColumn" align="left" />
+          <GridBlock
+            contents={supportLinks}
+            layout="threeColumn"
+            align="left"
+          />
           <section>
             <h2 align="center">Buy a Course</h2>
             <p align="center">

@@ -33,3 +33,10 @@
   to = "https://testing-library.com/:splat"
   status = 301
   force = true
+
+# Redirects due to reorganization
+[[redirects]]
+  from = "/docs/*"
+  to = "/docs/dom-testing-library/:splat"
+  status = 301
+  force = false # do not redirect if route is not 404

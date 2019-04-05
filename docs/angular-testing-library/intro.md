@@ -18,11 +18,13 @@ Use the `createComponent` function to create the component and the Angular
 TestBed.
 
 After this, you can use all of `dom-testing-library`'s `getBy`, `getAllBy`,
-`queryBy` and `queryAllBy` queries. See [here](../api-queries) for more info.
+`queryBy` and `queryAllBy` queries. See
+[here](dom-testing-library/api-queries.md) for more info.
 
 Besides the `dom-testing-library`'s queries, all of the events (e.g. `click`,
 `input`, ...) are also exposed. After every event, this library will run the
-Angular change detection. See [here](../api-events) for more info.
+Angular change detection. See [here](dom-testing-library/api-events.md) for more
+info.
 
 ## Examples
 

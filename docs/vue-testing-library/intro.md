@@ -87,7 +87,8 @@ test('should render HelloWorld', () => {
 ```
 
 You can now use all of `dom-testing-library`'s `getBy`, `getAllBy`, `queryBy`
-and `queryAllBy` commands. See [here](../api-queries) for usage.
+and `queryAllBy` commands. See [here](dom-testing-library/api-queries.md) for
+usage.
 
 ### render
 

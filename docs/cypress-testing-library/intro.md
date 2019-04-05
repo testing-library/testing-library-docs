@@ -24,7 +24,7 @@ import 'cypress-testing-library/add-commands';
 
 You can now use all of `dom-testing-library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands.
-[See `dom-testing-library` repo for reference](https://github.com/kentcdodds/dom-testing-library#usage)
+[See `dom-testing-library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
 

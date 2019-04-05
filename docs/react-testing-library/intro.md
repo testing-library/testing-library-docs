@@ -60,8 +60,9 @@ facilitate testing implementation details). Read more about this in
     the library works with any framework. See
     [Using Without Jest](./setup#using-without-jest))
 
-> NOTE: This library is built on top of [`dom-testing-library`](/) which is
-> where most of the logic behind the queries is.
+> NOTE: This library is built on top of
+> [`dom-testing-library`](dom-testing-library/intro.md) which is where most of
+> the logic behind the queries is.
 
 ## Video
 
