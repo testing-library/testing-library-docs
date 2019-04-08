@@ -68,12 +68,12 @@ See [Which query should I use?](guide-which-query.md)
   - findByRole
   - findAllByRole
 - **ByTestId** find by data-testid attribute
-  - getByPlaceholderText
-  - queryByPlaceholderText
-  - getAllByPlaceholderText
-  - queryAllByPlaceholderText
-  - findByPlaceholderText
-  - findAllByPlaceholderText
+  - getByTestId
+  - queryByTestId
+  - getAllByTestId
+  - queryAllByTestId
+  - findByTestId
+  - findAllByTestId
 
 ## Async
 
