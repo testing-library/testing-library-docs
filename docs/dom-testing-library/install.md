@@ -31,7 +31,7 @@ wrapper:
 You can
 [review the `dom-testing-library` package.json here](https://unpkg.com/dom-testing-library/package.json).
 
-In particular, the `main`, `module`, and `umd:main` fileds are useful. Each of
+In particular, the `main`, `module`, and `umd:main` fields are useful. Each of
 these points to a file that's useful in certain situations. Typically, your
 testing framework will resolve to the correct one for your situation, but if it
 does not, then you can either configure your testing framework to resolve to the
