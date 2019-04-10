@@ -95,7 +95,7 @@ See [Events API](api-events.md)
 
 ## Other
 
-See [Helpers API](api-helpers.md), [Config API](api-configration.md)
+See [Helpers API](api-helpers.md), [Config API](api-configuration.md)
 
 - **within** take a node and return an object with all the queries bound to the
   node (used to return the queries from `react-testing-library`'s render
