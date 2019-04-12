@@ -500,7 +500,7 @@ matches the given [`TextMatch`](#textmatch).
 import { getByDisplayValue } from 'dom-testing-library'
 
 const container = document.body
-const selectElement = getByDisplayName(container, 'Alaska')
+const selectElement = getByDisplayValue(container, 'Alaska')
 ```
 
 <!--React-->
@@ -509,7 +509,7 @@ const selectElement = getByDisplayName(container, 'Alaska')
 import { render } from 'react-testing-library'
 
 const { getByDisplayValue } = render(<MyComponent />)
-const selectElement = getByDisplayName('Alaska')
+const selectElement = getByDisplayValue('Alaska')
 ```
 
 <!--Cypress-->
