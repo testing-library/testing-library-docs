@@ -497,10 +497,10 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByDisplayName } from 'dom-testing-library'
+import { getByDisplayValue } from 'dom-testing-library'
 
 const container = document.body
-const selectElement = getByDisplayName(container, 'Alaska')
+const selectElement = getByDisplayValue(container, 'Alaska')
 ```
 
 <!--React-->
@@ -508,14 +508,14 @@ const selectElement = getByDisplayName(container, 'Alaska')
 ```js
 import { render } from 'react-testing-library'
 
-const { getByDisplayName } = render(<MyComponent />)
-const selectElement = getByDisplayName('Alaska')
+const { getByDisplayValue } = render(<MyComponent />)
+const selectElement = getByDisplayValue('Alaska')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByDisplayName('Alaska').should('exist')
+cy.getByDisplayValue('Alaska').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
