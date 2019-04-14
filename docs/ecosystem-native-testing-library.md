@@ -1,7 +1,7 @@
 ---
 id: ecosystem-native-testing-library
 title: Native Testing Library
-sidebar_label: Native Testing Library
+sidebar_label: native-testing-library
 ---
 
 Native Testing Library is a testing library for **React Native** inspired by
