@@ -72,15 +72,3 @@ introduction to the library.
 <a href="https://youtu.be/JKOwJUM4_RM">
   <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style="margin-left: 0" />
 </a>
-
-## Printable cheat sheet
-
-There is a printable one-page cheat sheet available for you to download. It is
-intended to be a reference, but is not a complete reference guide like the
-[cheat sheet](./cheatsheet.md) available on this site. Keep a copy at your desk
-to see the most commonly used functionality at a glance!
-
-### [Download or print the cheat sheet][cheatsheet]
-
-[cheatsheet]:
-  https://github.com/kentcdodds/react-testing-library/raw/master/other/cheat-sheet.pdf
