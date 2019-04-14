@@ -3,7 +3,7 @@ id: cheatsheet
 title: Cheatsheet
 ---
 
-### [Get the printable cheat sheet][cheatsheet]
+**[Get the printable cheat sheet][cheatsheet]**
 
 A short guide to all the exported functions in `react-testing-library`
 
@@ -168,7 +168,7 @@ getByText(container, /Hello W?oRlD/i) // advanced regex
 getByText(container, (content, element) => content.startsWith('Hello'))
 ```
 
-### [Get the printable cheat sheet][cheatsheet]
+**[Get the printable cheat sheet][cheatsheet]**
 
 [cheatsheet]:
   https://github.com/kentcdodds/react-testing-library/raw/master/other/cheat-sheet.pdf
