@@ -3,6 +3,8 @@ id: cheatsheet
 title: Cheatsheet
 ---
 
+**[Get the printable cheat sheet][cheatsheet]**
+
 A short guide to all the exported functions in `react-testing-library`
 
 - **render** `const {/* */} = render(Component)` returns:
@@ -129,8 +131,8 @@ See [Events API](dom-testing-library/api-events.md)
 
 ## Other
 
-See [Helpers API](dom-testing-library/api-helpers.md), [Config
-API](dom-testing-library/api-configuration.md)
+See [Helpers API](dom-testing-library/api-helpers.md),
+[Config API](dom-testing-library/api-configuration.md)
 
 - **within** take a node and return an object with all the queries bound to the
   node (used to return the queries from `react-testing-library`'s render
@@ -165,3 +167,8 @@ getByText(container, /Hello W?oRlD/i) // advanced regex
 // Matching with a custom function:
 getByText(container, (content, element) => content.startsWith('Hello'))
 ```
+
+**[Get the printable cheat sheet][cheatsheet]**
+
+[cheatsheet]:
+  https://github.com/kentcdodds/react-testing-library/raw/master/other/cheat-sheet.pdf
