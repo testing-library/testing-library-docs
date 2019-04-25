@@ -75,7 +75,7 @@ It's often useful to define a custom render method that includes things like
 global context providers, data stores, etc. To make this available globally, one
 approach is to define a utility file that re-exports everything from
 `react-testing-library`. You can replace react-testing-library with this file in
-all your imports. See [below](#comfiguring-jest-with-test-utils) for a way to
+all your imports. See [below](#configuring-jest-with-test-utils) for a way to
 make your test util file accessible without using relative paths.
 
 The example below sets up data providers using the
