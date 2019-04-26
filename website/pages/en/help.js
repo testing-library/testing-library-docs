@@ -31,7 +31,7 @@ function Help(props) {
     },
     {
       content:
-        'Discuss issues with community members on [Spectrum](https://spectrum.chat/react-testing-library)',
+        'Discuss issues with community members on [Spectrum](https://spectrum.chat/testing-library)',
       title: 'Spectrum',
     },
     {
