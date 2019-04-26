@@ -4,7 +4,7 @@ title: Learning Material
 sidebar_label: Learning Material
 ---
 
-- [TestingJavaScript.com](https://testingjavascript.com) A HUGE course all about
+- [TestingJavaScript.com](https://testingjavascript.com) 🏆 A HUGE course all about
   testing JavaScript applications (See also the
   [course material with many examples using react-testing-library](https://github.com/kentcdodds/react-testing-library-course))
   by [Kent C. Dodds](https://github.com/kentcdodds)
