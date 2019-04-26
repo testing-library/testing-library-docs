@@ -4,7 +4,8 @@ title: Testcafe Testing Library
 ---
 
 [`testcafe-testing-library`][gh] allows the use of dom-testing queries within
-[Testcafe](https://devexpress.github.io/testcafe/) cross-browser end-to-end web testing.
+[Testcafe](https://devexpress.github.io/testcafe/) cross-browser end-to-end web
+testing.
 
 ```
 npm install --save-dev testcafe testcafe-testing-library
@@ -14,7 +15,8 @@ npm install --save-dev testcafe testcafe-testing-library
 
 ## Usage
 
-`testcafe-testing-library` provides custom Selectors allowing you to query the dom.
+`testcafe-testing-library` provides custom Selectors allowing you to query the
+dom.
 
 Add Testcafe to your test fixture as follows:
 
@@ -22,15 +24,14 @@ Add Testcafe to your test fixture as follows:
 import {
   getByText, //or any other queries you want
   addTestcafeTestingLibrary,
-} from 'testcafe-testing-library';
-
+} from 'testcafe-testing-library'
 
 fixture`selectors`.beforeEach(addTestcafeTestingLibrary)
   .page`http://localhost:13370`
-
 ```
-You can now import & use `getBy`, `getAllBy`, `queryBy`
-and `queryAllBy` commands.
+
+You can now import & use `getBy`, `getAllBy`, `queryBy` and `queryAllBy`
+selectors in your tests.
 [See `dom-testing-library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
@@ -42,7 +43,7 @@ To show some simple examples (from
 test('getByPlaceHolderText', async t => {
   await t.typeText(
     getByPlaceholderText('Placeholder Text'),
-    'Hello Placeholder',
+    'Hello Placeholder'
   )
 })
 test('getByText', async t => {
@@ -52,10 +53,9 @@ test('getByText', async t => {
 test('getByLabelText', async t => {
   await t.typeText(
     getByLabelText('Label For Input Labelled By Id'),
-    'Hello Input Labelled By Id',
+    'Hello Input Labelled By Id'
   )
 })
-
 ```
 
 [gh]: https://github.com/benmonro/testcafe-testing-library
