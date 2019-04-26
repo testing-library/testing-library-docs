@@ -58,4 +58,7 @@ test('getByLabelText', async t => {
 })
 ```
 
+**_Note:_** The selectors come pre-bound to `document.body`, so no need to
+provide a container.
+
 [gh]: https://github.com/benmonro/testcafe-testing-library
