@@ -18,7 +18,7 @@ npm install --save-dev testcafe testcafe-testing-library
 `testcafe-testing-library` provides custom Selectors allowing you to query the
 dom.
 
-Add Testcafe to your test fixture as follows:
+Add `testcafe-testing-library` to your test fixture's `beforeEach` hook:
 
 ```javascript
 import {
