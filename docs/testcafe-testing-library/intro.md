@@ -58,7 +58,32 @@ test('getByLabelText', async t => {
 })
 ```
 
-**_Note:_** The selectors come pre-bound to `document.body`, so no need to
-provide a container.
+## Containers
+
+By default the selectors come pre-bound to `document.body`, so no need to
+provide a container. However, if you want to restrict your query using a
+container, you can use `within`. Keep in mind that `within` works using a
+Testcafe `ClientFunction` so you will need to await it, and you can't make
+assertions on it like you can using a `Selector`.
+
+### Examples using `within`
+
+```javascript
+import { within, addTestcafeTestingLibrary } from 'testcafe-testing-library'
+
+fixture`within`.beforeEach(addTestcafeTestingLibrary)
+  .page`http://localhost:13370`
+
+test('getByText within container', async t => {
+  const { getByText } = await within('#nested')
+  await t.click(getByText('Button Text')).ok()
+})
+
+test("queryByPlaceholder doesn't find anything", async t => {
+  const { queryByPlaceholderText } = await within('#nested')
+
+  await t.expect(queryByPlaceholderText('Placeholder Text').exists).notOk()
+})
+```
 
 [gh]: https://github.com/benmonro/testcafe-testing-library
