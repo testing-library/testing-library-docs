@@ -14,7 +14,8 @@ npm install --save-dev bs-jest-dom
 
 - [bs-jest-dom on GitHub][gh]
 
-Check out [jest-dom's documentation](https://github.com/gnapse/jest-dom) for a
+Check out
+[jest-dom's documentation](https://github.com/testing-library/jest-dom) for a
 full list of available matchers.
 
 [gh]: https://github.com/wyze/bs-jest-dom

@@ -180,34 +180,6 @@ snapshotDiff(firstVersion, container.cloneNode(true))
 
 </details>
 
-<details>
-
-<summary>Does this library work with React Native?</summary>
-
-In short, no, but the philosophy and guiding principles still can! That said,
-any implementation likely can't be a member of the `dom-testing-library` family
-because they shouldn't render to, or use, the DOM. There are major differences
-in the way things such as rendering and events are handled between native and
-web, and as a result those libraries have their own core implementations.
-
-The best a React Native implementation can do is strive to mimic the core API of
-this library by invoking/mimicking comparable functionality in a native
-environment while following the guiding principles. Feel free to explore the
-following React Native implementations of testing library and choose the one
-your team is more comfortable using:
-
-- [react-native-testing-library](https://github.com/callstack/react-native-testing-library)
-- [native-testing-library](https://github.com/bcarroll22/native-testing-library)
-
-Additionally, if you're not satisfied with either of these libraries, you could
-use [react-native-web][rnw] to render your native components to an emulated DOM
-and theoretically make assertions that way. Please just note that this approach
-is not recommended, because it certainly cannot give you true confidence that
-your app is working as intended. If you'd like to see an example of how this
-would work, check [here](https://github.com/thchia/rn-testing-library-example).
-
-</details>
-
 <!--
 Links:
 -->
@@ -215,8 +187,7 @@ Links:
 <!-- prettier-ignore-start -->
 
 [guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
-[rnw]: https://github.com/necolas/react-native-web
 [data-testid-blog-post]: https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269
-[dom-testing-lib-textmatch]: https://github.com/kentcdodds/dom-testing-library#textmatch
+[dom-testing-lib-textmatch]: https://github.com/testing-library/dom-testing-library#textmatch
 
 <!-- prettier-ignore-end -->
