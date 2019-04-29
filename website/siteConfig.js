@@ -127,7 +127,6 @@ const siteConfig = {
 
   stylesheets: [
     'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700|Source+Code+Pro:500,700|Source+Sans+Pro:400,400i,700',
-    '/css/code-block-buttons.css',
   ],
 
   /* Custom fonts for website */
