@@ -135,7 +135,7 @@ class Index extends React.Component {
             imageAlign: 'right',
             imageAlt: 'The solution (picture of a star)',
             content:
-              '## The Solution \n Testing Library is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
+              '## The Solution \n The Testing Library family of libraries is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
           },
         ]}
       </Block>,
