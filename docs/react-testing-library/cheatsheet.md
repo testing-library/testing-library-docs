@@ -40,9 +40,9 @@ See [Which query should I use?](guide-which-query.md)
 
 |                | No Match | 1 Match | 1+ Match   | Await? |
 | -------------- | -------- | ------- | ---------- | ------ |
-| **getBy**      | throw    | return  | return 1st | No     |
-| **findBy**     | throw    | return  | return 1st | Yes    |
-| **queryBy**    | null     | return  | return 1st | No     |
+| **getBy**      | throw    | return  | throw      | No     |
+| **findBy**     | throw    | return  | throw      | Yes    |
+| **queryBy**    | null     | return  | throw      | No     |
 | **getAllBy**   | throw    | array   | array      | No     |
 | **findAllBy**  | throw    | array   | array      | Yes    |
 | **queryAllBy** | []       | array   | array      | No     |

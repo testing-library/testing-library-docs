@@ -58,7 +58,7 @@ class Footer extends React.Component {
             <ExternalLink href="https://www.reactiflux.com/">
               Reactiflux on Discord
             </ExternalLink>
-            <ExternalLink href="https://spectrum.chat/react-testing-library">
+            <ExternalLink href="https://spectrum.chat/testing-library">
               Spectrum
             </ExternalLink>
           </div>

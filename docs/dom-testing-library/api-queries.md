@@ -11,7 +11,8 @@ title: Queries
 ### getBy
 
 `getBy*` queries returns the first matching node for a query, and throws an
-error if no elements match.
+error if no elements match or if more than one match is found (use `getAllBy`
+instead).
 
 ### getAllBy
 
@@ -22,7 +23,8 @@ throws an error if no elements match.
 
 `queryBy*` queries returns the first matching node for a query, and return
 `null` if no elements match. This is useful for asserting an element is not
-present.
+present. This throws if more than one match is found (use `queryAllBy`
+instead).
 
 ### queryAllBy
 
@@ -32,8 +34,9 @@ return an empty array (`[]`) if no elements match.
 ### findBy
 
 `findBy*` queries return a promise which resolves when an element is found which
-matches the given query. The promise is rejected if no element is found after a
-default timeout of `4500`ms.
+matches the given query. The promise is rejected if no element is found or if
+more than one element is found after a default timeout of `4500`ms. If you need
+to find more than one element, then use `findAllBy`.
 
 > Note, this is a simple combination of `getBy*` queries and
 > [`waitForElement`](/docs/api-async#waitforelement). The `findBy*` queries

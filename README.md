@@ -1,7 +1,7 @@
 testing-library-docs
 --------------------
 
-Documentation site for [react-testing-library](https://github.com/kentcdodds/react-testing-library), [dom-testing-library](https://github.com/kentcdodds/dom-testing-library), and related projects
+Documentation site for [react-testing-library](https://github.com/testing-library/react-testing-library), [dom-testing-library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
 
 See [./website/README.md](./website/README.md) for instructions on building the site
 
