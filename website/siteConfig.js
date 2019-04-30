@@ -76,6 +76,12 @@ const users = [
     infoLink: 'https://www.wix.com',
     pinned: true,
   },
+  {
+    caption: 'Testsigma',
+    image: '/img/users/testsigma.svg',
+    infoLink: 'https://www.testsigma.com',
+    pinned: true,
+  }
 ]
 
 const siteConfig = {
