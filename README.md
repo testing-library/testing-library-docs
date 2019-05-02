@@ -1,5 +1,5 @@
 testing-library-docs
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 --------------------
 
 Documentation site for [react-testing-library](https://github.com/testing-library/react-testing-library), [dom-testing-library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
@@ -16,7 +16,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="http://sidak.ml"><img src="https://avatars0.githubusercontent.com/u/35738138?v=4" width="100px;" alt="Sidak Singh Aulakh"/><br /><sub><b>Sidak Singh Aulakh</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=co16353sidak" title="Tests">⚠️</a> <a href="https://github.com/testing-library/testing-library-docs/issues?q=author%3Aco16353sidak" title="Bug reports">🐛</a> <a href="https://github.com/testing-library/testing-library-docs/commits?author=co16353sidak" title="Code">💻</a></td></tr></table>
+<table><tr><td align="center"><a href="http://sidak.ml"><img src="https://avatars0.githubusercontent.com/u/35738138?v=4" width="100px;" alt="Sidak Singh Aulakh"/><br /><sub><b>Sidak Singh Aulakh</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=co16353sidak" title="Tests">⚠️</a> <a href="https://github.com/testing-library/testing-library-docs/issues?q=author%3Aco16353sidak" title="Bug reports">🐛</a> <a href="https://github.com/testing-library/testing-library-docs/commits?author=co16353sidak" title="Code">💻</a></td><td align="center"><a href="https://github.com/bcarroll22"><img src="https://avatars2.githubusercontent.com/u/11020406?v=4" width="100px;" alt="Brandon Carroll"/><br /><sub><b>Brandon Carroll</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bcarroll22" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
