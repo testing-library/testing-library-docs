@@ -29,11 +29,18 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/35738138?v=4",
       "profile": "http://sidak.ml",
       "contributions": [
-        "test",
-        "bug",
         "code"
       ]
     },
+    {
+      "login": "bcarroll22",
+      "name": "Brandon Carroll",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11020406?v=4",
+      "profile": "https://github.com/bcarroll22",
+      "contributions": [
+        "code"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "testing-library-docs",
