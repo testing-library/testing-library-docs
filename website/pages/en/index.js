@@ -181,43 +181,47 @@ class Index extends React.Component {
     )
 
     const Ecosystem = () => (
-      <Block layout="threeColumn" background={null}>
+      <Block layout="fourColumn" background={null}>
         {[
           {
             image: `${baseUrl}img/react-128x128.png`,
             imageAlign: 'top',
-            title: '[React Testing Library](./react)',
+            title: 'React Testing Library',
           },
           {
             image: `${baseUrl}img/evergreen-128x128.png`,
             imageAlign: 'top',
-            title: '[Cypress Testing Library](./cypress)',
+            title: 'Cypress Testing Library',
           },
           {
             image: `${baseUrl}img/vue-400x400.png`,
             imageAlign: 'top',
-            title: '[Vue Testing Library](./vue)',
+            title: 'Vue Testing Library',
           },
           {
             image: `${baseUrl}img/angular-250x250.png`,
             imageAlign: 'top',
-            title: '[Angular Testing Library](./angular)',
+            title: 'Angular Testing Library',
           },
           {
             image: `${baseUrl}img/reason-200x200.png`,
             imageAlign: 'top',
-            title:
-              '[ReasonReact Testing Library](./docs/bs-react-testing-library/intro)',
+            title: 'ReasonReact Testing Library',
           },
           {
             image: `${baseUrl}img/puppeteer-275x275.png`,
             imageAlign: 'top',
-            title: '[Puppeteer Testing Library](./pptr)',
+            title: 'Puppeteer Testing Library',
           },
           {
-            image: `${baseUrl}img/react-128x128.png`,
+            image: `${baseUrl}img/react-native-128x128.png`,
             imageAlign: 'top',
-            title: '[Native Testing Library](./react-native)',
+            title: 'Native Testing Library',
+          },
+          {
+            image: `${baseUrl}img/construction-128x128.png`,
+            imageAlign: 'top',
+            title: '[And more...](./docs/ecosystem-user-event)',
           },
         ]}
       </Block>
