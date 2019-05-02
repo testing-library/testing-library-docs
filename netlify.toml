@@ -43,35 +43,35 @@
 
 # React landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/"
-  to = "https://testing-library.com/react/"
+  from = "https://testing-library.com/react/"
+  to = "https://testing-library.com/docs/react-testing-library/intro"
   status = 301
   force = true
 
 # Cypress landing page to home page
 [[redirects]]
   from = "https://testing-library.com/cypress/"
-  to = "https://testing-library.com/"
+  to = "https://testing-library.com/docs/cypress-testing-library/intro"
   status = 301
   force = true
 
 # Vue landing page to home page
 [[redirects]]
   from = "https://testing-library.com/vue/"
-  to = "https://testing-library.com/"
+  to = "https://testing-library.com/docs/vue-testing-library/intro"
   status = 301
   force = true
 
 # Angular landing page to home page
 [[redirects]]
   from = "https://testing-library.com/angular/"
-  to = "https://testing-library.com/"
+  to = "https://testing-library.com/docs/angular-testing-library/intro"
   status = 301
   force = true
 
 # Puppeteer landing page to home page
 [[redirects]]
   from = "https://testing-library.com/pptr/"
-  to = "https://testing-library.com/"
+  to = "https://testing-library.com/docs/pptr-testing-library/intro"
   status = 301
   force = true
