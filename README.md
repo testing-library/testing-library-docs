@@ -1,14 +1,30 @@
 testing-library-docs
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 --------------------
+
+
+<!-- prettier-ignore-start -->
+[![Open Collective Sponsors and Backers][opencollective-badge]][opencollective]
+[![All Contributors][allcontributors-badge]](#contributors)
+[![Code of Conduct][coc-badge]][coc]
+<!-- prettier-ignore-end -->
 
 Documentation site for [react-testing-library](https://github.com/testing-library/react-testing-library), [dom-testing-library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
 
 See [./website/README.md](./website/README.md) for instructions on building the site
 
-**Deployed on Netlify: https://testing-library.com** / https://testing-library.netlify.com
+**https://testing-library.com**
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status)](https://app.netlify.com/sites/testing-library/deploys)
+**Build Status**:
+
+[![Netlify Status][netlify-badge]][build]
+
+[netlify-badge]: https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
+[build]: https://app.netlify.com/sites/testing-library/deploys
+[opencollective]: https://opencollective.com/testing-library/
+[opencollective-badge]: https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
+[allcontributors-badge]: https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
+[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[coc]: https://github.com/testing-library/react-testing-library/blob/master/CODE_OF_CONDUCT.md
 
 ## Contributors
 
