@@ -4,9 +4,9 @@ title: Learning Material
 sidebar_label: Learning Material
 ---
 
-- [TestingJavaScript.com](https://testingjavascript.com) 🏆 A HUGE course all about
-  testing JavaScript applications (See also the
-  [course material with many examples using react-testing-library](https://github.com/kentcdodds/react-testing-library-course))
+- [TestingJavaScript.com](https://testingjavascript.com) 🏆 A HUGE course all
+  about testing JavaScript applications (See also the
+  [course material with many examples using react-testing-library](https://github.com/testing-library/react-testing-library-course))
   by [Kent C. Dodds](https://github.com/kentcdodds)
 - [Migrating from Enzyme shallow rendering to explicit component mocks](https://www.youtube.com/watch?v=LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
 - [Confident React](https://www.youtube.com/watch?v=qXRPHRgcXJ0&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)

@@ -118,8 +118,8 @@ export { customRender as render }
 >
 > Babel versions lower than 7 throw an error when trying to override the named
 > export in the example above. See
-> [#169](https://github.com/kentcdodds/react-testing-library/issues/169) and the
-> workaround below.
+> [#169](https://github.com/testing-library/react-testing-library/issues/169)
+> and the workaround below.
 
 <details>
 <summary>Workaround for Babel 6</summary>

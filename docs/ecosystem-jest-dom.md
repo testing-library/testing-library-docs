@@ -27,4 +27,4 @@ Check out [jest-dom's documentation][gh] for a full list of available matchers.
 
 - [jest-dom on GitHub][gh]
 
-[gh]: https://github.com/gnapse/jest-dom
+[gh]: https://github.com/testing-library/jest-dom

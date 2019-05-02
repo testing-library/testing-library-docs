@@ -13,7 +13,7 @@ npm install --save-dev react-testing-library
 
 - [react-testing-library on GitHub][gh]
 
-[gh]: https://github.com/kentcdodds/react-testing-library
+[gh]: https://github.com/testing-library/react-testing-library
 
 ## The problem
 

@@ -23,8 +23,7 @@ throws an error if no elements match.
 
 `queryBy*` queries returns the first matching node for a query, and return
 `null` if no elements match. This is useful for asserting an element is not
-present. This throws if more than one match is found (use `queryAllBy`
-instead).
+present. This throws if more than one match is found (use `queryAllBy` instead).
 
 ### queryAllBy
 
@@ -635,7 +634,7 @@ cy.getByTestId('username-input').should('exist')
 
 The `...ByTestId` functions in `dom-testing-library` use the attribute
 `data-testid` by default, following the precedent set by
-[React Native Web](https://github.com/kentcdodds/react-testing-library/issues/1)
+[React Native Web](https://github.com/testing-library/react-testing-library/issues/1)
 which uses a `testID` prop to emit a `data-testid` attribute on the element, and
 we recommend you adopt that attribute where possible. But if you already have an
 existing codebase that uses a different attribute for this purpose, you can

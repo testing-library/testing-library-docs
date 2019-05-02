@@ -38,14 +38,14 @@ test('loads items eventually', async () => {
 
 See [Which query should I use?](guide-which-query.md)
 
-|                | No Match | 1 Match | 1+ Match   | Await? |
-| -------------- | -------- | ------- | ---------- | ------ |
-| **getBy**      | throw    | return  | throw      | No     |
-| **findBy**     | throw    | return  | throw      | Yes    |
-| **queryBy**    | null     | return  | throw      | No     |
-| **getAllBy**   | throw    | array   | array      | No     |
-| **findAllBy**  | throw    | array   | array      | Yes    |
-| **queryAllBy** | []       | array   | array      | No     |
+|                | No Match | 1 Match | 1+ Match | Await? |
+| -------------- | -------- | ------- | -------- | ------ |
+| **getBy**      | throw    | return  | throw    | No     |
+| **findBy**     | throw    | return  | throw    | Yes    |
+| **queryBy**    | null     | return  | throw    | No     |
+| **getAllBy**   | throw    | array   | array    | No     |
+| **findAllBy**  | throw    | array   | array    | Yes    |
+| **queryAllBy** | []       | array   | array    | No     |
 
 - **ByLabelText** find by label or aria-label text content
   - getByLabelText
@@ -123,7 +123,7 @@ See [Events API](dom-testing-library/api-events.md)
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
-  - [See all supported events](https://github.com/kentcdodds/dom-testing-library/blob/master/src/events.js)
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
 - **act** wrapper around
   [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
   react-testing-library wraps render and fireEvent in a call to `act` already so
@@ -171,4 +171,4 @@ getByText(container, (content, element) => content.startsWith('Hello'))
 **[Get the printable cheat sheet][cheatsheet]**
 
 [cheatsheet]:
-  https://github.com/kentcdodds/react-testing-library/raw/master/other/cheat-sheet.pdf
+  https://github.com/testing-library/react-testing-library/raw/master/other/cheat-sheet.pdf

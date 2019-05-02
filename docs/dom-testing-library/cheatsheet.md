@@ -9,14 +9,14 @@ A short guide to all the exported functions in `dom-testing-library`
 
 See [Which query should I use?](guide-which-query.md)
 
-|                | No Match | 1 Match | 1+ Match   | Await? |
-| -------------- | -------- | ------- | ---------- | ------ |
-| **getBy**      | throw    | return  | throw      | No     |
-| **findBy**     | throw    | return  | throw      | Yes    |
-| **queryBy**    | null     | return  | throw      | No     |
-| **getAllBy**   | throw    | array   | array      | No     |
-| **findAllBy**  | throw    | array   | array      | Yes    |
-| **queryAllBy** | []       | array   | array      | No     |
+|                | No Match | 1 Match | 1+ Match | Await? |
+| -------------- | -------- | ------- | -------- | ------ |
+| **getBy**      | throw    | return  | throw    | No     |
+| **findBy**     | throw    | return  | throw    | Yes    |
+| **queryBy**    | null     | return  | throw    | No     |
+| **getAllBy**   | throw    | array   | array    | No     |
+| **findAllBy**  | throw    | array   | array    | Yes    |
+| **queryAllBy** | []       | array   | array    | No     |
 
 - **ByLabelText** find by label or aria-label text content
   - getByLabelText
@@ -91,7 +91,7 @@ See [Events API](api-events.md)
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
-  - [See all supported events](https://github.com/kentcdodds/dom-testing-library/blob/master/src/events.js)
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
 
 ## Other
 
