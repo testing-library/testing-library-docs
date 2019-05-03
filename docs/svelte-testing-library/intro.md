@@ -26,10 +26,6 @@ import { render, cleanup } from 'svlt-testing-library'
 beforeEach(cleanup) //this is required.
 ```
 
-You can now import & use `getBy`, `getAllBy`, `queryBy` and `queryAllBy` queries
-in your tests.
-[See `dom-testing-library` API for reference](dom-testing-library/api-queries.md)
-
 ## Examples
 
 App.svelte
