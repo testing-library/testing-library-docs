@@ -76,6 +76,12 @@ const users = [
     infoLink: 'https://www.wix.com',
     pinned: true,
   },
+  {
+    caption: 'Testsigma',
+    image: '/img/users/testsigma.svg',
+    infoLink: 'https://www.testsigma.com',
+    pinned: true,
+  }
 ]
 
 const siteConfig = {
@@ -127,7 +133,6 @@ const siteConfig = {
 
   stylesheets: [
     'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700|Source+Code+Pro:500,700|Source+Sans+Pro:400,400i,700',
-    '/css/code-block-buttons.css',
   ],
 
   /* Custom fonts for website */

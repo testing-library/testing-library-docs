@@ -1,6 +1,6 @@
 # React Testing Library Docs
 
-[react-testing-library](https://github.com/kentcdodds/react-testing-library)
+[react-testing-library](https://github.com/testing-library/react-testing-library)
 
 ## Contributing
 

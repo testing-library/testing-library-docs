@@ -29,7 +29,7 @@ and `queryAllBy` commands.
 ## Examples
 
 To show some simple examples (from
-[https://github.com/kentcdodds/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/kentcdodds/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
+[https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
 
 ```javascript
 cy.getAllByText('Jackie Chan').click()
@@ -50,4 +50,4 @@ expects DOM nodes. When you pass a jQuery element as `container`, it will get
 the first DOM node from the collection and use that as the `container` parameter
 for the `dom-testing-library` functions.
 
-[gh]: https://github.com/kentcdodds/cypress-testing-library
+[gh]: https://github.com/testing-library/cypress-testing-library

@@ -105,9 +105,6 @@ class Index extends React.Component {
               the more confidence they can give you.
             </i>
           </p>
-          <MarkdownBlock>
-            `npm install --save-dev dom-testing-library`
-          </MarkdownBlock>
         </div>
       </Container>
     )
@@ -119,7 +116,7 @@ class Index extends React.Component {
             {
               title: '',
               content:
-                "## The Problem \n - You want tests for your web UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+                "## The Problem \n - You want tests for your UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
               image: `${baseUrl}img/interrobang-128x128.png`,
               imageAlt: 'The problem (picture of a question mark)',
               imageAlign: 'left',
@@ -138,7 +135,7 @@ class Index extends React.Component {
             imageAlign: 'right',
             imageAlt: 'The solution (picture of a star)',
             content:
-              "## The Solution \n `dom-testing-library` is a very light-weight solution for testing DOM nodes (whether simulated with [JSDOM](https://github.com/jsdom/jsdom) in [Jest](https://jestjs.io) or in the browser). The main utilities it provides involve querying the DOM for nodes in a way that's similar to how the user finds elements on the page. In this way, the library helps ensure your tests give you confidence in your UI code.",
+              '## The Solution \n The Testing Library family of libraries is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
           },
         ]}
       </Block>,
@@ -174,7 +171,7 @@ class Index extends React.Component {
           },
           {
             content:
-              'Built-in selectors use semantic HTML and ARIA roles to help you write inclusive code',
+              'Built-in selectors find elements the way users do to help you write inclusive code',
             image: `${baseUrl}img/tada-128x128.png`,
             imageAlign: 'top',
             title: 'Accessible by Default',
@@ -184,27 +181,30 @@ class Index extends React.Component {
     )
 
     const Ecosystem = () => (
-      <Block layout="threeColumn" background={null}>
+      <Block layout="fourColumn" background={null}>
         {[
           {
             image: `${baseUrl}img/react-128x128.png`,
             imageAlign: 'top',
-            title: '[React Testing Library](./react)',
+            title:
+              '[React Testing Library](./docs/react-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/evergreen-128x128.png`,
             imageAlign: 'top',
-            title: '[Cypress Testing Library](./cypress)',
+            title:
+              '[Cypress Testing Library](./docs/cypress-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/vue-400x400.png`,
             imageAlign: 'top',
-            title: '[Vue Testing Library](./vue)',
+            title: '[Vue Testing Library](./docs/vue-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/angular-250x250.png`,
             imageAlign: 'top',
-            title: '[Angular Testing Library](./angular)',
+            title:
+              '[Angular Testing Library](./docs/angular-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/reason-200x200.png`,
@@ -215,7 +215,14 @@ class Index extends React.Component {
           {
             image: `${baseUrl}img/puppeteer-275x275.png`,
             imageAlign: 'top',
-            title: '[Puppeteer Testing Library](./pptr)',
+            title:
+              '[Puppeteer Testing Library](./docs/pptr-testing-library/intro)',
+          },
+          {
+            image: `${baseUrl}img/react-native-128x128.png`,
+            imageAlign: 'top',
+            title:
+              '[Native Testing Library](./docs/native-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/construction-128x128.png`,

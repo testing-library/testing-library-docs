@@ -182,7 +182,7 @@ debug()
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`dom-testing-library`](https://github.com/kentcdodds/dom-testing-library/blob/master/README.md#prettydom).
+[`dom-testing-library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
 
 ### `rerender`
 

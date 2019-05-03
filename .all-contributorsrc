@@ -1,0 +1,51 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "kentcdodds",
+      "name": "Kent C. Dodds",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1500684?v=4",
+      "profile": "https://kentcdodds.com",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "alexkrolick",
+      "name": "Alex Krolick",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1571667?v=4",
+      "profile": "https://alexkrolick.com",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "co16353sidak",
+      "name": "Sidak Singh Aulakh",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/35738138?v=4",
+      "profile": "http://sidak.ml",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bcarroll22",
+      "name": "Brandon Carroll",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11020406?v=4",
+      "profile": "https://github.com/bcarroll22",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "testing-library-docs",
+  "projectOwner": "testing-library",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
