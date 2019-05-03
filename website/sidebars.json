@@ -51,6 +51,7 @@
         ]
       },
       "cypress-testing-library/intro",
+      "svelte-testing-library/intro",
       "vue-testing-library/intro",
       "angular-testing-library/intro",
       "pptr-testing-library/intro",
