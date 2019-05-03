@@ -14,6 +14,10 @@ npm install --save-dev svlt-testing-library
 
 ## Usage
 
+You will first need to install and configure
+[jest-transform-svelte](https://www.npmjs.com/package/jest-transform-svelte) in
+order to use svelte in jest.
+
 You must add `cleanup` to your test fixture's `beforeEach` hook:
 
 ```javascript
