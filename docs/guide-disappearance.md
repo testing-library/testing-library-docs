@@ -43,6 +43,21 @@ test('movie title goes away', async () => {
 })
 ```
 
+The `waitForElementToBeRemoved` [async helper][async-api] function uses a
+callback to query for the element on each DOM mutation and resolves to `true`
+when the element is removed.
+
+```jsx
+test('movie title no longer present in DOM', async () => {
+  // element is removed
+  await waitForElementToBeRemoved(() => queryByText('the mummy'))
+})
+```
+
+Using
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+is more efficient than polling the DOM at regular intervals with `wait`.
+
 ## Asserting elements are not present
 
 The standard `getBy` methods throw an error when they can't find an element, so
