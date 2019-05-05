@@ -206,14 +206,18 @@ To wait for the removal of element(s) from the DOM you can use
 wrapper around the
 [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 
+The callback must return the pre-existing element or array of elements that are
+expected to be removed.
+
 Here is an example where the promise resolves with `true` because the element is
 removed:
 
 ```javascript
 const el = document.querySelector('div.getOuttaHere')
-waitForElementToBeRemoved(() => document.querySelector('div.getOuttaHere'))
-  .then(() => console.log('Element no longer in DOM'))
-  .catch(err => console.log(`Error you need to deal with: ${err}`))
+
+waitForElementToBeRemoved(() =>
+  document.querySelector('div.getOuttaHere')
+).then(() => console.log('Element no longer in DOM'))
 
 el.setAttribute('data-neat', true)
 // other mutations are ignored...
@@ -222,11 +226,12 @@ el.parentElement.removeChild(el)
 // logs 'Element no longer in DOM'
 ```
 
-The callback must return the pre-existing element or array of elements that are expected to be removed.
+`waitForElementToBeRemoved` will throw an error when the provided callback does
+not return an element.
 
 ```javascript
-waitForElementToBeRemoved(() => null)
-// Error:
+waitForElementToBeRemoved(() => null).catch(err => console.log(err))
+
 // 'The callback function which was passed did not return an element
 // or non-empty array of elements.
 // waitForElementToBeRemoved requires that the element(s) exist
