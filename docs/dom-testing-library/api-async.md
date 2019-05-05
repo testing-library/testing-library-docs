@@ -243,7 +243,7 @@ and the [`jsdom`](https://github.com/jsdom/jsdom/issues/639) that is usually
 used in Node-based tests.
 
 The default `container` is the global `document`. Make sure the elements you
-wait for will be attached to it, or set a different `container`.
+wait for are descendants of `container`.
 
 The default `timeout` is `4500ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://facebook.github.io/jest/docs/en/jest-object.html#jestsettimeouttimeout).

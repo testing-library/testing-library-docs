@@ -28,21 +28,6 @@ test('movie title appears', async () => {
 
 ## Waiting for disappearance
 
-The `wait` [async helper][async-api] function retries until the wrapped function
-stops throwing an error. This can be used to assert that an element disappears
-from the page.
-
-```jsx
-test('movie title goes away', async () => {
-  // element is initially present...
-  // note use of queryBy instead of getBy to return null
-  // instead of throwing in the query itself
-  await wait(() => {
-    expect(queryByText('i, robot')).not.toBeInTheDocument()
-  })
-})
-```
-
 The `waitForElementToBeRemoved` [async helper][async-api] function uses a
 callback to query for the element on each DOM mutation and resolves to `true`
 when the element is removed.
@@ -57,6 +42,21 @@ test('movie title no longer present in DOM', async () => {
 Using
 [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 is more efficient than polling the DOM at regular intervals with `wait`.
+
+The `wait` [async helper][async-api] function retries until the wrapped function
+stops throwing an error. This can be used to assert that an element disappears
+from the page.
+
+```jsx
+test('movie title goes away', async () => {
+  // element is initially present...
+  // note use of queryBy instead of getBy to return null
+  // instead of throwing in the query itself
+  await wait(() => {
+    expect(queryByText('i, robot')).not.toBeInTheDocument()
+  })
+})
+```
 
 ## Asserting elements are not present
 
