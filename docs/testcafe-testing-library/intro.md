@@ -86,4 +86,12 @@ test("queryByPlaceholder doesn't find anything", async t => {
 })
 ```
 
+## Known Issues
+
+Whenever a non-client side browser navigation event occurs, you will need to
+make another call to `addTestcafeTestingLibrary`. Testcafe uses a Proxy to
+inject & execute tests/selectors. AFAIK, there's no way to tap into an
+`on("navigate")` event. I have filed an issue with Testcafe to address this so
+feel free to give it a +1. https://github.com/DevExpress/testcafe/issues/3758
+
 [gh]: https://github.com/benmonro/testcafe-testing-library
