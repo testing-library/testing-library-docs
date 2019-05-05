@@ -196,6 +196,17 @@ class Index extends React.Component {
               '[Cypress Testing Library](./docs/cypress-testing-library/intro)',
           },
           {
+            image: `${baseUrl}img/testcafe-128x128.jpg`,
+            imageAlign: 'top',
+            title: `[Testcafe Testing Library](./docs/testcafe-testing-library/intro)`,
+          },
+          {
+            image: `${baseUrl}img/svelte-128x128.png`,
+            imageAlign: 'top',
+            title:
+              '[Svelte Testing Library](./docs/svelte-testing-library/intro)',
+          },
+          {
             image: `${baseUrl}img/vue-400x400.png`,
             imageAlign: 'top',
             title: '[Vue Testing Library](./docs/vue-testing-library/intro)',
