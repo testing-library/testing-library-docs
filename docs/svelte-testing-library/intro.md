@@ -69,4 +69,24 @@ describe('App', () => {
 })
 ```
 
+### Cleanup
+
+You can ensure [`cleanup`](./api#cleanup) is called after each test and import
+additional assertions by adding it to the setup configuration in Jest.
+
+In Jest 24 and up, add the
+[`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array)
+option to your Jest config:
+
+```javascript
+// jest.config.js
+module.exports = {
+  setupFilesAfterEnv: [
+    'svelte-testing-library/cleanup-after-each',
+    // ... other setup files ...
+  ],
+  // ... other options ...
+}
+```
+
 [gh]: https://github.com/testing-library/svelte-testing-library
