@@ -201,7 +201,7 @@ class Index extends React.Component {
             title: `[Testcafe Testing Library](./docs/testcafe-testing-library/intro)`,
           },
           {
-            image: `${baseUrl}img/svelte-128x128.png`,
+            image: `${baseUrl}img/svelte-107x128.png`,
             imageAlign: 'top',
             title:
               '[Svelte Testing Library](./docs/svelte-testing-library/intro)',

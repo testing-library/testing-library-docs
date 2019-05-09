@@ -187,3 +187,74 @@ The default `timeout` is `4500ms` which will keep you under
 will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
 changes.
+
+## `waitForElementToBeRemoved`
+
+```typescript
+function waitForElementToBeRemoved<T>(
+  callback: () => T,
+  options?: {
+    container?: HTMLElement
+    timeout?: number
+    mutationObserverOptions?: MutationObserverInit
+  }
+): Promise<T>
+```
+
+To wait for the removal of element(s) from the DOM you can use
+`waitForElementToBeRemoved`. The `waitForElementToBeRemoved` function is a small
+wrapper around the
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
+
+The callback must return the pre-existing element or array of elements that are
+expected to be removed.
+
+Here is an example where the promise resolves with `true` because the element is
+removed:
+
+```javascript
+const el = document.querySelector('div.getOuttaHere')
+
+waitForElementToBeRemoved(() =>
+  document.querySelector('div.getOuttaHere')
+).then(() => console.log('Element no longer in DOM'))
+
+el.setAttribute('data-neat', true)
+// other mutations are ignored...
+
+el.parentElement.removeChild(el)
+// logs 'Element no longer in DOM'
+```
+
+`waitForElementToBeRemoved` will throw an error when the provided callback does
+not return an element.
+
+```javascript
+waitForElementToBeRemoved(() => null).catch(err => console.log(err))
+
+// 'The callback function which was passed did not return an element
+// or non-empty array of elements.
+// waitForElementToBeRemoved requires that the element(s) exist
+// before waiting for removal.'
+```
+
+Using
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+is more efficient than polling the DOM at regular intervals with `wait`. This
+library sets up a
+[`'mutationobserver-shim'`](https://github.com/megawac/MutationObserver.js) on
+the global `window` object for cross-platform compatibility with older browsers
+and the [`jsdom`](https://github.com/jsdom/jsdom/issues/639) that is usually
+used in Node-based tests.
+
+The default `container` is the global `document`. Make sure the elements you
+wait for are descendants of `container`.
+
+The default `timeout` is `4500ms` which will keep you under
+[Jest's default timeout of `5000ms`](https://facebook.github.io/jest/docs/en/jest-object.html#jestsettimeouttimeout).
+
+<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
+`{subtree: true, childList: true, attributes: true, characterData: true}` which
+will detect additions and removals of child elements (including text nodes) in
+the `container` and any of its descendants. It will also detect attribute
+changes.
