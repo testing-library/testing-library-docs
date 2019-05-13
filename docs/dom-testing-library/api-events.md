@@ -76,3 +76,20 @@ fireEvent.keyDown(domNode, { key: 'A', code: 65, charCode: 65 })
 
 You can find out which key code to use at
 [https://keycode.info/](https://keycode.info/).
+
+## `createEvent[eventName]`
+
+```typescript
+createEvent[eventName](node: HTMLElement, eventProperties: Object)
+```
+
+Convenience methods for creating DOM events that can then be fired by
+`fireEvent`, allowing you to have a reference to the event created: this might
+be useful if you need to access event properties that cannot be initiated
+programmatically (such as `timeStamp`).
+
+```javascript
+const myEvent = createEvent.click(node, { button: 2 })
+fireEvent(node, myEvent)
+// myEvent.timeStamp can be accessed just like any other properties from myEvent
+```
