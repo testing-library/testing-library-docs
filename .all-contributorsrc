@@ -50,6 +50,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dangerismycat",
+      "name": "Ryan James",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12059539?v=4",
+      "profile": "http://ryanwilsonjames.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
