@@ -58,13 +58,14 @@ describe('App', () => {
   })
 
   test('should change button text after click', async () => {
-    const { getByText } = render(App, { props: { name: 'world' } })
+    const { getByText, container } = render(App, { props: { name: 'world' } })
 
     fireEvent.click(getByText('Button Text'))
 
     const button = await waitForElement(() => getByText('Button Clicked'))
 
     expect(button).toBeInTheDocument()
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
 ```
