@@ -69,6 +69,43 @@ describe('App', () => {
 })
 ```
 
+### Containers
+
+Useful for snapshot tests. You can use query the container if you need more granular tests.
+
+App.svelte
+
+```html
+<script>
+  export let name
+</script>
+
+<style>
+  h1 {
+    color: purple;
+  }
+</style>
+
+<h1>Hello {name}!</h1>
+```
+
+App.spec.js
+
+```javascript
+import App from '../src/App.svelte'
+import { render, cleanup } from 'svelte-testing-library'
+beforeEach(cleanup)
+describe('App', () => {
+  test('should render greeting', () => {
+    const { container } = render(App, { props: { name: 'world' } })
+
+    expect(container.querySelector('h1').innerHTML).toBe('Hello world!')
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+})
+```
+
 ### Cleanup
 
 You can ensure [`cleanup`](./api#cleanup) is called after each test and import
