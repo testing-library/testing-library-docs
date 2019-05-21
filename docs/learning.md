@@ -30,5 +30,6 @@ sidebar_label: Learning Material
 - [A sample repo using react-testing-library to test a Relay Modern GraphQL app](https://github.com/zth/relay-modern-flow-jest-example)
 - [Creating Readable Tests Using React Testing Library](https://medium.com/flatiron-labs/creating-readable-tests-using-react-testing-library-2bd03c49c284)
   by [Lukeghenco](https://github.com/Lukeghenco)
+- [My Experience moving from Enzyme to react-testing-library](https://medium.com/@boyney123/my-experience-moving-from-enzyme-to-react-testing-library-5ac65d992ce) by [David Boyne](https://github.com/boyney123)
 
 Feel free to contribute more!
