@@ -308,7 +308,7 @@ as it's deprecated).
 import { getByAltText } from 'dom-testing-library'
 
 const container = document.body
-const incrediblesPosterImg = getByAltText(container, /incredibles.*png$/i)
+const incrediblesPosterImg = getByAltText(container, 'Incredibles 2 Poster')
 ```
 
 <!--React-->
@@ -317,13 +317,13 @@ const incrediblesPosterImg = getByAltText(container, /incredibles.*png$/i)
 import { render } from 'react-testing-library'
 
 const { getByAltText } = render(<MyComponent />)
-const incrediblesPosterImg = getByAltText(/incredibles.*png$/i)
+const incrediblesPosterImg = getByAltText('Incredibles 2 Poster')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByAltText(/incredibles.*png$/i).should('exist')
+cy.getByAltText('Incredibles 2 Poster').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
