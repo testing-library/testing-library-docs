@@ -59,6 +59,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "bjohn465",
+      "name": "Brandon Johnson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/821397?v=4",
+      "profile": "https://github.com/bjohn465",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
