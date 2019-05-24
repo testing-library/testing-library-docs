@@ -38,7 +38,7 @@ possible. With this in mind, we recommend this order of priority:
 
 ## Manual Queries
 
-On top of the queries provided by the testing library, you can using the regular
+On top of the queries provided by the testing library, you can use the regular
 [`querySelector` DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
 to query elements. Note that using this as an escape hatch to query by class or
 id is a bad practice because users can't see or identify these attributes. Use a
