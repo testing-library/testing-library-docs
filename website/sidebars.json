@@ -61,7 +61,8 @@
       "ecosystem-user-event",
       "ecosystem-jest-dom",
       "ecosystem-bs-jest-dom",
-      "ecosystem-jest-native"
+      "ecosystem-jest-native",
+      "ecosystem-react-select-event"
     ],
     "Help": ["faq", "learning", "contributing"]
   },
