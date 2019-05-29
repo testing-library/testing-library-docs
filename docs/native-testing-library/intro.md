@@ -7,7 +7,7 @@ sidebar_label: Intro
 Native Testing Library is a testing library for **React Native** inspired by
 `dom-testing-library`. Because React Native does not run in a browser
 environment, the core queries are implemented independently, unlike other
-wrappers that user `dom-testing-library` as the base. You'll find much more
+wrappers that use `dom-testing-library` as the base. You'll find much more
 information about the library, including examples, on the project sites:
 
 - [Docs][docs]
