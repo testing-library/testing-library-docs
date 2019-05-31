@@ -76,8 +76,9 @@ each interaction.
 You can also import these event via `@testing-library/angular`, but the
 Angular's change detection will not be triggered automatically.
 
-The same counts for all the queries provided by `dom-testing-library`, these are
-also re-exported and can be imported via `@testing-library/angular`.
+The same counts for all the queries provided by the DOM Testing Library
+(`@testing-library/dom`), these are also re-exported and can be imported via
+`@testing-library/angular`.
 
 ```typescript
 import { getByText, click } from '@testing-library/angular'
