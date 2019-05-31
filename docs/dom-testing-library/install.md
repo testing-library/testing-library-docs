@@ -39,11 +39,11 @@ right file when you require/import `@testing-library/dom` or you can import the
 file you need more explicitly. For example:
 
 ```js
-import { within } from 'dom-testing-library/dist/dom-testing-library.umd.js'
+import { within } from '@testing-library/dom/dist/@testing-library/dom.umd.js'
 ```
 
 You can
-[review the published `dist` files here](https://unpkg.com/@testing-library/dom/dist).
+[review the published `dist` files here](https://unpkg.com/@testing-library/dom/dist/).
 
 The `main` file is configured to compile down to support the version of node
 that is referenced in the `package.json` `engines.node` field. But the `module`
