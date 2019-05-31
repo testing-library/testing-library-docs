@@ -29,7 +29,7 @@ wrapper:
 ## Main Exports
 
 You can
-[review the `DOM Testing Library` package.json here](https://unpkg.com/dom-testing-library/package.json).
+[review the `DOM Testing Library` package.json here](https://unpkg.com/@testing-library/dom/package.json).
 
 In particular, the `main`, `module`, and `umd:main` fields are useful. Each of
 these points to a file that's useful in certain situations. Typically, your
@@ -43,7 +43,7 @@ import { within } from 'dom-testing-library/dist/dom-testing-library.umd.js'
 ```
 
 You can
-[review the published `dist` files here](https://unpkg.com/dom-testing-library/dist).
+[review the published `dist` files here](https://unpkg.com/@testing-library/dom/dist).
 
 The `main` file is configured to compile down to support the version of node
 that is referenced in the `package.json` `engines.node` field. But the `module`
