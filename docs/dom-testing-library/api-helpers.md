@@ -5,11 +5,11 @@ title: Helpers
 
 ## Custom Queries
 
-`dom-testing-library` exposes many of the helper functions that are used to
+`DOM Testing Library` exposes many of the helper functions that are used to
 implement the default queries. You can use the helpers to build custom queries.
 For example, the code below shows a way to override the default `testId` queries
 to use a different data-attribute. (Note: test files would import
-`test-utils.js` instead of using `dom-testing-library` directly).
+`test-utils.js` instead of using `DOM Testing Library` directly).
 
 ```js
 // test-utils.js

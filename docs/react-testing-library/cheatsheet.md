@@ -8,7 +8,7 @@ title: Cheatsheet
 A short guide to all the exported functions in `react-testing-library`
 
 - **render** `const {/* */} = render(Component)` returns:
-  - all the queries from `dom-testing-library`, bound to the document so there
+  - all the queries from `DOM Testing Library`, bound to the document so there
     is no need to pass a node as the first argument
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
@@ -30,10 +30,10 @@ test('loads items eventually', async () => {
 
 ## Queries
 
-> **Difference from dom-testing-library**
+> **Difference from DOM Testing Library**
 >
 > The queries returned from `render` in `react-testing-library` are the same as
-> `dom-testing-library` except they have the first argument bound to the
+> `DOM Testing Library` except they have the first argument bound to the
 > document, so instead of `getByText(node, 'text')` you do `getByText('text')`
 
 See [Which query should I use?](guide-which-query.md)

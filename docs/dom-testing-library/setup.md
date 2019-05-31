@@ -5,8 +5,8 @@ sidebar_label: Setup
 ---
 
 If you're running your tests in the browser bundled with webpack (or similar)
-then `dom-testing-library` should work out of the box for you. However, most
-people using `dom-testing-library` are using it with
+then `DOM Testing Library` should work out of the box for you. However, most
+people using `DOM Testing Library` are using it with
 [the Jest testing framework](https://jestjs.io/) with the `testEnvironment` set
 to
 [`jest-environment-jsdom`](https://www.npmjs.com/package/jest-environment-jsdom)

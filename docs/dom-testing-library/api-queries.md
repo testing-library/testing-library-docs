@@ -632,7 +632,7 @@ cy.getByTestId('username-input').should('exist')
 
 #### Overriding `data-testid`
 
-The `...ByTestId` functions in `dom-testing-library` use the attribute
+The `...ByTestId` functions in `DOM Testing Library` use the attribute
 `data-testid` by default, following the precedent set by
 [React Native Web](https://github.com/testing-library/react-testing-library/issues/1)
 which uses a `testID` prop to emit a `data-testid` attribute on the element, and
@@ -661,7 +661,7 @@ affect the precision of string matching:
 
 ### Normalization
 
-Before running any matching logic against text in the DOM, `dom-testing-library`
+Before running any matching logic against text in the DOM, `DOM Testing Library`
 automatically normalizes that text. By default, normalization consists of
 trimming whitespace from the start and end of text, and collapsing multiple
 adjacent whitespace characters into a single space.

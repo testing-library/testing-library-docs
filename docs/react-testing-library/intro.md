@@ -4,7 +4,7 @@ title: React Testing Library
 sidebar_label: Introduction
 ---
 
-[`react-testing-library`][gh] builds on top of `dom-testing-library` by adding
+[`react-testing-library`][gh] builds on top of `DOM Testing Library` by adding
 APIs for working with React components.
 
 ```
@@ -61,7 +61,7 @@ facilitate testing implementation details). Read more about this in
     [Using Without Jest](./setup#using-without-jest))
 
 > NOTE: This library is built on top of
-> [`dom-testing-library`](dom-testing-library/intro.md) which is where most of
+> [`DOM Testing Library`](dom-testing-library/intro.md) which is where most of
 > the logic behind the queries is.
 
 ## Video

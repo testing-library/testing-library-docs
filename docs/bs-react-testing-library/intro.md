@@ -11,7 +11,7 @@ Bindings for several testing libraries have been ported to [ReasonML][re].
 `react-testing-library`.
 
 [`bs-dom-testing-library`][gh-dom] contains [BuckleScript][bs] bindings for
-`dom-testing-library`.
+`DOM Testing Library`.
 
 ```
 npm install --save-dev bs-dom-testing-library

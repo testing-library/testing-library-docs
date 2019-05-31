@@ -76,7 +76,7 @@ after each interaction.
 You can also import these event via `@angular-extensions/testing-library`, but
 the Angular's change detection will not be triggered automatically.
 
-The same counts for all the queries provided by `dom-testing-library`, these are
+The same counts for all the queries provided by `DOM Testing Library`, these are
 also re-exported and can be imported via `@angular-extensions/testing-library`.
 
 ```typescript

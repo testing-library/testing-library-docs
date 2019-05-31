@@ -18,7 +18,7 @@ slow you and your team down.
 
 ## This solution
 
-The core library, [`dom-testing-library`][dom], is a light-weight solution for
+The core library, [`DOM Testing Library`][dom], is a light-weight solution for
 testing web pages by querying and interacting with DOM nodes (whether simulated
 with [`JSDOM`][jsdom]/[Jest][jest] or in the browser). The main utilities it
 provides involve querying the DOM for nodes in a way that's similar to how the
@@ -36,7 +36,7 @@ is also a plugin to use testing-library queries for end-to-end tests in
 1.  A test runner or framework
 2.  Specific to a testing framework
 
-`dom-testing-library` works with any environment that provides DOM APIs, such as
+`DOM Testing Library` works with any environment that provides DOM APIs, such as
 Jest, Mocha + JSDOM, or a real browser
 
 [jest]: https://jestjs.io

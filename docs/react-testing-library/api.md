@@ -3,7 +3,7 @@ id: api
 title: API
 ---
 
-`react-testing-library` re-exports everything from `dom-testing-library` as well
+`react-testing-library` re-exports everything from `DOM Testing Library` as well
 as these methods:
 
 - [`render`](#render)
@@ -94,7 +94,7 @@ for common data providers. See [setup](setup.md#custom-render) for examples.
 
 ### `queries`
 
-Queries to bind. Overrides the default set from `dom-testing-library` unless
+Queries to bind. Overrides the default set from `DOM Testing Library` unless
 merged.
 
 ```js
@@ -120,7 +120,7 @@ The `render` method returns an object that has a few properties:
 ### `...queries`
 
 The most important feature of `render` is that the queries from
-[dom-testing-library](dom-testing-library/api-queries.md) are automatically
+[DOM Testing Library](dom-testing-library/api-queries.md) are automatically
 returned with their first argument bound to the [baseElement](#baseelement),
 which defaults to `document.body`.
 
@@ -182,7 +182,7 @@ debug()
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`dom-testing-library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
+[`DOM Testing Library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
 
 ### `rerender`
 

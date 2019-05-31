@@ -3,7 +3,7 @@ id: cheatsheet
 title: Cheatsheet
 ---
 
-A short guide to all the exported functions in `dom-testing-library`
+A short guide to all the exported functions in `DOM Testing Library`
 
 ## Queries
 

@@ -32,7 +32,7 @@ fixture`selectors`.beforeEach(addTestcafeTestingLibrary)
 
 You can now import & use `getBy`, `getAllBy`, `queryBy` and `queryAllBy`
 selectors in your tests.
-[See `dom-testing-library` API for reference](dom-testing-library/api-queries.md)
+[See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
 

@@ -22,9 +22,9 @@ Add this line to your project's `cypress/support/commands.js`:
 import 'cypress-testing-library/add-commands';
 ```
 
-You can now use all of `dom-testing-library`'s `getBy`, `getAllBy`, `queryBy`
+You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands.
-[See `dom-testing-library` API for reference](dom-testing-library/api-queries.md)
+[See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
 
@@ -45,9 +45,9 @@ cy.get('form').then(subject => {
 ```
 
 `cypress-testing-library` supports both jQuery elements and DOM nodes. This is
-necessary because Cypress uses jQuery elements, while `dom-testing-library`
+necessary because Cypress uses jQuery elements, while `DOM Testing Library`
 expects DOM nodes. When you pass a jQuery element as `container`, it will get
 the first DOM node from the collection and use that as the `container` parameter
-for the `dom-testing-library` functions.
+for the `DOM Testing Library` functions.
 
 [gh]: https://github.com/testing-library/cypress-testing-library
