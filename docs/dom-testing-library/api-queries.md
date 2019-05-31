@@ -107,7 +107,7 @@ The example below will find the input node for the following DOM structures:
 <!--Native-->
 
 ```javascript
-import { getByLabelText } from 'dom-testing-library'
+import { getByLabelText } from '@testing-library/dom'
 
 const container = document.body
 const inputNode = getByLabelText(container, 'Username')
@@ -172,7 +172,7 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByPlaceholderText } from 'dom-testing-library'
+import { getByPlaceholderText } from '@testing-library/dom'
 
 const container = document.body
 const inputNode = getByPlaceholderText(container, 'Username')
@@ -229,7 +229,7 @@ matching the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByText } from 'dom-testing-library'
+import { getByText } from '@testing-library/dom'
 
 const container = document.body
 const aboutAnchorNode = getByText(container, /about/i)
@@ -305,7 +305,7 @@ as it's deprecated).
 <!--Native-->
 
 ```js
-import { getByAltText } from 'dom-testing-library'
+import { getByAltText } from '@testing-library/dom'
 
 const container = document.body
 const incrediblesPosterImg = getByAltText(container, /incredibles.*? poster/i)
@@ -360,7 +360,7 @@ Will also find a `title` element within an SVG.
 <!--Native-->
 
 ```js
-import { getByTitle } from 'dom-testing-library'
+import { getByTitle } from '@testing-library/dom'
 
 const container = document.body
 const deleteElement = getByTitle(container, 'Delete')
@@ -419,7 +419,7 @@ document.getElementById('lastName').value = 'Norris'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from 'dom-testing-library'
+import { getByDisplayValue } from '@testing-library/dom'
 
 const container = document.body
 const lastNameInput = getByDisplayValue(container, 'Norris')
@@ -457,7 +457,7 @@ document.getElementById('messageTextArea').value = 'Hello World'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from 'dom-testing-library'
+import { getByDisplayValue } from '@testing-library/dom'
 
 const container = document.body
 const messageTextArea = getByDisplayValue(container, 'Hello World')
@@ -499,7 +499,7 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from 'dom-testing-library'
+import { getByDisplayValue } from '@testing-library/dom'
 
 const container = document.body
 const selectElement = getByDisplayValue(container, 'Alaska')
@@ -549,7 +549,7 @@ accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByRole } from 'dom-testing-library'
+import { getByRole } from '@testing-library/dom'
 
 const container = document.body
 const dialogContainer = getByRole(container, 'dialog')
@@ -599,7 +599,7 @@ also accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByTestId } from 'dom-testing-library'
+import { getByTestId } from '@testing-library/dom'
 
 const container = document.body
 const usernameInput = getByTestId(container, 'username-input')

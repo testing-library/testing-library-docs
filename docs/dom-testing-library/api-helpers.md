@@ -13,7 +13,7 @@ to use a different data-attribute. (Note: test files would import
 
 ```js
 // test-utils.js
-const domTestingLib = require('dom-testing-library')
+const domTestingLib = require('@testing-library/dom')
 const { queryHelpers } = domTestingLib
 
 export const queryByTestId = queryHelpers.queryByAttribute.bind(
@@ -116,7 +116,7 @@ could do:
 <!--Native-->
 
 ```js
-import { within } from 'dom-testing-library'
+import { within } from '@testing-library/dom'
 
 const { getByText } = within(document.getElementById('messages'))
 const helloMessage = getByText('hello')

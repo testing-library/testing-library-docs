@@ -27,7 +27,7 @@
 			"",
 			"<!--Native-->",
 			"```js",
-			"import { $1 } from 'dom-testing-library'",
+			"import { $1 } from '@testing-library/dom'",
 			"",
 			"const container = document.body",
 			"const $3 = $1(container, '$2')",
