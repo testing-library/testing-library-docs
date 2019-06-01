@@ -7,7 +7,7 @@ title: Svelte Testing Library
 [Svelte](https://svelte.dev/) components & applications.
 
 ```
-npm install --save-dev svelte-testing-library
+npm install --save-dev @testing-library/svelte
 ```
 
 - [svelte-testing-library on GitHub][gh]
@@ -21,7 +21,7 @@ order to use svelte in jest.
 You must add `cleanup` to your test fixture's `beforeEach` hook:
 
 ```javascript
-import { render, cleanup } from 'svelte-testing-library'
+import { render, cleanup } from '@testing-library/svelte'
 
 beforeEach(cleanup) //this is required.
 ```
@@ -48,7 +48,7 @@ App.spec.js
 
 ```javascript
 import App from '../src/App.svelte'
-import { render, cleanup } from 'svelte-testing-library'
+import { render, cleanup } from '@testing-library/svelte'
 beforeEach(cleanup)
 describe('App', () => {
   test('should render greeting', () => {
@@ -93,7 +93,7 @@ App.spec.js
 
 ```javascript
 import App from '../src/App.svelte'
-import { render, cleanup } from 'svelte-testing-library'
+import { render, cleanup } from '@testing-library/svelte'
 beforeEach(cleanup)
 describe('App', () => {
   test('should render greeting', () => {
