@@ -8,7 +8,7 @@ title: Testcafe Testing Library
 testing.
 
 ```
-npm install --save-dev testcafe testcafe-testing-library
+npm install --save-dev testcafe @testing-library/testcafe
 ```
 
 - [testcafe-testing-library on GitHub][gh]
@@ -24,7 +24,7 @@ Add `testcafe-testing-library` to your test fixture's `beforeEach` hook:
 import {
   getByText, //or any other queries you want
   addTestcafeTestingLibrary,
-} from 'testcafe-testing-library'
+} from '@testing-library/testcafe'
 
 fixture`selectors`.beforeEach(addTestcafeTestingLibrary)
   .page`http://localhost:13370`
@@ -69,7 +69,7 @@ assertions on it like you can using a `Selector`.
 ### Examples using `within`
 
 ```javascript
-import { within, addTestcafeTestingLibrary } from 'testcafe-testing-library'
+import { within, addTestcafeTestingLibrary } from '@testing-library/testcafe'
 
 fixture`within`.beforeEach(addTestcafeTestingLibrary)
   .page`http://localhost:13370`
