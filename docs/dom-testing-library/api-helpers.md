@@ -52,7 +52,7 @@ module.exports = {
 
 > **Note**
 >
-> Custom queries can be added to `react-testing-library`'s `render` method by
+> Custom queries can be added to `React Testing Library`'s `render` method by
 > adding `queries` to the options config object. See the render
 > [options](/docs/react-testing-library/api#render-options).
 
@@ -106,7 +106,7 @@ These elements use the attribute `value` and display its value to the user.
 `within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
 to the raw query functions, allowing them to be used without specifying a
 container. It is the recommended approach for libraries built on this API and is
-in use in `react-testing-library` and `Vue Testing Library`.
+in use in `React Testing Library` and `Vue Testing Library`.
 
 Example: To get the text 'hello' only within a section called 'messages', you
 could do:

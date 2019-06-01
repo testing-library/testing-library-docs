@@ -46,7 +46,7 @@ test('renders a message', () => {
 
 Most of the time you won't need to pass any options to `render`, but when you
 do, you will pass them as the second parameter. There are some important key
-differences between this and `react-testing-library` that you will want to be
+differences between this and `React Testing Library` that you will want to be
 aware of.
 
 ### `wrapper`

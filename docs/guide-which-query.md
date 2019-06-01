@@ -45,7 +45,7 @@ id is a bad practice because users can't see or identify these attributes. Use a
 testid if you have to.
 
 ```jsx
-// react-testing-library
+// @testing-library/react
 const { container } = render(<MyComponent />)
 const foo = container.querySelector('[data-foo="bar"]')
 ```

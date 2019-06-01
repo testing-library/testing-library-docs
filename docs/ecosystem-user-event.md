@@ -3,7 +3,7 @@ id: ecosystem-user-event
 title: user-event
 ---
 
-[`user-event`][gh] is a companion library for `react-testing-library` that
+[`user-event`][gh] is a companion library for `React Testing Library` that
 provides more advanced simulation of browser interactions than the built-in
 `fireEvent` method.
 

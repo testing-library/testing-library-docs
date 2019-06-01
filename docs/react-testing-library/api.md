@@ -3,7 +3,7 @@ id: api
 title: API
 ---
 
-`react-testing-library` re-exports everything from `DOM Testing Library` as well
+`React Testing Library` re-exports everything from `DOM Testing Library` as well
 as these methods:
 
 - [`render`](#render)
@@ -57,7 +57,7 @@ available options which you could provide as a second argument to `render`.
 
 ### `container`
 
-By default, `react-testing-library` will create a `div` and append that div to
+By default, `React Testing Library` will create a `div` and append that div to
 the `document.body` and this is where your react component will be rendered. If
 you provide your own HTMLElement `container` via this option, it will not be
 appended to the `document.body` automatically.

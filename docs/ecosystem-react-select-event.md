@@ -3,7 +3,7 @@ id: ecosystem-react-select-event
 title: react-select-event
 ---
 
-[`react-select-event`][gh] is a companion library for `react-testing-library`
+[`react-select-event`][gh] is a companion library for `React Testing Library`
 that provides helper methods for interacting with [`react-select`][react-select]
 elements.
 

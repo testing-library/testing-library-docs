@@ -4,11 +4,11 @@ title: Setup
 sidebar_label: Setup
 ---
 
-`react-testing-library` does not require any configuration to be used (as
+`React Testing Library` does not require any configuration to be used (as
 demonstrated in the example above). However, there are some things you can do
 when configuring your testing framework to reduce some boilerplate. In these
 docs we'll demonstrate configuring Jest, but you should be able to do similar
-things with [any testing framework](#using-without-jest) (react-testing-library
+things with [any testing framework](#using-without-jest) (React Testing Library
 does not require that you use Jest).
 
 ## Global Config
@@ -29,7 +29,7 @@ option to your Jest config:
 // jest.config.js
 module.exports = {
   setupFilesAfterEnv: [
-    'react-testing-library/cleanup-after-each',
+    '@testing-library/react/cleanup-after-each',
     // ... other setup files ...
   ],
   // ... other options ...
@@ -64,7 +64,7 @@ module.exports = {
 import 'jest-dom/extend-expect'
 
 // this is basically: afterEach(cleanup)
-import 'react-testing-library/cleanup-after-each'
+import '@testing-library/react/cleanup-after-each'
 ```
 
 </details>
@@ -74,7 +74,7 @@ import 'react-testing-library/cleanup-after-each'
 It's often useful to define a custom render method that includes things like
 global context providers, data stores, etc. To make this available globally, one
 approach is to define a utility file that re-exports everything from
-`react-testing-library`. You can replace react-testing-library with this file in
+`React Testing Library`. You can replace React Testing Library with this file in
 all your imports. See [below](#configuring-jest-with-test-utils) for a way to
 make your test util file accessible without using relative paths.
 
@@ -200,8 +200,8 @@ NODE_PATH=src/utils
 ## Using without Jest
 
 If you're running your tests in the browser bundled with webpack (or similar)
-then `react-testing-library` should work out of the box for you. However, most
-people using react-testing-library are using it with the Jest testing framework
+then `React Testing Library` should work out of the box for you. However, most
+people using React Testing Library are using it with the Jest testing framework
 with the `testEnvironment` set to `jest-environment-jsdom` (which is the default
 configuration with Jest).
 

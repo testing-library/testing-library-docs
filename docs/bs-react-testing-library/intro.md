@@ -8,7 +8,7 @@ Bindings for several testing libraries have been ported to [ReasonML][re].
 
 [`bs-react-testing-library`][gh-react] contains
 [BuckleScript](https://bucklescript.github.io/) bindings for
-`react-testing-library`.
+`React Testing Library`.
 
 [`bs-dom-testing-library`][gh-dom] contains [BuckleScript][bs] bindings for
 `DOM Testing Library`.

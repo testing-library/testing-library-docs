@@ -41,7 +41,7 @@ write tests using that philosophy in React Native.
 the testing library API as closely as possible while still accounting for the
 differences in the platforms. Accomplishing this is no small feat because of the
 differences between the two platforms. Although most framework implementations
-like `react-testing-library` are thin layers over `DOM Testing Library`, this
+like `React Testing Library` are thin layers over `DOM Testing Library`, this
 library needed to have its own base implementation as well as a user-facing API.
 This library uses the
 [react-test-renderer](https://reactjs.org/docs/test-renderer.html), whereas
