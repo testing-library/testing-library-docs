@@ -3,20 +3,20 @@ id: intro
 title: Vue Testing Library
 ---
 
-[`vue-testing-library`][gh] is a lightweight adapter allowing
-`dom-testing-library` to be used to test [Vue](https://vuejs.org/) components
+[`Vue Testing Library`][gh] is a lightweight adapter allowing
+`DOM Testing Library` to be used to test [Vue](https://vuejs.org/) components
 built on top of `@vue/test-utils`.
 
 ```
-npm install --save-dev vue vue-testing-library
+npm install --save-dev vue @testing-library/vue
 ```
 
-- [vue-testing-library on GitHub][gh]
+- [Vue Testing Library on GitHub][gh]
 
 ## Usage
 
 ```
-npm install --save-dev vue-testing-library
+npm install --save-dev @testing-library/vue
                        jest
                        vue-jest
                        babel-jest
@@ -80,7 +80,7 @@ npm install --save-dev vue-testing-library
 ```js
 // src/TestComponent.spec.js
 import 'jest-dom/extend-expect'
-import { render } from 'vue-testing-library'
+import { render } from '@testing-library/vue'
 import TestComponent from './TestComponent'
 
 test('should render HelloWorld', () => {
@@ -89,7 +89,7 @@ test('should render HelloWorld', () => {
 })
 ```
 
-You can now use all of `dom-testing-library`'s `getBy`, `getAllBy`, `queryBy`
+You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands. See [here](dom-testing-library/api-queries.md) for
 usage.
 
@@ -113,9 +113,9 @@ helper methods
 3. configurationCb - A callback to be called passing the Vue instance when
    created. This allows 3rd party plugins to be installed prior to mount.
 
-### Forwarded methods from dom-testing-library
+### Forwarded methods from DOM Testing Library
 
-vue-testing-library forwards all exports from dom-testing-library but it alters
+Vue Testing Library forwards all exports from `DOM Testing Library` but it alters
 `fireEvent` so that all events are async (ie: `await fireEvent.click(button)`)
 
 In particular, the `wait` utility can be very important in Vue components,

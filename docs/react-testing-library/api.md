@@ -3,7 +3,7 @@ id: api
 title: API
 ---
 
-`react-testing-library` re-exports everything from `dom-testing-library` as well
+`React Testing Library` re-exports everything from `DOM Testing Library` as well
 as these methods:
 
 - [`render`](#render)
@@ -26,13 +26,13 @@ function render(
 Render into a container which is appended to `document.body`.
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 render(<div />)
 ```
 
 ```jsx
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
 afterEach(cleanup)
 
@@ -57,7 +57,7 @@ available options which you could provide as a second argument to `render`.
 
 ### `container`
 
-By default, `react-testing-library` will create a `div` and append that div to
+By default, `React Testing Library` will create a `div` and append that div to
 the `document.body` and this is where your react component will be rendered. If
 you provide your own HTMLElement `container` via this option, it will not be
 appended to the `document.body` automatically.
@@ -94,13 +94,13 @@ for common data providers. See [setup](setup.md#custom-render) for examples.
 
 ### `queries`
 
-Queries to bind. Overrides the default set from `dom-testing-library` unless
+Queries to bind. Overrides the default set from `DOM Testing Library` unless
 merged.
 
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import queries from 'react-testing-library'
+import queries from '@testing-library/react'
 
 const { getByRowColumn, getByText } = render(<MyTable />, {
   queries: { ...queries, ...tableQueries },
@@ -120,7 +120,7 @@ The `render` method returns an object that has a few properties:
 ### `...queries`
 
 The most important feature of `render` is that the queries from
-[dom-testing-library](dom-testing-library/api-queries.md) are automatically
+[DOM Testing Library](dom-testing-library/api-queries.md) are automatically
 returned with their first argument bound to the [baseElement](#baseelement),
 which defaults to `document.body`.
 
@@ -170,7 +170,7 @@ This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
 import React from 'react'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const HelloWorld = () => <h1>Hello World</h1>
 const { debug } = render(<HelloWorld />)
@@ -182,7 +182,7 @@ debug()
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`dom-testing-library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
+[`DOM Testing Library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
 
 ### `rerender`
 
@@ -193,7 +193,7 @@ prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { rerender } = render(<NumberDisplay number={1} />)
 
@@ -213,7 +213,7 @@ that you don't leave event handlers hanging around causing memory leaks).
 > `ReactDOM.unmountComponentAtNode`
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { container, unmount } = render(<Login />)
 unmount()
@@ -226,7 +226,7 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 
 class TestComponent extends React.Component {
   constructor() {
@@ -263,7 +263,7 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 Unmounts React trees that were mounted with [render](#render).
 
 ```jsx
-import { cleanup, render } from 'react-testing-library'
+import { cleanup, render } from '@testing-library/react'
 
 afterEach(cleanup) // <-- add this
 

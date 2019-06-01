@@ -5,15 +5,15 @@ title: Helpers
 
 ## Custom Queries
 
-`dom-testing-library` exposes many of the helper functions that are used to
+`DOM Testing Library` exposes many of the helper functions that are used to
 implement the default queries. You can use the helpers to build custom queries.
 For example, the code below shows a way to override the default `testId` queries
 to use a different data-attribute. (Note: test files would import
-`test-utils.js` instead of using `dom-testing-library` directly).
+`test-utils.js` instead of using `DOM Testing Library` directly).
 
 ```js
 // test-utils.js
-const domTestingLib = require('dom-testing-library')
+const domTestingLib = require('@testing-library/dom')
 const { queryHelpers } = domTestingLib
 
 export const queryByTestId = queryHelpers.queryByAttribute.bind(
@@ -52,7 +52,7 @@ module.exports = {
 
 > **Note**
 >
-> Custom queries can be added to `react-testing-library`'s `render` method by
+> Custom queries can be added to `React Testing Library`'s `render` method by
 > adding `queries` to the options config object. See the render
 > [options](/docs/react-testing-library/api#render-options).
 
@@ -106,7 +106,7 @@ These elements use the attribute `value` and display its value to the user.
 `within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
 to the raw query functions, allowing them to be used without specifying a
 container. It is the recommended approach for libraries built on this API and is
-in use in `react-testing-library` and `vue-testing-library`.
+in use in `React Testing Library` and `Vue Testing Library`.
 
 Example: To get the text 'hello' only within a section called 'messages', you
 could do:
@@ -116,7 +116,7 @@ could do:
 <!--Native-->
 
 ```js
-import { within } from 'dom-testing-library'
+import { within } from '@testing-library/dom'
 
 const { getByText } = within(document.getElementById('messages'))
 const helloMessage = getByText('hello')
@@ -125,7 +125,7 @@ const helloMessage = getByText('hello')
 <!--React-->
 
 ```js
-import { render, within } from 'react-testing-library'
+import { render, within } from '@testing-library/react'
 
 const { getByLabelText } = render(<MyComponent />)
 const signinModal = getByLabelText('Sign In')

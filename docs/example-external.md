@@ -6,7 +6,7 @@ sidebar_label: External Examples
 
 ## Code Samples
 
-- You can find more react-testing-library examples at
+- You can find more React Testing Library examples at
   [react-testing-examples.com](https://react-testing-examples.com/jest-rtl/).
 
 ## Videos

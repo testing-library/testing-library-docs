@@ -4,12 +4,12 @@ title: jest-native
 sidebar_label: jest-native
 ---
 
-[`jest-native`](https://github.com/testing-library/jest-native) is a companion
-library for `native-testing-library` that provides custom element matchers for
+[`Jest Native`](https://github.com/testing-library/jest-native) is a companion
+library for `Native Testing Library` that provides custom element matchers for
 Jest.
 
 ```
-npm install --save-dev jest-native
+npm install --save-dev @testing-library/jest-native
 ```
 
 ```javascript
@@ -30,7 +30,7 @@ expect(getByText(baseElement, 'Visible Example')).toBeVisible()
 > assertion.
 
 Check out
-[jest-native's documentation](https://github.com/testing-library/jest-native)
+[Jest Native's documentation](https://github.com/testing-library/jest-native)
 for a full list of available matchers.
 
-- [jest-native on GitHub](https://github.com/testing-library/jest-native)
+- [Jest Native on GitHub](https://github.com/testing-library/jest-native)

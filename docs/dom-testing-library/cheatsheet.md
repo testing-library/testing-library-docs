@@ -3,7 +3,7 @@ id: cheatsheet
 title: Cheatsheet
 ---
 
-A short guide to all the exported functions in `dom-testing-library`
+A short guide to all the exported functions in `DOM Testing Library`
 
 ## Queries
 
@@ -98,7 +98,7 @@ See [Events API](api-events.md)
 See [Helpers API](api-helpers.md), [Config API](api-configuration.md)
 
 - **within** take a node and return an object with all the queries bound to the
-  node (used to return the queries from `react-testing-library`'s render
+  node (used to return the queries from `React Testing Library`'s render
   method): `within(node).getByText("hello")`
 - **configure** change global options:
   `configure({testIdAttribute: 'my-data-test-id'})`

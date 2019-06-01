@@ -4,14 +4,14 @@ title: React Testing Library
 sidebar_label: Introduction
 ---
 
-[`react-testing-library`][gh] builds on top of `dom-testing-library` by adding
+[`React Testing Library`][gh] builds on top of `DOM Testing Library` by adding
 APIs for working with React components.
 
 ```
-npm install --save-dev react-testing-library
+npm install --save-dev @testing-library/react
 ```
 
-- [react-testing-library on GitHub][gh]
+- [React Testing Library on GitHub][gh]
 
 [gh]: https://github.com/testing-library/react-testing-library
 
@@ -27,7 +27,7 @@ your team down.
 
 ## This solution
 
-The `react-testing-library` is a very light-weight solution for testing React
+The `React Testing Library` is a very light-weight solution for testing React
 components. It provides light utility functions on top of `react-dom` and
 `react-dom/test-utils`, in a way that encourages better testing practices. Its
 primary guiding principle is:
@@ -61,7 +61,7 @@ facilitate testing implementation details). Read more about this in
     [Using Without Jest](./setup#using-without-jest))
 
 > NOTE: This library is built on top of
-> [`dom-testing-library`](dom-testing-library/intro.md) which is where most of
+> [`DOM Testing Library`](dom-testing-library/intro.md) which is where most of
 > the logic behind the queries is.
 
 ## Video

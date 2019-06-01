@@ -6,7 +6,7 @@ sidebar_label: Contributing
 
 ## License
 
-`react-testing-library` is distributed under the open-source MIT license
+`React Testing Library` is distributed under the open-source MIT license
 
 ## Issues
 

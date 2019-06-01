@@ -17,8 +17,8 @@ In summary:
 
 ```javascript
 import React from 'react'
-import 'react-testing-library/cleanup-after-each'
-import { render, fireEvent } from 'react-testing-library'
+import '@testing-library/react/cleanup-after-each'
+import { render, fireEvent } from '@testing-library/react'
 
 test('change values via the fireEvent.change method', () => {
   const handleChange = jest.fn()
@@ -49,12 +49,12 @@ input.value = 'a'
 Simulate.change(input)
 ```
 
-We can't do this with react-testing-library because React actually keeps track
+We can't do this with React Testing Library because React actually keeps track
 of any time you assign the `value` property on an `input` and so when you fire
 the `change` event, React thinks that the value hasn't actually been changed.
 
 This works for Simulate because they use internal APIs to fire special simulated
-events. With react-testing-library, we try to avoid implementation details to
+events. With React Testing Library, we try to avoid implementation details to
 make your tests more resiliant.
 
 So we have it worked out for the change event handler to set the property for

@@ -5,9 +5,9 @@ sidebar_label: native-testing-library
 ---
 
 Native Testing Library is a testing library for **React Native** inspired by
-`dom-testing-library`. Because React Native does not run in a browser
+`DOM Testing Library`. Because React Native does not run in a browser
 environment, the core queries are implemented independently, unlike other
-wrappers that user dom-testing-library as the base. You'll find much more
+wrappers that use `DOM Testing Library` as the base. You'll find much more
 information about the library, including examples, on the project website:
 
 - [Docs](https://native-testing-library.com)
@@ -19,7 +19,7 @@ information about the library, including examples, on the project website:
 This module should be installed in your project's `devDependencies`:
 
 ```
-npm --save-dev native-testing-library
+npm --save-dev @testing-library/react-native
 ```
 
 You will also need `react` and `react-native` installed as `dependencies` in
@@ -30,7 +30,7 @@ order to use this project.
 ```javascript
 import React from 'react'
 import { Button, Text, TextInput, View } from 'react-native'
-import { fireEvent, render, wait } from 'native-testing-library'
+import { fireEvent, render, wait } from '@testing-library/react-native'
 
 function Example() {
   const [name, setUser] = React.useState('')

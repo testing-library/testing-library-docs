@@ -3,28 +3,28 @@ id: intro
 title: Cypress Testing Library
 ---
 
-[`cypress-testing-library`][gh] allows the use of dom-testing queries within
+[`Cypress Testing Library`][gh] allows the use of dom-testing queries within
 [Cypress](https://cypress.io) end-to-end browser tests.
 
 ```
-npm install --save-dev cypress cypress-testing-library
+npm install --save-dev cypress @testing-library/cypress
 ```
 
-- [cypress-testing-library on GitHub][gh]
+- [Cypress Testing Library on GitHub][gh]
 
 ## Usage
 
-`cypress-testing-library` extends Cypress' `cy` command.
+`Cypress Testing Library` extends Cypress' `cy` command.
 
 Add this line to your project's `cypress/support/commands.js`:
 
 ```
-import 'cypress-testing-library/add-commands';
+import '@testing-library/cypress/add-commands';
 ```
 
-You can now use all of `dom-testing-library`'s `getBy`, `getAllBy`, `queryBy`
+You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands.
-[See `dom-testing-library` API for reference](dom-testing-library/api-queries.md)
+[See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
 
@@ -44,10 +44,10 @@ cy.get('form').then(subject => {
 })
 ```
 
-`cypress-testing-library` supports both jQuery elements and DOM nodes. This is
-necessary because Cypress uses jQuery elements, while `dom-testing-library`
+`Cypress Testing Library` supports both jQuery elements and DOM nodes. This is
+necessary because Cypress uses jQuery elements, while `DOM Testing Library`
 expects DOM nodes. When you pass a jQuery element as `container`, it will get
 the first DOM node from the collection and use that as the `container` parameter
-for the `dom-testing-library` functions.
+for the DOM Testing Library functions.
 
 [gh]: https://github.com/testing-library/cypress-testing-library
