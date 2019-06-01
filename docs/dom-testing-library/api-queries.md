@@ -107,7 +107,7 @@ The example below will find the input node for the following DOM structures:
 <!--Native-->
 
 ```javascript
-import { getByLabelText } from 'dom-testing-library'
+import { getByLabelText } from '@testing-library/dom'
 
 const container = document.body
 const inputNode = getByLabelText(container, 'Username')
@@ -116,7 +116,7 @@ const inputNode = getByLabelText(container, 'Username')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByLabelText } = render(<Login />)
 
@@ -172,7 +172,7 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByPlaceholderText } from 'dom-testing-library'
+import { getByPlaceholderText } from '@testing-library/dom'
 
 const container = document.body
 const inputNode = getByPlaceholderText(container, 'Username')
@@ -181,7 +181,7 @@ const inputNode = getByPlaceholderText(container, 'Username')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByPlaceholderText } = render(<MyComponent />)
 const inputNode = getByPlaceholderText('Username')
@@ -229,7 +229,7 @@ matching the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByText } from 'dom-testing-library'
+import { getByText } from '@testing-library/dom'
 
 const container = document.body
 const aboutAnchorNode = getByText(container, /about/i)
@@ -238,7 +238,7 @@ const aboutAnchorNode = getByText(container, /about/i)
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByText } = render(<MyComponent />)
 const aboutAnchorNode = getByText(/about/i)
@@ -305,7 +305,7 @@ as it's deprecated).
 <!--Native-->
 
 ```js
-import { getByAltText } from 'dom-testing-library'
+import { getByAltText } from '@testing-library/dom'
 
 const container = document.body
 const incrediblesPosterImg = getByAltText(container, /incredibles.*? poster/i)
@@ -314,7 +314,7 @@ const incrediblesPosterImg = getByAltText(container, /incredibles.*? poster/i)
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByAltText } = render(<MyComponent />)
 const incrediblesPosterImg = getByAltText(/incredibles.*? poster/i)
@@ -360,7 +360,7 @@ Will also find a `title` element within an SVG.
 <!--Native-->
 
 ```js
-import { getByTitle } from 'dom-testing-library'
+import { getByTitle } from '@testing-library/dom'
 
 const container = document.body
 const deleteElement = getByTitle(container, 'Delete')
@@ -370,7 +370,7 @@ const closeElement = getByTitle(container, 'Close')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByTitle } = render(<MyComponent />)
 const deleteElement = getByTitle('Delete')
@@ -419,7 +419,7 @@ document.getElementById('lastName').value = 'Norris'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from 'dom-testing-library'
+import { getByDisplayValue } from '@testing-library/dom'
 
 const container = document.body
 const lastNameInput = getByDisplayValue(container, 'Norris')
@@ -428,7 +428,7 @@ const lastNameInput = getByDisplayValue(container, 'Norris')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByDisplayValue } = render(<MyComponent />)
 const lastNameInput = getByDisplayValue('Norris')
@@ -457,7 +457,7 @@ document.getElementById('messageTextArea').value = 'Hello World'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from 'dom-testing-library'
+import { getByDisplayValue } from '@testing-library/dom'
 
 const container = document.body
 const messageTextArea = getByDisplayValue(container, 'Hello World')
@@ -466,7 +466,7 @@ const messageTextArea = getByDisplayValue(container, 'Hello World')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByDisplayValue } = render(<MyComponent />)
 const messageTextArea = getByDisplayValue('Hello World')
@@ -499,7 +499,7 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from 'dom-testing-library'
+import { getByDisplayValue } from '@testing-library/dom'
 
 const container = document.body
 const selectElement = getByDisplayValue(container, 'Alaska')
@@ -508,7 +508,7 @@ const selectElement = getByDisplayValue(container, 'Alaska')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByDisplayValue } = render(<MyComponent />)
 const selectElement = getByDisplayValue('Alaska')
@@ -549,7 +549,7 @@ accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByRole } from 'dom-testing-library'
+import { getByRole } from '@testing-library/dom'
 
 const container = document.body
 const dialogContainer = getByRole(container, 'dialog')
@@ -558,7 +558,7 @@ const dialogContainer = getByRole(container, 'dialog')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByRole } = render(<MyComponent />)
 const dialogContainer = getByRole('dialog')
@@ -599,7 +599,7 @@ also accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByTestId } from 'dom-testing-library'
+import { getByTestId } from '@testing-library/dom'
 
 const container = document.body
 const usernameInput = getByTestId(container, 'username-input')
@@ -608,7 +608,7 @@ const usernameInput = getByTestId(container, 'username-input')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByTestId } = render(<MyComponent />)
 const usernameInput = getByTestId('username-input')
@@ -632,7 +632,7 @@ cy.getByTestId('username-input').should('exist')
 
 #### Overriding `data-testid`
 
-The `...ByTestId` functions in `dom-testing-library` use the attribute
+The `...ByTestId` functions in `DOM Testing Library` use the attribute
 `data-testid` by default, following the precedent set by
 [React Native Web](https://github.com/testing-library/react-testing-library/issues/1)
 which uses a `testID` prop to emit a `data-testid` attribute on the element, and
@@ -661,7 +661,7 @@ affect the precision of string matching:
 
 ### Normalization
 
-Before running any matching logic against text in the DOM, `dom-testing-library`
+Before running any matching logic against text in the DOM, `DOM Testing Library`
 automatically normalizes that text. By default, normalization consists of
 trimming whitespace from the start and end of text, and collapsing multiple
 adjacent whitespace characters into a single space.

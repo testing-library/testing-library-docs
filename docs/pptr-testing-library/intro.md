@@ -4,7 +4,7 @@ title: Puppeteer Testing Library
 ---
 
 [`pptr-testing-library`][gh] is a lightweight adapter allowing
-`dom-testing-library` to be used with [`puppeteer`][ghpuppeteer].
+`DOM Testing Library` to be used with [`puppeteer`][ghpuppeteer].
 
 ```
 npm install --save-dev puppeteer pptr-testing-library
@@ -35,7 +35,7 @@ await $email.type('pptr@example.com')
 await wait(() => getByText('Loading...'))
 ```
 
-A little too un-puppeteer for you? You can attach all the `dom-testing-library`
+A little too un-puppeteer for you? You can attach all the `DOM Testing Library`
 methods directly onto puppeteer's `ElementHandle` instead!
 
 ```js
@@ -57,21 +57,21 @@ const $email = await getByLabelText('Email')
 
 ### API
 
-Unique methods, not part of `dom-testing-library`.
+Unique methods, not part of `DOM Testing Library`.
 
 - `getDocument(page: puppeteer.Page): ElementHandle` - get an ElementHandle for
   the document
 
 ### Forwarded methods
 
-`dom-testing-library` is injected into the page that puppeteer is controlling on
+`DOM Testing Library` is injected into the page that puppeteer is controlling on
 each query, so all results will be async. It's still recommended that you use
 puppeteer's built-in methods for interaction rather than `fireEvent`.
 
 ## Known Limitations
 
 - `waitForElement` method is not exposed. Puppeteer has its own set of wait
-  utilities that somewhat conflict with the style used in `dom-testing-library`.
+  utilities that somewhat conflict with the style used in `DOM Testing Library`.
   See
   [the issue on GitHub](https://github.com/patrickhulce/pptr-testing-library/issues/3).
 - `fireEvent` method is not exposed, use puppeteer's built-ins instead.

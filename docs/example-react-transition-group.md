@@ -8,7 +8,7 @@ title: React Transition Group
 ```jsx
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { render, fireEvent, cleanup } from 'react-testing-library'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 
 function Fade({ children, ...props }) {
   return (
@@ -64,7 +64,7 @@ test('you can mock things with jest.mock', () => {
 ```jsx
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { render, fireEvent, cleanup } from 'react-testing-library'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 
 function Fade({ children, ...props }) {
   return (

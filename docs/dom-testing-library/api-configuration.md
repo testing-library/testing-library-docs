@@ -28,7 +28,7 @@ Defaults to `data-testid`. See [`getByTestId`](#getbytestid).
 
 ```js
 // setup-tests.js
-import { configure } from 'dom-testing-library'
+import { configure } from '@testing-library/dom'
 
 configure({testIdAttribute: 'my-data-test-id'})`
 ```
@@ -37,7 +37,7 @@ configure({testIdAttribute: 'my-data-test-id'})`
 
 ```js
 // setup-tests.js
-import { configure } from 'react-testing-library'
+import { configure } from '@testing-library/react'
 
 configure({testIdAttribute: 'my-data-test-id'})`
 ```

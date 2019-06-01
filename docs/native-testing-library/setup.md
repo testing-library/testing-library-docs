@@ -6,12 +6,12 @@ sidebar_label: Setup
 
 ## Setting up your project
 
-The `native-testing-library` API should work out of the box for most tests. All
+The `Native Testing Library` API should work out of the box for most tests. All
 of the snippets you'll find throughout the website work without any additional
 configuration assuming you use Jest and a moderately recent version of React
 Native.
 
-We strongly encourage you to use Jest with the `native-testing-library` preset.
+We strongly encourage you to use Jest with the `Native Testing Library` preset.
 The `react-native` preset should also work, but you'll be getting the best
 experience when using our preset. There may be some additional mocks you need to
 provide to such as mocks for `react-native-gesture-handler` when using
@@ -22,7 +22,7 @@ provide to such as mocks for `react-native-gesture-handler` when using
 It's often useful to define a custom render method that includes things like
 global context providers, data stores, etc. To make this available globally, one
 approach is to define a utility file that re-exports everything from
-`native-testing-library`. You can replace `native-testing-library` with this
+`Native Testing Library`. You can replace `Native Testing Library` with this
 file in all your imports. See [below](#configuring-jest-with-test-utils) for a
 way to make your test util file accessible without using relative paths.
 
@@ -31,13 +31,13 @@ The example below sets up data providers using the
 
 ```diff
 // my-component.test.js
-- import { render, fireEvent } from 'native-testing-library';
+- import { render, fireEvent } from '@testing-library/react-native';
 + import { render, fireEvent } from '../test-utils';
 ```
 
 ```js
 // test-utils.js
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
 import defaultStrings from 'i18n/en-x-default'
@@ -56,7 +56,7 @@ const customRender = (ui, options) =>
   render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
-export * from 'native-testing-library'
+export * from '@testing-library/react-native'
 
 // override render method
 export { customRender as render }

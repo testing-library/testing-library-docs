@@ -10,7 +10,7 @@ sidebar_label: Update Props
 // that your first call created for you.
 
 import React from 'react'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 
 let idCounter = 1
 

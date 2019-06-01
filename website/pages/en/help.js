@@ -41,7 +41,7 @@ function Help(props) {
     {
       content: `Stay up to date by following the [blog](${
         props.config.baseUrl
-      }blog)`,
+        }blog)`,
       title: 'Blog',
     },
     {
@@ -70,14 +70,14 @@ function Help(props) {
             <h2 align="center">Buy a Course</h2>
             <p align="center">
               Learn how to test React with Kent C. Dodds, the creator of
-              react-testing-library
+              React Testing Library
             </p>
             <div align="center">
               <a href="https://testingjavascript.com">
                 <img
                   width="500"
                   alt="TestingJavaScript.com Learn the smart, efficient way to test any JavaScript application."
-                  src="https://raw.githubusercontent.com/kentcdodds/react-testing-library/master/other/testingjavascript.jpg"
+                  src="https://raw.githubusercontent.com/testing-library/react-testing-library/master/other/testingjavascript.jpg"
                 />
               </a>
             </div>

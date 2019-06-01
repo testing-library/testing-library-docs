@@ -5,7 +5,7 @@ sidebar_label: API
 ---
 
 Here you'll find a high level summary of the most frequently used parts of
-native-testing-library. For a more comprehensive look at what's possible, check
+Native Testing Library. For a more comprehensive look at what's possible, check
 out the [main docs site](https://native-testing-library.com).
 
 - [`render`](#render)
@@ -25,13 +25,13 @@ function render(
 Create a `ReactTestRenderer` Instance.
 
 ```jsx
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 render(<View />)
 ```
 
 ```javascript
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 test('renders a message', () => {
   const { container, getByText } = render(<Text>Hello, World!</Text>)
@@ -46,7 +46,7 @@ test('renders a message', () => {
 
 Most of the time you won't need to pass any options to `render`, but when you
 do, you will pass them as the second parameter. There are some important key
-differences between this and `react-testing-library` that you will want to be
+differences between this and `React Testing Library` that you will want to be
 aware of.
 
 ### `wrapper`
@@ -57,13 +57,13 @@ for common data providers. See [setup](setup.md#custom-render) for examples.
 
 ### `queries`
 
-Queries to bind. Overrides the default set from `native-testing-library` unless
+Queries to bind. Overrides the default set from `Native Testing Library` unless
 merged.
 
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import queries from 'native-testing-library'
+import queries from '@testing-library/react-native'
 
 const { getByRowColumn, getByText } = render(<MyTable />, {
   queries: { ...queries, ...tableQueries },
@@ -111,7 +111,7 @@ searching logic you wanted to..
 This method is a shortcut for `console.log(prettyPrint(container.toJSON()))`.
 
 ```javascript
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 const { debug } = render(
   <View>
@@ -135,7 +135,7 @@ Although its likely better to test updating your props the way a user would
 entire tree at the base with new props.
 
 ```jsx
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 const { rerender } = render(<NumberDisplay number={1} />)
 
@@ -157,7 +157,7 @@ necessary.
 > This method is a wrapper around ReactTestRenderer.unmount()
 
 ```javascript
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 const { unmount } = render(<Login />)
 unmount()

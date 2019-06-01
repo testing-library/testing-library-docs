@@ -3,7 +3,7 @@ id: ecosystem-user-event
 title: user-event
 ---
 
-[`user-event`][gh] is a companion library for `react-testing-library` that
+[`user-event`][gh] is a companion library for `React Testing Library` that
 provides more advanced simulation of browser interactions than the built-in
 `fireEvent` method.
 
@@ -13,7 +13,7 @@ npm install --save-dev user-event
 
 ```jsx
 import React from 'react'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 import userEvent from 'user-event'
 
 const { getByText } = test('click', () => {

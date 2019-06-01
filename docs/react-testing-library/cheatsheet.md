@@ -5,16 +5,16 @@ title: Cheatsheet
 
 **[Get the printable cheat sheet][cheatsheet]**
 
-A short guide to all the exported functions in `react-testing-library`
+A short guide to all the exported functions in `React Testing Library`
 
 - **render** `const {/* */} = render(Component)` returns:
-  - all the queries from `dom-testing-library`, bound to the document so there
+  - all the queries from `DOM Testing Library`, bound to the document so there
     is no need to pass a node as the first argument
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
 
 ```jsx
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 
 test('loads items eventually', async () => {
   const { getByText, findByText } = render(<Page />)
@@ -30,10 +30,10 @@ test('loads items eventually', async () => {
 
 ## Queries
 
-> **Difference from dom-testing-library**
+> **Difference from DOM Testing Library**
 >
-> The queries returned from `render` in `react-testing-library` are the same as
-> `dom-testing-library` except they have the first argument bound to the
+> The queries returned from `render` in `React Testing Library` are the same as
+> `DOM Testing Library` except they have the first argument bound to the
 > document, so instead of `getByText(node, 'text')` you do `getByText('text')`
 
 See [Which query should I use?](guide-which-query.md)
@@ -126,7 +126,7 @@ See [Events API](dom-testing-library/api-events.md)
   - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
 - **act** wrapper around
   [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
-  react-testing-library wraps render and fireEvent in a call to `act` already so
+  React Testing Library wraps render and fireEvent in a call to `act` already so
   most cases should not require using it manually
 
 ## Other
@@ -135,7 +135,7 @@ See [Helpers API](dom-testing-library/api-helpers.md),
 [Config API](dom-testing-library/api-configuration.md)
 
 - **within** take a node and return an object with all the queries bound to the
-  node (used to return the queries from `react-testing-library`'s render
+  node (used to return the queries from `React Testing Library`'s render
   method): `within(node).getByText("hello")`
 - **configure** change global options:
   `configure({testIdAttribute: 'my-data-test-id'})`

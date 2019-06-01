@@ -8,7 +8,7 @@ testing-library-docs
 [![Code of Conduct][coc-badge]][coc]
 <!-- prettier-ignore-end -->
 
-Documentation site for [react-testing-library](https://github.com/testing-library/react-testing-library), [dom-testing-library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
+Documentation site for [React Testing Library](https://github.com/testing-library/react-testing-library), [DOM Testing Library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
 
 See [./website/README.md](./website/README.md) for instructions on building the site
 
