@@ -14,7 +14,7 @@ npm install --save-dev react-select-event
 ```jsx
 import React from 'react'
 import Select from 'react-select'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 import selectEvent from 'react-select-event'
 
 const { getByTestId, getByLabelText } = render(

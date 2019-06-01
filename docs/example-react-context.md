@@ -5,7 +5,7 @@ title: React Context
 
 ```jsx
 import React from 'react'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
 import { NameContext, NameProvider, NameConsumer } from '../react-context'
 

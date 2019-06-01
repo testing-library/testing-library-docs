@@ -18,7 +18,7 @@ In summary:
 ```javascript
 import React from 'react'
 import 'react-testing-library/cleanup-after-each'
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 
 test('change values via the fireEvent.change method', () => {
   const handleChange = jest.fn()

@@ -14,7 +14,7 @@ A short guide to all the exported functions in `react-testing-library`
   - `container` reference to the DOM node where the component is mounted
 
 ```jsx
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 
 test('loads items eventually', async () => {
   const { getByText, findByText } = render(<Page />)

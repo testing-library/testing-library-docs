@@ -26,13 +26,13 @@ function render(
 Render into a container which is appended to `document.body`.
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 render(<div />)
 ```
 
 ```jsx
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
 afterEach(cleanup)
 
@@ -100,7 +100,7 @@ merged.
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import queries from 'react-testing-library'
+import queries from '@testing-library/react'
 
 const { getByRowColumn, getByText } = render(<MyTable />, {
   queries: { ...queries, ...tableQueries },
@@ -170,7 +170,7 @@ This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
 import React from 'react'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const HelloWorld = () => <h1>Hello World</h1>
 const { debug } = render(<HelloWorld />)
@@ -193,7 +193,7 @@ prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { rerender } = render(<NumberDisplay number={1} />)
 
@@ -213,7 +213,7 @@ that you don't leave event handlers hanging around causing memory leaks).
 > `ReactDOM.unmountComponentAtNode`
 
 ```jsx
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { container, unmount } = render(<Login />)
 unmount()
@@ -226,7 +226,7 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 
 class TestComponent extends React.Component {
   constructor() {
@@ -263,7 +263,7 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 Unmounts React trees that were mounted with [render](#render).
 
 ```jsx
-import { cleanup, render } from 'react-testing-library'
+import { cleanup, render } from '@testing-library/react'
 
 afterEach(cleanup) // <-- add this
 

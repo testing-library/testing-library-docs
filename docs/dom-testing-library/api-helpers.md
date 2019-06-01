@@ -125,7 +125,7 @@ const helloMessage = getByText('hello')
 <!--React-->
 
 ```js
-import { render, within } from 'react-testing-library'
+import { render, within } from '@testing-library/react'
 
 const { getByLabelText } = render(<MyComponent />)
 const signinModal = getByLabelText('Sign In')

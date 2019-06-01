@@ -13,7 +13,7 @@ npm install --save-dev user-event
 
 ```jsx
 import React from 'react'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 import userEvent from 'user-event'
 
 const { getByText } = test('click', () => {

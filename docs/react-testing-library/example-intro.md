@@ -16,7 +16,7 @@ import {
   fireEvent,
   cleanup,
   waitForElement,
-} from 'react-testing-library'
+} from '@testing-library/react'
 import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
@@ -60,7 +60,7 @@ import {
   fireEvent,
   cleanup,
   waitForElement,
-} from 'react-testing-library'
+} from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import 'jest-dom/extend-expect'

@@ -83,13 +83,13 @@ The example below sets up data providers using the
 
 ```diff
 // my-component.test.js
-- import { render, fireEvent } from 'react-testing-library';
+- import { render, fireEvent } from '@testing-library/react';
 + import { render, fireEvent } from '../test-utils';
 ```
 
 ```js
 // test-utils.js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
 import defaultStrings from 'i18n/en-x-default'
@@ -108,7 +108,7 @@ const customRender = (ui, options) =>
   render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
-export * from 'react-testing-library'
+export * from '@testing-library/react'
 
 // override render method
 export { customRender as render }
@@ -128,7 +128,7 @@ You can use CommonJS modules instead of ES modules, which should work in Node:
 
 ```js
 // test-utils.js
-const rtl = require('react-testing-library')
+const rtl = require('@testing-library/react')
 
 const customRender = (ui, options) =>
   rtl.render(ui, {

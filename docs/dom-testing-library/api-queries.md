@@ -116,7 +116,7 @@ const inputNode = getByLabelText(container, 'Username')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByLabelText } = render(<Login />)
 
@@ -181,7 +181,7 @@ const inputNode = getByPlaceholderText(container, 'Username')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByPlaceholderText } = render(<MyComponent />)
 const inputNode = getByPlaceholderText('Username')
@@ -238,7 +238,7 @@ const aboutAnchorNode = getByText(container, /about/i)
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByText } = render(<MyComponent />)
 const aboutAnchorNode = getByText(/about/i)
@@ -314,7 +314,7 @@ const incrediblesPosterImg = getByAltText(container, /incredibles.*? poster/i)
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByAltText } = render(<MyComponent />)
 const incrediblesPosterImg = getByAltText(/incredibles.*? poster/i)
@@ -370,7 +370,7 @@ const closeElement = getByTitle(container, 'Close')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByTitle } = render(<MyComponent />)
 const deleteElement = getByTitle('Delete')
@@ -428,7 +428,7 @@ const lastNameInput = getByDisplayValue(container, 'Norris')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByDisplayValue } = render(<MyComponent />)
 const lastNameInput = getByDisplayValue('Norris')
@@ -466,7 +466,7 @@ const messageTextArea = getByDisplayValue(container, 'Hello World')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByDisplayValue } = render(<MyComponent />)
 const messageTextArea = getByDisplayValue('Hello World')
@@ -508,7 +508,7 @@ const selectElement = getByDisplayValue(container, 'Alaska')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByDisplayValue } = render(<MyComponent />)
 const selectElement = getByDisplayValue('Alaska')
@@ -558,7 +558,7 @@ const dialogContainer = getByRole(container, 'dialog')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByRole } = render(<MyComponent />)
 const dialogContainer = getByRole('dialog')
@@ -608,7 +608,7 @@ const usernameInput = getByTestId(container, 'username-input')
 <!--React-->
 
 ```js
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 const { getByTestId } = render(<MyComponent />)
 const usernameInput = getByTestId('username-input')
