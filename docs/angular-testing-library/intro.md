@@ -3,15 +3,15 @@ id: intro
 title: Angular Testing Library
 ---
 
-🦔 [`@angular-extensions/testing-library`][gh] Simple and complete
+🦔 [`@testing-library/angular`][gh] Simple and complete
 [Angular](https://angular.io) testing utilities that encourage good testing
 practices.
 
 ```bash
-npm install --save-dev angular-extensions/testing-library
+npm install --save-dev @testing-library/angular
 ```
 
-- [`@angular-extensions/testing-library` on GitHub][gh]
+- [`@testing-library/angular-testing-library` on GitHub][gh]
 
 ## Usage
 
@@ -42,7 +42,7 @@ export class CounterComponent {
 counter.component.spec.ts
 
 ```typescript
-import { render } from '@angular-extensions/testing-library'
+import { render } from '@testing-library/angular'
 import CounterComponent from './counter.component.ts'
 
 describe('Counter', () => {
@@ -68,19 +68,20 @@ describe('Counter', () => {
 
 ## API
 
-There is a small difference between `@angular-extensions/testing-library` and
-the `testing-library` family, in this library we also expose all of the events
-via the `render` function. This is done to trigger Angular's change detection
-after each interaction.
+There is a small difference between `@testing-library/angular` and the
+`testing-library` family, in this library we also expose all of the events via
+the `render` function. This is done to trigger Angular's change detection after
+each interaction.
 
-You can also import these event via `@angular-extensions/testing-library`, but
-the Angular's change detection will not be triggered automatically.
+You can also import these event via `@testing-library/angular`, but the
+Angular's change detection will not be triggered automatically.
 
-The same counts for all the queries provided by `DOM Testing Library`, these are
-also re-exported and can be imported via `@angular-extensions/testing-library`.
+The same counts for all the queries provided by the DOM Testing Library
+(`@testing-library/dom`), these are also re-exported and can be imported via
+`@testing-library/angular`.
 
 ```typescript
-import { getByText, click } from '@angular-extensions/testing-library'
+import { getByText, click } from '@testing-library/angular'
 ```
 
 [gh]: https://github.com/testing-library/angular-testing-library
