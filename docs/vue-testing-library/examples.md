@@ -73,7 +73,7 @@ it('increments value on click', async () => {
   export default {
     data() {
       return {
-        user: 'empty',
+        user: 'Alice',
       }
     },
   }
@@ -90,15 +90,15 @@ test('properly handles v-model', async () => {
   const { getByLabelText, getByText } = render(Component)
 
   // Asserts initial state.
-  getByText('Hi, my name is empty')
+  getByText('Hi, my name is Alice')
 
   const usernameInput = getByLabelText(/username/i)
 
   // Updates the <input> value and triggers an `input` event.
   // fireEvent.input() would make the test fail.
-  await fireEvent.update(usernameInput, 'Alice')
+  await fireEvent.update(usernameInput, 'Bob')
 
-  getByText('Hi, my name is Alice')
+  getByText('Hi, my name is Bob')
 })
 ```
 
