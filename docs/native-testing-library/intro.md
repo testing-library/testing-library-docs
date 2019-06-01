@@ -17,7 +17,7 @@ information about the library, including examples, on the project sites:
 ## Quickstart
 
 ```
-npm install --save-dev native-testing-library
+npm install --save-dev @testing-library/react-native
 ```
 
 - [native-testing-library on GitHub][gh]

@@ -19,7 +19,7 @@ information about the library, including examples, on the project website:
 This module should be installed in your project's `devDependencies`:
 
 ```
-npm --save-dev native-testing-library
+npm --save-dev @testing-library/react-native
 ```
 
 You will also need `react` and `react-native` installed as `dependencies` in
@@ -30,7 +30,7 @@ order to use this project.
 ```javascript
 import React from 'react'
 import { Button, Text, TextInput, View } from 'react-native'
-import { fireEvent, render, wait } from 'native-testing-library'
+import { fireEvent, render, wait } from '@testing-library/react-native'
 
 function Example() {
   const [name, setUser] = React.useState('')

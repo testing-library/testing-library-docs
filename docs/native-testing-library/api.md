@@ -25,13 +25,13 @@ function render(
 Create a `ReactTestRenderer` Instance.
 
 ```jsx
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 render(<View />)
 ```
 
 ```javascript
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 test('renders a message', () => {
   const { container, getByText } = render(<Text>Hello, World!</Text>)
@@ -63,7 +63,7 @@ merged.
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import queries from 'native-testing-library'
+import queries from '@testing-library/react-native'
 
 const { getByRowColumn, getByText } = render(<MyTable />, {
   queries: { ...queries, ...tableQueries },
@@ -111,7 +111,7 @@ searching logic you wanted to..
 This method is a shortcut for `console.log(prettyPrint(container.toJSON()))`.
 
 ```javascript
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 const { debug } = render(
   <View>
@@ -135,7 +135,7 @@ Although its likely better to test updating your props the way a user would
 entire tree at the base with new props.
 
 ```jsx
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 const { rerender } = render(<NumberDisplay number={1} />)
 
@@ -157,7 +157,7 @@ necessary.
 > This method is a wrapper around ReactTestRenderer.unmount()
 
 ```javascript
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 
 const { unmount } = render(<Login />)
 unmount()

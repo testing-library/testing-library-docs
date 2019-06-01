@@ -31,13 +31,13 @@ The example below sets up data providers using the
 
 ```diff
 // my-component.test.js
-- import { render, fireEvent } from 'native-testing-library';
+- import { render, fireEvent } from '@testing-library/react-native';
 + import { render, fireEvent } from '../test-utils';
 ```
 
 ```js
 // test-utils.js
-import { render } from 'native-testing-library'
+import { render } from '@testing-library/react-native'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
 import defaultStrings from 'i18n/en-x-default'
@@ -56,7 +56,7 @@ const customRender = (ui, options) =>
   render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
-export * from 'native-testing-library'
+export * from '@testing-library/react-native'
 
 // override render method
 export { customRender as render }
