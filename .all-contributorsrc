@@ -68,6 +68,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "edcs",
+      "name": "Edward Coleridge Smith",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/754498?v=4",
+      "profile": "https://edcs.me",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
