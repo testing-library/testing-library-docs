@@ -77,6 +77,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "afontcu",
+      "name": "Adrià Fontcuberta",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9197791?v=4",
+      "profile": "https://afontcu.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
