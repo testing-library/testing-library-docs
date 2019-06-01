@@ -48,6 +48,6 @@ cy.get('form').then(subject => {
 necessary because Cypress uses jQuery elements, while `DOM Testing Library`
 expects DOM nodes. When you pass a jQuery element as `container`, it will get
 the first DOM node from the collection and use that as the `container` parameter
-for the `DOM Testing Library` functions.
+for the DOM Testing Library functions.
 
 [gh]: https://github.com/testing-library/cypress-testing-library
