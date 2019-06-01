@@ -20,7 +20,7 @@ information about the library, including examples, on the project sites:
 npm install --save-dev @testing-library/react-native
 ```
 
-- [native-testing-library on GitHub][gh]
+- [Native Testing Library on GitHub][gh]
 
 [docs]: https://native-testing-library.com
 [gh]: https://github.com/testing-library/native-testing-library
@@ -36,7 +36,7 @@ write tests using that philosophy in React Native.
 
 ## This solution
 
-`native-testing-library` is an implementation of the well-known
+`Native Testing Library` is an implementation of the well-known
 `testing-library` API that works for React Native. The primary goal is to mimic
 the testing library API as closely as possible while still accounting for the
 differences in the platforms. Accomplishing this is no small feat because of the
@@ -48,7 +48,7 @@ This library uses the
 `DOM Testing Library` uses ReactDOM and JSDOM. The main philosophy is that you
 should find elements that are on the "screen" the way users would. This approach
 is meant to give you confidence that your app is working as a cohesive unit.
-Just like the `DOM Testing Library`, `native-testing-library`'s primary guiding
+Just like the `DOM Testing Library`, `Native Testing Library`'s primary guiding
 principle is:
 
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)

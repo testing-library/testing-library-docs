@@ -5,7 +5,7 @@ sidebar_label: API
 ---
 
 Here you'll find a high level summary of the most frequently used parts of
-native-testing-library. For a more comprehensive look at what's possible, check
+Native Testing Library. For a more comprehensive look at what's possible, check
 out the [main docs site](https://native-testing-library.com).
 
 - [`render`](#render)
@@ -57,7 +57,7 @@ for common data providers. See [setup](setup.md#custom-render) for examples.
 
 ### `queries`
 
-Queries to bind. Overrides the default set from `native-testing-library` unless
+Queries to bind. Overrides the default set from `Native Testing Library` unless
 merged.
 
 ```js

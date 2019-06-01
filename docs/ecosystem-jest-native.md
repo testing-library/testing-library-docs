@@ -5,7 +5,7 @@ sidebar_label: jest-native
 ---
 
 [`jest-native`](https://github.com/testing-library/jest-native) is a companion
-library for `native-testing-library` that provides custom element matchers for
+library for `Native Testing Library` that provides custom element matchers for
 Jest.
 
 ```
