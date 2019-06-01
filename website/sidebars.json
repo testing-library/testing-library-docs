@@ -50,9 +50,18 @@
           "native-testing-library/cheatsheet"
         ]
       },
+      {
+        "type": "subcategory",
+        "label": "Vue Testing Library",
+        "ids": [
+          "vue-testing-library/intro",
+          "vue-testing-library/examples",
+          "vue-testing-library/setup",
+          "vue-testing-library/api"
+        ]
+      },
       "cypress-testing-library/intro",
       "svelte-testing-library/intro",
-      "vue-testing-library/intro",
       "angular-testing-library/intro",
       "pptr-testing-library/intro",
       "testcafe-testing-library/intro"
