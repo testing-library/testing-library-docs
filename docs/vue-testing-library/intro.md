@@ -15,7 +15,7 @@ In short, Vue Testing Library does three things:
 1. Re-exports query utilities and helpers from `DOM Testing Library`.
 2. Hides `@vue/test-utils` methods that are in conflict with Testing Library
    [Guiding Principle](/docs/guiding-principles).
-3. Tweaks some methods from both sources to match Vue requirements.
+3. Tweaks some methods from both sources.
 
 ## Quickstart
 
@@ -24,44 +24,40 @@ npm install --save-dev @testing-library/vue
 ```
 
 You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
-and `queryAllBy` commands. See [here](dom-testing-library/api-queries.md) for
-usage.
+and `queryAllBy` commands. See here the
+[full llist of queries](dom-testing-library/api-queries.md).
 
 You may also be interested in installing `jest-dom` so you can use
-[the custom Jest matchers](https://github.com/gnapse/jest-dom#readme).
+[the custom Jest matchers](https://github.com/gnapse/jest-dom#readme) for the
+DOM.
 
 ## The problem
 
 You want to write maintainable tests for your Vue components. As a part of this
-goal, you want your tests to avoid including implementation details of your
-components and rather focus on making your tests give you the confidence for
-which they are intended. As part of this, you want your testbase to be
-maintainable in the long run so refactors of your components (changes to
-implementation but not functionality) don't break your tests and slow you and
-your team down.
+goal, **you want your tests to avoid including implementation details** of your
+components. You'd rather focus on making your tests give you the confidence for
+which they are intended.
 
 ## This solution
 
 `Vue Testing Library` is a very light-weight solution for testing Vue
 components. It provides light utility functions on top of `@vue/test-utils`, in
-a way that encourages better testing practices. Its primary guiding principle
-is:
+a way that encourages better testing practices.
+
+Its primary guiding principle is:
 
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 
-So rather than dealing with instances of rendered Vue components, your tests
-will work with actual DOM nodes.
+So rather than dealing with instances of rendered Vue components, **your tests
+will work with actual DOM nodes**.
 
 The utilities this library provides facilitate querying the DOM in the same way
-the user would. Finding for elements by their label text (just like a user
-would), finding links and buttons from their text (like a user would). It also
-exposes a recommended way to find elements by a `data-testid` as an "escape
-hatch" for elements where the text content and label do not make sense or is not
-practical.
+the user would. They allow you to find elements by their label text, finding
+links and buttons from their text, and assert that your application is
+**accessible**.
 
-This library encourages your applications to be more accessible and allows you
-to get your tests closer to using your components the way a user will, which
-allows your tests to give you more confidence that your application will work
-when a real user uses it.
+It also exposes a recommended way to find elements by a `data-testid` as an
+"escape hatch" for elements where the text content and label do not make sense
+or is not practical.
 
 [gh]: https://github.com/testing-library/vue-testing-library
