@@ -1,137 +1,63 @@
 ---
 id: intro
-title: Vue Testing Library
+title: Intro
 ---
 
-[`Vue Testing Library`][gh] is a lightweight adapter allowing
-`DOM Testing Library` to be used to test [Vue](https://vuejs.org/) components
-built on top of `@vue/test-utils`.
-
-```
-npm install --save-dev vue @testing-library/vue
-```
+Vue Testing Library builds on top of `DOM Testing Library` by adding APIs for
+working with Vue components. It is built on top of
+[@vue/test-utils](https://github.com/vuejs/vue-test-utils), the official testing
+library for Vue.
 
 - [Vue Testing Library on GitHub][gh]
 
-## Usage
+In short, Vue Testing Library does three things:
+
+1. Re-exports query utilities and helpers from `DOM Testing Library`.
+2. Hides `@vue/test-utils` methods that are in conflict with Testing Library
+   [Guiding Principle](/docs/guiding-principles).
+3. Tweaks some methods from both sources.
+
+## Quickstart
 
 ```
 npm install --save-dev @testing-library/vue
-                       jest
-                       vue-jest
-                       babel-jest
-                       babel-preset-env
-                       babel-plugin-transform-runtime
-```
-
-```json
-// package.json
-"scripts": {
-  "test": "jest"
-}
-
-"jest": {
-  "moduleDirectories": [
-    "node_modules",
-    "src"
-  ],
-  "moduleFileExtensions": [
-    "js",
-    "vue"
-  ],
-  "testPathIgnorePatterns": [
-    "/node_modules/"
-  ],
-  "transform": {
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-    ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-  }
-}
-```
-```
-// .babelrc
-{
-  "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
-    }]
-  ],
-  "plugins": [
-    "transform-runtime"
-  ],
-  "env": {
-    "test": {
-      "presets": ["env"]
-    }
-  }
-}
-```
-```html
-// src/TestComponent.vue
-<template>
-  <div>
-    <span data-testid="test1">Hello World</span>
-  </div>
-</template>
-```
-```js
-// src/TestComponent.spec.js
-import 'jest-dom/extend-expect'
-import { render } from '@testing-library/vue'
-import TestComponent from './TestComponent'
-
-test('should render HelloWorld', () => {
-  const { queryByTestId } = render(TestComponent)
-  expect(queryByTestId('test1')).toHaveTextContent('Hello World')
-})
 ```
 
 You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
-and `queryAllBy` commands. See [here](dom-testing-library/api-queries.md) for
-usage.
+and `queryAllBy` commands. See here the
+[full llist of queries](dom-testing-library/api-queries.md).
 
-### render
+You may also be interested in installing `jest-dom` so you can use
+[the custom Jest matchers](https://github.com/gnapse/jest-dom#readme) for the
+DOM.
 
-The `render` function takes up to 3 parameters and returns an object with some
-helper methods
+## The problem
 
-1. Component - the Vue component to be tested.
-2. RenderOptions - an object containing additional information to be passed to
-   @vue/test-utils mount. This can include:
+You want to write maintainable tests for your Vue components. As a part of this
+goal, **you want your tests to avoid including implementation details** of your
+components. You'd rather focus on making your tests give you the confidence for
+which they are intended.
 
-- store - The object definition of a Vuex store. If present, `render` will
-  configure a Vuex store and pass to mount.
-- routes - A set of routes. If present, render will configure VueRouter and pass
-  to mount.
+## This solution
 
-  All additional render options are passed to the vue-test-utils mount function
-  in its options.
+`Vue Testing Library` is a very light-weight solution for testing Vue
+components. It provides light utility functions on top of `@vue/test-utils`, in
+a way that encourages better testing practices.
 
-3. configurationCb - A callback to be called passing the Vue instance when
-   created. This allows 3rd party plugins to be installed prior to mount.
+Its primary guiding principle is:
 
-### Forwarded methods from DOM Testing Library
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 
-Vue Testing Library forwards all exports from `DOM Testing Library` but it alters
-`fireEvent` so that all events are async (ie: `await fireEvent.click(button)`)
+So rather than dealing with instances of rendered Vue components, **your tests
+will work with actual DOM nodes**.
 
-In particular, the `wait` utility can be very important in Vue components,
-@vue/test-utils has succeeded in making the majority of updates happen
-synchronously however there are occasions when wait will allow the DOM to
-update. For example, see
-[`here`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/end-to-end.js).
+The utilities this library provides facilitate querying the DOM in the same way
+the user would. They allow you to find elements by their label text, finding
+links and buttons from their text, and assert that your application is
+**accessible**.
 
-## Examples
-
-You'll find examples of testing with different libraries in
-[the test directory](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__).
-Some included are:
-
-- [`vuex`](https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/vuex.js)
-- [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vue-router.js)
-- [`vee-validate`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+It also exposes a recommended way to find elements by a `data-testid` as an
+"escape hatch" for elements where the text content and label do not make sense
+or is not practical.
 
 [gh]: https://github.com/testing-library/vue-testing-library
