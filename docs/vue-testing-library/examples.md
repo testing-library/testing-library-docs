@@ -6,7 +6,6 @@ title: Examples
 ## Basic example
 
 ```html
-<!-- src/TestComponent.vue -->
 <template>
   <div>
     <p>Times clicked: {{ count }}</p>
@@ -16,11 +15,9 @@ title: Examples
 
 <script>
   export default {
-    data() {
-      return {
-        count: 0,
-      }
-    },
+    data: () => ({
+      count: 0,
+    }),
 
     methods: {
       increment() {
@@ -32,16 +29,15 @@ title: Examples
 ```
 
 ```js
-// src/TestComponent.spec.js
 import { render, fireEvent, cleanup } from '@testing-library/vue'
-import TestComponent from './TestComponent.vue'
+import Component from './Component.vue'
 
 // automatically unmount and cleanup DOM after the test is finished.
 afterEach(cleanup)
 
-it('increments value on click', async () => {
+test('increments value on click', async () => {
   // The render method returns a collection of utilities to query your component.
-  const { getByText } = render(TestComponent)
+  const { getByText } = render(Component)
 
   // getByText returns the first matching node for the provided text, and
   // throws an error if no elements match or if more than one match is found.
@@ -71,18 +67,16 @@ it('increments value on click', async () => {
 
 <script>
   export default {
-    data() {
-      return {
-        user: 'Alice',
-      }
-    },
+    data: () => ({
+      user: 'Alice',
+    }),
   }
 </script>
 ```
 
 ```js
 import { render, fireEvent, cleanup } from '@testing-library/vue'
-import Component from './Component'
+import Component from './Component.vue'
 
 afterEach(cleanup)
 
@@ -92,6 +86,7 @@ test('properly handles v-model', async () => {
   // Asserts initial state.
   getByText('Hi, my name is Alice')
 
+  // Get the input DOM node by querying the associated label.
   const usernameInput = getByLabelText(/username/i)
 
   // Updates the <input> value and triggers an `input` event.
