@@ -23,7 +23,7 @@ It also exposes these methods:
     - [`emitted()`](#emitted)
     - [`updateProps(props)`](#updatepropsprops)
 - [`fireEvent`](#fireevent)
-  - [`touch(elem, value)`](#touchelem-value)
+  - [`touch(elem)`](#touchelem)
   - [`update(elem, value)`](#updateelem-value)
 - [`cleanup`](#cleanup)
 
@@ -171,22 +171,35 @@ It returns a Promise through `wait()`, so you can `await updateProps(...)`.
 
 ## `fireEvent`
 
-Vue Testing Library alters the original `fireEvent` from DOM Testing Library so
-that all events are async (ie: `await fireEvent.click(button)`).
+Vue Testing Library re-exports all DOM Testing Library
+[firing events](https://deploy-preview-132--testing-library.netlify.com/docs/dom-testing-library/api-events).
+However, it alters them so that all events are async.
 
-Vue Testing Library exposes two additional methods:
+```js
+await fireEvent.click(getByText('Click me'))
+```
 
-### `touch(elem, value)`
+Additionally, Vue Testing Library exposes two useful methods:
+
+### `touch(elem)`
 
 It triggers both `focus()` and `blur()` events.
+
+```js
+await fireEvent.touch(getByLabelText('username'))
+
+// Same as:
+await fireEvent.focus(getByLabelText('username'))
+await fireEvent.blur(getByLabelText('username'))
+```
 
 ### `update(elem, value)`
 
 Properly handles inputs controlled by `v-model`. It updates the
 input/select/textarea inner value while emitting the appropiate native event.
 
-See the [v-model test](/docs/vue-testing-library/examples#example-using-v-model)
-in the examples page.
+See a working example of `update` in the
+[v-model example test](/docs/vue-testing-library/examples#example-using-v-model).
 
 ---
 
