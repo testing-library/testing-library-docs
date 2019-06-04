@@ -31,5 +31,6 @@ sidebar_label: Learning Material
 - [Creating Readable Tests Using React Testing Library](https://medium.com/flatiron-labs/creating-readable-tests-using-react-testing-library-2bd03c49c284)
   by [Lukeghenco](https://github.com/Lukeghenco)
 - [My Experience moving from Enzyme to React Testing Library](https://medium.com/@boyney123/my-experience-moving-from-enzyme-to-react-testing-library-5ac65d992ce) by [David Boyne](https://github.com/boyney123)
+- [Testing Formik with React Testing Library](https://scottsauber.com/2019/05/25/testing-formik-with-react-testing-library/) by [Scott Sauber](https://github.com/scottsauber)
 
 Feel free to contribute more!
