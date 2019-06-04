@@ -57,7 +57,8 @@
           "vue-testing-library/intro",
           "vue-testing-library/examples",
           "vue-testing-library/setup",
-          "vue-testing-library/api"
+          "vue-testing-library/api",
+          "vue-testing-library/faq"
         ]
       },
       "cypress-testing-library/intro",

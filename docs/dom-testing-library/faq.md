@@ -93,3 +93,13 @@ const thirdItem = getByTestId(container, `item-${items[2].id}`)
 ```
 
 </details>
+
+<!--
+Links:
+-->
+
+<!-- prettier-ignore-start -->
+
+[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
+
+<!-- prettier-ignore-end -->
