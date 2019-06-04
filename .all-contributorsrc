@@ -104,6 +104,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "scottsauber",
+      "name": "Scott Sauber",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/10823939?v=4",
+      "profile": "http://scottsauber.com",
+      "contributions": [
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7,
