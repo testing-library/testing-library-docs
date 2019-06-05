@@ -32,5 +32,6 @@ sidebar_label: Learning Material
   by [Lukeghenco](https://github.com/Lukeghenco)
 - [My Experience moving from Enzyme to React Testing Library](https://medium.com/@boyney123/my-experience-moving-from-enzyme-to-react-testing-library-5ac65d992ce) by [David Boyne](https://github.com/boyney123)
 - [Testing Formik with React Testing Library](https://scottsauber.com/2019/05/25/testing-formik-with-react-testing-library/) by [Scott Sauber](https://github.com/scottsauber)
+- [How to Test Asynchronous Methods](https://www.polvara.me/posts/how-to-test-asynchronous-methods/) by [Gpx](https://twitter.com/Gpx)
 
 Feel free to contribute more!
