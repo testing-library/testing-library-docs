@@ -93,3 +93,31 @@ const myEvent = createEvent.click(node, { button: 2 })
 fireEvent(node, myEvent)
 // myEvent.timeStamp can be accessed just like any other properties from myEvent
 ```
+
+## Using Jest Function Mocks
+[Jest's Mock functions](https://jestjs.io/docs/en/mock-functions) can be used to test that a callback passed to the function was called, or what it was called when the event that **should** trigger the callback function does trigger the bound callback.
+
+```jsx
+const Button = ({onClick,children}) => <button onClick={onClick}>{children}</button>
+describe('Button component', () => {
+    let onClick;
+    beforeEach(() => {
+        onClick = jest.fn();
+    });
+    afterEach(cleanup);
+
+    it('Fires on click event', () => {
+        const { container } = render(
+            <Button
+                label={'With Callback'}
+                onClick={onClick}
+            >
+                Trigger Alert
+            </Button>
+        );
+        const input = container.querySelector('button');
+        fireEvent.click(input);
+        expect(onClick.mock.calls[0].length).toBe(1);
+    });
+});
+```
