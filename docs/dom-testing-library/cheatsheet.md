@@ -77,6 +77,8 @@ See [Which query should I use?](guide-which-query.md)
 
 ## Async
 
+See [Async API](dom-testing-library/api-async.md)
+
 - **wait** (Promise) retry function within until it stops throwing or times out
 - **waitForElement** (Promise) retry function or array of functions and return
   the result
