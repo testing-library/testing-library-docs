@@ -8,13 +8,13 @@ provides more advanced simulation of browser interactions than the built-in
 `fireEvent` method.
 
 ```
-npm install --save-dev user-event
+npm install --save-dev @testing-library/user-event
 ```
 
 ```jsx
 import React from 'react'
 import { render } from '@testing-library/react'
-import userEvent from 'user-event'
+import userEvent from '@testing-library/user-event'
 
 const { getByText } = test('click', () => {
   render(<textarea data-testid="email" />)
@@ -26,4 +26,4 @@ expect(getByTestId('email')).toHaveAttribute('value', 'Hello, World!')
 
 - [user-event on GitHub][gh]
 
-[gh]: https://github.com/Gpx/user-event
+[gh]: https://github.com/testing-library/user-event
