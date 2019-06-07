@@ -83,10 +83,10 @@ See [Async API](dom-testing-library/api-async.md)
 - **waitForElement** (Promise) retry the function until it returns an element or
   an array of elements
   - `findBy` and `findAllBy` queries are async and retry until either a timeout
-    or if the query returns successfully; they wrap `waitForElement`.
-- **waitForDomChange** (Promise) retry function each time the DOM is changed.
+    or if the query returns successfully; they wrap `waitForElement`
+- **waitForDomChange** (Promise) retry function each time the DOM is changed
 - **waitForElementToBeRemoved** (Promise) retry function until it no longer
-  returns a DOM node.
+  returns a DOM node
 
 > Remember to `await` or `.then()` the result of async functions in your tests!
 
