@@ -124,8 +124,7 @@ more confidence so long as your mock resembles the thing you're mocking closely
 enough.
 
 If you want to make things more like shallow rendering, then you could do
-something more [like this]([Open full test](example-react-transition-group.md)
-).
+something more [like this](example-react-transition-group.md).
 
 Learn more about how Jest mocks work from my blog post:
 ["But really, what is a JavaScript mock?"](https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d)
