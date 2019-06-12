@@ -132,6 +132,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "michalak111",
+      "name": "michalak111",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9253631?v=4",
+      "profile": "https://twitter.com/jasi3k11",
+      "contributions": [
+        "doc",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
