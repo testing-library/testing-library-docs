@@ -46,8 +46,7 @@
           "native-testing-library/intro",
           "native-testing-library/example-intro",
           "native-testing-library/setup",
-          "native-testing-library/api",
-          "native-testing-library/cheatsheet"
+          "native-testing-library/api"
         ]
       },
       {
