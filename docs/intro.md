@@ -3,7 +3,7 @@ id: intro
 title: Introduction
 ---
 
-The `testing-library` family of packages helps you test UI components in a
+The [`@testing-library`][npm] family of packages helps you test UI components in a
 user-centric way.
 
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
@@ -47,3 +47,4 @@ Jest, Mocha + JSDOM, or a real browser
 [vue]: vue-testing-library/intro.md
 [cypress]: cypress-testing-library/intro.md
 [native]: ecosystem-native-testing-library.md
+[npm]: https://www.npmjs.com/org/testing-library
