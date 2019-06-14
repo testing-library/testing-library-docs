@@ -22,11 +22,32 @@ Add this line to your project's `cypress/support/commands.js`:
 import '@testing-library/cypress/add-commands';
 ```
 
+## With typescript
+Typings are defined under @testing-library/cypress/typings, and should be added as follows in tsconfig.json:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["cypress", "../@testing-library/cypress/typings"]
+  }
+}
+```
+or if tsconfig.json has a `baseUrl` of `../node_modules` as recommended in the official Cypress documentation use:
+```json
+{
+  "compilerOptions": {
+    "types": ["cypress", "@testing-library/cypress/typings"]
+  }
+}
+```
+
 You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands.
 [See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
+You can find [all Library definitions here](https://github.com/testing-library/cypress-testing-library/blob/master/typings/index.d.ts).
+
 
 To show some simple examples (from
 [https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
