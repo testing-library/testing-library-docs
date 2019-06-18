@@ -52,17 +52,17 @@ test('renders a message', () => {
 
 ## `render` Options
 
-You wont often need to specify options, but if you ever do, here are the
+You won't often need to specify options, but if you ever do, here are the
 available options which you could provide as a second argument to `render`.
 
 ### `container`
 
-By default, `React Testing Library` will create a `div` and append that div to
-the `document.body` and this is where your react component will be rendered. If
+By default, `React Testing Library` will create a `div` and append that `div` to
+the `document.body` and this is where your React component will be rendered. If
 you provide your own HTMLElement `container` via this option, it will not be
 appended to the `document.body` automatically.
 
-For Example: If you are unit testing a `tablebody` element, it cannot be a child
+For example: If you are unit testing a `tablebody` element, it cannot be a child
 of a `div`. In this case, you can specify a `table` as the render `container`.
 
 ```jsx
