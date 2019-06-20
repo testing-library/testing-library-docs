@@ -56,6 +56,12 @@ module.exports = {
 > adding `queries` to the options config object. See the render
 > [options](/docs/react-testing-library/api#render-options).
 
+## `buildQueries`
+
+The `buildQueries` helper allows you to easily create your custom query with all standard [variants](api-queries.md) of queries in testing-library.
+
+See the 'Customize queries globally with custom render' section  of the [custom render guide](/docs/react-testing-library/setup#custom-render) for example usage.
+
 ### Using other assertion libraries
 
 If you're not using jest, you may be able to find a similar set of custom
