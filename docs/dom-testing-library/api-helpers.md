@@ -142,6 +142,30 @@ cy.get('form').within(() => {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+## `getRoles`
+
+This function allows iteration over the implicit aria roles represented in a
+given tree of DOM nodes. It returns an object indexed by role name with each
+value being an array of elements which have that implicit aria role.
+
+```javascript
+import { getRoles } from 'dom-testing-library'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul name="menu">
+  <li name="item-1">Item 1</li>
+  <li name="item-2">Item 2</li>
+</ul>`
+console.log(getRoles(nav))
+
+// Object {
+//   navigation: [<nav />],
+//   list: [<ul name="menu" />],
+//   listitem: [<li name="item-1" />, <li name="item-2" />]
+// }
+```
+
 ## Debugging
 
 When you use any `get` calls in your test cases, the current state of the
@@ -207,3 +231,44 @@ console.log(prettyDOM(div))
 
 This function is what also powers
 [the automatic debugging output described above](#debugging).
+
+### `logRoles`
+
+This helper function can be used to print out a list of all the implicit aria
+roles within a tree of DOM nodes, each role containing a list of all of the
+nodes which match that role. This can be helpful for finding ways to query the
+DOM under test with [getByRole](api-queries.md#byrole)
+
+```javascript
+import { logRoles } from 'dom-testing-library'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul name="menu">
+  <li name="item-1">Item 1</li>
+  <li name="item-2">Item 2</li>
+</ul>`
+console.log(logRoles(nav))
+
+// navigation --------------------------------
+//
+// <nav />
+//
+//
+// list --------------------------------------
+//
+// <ul
+//   name="menu"
+// />
+//
+//
+// listitem ----------------------------------
+//
+// <li
+//   name="item-1"
+// />
+//
+// <li
+//   name="item-2"
+// />
+```
