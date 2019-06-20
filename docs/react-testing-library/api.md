@@ -100,7 +100,7 @@ merged.
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import queries from '@testing-library/react'
+import { queries } from '@testing-library/react'
 
 const { getByRowColumn, getByText } = render(<MyTable />, {
   queries: { ...queries, ...tableQueries },
