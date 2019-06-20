@@ -144,6 +144,47 @@ module.exports = {
 
 </details>
 
+<details>
+<summary>Customize queries globally with custom render</summary>
+
+You can override and append queries via the render function by passing a [`queries`](api.md#render-options) option.
+
+You can define your own custom queries as described in the example in the [Helpers API](api-helpers.md) documentation.
+
+If you want to add custom queries globally, you can do this by defining a custom render method:
+
+```js
+// test-utils.js
+import { render, queries, queryHelpers } from '@testing-library/react'
+
+const customQueries = {
+  getByDataCy: queryHelpers.queryByAttribute.bind(
+    null,
+    'data-cy'
+  ),
+};
+
+const customRender = (ui, options) =>
+  render(ui, { queries: { ...queries, ...customQueries } })
+
+// re-export everything
+export * from '@testing-library/react'
+
+// override render method
+export { customRender as render }
+```
+
+You can then use your custom queries as you would any other query:
+
+```js
+const { getByDataCy } = render(
+  <Component />
+);
+
+expect(getByDataCy('my-component')).toHaveTextContent('Hello');
+```
+</details>
+
 ### Configuring Jest with Test Utils
 
 To make your custom test file accessible in your Jest test files without using
