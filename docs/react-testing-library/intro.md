@@ -34,7 +34,7 @@ primary guiding principle is:
 
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 
-So rather than dealing with instances of rendered react components, your tests
+So rather than dealing with instances of rendered React components, your tests
 will work with actual DOM nodes. The utilities this library provides facilitate
 querying the DOM in the same way the user would. Finding for elements by their
 label text (just like a user would), finding links and buttons from their text
