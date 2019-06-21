@@ -18,7 +18,7 @@ function render(
   template, // A Marko template to render
   input, // Input for the above template
   options // You won't often use this, expand below for docs on options
-):
+)
 ```
 
 Render into a container which is appended to `document.body`.
@@ -51,12 +51,12 @@ test('renders a message', async () => {
 > The [cleanup](#cleanup) function should be called between tests to remove the
 > created DOM nodes and keep the tests isolated.
 
-## `render` Options
+### `render` Options
 
 You won't often need to specify options, but if you ever do, here are the
 available options which you could provide as the third argument to `render`.
 
-### `container`
+#### `container`
 
 By default for client side tests, `Marko Testing Library` will create a `div`
 and append that `div` to the `document.body` and this is where your component
