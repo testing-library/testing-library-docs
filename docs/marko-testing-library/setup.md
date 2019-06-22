@@ -5,7 +5,7 @@ sidebar_label: Setup
 ---
 
 `Marko Testing Library` is not dependent on any test runner, however it is
-dependent on the test environment. These utilities work for testing both server
+dependent on the test environment. This package works for testing both server
 side, and client side Marko templates and provide a slightly different
 implementation for each. This is done using a
 [browser shim](https://github.com/defunctzombie/package-browser-field-spec),
