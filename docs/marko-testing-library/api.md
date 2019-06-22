@@ -115,11 +115,11 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 
 ### `rerender`
 
-It'd probably be better if you test the component that's doing the prop updating
-to ensure that the props are being updated correctly (see
-[the Guiding Principles section](guiding-principles.md)). That said, if you'd
-prefer to update the props of a rendered component in your test, this function
-can be used to update props of the rendered component.
+A Marko components `input` can change at any time from a parent component.
+Although often this input is passed through your component declaratively,
+sometimes it is necessary to ensure that your components reacts appropriately to
+new data. You can simulate your component receiving new `input` by passing new
+data to the `rerender` helper.
 
 ```javascript
 import { render } from '@marko/testing-library'
@@ -132,6 +132,76 @@ await rerender({ name: 'Marko' })
 
 debug()
 // <h1>Hello Marko</h1>
+```
+
+### `emitted`
+
+Marko components also communicate with their parents through events. It is
+recommended to also test that your components emit the right events at the right
+time.
+
+The `emitted` helper does just that. Calling the helper will return all emitted
+events since the last call to the helper. You can also pass in an event type to
+filter the results.
+
+```javascript
+import { render, fireEvent } from '@marko/testing-library'
+import Counter from './counter.marko'
+
+const { getByText, emitted } = await render(Counter)
+
+const button = getByText('Increment')
+
+fireEvent.click(button)
+fireEvent.click(button)
+
+// Assuming the `Counter` component forwards these button clicks as `increment` events
+expect(emitted('increment')).toHaveProperty('length', 2)
+
+fireEvent.click(button)
+
+// Note: the tracked events are cleared every time you read them.
+// Below we are snapshoting the events after our last assertion,
+// the return value will include an array with all of the arguments for each increment event.
+expect(emitted('increment')).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        Object {
+          "count": 3,
+        },
+      ],
+    ]
+`)
+
+// Without an event type will give you all events with their type and arguments.
+expect(emitted()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "args": Array [
+          Object {
+            "count": 0,
+          },
+        ],
+        "type": "increment",
+      },
+      Object {
+        "args": Array [
+          Object {
+            "count": 1,
+          },
+        ],
+        "type": "increment",
+      },
+      Object {
+        "args": Array [
+          Object {
+            "count": 3,
+          },
+        ],
+        "type": "increment",
+      }
+    ]
+  `)
 ```
 
 ### `container`
