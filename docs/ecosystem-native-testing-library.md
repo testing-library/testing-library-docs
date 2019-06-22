@@ -19,7 +19,7 @@ information about the library, including examples, on the project website:
 This module should be installed in your project's `devDependencies`:
 
 ```
-npm --save-dev @testing-library/react-native
+npm install --save-dev @testing-library/react-native
 ```
 
 You will also need `react` and `react-native` installed as `dependencies` in
