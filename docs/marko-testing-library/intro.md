@@ -1,0 +1,60 @@
+---
+id: intro
+title: Marko Testing Library
+sidebar_label: Introduction
+---
+
+The [`Marko Testing Library`](gh) is a very lightweight solution for testing
+Marko components. It provides light utility functions on top of
+[`@testing-library/dom`](https://github.com/testing-library/dom-testing-library)
+in a way that encourages better testing practices.
+
+```
+npm install --save-dev @marko/testing-library
+```
+
+- [Marko Testing Library on GitHub][gh]
+
+[gh]: https://github.com/marko-js/testing-library
+
+## The problem
+
+You want to write maintainable tests for your Marko components. As a part of
+this goal, you want your tests to avoid including implementation details of your
+components and rather focus on making your tests give you the confidence for
+which they are intended. As part of this, you want your testbase to be
+maintainable in the long run so refactors of your components (changes to
+implementation but not functionality) don't break your tests and slow you and
+your team down.
+
+## This solution
+
+The `@marko/testing-library` is a very lightweight solution for testing Marko
+components. It provides light utility functions on top of
+[`@testing-library/dom`](https://github.com/testing-library/dom-testing-library)
+in a way that encourages better testing practices. Its primary guiding principle
+is:
+
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](#guiding-principles)
+
+So rather than dealing with instances of rendered Marko components, your tests
+will work with actual DOM nodes. The utilities this library provides facilitate
+querying the DOM in the same way the user would. Finding for elements by their
+label text (just like a user would), finding links and buttons from their text
+(like a user would). It contains a small targeted API and can get out of your
+way if absolutely needed with some built in escape hatches.
+
+This library encourages your applications to be more accessible and allows you
+to get your tests closer to using your components the way a user will, which
+allows your tests to give you more confidence that your application will work
+when a real user uses it.
+
+**What this library is not**:
+
+1.  A test runner or framework
+2.  Specific to a testing framework, you can [use it with Jest](./setup#jest),
+    [mocha](./setup#mocha), or other test runners.
+
+> NOTE: This library is built on top of
+> [`DOM Testing Library`](dom-testing-library/intro.md) which is where most of
+> the logic behind the queries is.
