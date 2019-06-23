@@ -58,9 +58,9 @@ module.exports = {
 
 ## `buildQueries`
 
-The `buildQueries` helper allows you to easily create your custom query with all standard [variants](api-queries.md) of queries in testing-library.
+The `buildQueries` helper allows you to create custom queres with all standard [variants](api-queries.md) of queries in testing-library.
 
-See the 'Customize queries globally with custom render' section  of the [custom render guide](/docs/react-testing-library/setup#custom-render) for example usage.
+See the [Add custom queries](/docs/react-testing-library/setup#add-custom-queries) section of the custom render guide for example usage.
 
 ### Using other assertion libraries
 
