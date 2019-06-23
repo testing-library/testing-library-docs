@@ -96,7 +96,7 @@ import defaultStrings from 'i18n/en-x-default'
 
 const AllTheProviders = ({ children }) => {
   return (
-    <ThemeProvider theme="light">
+    <ThemeProvider theme='light'>
       <TranslationProvider messages={defaultStrings}>
         {children}
       </TranslationProvider>
@@ -140,6 +140,91 @@ module.exports = {
   ...rtl,
   render: customRender,
 }
+```
+
+</details>
+
+### Add custom queries
+
+> **Note**
+>
+> Generally you should not need to create custom attributes for
+> react-testing-library. Where you do use it, you should consider whether your
+> new queries encourage you to test in a user-centric way, without testing
+> implementation details.
+
+You can define your own custom queries as described in the example in the
+[Helpers API](/doc/dom-testing-library/api-helpers.md) documentation, or via the
+[`buildQueries`](/doc/dom-testing-library/api-helpers#buildQueries) helper. Then
+you can use the in any render call using the `queries` option. To make the
+custom queries available globally, you can add them to your custom render method
+as shown below.
+
+In the example below, a new set of query variants are created for getting
+elements by `data-cy`, a "test ID" convention mentioned in the
+[Cypress.io](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
+documentation.
+
+```js
+// custom-queries.js
+import { queryHelpers, buildQueries } from '@testing-library/react'
+
+// The queryAllByAttribute is a shortcut for attribute-based matchers
+// You can also use document.querySelector or a combination of existing
+// testing library utilities to find matching nodes for your query
+const queryAllByDataCy = (...args) =>
+  queryHelpers.queryAllByAttribute('data-cy', ...args)
+
+const getMultipleError = (c, dataCyValue) =>
+  `Found multiple elements with the data-cy attribute of: ${dataCyValue}`
+const getMissingError = (c, dataCyValue) =>
+  `Unable to find an element with the data-cy attribute of: ${dataCyValue}`
+
+const [
+  queryByDataCy,
+  getAllByDataCy,
+  getByDataCy,
+  findAllByDataCy,
+  findByDataCy,
+] = buildQueries(queryAllByDataCy, getMultipleError, getMissingError)
+
+export {
+  queryByDataCy,
+  queryAllByDataCy,
+  getByDataCy,
+  getAllByDataCy,
+  findAllByDataCy,
+  findByDataCy,
+}
+```
+
+You can then override and append the new queries via the render function by
+passing a [`queries`](api.md#render-options) option.
+
+If you want to add custom queries globally, you can do this by defining a custom
+render method:
+
+```js
+// test-utils.js
+import { render, queries, queryHelpers } from '@testing-library/react'
+import * as customQueries from './custom-queries'
+
+const customRender = (ui, options) =>
+  render(ui, { queries: { ...queries, ...customQueries } })
+
+// re-export everything
+export * from '@testing-library/react'
+
+// override render method
+export { customRender as render }
+```
+
+You can then use your custom queries as you would any other query:
+
+```js
+const { getByDataCy } = render(<Component />)
+
+expect(getByDataCy('my-component')).toHaveTextContent('Hello')
 ```
 
 </details>
