@@ -61,6 +61,15 @@
           "vue-testing-library/faq"
         ]
       },
+      {
+        "type": "subcategory",
+        "label": "Marko Testing Library",
+        "ids": [
+          "marko-testing-library/intro",
+          "marko-testing-library/setup",
+          "marko-testing-library/api"
+        ]
+      },
       "cypress-testing-library/intro",
       "svelte-testing-library/intro",
       "angular-testing-library/intro",
