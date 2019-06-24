@@ -148,7 +148,7 @@ module.exports = {
 
 > **Note**
 >
-> Generally you should not need to create custom attributes for
+> Generally you should not need to create custom queries for
 > react-testing-library. Where you do use it, you should consider whether your
 > new queries encourage you to test in a user-centric way, without testing
 > implementation details.
@@ -156,7 +156,7 @@ module.exports = {
 You can define your own custom queries as described in the example in the
 [Helpers API](/doc/dom-testing-library/api-helpers.md) documentation, or via the
 [`buildQueries`](/doc/dom-testing-library/api-helpers#buildQueries) helper. Then
-you can use the in any render call using the `queries` option. To make the
+you can use them in any render call using the `queries` option. To make the
 custom queries available globally, you can add them to your custom render method
 as shown below.
 
