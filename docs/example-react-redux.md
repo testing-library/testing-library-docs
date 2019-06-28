@@ -36,7 +36,7 @@ export default connect(state => ({count: state.count}))(Counter)
 
 For this example, we'll have a simple reducer that tracks and updates `count`:
 
-```
+```js
 // reducer.js
 export const initialState = {
   count: 0
