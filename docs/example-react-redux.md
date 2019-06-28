@@ -4,12 +4,10 @@ title: React Redux
 ---
 
 ```jsx
-import React from 'react'
-import { createStore } from 'redux'
-import { Provider, connect } from 'react-redux'
-import { render, fireEvent, cleanup } from '@testing-library/react'
-
 // counter.js
+import React from 'react'
+import { connect } from 'react-redux'
+
 class Counter extends React.Component {
   increment = () => {
     this.props.dispatch({ type: 'INCREMENT' })
@@ -33,14 +31,18 @@ class Counter extends React.Component {
   }
 }
 
-// normally this would be:
-// export default connect(state => ({count: state.count}))(Counter)
-// but for this test we'll give it a variable name
-// because we're doing this all in one file
-const ConnectedCounter = connect(state => ({ count: state.count }))(Counter)
+export default connect(state => ({count: state.count}))(Counter)
+```
 
-// app.js
-function reducer(state = { count: 0 }, action) {
+For this example, we'll have a simple reducer that tracks and updates `count`:
+
+```js
+// reducer.js
+export const initialState = {
+  count: 0
+}
+
+export function reducer(state = initialState, action) {
   switch (action.type) {
     case 'INCREMENT':
       return {
@@ -54,18 +56,18 @@ function reducer(state = { count: 0 }, action) {
       return state
   }
 }
+```
 
-// normally here you'd do:
-// const store = createStore(reducer)
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <Counter />
-//   </Provider>,
-//   document.getElementById('root'),
-// )
-// but for this test we'll umm... not do that :)
+Now here's what your test will look like:
 
-// Now here's what your test will look like:
+```jsx
+// counter.test.js
+import React from 'react'
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
+import { render, fireEvent, cleanup } from '@testing-library/react'
+import { initialState, reducer } from './reducer.js'
+import Counter from './counter.js'
 
 afterEach(cleanup)
 
@@ -86,13 +88,13 @@ function renderWithRedux(
 }
 
 test('can render with redux with defaults', () => {
-  const { getByTestId, getByText } = renderWithRedux(<ConnectedCounter />)
+  const { getByTestId, getByText } = renderWithRedux(<Counter />)
   fireEvent.click(getByText('+'))
   expect(getByTestId('count-value').textContent).toBe('1')
 })
 
 test('can render with redux with custom initial state', () => {
-  const { getByTestId, getByText } = renderWithRedux(<ConnectedCounter />, {
+  const { getByTestId, getByText } = renderWithRedux(<Counter />, {
     initialState: { count: 3 },
   })
   fireEvent.click(getByText('-'))
@@ -102,7 +104,7 @@ test('can render with redux with custom initial state', () => {
 test('can render with redux with custom store', () => {
   // this is a silly store that can never be changed
   const store = createStore(() => ({ count: 1000 }))
-  const { getByTestId, getByText } = renderWithRedux(<ConnectedCounter />, {
+  const { getByTestId, getByText } = renderWithRedux(<Counter />, {
     store,
   })
   fireEvent.click(getByText('+'))
