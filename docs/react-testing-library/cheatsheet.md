@@ -158,18 +158,18 @@ Given the following HTML:
 
 ```javascript
 // Matching a string:
-getByText(container, 'Hello World') // full string match
-getByText(container, 'llo Worl', { exact: false }) // substring match
-getByText(container, 'hello world', { exact: false }) // ignore case
+getByText('Hello World') // full string match
+getByText('llo Worl', { exact: false }) // substring match
+getByText('hello world', { exact: false }) // ignore case
 
 // Matching a regex:
-getByText(container, /World/) // substring match
-getByText(container, /world/i) // substring match, ignore case
-getByText(container, /^hello world$/i) // full string match, ignore case
-getByText(container, /Hello W?oRlD/i) // advanced regex
+getByText(/World/) // substring match
+getByText(/world/i) // substring match, ignore case
+getByText(/^hello world$/i) // full string match, ignore case
+getByText(/Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
-getByText(container, (content, element) => content.startsWith('Hello'))
+getByText((content, element) => content.startsWith('Hello'))
 ```
 
 **[Get the printable cheat sheet][cheatsheet]**

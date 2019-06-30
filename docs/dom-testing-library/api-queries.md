@@ -140,7 +140,7 @@ case, you can provide a `selector` in the options:
 
 ```js
 const container = document.body
-const inputNode = getByLabelText(container, 'username', {
+const inputNode = getByLabelText(container, 'Username', {
   selector: 'input',
 })
 ```
