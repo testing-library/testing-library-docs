@@ -249,7 +249,7 @@ nodes which match that role. This can be helpful for finding ways to query the
 DOM under test with [getByRole](api-queries.md#byrole)
 
 ```javascript
-import { logRoles } from 'dom-testing-library'
+import { logRoles } from '@testing-library/dom'
 
 const nav = document.createElement('nav')
 nav.innerHTML = `
