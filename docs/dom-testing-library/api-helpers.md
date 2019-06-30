@@ -155,7 +155,7 @@ given tree of DOM nodes. It returns an object indexed by role name with each
 value being an array of elements which have that implicit aria role.
 
 ```javascript
-import { getRoles } from 'dom-testing-library'
+import { getRoles } from '@testing-library/dom' 
 
 const nav = document.createElement('nav')
 nav.innerHTML = `
