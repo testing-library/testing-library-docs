@@ -154,8 +154,14 @@ cy.get('form').within(() => {
 ## `getRoles`
 
 This function allows iteration over the implicit ARIA roles represented in a
-given tree of DOM nodes. It returns an object indexed by role name with each
-value being an array of elements which have that implicit ARIA role.
+given tree of DOM nodes.
+
+It returns an object, indexed by role name, with each value being an array of
+elements which have that implicit ARIA role.
+
+See
+[ARIA in HTML](https://www.w3.org/TR/html-aria/#document-conformance-requirements-for-use-of-aria-attributes-in-html)
+for more information about implicit ARIA roles.
 
 ```javascript
 import { getRoles } from '@testing-library/dom'
