@@ -58,9 +58,12 @@ module.exports = {
 
 ## `buildQueries`
 
-The `buildQueries` helper allows you to create custom queres with all standard [variants](api-queries.md) of queries in testing-library.
+The `buildQueries` helper allows you to create custom queres with all standard
+[variants](api-queries.md) of queries in testing-library.
 
-See the [Add custom queries](/docs/react-testing-library/setup#add-custom-queries) section of the custom render guide for example usage.
+See the
+[Add custom queries](/docs/react-testing-library/setup#add-custom-queries)
+section of the custom render guide for example usage.
 
 ### Using other assertion libraries
 
@@ -150,12 +153,12 @@ cy.get('form').within(() => {
 
 ## `getRoles`
 
-This function allows iteration over the implicit aria roles represented in a
+This function allows iteration over the implicit ARIA roles represented in a
 given tree of DOM nodes. It returns an object indexed by role name with each
-value being an array of elements which have that implicit aria role.
+value being an array of elements which have that implicit ARIA role.
 
 ```javascript
-import { getRoles } from '@testing-library/dom' 
+import { getRoles } from '@testing-library/dom'
 
 const nav = document.createElement('nav')
 nav.innerHTML = `
@@ -240,7 +243,7 @@ This function is what also powers
 
 ### `logRoles`
 
-This helper function can be used to print out a list of all the implicit aria
+This helper function can be used to print out a list of all the implicit ARIA
 roles within a tree of DOM nodes, each role containing a list of all of the
 nodes which match that role. This can be helpful for finding ways to query the
 DOM under test with [getByRole](api-queries.md#byrole)
@@ -250,10 +253,11 @@ import { logRoles } from 'dom-testing-library'
 
 const nav = document.createElement('nav')
 nav.innerHTML = `
-<ul name="menu">
-  <li name="item-1">Item 1</li>
-  <li name="item-2">Item 2</li>
+<ul type="circle">
+  <li value="1">Item 1</li>
+  <li value="2">Item 2</li>
 </ul>`
+
 console.log(logRoles(nav))
 
 // navigation:
@@ -265,7 +269,7 @@ console.log(logRoles(nav))
 // list:
 //
 // <ul
-//   name="menu"
+//   type="circle"
 // />
 //
 //
@@ -273,11 +277,11 @@ console.log(logRoles(nav))
 // listitem:
 //
 // <li
-//   name="item-1"
+//   value="1"
 // />
 //
 // <li
-//   name="item-2"
+//   value="2"
 // />
 //
 // --------------------------------------------------
