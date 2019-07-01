@@ -16,7 +16,7 @@ element that should receive a keydown. It will only receive that event if the bu
 is focused. If it is focused an additional click event is fired if the Enter key
 was pressed.
 
-You don't need to know every possible combinations of interactions but you shouldn't
+You don't need to know every possible combination of interactions but you shouldn't
 have to much confidence in the interactive behavior of your components if you only
 test them with mocked sequences of events.
 
@@ -44,7 +44,7 @@ This will also test that the element in question can even receive keyboard event
 
 If an element is focused not only a focus event is dispatched. The active element
 in the document also changes as well as the previously focused element getting blurred.
-To simulate this behavior you simply replace `fireEvent` with imperative focus:
+To simulate this behavior you can simply replace `fireEvent` with imperative focus:
 
 ```diff
 fireEvent.focus(getByText('focus me');
