@@ -4,7 +4,7 @@ This is a simple example to test a component using the useContext hook.
 The context object
 
 ```
-import React from 'react';
+import React from 'react'
 
 const Context = React.createContext()
 
@@ -14,8 +14,8 @@ export default Context
 the root parent component
 
 ```
-import React, { useState } from 'react';
-import Context from './components/store/context';
+import React, { useState } from 'react'
+import Context from './components/store/context'
 
 
 const App = () => {
@@ -35,7 +35,7 @@ const App = () => {
   );
 }
 
-export default App;
+export default App
 
 ```
 
@@ -43,9 +43,9 @@ export default App;
 the child component using the context
 
 ```
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 
-import Context from '../store/context';
+import Context from '../store/context'
 
 const TestHookContext = () => {
   const context = useContext(Context)
@@ -61,19 +61,19 @@ const TestHookContext = () => {
 }
 
 
-export default TestHookContext;
+export default TestHookContext
 ```
 
 and the tests 
 
 ```
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestHookContext from '../test_hook_context.js';
-import {render, fireEvent, cleanup} from '@testing-library/react';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TestHookContext from '../test_hook_context.js'
+import {render, fireEvent, cleanup} from '@testing-library/react'
 import App from '../../../App'
 
-import Context from '../../store/context';
+import Context from '../../store/context'
 
 afterEach(cleanup)
 
