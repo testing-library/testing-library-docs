@@ -4,9 +4,9 @@ This is a simple example to test a component using the useContext hook.
 The context object
 
 ```
-import React from 'react'
+import React, { createContext } from 'react'
 
-const Context = React.createContext()
+const Context = createContext()
 
 export default Context
 ```
@@ -15,7 +15,7 @@ the root parent component
 
 ```
 import React, { useState } from 'react'
-import Context from './components/store/context'
+import Context from './context'
 
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
      <Context.Provider value={{changeTextProp: changeText,
                                stateProp: state
                                  }} >
-        <TestHookContext />
+        <ChildComponent />
      </Context.Provider>
     </div>
   );
@@ -45,9 +45,9 @@ the child component using the context
 ```
 import React, { useContext } from 'react'
 
-import Context from '../store/context'
+import Context from '../context'
 
-const TestHookContext = () => {
+const ChildComponent = () => {
   const context = useContext(Context)
 
   return (
@@ -61,19 +61,20 @@ const TestHookContext = () => {
 }
 
 
-export default TestHookContext
+export default ChildComponent
 ```
 
-and the tests 
+and the tests. 
+The basic idea is to test your components as they are used. Instead of testing the context-providing component separately, your main focus should be testing that the features connected to the context work correctly.
 
 ```
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TestHookContext from '../test_hook_context.js'
+import ChildComponent from '../childcomponent.js'
 import {render, fireEvent, cleanup} from '@testing-library/react'
-import App from '../../../App'
+import App from './App'
 
-import Context from '../../store/context'
+import Context from './context'
 
 afterEach(cleanup)
 
@@ -81,7 +82,7 @@ it('Context value is updated by child component', () => {
 
    const { container, getByText } = render(<App>
                                             <Context.Provider>
-                                             <TestHookContext />
+                                             <ChildComponent />
                                             </Context.Provider>
                                            </App>);
 
