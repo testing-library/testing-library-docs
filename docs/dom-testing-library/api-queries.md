@@ -530,15 +530,18 @@ cy.getByDisplayValue('Alaska').should('exist')
 ```typescript
 getByRole(
   container: HTMLElement,
-  text: TextMatch,
+  role: TextMatch,
   options?: {
     exact?: boolean = true,
     normalizer?: NormalizerFn,
   }): HTMLElement
 ```
 
-A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it also
-accepts a [`TextMatch`](#textmatch)).
+Queries for elements with the given role (and it also
+accepts a [`TextMatch`](#textmatch)). Default roles are taken
+into consideration e.g. `<button />` has the `button` role without
+explicitly setting the `role` attribute. The [W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents)
+lists all HTML elements with their default aria roles.
 
 ```html
 <div role="dialog">...</div>
