@@ -27,7 +27,7 @@ in the interactive behavior of your components. For other interactions you shoul
 either consider using `user-event` or testing your components in a real environment
 (e.g. manually, automatic with cypress etc.).
 
-### keydown
+### Keydown
 
 [A keydown is dispatched on the currently focused element, the body element
 or the document element](https://w3c.github.io/uievents/#events-keyboard-event-order). Following this you should prefer
@@ -37,6 +37,8 @@ or the document element](https://w3c.github.io/uievents/#events-keyboard-event-o
 + getByText('click me').focus();
 + fireEvent.keyDown(document.activeElement || document.body);
 ```
+
+This will also test that the element in question can even receive keyboard events.
 
 ### Focus/Blur
 
