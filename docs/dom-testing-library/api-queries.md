@@ -537,11 +537,12 @@ getByRole(
   }): HTMLElement
 ```
 
-Queries for elements with the given role (and it also
-accepts a [`TextMatch`](#textmatch)). Default roles are taken
-into consideration e.g. `<button />` has the `button` role without
-explicitly setting the `role` attribute. The [W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents)
-lists all HTML elements with their default aria roles.
+Queries for elements with the given role (and it also accepts a
+[`TextMatch`](#textmatch)). Default roles are taken into consideration e.g.
+`<button />` has the `button` role without explicitly setting the `role`
+attribute. The
+[W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents) lists
+all HTML elements with their default aria roles.
 
 ```html
 <div role="dialog">...</div>
@@ -643,6 +644,54 @@ we recommend you adopt that attribute where possible. But if you already have an
 existing codebase that uses a different attribute for this purpose, you can
 override this value via
 `configure({testIdAttribute: 'data-my-test-attribute'})`.
+
+### `DescriptionOf`
+
+> getDescriptionOf, queryDescriptionOf, findDescriptionOf
+
+`*AllDescriptionOf` are included for completeness but throw immediately. An
+element should have a unique description.
+
+```typescript
+getDescriptionOf(element: HTMLElement): HTMLElement
+```
+
+```html
+<button aria-label="Close" aria-describedby="descriptionClose">X</button>
+<div id="descriptionClose">
+  Closing this window will discard any information entered and return you back
+  to the main page.
+</div>
+```
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Native-->
+
+```js
+import { getByRole, getDescriptionOf } from '@testing-library/dom'
+
+const container = document.body
+const buttonDescription = getDescriptionOf(getByRole('button'))
+```
+
+<!--React-->
+
+```js
+import { render } from '@testing-library/react'
+
+const { getByRole, getDescriptionOf } = render(<MyComponent />)
+const buttonDescription = getDescriptionOf(getByRole('button'))
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+Returns the accessible element with the description of the given element. The
+describing element must have an id attribute equal to the `aria-describedby`
+attribute of the given element.
+
+See
+[Using the aria-describedby attribute ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)
 
 ## `TextMatch`
 
