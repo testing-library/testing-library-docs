@@ -25,7 +25,7 @@ npm install --save-dev @testing-library/vue
 
 You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands. See here the
-[full llist of queries](dom-testing-library/api-queries.md).
+[full list of queries](dom-testing-library/api-queries.md).
 
 You may also be interested in installing `jest-dom` so you can use
 [the custom Jest matchers](https://github.com/gnapse/jest-dom#readme) for the
