@@ -103,7 +103,7 @@ Given the following HTML:
 <div>Hello World</div>
 ```
 
-All this matchers **will find the element:**
+All these matchers **will find the element:**
 
 ```javascript
 // Matching a string:
