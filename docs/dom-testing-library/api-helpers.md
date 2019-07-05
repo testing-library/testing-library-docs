@@ -168,16 +168,16 @@ import { getRoles } from '@testing-library/dom'
 
 const nav = document.createElement('nav')
 nav.innerHTML = `
-<ul name="menu">
-  <li name="item-1">Item 1</li>
-  <li name="item-2">Item 2</li>
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
 </ul>`
 console.log(getRoles(nav))
 
 // Object {
 //   navigation: [<nav />],
-//   list: [<ul name="menu" />],
-//   listitem: [<li name="item-1" />, <li name="item-2" />]
+//   list: [<ul />],
+//   listitem: [<li />, <li />]
 // }
 ```
 
@@ -259,9 +259,9 @@ import { logRoles } from '@testing-library/dom'
 
 const nav = document.createElement('nav')
 nav.innerHTML = `
-<ul type="circle">
-  <li value="1">Item 1</li>
-  <li value="2">Item 2</li>
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
 </ul>`
 
 console.log(logRoles(nav))
@@ -274,21 +274,16 @@ console.log(logRoles(nav))
 // --------------------------------------------------
 // list:
 //
-// <ul
-//   type="circle"
-// />
+// <ul />
 //
 //
 // --------------------------------------------------
 // listitem:
 //
-// <li
-//   value="1"
-// />
+// <li />
 //
-// <li
-//   value="2"
-// />
+// <li />
+//
 //
 // --------------------------------------------------
 ```
