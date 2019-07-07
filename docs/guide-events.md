@@ -22,13 +22,16 @@ order):
 - fireEvent.mouseDown(element)
 - element.focus() (if that element is focusable)
 - fireEvent.mouseUp(element)
-- fireEvent.click(element) And then, if that element happens to be a child of a
-  `label`, then it will also move focus to the form control that the label is
-  labeling. So even though all you really are trying to test is the click
-  handler, by simply using `fireEvent.click` you're missing out on several other
-  potentially important events the user is firing along the way. Again, most of
-  the time this isn't critical for your tests and the trade-off of simply using
-  `fireEvent.click` is worth it.
+- fireEvent.click(element)
+
+And then, if that element happens to be a child of a `label`, then it will also
+move focus to the form control that the label is labeling. So even though all
+you really are trying to test is the click handler, by simply using
+`fireEvent.click` you're missing out on several other potentially important
+events the user is firing along the way.
+
+Again, most of the time this isn't critical for your tests and the trade-off of
+simply using `fireEvent.click` is worth it.
 
 ## Alternatives
 
