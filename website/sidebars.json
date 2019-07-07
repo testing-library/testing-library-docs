@@ -86,7 +86,12 @@
     "Help": ["faq", "learning", "contributing"]
   },
   "recipes": {
-    "Guides": ["recipes", "guide-which-query", "guide-disappearance"],
+    "Guides": [
+      "recipes",
+      "guide-which-query",
+      "guide-disappearance",
+      "guide-events"
+    ],
     "Examples": [
       "example-codesandbox",
       "example-input-event",
