@@ -58,9 +58,12 @@ module.exports = {
 
 ## `buildQueries`
 
-The `buildQueries` helper allows you to create custom queres with all standard [variants](api-queries.md) of queries in testing-library.
+The `buildQueries` helper allows you to create custom queres with all standard
+[variants](api-queries.md) of queries in testing-library.
 
-See the [Add custom queries](/docs/react-testing-library/setup#add-custom-queries) section of the custom render guide for example usage.
+See the
+[Add custom queries](/docs/react-testing-library/setup#add-custom-queries)
+section of the custom render guide for example usage.
 
 ### Using other assertion libraries
 
@@ -148,6 +151,36 @@ cy.get('form').within(() => {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+## `getRoles`
+
+This function allows iteration over the implicit ARIA roles represented in a
+given tree of DOM nodes.
+
+It returns an object, indexed by role name, with each value being an array of
+elements which have that implicit ARIA role.
+
+See
+[ARIA in HTML](https://www.w3.org/TR/html-aria/#document-conformance-requirements-for-use-of-aria-attributes-in-html)
+for more information about implicit ARIA roles.
+
+```javascript
+import { getRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+console.log(getRoles(nav))
+
+// Object {
+//   navigation: [<nav />],
+//   list: [<ul />],
+//   listitem: [<li />, <li />]
+// }
+```
+
 ## Debugging
 
 When you use any `get` calls in your test cases, the current state of the
@@ -213,3 +246,44 @@ console.log(prettyDOM(div))
 
 This function is what also powers
 [the automatic debugging output described above](#debugging).
+
+### `logRoles`
+
+This helper function can be used to print out a list of all the implicit ARIA
+roles within a tree of DOM nodes, each role containing a list of all of the
+nodes which match that role. This can be helpful for finding ways to query the
+DOM under test with [getByRole](api-queries.md#byrole)
+
+```javascript
+import { logRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+
+console.log(logRoles(nav))
+
+// navigation:
+//
+// <nav />
+//
+//
+// --------------------------------------------------
+// list:
+//
+// <ul />
+//
+//
+// --------------------------------------------------
+// listitem:
+//
+// <li />
+//
+// <li />
+//
+//
+// --------------------------------------------------
+```
