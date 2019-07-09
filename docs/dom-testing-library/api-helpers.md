@@ -220,17 +220,26 @@ you'd like a solution that works for both, see
 
 ### `prettyDOM`
 
-This helper function can be used to print out readable representation of the DOM
+Built on top of
+[`pretty-format`](https://github.com/facebook/jest/tree/master/packages/pretty-format),
+this helper function can be used to print out readable representation of the DOM
 tree of a node. This can be helpful for instance when debugging tests.
 
 It is defined as:
 
 ```typescript
-function prettyDOM(node: HTMLElement, maxLength?: number): string
+function prettyDOM(
+  node: HTMLElement,
+  maxLength?: number,
+  options?: Options
+): string
 ```
 
-It receives the root node to print out, and an optional extra argument to limit
-the size of the resulting string, for cases when it becomes too large.
+It receives the root node to print out, an optional extra parameter to limit the
+size of the resulting string, for cases when it becomes too large. It has a last
+parameter which allows you to configure your formatting as defined in the
+[options](https://github.com/facebook/jest/tree/master/packages/pretty-format#usage-with-options)
+of `pretty-format`.
 
 This function is usually used alongside `console.log` to temporarily print out
 DOM trees during tests for debugging purposes:
