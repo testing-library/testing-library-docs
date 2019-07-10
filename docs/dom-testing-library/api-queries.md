@@ -10,19 +10,19 @@ title: Queries
 
 ### getBy
 
-`getBy*` queries returns the first matching node for a query, and throws an
+`getBy*` queries return the first matching node for a query, and throw an
 error if no elements match or if more than one match is found (use `getAllBy`
 instead).
 
 ### getAllBy
 
 `getAllBy*` queries return an array of all matching nodes for a query, and
-throws an error if no elements match.
+throw an error if no elements match.
 
 ### queryBy
 
-`queryBy*` queries returns the first matching node for a query, and return
-`null` if no elements match. This is useful for asserting an element is not
+`queryBy*` queries return the first matching node for a query, and return
+`null` if no elements match. This is useful for asserting an element that is not
 present. This throws if more than one match is found (use `queryAllBy` instead).
 
 ### queryAllBy
