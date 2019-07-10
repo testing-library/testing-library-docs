@@ -7,7 +7,7 @@ title: jest-dom
 provides custom DOM element matchers for Jest
 
 ```
-npm install --save-dev jest-dom
+npm install --save-dev @testing-library/jest-dom
 ```
 
 ```jsx
