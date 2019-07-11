@@ -102,6 +102,7 @@
       "example-react-router",
       "example-reach-router",
       "example-react-transition-group",
+      "example-react-modal",
       "example-external"
     ],
     "Help": ["faq", "learning", "contributing"]
