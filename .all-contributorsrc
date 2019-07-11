@@ -187,6 +187,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Pklong",
+      "name": "Patrick K Long",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/10551697?v=4",
+      "profile": "https://pklong.io",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
