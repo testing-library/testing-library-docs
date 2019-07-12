@@ -62,7 +62,7 @@ test('examples of some things', async () => {
   )
 
   // getByTestId and queryByTestId are an escape hatch to get elements
-  // by a test id (could also attempt to get this element by it's text)
+  // by a test id (could also attempt to get this element by its text)
   expect(getByTestId(container, 'printed-username')).toHaveTextContent(
     famousWomanInHistory
   )
