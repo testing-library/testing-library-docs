@@ -7,6 +7,8 @@ See also the [main FAQ](dom-testing-library/faq.md) for questions not specific
 to React testing
 
 <details>
+  
+
 
 <summary>How do I test input onChange handlers?</summary>
 
