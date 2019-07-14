@@ -92,7 +92,7 @@ a {
   border-top: none;
 }
 
-details summary {
+details > summary {
   cursor: pointer; 
 }
 
