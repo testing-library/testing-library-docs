@@ -8,13 +8,9 @@ to React testing
 
 <details>
   
-<style>
- #summary {
-    pointer: cursor;
-  }
-</style>
 
-<summary id="summary">How do I test input onChange handlers?</summary>
+
+<summary>How do I test input onChange handlers?</summary>
 
 TL;DR:
 [Go to the `on-change.js` example](https://codesandbox.io/s/github/kentcdodds/react-testing-library-examples/tree/master/?module=%2Fsrc%2F__tests__%2Fon-change.js&previewwindow=tests)
@@ -71,7 +67,7 @@ as part of the `change` method call.
 
 <details>
 
-<summary id="summary">Can I write unit tests with this library?</summary>
+<summary >Can I write unit tests with this library?</summary>
 
 Definitely yes! You can write unit and integration tests with this library. See
 below for more on how to mock dependencies (because this library intentionally
@@ -88,7 +84,7 @@ As you write your tests, keep in mind:
 
 <details>
 
-<summary id="summary">If I can't use shallow rendering, how do I mock out components in tests?</summary>
+<summary >If I can't use shallow rendering, how do I mock out components in tests?</summary>
 
 In general, you should avoid mocking out components (see
 [the Guiding Principles section](guiding-principles.md)). However if you need
@@ -139,7 +135,7 @@ Learn more about how Jest mocks work from my blog post:
 
 <details>
 
-<summary id="summary">What about enzyme is "bloated with complexity and features" and "encourage
+<summary >What about enzyme is "bloated with complexity and features" and "encourage
 poor testing practices"?</summary>
 
 Most of the damaging features have to do with encouraging testing implementation
@@ -167,7 +163,7 @@ react components.
 
 <details>
 
-<summary id="summary">Why isn't snapshot diffing working?</summary>
+<summary >Why isn't snapshot diffing working?</summary>
 
 If you use the [snapshot-diff](https://github.com/jest-community/snapshot-diff)
 library to save snapshot diffs, it won't work out of the box because this
