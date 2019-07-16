@@ -64,7 +64,7 @@ Now here's what your test will look like:
 // counter.test.js
 import React from 'react'
 import { createStore } from 'redux'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { initialState, reducer } from './reducer.js'
 import Counter from './counter.js'
