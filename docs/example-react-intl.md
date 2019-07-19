@@ -38,7 +38,7 @@ A complete example:
 
 ```jsx
 import React from 'react'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import { render, cleanup, getByTestId } from '@testing-library/react'
 import { IntlProvider, FormattedDate } from 'react-intl'
 import IntlPolyfill from 'intl'

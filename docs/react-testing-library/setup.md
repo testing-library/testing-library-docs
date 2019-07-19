@@ -61,7 +61,7 @@ module.exports = {
 // jest.setup.js
 
 // add some helpful assertions
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 // this is basically: afterEach(cleanup)
 import '@testing-library/react/cleanup-after-each'
@@ -96,7 +96,7 @@ import defaultStrings from 'i18n/en-x-default'
 
 const AllTheProviders = ({ children }) => {
   return (
-    <ThemeProvider theme='light'>
+    <ThemeProvider theme="light">
       <TranslationProvider messages={defaultStrings}>
         {children}
       </TranslationProvider>
