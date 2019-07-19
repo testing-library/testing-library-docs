@@ -33,7 +33,7 @@ render(<div />)
 
 ```jsx
 import { render, cleanup } from '@testing-library/react'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 afterEach(cleanup)
 
 test('renders a message', () => {

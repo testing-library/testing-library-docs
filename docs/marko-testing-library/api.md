@@ -32,7 +32,7 @@ render(MyTemplate)
 
 ```javascript
 import { render, cleanup } from '@marko/testing-library'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import Greeting from './greeting.marko'
 
 afterEach(cleanup)

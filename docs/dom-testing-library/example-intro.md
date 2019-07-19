@@ -17,7 +17,7 @@ import {
   wait,
 } from '@testing-library/dom'
 // adds special assertions like toHaveTextContent
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 function getExampleDOM() {
   // This is just a raw example of setting up some DOM

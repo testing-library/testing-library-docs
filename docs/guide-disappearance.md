@@ -86,7 +86,7 @@ in the body of the document, or not. This can be more meaningful than asserting
 a query result is `null`.
 
 ```javascript
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 // use `queryBy` to avoid throwing an error with `getBy`
 const submitButton = queryByText(container, 'submit')
 expect(submitButton).not.toBeInTheDocument()

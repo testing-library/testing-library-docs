@@ -75,7 +75,7 @@ something like the following:
 expect(queryByText('submit')).toBeNull()
 
 // or, if using extend/expect:
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 expect(queryByText('submit')).not.toBeInTheDocument()
 ```
 
