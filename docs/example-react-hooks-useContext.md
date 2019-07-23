@@ -3,7 +3,7 @@ This is a simple example to test a component using the useContext hook.
 
 The context object
 
-```
+```js
 import React, { createContext } from 'react'
 
 const Context = createContext()
@@ -13,7 +13,7 @@ export default Context
 
 the root parent component
 
-```
+```jsx
 import React, { useState } from 'react'
 import Context from './context'
 
@@ -25,6 +25,7 @@ const App = () => {
     setState("Some Other Text")
   }
 
+return (
    <h1> Basic Hook useContext</h1>
      <Context.Provider value={{changeTextProp: changeText,
                                stateProp: state
@@ -42,7 +43,7 @@ export default App
 
 the child component using the context
 
-```
+```jsx
 import React, { useContext } from 'react'
 
 import Context from '../context'
@@ -67,7 +68,7 @@ export default ChildComponent
 and the tests. 
 The basic idea is to test your components as they are used. Instead of testing the context-providing component separately, your main focus should be testing that the features connected to the context work correctly.
 
-```
+```js
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ChildComponent from '../childcomponent.js'
