@@ -4,7 +4,7 @@ Basic example showing how to test useReducer hook.
 The component: changes some text depending on `stateprop1` value.
 
 ```
-import React, { useReducer } from 'react';
+import React, { useReducer } from 'react'
 import * as ACTIONS from '../store/actions'
 import * as Reducer from '../store/reducer'
 
@@ -85,12 +85,12 @@ Finally our tests: we first test our reducer to make sure it is returning the co
 Then we test to see if we get the correct output in our JSX based on the reducer state.  
 
 ```
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestHookReducer from '../test_hook_reducer.js';
-import {render, fireEvent, cleanup} from '@testing-library/react';
-import * as Reducer from '../../store/reducer';
-import * as ACTIONS from '../../store/actions';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TestHookReducer from '../test_hook_reducer.js'
+import {render, fireEvent, cleanup} from '@testing-library/react'
+import * as Reducer from '../../store/reducer'
+import * as ACTIONS from '../../store/actions'
 
 
 afterEach(cleanup)
