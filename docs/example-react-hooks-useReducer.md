@@ -1,7 +1,7 @@
 Basic example showing how to test useReducer hook. 
 
 
-The component: changes stateprop1 from false to true which changes some text. 
+The component: changes some text depending on `stateprop1` value.
 
 ```
 import React, { useReducer } from 'react';
