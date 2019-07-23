@@ -37,7 +37,11 @@ export function getAllByTestId(container, id, ...rest) {
 }
 
 export function getByTestId(...args) {
-  return queryHelpers.firstResultOrNull(getAllByTestId, ...args)
+  const result = getAllByTestId(...args)
+  if (result.length > 0) {
+    return result[0]
+  }
+  return null
 }
 
 // re-export with overrides
