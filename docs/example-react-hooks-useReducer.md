@@ -4,7 +4,7 @@ Basic example showing how to test useReducer hook.
 The component we are testing which changes some text depending on `stateprop1` value.
 
 ```jsx
-import React, { useReducer } from 'react';
+import React, { useReducer } from 'react'
 
 
 const initialState = {
