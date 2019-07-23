@@ -81,11 +81,7 @@ afterEach(cleanup)
 
 it('Context value is updated by child component', () => {
 
-   const { container, getByText } = render(<App>
-                                            <Context.Provider>
-                                             <ChildComponent />
-                                            </Context.Provider>
-                                           </App>);
+   const { container, getByText } = render(<App />);
 
    expect(getByText(/Some/i).textContent).toBe("Some Text")
 
