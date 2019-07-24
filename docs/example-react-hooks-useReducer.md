@@ -56,7 +56,7 @@ const TestHookReducer = () => {
 }
 
 
-export default TestHookReducer;
+export default TestHookReducer
 ```
 
 
