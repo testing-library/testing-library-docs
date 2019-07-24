@@ -21,7 +21,7 @@ import Context from './context'
 
 
 const App = () => {
-  const [state, setState] = useState("Some Text")
+  const [state, setState] = useState('Some Text')
 
   const changeText = () => {
     setState("Some Other Text")
