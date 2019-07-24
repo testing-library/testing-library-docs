@@ -74,7 +74,7 @@ afterEach(cleanup)
 
 
 it('Reducer changes stateprop1 from false to true', () => {
-   const { container, getByText } = render(<TestHookReducer />);
+   const { getByText } = render(<TestHookReducer />)
 
    expect(getByText(/stateprop1 is/i).textContent).toBe("stateprop1 is false")
 
