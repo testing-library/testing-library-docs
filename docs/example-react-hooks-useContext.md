@@ -56,9 +56,9 @@ const ChildComponent = () => {
 
   return (
     <div>
-    <button onClick={context.changeTextProp}>
-        Change Text
-    </button>
+      <button onClick={context.changeTextProp}>
+          Change Text
+      </button>
       <p>{context.stateProp}</p>
     </div>
   )
