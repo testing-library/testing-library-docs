@@ -6,7 +6,6 @@ The component we are testing which changes some text depending on `stateprop1` v
 ```jsx
 import React, { useReducer } from 'react'
 
-
 const initialState = {
     stateprop1: false,
 }
@@ -28,7 +27,6 @@ const Reducer = (state = initialState, action) => {
   }
 }
 
-
 const TestHookReducer = () => {
   const [reducerState, dispatch] = useReducer(Reducer, initialState)
 
@@ -39,7 +37,6 @@ const TestHookReducer = () => {
   const dispatchActionFailure = () => {
     dispatch({ type: 'FAILURE' })
   }
-
 
   return (
     <div>
@@ -55,7 +52,6 @@ const TestHookReducer = () => {
   )
 }
 
-
 export default TestHookReducer
 ```
 
@@ -68,10 +64,7 @@ import ReactDOM from 'react-dom'
 import TestHookReducer from '../test_hook_reducer.js'
 import {render, fireEvent, cleanup} from '@testing-library/react'
 
-
-
 afterEach(cleanup)
-
 
 it('Reducer changes stateprop1 from false to true', () => {
    const { getByText } = render(<TestHookReducer />)
@@ -82,5 +75,4 @@ it('Reducer changes stateprop1 from false to true', () => {
 
    expect(getByText(/stateprop1 is/i).textContent).toBe("stateprop1 is true")
 })
-
 ```
