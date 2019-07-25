@@ -81,7 +81,13 @@ const users = [
     image: '/img/users/testsigma.svg',
     infoLink: 'https://www.testsigma.com',
     pinned: true,
-  }
+  },
+  {
+    caption: 'intelliHR',
+    image: '/img/users/intellihr.svg',
+    infoLink: 'https://intellihr.com.au',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
