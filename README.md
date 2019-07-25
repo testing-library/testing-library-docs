@@ -60,6 +60,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://thomlom.dev"><img src="https://avatars3.githubusercontent.com/u/16003285?v=4" width="100px;" alt="Thomas Lombart"/><br /><sub><b>Thomas Lombart</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thomlom" title="Documentation">📖</a></td>
     <td align="center"><a href="https://pklong.io"><img src="https://avatars0.githubusercontent.com/u/10551697?v=4" width="100px;" alt="Patrick K Long"/><br /><sub><b>Patrick K Long</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Pklong" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/pedroapfilho"><img src="https://avatars2.githubusercontent.com/u/13142568?v=4" width="100px;" alt="Pedro Filho"/><br /><sub><b>Pedro Filho</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pedroapfilho" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
