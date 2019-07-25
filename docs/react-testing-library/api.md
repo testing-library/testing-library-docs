@@ -226,23 +226,17 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
+import React, { useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-class TestComponent extends React.Component {
-  constructor() {
-    super()
-    this.state = { count: 0 }
-  }
+const TestComponent = () => {
+  const [count, setCounter] = useState(0)
 
-  render() {
-    const { count } = this.state
-
-    return (
-      <button onClick={() => this.setState({ count: count + 1 })}>
-        Click to increase: {count}
-      </button>
-    )
-  }
+  return (
+    <button onClick={() => setCounter(count => count + 1)}>
+      Click to increase: {count}
+    </button>
+  )
 }
 
 const { getByText, asFragment } = render(<TestComponent />)
