@@ -1,9 +1,12 @@
-Basic example showing how to test useReducer hook.
+Basic example showing how to test the `useReducer` hook.
+The most important thing is that we aren't testing the reducer directly - it's an
+implementation detail of the component! Instead we are testing the component interface.
 
-The component we are testing which changes some text depending on `stateprop1`
-value.
+The component we are testing changes some text depending on an `isConfirmed` state.
 
 ```jsx
+// example.js
+
 import React, { useReducer } from 'react'
 
 const initialState = {
@@ -17,26 +20,13 @@ function reducer(state = initialState, action) {
         ...state,
         isConfirmed: true,
       }
-    case 'FAILURE':
-      return {
-        ...state,
-        isConfirmed: true,
-      }
     default:
-      console.log(state)
+      throw Error('unknown action')
   }
 }
 
 const Example = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  const dispatchActionSuccess = () => {
-    dispatch({ type: 'SUCCESS' })
-  }
-
-  const dispatchActionFailure = () => {
-    dispatch({ type: 'FAILURE' })
-  }
 
   return (
     <div>
@@ -55,19 +45,18 @@ const Example = () => {
 export default Example
 ```
 
-Finally our tests: We are testing to see if we get the correct output in our JSX
+We are testing to see if we get the correct output in our JSX
 based on the reducer state.
 
-```js
+```jsx
+// example.test.js
+
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Example from '../example.js'
 import { render, fireEvent, cleanup } from '@testing-library/react'
+import Example from './example.js'
 
-afterEach(cleanup)
-
-it('shows success message on click', () => {
-  const { getByText } = render(<TestHookReducer />)
+it('shows success message after confirm button is clicked', () => {
+  const { getByText } = render(<Example />)
 
   expect(getByText(/waiting/i).textContent).toBeInTheDocument()
 
