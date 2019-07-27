@@ -71,7 +71,7 @@ it('shows success message on click', () => {
 
     expect(getByText(/waiting/i).textContent).toBeInTheDocument()
 
-   fireEvent.click(getByText("Dispatch Success"))
+   fireEvent.click(getByText("Confirm"))
 
    expect(getByText(/stateprop1 is/i).textContent).toBe("stateprop1 is true")
 })
