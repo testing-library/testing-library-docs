@@ -73,6 +73,6 @@ it('shows success message on click', () => {
 
    fireEvent.click(getByText("Confirm"))
 
-   expect(getByText(/stateprop1 is/i).textContent).toBe("stateprop1 is true")
+   expect(getByText('Confirmed')).toBeInTheDocument()
 })
 ```
