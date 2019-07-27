@@ -27,7 +27,7 @@ function reducer(state = initialState, action) {
   }
 }
 
-const TestHookReducer = () => {
+const Example = () => {
   const [reducerState, dispatch] = useReducer(Reducer, initialState)
 
   const dispatchActionSuccess = () => {
