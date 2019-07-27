@@ -61,7 +61,7 @@ Finally our tests: We are testing to see if we get the correct output in our JSX
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TestHookReducer from '../test_hook_reducer.js'
+import Example from '../example.js'
 import {render, fireEvent, cleanup} from '@testing-library/react'
 
 afterEach(cleanup)
