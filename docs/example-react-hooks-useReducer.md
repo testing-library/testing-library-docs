@@ -46,7 +46,7 @@ const Example = () => {
            : <p>Waiting for confirmation...</p>}
        </div>
  <button onClick={dispatch({type: 'SUCCESS'})}>
-         Dispatch Success
+         Confirm
        </button>
     </div>
   )
