@@ -7,7 +7,7 @@ The component we are testing which changes some text depending on `stateprop1` v
 import React, { useReducer } from 'react'
 
 const initialState = {
-    stateprop1: false,
+    isConfirmed: false,
 }
 
 const Reducer = (state = initialState, action) => {
