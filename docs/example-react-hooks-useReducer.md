@@ -1,3 +1,8 @@
+---
+id: example-react-useReducer
+title: useReducer
+---
+
 Basic example showing how to test the `useReducer` hook.
 The most important thing is that we aren't testing the reducer directly - it's an
 implementation detail of the component! Instead we are testing the component interface.
