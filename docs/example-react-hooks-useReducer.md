@@ -43,7 +43,7 @@ const Example = () => {
        <div>
         {state.isConfirmed
            ? <p>Confirmed!</p>
-           : <p>stateprop1 is false</p>}
+           : <p>Waiting for confirmation...</p>}
        </div>
        <button onClick={dispatchActionSuccess}>
          Dispatch Success
