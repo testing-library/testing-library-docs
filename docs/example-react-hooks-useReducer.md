@@ -10,7 +10,7 @@ const initialState = {
     isConfirmed: false,
 }
 
-const Reducer = (state = initialState, action) => {
+function reducer(state = initialState, action) {
   switch(action.type) {
     case "SUCCESS":
       return {
