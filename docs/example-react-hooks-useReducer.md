@@ -28,7 +28,7 @@ function reducer(state = initialState, action) {
 }
 
 const Example = () => {
-  const [reducerState, dispatch] = useReducer(Reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   const dispatchActionSuccess = () => {
     dispatch({ type: 'SUCCESS' })
