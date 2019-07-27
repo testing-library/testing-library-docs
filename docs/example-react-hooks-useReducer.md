@@ -15,7 +15,7 @@ function reducer(state = initialState, action) {
     case "SUCCESS":
       return {
         ...state,
-        stateprop1: true,
+        isConfirmed: true,
       }
     case "FAILURE":
       return {
