@@ -20,7 +20,7 @@ function reducer(state = initialState, action) {
     case "FAILURE":
       return {
         ...state,
-        stateprop1: false,
+        isConfirmed: true,
       }
     default:
       console.log(state)
