@@ -41,7 +41,7 @@ const Example = () => {
   return (
     <div>
        <div>
-        {reducerState.stateprop1
+        {state.isConfirmed
            ? <p>stateprop1 is true</p>
            : <p>stateprop1 is false</p>}
        </div>
