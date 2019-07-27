@@ -52,7 +52,7 @@ const Example = () => {
   )
 }
 
-export default TestHookReducer
+export default Example
 ```
 
 
