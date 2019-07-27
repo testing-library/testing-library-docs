@@ -69,7 +69,7 @@ afterEach(cleanup)
 it('shows success message on click', () => {
    const { getByText } = render(<TestHookReducer />)
 
-   expect(getByText(/stateprop1 is/i).textContent).toBe("stateprop1 is false")
+    expect(getByText(/waiting/i).textContent).toBeInTheDocument()
 
    fireEvent.click(getByText("Dispatch Success"))
 
