@@ -11,7 +11,7 @@
   publish = "website/build/testing-library-docs"
 
   # Default build command.
-  command = "cd website; npm install; npm run build"
+  command = "cd website; npm install; npm run format-docs; npm run build"
 
 # React root to React landing page
 [[redirects]]
