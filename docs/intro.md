@@ -3,8 +3,8 @@ id: intro
 title: Introduction
 ---
 
-The [`@testing-library`][npm] family of packages helps you test UI components in a
-user-centric way.
+The [`@testing-library`][npm] family of packages helps you test UI components in
+a user-centric way.
 
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 

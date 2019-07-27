@@ -31,7 +31,7 @@ class Counter extends React.Component {
   }
 }
 
-export default connect(state => ({count: state.count}))(Counter)
+export default connect(state => ({ count: state.count }))(Counter)
 ```
 
 For this example, we'll have a simple reducer that tracks and updates `count`:
@@ -39,7 +39,7 @@ For this example, we'll have a simple reducer that tracks and updates `count`:
 ```js
 // reducer.js
 export const initialState = {
-  count: 0
+  count: 0,
 }
 
 export function reducer(state = initialState, action) {
