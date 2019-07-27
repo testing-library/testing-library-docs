@@ -66,7 +66,7 @@ import {render, fireEvent, cleanup} from '@testing-library/react'
 
 afterEach(cleanup)
 
-it('Reducer changes stateprop1 from false to true', () => {
+it('shows success message on click', () => {
    const { getByText } = render(<TestHookReducer />)
 
    expect(getByText(/stateprop1 is/i).textContent).toBe("stateprop1 is false")
