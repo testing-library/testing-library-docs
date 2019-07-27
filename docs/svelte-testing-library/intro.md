@@ -71,7 +71,8 @@ describe('App', () => {
 
 ### Containers
 
-Useful for snapshot tests. You can use query the container if you need more granular tests.
+Useful for snapshot tests. You can use query the container if you need more
+granular tests.
 
 App.svelte
 
@@ -102,7 +103,6 @@ describe('App', () => {
     expect(container.querySelector('h1').innerHTML).toBe('Hello world!')
     expect(container.firstChild).toMatchSnapshot()
   })
-
 })
 ```
 

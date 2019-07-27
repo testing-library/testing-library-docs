@@ -23,7 +23,9 @@ import '@testing-library/cypress/add-commands';
 ```
 
 ## With typescript
-Typings are defined under @testing-library/cypress/typings, and should be added as follows in tsconfig.json:
+
+Typings are defined under @testing-library/cypress/typings, and should be added
+as follows in tsconfig.json:
 
 ```json
 {
@@ -32,7 +34,10 @@ Typings are defined under @testing-library/cypress/typings, and should be added 
   }
 }
 ```
-or if tsconfig.json has a `baseUrl` of `../node_modules` as recommended in the official Cypress documentation use:
+
+or if tsconfig.json has a `baseUrl` of `../node_modules` as recommended in the
+official Cypress documentation use:
+
 ```json
 {
   "compilerOptions": {
@@ -46,8 +51,9 @@ and `queryAllBy` commands.
 [See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
 ## Examples
-You can find [all Library definitions here](https://github.com/testing-library/cypress-testing-library/blob/master/typings/index.d.ts).
 
+You can find
+[all Library definitions here](https://github.com/testing-library/cypress-testing-library/blob/master/typings/index.d.ts).
 
 To show some simple examples (from
 [https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):

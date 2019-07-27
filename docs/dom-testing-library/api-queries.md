@@ -10,19 +10,19 @@ title: Queries
 
 ### getBy
 
-`getBy*` queries return the first matching node for a query, and throw an
-error if no elements match or if more than one match is found (use `getAllBy`
+`getBy*` queries return the first matching node for a query, and throw an error
+if no elements match or if more than one match is found (use `getAllBy`
 instead).
 
 ### getAllBy
 
-`getAllBy*` queries return an array of all matching nodes for a query, and
-throw an error if no elements match.
+`getAllBy*` queries return an array of all matching nodes for a query, and throw
+an error if no elements match.
 
 ### queryBy
 
-`queryBy*` queries return the first matching node for a query, and return
-`null` if no elements match. This is useful for asserting an element that is not
+`queryBy*` queries return the first matching node for a query, and return `null`
+if no elements match. This is useful for asserting an element that is not
 present. This throws if more than one match is found (use `queryAllBy` instead).
 
 ### queryAllBy
@@ -537,11 +537,12 @@ getByRole(
   }): HTMLElement
 ```
 
-Queries for elements with the given role (and it also
-accepts a [`TextMatch`](#textmatch)). Default roles are taken
-into consideration e.g. `<button />` has the `button` role without
-explicitly setting the `role` attribute. The [W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents)
-lists all HTML elements with their default aria roles.
+Queries for elements with the given role (and it also accepts a
+[`TextMatch`](#textmatch)). Default roles are taken into consideration e.g.
+`<button />` has the `button` role without explicitly setting the `role`
+attribute. The
+[W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents) lists
+all HTML elements with their default aria roles.
 
 ```html
 <div role="dialog">...</div>
