@@ -9,11 +9,10 @@ This will be a simple example using useState to test a React Hooks functional co
 
 Here is our component, it is a simple component that changes some text when a user clicks a button: 
 
-```
-import React, { useState } from 'react';
+```jsx
+import React, { useState } from 'react'
 
-
-const TestHook = (props) => {
+const ExampleComponent = (props) => {
   const [state, setState] = useState("Initial State")
 
   const changeState = () => {
@@ -30,22 +29,21 @@ const TestHook = (props) => {
   )
 }
 
-
-export default TestHook;
+export default ExampleComponent;
 ```
 
 now our tests: 
 
-```
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestHook from '../test_hook.js';
-import {render, fireEvent, cleanup} from '@testing-library/react';
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ExampleComponent from '../example_component.js'
+import {render, fireEvent, cleanup} from '@testing-library/react'
 
 afterEach(cleanup)
 
-it('Text in state is changed when button clicked', () => {
-    const { getByText } = render(<TestHook />);
+it('Text in state is changed when button is clicked', () => {
+    const { getByText } = render(<ExampleComponent />);
 
     expect(getByText(/Initial/i).textContent).toBe("Initial State")
 
