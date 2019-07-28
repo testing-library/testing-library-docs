@@ -35,7 +35,7 @@ const App = () => {
         <ChildComponent />
      </Context.Provider>
     </div>
-  );
+  )
 }
 
 export default App
