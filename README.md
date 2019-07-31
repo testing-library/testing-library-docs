@@ -62,6 +62,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/pedroapfilho"><img src="https://avatars2.githubusercontent.com/u/13142568?v=4" width="100px;" alt="Pedro Filho"/><br /><sub><b>Pedro Filho</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pedroapfilho" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/tanguyantoine"><img src="https://avatars3.githubusercontent.com/u/263097?v=4" width="100px;" alt="Tanguy Antoine"/><br /><sub><b>Tanguy Antoine</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tanguyantoine" title="Documentation">📖</a></td>
   </tr>
 </table>
 
