@@ -257,6 +257,23 @@ module.exports = {
 }
 ```
 
+*Typescript config needs to be updated as follow:*
+
+```diff
+// tsconfig.json
+{
+  "compilerOptions": {
+    // ...,
++   "baseUrl": "src",
++   "paths": {
++     "test-utils": ["../utils/test-utils"]
++   }
+  }
+}
+```
+
+
+
 ### Jest and Create React App
 
 If your project is based on top of Create React App, to make the `test-utils`
