@@ -98,10 +98,3 @@
   to = "https://testing-library.com/docs/ecosystem-jest-dom"
   status = 301
   force = true
-
-# Fallback (THIS SHOULD BE LAST)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
