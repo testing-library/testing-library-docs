@@ -41,6 +41,13 @@
   status = 301
   force = false # do not redirect if route is not 404
 
+# DOM landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/dom/"
+  to = "https://testing-library.com/docs/dom-testing-library/intro"
+  status = 301
+  force = true
+
 # React landing page to home page
 [[redirects]]
   from = "https://testing-library.com/react/"
