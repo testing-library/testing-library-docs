@@ -14,7 +14,7 @@ In short, Vue Testing Library does three things:
 
 1. Re-exports query utilities and helpers from `DOM Testing Library`.
 2. Hides `@vue/test-utils` methods that are in conflict with Testing Library
-   [Guiding Principle](/docs/guiding-principles).
+   [Guiding Principle](guiding-principles.md).
 3. Tweaks some methods from both sources.
 
 ## Quickstart

@@ -626,7 +626,7 @@ cy.getByTestId('username-input').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> In the spirit of [the guiding principles](#guiding-principles), it is
+> In the spirit of [the guiding principles](guiding-principles.md), it is
 > recommended to use this only after the other queries don't work for your use
 > case. Using data-testid attributes do not resemble how your software is used
 > and should be avoided if possible. That said, they are _way_ better than
