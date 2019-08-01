@@ -101,7 +101,7 @@ describe('App', () => {
     const { container } = render(App, { props: { name: 'world' } })
 
     expect(container.querySelector('h1').innerHTML).toBe('Hello world!')
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })
 ```

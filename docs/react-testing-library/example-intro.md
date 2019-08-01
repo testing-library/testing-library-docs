@@ -127,7 +127,7 @@ expect(getByTestId('greeting-text')).toHaveTextContent('hello there')
 expect(getByTestId('ok-button')).toHaveAttribute('disabled')
 
 // snapshots work great with regular DOM nodes!
-expect(container.firstChild).toMatchSnapshot()
+expect(container).toMatchSnapshot()
 
 // you can also use get a `DocumentFragment`,
 // which is useful if you want to compare nodes across render
