@@ -119,7 +119,7 @@ option to your Jest config:
 // jest.config.js
 module.exports = {
   setupFilesAfterEnv: [
-    'svelte-testing-library/cleanup-after-each',
+    '@testing-library/svelte/cleanup-after-each',
     // ... other setup files ...
   ],
   // ... other options ...
