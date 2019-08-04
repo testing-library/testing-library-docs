@@ -214,6 +214,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Agentkma",
+      "name": "Kevin Anderson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/22228809?v=4",
+      "profile": "https://kevinanderson.codes",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
