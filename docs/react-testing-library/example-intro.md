@@ -150,8 +150,9 @@ export default function Fetch({url}) {
     </div>
     )
 }
-
 ```
+
+```jsx
 expect(axiosMock.get).toHaveBeenCalledTimes(1)
 expect(axiosMock.get).toHaveBeenCalledWith(url)
 expect(getByTestId('greeting-text')).toHaveTextContent('hello there')
