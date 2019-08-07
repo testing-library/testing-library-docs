@@ -3,7 +3,11 @@ module.exports = {
     apostrophe: true,
     '@textlint-rule/no-unmatched-pair': true,
     'common-misspellings': true,
-    'stop-words': true,
-    'write-good': true,
+    'stop-words': {
+      severity: 'warning',
+    },
+    'write-good': {
+      severity: 'warning',
+    },
   },
 }
