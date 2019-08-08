@@ -24,8 +24,8 @@ import '@testing-library/cypress/add-commands';
 
 ## With TypeScript
 
-Typings are defined under @testing-library/cypress/typings, and should be added
-as follows in tsconfig.json:
+Typings are defined under `@testing-library/cypress/typings`, and should be
+added as follows in `tsconfig.json`:
 
 ```json
 {
@@ -35,7 +35,7 @@ as follows in tsconfig.json:
 }
 ```
 
-or if tsconfig.json has a `baseUrl` of `../node_modules` as recommended in the
+or if `tsconfig.json` has a `baseUrl` of `../node_modules` as recommended in the
 official Cypress documentation use:
 
 ```json

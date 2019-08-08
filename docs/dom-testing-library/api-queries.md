@@ -8,29 +8,29 @@ title: Queries
 > `getBy` queries are shown by default in the [query documentation](#queries)
 > below.
 
-### getBy
+### `getBy`
 
 `getBy*` queries return the first matching node for a query, and throw an error
 if no elements match or if more than one match is found (use `getAllBy`
 instead).
 
-### getAllBy
+### `getAllBy`
 
 `getAllBy*` queries return an array of all matching nodes for a query, and throw
 an error if no elements match.
 
-### queryBy
+### `queryBy`
 
 `queryBy*` queries return the first matching node for a query, and return `null`
 if no elements match. This is useful for asserting an element that is not
 present. This throws if more than one match is found (use `queryAllBy` instead).
 
-### queryAllBy
+### `queryAllBy`
 
 `queryAllBy*` queries return an array of all matching nodes for a query, and
 return an empty array (`[]`) if no elements match.
 
-### findBy
+### `findBy`
 
 `findBy*` queries return a promise which resolves when an element is found which
 matches the given query. The promise is rejected if no element is found or if
@@ -42,7 +42,7 @@ to find more than one element, then use `findAllBy`.
 > accept the `waitForElement` options as the last argument. (i.e.
 > `findByText(container, 'text', queryOptions, waitForElementOptions)`)
 
-### findAllBy
+### `findAllBy`
 
 `findAllBy*` queries return a promise which resolves to an array of elements
 when any elements are found which match the given query. The promise is rejected

@@ -120,29 +120,29 @@ const greetingTextNode = await waitForElement(() =>
 
 ### Assert
 
-fetch.js
-
 ```jsx
-import React,{useState} from 'react'
+// fetch.js
+
+import React, {useState} from 'react'
 
 export default function Fetch({url}) {
-  const {greeting, setGreeting} = useState('')
-  const {buttonClicked, setButtonClicked} = useState(false)
-  
+  const { greeting, setGreeting } = useState('')
+  const { buttonClicked, setButtonClicked } = useState(false)
+
   const fetchGreeting = async url => {
     const data = await fetch(url)
-    const {greeting} = data
+    const { greeting } = data
     setGreeting(greeting)
     setButtonClicked(true)
   }
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
-  
+
   return (
     <div>
-      <button 
-        onClick={fetchGreeting} 
-        data-testid ='ok-button' 
+      <button
+        onClick={fetchGreeting}
+        data-testid ='ok-button'
         disabled={buttonClicked}>
           {buttonText}
       </button>

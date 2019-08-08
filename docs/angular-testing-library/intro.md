@@ -15,9 +15,9 @@ npm install --save-dev @testing-library/angular
 
 ## Usage
 
-counter.component.ts
-
 ```typescript
+// counter.component.ts
+
 @Component({
   selector: 'counter',
   template: `
@@ -39,9 +39,9 @@ export class CounterComponent {
 }
 ```
 
-counter.component.spec.ts
-
 ```typescript
+// counter.component.spec.ts
+
 import { render } from '@testing-library/angular'
 import CounterComponent from './counter.component.ts'
 

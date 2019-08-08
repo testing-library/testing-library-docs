@@ -35,7 +35,7 @@ The below examples use
 [`bs-webapi`](https://github.com/reasonml-community/bs-webapi-incubator) to help
 with typings and creating events.
 
-### getByText
+### `getByText`
 
 ```reason
 /* __tests__/example_test.re */

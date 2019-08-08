@@ -48,61 +48,61 @@ See [Which query should I use?](guide-which-query.md)
 | **queryAllBy** | []       | array   | array    | No     |
 
 - **ByLabelText** find by label or aria-label text content
-  - getByLabelText
-  - queryByLabelText
-  - getAllByLabelText
-  - queryAllByLabelText
-  - findByLabelText
-  - findAllByLabelText
+  - `getByLabelText`
+  - `queryByLabelText`
+  - `getAllByLabelText`
+  - `queryAllByLabelText`
+  - `findByLabelText`
+  - `findAllByLabelText`
 - **ByPlaceholderText** find by input placeholder value
-  - getByPlaceholderText
-  - queryByPlaceholderText
-  - getAllByPlaceholderText
-  - queryAllByPlaceholderText
-  - findByPlaceholderText
-  - findAllByPlaceholderText
+  - `getByPlaceholderText`
+  - `queryByPlaceholderText`
+  - `getAllByPlaceholderText`
+  - `queryAllByPlaceholderText`
+  - `findByPlaceholderText`
+  - `findAllByPlaceholderText`
 - **ByText** find by element text content
-  - getByText
-  - queryByText
-  - getAllByText
-  - queryAllByText
-  - findByText
-  - findAllByText
+  - `getByText`
+  - `queryByText`
+  - `getAllByText`
+  - `queryAllByText`
+  - `findByText`
+  - `findAllByText`
 - **ByDisplayValue** find by form element current value
-  - getByDisplayValue
-  - queryByDisplayValue
-  - getAllByDisplayValue
-  - queryAllByDisplayValue
-  - findByDisplayValue
-  - findAllByDisplayValue
+  - `getByDisplayValue`
+  - `queryByDisplayValue`
+  - `getAllByDisplayValue`
+  - `queryAllByDisplayValue`
+  - `findByDisplayValue`
+  - `findAllByDisplayValue`
 - **ByAltText** find by img alt attribute
-  - getByAltText
-  - queryByAltText
-  - getAllByAltText
-  - queryAllByAltText
-  - findByAltText
-  - findAllByAltText
+  - `getByAltText`
+  - `queryByAltText`
+  - `getAllByAltText`
+  - `queryAllByAltText`
+  - `findByAltText`
+  - `findAllByAltText`
 - **ByTitle** find by title attribute or svg title tag
-  - getByTitle
-  - queryByTitle
-  - getAllByTitle
-  - queryAllByTitle
-  - findByTitle
-  - findAllByTitle
+  - `getByTitle`
+  - `queryByTitle`
+  - `getAllByTitle`
+  - `queryAllByTitle`
+  - `findByTitle`
+  - `findAllByTitle`
 - **ByRole** find by aria role
-  - getByRole
-  - queryByRole
-  - getAllByRole
-  - queryAllByRole
-  - findByRole
-  - findAllByRole
+  - `getByRole`
+  - `queryByRole`
+  - `getAllByRole`
+  - `queryAllByRole`
+  - `findByRole`
+  - `findAllByRole`
 - **ByTestId** find by data-testid attribute
-  - getByTestId
-  - queryByTestId
-  - getAllByTestId
-  - queryAllByTestId
-  - findByTestId
-  - findAllByTestId
+  - `getByTestId`
+  - `queryByTestId`
+  - `getAllByTestId`
+  - `queryAllByTestId`
+  - `findByTestId`
+  - `findAllByTestId`
 
 ## Async
 

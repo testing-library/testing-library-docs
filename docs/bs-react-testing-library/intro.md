@@ -44,7 +44,7 @@ _or_
 
 ## Other Dependencies
 
-### bs-platform
+### `bs-platform`
 
 This is what [BuckleScript][bs] uses to compile the [Reason][re] code to JS. If
 it is not in your project you can install it like so:
@@ -53,7 +53,7 @@ it is not in your project you can install it like so:
 npm install --save-dev bs-platform
 ```
 
-### bs-jest
+### `bs-jest`
 
 This is the recommended test runner and is a wrapper around Jest. All of the
 examples here will be using it.
