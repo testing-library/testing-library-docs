@@ -30,7 +30,7 @@
     "linters": {
       "*.js": ["prettier --write", "git add"],
       "../docs/**/*.md": [
-        "npm run lint-docs -- --fix",
+        "textlint --fix",
         "prettier --write --parser=markdown",
         "git add"
       ],
