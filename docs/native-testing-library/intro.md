@@ -45,7 +45,7 @@ like `React Testing Library` are thin layers over `DOM Testing Library`, this
 library needed to have its own base implementation as well as a user-facing API.
 This library uses the
 [react-test-renderer](https://reactjs.org/docs/test-renderer.html), whereas
-`DOM Testing Library` uses ReactDOM and JSDOM. The main philosophy is that you
+`DOM Testing Library` uses ReactDOM and jsdom. The main philosophy is that you
 should find elements that are on the "screen" the way users would. This approach
 is meant to give you confidence that your app is working as a cohesive unit.
 Just like the `DOM Testing Library`, `Native Testing Library`'s primary guiding

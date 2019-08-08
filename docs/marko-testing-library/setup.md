@@ -44,7 +44,7 @@ module.exports = {
 For testing components rendered server side we can omit the `browser` option,
 however ideally you should also set the
 [`testEnvironment option`](https://jestjs.io/docs/en/configuration#testenvironment-string)
-to `node` which will disable loading JSDOM globally.
+to `node` which will disable loading jsdom globally.
 
 **jest.config.js**
 

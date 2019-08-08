@@ -257,7 +257,7 @@ module.exports = {
 }
 ```
 
-_Typescript config needs to be updated as follow:_
+_TypeScript config needs to be updated as follow:_
 
 ```diff
 // tsconfig.json

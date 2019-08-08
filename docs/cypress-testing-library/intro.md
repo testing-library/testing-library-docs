@@ -22,7 +22,7 @@ Add this line to your project's `cypress/support/commands.js`:
 import '@testing-library/cypress/add-commands';
 ```
 
-## With typescript
+## With TypeScript
 
 Typings are defined under @testing-library/cypress/typings, and should be added
 as follows in tsconfig.json:

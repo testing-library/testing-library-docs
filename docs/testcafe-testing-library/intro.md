@@ -11,12 +11,12 @@ testing.
 npm install --save-dev testcafe @testing-library/testcafe
 ```
 
-- [testcafe-testing-library on GitHub][gh]
+- [TestCafe Testing Library on GitHub][gh]
 
 ## Usage
 
 `testcafe-testing-library` provides custom Selectors allowing you to query the
-dom.
+DOM.
 
 Add `testcafe-testing-library` to your test fixture's `beforeEach` hook:
 

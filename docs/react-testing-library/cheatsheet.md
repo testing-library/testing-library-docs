@@ -106,7 +106,7 @@ See [Which query should I use?](guide-which-query.md)
 
 ## Async
 
-See [dom-testing-library Async API](dom-testing-library/api-async.md)
+See [DOM Testing Library Async API](dom-testing-library/api-async.md)
 
 - **wait** (Promise) retry the function within until it stops throwing or times
   out

@@ -42,12 +42,12 @@ with `data-testid`s (which is not bad anyway).
 
 Definitely not. That said, a common reason people don't like the `data-testid`
 attribute is they're concerned about shipping that to production. I'd suggest
-that you probably want some simple E2E tests that run in production on occasion
-to make certain that things are working smoothly. In that case the `data-testid`
-attributes will be very useful. Even if you don't run these in production, you
-may want to run some E2E tests that run on the same code you're about to ship to
-production. In that case, the `data-testid` attributes will be valuable there as
-well.
+that you probably want some simple end-to-end tests that run in production on
+occasion to make certain that things are working smoothly. In that case the
+`data-testid` attributes will be very useful. Even if you don't run these in
+production, you may want to run some end-to-end tests that run on the same code
+you're about to ship to production. In that case, the `data-testid` attributes
+will be valuable there as well.
 
 All that said, if you really don't want to ship `data-testid` attributes, then
 you can use

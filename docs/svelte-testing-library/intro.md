@@ -10,7 +10,7 @@ title: Svelte Testing Library
 npm install --save-dev @testing-library/svelte
 ```
 
-- [svelte-testing-library on GitHub][gh]
+- [Svelte Testing Library on GitHub][gh]
 
 ## Usage
 

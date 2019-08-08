@@ -42,7 +42,7 @@ will work with actual DOM nodes. The utilities this library provides facilitate
 querying the DOM in the same way the user would. Finding for elements by their
 label text (just like a user would), finding links and buttons from their text
 (like a user would). It contains a small targeted API and can get out of your
-way if absolutely needed with some built in escape hatches.
+way if absolutely needed with some built-in escape hatches.
 
 This library encourages your applications to be more accessible and allows you
 to get your tests closer to using your components the way a user will, which

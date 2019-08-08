@@ -153,7 +153,7 @@ Returns whether if a Vue component has been destroyed.
 #### `html()`
 
 An alias for `@vue/test-utils`
-[html](https://vue-test-utils.vuejs.org/api/wrapper/#html).
+[HTML](https://vue-test-utils.vuejs.org/api/wrapper/#html).
 
 #### `emitted()`
 
