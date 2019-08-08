@@ -4,6 +4,7 @@ module.exports = {
     'common-misspellings': true,
     'stop-words': {
       severity: 'warning',
+      exclude: ['ie'],
     },
     'write-good': {
       severity: 'warning',
