@@ -144,7 +144,7 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 #### `unmount()`
 
 An alias for `@vue/test-utils`
-[destroy](https://vue-test-utils.vuejs.org/api/wrapper/#destroy).
+[destroy()](https://vue-test-utils.vuejs.org/api/wrapper/#destroy).
 
 #### `isUnmounted()`
 
@@ -153,17 +153,17 @@ Returns whether if a Vue component has been destroyed.
 #### `html()`
 
 An alias for `@vue/test-utils`
-[HTML](https://vue-test-utils.vuejs.org/api/wrapper/#html).
+[html()](https://vue-test-utils.vuejs.org/api/wrapper/#html).
 
 #### `emitted()`
 
 An alias for `@vue/test-utils`
-[emitted](https://vue-test-utils.vuejs.org/api/wrapper/#emitted).
+[emitted()](https://vue-test-utils.vuejs.org/api/wrapper/#emitted).
 
 #### `updateProps(props)`
 
 An alias for `@vue/test-utils`
-[setProps](https://vue-test-utils.vuejs.org/api/wrapper/#setprops).
+[setProps()](https://vue-test-utils.vuejs.org/api/wrapper/#setprops).
 
 It returns a Promise through `wait()`, so you can `await updateProps(...)`.
 
