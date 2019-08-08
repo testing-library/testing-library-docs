@@ -35,7 +35,7 @@ added as follows in `tsconfig.json`:
 }
 ```
 
-or if `tsconfig.json` has a `baseUrl` of `../node_modules` as recommended in the
+Or if `tsconfig.json` has a `baseUrl` of `../node_modules` as recommended in the
 official Cypress documentation use:
 
 ```json

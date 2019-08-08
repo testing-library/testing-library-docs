@@ -8,7 +8,7 @@ title: Cheatsheet
 A short guide to all the exported functions in `React Testing Library`
 
 - **render** `const {/* */} = render(Component)` returns:
-  - all the queries from `DOM Testing Library`, bound to the document so there
+  - All the queries from `DOM Testing Library`, bound to the document so there
     is no need to pass a node as the first argument
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
