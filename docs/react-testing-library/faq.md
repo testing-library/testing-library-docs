@@ -119,7 +119,7 @@ assertions on those as well if you wanted.
 
 [Open full test](example-react-transition-group.md) for the full example.
 
-This looks like more work that shallow rendering (and it is), but it gives you
+This looks like more work than shallow rendering (and it is), but it gives you
 more confidence so long as your mock resembles the thing you're mocking closely
 enough.
 
