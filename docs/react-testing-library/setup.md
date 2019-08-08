@@ -201,8 +201,8 @@ export {
 You can then override and append the new queries via the render function by
 passing a [`queries`](api.md#render-options) option.
 
-If you want to add custom queries globally, you can do this by defining a custom
-render method:
+To add custom queries globally, you can do this by defining a custom render
+method:
 
 ```js
 // test-utils.js
@@ -257,7 +257,7 @@ module.exports = {
 }
 ```
 
-*Typescript config needs to be updated as follow:*
+_Typescript config needs to be updated as follow:_
 
 ```diff
 // tsconfig.json
@@ -271,8 +271,6 @@ module.exports = {
   }
 }
 ```
-
-
 
 ### Jest and Create React App
 

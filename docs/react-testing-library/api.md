@@ -158,8 +158,8 @@ If you don't specify the `baseElement` in the options of `render`, it will
 default to `document.body`.
 
 This is useful when the component you want to test renders something outside the
-container div, e.g. when you want to snapshot test your portal component which
-renders its HTML directly in the body.
+container div, for example when you want to snapshot test your portal component
+which renders its HTML directly in the body.
 
 > Note: the queries returned by the `render` looks into baseElement, so you can
 > use queries to test your portal component without the baseElement.

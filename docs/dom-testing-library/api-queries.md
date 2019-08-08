@@ -670,10 +670,10 @@ automatically normalizes that text. By default, normalization consists of
 trimming whitespace from the start and end of text, and collapsing multiple
 adjacent whitespace characters into a single space.
 
-If you want to prevent that normalization, or provide alternative normalization
-(e.g. to remove Unicode control characters), you can provide a `normalizer`
-function in the options object. This function will be given a string and is
-expected to return a normalized version of that string.
+To prevent that normalization, or provide alternative normalization (for example
+to remove Unicode control characters), you can provide a `normalizer` function
+in the options object. This function will be given a string and is expected to
+return a normalized version of that string.
 
 Note: Specifying a value for `normalizer` _replaces_ the built-in normalization,
 but you can call `getDefaultNormalizer` to obtain a built-in normalizer, either

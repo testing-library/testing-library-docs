@@ -68,8 +68,8 @@ Check the
 [Appearance and Disappearance](https://testing-library.com/docs/guide-disappearance)
 section of the Guide for available methods to test appearance and disappearance.
 
-If you want to check if an element was never rendered, you might want to write
-something like the following:
+To check if an element was never rendered, you might want to write something
+like the following:
 
 ```js
 expect(queryByText('submit')).toBeNull()

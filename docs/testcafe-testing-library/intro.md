@@ -61,10 +61,10 @@ test('getByLabelText', async t => {
 ## Containers
 
 By default the selectors come pre-bound to `document.body`, so no need to
-provide a container. However, if you want to restrict your query using a
-container, you can use `within`. Keep in mind that `within` works using a
-Testcafe `ClientFunction` so you will need to await it, and you can't make
-assertions on it like you can using a `Selector`.
+provide a container. However, to restrict your query using a container, you can
+use `within`. Keep in mind that `within` works using a Testcafe `ClientFunction`
+so you will need to await it, and you can't make assertions on it like you can
+using a `Selector`.
 
 ### Examples using `within`
 
