@@ -14,14 +14,11 @@ import React from 'react'
 import {
   render,
   fireEvent,
-  cleanup,
   waitForElement,
 } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
-
-afterEach(cleanup)
 
 test('loads and displays greeting', async () => {
   const url = '/greeting'
@@ -58,7 +55,6 @@ import React from 'react'
 import {
   render,
   fireEvent,
-  cleanup,
   waitForElement,
 } from '@testing-library/react'
 
@@ -74,9 +70,6 @@ import Fetch from '../fetch'
 ```
 
 ```jsx
-// automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
-
 test('loads and displays greeting', async () => {
   // Arrange
   // Act

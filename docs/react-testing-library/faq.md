@@ -17,7 +17,6 @@ In summary:
 
 ```javascript
 import React from 'react'
-import '@testing-library/react/cleanup-after-each'
 import { render, fireEvent } from '@testing-library/react'
 
 test('change values via the fireEvent.change method', () => {

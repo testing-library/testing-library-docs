@@ -8,7 +8,7 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { Link, Route, Router, Switch } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
@@ -34,8 +34,6 @@ function App() {
 }
 
 // Ok, so here's what your tests might look like
-
-afterEach(cleanup)
 
 // this is a handy function that I would utilize for any component
 // that relies on the router being in context

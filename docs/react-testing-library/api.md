@@ -32,9 +32,8 @@ render(<div />)
 ```
 
 ```jsx
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-afterEach(cleanup)
 
 test('renders a message', () => {
   const { container, getByText } = render(<Greeting />)
@@ -44,11 +43,6 @@ test('renders a message', () => {
   `)
 })
 ```
-
-> Note
->
-> The [cleanup](#cleanup) function should be called between tests to remove the
-> created DOM nodes and keep the tests isolated.
 
 ## `render` Options
 
@@ -256,10 +250,18 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 
 Unmounts React trees that were mounted with [render](#render).
 
+> Please note that this is done automatically if the testing framework you're
+> using supports the `afterEach` global (like mocha, Jest, and Jasmine). If not,
+> you will need to do manual cleanups after each test.
+
+For example, if you're using the [ava](https://github.com/avajs/ava) testing
+framework, then you would need to use the `test.afterEach` hook like so:
+
 ```jsx
 import { cleanup, render } from '@testing-library/react'
+import test from 'ava'
 
-afterEach(cleanup) // <-- add this
+test.afterEach(cleanup)
 
 test('renders into document', () => {
   render(<div />)
@@ -272,11 +274,6 @@ test('renders into document', () => {
 Failing to call `cleanup` when you've called `render` could result in a memory
 leak and tests which are not "idempotent" (which can lead to difficult to debug
 errors in your tests).
-
-**If you don't want to add this to _every single test file_** then we recommend
-that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](./setup) section for guidance on how to
-set up your framework.
 
 ---
 

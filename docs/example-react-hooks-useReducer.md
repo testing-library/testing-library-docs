@@ -57,7 +57,7 @@ based on the reducer state.
 // example.test.js
 
 import React from 'react'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import Example from './example.js'
 
 it('shows success message after confirm button is clicked', () => {
