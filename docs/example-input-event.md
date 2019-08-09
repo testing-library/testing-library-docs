@@ -12,7 +12,7 @@ sidebar_label: Input Event
 
 ```jsx
 import React from 'react'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 class CostInput extends React.Component {
   state = {
@@ -48,8 +48,6 @@ const setup = () => {
     ...utils,
   }
 }
-
-afterEach(cleanup)
 
 test('It should keep a $ in front of the input', () => {
   const { input } = setup()

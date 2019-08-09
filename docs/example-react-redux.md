@@ -65,11 +65,10 @@ Now here's what your test will look like:
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import { initialState, reducer } from './reducer.js'
 import Counter from './counter.js'
 
-afterEach(cleanup)
 
 // this is a handy function that I normally make available for all my tests
 // that deal with connected components.

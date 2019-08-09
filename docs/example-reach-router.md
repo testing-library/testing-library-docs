@@ -5,7 +5,7 @@ title: Reach Router
 
 ```jsx
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import {
   Router,
   Link,
@@ -34,8 +34,6 @@ function App() {
 }
 
 // Ok, so here's what your tests might look like
-
-afterEach(cleanup)
 
 // this is a handy function that I would utilize for any component
 // that relies on the router being in context

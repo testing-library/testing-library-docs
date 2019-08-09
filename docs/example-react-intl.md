@@ -39,7 +39,7 @@ A complete example:
 ```jsx
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, cleanup, getByTestId } from '@testing-library/react'
+import { render, getByTestId } from '@testing-library/react'
 import { IntlProvider, FormattedDate } from 'react-intl'
 import IntlPolyfill from 'intl'
 import 'intl/locale-data/jsonp/pt'
@@ -73,7 +73,6 @@ const renderWithReactIntl = component => {
 }
 
 setupTests()
-afterEach(cleanup)
 
 test('it should render FormattedDate and have a formated pt date', () => {
   const { container } = renderWithReactIntl(<FormatDateView />)

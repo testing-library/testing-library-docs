@@ -10,7 +10,7 @@ sidebar_label: Update Props
 // that your first call created for you.
 
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 let idCounter = 1
 
@@ -25,8 +25,6 @@ class NumberDisplay extends React.Component {
     )
   }
 }
-
-afterEach(cleanup)
 
 test('calling render with the same component on the same container does not remount', () => {
   const { getByTestId, rerender } = render(<NumberDisplay number={1} />)
