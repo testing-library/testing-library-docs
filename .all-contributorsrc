@@ -223,6 +223,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dustinmyers",
+      "name": "Dustin Myers",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/10288477?v=4",
+      "profile": "https://github.com/dustinmyers",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
