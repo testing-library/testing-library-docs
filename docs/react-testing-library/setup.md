@@ -280,6 +280,6 @@ install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
 However, you may choose to skip the auto cleanup by add setting the
 `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'.
 
-```javascript
+```
 RTL_SKIP_AUTO_CLEANUP = 'true'
 ```
