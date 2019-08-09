@@ -281,5 +281,5 @@ However, you may choose to skip the auto cleanup by add setting the
 `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'.
 
 ```
-RTL_SKIP_AUTO_CLEANUP = 'true'
+cross-env RTL_SKIP_AUTO_CLEANUP=true jest
 ```
