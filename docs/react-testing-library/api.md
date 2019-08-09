@@ -275,11 +275,6 @@ Failing to call `cleanup` when you've called `render` could result in a memory
 leak and tests which are not "idempotent" (which can lead to difficult to debug
 errors in your tests).
 
-**If you don't want to add this to _every single test file_** then we recommend
-that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](./setup) section for guidance on how to
-set up your framework.
-
 ---
 
 ## `act`
