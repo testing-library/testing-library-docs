@@ -246,6 +246,38 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 
 ---
 
+## `cleanup`
+
+Unmounts React trees that were mounted with [render](#render).
+
+> Please note that this is done automatically if the testing framework you're
+> using supports the `afterEach` global (like mocha, Jest, and Jasmine). If not,
+> you will need to do manual cleanups after each test.
+
+```jsx
+import { cleanup, render } from '@testing-library/react'
+
+afterEach(cleanup) // <-- add this
+
+test('renders into document', () => {
+  render(<div />)
+  // ...
+})
+
+// ... more tests ...
+```
+
+Failing to call `cleanup` when you've called `render` could result in a memory
+leak and tests which are not "idempotent" (which can lead to difficult to debug
+errors in your tests).
+
+**If you don't want to add this to _every single test file_** then we recommend
+that you configure your test framework to run a file before your tests which
+does this automatically. See the [setup](./setup) section for guidance on how to
+set up your framework.
+
+---
+
 ## `act`
 
 This is a light wrapper around the

@@ -276,9 +276,10 @@ install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
 
 ### Skipping Auto Cleanup
 
-[`Cleanup`](./api#cleanup) is called after each test automatically by default if the testing framework you're using supports the `afterEach` global (like mocha, Jest, and Jasmine).
-However, you may choose to skip the auto cleanup by add setting the
-`RTL_SKIP_AUTO_CLEANUP` env variable to 'true'.
+[`Cleanup`](./api#cleanup) is called after each test automatically by default if
+the testing framework you're using supports the `afterEach` global (like mocha,
+Jest, and Jasmine). However, you may choose to skip the auto cleanup by setting
+the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'.
 
 ```
 cross-env RTL_SKIP_AUTO_CLEANUP=true jest
