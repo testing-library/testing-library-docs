@@ -16,59 +16,6 @@ does not require that you use Jest).
 Adding options to your global test config can simplify the setup and teardown of
 tests in individual files.
 
-### Cleanup
-
-You can ensure [`cleanup`](./api#cleanup) is called after each test and import
-additional assertions by adding it to the setup configuration in Jest.
-
-In Jest 24 and up, add the
-[`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array)
-option to your Jest config:
-
-```javascript
-// jest.config.js
-module.exports = {
-  setupFilesAfterEnv: [
-    '@testing-library/react/cleanup-after-each',
-    // ... other setup files ...
-  ],
-  // ... other options ...
-}
-```
-
-<details>
-
-<summary>Older versions of Jest</summary>
-
-Jest versions 23 and below use the
-[`setupTestFrameworkScriptFile`](https://jestjs.io/docs/en/23.x/configuration#setuptestframeworkscriptfile-string)
-option in your Jest config instead of `setupFilesAfterEnv`. This setup file can
-be anywhere, for example `jest.setup.js` or `./utils/setupTests.js`.
-
-If you are using the default setup from create-react-app, this option is set to
-`src/setupTests.js`. You should create this file if it doesn't exist and put the
-setup code there.
-
-```javascript
-// jest.config.js
-module.exports = {
-  setupTestFrameworkScriptFile: require.resolve('./jest.setup.js'),
-  // ... other options ...
-}
-```
-
-```javascript
-// jest.setup.js
-
-// add some helpful assertions
-import '@testing-library/jest-dom/extend-expect'
-
-// this is basically: afterEach(cleanup)
-import '@testing-library/react/cleanup-after-each'
-```
-
-</details>
-
 ## Custom Render
 
 It's often useful to define a custom render method that includes things like
@@ -257,7 +204,7 @@ module.exports = {
 }
 ```
 
-*Typescript config needs to be updated as follow:*
+_Typescript config needs to be updated as follow:_
 
 ```diff
 // tsconfig.json
@@ -271,8 +218,6 @@ module.exports = {
   }
 }
 ```
-
-
 
 ### Jest and Create React App
 
@@ -328,3 +273,13 @@ mocha --require jsdom-global/register
 Note, depending on the version of Node you're running, you may also need to
 install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
 6).
+
+### Skipping Auto Cleanup
+
+[`Cleanup`](./api#cleanup) is called after each test automatically by default.
+However, you may choose to skip the auto cleanup by add setting the
+RTL_SKIP_AUTO_CLEANUP env variable to 'true'.
+
+```javascript
+RTL_SKIP_AUTO_CLEANUP = 'true'
+```
