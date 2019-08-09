@@ -254,10 +254,14 @@ Unmounts React trees that were mounted with [render](#render).
 > using supports the `afterEach` global (like mocha, Jest, and Jasmine). If not,
 > you will need to do manual cleanups after each test.
 
+For example, if you're using the [ava](https://github.com/avajs/ava) testing
+framework, then you would need to use the `test.afterEach` hook like so:
+
 ```jsx
 import { cleanup, render } from '@testing-library/react'
+import test from 'ava'
 
-afterEach(cleanup) // <-- add this
+test.afterEach(cleanup)
 
 test('renders into document', () => {
   render(<div />)
