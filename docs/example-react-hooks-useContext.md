@@ -1,10 +1,13 @@
-This is a simple example to test a component using the useContext hook. 
+This is a simple example to test a component using the [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext) React hook.
 
+The basic idea is to test your components as they are used by the end users. 
 
-The context object
+Instead of testing the context-providing component separately, your main focus should be testing that the features connected to the context work correctly.
+
 
 ```js
-//context.js
+// Context.js
+
 import React, { createContext } from 'react'
 
 const Context = createContext()
@@ -12,85 +15,67 @@ const Context = createContext()
 export default Context
 ```
 
-the root parent component
-
 ```jsx
-//App.js
-import React, { useState } from 'react'
-import Context from './context'
+// App.js
 
+import React, { useState } from 'react'
+import Context from './Context'
 
 const App = () => {
-  const [state, setState] = useState('Some Text')
+  const [text, setText] = useState('Some Text')
 
   const changeText = () => {
-    setState("Some Other Text")
+    setText('Some Other Text')
   }
 
   return (
-   <h1> Basic Hook useContext</h1>
-     <Context.Provider value={{changeTextProp: changeText,
-                               stateProp: state
-                                 }} >
-        <ChildComponent />
-     </Context.Provider>
-    </div>
+    <Context.Provider value={{ changeText, text }}>
+      <ChildComponent />
+    </Context.Provider>
   )
 }
 
-export default App
 
+export default App
 ```
 
-
-the child component using the context
-
 ```jsx
-//ChildComponent.js
-import React, { useContext } from 'react'
+// ChildComponent.js
 
+import React, { useContext } from 'react'
 import Context from '../context'
 
-const ChildComponent = () => {
+export default ChildComponent = () => {
   const context = useContext(Context)
 
   return (
     <div>
-      <button onClick={context.changeTextProp}>
-          Change Text
-      </button>
-      <p>{context.stateProp}</p>
+      <button onClick={context.changeText}>Change Text</button>
+      <p>{context.text}</p>
     </div>
   )
 }
 
-
 export default ChildComponent
 ```
 
-and the tests. 
-The basic idea is to test your components as they are used. Instead of testing the context-providing component separately, your main focus should be testing that the features connected to the context work correctly.
-
 ```js
-//hooks_context.test.js
+// App.test.js
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ChildComponent from '../childcomponent.js'
-import {render, fireEvent, cleanup} from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
+
+// Notice how the Context file is not even imported
 import App from './App'
 
-import Context from './context'
+test('Context value is updated by child component', () => {
+  const { getByText, getByRole } = render(<App />)
 
-afterEach(cleanup)
+  expect(getByText(/Some/i).textContent).toBe('Some Text')
 
-it('Context value is updated by child component', () => {
+  fireEvent.click(getByRole('button'))
 
-   const { getByText } = render(<App />)
-
-   expect(getByText(/Some/i).textContent).toBe("Some Text")
-
-   fireEvent.click(getByText("Change Text"))
-
-   expect(getByText(/Some/i).textContent).toBe("Some Other Text")
+  expect(getByText(/Some/i).textContent).toBe('Some Other Text')
 })
 ```
