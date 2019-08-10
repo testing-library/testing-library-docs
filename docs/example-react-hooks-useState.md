@@ -10,47 +10,47 @@ This will be a simple example using useState to test a React Hooks functional co
 Here is our component, it is a simple component that changes some text when a user clicks a button: 
 
 ```jsx
+// Counter.js
+
 import React, { useState } from 'react'
 
-const ExampleComponent = (props) => {
-  const [state, setState] = useState("Initial State")
-
-  const changeState = () => {
-    setState("Initial State Changed")
-  }
+function Counter() {
+  const [count, setCount] = useState(0)
 
   return (
     <div>
-      <button onClick={changeState}>
-        State Change Button
+      <p>Times clicked: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
       </button>
-      <p>{state}</p>
     </div>
   )
 }
 
-export default ExampleComponent;
+export default Counter
 ```
 
 now our tests: 
 
 ```js
+// counter.test.js
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ExampleComponent from '../example_component.js'
-import {render, fireEvent, cleanup} from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
+import Counter from '../Counter.js'
 
-afterEach(cleanup)
+test('increments value on click', () => {
+  const { getByText } = render(<Counter />)
 
-it('Text in state is changed when button is clicked', () => {
-    const { getByText } = render(<ExampleComponent />);
+  getByText('Times clicked: 0')
 
-    expect(getByText(/Initial/i).textContent).toBe("Initial State")
+  const button = getByText('Click me')
+  fireEvent.click(button)
+  fireEvent.click(button)
 
-    fireEvent.click(getByText("State Change Button"))
-
-    expect(getByText(/Initial/i).textContent).toBe("Initial State Changed")
- })
+  getByText('Times clicked: 2')
+})
 ```
 
 ### Arrange:
