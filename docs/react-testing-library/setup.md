@@ -305,5 +305,5 @@ mocha -r @testing-library/react/dont-cleanup-after-each
 ```
 
 Alternatively, you could import `@testing-library/react/pure` in all your
-tests that you don't want the cleanup to be setup and the `afterEach` wont
+tests that you don't want the `cleanup` to run and the `afterEach` won't
 be setup automatically.
