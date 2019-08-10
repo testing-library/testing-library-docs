@@ -285,3 +285,25 @@ the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with
 ```
 cross-env RTL_SKIP_AUTO_CLEANUP=true jest
 ```
+
+To make this even easier, you can also simply import
+`@testing-library/react/dont-cleanup-after-each` which will do the same thing.
+Just make sure you do this before importing `@testing-library/react`. You could
+do this with Jest's `setupFiles` configuration:
+
+```js
+{
+  // ... other jest config
+  setupFiles: ['@testing-library/react/dont-cleanup-after-each']
+}
+```
+
+Or with mocha's `-r` flag:
+
+```
+mocha -r @testing-library/react/dont-cleanup-after-each
+```
+
+Alternatively, you could import `@testing-library/react/pure` in all your
+tests that you don't want the `cleanup` to run and the `afterEach` won't
+be setup automatically.
