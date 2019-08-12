@@ -83,7 +83,7 @@ a {
 
 .tabs .nav-tabs > div.active {
   border-bottom: none;
-  background: #F0F0F0; /* same as code block */
+  background: #f0f0f0; /* same as code block */
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
@@ -93,7 +93,7 @@ a {
 }
 
 details > summary {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 /* Responsive */
@@ -122,4 +122,53 @@ details > summary {
 }
 
 @media only screen and (min-width: 1500px) {
+}
+
+/* codefund ads */
+#codefund-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  padding-bottom: 15px;
+  height: 155px;
+  font-size: 12px;
+  z-index: 1;
+}
+
+#codefund-container #codefund {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* mobile */
+@media (max-width: 624px) {
+  #codefund-container #cf {
+    width: auto !important;
+  }
+  #codefund-container .cf-img-wrapper {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+/* tablet */
+@media (min-width: 625px) {
+  #codefund-container {
+    float: right;
+    width: 165px;
+    padding-left: 25px;
+    height: auto;
+  }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  #codefund-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    height: auto;
+  }
 }
