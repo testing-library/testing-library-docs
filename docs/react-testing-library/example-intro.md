@@ -4,132 +4,78 @@ title: Example
 sidebar_label: Example
 ---
 
-## Full Example
 
-See the following sections for a detailed breakdown of the test
+## React Hooks useState
+
+This will be a simple example using useState to test a React Hooks functional component.
+
+Here is our component, it is a simple component that changes some text when a user clicks a button: 
 
 ```jsx
-// __tests__/fetch.test.js
-import React from 'react'
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement,
-} from '@testing-library/react'
-import 'jest-dom/extend-expect'
-import axiosMock from 'axios'
-import Fetch from '../fetch'
+// Counter.js
 
-afterEach(cleanup)
+import React, { useState } from 'react'
 
-test('loads and displays greeting', async () => {
-  const url = '/greeting'
-  const { getByText, getByTestId } = render(<Fetch url={url} />)
+function Counter() {
+  const [count, setCount] = useState(0)
 
-  axiosMock.get.mockResolvedValueOnce({
-    data: { greeting: 'hello there' },
-  })
-
-  fireEvent.click(getByText('Load Greeting'))
-
-  const greetingTextNode = await waitForElement(() =>
-    getByTestId('greeting-text')
+  return (
+    <div>
+      <p>Times clicked: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
   )
+}
 
-  expect(axiosMock.get).toHaveBeenCalledTimes(1)
-  expect(axiosMock.get).toHaveBeenCalledWith(url)
-  expect(getByTestId('greeting-text')).toHaveTextContent('hello there')
-  expect(getByTestId('ok-button')).toHaveAttribute('disabled')
-})
+export default Counter
 ```
 
----
+now our tests: 
 
-## Step-By-Step
+```js
+// counter.test.js
 
-### Imports
-
-```jsx
-// import dependencies
 import React from 'react'
+import ReactDOM from 'react-dom'
+import { render, fireEvent } from '@testing-library/react'
+import Counter from '../Counter.js'
 
-// import react-testing methods
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement,
-} from '@testing-library/react'
+test('increments value on click', () => {
+  const { getByText } = render(<Counter />)
 
-// add custom jest matchers from jest-dom
-import 'jest-dom/extend-expect'
+  getByText('Times clicked: 0')
 
-// the axios mock is in __mocks__/
-// see https://jestjs.io/docs/en/manual-mocks
-import axiosMock from 'axios'
+  const button = getByText('Click me')
+  fireEvent.click(button)
+  fireEvent.click(button)
 
-// the component to test
-import Fetch from '../fetch'
-```
-
-```jsx
-// automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
-
-test('loads and displays greeting', async () => {
-  // Arrange
-  // Act
-  // Assert
+  getByText('Times clicked: 2')
 })
 ```
 
-### Arrange
+### Arrange:
+Here we first check to see if the text of "Initial State" is present, which is our default state. 
 
-The [`render`](./api#render) method renders a React element into the DOM and
-returns utility functions for testing the component.
+### Act: 
+We click the button that should change the text to "Initial State Changed". 
 
-```jsx
-const url = '/greeting'
-const { getByText, getByTestId, container, asFragment } = render(
-  <Fetch url={url} />
-)
-```
+### Assert:
+We check if the new text is "Initial State Changed"
 
-### Act
+<br />
+This is keeping with the guiding principle of not testing implementation details and testing the app based on how the end user will interact with it. 
 
-The [`fireEvent`](dom-testing-library/api-events.md) method allows you to fire
-events to simulate user actions.
+The end user will see the text of "Initial State" so this is how we query for it. 
 
-```jsx
-axiosMock.get.mockResolvedValueOnce({
-  data: { greeting: 'hello there' },
-})
+The end user will see the text on the button before clicking it, so this is how we should get and click the button. 
 
-fireEvent.click(getByText('Load Greeting'))
+Finally the end user will see the new state text on their screen, so this is how we should query for it. 
 
-// Wait until the mocked `get` request promise resolves and
-// the component calls setState and re-renders.
-// `waitForElement` waits until the callback doesn't throw an error
+We are not calling the changeState() function because this is an implementation detail, 
+the end user does not know or care what the name of our function is. 
 
-const greetingTextNode = await waitForElement(() =>
-  // getByTestId throws an error if it cannot find an element
-  getByTestId('greeting-text')
-)
-```
+If the text changes in the button for example we will have to rewrite our tests, because this means what the
+end user will see and interact with has also changed. 
 
-### Assert
-
-```jsx
-expect(axiosMock.get).toHaveBeenCalledTimes(1)
-expect(axiosMock.get).toHaveBeenCalledWith(url)
-expect(getByTestId('greeting-text')).toHaveTextContent('hello there')
-expect(getByTestId('ok-button')).toHaveAttribute('disabled')
-
-// snapshots work great with regular DOM nodes!
-expect(container.firstChild).toMatchSnapshot()
-
-// you can also use get a `DocumentFragment`,
-// which is useful if you want to compare nodes across render
-expect(asFragment()).toMatchSnapshot()
-```
