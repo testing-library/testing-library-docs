@@ -154,7 +154,7 @@ expect(getByTestId('ok-button')).toHaveAttribute('disabled')
 // snapshots work great with regular DOM nodes!
 expect(container).toMatchInlineSnapshot(`
   <div>
-    <button disabled >Ok</button>
+    <button disabled>Ok</button>
     <h1>hello there</h1>
   </div>
 `)
