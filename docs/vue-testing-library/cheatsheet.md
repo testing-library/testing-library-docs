@@ -46,7 +46,7 @@ A short guide to all the exported functions in `Vue Testing Library`.
 the string "Username", and will return the associated `input`. In case of not
 finding any, or finding more than one, it will throw an error.
 
-`queryAllByRole('nav')` will asynchronously look for all elements with a
+`queryAllByRole('nav')` will synchronously look for all elements with a
 `role="nav"` attribute, and return an array with the results (or an empty array
 if no results were found).
 
@@ -54,9 +54,9 @@ For more information, see [Which query should I use?](guide-which-query.md).
 
 ## Async utilities
 
-- **wait** (Promise) retry function within until it stops throwing or times out
+- **wait** (Promise) retry function within until it stops throwing or times out.
 - **waitForElement** (Promise) retry function or array of functions and return
-  the result
+  the result.
 - `findBy` and `findAllBy` queries are async and retry until either a timeout or
   if the query returns successfully; they wrap `waitForElement`.
 
