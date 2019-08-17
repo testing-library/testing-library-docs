@@ -24,24 +24,13 @@ import '@testing-library/cypress/add-commands';
 
 ## With typescript
 
-Typings are defined under @testing-library/cypress/typings, and should be added
-as follows in tsconfig.json:
+Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
+and should be added as follows in `tsconfig.json`:
 
 ```json
 {
   "compilerOptions": {
-    "types": ["cypress", "../@testing-library/cypress/typings"]
-  }
-}
-```
-
-or if tsconfig.json has a `baseUrl` of `../node_modules` as recommended in the
-official Cypress documentation use:
-
-```json
-{
-  "compilerOptions": {
-    "types": ["cypress", "@testing-library/cypress/typings"]
+    "types": ["cypress", "@types/testing-library__cypress"]
   }
 }
 ```
@@ -52,8 +41,7 @@ and `queryAllBy` commands.
 
 ## Examples
 
-You can find
-[all Library definitions here](https://github.com/testing-library/cypress-testing-library/blob/master/typings/index.d.ts).
+You can find [all Library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
 
 To show some simple examples (from
 [https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
