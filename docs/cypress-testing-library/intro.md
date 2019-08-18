@@ -24,13 +24,14 @@ import '@testing-library/cypress/add-commands';
 
 ## With typescript
 
-Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
-and should be added as follows in `tsconfig.json`:
+Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress).
+It is a dependency for this library, so it can be added as
+follows in `tsconfig.json`:
 
 ```json
 {
   "compilerOptions": {
-    "types": ["cypress", "@types/testing-library__cypress"]
+    "types": ["cypress", "@testing-library/cypress"]
   }
 }
 ```
