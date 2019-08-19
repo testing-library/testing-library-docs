@@ -18,6 +18,7 @@ npm install --save-dev testcafe @testing-library/testcafe
 `testcafe-testing-library` provides custom Selectors allowing you to query the
 dom.
 
+### for v2.x:
 Add `testcafe-testing-library` to your test fixture's `beforeEach` hook:
 
 ```javascript
@@ -28,6 +29,15 @@ import {
 
 fixture`selectors`.beforeEach(addTestcafeTestingLibrary)
   .page`http://localhost:13370`
+```
+
+### for v3.x+ (requires testcafe 1.4.0 or greater)
+`addTestcafeTestingLibrary` was removed in 3.x, instead you can now inject clientScripts as of testcafe 1.4.0.  For now, the path has to be used, but this will hopefully be changed to a module soon (pending a change to testcafe to support `umd:main` in package.json.
+
+```json
+  "clientScripts": [
+    "./node_modules/@testing-library/dom/dist/@testing-library/dom.umd.js"
+  ],
 ```
 
 You can now import & use `getBy`, `getAllBy`, `queryBy` and `queryAllBy`
