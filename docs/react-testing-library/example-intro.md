@@ -134,7 +134,7 @@ export default function Fetch({url}) {
   return (
     <div>
       <button 
-        onClick={fetchGreeting} 
+        onClick={()=>fetchGreeting(url)} 
         data-testid ='ok-button' 
         disabled={buttonClicked}>
           {buttonText}
