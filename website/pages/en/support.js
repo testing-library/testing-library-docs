@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 const React = require('react')
 
 const CompLibrary = require('../../core/CompLibrary.js')
@@ -17,7 +10,7 @@ const ExternalLink = props => (
 )
 const Link = props => <a {...props} />
 
-function Help(props) {
+function Support(props) {
   const { config: siteConfig, language = '' } = props
   const { baseUrl, docsUrl } = siteConfig
   const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
@@ -26,7 +19,7 @@ function Help(props) {
 
   const supportLinks = [
     {
-      content: `Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/react-testing-library)`,
+      content: `Answer a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/react-testing-library)`,
       title: 'Stack Overflow',
     },
     {
@@ -39,15 +32,15 @@ function Help(props) {
       title: 'Discord',
     },
     {
-      content: `Stay up to date by following the [blog](${props.config.baseUrl}blog)`,
+      content: `Write your own blog posts and tutorials and add them to the [learning material](${props.config.baseUrl}docs/learning) page`,
       title: 'Blog',
     },
     {
-      content: `Browse [Learning Material](/docs/learning)`,
-      title: 'Resources',
+      content: `Contribute to [the project recipes](${props.config.baseUrl}docs/recipes)`,
+      title: 'Recipes',
     },
     {
-      content: `Get support on [GitHub](${props.config.repoUrl})`,
+      content: `Watch the [GitHub repo](${props.config.repoUrl}) and respond to issues and PRs`,
       title: 'GitHub',
     },
   ]
@@ -57,8 +50,16 @@ function Help(props) {
       <Container className="mainContainer documentContainer postContainer helpContainer">
         <div className="post">
           <header className="postHeader">
-            <h1>Need help?</h1>
+            <h1>Want to help?</h1>
           </header>
+          <p>
+            Thanks! The Testing Library maintainers are happy to maintain this
+            library along with you, the community. We aren't looking for
+            funding, but we need everyone to pitch in to make this project and
+            community successful and improve tests for everyone in the long run.
+            With that in mind, here are a few ways you can help support this
+            effort.
+          </p>
           <GridBlock
             contents={supportLinks}
             layout="threeColumn"
@@ -67,11 +68,15 @@ function Help(props) {
           <section>
             <h2 align="center">Buy a Course</h2>
             <p align="center">
-              Learn how to test JavaScript with{' '}
               <ExternalLink href="https://kentcdodds.com">
                 Kent C. Dodds
               </ExternalLink>
-              , the creator of Testing Library, on{' '}
+              , the creator of Testing Library, was able to create and maintain
+              Testing Library packages thanks to license purchases of his
+              TestingJavaScript.com course.
+            </p>
+            <p align="center">
+              You can support Kent buy purchasing a license to
               <ExternalLink href="https://testingjavascript.com">
                 TestingJavaScript.com
               </ExternalLink>
@@ -92,4 +97,4 @@ function Help(props) {
   )
 }
 
-module.exports = Help
+module.exports = Support
