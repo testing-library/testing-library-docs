@@ -122,7 +122,7 @@ export default function Fetch({url}) {
   const {greeting, setGreeting} = useState('')
   const {buttonClicked, setButtonClicked} = useState(false)
   
-  const fetchGreeting = async url => {
+  const fetchGreeting = async () => {
     const data = await fetch(url)
     const {greeting} = data
     setGreeting(greeting)
