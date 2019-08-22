@@ -4,12 +4,9 @@ title: Example
 sidebar_label: Example
 ---
 
-
 ## Simple Example
 
-This will be a simple example using useState to test a React Hooks functional component.
-
-Here is our component, it is a simple component that changes some text when a user clicks a button: 
+Here is our first example, a simple component that changes a counter text when a user clicks a button:
 
 ```jsx
 // Counter.js
@@ -32,22 +29,30 @@ function Counter() {
 export default Counter
 ```
 
-now our tests: 
-
 ```js
-// counter.test.js
+// Counter.test.js
 
+// import dependencies
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+// import react-testing methods
 import { render, fireEvent } from '@testing-library/react'
+
+// import the component to test
 import Counter from '../Counter.js'
 
 test('increments value on click', () => {
+  // The render method returns a collection of utilities to query your component
   const { getByText } = render(<Counter />)
 
+  // getByText returns the first matching node for a query, and throws an error
+  // if no elements match or if more than one match is found
   getByText('Times clicked: 0')
 
   const button = getByText('Click me')
+
+  // Fires a click DOM event to the specified target
   fireEvent.click(button)
   fireEvent.click(button)
 
@@ -55,34 +60,12 @@ test('increments value on click', () => {
 })
 ```
 
-### Arrange:
-Here we first check to see if the text of "Initial State" is present, which is our default state. 
-
-### Act: 
-We click the button that should change the text to "Initial State Changed". 
-
-### Assert:
-We check if the new text is "Initial State Changed"
-
-<br />
-This is keeping with the guiding principle of not testing implementation details and testing the app based on how the end user will interact with it. 
-
-The end user will see the text of "Initial State" so this is how we query for it. 
-
-The end user will see the text on the button before clicking it, so this is how we should get and click the button. 
-
-Finally the end user will see the new state text on their screen, so this is how we should query for it. 
-
-We are not calling the changeState() function because this is an implementation detail, 
-the end user does not know or care what the name of our function is. 
-
-If the text changes in the button for example we will have to rewrite our tests, because this means what the
-end user will see and interact with has also changed. 
+Notice how we are not calling the `setCount()` function or any other internal component feature. They are implementation details: the end user does not know or care what the name of our functions are.
 
 
-## Full Example
+## A more complex example
 
-See the following sections for a detailed breakdown of the test
+See the following sections for a detailed breakdown of a more complex test.
 
 ```jsx
 // __tests__/fetch.test.js
@@ -119,9 +102,9 @@ test('loads and displays greeting', async () => {
 
 ---
 
-## Step-By-Step
+### Step-By-Step
 
-### Imports
+#### Imports
 
 ```jsx
 // import dependencies
@@ -153,7 +136,7 @@ test('loads and displays greeting', async () => {
 })
 ```
 
-### Arrange
+#### Arrange
 
 The [`render`](./api#render) method renders a React element into the DOM and
 returns utility functions for testing the component.
@@ -165,7 +148,7 @@ const { getByText, getByTestId, container, asFragment } = render(
 )
 ```
 
-### Act
+#### Act
 
 The [`fireEvent`](dom-testing-library/api-events.md) method allows you to fire
 events to simulate user actions.
@@ -187,11 +170,12 @@ const greetingTextNode = await waitForElement(() =>
 )
 ```
 
-### Assert
+#### Assert
 
-fetch.js
 
 ```jsx
+// fetch.js
+
 import React,{useState} from 'react'
 
 export default function Fetch({url}) {
