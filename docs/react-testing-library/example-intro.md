@@ -4,7 +4,7 @@ title: Example
 sidebar_label: Example
 ---
 
-## Simple Example
+## Basic Example
 
 Here is our first example, a simple component that changes a counter text when a user clicks a button:
 
