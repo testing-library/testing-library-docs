@@ -13,8 +13,8 @@ npm install --save-dev @testing-library/dom
 
 ## Wrappers
 
-If you are using a framework such as React, you will likely want to install the
-wrapper:
+If you are using a framework or library such as React, you will likely want to
+install the wrapper:
 
 - [React Testing Library](react-testing-library/intro.md)
 - [Cypress Testing Library](cypress-testing-library/intro.md)
