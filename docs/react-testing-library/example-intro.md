@@ -6,7 +6,8 @@ sidebar_label: Example
 
 ## Basic Example
 
-Here is our first example, a simple component that changes a counter text when a user clicks a button:
+Here is our first example, a simple component that changes a counter text when a
+user clicks a button:
 
 ```jsx
 // Counter.js
@@ -19,9 +20,7 @@ function Counter() {
   return (
     <div>
       <p>Times clicked: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   )
 }
@@ -60,8 +59,9 @@ test('increments value on click', () => {
 })
 ```
 
-Notice how we are not calling the `setCount()` function or any other internal component feature. They are implementation details: the end user does not know or care what the name of our functions are.
-
+Notice how we are not calling the `setCount()` function or any other internal
+component feature. They are implementation details: the end user does not know
+or care what the name of our functions are.
 
 ## A more complex example
 
@@ -70,11 +70,7 @@ See the following sections for a detailed breakdown of a more complex test.
 ```jsx
 // __tests__/fetch.test.js
 import React from 'react'
-import {
-  render,
-  fireEvent,
-  waitForElement,
-} from '@testing-library/react'
+import { render, fireEvent, waitForElement } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
@@ -111,11 +107,7 @@ test('loads and displays greeting', async () => {
 import React from 'react'
 
 // import react-testing methods
-import {
-  render,
-  fireEvent,
-  waitForElement,
-} from '@testing-library/react'
+import { render, fireEvent, waitForElement } from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom/extend-expect'
@@ -172,7 +164,6 @@ const greetingTextNode = await waitForElement(() =>
 
 #### Assert
 
-
 ```jsx
 // fetch.js
 
@@ -181,7 +172,7 @@ import React,{useState} from 'react'
 export default function Fetch({url}) {
   const {greeting, setGreeting} = useState('')
   const {buttonClicked, setButtonClicked} = useState(false)
-  
+
   const fetchGreeting = async url => {
     const data = await fetch(url)
     const {greeting} = data
@@ -190,12 +181,12 @@ export default function Fetch({url}) {
   }
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
-  
+
   return (
     <div>
-      <button 
-        onClick={fetchGreeting} 
-        data-testid ='ok-button' 
+      <button
+        onClick={fetchGreeting}
+        data-testid ='ok-button'
         disabled={buttonClicked}>
           {buttonText}
       </button>
@@ -223,5 +214,3 @@ expect(container).toMatchInlineSnapshot(`
 // which is useful if you want to compare nodes across render
 expect(asFragment()).toMatchSnapshot()
 ```
-
-
