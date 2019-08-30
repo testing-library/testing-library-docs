@@ -66,6 +66,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://kevinanderson.codes"><img src="https://avatars2.githubusercontent.com/u/22228809?v=4" width="100px;" alt="Kevin Anderson"/><br /><sub><b>Kevin Anderson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Agentkma" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dustinmyers"><img src="https://avatars0.githubusercontent.com/u/10288477?v=4" width="100px;" alt="Dustin Myers"/><br /><sub><b>Dustin Myers</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dustinmyers" title="Documentation">📖</a></td>
     <td align="center"><a href="http://vojta.io"><img src="https://avatars2.githubusercontent.com/u/25487857?v=4" width="100px;" alt="Vojta Holik"/><br /><sub><b>Vojta Holik</b></sub></a><br /><a href="#design-vojtaholik" title="Design">🎨</a></td>
+    <td align="center"><a href="http://tech.agilitynerd.com/"><img src="https://avatars3.githubusercontent.com/u/184171?v=4" width="100px;" alt="Steve Schwarz"/><br /><sub><b>Steve Schwarz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=saschwarz" title="Documentation">📖</a></td>
   </tr>
 </table>
 
