@@ -242,6 +242,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "saschwarz",
+      "name": "Steve Schwarz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/184171?v=4",
+      "profile": "http://tech.agilitynerd.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
