@@ -1,7 +1,7 @@
 ---
 id: intro
 title: Introduction
-sidebar_label: Intro
+sidebar_label: Introduction
 ---
 
 Native Testing Library is a testing library for **React Native** inspired by
