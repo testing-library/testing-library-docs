@@ -1,6 +1,7 @@
 ---
 id: intro
 title: Intro
+sidebar_label: Introduction
 ---
 
 Vue Testing Library builds on top of `DOM Testing Library` by adding APIs for
