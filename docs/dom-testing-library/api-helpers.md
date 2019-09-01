@@ -77,7 +77,7 @@ for other popular assertion libraries:
 
 - [chai-dom](https://github.com/nathanboktae/chai-dom)
 
-If you're aware of some other alternatives, please [make a pull request][prs]
+If you're aware of some other alternatives, please [make a pull request](https://github.com/testing-library/testing-library-docs/pulls)
 and add it here!
 
 ## `getNodeText`
