@@ -62,7 +62,7 @@ module.exports = {
 
 ## `buildQueries`
 
-The `buildQueries` helper allows you to create custom queres with all standard
+The `buildQueries` helper allows you to create custom queries with all standard
 [variants](api-queries.md) of queries in testing-library.
 
 See the
