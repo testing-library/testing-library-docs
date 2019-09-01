@@ -18,10 +18,6 @@ Configuration options:
 `testIdAttribute`: The attribute used by `getByTestId` and related queries.
 Defaults to `data-testid`. See [`getByTestId`](#getbytestid).
 
-```html
-
-```
-
 <!--DOCUSAURUS_CODE_TABS-->
 
 <!--Native-->
