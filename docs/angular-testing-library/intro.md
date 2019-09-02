@@ -7,7 +7,7 @@ sidebar_label: Introduction
 [`Angular Testing Library`](https://github.com/testing-library/angular-testing-library)
 builds on top of
 [`DOM Testing Library`](https://github.com/testing-library/dom-testing-library)
-by adding APIs for working with React components.
+by adding APIs for working with Angular components.
 
 ```bash
 npm install --save-dev @testing-library/angular
