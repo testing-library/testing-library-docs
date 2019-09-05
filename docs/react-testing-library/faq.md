@@ -54,7 +54,7 @@ the `change` event, React thinks that the value hasn't actually been changed.
 
 This works for Simulate because they use internal APIs to fire special simulated
 events. With React Testing Library, we try to avoid implementation details to
-make your tests more resiliant.
+make your tests more resilient.
 
 So we have it worked out for the change event handler to set the property for
 you in a way that's not trackable by React. This is why you must pass the value
