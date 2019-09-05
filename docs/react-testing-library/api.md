@@ -141,7 +141,7 @@ The containing DOM node of your rendered React Element (rendered using
 > Fragment itself.
 
 > 🚨 If you find yourself using `container` to query for rendered elements then
-> you should reconsider! The other queries are designed to be more resiliant to
+> you should reconsider! The other queries are designed to be more resilient to
 > changes that will be made to the component you're testing. Avoid using
 > `container` to query for elements!
 
