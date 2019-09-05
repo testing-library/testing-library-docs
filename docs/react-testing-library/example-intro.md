@@ -117,13 +117,15 @@ fetch.js
 
 ```jsx
 import React,{useState} from 'react'
+import axios from 'axios'
 
 export default function Fetch({url}) {
-  const {greeting, setGreeting} = useState('')
-  const {buttonClicked, setButtonClicked} = useState(false)
+  const [greeting, setGreeting] = useState('')
+  const [buttonClicked, setButtonClicked] = useState(false)
   
   const fetchGreeting = async () => {
-    const data = await fetch(url)
+    const response = await axios.get(url)
+    const data = response.data
     const {greeting} = data
     setGreeting(greeting)
     setButtonClicked(true)
@@ -139,7 +141,7 @@ export default function Fetch({url}) {
         disabled={buttonClicked}>
           {buttonText}
       </button>
-      {greeting ? <h1 data-testid ='greeting-text'>{greeting}</h1>) : null}
+      {greeting ? <h1 data-testid ='greeting-text'>{greeting}</h1> : null}
     </div>
     )
 }
@@ -154,8 +156,19 @@ expect(getByTestId('ok-button')).toHaveAttribute('disabled')
 // snapshots work great with regular DOM nodes!
 expect(container).toMatchInlineSnapshot(`
   <div>
-    <button disabled>Ok</button>
-    <h1>hello there</h1>
+    <div>
+      <button
+        data-testid="ok-button"
+        disabled=""
+      >
+        Ok
+      </button>
+      <h1
+        data-testid="greeting-text"
+      >
+        hello there
+      </h1>
+    </div>
   </div>
 `)
 
