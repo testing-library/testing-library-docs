@@ -125,7 +125,7 @@ export default function Fetch({url}) {
   
   const fetchGreeting = async () => {
     const response = await axios.get(url)
-    const data = await response.data
+    const data = response.data
     const {greeting} = data
     setGreeting(greeting)
     setButtonClicked(true)
