@@ -69,6 +69,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://tech.agilitynerd.com/"><img src="https://avatars3.githubusercontent.com/u/184171?v=4" width="100px;" alt="Steve Schwarz"/><br /><sub><b>Steve Schwarz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=saschwarz" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/aayushrajvanshi"><img src="https://avatars0.githubusercontent.com/u/14968551?v=4" width="100px;" alt="Aayush Rajvanshi"/><br /><sub><b>Aayush Rajvanshi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=aayushrajvanshi" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://eugielimpin.com"><img src="https://avatars3.githubusercontent.com/u/431442?v=4" width="100px;" alt="Eugie Limpin"/><br /><sub><b>Eugie Limpin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=eugiellimpin" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
