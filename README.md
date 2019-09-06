@@ -72,6 +72,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://eugielimpin.com"><img src="https://avatars3.githubusercontent.com/u/431442?v=4" width="100px;" alt="Eugie Limpin"/><br /><sub><b>Eugie Limpin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=eugiellimpin" title="Documentation">📖</a></td>
     <td align="center"><a href="https://hsiangyu.com"><img src="https://avatars3.githubusercontent.com/u/7204070?v=4" width="100px;" alt="Kevin"/><br /><sub><b>Kevin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=KevinHu2014" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jennifer-shehane"><img src="https://avatars1.githubusercontent.com/u/1271364?v=4" width="100px;" alt="Jennifer Shehane"/><br /><sub><b>Jennifer Shehane</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jennifer-shehane" title="Documentation">📖</a></td>
   </tr>
 </table>
 
