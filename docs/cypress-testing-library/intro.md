@@ -14,7 +14,7 @@ npm install --save-dev cypress @testing-library/cypress
 
 ## Usage
 
-`Cypress Testing Library` extends Cypress' `cy` command.
+`Cypress Testing Library` extends Cypress's `cy` commands.
 
 Add this line to your project's `cypress/support/commands.js`:
 
@@ -22,7 +22,7 @@ Add this line to your project's `cypress/support/commands.js`:
 import '@testing-library/cypress/add-commands';
 ```
 
-## With typescript
+## With TypeScript
 
 Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
 and should be added as follows in `tsconfig.json`:
@@ -41,7 +41,7 @@ and `queryAllBy` commands.
 
 ## Examples
 
-You can find [all Library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
+You can find [all library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
 
 To show some simple examples (from
 [https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
