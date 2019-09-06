@@ -253,7 +253,7 @@ with the `testEnvironment` set to `jest-environment-jsdom` (which is the default
 configuration with Jest).
 
 `jsdom` is a pure JavaScript implementation of the DOM and browser APIs that
-runs in node. If you're not using Jest and you would like to run your tests in
+runs in Node. If you're not using Jest and you would like to run your tests in
 Node, then you must install jsdom yourself. There's also a package called
 `jsdom-global` which can be used to setup the global environment to simulate the
 browser APIs.
