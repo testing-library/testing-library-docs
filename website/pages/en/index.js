@@ -190,7 +190,7 @@ class Index extends React.Component {
               '[React Testing Library](./docs/react-testing-library/intro)',
           },
           {
-            image: `${baseUrl}img/evergreen-128x128.png`,
+            image: `${baseUrl}img/cypress-128x128.png`,
             imageAlign: 'top',
             title:
               '[Cypress Testing Library](./docs/cypress-testing-library/intro)',
