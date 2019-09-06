@@ -287,6 +287,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "stevetaggart",
+      "name": "Steve Taggart",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11730266?v=4",
+      "profile": "https://github.com/stevetaggart",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
