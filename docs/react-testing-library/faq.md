@@ -195,6 +195,10 @@ the test has already finished. There are 2 approaches to resolve it:
 Generally speaking, approach 1 is preferred since it better matches the expectations
 of a user interacting with your app.
 
+In addition, you may find
+[this blog post](https://kentcdodds.com/blog/write-fewer-longer-tests) helpful as you
+consider how best to write tests that give you confidence and avoid these warnings.
+
 </details>
 
 <!--
