@@ -74,6 +74,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://hsiangyu.com"><img src="https://avatars3.githubusercontent.com/u/7204070?v=4" width="100px;" alt="Kevin"/><br /><sub><b>Kevin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=KevinHu2014" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jennifer-shehane"><img src="https://avatars1.githubusercontent.com/u/1271364?v=4" width="100px;" alt="Jennifer Shehane"/><br /><sub><b>Jennifer Shehane</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jennifer-shehane" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/stevetaggart"><img src="https://avatars3.githubusercontent.com/u/11730266?v=4" width="100px;" alt="Steve Taggart"/><br /><sub><b>Steve Taggart</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=stevetaggart" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://stephensugden.com"><img src="https://avatars3.githubusercontent.com/u/82634?v=4" width="100px;" alt="Stephen Sugden"/><br /><sub><b>Stephen Sugden</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=grncdr" title="Documentation">📖</a></td>
   </tr>
 </table>
 
