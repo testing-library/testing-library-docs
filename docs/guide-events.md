@@ -63,7 +63,7 @@ getting blurred. To simulate this behavior you can simply replace `fireEvent`
 with imperative focus:
 
 ```diff
-- fireEvent.focus(getByText('focus me');
+- fireEvent.focus(getByText('focus me'));
 + getByText('focus me').focus();
 ```
 
