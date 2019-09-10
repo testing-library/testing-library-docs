@@ -186,7 +186,6 @@ This warning is usually caused by an async operation causing an update after
 the test has already finished. There are 2 approaches to resolve it:
 
 1. Wait for the result of the operation in your test by using [wait](https://testing-library.com/docs/dom-testing-library/api-async#wait). For example: `await wait(() => getByText("fetch completed")`.
-[an example in this issue](https://github.com/testing-library/react-testing-library/issues/441#issuecomment-520977388).
 2. Mocking out the asynchronous operation so that it doesn't trigger state updates.
 
 Generally speaking, approach 1 is preferred since it better matches the expectations
