@@ -126,7 +126,7 @@ If you want to make things more like shallow rendering, then you could do
 something more [like this](example-react-transition-group.md).
 
 Learn more about how Jest mocks work from my blog post:
-["But really, what is a JavaScript mock?"](https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d)
+["But really, what is a JavaScript mock?"](https://kentcdodds.com/blog/but-really-what-is-a-javascript-mock)
 
 </details>
 
@@ -185,7 +185,11 @@ snapshotDiff(firstVersion, container.cloneNode(true))
 This warning is usually caused by an async operation causing an update after
 the test has already finished. There are 2 approaches to resolve it:
 
-1. Wait for the result of the operation in your test by using [wait](https://testing-library.com/docs/dom-testing-library/api-async#wait). For example: `await wait(() => getByText("fetch completed")`.
+1. Wait for the result of the operation in your test by using one of
+   [the async utilities](/docs/dom-testing-library/api-async) like
+   [wait](/docs/dom-testing-library/api-async#wait) or a
+   [`find*` query](/docs/dom-testing-library/api-queries#findby). For example:
+   `const userAddress = await findByLabel(/address/i)`.
 2. Mocking out the asynchronous operation so that it doesn't trigger state updates.
 
 Generally speaking, approach 1 is preferred since it better matches the expectations
