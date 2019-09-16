@@ -100,10 +100,10 @@ test('properly handles v-model', async () => {
 ## More examples
 
 You'll find examples of testing with different libraries in
-[the test directory](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__).
+[the test directory](https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__).
 
 Some included are:
 
-- [`vuex`](https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/vuex.js)
-- [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/vue-router.js)
-- [`vee-validate`](https://github.com/testing-library/vue-testing-library/tree/master/tests/__tests__/validate-plugin.js)
+- [`vuex`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js)
+- [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__/vue-router.js)
+- [`vee-validate`](https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__/validate-plugin.js)
