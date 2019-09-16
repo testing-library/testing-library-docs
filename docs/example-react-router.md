@@ -4,6 +4,7 @@ title: React Router
 ---
 
 ```jsx
+// app.js
 import React from 'react'
 import { withRouter } from 'react-router'
 import { Link, Route, Router, Switch } from 'react-router-dom'
@@ -32,11 +33,57 @@ function App() {
     </div>
   )
 }
+```
 
-// Ok, so here's what your tests might look like
+```jsx
+// app.test.js
+import { Router } from 'react-router-dom'
 
-// this is a handy function that I would utilize for any component
-// that relies on the router being in context
+test('full app rendering/navigating', () => {
+  const { container, getByText } = render(
+    <Router>
+      <App />
+    </Router>
+  )
+  // verify page content for expected route
+  // often you'd use a data-testid or role query, but this is also possible
+  expect(container.innerHTML).toMatch('You are home')
+
+  fireEvent.click(getByText(/about/i))
+
+  // check that the content changed to the new page
+  expect(container.innerHTML).toMatch('You are on the about page')
+})
+
+test('landing on a bad page shows 404 page', () => {
+  window.history.pushState({}, '', '/some/bad/route');
+  const { getByRole } = render(
+    <Router>
+      <App />
+    </Router>
+  )
+  expect(getByRole('heading')).toHaveTextContent('404 Not Found')
+})
+
+test('rendering a component that uses withRouter', () => {
+  const route = '/some-route'
+  window.history.pushState({}, '', route);
+  const { getByTestId } = render(
+    <Router>
+      <LocationDisplay />
+    </Router>
+  )
+  expect(getByTestId('location-display').textContent).toBe(route)
+})
+```
+
+### Reducing boilerplate
+
+If you find yourself adding Router components to your tests a lot, you may want to create
+a helper function that wraps around `render`. 
+
+```jsx
+// test utils file
 function renderWithRouter(
   ui,
   {
@@ -52,22 +99,14 @@ function renderWithRouter(
     history,
   }
 }
+```
 
-test('full app rendering/navigating', () => {
-  const { container, getByText } = renderWithRouter(<App />)
-  // normally I'd use a data-testid, but just wanted to show this is also possible
-  expect(container.innerHTML).toMatch('You are home')
-  const leftClick = { button: 0 }
-  fireEvent.click(getByText(/about/i), leftClick)
-  // normally I'd use a data-testid, but just wanted to show this is also possible
-  expect(container.innerHTML).toMatch('You are on the about page')
-})
-
+```jsx
+// app.test.js
 test('landing on a bad page', () => {
   const { container } = renderWithRouter(<App />, {
     route: '/something-that-does-not-match',
   })
-  // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(container.innerHTML).toMatch('No match')
 })
 
@@ -77,3 +116,4 @@ test('rendering a component that uses withRouter', () => {
   expect(getByTestId('location-display').textContent).toBe(route)
 })
 ```
+
