@@ -56,7 +56,7 @@ test('full app rendering/navigating', () => {
 })
 
 test('landing on a bad page shows 404 page', () => {
-  window.history.pushState({}, '', '/some/bad/route');
+  window.history.pushState({}, '', '/some/bad/route')
   const { getByRole } = render(
     <Router>
       <App />
@@ -67,7 +67,7 @@ test('landing on a bad page shows 404 page', () => {
 
 test('rendering a component that uses withRouter', () => {
   const route = '/some-route'
-  window.history.pushState({}, '', route);
+  window.history.pushState({}, '', route)
   const { getByTestId } = render(
     <Router>
       <LocationDisplay />
@@ -77,7 +77,7 @@ test('rendering a component that uses withRouter', () => {
 })
 ```
 
-### Reducing boilerplate
+## Reducing boilerplate
 
 If you find yourself adding Router components to your tests a lot, you may want to create
 a helper function that wraps around `render`. 
