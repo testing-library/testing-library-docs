@@ -79,7 +79,17 @@ test('rendering a component that uses withRouter', () => {
 
 ## Reducing boilerplate
 
-If you find yourself adding Router components to your tests a lot, you may want to create
+1. You can use the `wrapper` option to wrap `Router` around the component you want to render:
+
+```jsx
+test('full app rendering/navigating', () => {
+  const { container, getByText } = render(<App />, {wrapper: Router})
+  // verify page content for expected route
+  expect(getByRole('heading')).toMatch('Home')
+})
+```
+
+2. If you find yourself adding Router components to your tests a lot, you may want to create
 a helper function that wraps around `render`. 
 
 ```jsx
