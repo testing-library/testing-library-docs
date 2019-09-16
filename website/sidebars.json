@@ -33,7 +33,7 @@
       },
       {
         "type": "subcategory",
-        "label": "ReasonReact Testing Library",
+        "label": "Reason Testing Library",
         "ids": [
           "bs-react-testing-library/intro",
           "bs-react-testing-library/examples"
