@@ -8,7 +8,6 @@ title: React Router
 import React from 'react'
 import { withRouter } from 'react-router'
 import { Link, Route, Router, Switch } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
 import { render, fireEvent } from '@testing-library/react'
 
 const About = () => <div>You are on the about page</div>
@@ -38,10 +37,12 @@ function App() {
 ```jsx
 // app.test.js
 import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 
 test('full app rendering/navigating', () => {
+  const history = createMemoryHistory()
   const { container, getByText } = render(
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   )
@@ -56,7 +57,8 @@ test('full app rendering/navigating', () => {
 })
 
 test('landing on a bad page shows 404 page', () => {
-  window.history.pushState({}, '', '/some/bad/route')
+  const history = createMemoryHistory()
+  history.push('/some/bad/route')
   const { getByRole } = render(
     <Router>
       <App />
@@ -79,11 +81,13 @@ test('rendering a component that uses withRouter', () => {
 
 ## Reducing boilerplate
 
-1. You can use the `wrapper` option to wrap `Router` around the component you want to render:
+1. You can use the `wrapper` option to wrap a `MemoryRouter` around the component you want to render (`MemoryRouter` works when you don't need access to the history object itself in the test, but just need the components to be able to render and navigate).
 
 ```jsx
+import { MemoryRouter } from 'react-router-dom'
+
 test('full app rendering/navigating', () => {
-  const { container, getByText } = render(<App />, {wrapper: Router})
+  const { container, getByText } = render(<App />, {wrapper: MemoryRouter})
   // verify page content for expected route
   expect(getByRole('heading')).toMatch('Home')
 })
