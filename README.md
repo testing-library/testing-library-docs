@@ -76,6 +76,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/stevetaggart"><img src="https://avatars3.githubusercontent.com/u/11730266?v=4" width="100px;" alt="Steve Taggart"/><br /><sub><b>Steve Taggart</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=stevetaggart" title="Documentation">📖</a></td>
     <td align="center"><a href="http://stephensugden.com"><img src="https://avatars3.githubusercontent.com/u/82634?v=4" width="100px;" alt="Stephen Sugden"/><br /><sub><b>Stephen Sugden</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=grncdr" title="Documentation">📖</a></td>
     <td align="center"><a href="http://samitier.github.io"><img src="https://avatars2.githubusercontent.com/u/4160121?v=4" width="100px;" alt="Blai Samitier"/><br /><sub><b>Blai Samitier</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Samitier" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/vernonk"><img src="https://avatars1.githubusercontent.com/u/74096?v=4" width="100px;" alt="Vernon Kesner"/><br /><sub><b>Vernon Kesner</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vernonk" title="Documentation">📖</a></td>
   </tr>
 </table>
 
