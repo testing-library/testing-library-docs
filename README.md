@@ -78,6 +78,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://samitier.github.io"><img src="https://avatars2.githubusercontent.com/u/4160121?v=4" width="100px;" alt="Blai Samitier"/><br /><sub><b>Blai Samitier</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Samitier" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/vernonk"><img src="https://avatars1.githubusercontent.com/u/74096?v=4" width="100px;" alt="Vernon Kesner"/><br /><sub><b>Vernon Kesner</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vernonk" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/wdoug"><img src="https://avatars3.githubusercontent.com/u/5432102?v=4" width="100px;" alt="Will Douglas"/><br /><sub><b>Will Douglas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=wdoug" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
