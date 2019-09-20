@@ -182,22 +182,50 @@ snapshotDiff(firstVersion, container.cloneNode(true))
   
 <summary>How do I fix "an update was not wrapped in act(...)" warnings?</summary>
 
-This warning is usually caused by an async operation causing an update after
-the test has already finished. There are 2 approaches to resolve it:
+This warning is usually caused by an async operation causing an update after the
+test has already finished. There are 2 approaches to resolve it:
 
 1. Wait for the result of the operation in your test by using one of
    [the async utilities](/docs/dom-testing-library/api-async) like
    [wait](/docs/dom-testing-library/api-async#wait) or a
    [`find*` query](/docs/dom-testing-library/api-queries#findby). For example:
    `const userAddress = await findByLabel(/address/i)`.
-2. Mocking out the asynchronous operation so that it doesn't trigger state updates.
+2. Mocking out the asynchronous operation so that it doesn't trigger state
+   updates.
 
-Generally speaking, approach 1 is preferred since it better matches the expectations
-of a user interacting with your app.
+Generally speaking, approach 1 is preferred since it better matches the
+expectations of a user interacting with your app.
 
 In addition, you may find
-[this blog post](https://kentcdodds.com/blog/write-fewer-longer-tests) helpful as you
-consider how best to write tests that give you confidence and avoid these warnings.
+[this blog post](https://kentcdodds.com/blog/write-fewer-longer-tests) helpful
+as you consider how best to write tests that give you confidence and avoid these
+warnings.
+
+</details>
+
+<details>
+  
+<summary>What level of a component tree should I test? Children, parents, or both?</summary>
+
+Following the guiding principle of this library, it is useful to break down how
+tests are organized around how the user experiences and interacts with
+application functionality rather than around specific components themselves. In
+some cases, for example for reusable component libraries, it might be useful to
+include developers in the list of users to test for and test each of the
+reusable components individually. Other times, the specific break down of a
+component tree is just an implementation detail and testing every component
+within that tree individually can cause issues (see
+https://kentcdodds.com/blog/avoid-the-test-user).
+
+In practice this means that it is often preferable to test high enough up the
+component tree to simulate realistic user interactions. The question of whether
+it is worth additionally testing at a higher or lower level on top of this comes
+down to a question of tradeoffs and what will provide enough value for the cost
+(see https://kentcdodds.com/blog/unit-vs-integration-vs-e2e-tests on more info
+on different levels of testing).
+
+For a more in-depth discussion of this topic see
+[this video](https://youtu.be/0qmPdcV-rN8).
 
 </details>
 
