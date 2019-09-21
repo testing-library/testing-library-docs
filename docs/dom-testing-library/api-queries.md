@@ -533,6 +533,7 @@ getByRole(
   role: TextMatch,
   options?: {
     exact?: boolean = true,
+    hidden?: boolean = false,
     normalizer?: NormalizerFn,
   }): HTMLElement
 ```
@@ -543,6 +544,12 @@ Queries for elements with the given role (and it also accepts a
 attribute. The
 [W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents) lists
 all HTML elements with their default aria roles.
+
+If you set `hidden` to `true` elements that are normally excluded from the
+accessibility tree are considered for the query as well. The default behavior
+follows https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion with the exception of
+`role="none"` and `role="presentation"` which are considered in the query in any
+case.
 
 ```html
 <div role="dialog">...</div>
