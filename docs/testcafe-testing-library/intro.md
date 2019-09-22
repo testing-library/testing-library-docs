@@ -40,7 +40,7 @@ fixture`selectors`.beforeEach(addTestcafeTestingLibrary)
   ],
 ```
 
-You can now import & use `getBy`, `getAllBy`, `queryBy` and `queryAllBy`
+You can now import & use get[All]By*, query[All]By*, find[All]By*
 selectors in your tests.
 [See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
@@ -72,16 +72,16 @@ test('getByLabelText', async t => {
 
 By default the selectors come pre-bound to `document.body`, so no need to
 provide a container. However, if you want to restrict your query using a
-container, you can use `within`. Keep in mind that `within` works using a
-Testcafe `ClientFunction` so you will need to await it, and you can't make
-assertions on it like you can using a `Selector`.
+container, you can use `within`. Note similar to using a testcafe `ClientFunction`
+so you will need to await `within`, and you can't make assertions on it like you can using a `Selector`.
+`within` can take either a string or a query (get[All]By*, query[All]By*, find[All]By*).
 
 ### Examples using `within`
 
 ```javascript
-import { within, addTestcafeTestingLibrary } from '@testing-library/testcafe'
+import { within } from '@testing-library/testcafe'
 
-fixture`within`.beforeEach(addTestcafeTestingLibrary)
+fixture`within`
   .page`http://localhost:13370`
 
 test('getByText within container', async t => {
@@ -94,6 +94,20 @@ test("queryByPlaceholder doesn't find anything", async t => {
 
   await t.expect(queryByPlaceholderText('Placeholder Text').exists).notOk()
 })
+
+test('works with nested selectors', async t => {
+  const nested = await within(getByTestId('nested'));
+  await t.expect(nested.getByText('Button Text').exists).ok()
+
+});
+
+test('works with nested selector from "All" query with index', async t => {
+  const nestedDivs = getAllByTestId(/nested/);
+  await t.expect(nestedDivs.count).eql(2);
+  const nested = await within(nestedDivs.nth(0));
+
+  await t.expect(nested.getByText('Button Text').exists).ok();
+});
 ```
 
 [gh]: https://github.com/benmonro/testcafe-testing-library
