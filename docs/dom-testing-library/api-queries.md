@@ -549,7 +549,22 @@ If you set `hidden` to `true` elements that are normally excluded from the
 accessibility tree are considered for the query as well. The default behavior
 follows https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion with the exception of
 `role="none"` and `role="presentation"` which are considered in the query in any
-case.
+case. For example in
+
+```html
+<body>
+  <main aria-hidden="true">
+    <button>Open dialog</button>
+  </main>
+  <div role="dialog">
+    <button>Close dialog</button>
+  </div>
+</body>
+```
+
+`getByRole('button')` would only return the `Close dialog`-button. To make
+assertions about the `Open dialog`-button you would need to use
+`getAllByRole('button', { hidden: true })`.
 
 ```html
 <div role="dialog">...</div>
