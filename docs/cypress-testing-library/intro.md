@@ -43,19 +43,25 @@ and `queryAllBy` commands.
 
 You can find [all library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
 
-To show some simple examples (from
-[https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
+To show some simple examples (from [https://github.com/testing-library/cypress-testing-library/tree/master/cypress/integration](https://github.com/testing-library/cypress-testing-library/tree/master/cypress/integration)):
 
 ```javascript
-cy.getAllByText('Jackie Chan').click()
-cy.queryByText('Button Text').should('exist')
-cy.queryByText('Non-existing Button Text').should('not.exist')
-cy.queryByLabelText('Label text', { timeout: 7000 }).should('exist')
-cy.get('form').within(() => {
-  cy.getByText('Button Text').should('exist')
+cy.findAllByText(/^Button Text \d$/)
+  .should('have.length', 2)
+  .click({ multiple: true })
+  .should('contain', 'Button Clicked')
+cy.queryByText('Button Text 1')
+  .click()
+  .should('contain', 'Button Clicked')
+cy.queryByText('Non-existing Button Text', { timeout: 100 }).should('not.exist')
+cy.queryByLabelText('Label 1')
+  .click()
+  .type('Hello Input Labelled By Id')
+cy.get('#nested').within(() => {
+  cy.queryByText('Button Text 2').click()
 })
-cy.get('form').then(subject => {
-  cy.getByText('Button Text', { container: subject }).should('exist')
+cy.get('#nested').then(subject => {
+  cy.queryByText(/^Button Text/, { container: subject }).click()
 })
 ```
 
