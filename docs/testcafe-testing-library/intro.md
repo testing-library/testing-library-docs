@@ -137,30 +137,38 @@ import { within } from '@testing-library/testcafe'
 fixture`within`
   .page`http://localhost:13370`
 
-test('getByText within container', async t => {
+test('works with getBy* selectors', async t => {
+  await t
+    .expect(
+      within(getByTestId('nested'))
+        .getByText('Button Text').exists
+    ).ok();
+});
+
+test('works with CSS selector strings', async t => {
   const { getByText } = await within('#nested')
   await t.click(getByText('Button Text')).ok()
 })
 
-test("queryByPlaceholder doesn't find anything", async t => {
-  const { queryByPlaceholderText } = await within('#nested')
+test('works on any testcafe selector', async (t) => {
+  const nested = Selector('#nested');
 
-  await t.expect(queryByPlaceholderText('Placeholder Text').exists).notOk()
-})
-
-test('works with nested selectors', async t => {
-  const nested = await within(getByTestId('nested'));
-  await t.expect(nested.getByText('Button Text').exists).ok()
-
+  await t
+    .expect(
+      within(nested).getByText('Button Text')
+    .exists).ok()
 });
 
-test('works with nested selector from "All" query with index', async t => {
+test('works with results from "byAll" query with index - regex', async t => {
   const nestedDivs = getAllByTestId(/nested/);
   await t.expect(nestedDivs.count).eql(2);
-  const nested = await within(nestedDivs.nth(0));
 
-  await t.expect(nested.getByText('Button Text').exists).ok();
+  await t
+    .expect(within(nestedDivs.nth(0)).getByText('Button Text').exists).ok()
+    .expect(within(nestedDivs.nth(1)).getByText('text only in 2nd nested').exists).ok()
+
 });
+
 ```
 [config]: https://testing-library.com/docs/dom-testing-library/api-configuration
 [gh]: https://github.com/benmonro/testcafe-testing-library
