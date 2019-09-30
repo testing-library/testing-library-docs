@@ -80,6 +80,16 @@
           "angular-testing-library/api"
         ]
       },
+      {
+        "type": "subcategory",
+        "label": "Preact Testing Library",
+        "ids": [
+          "preact-testing-library/intro",
+          "preact-testing-library/example",
+          "preact-testing-library/api",
+          "preact-testing-library/learn"
+        ]
+      },
       "cypress-testing-library/intro",
       "svelte-testing-library/intro",
       "pptr-testing-library/intro",
