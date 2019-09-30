@@ -236,6 +236,12 @@ class Index extends React.Component {
               '[Native Testing Library](./docs/native-testing-library/intro)',
           },
           {
+            image: `${baseUrl}img/preact-128x128.png`,
+            imageAlign: 'top',
+            title:
+              '[Preact Testing Library](./docs/preact-testing-library/intro)',
+          },
+          {
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
             title: '[And more...](./docs/ecosystem-user-event)',
