@@ -153,7 +153,7 @@ render method:
 
 ```js
 // test-utils.js
-import { render, queries, queryHelpers } from '@testing-library/react'
+import { render, queries } from '@testing-library/react'
 import * as customQueries from './custom-queries'
 
 const customRender = (ui, options) =>
