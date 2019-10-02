@@ -81,6 +81,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/wdoug"><img src="https://avatars3.githubusercontent.com/u/5432102?v=4" width="100px;" alt="Will Douglas"/><br /><sub><b>Will Douglas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=wdoug" title="Documentation">📖</a></td>
     <td align="center"><a href="https://velog.io/@head"><img src="https://avatars0.githubusercontent.com/u/40166539?v=4" width="100px;" alt="Head"/><br /><sub><b>Head</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=HTMLhead" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mynar7"><img src="https://avatars0.githubusercontent.com/u/32332479?v=4" width="100px;" alt="Lee"/><br /><sub><b>Lee</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mynar7" title="Documentation">📖</a></td>
   </tr>
 </table>
 
