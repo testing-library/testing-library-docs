@@ -3,7 +3,7 @@ id: ecosystem-eslint-plugin-testing-library
 title: eslint-plugin-testing-library
 ---
 
-[`eslint-plugin-testing-library`][gh] is an ESLint plugin for `Testing Library`
+[`eslint-plugin-testing-library`][gh] is an ESLint plugin for Testing Library
 that helps users to follow best practices and anticipate common mistakes when
 writing tests.
 
@@ -11,7 +11,7 @@ writing tests.
 
 This plugin includes:
 
-- several rules for linting `Testing Library` specific code
+- several rules for linting Testing Library specific code
 - shareable config for recommended rules
 - shareable configs for specific rules by framework: Angular, React, Vue
 - some autofixable rules
