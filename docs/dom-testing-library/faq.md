@@ -94,6 +94,23 @@ const thirdItem = getByTestId(container, `item-${items[2].id}`)
 
 </details>
 
+<details>
+<summary>
+  Help! I can't access component methods or the component instance!
+</summary>
+
+This is **intentional**.
+
+We want you to focus on testing the output and functionality of the component as
+it is observed by the user and to **avoid worrying about the implementation
+details** of the component.
+
+We believe this leads to less brittle and more meaningful test code.
+
+Please refer to the [Guiding Principles](../guiding-principles) of this testing
+library for more info.
+
+</details>
 <!--
 Links:
 -->
