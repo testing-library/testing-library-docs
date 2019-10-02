@@ -11,10 +11,10 @@ writing tests.
 
 This plugin includes:
 
-- several rules for linting Testing Library specific code
-- shareable config for recommended rules
-- shareable configs for specific rules by framework: Angular, React, Vue
-- some autofixable rules
+- Several rules for linting Testing Library specific code.
+- Shareable config for recommended rules.
+- Shareable configs for specific rules by framework: Angular, React, Vue.
+- Some autofixable rules.
 
 Find more info about available rules and configs on GitHub.
 
