@@ -7,7 +7,7 @@ title: eslint-plugin-testing-library
 that helps users to follow best practices and anticipate common mistakes when
 writing tests.
 
-![eslint-plugin-testing-library example showing an error](https://i.imgur.com/UKr9jVk.png)
+![eslint-plugin-testing-library example showing an error](/img/eslint-plugin-screenshot.png)
 
 This plugin includes:
 
