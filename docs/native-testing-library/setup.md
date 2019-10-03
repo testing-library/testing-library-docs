@@ -11,7 +11,7 @@ of the snippets you'll find throughout the website work without any additional
 configuration assuming you use Jest and a moderately recent version of React
 Native.
 
-We strongly encourage you to use Jest with the `Native Testing Library` preset.
+We strongly encourage you to use Jest with the `@testing-library/react-native` preset.
 The `react-native` preset should also work, but you'll be getting the best
 experience when using our preset. There may be some additional mocks you need to
 provide to such as mocks for `react-native-gesture-handler` when using
