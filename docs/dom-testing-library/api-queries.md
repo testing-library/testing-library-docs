@@ -543,7 +543,10 @@ Queries for elements with the given role (and it also accepts a
 `<button />` has the `button` role without explicitly setting the `role`
 attribute. The
 [W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents) lists
-all HTML elements with their default aria roles.
+all HTML elements with their default aria roles. Additionally, as DOM Testing
+Library uses `aria-query` under the hood to find those elements by their default
+aria roles, you can find in their docs
+[which HTML Elements with inherent roles are mapped to each role](https://github.com/A11yance/aria-query#elements-to-roles).
 
 If you set `hidden` to `true` elements that are normally excluded from the
 accessibility tree are considered for the query as well. The default behavior
