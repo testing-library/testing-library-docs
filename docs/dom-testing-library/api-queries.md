@@ -131,11 +131,20 @@ cy.getByLabelText('username').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-It will NOT find the input node for label text broken up by elements. For this
-case, you can provide a `selector` in the options:
+You may also need to filter down the results of the query.
+For that you can use the `selector` option:
 
-```html
-<label> <span>Username</span> <input /> </label>
+```js
+// Label containing multiple elements
+<label>
+  <span>Username</span>
+  <input />
+</label>
+
+// Multiple elements labelled via aria-labelledby
+<label id="username">Username</label>
+<input aria-labelledby="username" />
+<span aria-labelledby="username">Please enter your username</span>
 ```
 
 ```js
