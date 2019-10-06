@@ -69,7 +69,7 @@ test('getByLabelText', async t => {
 ```
 
 ## Configure
-You can customize the testIdAttribute using the [configure function of dom-testing-librarty][config] in a few different ways:
+You can customize the testIdAttribute using the [configure function of DOM Testing Library][config] in a few different ways:
 
 ### Once in a single page load:
 ```javascript
