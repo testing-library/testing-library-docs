@@ -145,6 +145,16 @@ For that you can use the `selector` option:
 <label id="username">Username</label>
 <input aria-labelledby="username" />
 <span aria-labelledby="username">Please enter your username</span>
+
+// Multiple labels with the same text
+<label>
+  Username
+  <input />
+</label>
+<label>
+  Username
+  <textarea></textarea>
+</label>
 ```
 
 ```js
