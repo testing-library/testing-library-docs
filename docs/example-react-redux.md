@@ -72,7 +72,7 @@ import Counter from './counter.js'
 
 // this is a handy function that I normally make available for all my tests
 // that deal with connected components.
-// you can provide initialState or the entire store that the ui is rendered with
+// you can provide initialState for the entire store that the ui is rendered with
 function renderWithRedux(
   ui,
   { initialState, store = createStore(reducer, initialState) } = {}
