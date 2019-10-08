@@ -83,6 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://velog.io/@head"><img src="https://avatars0.githubusercontent.com/u/40166539?v=4" width="100px;" alt="Head"/><br /><sub><b>Head</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=HTMLhead" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/mynar7"><img src="https://avatars0.githubusercontent.com/u/32332479?v=4" width="100px;" alt="Lee"/><br /><sub><b>Lee</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mynar7" title="Documentation">📖</a></td>
     <td align="center"><a href="https://mario.dev"><img src="https://avatars1.githubusercontent.com/u/2677072?v=4" width="100px;" alt="Mario Beltrán Alarcón"/><br /><sub><b>Mario Beltrán Alarcón</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Belco90" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jameslevine"><img src="https://avatars0.githubusercontent.com/u/41184245?v=4" width="100px;" alt="jameslevine"/><br /><sub><b>jameslevine</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jameslevine" title="Documentation">📖</a></td>
   </tr>
 </table>
 
