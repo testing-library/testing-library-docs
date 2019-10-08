@@ -90,8 +90,16 @@
           "preact-testing-library/learn"
         ]
       },
+      {
+        "type": "subcategory",
+        "label": "Svelte Testing Library",
+        "ids": [
+          "svelte-testing-library/intro",
+          "svelte-testing-library/example",
+          "svelte-testing-library/api"
+        ]
+      },
       "cypress-testing-library/intro",
-      "svelte-testing-library/intro",
       "pptr-testing-library/intro",
       "testcafe-testing-library/intro"
     ],
