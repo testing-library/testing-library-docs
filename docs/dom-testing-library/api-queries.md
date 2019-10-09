@@ -96,6 +96,12 @@ The example below will find the input node for the following DOM structures:
 // Wrapper labels
 <label>Username <input /></label>
 
+// Wrapper labels where the label text is in another child element
+<label>
+  <span>Username</span>
+  <input />
+</label>
+
 // aria-label attributes
 // Take care because this is not a label that users can see on the page,
 // so the purpose of your input must be obvious to visual users.
@@ -135,12 +141,6 @@ You may also need to filter down the results of the query.
 For that you can use the `selector` option:
 
 ```js
-// Label containing multiple elements
-<label>
-  <span>Username</span>
-  <input />
-</label>
-
 // Multiple elements labelled via aria-labelledby
 <label id="username">Username</label>
 <input aria-labelledby="username" />
