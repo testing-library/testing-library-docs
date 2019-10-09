@@ -98,8 +98,6 @@ changes.
 **Component**
 
 ```html
-<button on:click="{handleClick}">Count is {count}</button>
-
 <script>
   let count = 0
 
@@ -107,6 +105,8 @@ changes.
     count += 1
   }
 </script>
+
+<button on:click="{handleClick}">Count is {count}</button>
 ```
 
 **Test**
