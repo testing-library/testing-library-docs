@@ -95,6 +95,7 @@
         "label": "Svelte Testing Library",
         "ids": [
           "svelte-testing-library/intro",
+          "svelte-testing-library/setup",
           "svelte-testing-library/example",
           "svelte-testing-library/api"
         ]
