@@ -7,10 +7,6 @@ sidebar_label: Example
 ## Component
 
 ```html
-<h1>Hello {name}!</h1>
-
-<button on:click="{handleClick}">{buttonText}</button>
-
 <script>
   export let name
 
@@ -20,6 +16,10 @@ sidebar_label: Example
     buttonText = 'Button Clicked'
   }
 </script>
+
+<h1>Hello {name}!</h1>
+
+<button on:click="{handleClick}">{buttonText}</button>
 ```
 
 ## Test
