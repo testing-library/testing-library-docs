@@ -11,7 +11,9 @@ with any testing framework and runner you're comfortable with.
 
 1.  Install Jest and Babel
 
-    `npm install --save-dev jest babel-jest @babel/core @babel/preset-env`
+    ```
+    npm install --save-dev jest babel-jest @babel/core @babel/preset-env
+    ```
 
 2.  Add the following to your `package.json`
 
@@ -34,9 +36,11 @@ with any testing framework and runner you're comfortable with.
 
 4.  You'll need to compile the Svelte components before using them in Jest, so
     we need to install the [svelte-jest](https://github.com/ktsn/svelte-jest)
-    transformer.
+    transformer
 
-        `npm install --save-dev svelte-jest`
+    ```
+    npm install --save-dev svelte-jest
+    ```
 
 5.  Add the following Jest configuration to your `package.json`
 
@@ -45,7 +49,7 @@ with any testing framework and runner you're comfortable with.
       "jest": {
         "transform": {
           "^.+\\.js$": "babel-jest",
-          "^.+\\.svelte$": "jest-transform-svelte"
+          "^.+\\.svelte$": "svelte-jest"
         },
         "moduleFileExtensions": ["js", "json", "svelte"]
       }
@@ -54,11 +58,13 @@ with any testing framework and runner you're comfortable with.
 
 6.  This is optional but it is recommended, you can install
     [jest-dom](https://github.com/testing-library/jest-dom) to add handy
-    assertions to Jest.
+    assertions to Jest
 
     6.1 Install jest-dom
 
-    `npm install --save-dev @testing-library/jest-dom`
+    ```
+    npm install --save-dev @testing-library/jest-dom
+    ```
 
     6.2 Add the following to your Jest configuration in `package.json`
 
@@ -69,6 +75,8 @@ with any testing framework and runner you're comfortable with.
     ```
 
 7.  Create your component + test file (checkout the rest of the docs to see how)
-    and run
+    and run it
 
-    `npm run test`
+    ```
+    npm run test
+    ```
