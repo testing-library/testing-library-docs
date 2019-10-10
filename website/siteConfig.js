@@ -88,6 +88,12 @@ const users = [
     infoLink: 'https://intellihr.com.au',
     pinned: true,
   },
+   {
+    caption: 'Wayfair',
+    image: '/img/users/wayfair.svg',
+    infoLink: 'https://www.wayfair.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
