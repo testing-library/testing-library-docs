@@ -9,10 +9,10 @@ with any testing framework and runner you're comfortable with.
 
 ## Jest
 
-1.  Install Jest and Babel
+1.  Install Jest
 
     ```
-    npm install --save-dev jest babel-jest @babel/core @babel/preset-env
+    npm install --save-dev jest
     ```
 
 2.  Add the following to your `package.json`
@@ -26,15 +26,7 @@ with any testing framework and runner you're comfortable with.
     }
     ```
 
-3.  Add a `.babelrc` with the following
-
-    ```json
-    {
-      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]]
-    }
-    ```
-
-4.  You'll need to compile the Svelte components before using them in Jest, so
+3.  You'll need to compile the Svelte components before using them in Jest, so
     we need to install
     [jest-transform-svelte](https://github.com/rspieker/jest-transform-svelte)
 
@@ -42,31 +34,30 @@ with any testing framework and runner you're comfortable with.
     npm install --save-dev jest-transform-svelte
     ```
 
-5.  Add the following Jest configuration to your `package.json`
+4.  Add the following Jest configuration to your `package.json`
 
     ```json
     {
       "jest": {
         "transform": {
-          "^.+\\.js$": "babel-jest",
           "^.+\\.svelte$": "jest-transform-svelte"
         },
-        "moduleFileExtensions": ["js", "json", "svelte"]
+        "moduleFileExtensions": ["js", "svelte"]
       }
     }
     ```
 
-6.  This is optional but it is recommended, you can install
+5.  This is optional but it is recommended, you can install
     [jest-dom](https://github.com/testing-library/jest-dom) to add handy
     assertions to Jest
 
-    6.1 Install jest-dom
+    5.1 Install jest-dom
 
     ```
     npm install --save-dev @testing-library/jest-dom
     ```
 
-    6.2 Add the following to your Jest configuration in `package.json`
+    5.2 Add the following to your Jest configuration in `package.json`
 
     ```json
     {
@@ -74,7 +65,7 @@ with any testing framework and runner you're comfortable with.
     }
     ```
 
-7.  Create your component + test file (checkout the rest of the docs to see how)
+6.  Create your component + test file (checkout the rest of the docs to see how)
     and run it
 
     ```
