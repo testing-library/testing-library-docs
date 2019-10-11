@@ -186,7 +186,7 @@ console.log(getRoles(nav))
 // }
 ```
 
-## `shouldExcludeFromA11yTree`
+## `isInaccessible`
 
 This function will compute if the given element should be excluded from the
 accessibility API by the browser. It implements every **MUST** criteria from the
@@ -196,7 +196,7 @@ section in WAI-ARIA 1.2 with the exception of checking the `role` attribute.
 It is defined as:
 
 ```typescript
-function shouldExcludeFromA11yTree(element: Element): boolean
+function isInaccessible(element: Element): boolean
 ```
 
 ## Debugging
