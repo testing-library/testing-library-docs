@@ -10,19 +10,15 @@ npm install --save-dev riot-testing-library
 ```
 
 ```javascript
-import render, { cleanup, fireEvent } from 'riot-testing-library'
+import render, { fireEvent } from 'riot-testing-library'
 import TestTag from './test.tag'
-
-afterEach(() => {
-  cleanup()
-})
 
 test('should show count text  when rendered', () => {
   const { queryByTestId } = render(TestTag, {count: 10});
   expect(queryByTestId('count').textContent).toBe("10");
 })
 
-test('should add count when click add button text', async () => {
+test('should add count when click add button text', () => {
     const { queryByTestId } = render(TestTag, {count: 1});
     expect(queryByTestId('count').textContent).toBe("1");
     fireEvent.click(queryByTestId('button'))
