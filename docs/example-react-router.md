@@ -60,7 +60,7 @@ test('landing on a bad page shows 404 page', () => {
   const history = createMemoryHistory()
   history.push('/some/bad/route')
   const { getByRole } = render(
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   )
@@ -68,10 +68,11 @@ test('landing on a bad page shows 404 page', () => {
 })
 
 test('rendering a component that uses withRouter', () => {
+  const history = createMemoryHistory()
   const route = '/some-route'
-  window.history.pushState({}, '', route)
+  history.push(route)
   const { getByTestId } = render(
-    <Router>
+    <Router history={history}>
       <LocationDisplay />
     </Router>
   )
