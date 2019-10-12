@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://mario.dev"><img src="https://avatars1.githubusercontent.com/u/2677072?v=4" width="100px;" alt="Mario Beltrán Alarcón"/><br /><sub><b>Mario Beltrán Alarcón</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Belco90" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jameslevine"><img src="https://avatars0.githubusercontent.com/u/41184245?v=4" width="100px;" alt="jameslevine"/><br /><sub><b>jameslevine</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jameslevine" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/mihar-22"><img src="https://avatars2.githubusercontent.com/u/14304599?v=4" width="100px;" alt="Rahim Alwer"/><br /><sub><b>Rahim Alwer</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mihar-22" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.btorange.com"><img src="https://avatars1.githubusercontent.com/u/1797160?v=4" width="100px;" alt="Chenjia"/><br /><sub><b>Chenjia</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ariesjia" title="Documentation">📖</a></td>
   </tr>
 </table>
 
