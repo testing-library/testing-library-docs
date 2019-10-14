@@ -50,14 +50,14 @@ Please refer to the
 
 ### Results
 
-| Result       | Description                                                                                                                                                                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `container`  | The HTML element the component is mounted into.                                                                                                                                                              |
-| `component`  | The newly created Svelte component. **Please do not use this, it will most likely be removed in a future release.** Using this method goes against the testing libraries guiding principles.                 |
-| `debug`      | Logs the baseElement using [prettyDom](https://testing-library.com/docs/dom-testing-library/api-helpers#prettydom).                                                                                          |
-| `unmount`    | Unmounts the component from the `target` by calling `component.$destroy()`.                                                                                                                                  |
-| `rerender`   | Calls render again destroying the old component, and mounting the new component on the original `target` with any new options passed in.                                                                     |
-| `...queries` | Returns all [query functions](https://testing-library.com/docs/dom-testing-library/api-queries) that are binded to the `container`. If you pass in `query` arguments than this will be those, otherwise all. |
+| Result       | Description                                                                                                                                                                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container`  | The HTML element the component is mounted into.                                                                                                                                                                                                                                                   |
+| `component`  | The newly created Svelte component. This is mostly useful for testing exported functions or cases where manipulating the DOM doesn't fit. Outside of said cases avoid using the component directly to build tests, instead of interacting with the rendered Svelte component, work with the DOM . |
+| `debug`      | Logs the `container` using [prettyDom](https://testing-library.com/docs/dom-testing-library/api-helpers#prettydom).                                                                                                                                                                               |
+| `unmount`    | Unmounts the component from the `target` by calling `component.$destroy()`.                                                                                                                                                                                                                       |
+| `rerender`   | Calls render again destroying the old component, and mounting the new component on the original `target` with any new options passed in.                                                                                                                                                          |
+| `...queries` | Returns all [query functions](https://testing-library.com/docs/dom-testing-library/api-queries) that are binded to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                      |
 
 ## `cleanup`
 
