@@ -17,6 +17,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Walmart Labs',
+    pinned: true,
+    image: '/img/users/walmart.png',
+    infoLink: 'https://www.walmartlabs.com/',
+  },
+  {
     caption: 'Tiller',
     image: '/img/users/tiller.svg',
     infoLink: 'https://www.tillersystems.com',
