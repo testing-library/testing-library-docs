@@ -3,8 +3,8 @@ id: intro
 title: Nightwatch Testing Library
 ---
 
-[`nightwatch-testing-library`][gh] allows the use of dom-testing queries within
-[Nightwatch](https://nightwatchjs.org) for end-to-end web testing.
+[`nightwatch-testing-library`][gh] allows the use of dom-testing-library queries
+in [Nightwatch](https://nightwatchjs.org) for end-to-end web testing.
 
 > Be sure to follow the
 > [Nightwatch install & config instructions first](https://nightwatchjs.org/gettingstarted/installation/)
