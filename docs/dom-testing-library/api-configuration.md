@@ -41,7 +41,10 @@ configure({testIdAttribute: 'my-data-test-id'})`
 <!--Cypress-->
 
 ```
-The configuration object is not currently exposed to in Cypress Testing Library
+// setup-tests.js
+import { configure } from '@testing-library/cypress'
+
+configure({testIdAttribute: 'my-data-test-id'})`
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
