@@ -12,17 +12,17 @@ well as these methods:
 ## `render`
 
 ```typescript
-function render<T>(
-  component: Type<T>,
-  renderOptions?: RenderOptions<T>
-): Promise<RenderResult>
-function render<T>(
-  template: string,
-  renderOptions: RenderOptions<T>
-): Promise<RenderResult>
+async function render<ComponentType>(
+  component: Type<ComponentType>,
+  renderOptions?: RenderComponentOptions<ComponentType>
+): Promise<RenderResult<ComponentType, ComponentType>>
+async function render<DirectiveType, WrapperType = WrapperComponent>(
+  component: Type<DirectiveType>,
+  renderOptions?: RenderDirectiveOptions<DirectiveType, WrapperType>
+): Promise<RenderResult<DirectiveType, WrapperType>>
 ```
 
-## RenderOptions
+## Component RenderOptions
 
 ### `detectChanges`
 
@@ -146,21 +146,6 @@ const component = await render(AppComponent, {
 })
 ```
 
-### `wrapper`
-
-An Angular component to wrap the component in.
-
-**default** : `WrapperComponent`, an empty component that strips the
-`ng-version` attribute.
-
-**example**:
-
-```typescript
-const component = await render(AppComponent, {
-  wrapper: CustomWrapperComponent,
-})
-```
-
 ### `excludeComponentDeclaration`
 
 Exclude the component to be automatically be added as a declaration. This is
@@ -174,6 +159,66 @@ needed when the component is declared in an imported module.
 const component = await render(AppComponent, {
   imports: [AppModule], // a module that includes AppComponent
   excludeComponentDeclaration: true,
+})
+```
+
+### `routes`
+
+The route configuration to set up the router service via
+`RouterTestingModule.withRoutes`. For more info see the
+[Angular Routes docs](https://angular.io/api/router/Routes).
+
+**default** : `[]`
+
+**example**:
+
+```typescript
+const component = await render(AppComponent, {
+  declarations: [ChildComponent],
+  routes: [
+    {
+      path: '',
+      children: [
+        {
+          path: 'child/:id',
+          component: ChildComponent,
+        },
+      ],
+    },
+  ],
+})
+```
+
+## Directive RenderOptions
+
+To test a directive, the render API is a bit different. The API has the same
+options as the Component RenderOptions, but has more options:
+
+### `template`
+
+The template to render the directive.
+
+**example**:
+
+```typescript
+const component = await render(SpoilerDirective, {
+  template: `<div spoiler message='SPOILER'></div>`,
+})
+```
+
+### `wrapper`
+
+An Angular component to wrap the directive in.
+
+**default**: `WrapperComponent` , an empty component that strips the
+`ng-version` attribute.
+
+**example**:
+
+```typescript
+const component = await render(SpoilerDirective, {
+  template: `<div spoiler message='SPOILER'></div>`
+  wrapper: CustomWrapperComponent
 })
 ```
 
@@ -244,6 +289,21 @@ const component = await render(AppComponent)
 
 component.selectOptions(component.getByLabelText('Fruit'), 'Blueberry')
 component.selectOptions(component.getByLabelText('Fruit'), ['Blueberry'. 'Grape'])
+```
+
+### `navigate`
+
+Accepts a DOM element or a path as parameter. If an element is passed,
+`navigate` will navigate to the `href` value of the element. If a path is
+passed, `navigate` will navigate to the path.
+
+```typescript
+const component = await render(AppComponent, {
+  routes: [...]
+})
+
+await component.navigate(component.getByLabelText('To details'))
+await component.navigate('details/3')
 ```
 
 ### `fixture`

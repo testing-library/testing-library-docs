@@ -4,6 +4,10 @@ title: Examples
 sidebar_label: Examples
 ---
 
+> Read
+> [Good testing practices with 🦔 Angular Testing Library](https://timdeschryver.dev/posts/good-testing-practices-with-angular-testing-library)
+> for a guided example
+
 counter.component.ts
 
 ```typescript
