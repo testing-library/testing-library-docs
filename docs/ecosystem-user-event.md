@@ -16,12 +16,12 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-const { getByText } = test('click', () => {
-  render(<textarea data-testid="email" />)
-})
+test('Fill text area', () => {
+  const { getByTestId } = render(<textarea data-testid="email" />)
 
-userEvent.type(getByTestId('email'), 'Hello, World!')
-expect(getByTestId('email')).toHaveAttribute('value', 'Hello, World!')
+  userEvent.type(getByTestId('email'), 'Hello, World!')
+  expect(getByTestId('email')).toHaveAttribute('value', 'Hello, World!')
+})
 ```
 
 - [user-event on GitHub][gh]
