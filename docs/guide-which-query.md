@@ -33,8 +33,8 @@ possible. With this in mind, we recommend this order of priority:
       difficult-to-capture elements in a more semantic way
 1. **Test IDs**
    1. `getByTestId`: The user cannot see (or hear) these, so this is only
-      recommended for cases where you can't match by text or it doesn't make
-      sense (the text is dynamic).
+      recommended for cases where you can't match by role or text or it doesn't
+      make sense (e.g. the text is dynamic).
 
 ## Manual Queries
 
