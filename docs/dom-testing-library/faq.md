@@ -76,20 +76,20 @@ in the selector.
 const thirdLiInUl = container.querySelector('ul > li:nth-child(3)')
 ```
 
-Or you could include the index or an ID in your attribute:
+Or you could query the `listitem` role and access the index in question:
 
 ```javascript
-;`<li data-testid="item-${item.id}">{item.text}</li>`
+;`<li>{item.text}</li>`
 ```
 
-And then you could use the `getByTestId` utility:
+And then you could use the `getAllByRole` utility:
 
 ```javascript
 const items = [
   /* your items */
 ]
 const container = render(/* however you render this stuff */)
-const thirdItem = getByTestId(container, `item-${items[2].id}`)
+const thirdItem = getAllByRole(container, 'listitem')[2]
 ```
 
 </details>
