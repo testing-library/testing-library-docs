@@ -76,13 +76,8 @@ in the selector.
 const thirdLiInUl = container.querySelector('ul > li:nth-child(3)')
 ```
 
-Or you could query the `listitem` role and access the index in question:
-
-```javascript
-;`<li>{item.text}</li>`
-```
-
-And then you could use the `getAllByRole` utility:
+Or you could use `getAllByRole` to query the `listitem` role and access the
+index in question:
 
 ```javascript
 const items = [
