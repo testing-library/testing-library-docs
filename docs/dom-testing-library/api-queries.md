@@ -486,7 +486,7 @@ In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
 
 ```html
-<select id="state-select" data-testid="state">
+<select>
   <option value="">State</option>
   <option value="AL">Alabama</option>
   <option selected value="AK">Alaska</option>
