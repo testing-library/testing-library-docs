@@ -16,12 +16,12 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-const { getByRole } = test('click', () => {
-  render(<textarea />)
-})
+test('click', () => {
+  const { getByRole } = render(<textarea />)
 
-userEvent.type(getByRole('textbox'), 'Hello, World!')
-expect(getByRole('textbox')).toHaveAttribute('value', 'Hello, World!')
+  userEvent.type(getByRole('textbox'), 'Hello, World!')
+  expect(getByRole('textbox')).toHaveAttribute('value', 'Hello, World!')
+})
 ```
 
 - [user-event on GitHub][gh]
