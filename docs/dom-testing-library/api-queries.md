@@ -486,7 +486,7 @@ In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
 
 ```html
-<select id="state-select" data-testid="state">
+<select>
   <option value="">State</option>
   <option value="AL">Alabama</option>
   <option selected value="AK">Alaska</option>
@@ -620,7 +620,7 @@ A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
 ```html
-<input data-testid="username-input" />
+<div data-testid="custom-element" />
 ```
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -631,7 +631,7 @@ also accepts a [`TextMatch`](#textmatch)).
 import { getByTestId } from '@testing-library/dom'
 
 const container = document.body
-const usernameInput = getByTestId(container, 'username-input')
+const element = getByTestId(container, 'custom-element')
 ```
 
 <!--React-->
@@ -640,13 +640,13 @@ const usernameInput = getByTestId(container, 'username-input')
 import { render } from '@testing-library/react'
 
 const { getByTestId } = render(<MyComponent />)
-const usernameInput = getByTestId('username-input')
+const element = getByTestId('custom-element')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByTestId('username-input').should('exist')
+cy.getByTestId('custom-element').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

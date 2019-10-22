@@ -36,7 +36,7 @@ A short guide to all the exported functions in `Vue Testing Library`.
 | **...ByAltText**         | img alt attribute                | `<img alt="movie poster" />`          |
 | **...ByTitle**           | title attribute or svg title tag | `<span title="Add" />` or `<title />` |
 | **...ByRole**            | ARIA role                        | `<div role="dialog" />`               |
-| **...ByTestId**          | data-testid attribute            | `<input data-testid="input" />`       |
+| **...ByTestId**          | data-testid attribute            | `<div data-testid="some-message" />`  |
 
 > You can write any combination of Search variants and Search types.
 
