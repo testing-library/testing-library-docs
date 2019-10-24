@@ -40,7 +40,7 @@ configure({testIdAttribute: 'my-data-test-id'})`
 
 <!--Cypress-->
 
-```
+```js
 // setup-tests.js
 import { configure } from '@testing-library/cypress'
 
