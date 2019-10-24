@@ -89,6 +89,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://blog.staz.be"><img src="https://avatars0.githubusercontent.com/u/82500?v=4" width="100px;" alt="Olivier Le Thanh Duong"/><br /><sub><b>Olivier Le Thanh Duong</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=olethanh" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://kubajastrz.com"><img src="https://avatars0.githubusercontent.com/u/6443113?v=4" width="100px;" alt="Jakub Jastrzębski"/><br /><sub><b>Jakub Jastrzębski</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=KubaJastrz" title="Documentation">📖</a></td>
   </tr>
 </table>
 
