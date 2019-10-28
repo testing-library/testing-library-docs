@@ -217,7 +217,7 @@ Unable to find an element with the text: Goodbye world. This could be because th
 Here is the state of your container:
 <div>
   <div>
-    Hello World!
+    Hello world
   </div>
 </div>
 ```
@@ -232,7 +232,7 @@ Here's how you might increase this limit when running tests:
 DEBUG_PRINT_LIMIT=10000 npm test
 ```
 
-This works on macOS/linux, you'll need to do something else for windows. If
+This works on macOS/Linux, you'll need to do something else for Windows. If
 you'd like a solution that works for both, see
 [`cross-env`](https://www.npmjs.com/package/cross-env)
 
