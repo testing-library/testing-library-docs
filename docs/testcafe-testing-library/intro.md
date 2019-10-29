@@ -3,10 +3,15 @@ id: intro
 title: Testcafe Testing Library
 ---
 
-[`testcafe-testing-library`][gh] allows the use of dom-testing queries within
-[Testcafe](https://devexpress.github.io/testcafe/) cross-browser end-to-end web
+## Introduction
+
+[`testcafe-testing-library`][gh] allows the use of dom testing library queries within
+[Testcafe](https://devexpress.github.io/testcafe/) for cross-browser end-to-end web
 testing.
 
+If you are new to the testing-library approach for writing tests, check out the [this guide on which query to use](https://testing-library.com/docs/guide-which-query) as well as the [cheat sheet](https://testing-library.com/docs/dom-testing-library/cheatsheet).   
+
+## Install
 ```
 npm install --save-dev testcafe @testing-library/testcafe
 ```
@@ -55,6 +60,7 @@ To show some simple examples (from
 [https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js)):
 
 ```javascript
+
 test('getByPlaceHolderText', async t => {
   await t.typeText(
     getByPlaceholderText('Placeholder Text'),
@@ -70,6 +76,11 @@ test('getByLabelText', async t => {
     getByLabelText('Label For Input Labelled By Id'),
     'Hello Input Labelled By Id'
   )
+})
+
+test('queryAllByText', async t => {
+  await t.expect(queryAllByText('Button Text').exists).ok()
+  await t.expect(queryAllByText('Non-existing Button Text').exists).notOk()
 })
 ```
 
