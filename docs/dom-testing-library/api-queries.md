@@ -533,7 +533,7 @@ getByRole(
   role: TextMatch,
   options?: {
     exact?: boolean = true,
-    hidden?: boolean = false,
+    hidden?: boolean = true,
     normalizer?: NormalizerFn,
   }): HTMLElement
 ```
@@ -568,6 +568,8 @@ case. For example in
 `getByRole('button')` would only return the `Close dialog`-button. To make
 assertions about the `Open dialog`-button you would need to use
 `getAllByRole('button', { hidden: true })`.
+
+The default value can [be configured](api-configuration#configuration).
 
 ```html
 <div role="dialog">...</div>
