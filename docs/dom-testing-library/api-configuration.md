@@ -15,8 +15,11 @@ The library can be configured via the `configure` function, which accepts:
 
 Configuration options:
 
-`testIdAttribute`: The attribute used by `getByTestId` and related queries.
-Defaults to `data-testid`. See [`getByTestId`](#getbytestid).
+`defaultHidden`: The default value for the `hidden` option used by
+[`getByRole`](api-queries#byrole). Defaults to `false`.
+
+`testIdAttribute`: The attribute used by [`getByTestId`](api-queries#bytestid)
+and related queries. Defaults to `data-testid`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 
