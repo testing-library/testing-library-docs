@@ -5,6 +5,7 @@ title: Modals
 
 ```jsx
 import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
 import { render, fireEvent } from '@testing-library/react'
 
 const modalRoot = document.createElement('div')
