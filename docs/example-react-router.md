@@ -8,7 +8,6 @@ title: React Router
 import React from 'react'
 import { withRouter } from 'react-router'
 import { Link, Route, Router, Switch } from 'react-router-dom'
-import { render, fireEvent } from '@testing-library/react'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
@@ -38,6 +37,8 @@ function App() {
 // app.test.js
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
+import { render, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
@@ -76,7 +77,7 @@ test('rendering a component that uses withRouter', () => {
       <LocationDisplay />
     </Router>
   )
-  expect(getByTestId('location-display').textContent).toBe(route)
+  expect(getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
 
@@ -129,7 +130,7 @@ test('landing on a bad page', () => {
 test('rendering a component that uses withRouter', () => {
   const route = '/some-route'
   const { getByTestId } = renderWithRouter(<LocationDisplay />, { route })
-  expect(getByTestId('location-display').textContent).toBe(route)
+  expect(getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
 
