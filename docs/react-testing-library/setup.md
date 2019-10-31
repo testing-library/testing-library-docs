@@ -248,8 +248,8 @@ NODE_PATH=src/utils
 
 If you're using the Jest testing framework version 24 or lower with the default
 configuration, it's recommended to use `jest-environment-jsdom-fifteen` package
-as Jest uses a version of the jsdom environment that is not fully compatible
-with the `React Testing Library`
+as Jest uses a version of the jsdom environment that misses some features and
+fixes, required by the `React Testing Library`
 
 First, install `jest-environment-jsdom-fifteen`.
 
