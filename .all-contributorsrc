@@ -404,6 +404,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "trurl-master",
+      "name": "Ivan Galiatin",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/640657?v=4",
+      "profile": "http://russianbrandgardeners.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
