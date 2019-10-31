@@ -244,6 +244,29 @@ $ app
 NODE_PATH=src/utils
 ```
 
+### Jest 24 (or lower) and defaults
+
+If you're using the Jest testing framework version 24 or lower with the default
+configuration, it's recommended to use `jest-environment-jsdom-fifteen` package
+as Jest uses a version of the jsdom environment that misses some features and
+fixes, required by React Testing Library.
+
+First, install `jest-environment-jsdom-fifteen`.
+
+```
+npm install --save-dev jest-environment-jsdom-fifteen
+```
+
+Then specify `jest-environment-jsdom-fifteen` as the `testEnvironment`:
+
+```diff
+ // jest.config.js
+ module.exports = {
++  testEnvironment: 'jest-environment-jsdom-fifteen',
+   // ... other options ...
+ }
+```
+
 ## Using without Jest
 
 If you're running your tests in the browser bundled with webpack (or similar)
