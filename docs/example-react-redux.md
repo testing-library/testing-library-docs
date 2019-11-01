@@ -66,6 +66,7 @@ import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { render, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import { initialState, reducer } from './reducer.js'
 import Counter from './counter.js'
 
@@ -89,7 +90,7 @@ function renderWithRedux(
 test('can render with redux with defaults', () => {
   const { getByTestId, getByText } = renderWithRedux(<Counter />)
   fireEvent.click(getByText('+'))
-  expect(getByTestId('count-value').textContent).toBe('1')
+  expect(getByTestId('count-value')).toHaveTextContent('1')
 })
 
 test('can render with redux with custom initial state', () => {
@@ -97,7 +98,7 @@ test('can render with redux with custom initial state', () => {
     initialState: { count: 3 },
   })
   fireEvent.click(getByText('-'))
-  expect(getByTestId('count-value').textContent).toBe('2')
+  expect(getByTestId('count-value')).toHaveTextContent('2')
 })
 
 test('can render with redux with custom store', () => {
@@ -107,8 +108,8 @@ test('can render with redux with custom store', () => {
     store,
   })
   fireEvent.click(getByText('+'))
-  expect(getByTestId('count-value').textContent).toBe('1000')
+  expect(getByTestId('count-value')).toHaveTextContent('1000')
   fireEvent.click(getByText('-'))
-  expect(getByTestId('count-value').textContent).toBe('1000')
+  expect(getByTestId('count-value')).toHaveTextContent('1000')
 })
 ```
