@@ -25,6 +25,7 @@ It also exposes these methods:
 - [`fireEvent`](#fireevent)
   - [`touch(elem)`](#touchelem)
   - [`update(elem, value)`](#updateelem-value)
+- [`cleanup`](#cleanup)
 
 ---
 
@@ -199,3 +200,17 @@ input/select/textarea inner value while emitting the appropiate native event.
 
 See a working example of `update` in the
 [v-model example test](/docs/vue-testing-library/examples#example-using-v-model).
+
+---
+
+## `cleanup`
+
+Unmounts Vue trees that were mounted with [render](#render).
+
+> If you are using an environment that supports `afterEach` hook (as in Jest),
+> there's no need to call `cleanup` manually. Vue Testing Library handles it for
+> you.
+
+Failing to call `cleanup` when you've called `render` could result in a memory
+leak and tests which are not idempotent (which can lead to difficult to debug
+errors in your tests).
