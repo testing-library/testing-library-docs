@@ -29,11 +29,8 @@ title: Examples
 ```
 
 ```js
-import { render, fireEvent, cleanup } from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
 import Component from './Component.vue'
-
-// automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
 
 test('increments value on click', async () => {
   // The render method returns a collection of utilities to query your component.
@@ -75,10 +72,8 @@ test('increments value on click', async () => {
 ```
 
 ```js
-import { render, fireEvent, cleanup } from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
 import Component from './Component.vue'
-
-afterEach(cleanup)
 
 test('properly handles v-model', async () => {
   const { getByLabelText, getByText } = render(Component)

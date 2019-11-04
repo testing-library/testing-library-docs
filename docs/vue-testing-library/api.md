@@ -25,7 +25,6 @@ It also exposes these methods:
 - [`fireEvent`](#fireevent)
   - [`touch(elem)`](#touchelem)
   - [`update(elem, value)`](#updateelem-value)
-- [`cleanup`](#cleanup)
 
 ---
 
@@ -200,32 +199,3 @@ input/select/textarea inner value while emitting the appropiate native event.
 
 See a working example of `update` in the
 [v-model example test](/docs/vue-testing-library/examples#example-using-v-model).
-
----
-
-## `cleanup`
-
-Unmounts Vue trees that were mounted with [render](#render).
-
-```jsx
-import { cleanup, render } from '@testing-library/vue'
-import Component from './Component.vue'
-
-afterEach(cleanup) // <-- add this
-
-test('renders into document', () => {
-  render(Component)
-  // ...
-})
-
-// ... more tests ...
-```
-
-Failing to call `cleanup` when you've called `render` could result in a memory
-leak and tests which are not "idempotent" (which can lead to difficult to debug
-errors in your tests).
-
-**If you don't want to add this to _every single test file_** then we recommend
-that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](./setup) section for guidance on how to
-set up your framework.

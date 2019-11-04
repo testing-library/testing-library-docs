@@ -89,8 +89,6 @@ For more information, see [Events API](dom-testing-library/api-events.md)
   to it: `within(getByTestId("global-header")).getByText("hello")`.
 - **configure(config)** change global options:
   `configure({testIdAttribute: 'my-test-id'})`.
-- **cleanup()** clears the DOM ([use with `afterEach`](setup.md#cleanup) to
-  reset DOM between tests).
 
 For more information, see [Helpers API](dom-testing-library/api-helpers.md) and
 [Config API](dom-testing-library/api-configuration.md).
