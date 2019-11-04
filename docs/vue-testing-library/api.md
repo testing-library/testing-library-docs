@@ -128,7 +128,7 @@ const { container } = render(TableBody, {
 `baseElement` is used as the base element for the queries as well as what is
 printed when you use `debug()`.
 
-It matches `container` if not custom `baseElement` is provided. If neither
+It matches `container` if no custom `baseElement` is provided. If neither
 `baseElement` or `container` options are provided, `baseElement` defaults to
 `document.body`.
 
