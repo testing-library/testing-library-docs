@@ -107,14 +107,30 @@ const { getByLabelText, queryAllByTestId } = render(Component)
 
 #### `container`
 
-The containing DOM node of your rendered Vue Component. It's a `div`. This is a
-regular DOM node, so you can call `container.querySelector` etc. to inspect the
-children.
+By default, `Vue Testing Library` will create a `div` and append it to the
+`baseElement`. This is where your component will be rendered. If you provide
+your own HTMLElement container via this option, it will not be appended to the
+`baseElement` automatically.
+
+```js
+const table = document.createElement('table')
+
+const { container } = render(TableBody, {
+  container: document.body.appendChild(table),
+})
+```
 
 > Tip: To get the root element of your rendered element, use
 > `container.firstChild`.
 
 #### `baseElement`
+
+`baseElement` is used as the base element for the queries as well as what is
+printed when you use `debug()`.
+
+It matches `container` if not custom `baseElement` is provided. If neither
+`baseElement` or `container` options are provided, `baseElement` defaults to
+`document.body`.
 
 #### `debug(element)`
 
