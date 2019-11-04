@@ -16,7 +16,7 @@ It also exposes these methods:
     - [`...queries`](#queries)
     - [`container`](#container)
     - [`baseElement`](#baseelement)
-    - [`debug()`](#debug)
+    - [`debug(element)`](#debugelement)
     - [`unmount()`](#unmount)
     - [`isUnmounted()`](#isunmounted)
     - [`html()`](#html)
@@ -116,11 +116,12 @@ children.
 
 #### `baseElement`
 
-Returns `document.body`, the DOM node where your Vue component is rendered.
+#### `debug(element)`
 
-#### `debug()`
+This method is a shortcut for `console.log(prettyDOM(element))`.
 
-This method is a shortcut for `console.log(prettyDOM(baseElement))`.
+`element` can either be a DOM element or an array containing DOM elements. It
+defaults to `baseElement`
 
 ```jsx
 import { render } from '@testing-library/vue'
