@@ -422,6 +422,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "samvk",
+      "name": "Sam Kauffman",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12996081?v=4",
+      "profile": "https://samvk.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
