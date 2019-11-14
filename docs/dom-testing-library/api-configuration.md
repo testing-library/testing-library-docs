@@ -29,7 +29,7 @@ and related queries. Defaults to `data-testid`.
 // setup-tests.js
 import { configure } from '@testing-library/dom'
 
-configure({testIdAttribute: 'my-data-test-id'})`
+configure({testIdAttribute: 'my-data-test-id'})
 ```
 
 <!--React-->
@@ -38,7 +38,7 @@ configure({testIdAttribute: 'my-data-test-id'})`
 // setup-tests.js
 import { configure } from '@testing-library/react'
 
-configure({testIdAttribute: 'my-data-test-id'})`
+configure({testIdAttribute: 'my-data-test-id'})
 ```
 
 <!--Cypress-->
@@ -47,7 +47,7 @@ configure({testIdAttribute: 'my-data-test-id'})`
 // setup-tests.js
 import { configure } from '@testing-library/cypress'
 
-configure({testIdAttribute: 'my-data-test-id'})`
+configure({testIdAttribute: 'my-data-test-id'})
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
