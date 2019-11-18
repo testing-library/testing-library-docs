@@ -67,14 +67,14 @@ element in the DOM and the key you want to fire.
 fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
 
 // note: you should set the charCode or it will be fallback to 0
-// will Fire an KeyboardEvent with charCode = 0
+// will fire a KeyboardEvent with charCode = 13
 fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
 
 // If using event.which, be sure to set the keyCode or it will be fallback to 0
-// will Fire a KeyboardEvent with expected which = 13
+// will fire a KeyboardEvent with expected which = 13
 fireEvent.keyDown(domNode, { key: 'Enter', keyCode: 13 })
 
-// will Fire an KeyboardEvent with charCode = 65
+// will fire a KeyboardEvent with charCode = 65
 fireEvent.keyDown(domNode, { key: 'A', code: 65, charCode: 65 })
 ```
 
