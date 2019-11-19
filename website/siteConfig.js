@@ -94,6 +94,12 @@ const users = [
     infoLink: 'https://intellihr.com.au',
     pinned: true,
   },
+  {
+    caption: 'Quizlet',
+    image: '/img/users/quizlet.svg',
+    infoLink: 'https://quizlet.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
