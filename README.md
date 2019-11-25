@@ -94,6 +94,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/HendrikRoehm"><img src="https://avatars3.githubusercontent.com/u/26203080?v=4" width="100px;" alt="Hendrik Röhm"/><br /><sub><b>Hendrik Röhm</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=HendrikRoehm" title="Documentation">📖</a></td>
     <td align="center"><a href="https://samvk.com"><img src="https://avatars1.githubusercontent.com/u/12996081?v=4" width="100px;" alt="Sam Kauffman"/><br /><sub><b>Sam Kauffman</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=samvk" title="Documentation">📖</a></td>
     <td align="center"><a href="http://turadg.aleahmad.net/"><img src="https://avatars1.githubusercontent.com/u/21505?v=4" width="100px;" alt="Turadg Aleahmad"/><br /><sub><b>Turadg Aleahmad</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=turadg" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/MarkGeeRomano"><img src="https://avatars1.githubusercontent.com/u/13630752?v=4" width="100px;" alt="mark g romano"/><br /><sub><b>mark g romano</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=MarkGeeRomano" title="Documentation">📖</a></td>
   </tr>
 </table>
 
