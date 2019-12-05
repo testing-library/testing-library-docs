@@ -28,10 +28,10 @@ with any testing framework and runner you're comfortable with.
 
 3.  You'll need to compile the Svelte components before using them in Jest, so
     we need to install
-    [jest-transform-svelte](https://github.com/rspieker/jest-transform-svelte)
+    [svelte-jester](https://github.com/mihar-22/svelte-jester)
 
     ```
-    npm install --save-dev jest-transform-svelte
+    npm install --save-dev svelte-jester
     ```
 
 4.  Add the following Jest configuration to your `package.json`
@@ -40,7 +40,7 @@ with any testing framework and runner you're comfortable with.
     {
       "jest": {
         "transform": {
-          "^.+\\.svelte$": "jest-transform-svelte"
+          "^.+\\.svelte$": "svelte-jester"
         },
         "moduleFileExtensions": ["js", "svelte"]
       }
@@ -71,3 +71,10 @@ with any testing framework and runner you're comfortable with.
     ```
     npm run test
     ```
+
+## Babel / Preprocessors
+
+If you'd like to also include [Babel](https://babeljs.io/) or any
+[Svelte preprocessors](https://github.com/kaisermann/svelte-preprocess) then
+simply follow the instructions over at
+[svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
