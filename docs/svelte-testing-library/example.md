@@ -33,14 +33,14 @@ import { render, fireEvent } from '@testing-library/svelte'
 import Comp from '../Comp'
 
 test('shows proper heading when rendered', () => {
-  const { getByText } = render(Comp, { props: { name: 'World' } })
+  const { getByText } = render(Comp, { name: 'World' })
 
   expect(getByText('Hello World!')).toBeInTheDocument()
 })
 
 // Note: This is as an async test as we are using `fireEvent`
 test('changes button text on click', async () => {
-  const { getByText } = render(Comp, { props: { name: 'World' } })
+  const { getByText } = render(Comp, { name: 'World' })
   const button = getByText('Button')
 
   // Using await when firing events is unique to the svelte testing library because
