@@ -25,7 +25,7 @@ tells Svelte to apply any new changes to the DOM.
 
 ## `render`
 
-```jsx
+```js
 import { render } from '@testing-library/svelte'
 
 const { results } = render(
@@ -40,6 +40,20 @@ const { results } = render(
 These are the options you pass when instantiating your Svelte `Component`.
 Please refer to the
 [Client-side component API](https://svelte.dev/docs#Client-side_component_API).
+
+📝 If the only option you're passing in is `props`, then you can just pass them
+in directly.
+
+```js
+// With options.
+const { results } = render(YourComponent, {
+  target: MyTarget,
+  props: { myProp: 'value' },
+})
+
+// Props only.
+const { results } = render(YourComponent, { myProp: 'value' })
+```
 
 ### Render Options
 
@@ -69,7 +83,7 @@ Unmounts the component from the container and destroys the container.
 test. If you'd like to disable this then set `process.env.STL_SKIP_AUTO_CLEANUP`
 to true or import `dont-clean-up-after-each` from the library.
 
-```jsx
+```js
 import { render, cleanup } from '@testing-library/svelte'
 
 afterEach(() => {
