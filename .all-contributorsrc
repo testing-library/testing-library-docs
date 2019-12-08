@@ -455,5 +455,6 @@
   "projectName": "testing-library-docs",
   "projectOwner": "testing-library",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
