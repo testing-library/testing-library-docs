@@ -97,6 +97,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://turadg.aleahmad.net/"><img src="https://avatars1.githubusercontent.com/u/21505?v=4" width="100px;" alt="Turadg Aleahmad"/><br /><sub><b>Turadg Aleahmad</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=turadg" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/MarkGeeRomano"><img src="https://avatars1.githubusercontent.com/u/13630752?v=4" width="100px;" alt="mark g romano"/><br /><sub><b>mark g romano</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=MarkGeeRomano" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/arturoromeroslc"><img src="https://avatars0.githubusercontent.com/u/7406639?v=4" width="100px;" alt="Arturo Romero"/><br /><sub><b>Arturo Romero</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=arturoromeroslc" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
