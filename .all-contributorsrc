@@ -449,11 +449,21 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dustinsoftware",
+      "name": "Dustin Masters",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/942358?v=4",
+      "profile": "https://www.dustinsoftware.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "testing-library-docs",
   "projectOwner": "testing-library",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
