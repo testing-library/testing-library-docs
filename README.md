@@ -31,7 +31,8 @@ See [./website/README.md](./website/README.md) for instructions on building the 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
     <td align="center"><a href="https://kentcdodds.com"><img src="https://avatars0.githubusercontent.com/u/1500684?v=4" width="100px;" alt="Kent C. Dodds"/><br /><sub><b>Kent C. Dodds</b></sub></a><br /><a href="#maintenance-kentcdodds" title="Maintenance">🚧</a></td>
@@ -44,7 +45,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://edcs.me"><img src="https://avatars1.githubusercontent.com/u/754498?v=4" width="100px;" alt="Edward Coleridge Smith"/><br /><sub><b>Edward Coleridge Smith</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=edcs" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://afontcu.dev"><img src="https://avatars0.githubusercontent.com/u/9197791?v=4" width="100px;" alt="Adrià Fontcuberta"/><br /><sub><b>Adrià Fontcuberta</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=afontcu" title="Documentation">📖</a> <a href="#review-afontcu" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://afontcu.dev"><img src="https://avatars0.githubusercontent.com/u/9197791?v=4" width="100px;" alt="Adrià Fontcuberta"/><br /><sub><b>Adrià Fontcuberta</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=afontcu" title="Documentation">📖</a> <a href="https://github.com/testing-library/testing-library-docs/pulls?q=is%3Apr+reviewed-by%3Aafontcu" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="http://timdeschryver.dev"><img src="https://avatars1.githubusercontent.com/u/28659384?v=4" width="100px;" alt="Tim Deschryver"/><br /><sub><b>Tim Deschryver</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=timdeschryver" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/benmonro"><img src="https://avatars3.githubusercontent.com/u/399236?v=4" width="100px;" alt="Ben Monro"/><br /><sub><b>Ben Monro</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=benmonro" title="Documentation">📖</a></td>
     <td align="center"><a href="http://scottsauber.com"><img src="https://avatars2.githubusercontent.com/u/10823939?v=4" width="100px;" alt="Scott Sauber"/><br /><sub><b>Scott Sauber</b></sub></a><br /><a href="#blog-scottsauber" title="Blogposts">📝</a></td>
@@ -96,8 +97,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://turadg.aleahmad.net/"><img src="https://avatars1.githubusercontent.com/u/21505?v=4" width="100px;" alt="Turadg Aleahmad"/><br /><sub><b>Turadg Aleahmad</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=turadg" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/MarkGeeRomano"><img src="https://avatars1.githubusercontent.com/u/13630752?v=4" width="100px;" alt="mark g romano"/><br /><sub><b>mark g romano</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=MarkGeeRomano" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://www.dustinsoftware.com"><img src="https://avatars3.githubusercontent.com/u/942358?v=4" width="100px;" alt="Dustin Masters"/><br /><sub><b>Dustin Masters</b></sub></a><br /><a href="#content-dustinsoftware" title="Content">🖋</a></td>
+  </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
