@@ -458,6 +458,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dustinsoftware",
+      "name": "Dustin Masters",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/942358?v=4",
+      "profile": "https://www.dustinsoftware.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
