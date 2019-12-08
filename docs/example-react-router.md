@@ -9,9 +9,9 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import { Link, Route, Router, Switch } from 'react-router-dom'
 
-const About = () => <div>You are on the about page</div>
-const Home = () => <div>You are home</div>
-const NoMatch = () => <div>No match</div>
+const About = () => <h1>You are on the about page</h1>
+const Home = () => <h1>You are home</h1>
+const NoMatch = () => <h1>404 Not Found</h1>
 
 const LocationDisplay = withRouter(({ location }) => (
   <div data-testid="location-display">{location.pathname}</div>
