@@ -467,6 +467,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "darren-lester",
+      "name": "Darren Lester",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19534488?v=4",
+      "profile": "https://www.darrenlester.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
