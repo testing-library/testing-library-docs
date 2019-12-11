@@ -24,79 +24,6 @@ async function render<DirectiveType, WrapperType = WrapperComponent>(
 
 ## Component RenderOptions
 
-### `detectChanges`
-
-Will call `detectChanges` when the component is compiled
-
-**default** : `true`
-
-**example**:
-
-```typescript
-const component = await render(AppComponent, { detectChanges: false })
-```
-
-### `declarations`
-
-A collection of providers needed to render the component via Dependency
-Injection, for example, injectable services or tokens.
-
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#providers).
-
-**default** : `[]`
-
-**example**:
-
-```typescript
-const component = await render(AppComponent, {
-  providers: [
-    CustomersService,
-    {
-      provide: MAX_CUSTOMERS_TOKEN,
-      useValue: 10,
-    },
-  ],
-})
-```
-
-### `imports`
-
-A collection of imports needed to render the component, for example, shared
-modules. Adds `NoopAnimationsModule` by default if `BrowserAnimationsModule`
-isn't added to the collection
-
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#imports).
-
-**default** : `[NoopAnimationsModule]`
-
-**example**:
-
-```typescript
-const component = await render(AppComponent, {
-  imports: [AppSharedModule, MaterialModule],
-})
-```
-
-### `schemas`
-
-A collection of schemas needed to render the component. Allowed values are
-`NO_ERRORS_SCHEMA` and `CUSTOM_ELEMENTS_SCHEMA`.
-
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#schemas).
-
-**default** : `[]`
-
-**example**:
-
-```typescript
-const component = await render(AppComponent, {
-  schemas: [NO_ERRORS_SCHEMA],
-})
-```
-
 ### `componentProperties`
 
 An object to set `@Input` and `@Output` properties of the component.
@@ -131,19 +58,40 @@ const component = await render(AppComponent, {
 })
 ```
 
-### `queries`
+### `declarations`
 
-Queries to bind. Overrides the default set from DOM Testing Library unless
-merged.
+A collection of providers needed to render the component via Dependency
+Injection, for example, injectable services or tokens.
 
-**default** : `undefined`
+For more info see the
+[Angular docs](https://angular.io/api/core/NgModule#providers).
+
+**default** : `[]`
 
 **example**:
 
 ```typescript
 const component = await render(AppComponent, {
-  queries: { ...queries, ...customQueries },
+  providers: [
+    CustomersService,
+    {
+      provide: MAX_CUSTOMERS_TOKEN,
+      useValue: 10,
+    },
+  ],
 })
+```
+
+### `detectChanges`
+
+Will call `detectChanges` when the component is compiled
+
+**default** : `true`
+
+**example**:
+
+```typescript
+const component = await render(AppComponent, { detectChanges: false })
 ```
 
 ### `excludeComponentDeclaration`
@@ -159,6 +107,40 @@ needed when the component is declared in an imported module.
 const component = await render(AppComponent, {
   imports: [AppModule], // a module that includes AppComponent
   excludeComponentDeclaration: true,
+})
+```
+
+### `imports`
+
+A collection of imports needed to render the component, for example, shared
+modules. Adds `NoopAnimationsModule` by default if `BrowserAnimationsModule`
+isn't added to the collection
+
+For more info see the
+[Angular docs](https://angular.io/api/core/NgModule#imports).
+
+**default** : `[NoopAnimationsModule]`
+
+**example**:
+
+```typescript
+const component = await render(AppComponent, {
+  imports: [AppSharedModule, MaterialModule],
+})
+```
+
+### `queries`
+
+Queries to bind. Overrides the default set from DOM Testing Library unless
+merged.
+
+**default** : `undefined`
+
+**example**:
+
+```typescript
+const component = await render(AppComponent, {
+  queries: { ...queries, ...customQueries },
 })
 ```
 
@@ -186,6 +168,24 @@ const component = await render(AppComponent, {
       ],
     },
   ],
+})
+```
+
+### `schemas`
+
+A collection of schemas needed to render the component. Allowed values are
+`NO_ERRORS_SCHEMA` and `CUSTOM_ELEMENTS_SCHEMA`.
+
+For more info see the
+[Angular docs](https://angular.io/api/core/NgModule#schemas).
+
+**default** : `[]`
+
+**example**:
+
+```typescript
+const component = await render(AppComponent, {
+  schemas: [NO_ERRORS_SCHEMA],
 })
 ```
 
@@ -224,23 +224,36 @@ const component = await render(SpoilerDirective, {
 
 ## `RenderResult`
 
-### `...queries`
+### `container`
 
-The most important feature of `render` is that the queries from
-[DOM Testing Library](https://testing-library.com/docs/dom-testing-library) are
-automatically returned with their first argument bound to the component under
-test.
+The containing DOM node of your rendered Angular Component. This is a regular
+DOM node, so you can call `container.querySelector` etc. to inspect the
+children.
 
-See [Queries](https://testing-library.com/docs/dom-testing-library/api-queries)
-for a complete list.
+### `debug`
 
-**example**:
+Prints out the component's DOM with syntax highlighting. Accepts an optional
+parameter, to print out a specific DOM node.
 
 ```typescript
 const component = await render(AppComponent)
 
-component.getByText('Hello world')
-component.queryByLabelText('First name:')
+component.debug()
+component.debug(component.getByRole('alert'))
+```
+
+### `rerender`
+
+Re-render the same component with different props.
+Will call `detectChanges` after props has been updated.
+
+```typescript
+const component = await render(Counter, { componentProperties: { count: 4 }})
+
+expect(component.getByTestId('count-value').textContent).toBe('4')
+
+component.rerender({ count: 7 })
+expect(component.getByTestId('count-value').textContent).toBe('7')
 ```
 
 ### `fireEvent.***`
@@ -268,44 +281,6 @@ component.change(component.getByLabelText('Username'), {
 component.click(component.getByText('Login'))
 ```
 
-### `type`
-
-Types a value in an input field with the same interactions as the user would do.
-
-```typescript
-const component = await render(AppComponent)
-
-component.type(component.getByLabelText('Username'), 'Tim')
-component.type(component.getByLabelText('Username'), 'Tim', { delay: 250 })
-```
-
-### `selectOptions`
-
-Select an option(s) from a select field with the same interactions as the user
-would do.
-
-```typescript
-const component = await render(AppComponent)
-
-component.selectOptions(component.getByLabelText('Fruit'), 'Blueberry')
-component.selectOptions(component.getByLabelText('Fruit'), ['Blueberry'. 'Grape'])
-```
-
-### `navigate`
-
-Accepts a DOM element or a path as parameter. If an element is passed,
-`navigate` will navigate to the `href` value of the element. If a path is
-passed, `navigate` will navigate to the path.
-
-```typescript
-const component = await render(AppComponent, {
-  routes: [...]
-})
-
-await component.navigate(component.getByLabelText('To details'))
-await component.navigate('details/3')
-```
-
 ### `fixture`
 
 The Angular `ComponentFixture` of the component.
@@ -323,20 +298,80 @@ const componentInstance = component.fixture.componentInstance as AppComponent
 > values you should reconsider! This probable means, you're testing
 > implementation details.
 
-### `container`
+### `navigate`
 
-The containing DOM node of your rendered Angular Component. This is a regular
-DOM node, so you can call `container.querySelector` etc. to inspect the
-children.
+Accepts a DOM element or a path as parameter. If an element is passed,
+`navigate` will navigate to the `href` value of the element. If a path is
+passed, `navigate` will navigate to the path.
 
-### `debug`
+```typescript
+const component = await render(AppComponent, {
+  routes: [...]
+})
 
-Prints out the component's DOM with syntax highlighting. Accepts an optional
-parameter, to print out a specific DOM node.
+await component.navigate(component.getByLabelText('To details'))
+await component.navigate('details/3')
+```
+
+### `...queries`
+
+The most important feature of `render` is that the queries from
+[DOM Testing Library](https://testing-library.com/docs/dom-testing-library) are
+automatically returned with their first argument bound to the component under
+test.
+
+See [Queries](https://testing-library.com/docs/dom-testing-library/api-queries)
+for a complete list.
+
+**example**:
 
 ```typescript
 const component = await render(AppComponent)
 
-component.debug()
-component.debug(component.getByRole('alert'))
+component.getByText('Hello world')
+component.queryByLabelText('First name:')
 ```
+
+### `selectOptions`
+
+Select an option(s) from a select field with the same interactions as the user
+would do.
+
+```typescript
+const component = await render(AppComponent)
+
+component.selectOptions(component.getByLabelText('Fruit'), 'Blueberry')
+component.selectOptions(component.getByLabelText('Fruit'), ['Blueberry'. 'Grape'])
+```
+
+### `type`
+
+Types a value in an input field with the same interactions as the user would do.
+
+```typescript
+const component = await render(AppComponent)
+
+component.type(component.getByLabelText('Username'), 'Tim')
+component.type(component.getByLabelText('Username'), 'Tim', { delay: 250 })
+```
+
+### `waitForDomChange`
+
+Wait for the DOM to change.
+For more info see the [DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitfordomchange).
+
+This function will also call `detectChanges` repeatably to update the DOM, is helpful to test async functionality.
+
+### `waitForElement`
+
+Wait for DOM elements to appear, disappear, or change.
+For more info see the [DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitforelement).
+
+This function will also call `detectChanges` repeatably to update the DOM, is helpful to test async functionality.
+
+### `waitForElementToBeRemoved`
+
+Wait for the removal of element(s) from the DOM.
+For more info see the [DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitforelementtoberemoved).
+
+This function will also call `detectChanges` repeatably to update the DOM, is helpful to test async functionality.
