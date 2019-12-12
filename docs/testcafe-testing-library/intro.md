@@ -23,26 +23,7 @@ npm install --save-dev testcafe @testing-library/testcafe
 `testcafe-testing-library` provides custom Selectors allowing you to query the
 dom.
 
-### for v2.x:
-
-Add `testcafe-testing-library` to your test fixture's `beforeEach` hook:
-
-```javascript
-import {
-  getByText, //or any other queries you want
-  addTestcafeTestingLibrary,
-} from '@testing-library/testcafe'
-
-fixture`selectors`.beforeEach(addTestcafeTestingLibrary)
-  .page`http://localhost:13370`
-```
-
-### for v3.x+ (requires testcafe 1.4.0 or greater)
-
-`addTestcafeTestingLibrary` was removed in 3.x, instead you can now [inject
-clientScripts][inject] as of testcafe 1.4.0. For now, the path has to be used,
-but this will hopefully be changed to a module soon (pending a change to
-testcafe to support `umd:main` in package.json.
+Add the following to your .testcaferc.json file:
 
 ```json
   "clientScripts": [
@@ -150,9 +131,7 @@ window.TestingLibraryDom.configure({ testIdAttribute: 'data-automation-id' })
 
 By default the selectors come pre-bound to `document.body`, so no need to
 provide a container. However, if you want to restrict your query using a
-container, you can use `within`. Note similar to using a testcafe
-`ClientFunction` so you will need to await `within`, and you can't make
-assertions on it like you can using a `Selector`. `within` can take either a
+container, you can use `within` which can take either a
 string or a query (get[All]By*, query[All]By*, find[All]By\*).
 
 ### Examples using `within`
