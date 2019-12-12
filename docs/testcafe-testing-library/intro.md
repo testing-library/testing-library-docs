@@ -54,6 +54,8 @@ You can now import & use get[All]By*, query[All]By*, find[All]By\* selectors in
 your tests.
 [See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
+> A note about queries in testcafe.  Testcafe has [built in waiting](https://devexpress.github.io/testcafe/documentation/test-api/built-in-waiting-mechanisms.html#wait-mechanism-for-selectors), for this reason, there's no difference between `queryBy` and `findBy` queries in testcafe testing library.  `getBy` queries will throw an exception (as designed) so they will fail immediately and do not work with the built in waiting that Testcafe provides.
+
 ## Examples
 
 To show some simple examples (from
