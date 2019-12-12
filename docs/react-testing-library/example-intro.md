@@ -16,6 +16,8 @@ import '@testing-library/jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
 
+jest.mock('axios')
+
 test('loads and displays greeting', async () => {
   const url = '/greeting'
   const { getByText, getByRole } = render(<Fetch url={url} />)
@@ -54,6 +56,7 @@ import '@testing-library/jest-dom/extend-expect'
 // the axios mock is in __mocks__/
 // see https://jestjs.io/docs/en/manual-mocks
 import axiosMock from 'axios'
+jest.mock('axios')
 
 // the component to test
 import Fetch from '../fetch'
