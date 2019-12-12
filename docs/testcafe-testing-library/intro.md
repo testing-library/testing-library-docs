@@ -23,8 +23,6 @@ npm install --save-dev testcafe @testing-library/testcafe
 `testcafe-testing-library` provides custom Selectors allowing you to query the
 dom.
 
-### for v3.x+ (requires testcafe 1.4.0 or greater)
-
 Add the following to your .testcaferc.json file:
 
 ```json
