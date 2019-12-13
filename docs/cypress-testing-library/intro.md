@@ -26,6 +26,11 @@ You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy`
 and `queryAllBy` commands off the global `cy` object.
 [See the `DOM Testing Library` docs for reference](https://testing-library.com).
 
+> Note: the `get*` queries are not supported because for reasonable Cypress tests you
+> need retryability and `find*` queries already support that. The reason the `query*`
+> variants are supported is to allow you to assert that elements do _not_ appear on
+> the screen.
+
 ## With TypeScript
 
 Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
