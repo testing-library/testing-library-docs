@@ -22,6 +22,15 @@ Add this line to your project's `cypress/support/commands.js`:
 import '@testing-library/cypress/add-commands';
 ```
 
+You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy`
+and `queryAllBy` commands off the global `cy` object.
+[See the `DOM Testing Library` docs for reference](https://testing-library.com).
+
+> Note: the `get*` queries are not supported because for reasonable Cypress tests you
+> need retryability and `find*` queries already support that. The reason the `query*`
+> variants are supported is to allow you to assert that elements do _not_ appear on
+> the screen.
+
 ## With TypeScript
 
 Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
@@ -35,33 +44,23 @@ and should be added as follows in `tsconfig.json`:
 }
 ```
 
-You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
-and `queryAllBy` commands.
-[See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
+You can find [all Library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
 
 ## Examples
 
-You can find [all library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
-
-To show some simple examples (from [https://github.com/testing-library/cypress-testing-library/tree/master/cypress/integration](https://github.com/testing-library/cypress-testing-library/tree/master/cypress/integration)):
+To show some simple examples (from
+[cypress/integration/query.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/query.spec.js) or [cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/find.spec.js)):
 
 ```javascript
-cy.findAllByText(/^Button Text \d$/)
-  .should('have.length', 2)
-  .click({ multiple: true })
-  .should('contain', 'Button Clicked')
-cy.queryByText('Button Text 1')
-  .click()
-  .should('contain', 'Button Clicked')
-cy.queryByText('Non-existing Button Text', { timeout: 100 }).should('not.exist')
-cy.queryByLabelText('Label 1')
-  .click()
-  .type('Hello Input Labelled By Id')
-cy.get('#nested').within(() => {
-  cy.queryByText('Button Text 2').click()
+cy.findAllByText('Jackie Chan').click()
+cy.queryByText('Button Text').should('exist')
+cy.queryByText('Non-existing Button Text').should('not.exist')
+cy.queryByLabelText('Label text', {timeout: 7000}).should('exist')
+cy.get('form').within(() => {
+  cy.findByText('Button Text').should('exist')
 })
-cy.get('#nested').then(subject => {
-  cy.queryByText(/^Button Text/, { container: subject }).click()
+cy.get('form').then(subject => {
+  cy.findByText('Button Text', {container: subject}).should('exist')
 })
 ```
 
@@ -69,6 +68,6 @@ cy.get('#nested').then(subject => {
 necessary because Cypress uses jQuery elements, while `DOM Testing Library`
 expects DOM nodes. When you pass a jQuery element as `container`, it will get
 the first DOM node from the collection and use that as the `container` parameter
-for the DOM Testing Library functions.
+for the `DOM Testing Library` functions.
 
 [gh]: https://github.com/testing-library/cypress-testing-library
