@@ -55,7 +55,40 @@ There are also options to adjust how node text is parsed.
 
 See [TextMatch](#textmatch) for documentation on what can be passed to a query.
 
+## `screen`
+
+All of the queries exported by DOM Testing Library accept a `container` as the
+first argument. Because querying the entire `document.body` is very common, DOM
+Testing Library also exports a `screen` object which has every query that is
+pre-bound to `document.body` (using the
+[`within`](/docs/dom-testing-library/api-helpers#within-and-getqueriesforelement-apis)
+functionality).
+
+Here's how you use it:
+
+```javascript
+import { screen } from '@testing-library/dom'
+// NOTE: many framework-implementations of Testing Library
+// re-export everything from `@testing-library/dom` so you
+// may be able to import screen from your framework-implementation:
+// import {render, screen} from '@testing-library/react'
+
+const exampleHTML = `
+  <label for="example">Example</label>
+  <input id="example" />
+`
+document.body.innerHTML = exampleHTML
+const exampleInput = screen.getByLabelText(/example/i)
+```
+
 ## Queries
+
+> NOTE: These queries are the base queries and require you pass a `container` as
+> the first argument. Most framework-implementations of Testing Library provide
+> a pre-bound version of these queries when you render your components with them
+> which means you do not have to provide a container. In addition, if you just
+> want to query `document.body` then you can use the [`screen`](#screen) export
+> as demonstrated above.
 
 ### `ByLabelText`
 
