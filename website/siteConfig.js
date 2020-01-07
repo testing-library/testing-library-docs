@@ -100,6 +100,12 @@ const users = [
     infoLink: 'https://quizlet.com',
     pinned: true,
   },
+  {
+    caption: 'Radity',
+    image: '/img/users/radity.svg',
+    infoLink: 'https://radity.com',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
