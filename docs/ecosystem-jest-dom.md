@@ -10,6 +10,12 @@ provides custom DOM element matchers for Jest
 npm install --save-dev @testing-library/jest-dom
 ```
 
+Import @testing-library/jest-dom/extend-expect once (for instance in your tests setup file) and you're good to go:
+
+```
+import '@testing-library/jest-dom/extend-expect'
+```
+
 ```jsx
 <span data-testid="not-empty"><span data-testid="empty"></span></span>
 <div data-testid="visible">Visible Example</div>
