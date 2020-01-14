@@ -1,5 +1,5 @@
 ---
-id: example-react-useReducer
+id: example-react-hooks-useReducer
 title: useReducer
 ---
 
