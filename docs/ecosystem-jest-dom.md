@@ -10,11 +10,7 @@ provides custom DOM element matchers for Jest
 npm install --save-dev @testing-library/jest-dom
 ```
 
-Import @testing-library/jest-dom/extend-expect once (for instance in your tests setup file) and you're good to go:
-
-```
-import '@testing-library/jest-dom/extend-expect'
-```
+Then follow [usage section][gh-usage] from jest-dom's documentation to add the matchers to Jest.
 
 ```jsx
 <span data-testid="not-empty"><span data-testid="empty"></span></span>
@@ -34,3 +30,4 @@ Check out [jest-dom's documentation][gh] for a full list of available matchers.
 - [jest-dom on GitHub][gh]
 
 [gh]: https://github.com/testing-library/jest-dom
+[gh-usage]: https://github.com/testing-library/jest-dom#usage
