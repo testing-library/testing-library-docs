@@ -7,7 +7,7 @@ title: React Router
 // app.js
 import React from 'react'
 import { withRouter } from 'react-router'
-import { Link, Route, Router, Switch } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 
 const About = () => <h1>You are on the about page</h1>
 const Home = () => <h1>You are home</h1>
@@ -31,6 +31,8 @@ function App() {
     </div>
   )
 }
+
+export { LocationDisplay, App }
 ```
 
 ```jsx
@@ -40,6 +42,7 @@ import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
+import { LocationDisplay, App } from './app'
 
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
