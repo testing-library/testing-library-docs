@@ -14,6 +14,11 @@ possible. With this in mind, we recommend this order of priority:
    1. `getByLabelText`: Only really good for form fields, but this is the number
       one method a user finds those elements, so it should be your top
       preference.
+   1. `getByRole`: With the `name` option you can basically query the full
+      accessibility tree. It can query all the elements you can query with the
+      other accessility query. But consider that you still might want to assert
+      if an element has an actual `<label>` element or a `placeholder`
+      attribute.
    1. `getByPlaceholderText`:
       [A placeholder is not a substitute for a label](https://www.nngroup.com/articles/form-design-placeholders/).
       But if that's all you have, then it's better than alternatives.
@@ -29,8 +34,6 @@ possible. With this in mind, we recommend this order of priority:
       `area`, and `input`), then you can use this to find that element.
    1. `getByTitle`: The title attribute is not consistently read by
       screenreaders, and is not visible by default for sighted users
-   1. `getByRole`: This can be used to select dialog boxes and other
-      difficult-to-capture elements in a more semantic way
 1. **Test IDs**
    1. `getByTestId`: The user cannot see (or hear) these, so this is only
       recommended for cases where you can't match by role or text or it doesn't
