@@ -24,7 +24,7 @@ import '@testing-library/cypress/add-commands';
 
 You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy`
 and `queryAllBy` commands off the global `cy` object.
-[See the `DOM Testing Library` docs for reference](https://testing-library.com).
+[See the `DOM Testing Library` docs for reference](https://testing-library.com/docs/dom-testing-library/api-queries).
 
 > Note: the `get*` queries are not supported because for reasonable Cypress tests you
 > need retryability and `find*` queries already support that. The reason the `query*`
