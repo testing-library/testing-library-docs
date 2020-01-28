@@ -81,6 +81,29 @@ document.body.innerHTML = exampleHTML
 const exampleInput = screen.getByLabelText(/example/i)
 ```
 
+### `screen.debug`
+
+For convenience screen also exposes a `debug` method in addition to the queries.
+This method is essentially a shortcut for `console.log(prettyDOM())`. It
+supports debugging the document, a single element, or an array of elements.
+
+```javascript
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// debug document
+screen.debug()
+// debug single element
+screen.debug(screen.getByText('test'))
+// debug multiple elements
+screen.debug(screen.getAllByText('multi-test'))
+```
+
 ## Queries
 
 > NOTE: These queries are the base queries and require you pass a `container` as
