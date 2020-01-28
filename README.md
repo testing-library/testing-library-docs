@@ -102,6 +102,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.dustinsoftware.com"><img src="https://avatars3.githubusercontent.com/u/942358?v=4" width="100px;" alt=""/><br /><sub><b>Dustin Masters</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dustinsoftware" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.darrenlester.com"><img src="https://avatars2.githubusercontent.com/u/19534488?v=4" width="100px;" alt=""/><br /><sub><b>Darren Lester</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=darren-lester" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/iswara108"><img src="https://avatars3.githubusercontent.com/u/9681451?v=4" width="100px;" alt=""/><br /><sub><b>Iswara Chaitanya</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=iswara108" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/pylnata"><img src="https://avatars0.githubusercontent.com/u/33361478?v=4" width="100px;" alt=""/><br /><sub><b>Nataliia Pylypenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pylnata" title="Documentation">📖</a></td>
   </tr>
 </table>
 
