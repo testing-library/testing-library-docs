@@ -104,6 +104,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/iswara108"><img src="https://avatars3.githubusercontent.com/u/9681451?v=4" width="100px;" alt=""/><br /><sub><b>Iswara Chaitanya</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=iswara108" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/pylnata"><img src="https://avatars0.githubusercontent.com/u/33361478?v=4" width="100px;" alt=""/><br /><sub><b>Nataliia Pylypenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pylnata" title="Documentation">📖</a></td>
     <td align="center"><a href="https://huchen.dev"><img src="https://avatars3.githubusercontent.com/u/2078389?v=4" width="100px;" alt=""/><br /><sub><b>Hu Chen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=huchenme" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jkdowdle"><img src="https://avatars0.githubusercontent.com/u/19804196?v=4" width="100px;" alt=""/><br /><sub><b>Josh</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jkdowdle" title="Documentation">📖</a></td>
   </tr>
 </table>
 
