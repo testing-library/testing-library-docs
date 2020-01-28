@@ -102,7 +102,6 @@ screen.debug()
 screen.debug(screen.getByText('test'))
 // debug multiple elements
 screen.debug(screen.getAllByText('multi-test'))
-
 ```
 
 ## Queries
