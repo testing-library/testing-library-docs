@@ -87,7 +87,7 @@ For convenience screen also exposes a `debug` method in addition to the queries.
 This method is essentially a shortcut for `console.log(prettyDOM())`. It
 supports debugging the document, a single element, or an array of elements.
 
-```jsx
+```javascript
 import {screen} from '@testing-library/dom'
 
 document.body.innerHTML = `
