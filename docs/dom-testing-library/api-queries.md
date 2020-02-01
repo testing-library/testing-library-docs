@@ -164,8 +164,11 @@ cy.getByLabelText('username').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-It will NOT find the input node for label text broken up by elements. If it is
-important that you query an actual `<label>` element you can provide a
+It will NOT find the input node for label text broken up by elements. You can
+use `getByRole('textbox', { name: 'Username' })` instead which is robust against
+switching to `aria-label` or `aria-labelledby`.
+
+If it is important that you query an actual `<label>` element you can provide a
 `selector` in the options:
 
 ```html
@@ -178,9 +181,6 @@ const inputNode = getByLabelText(container, 'Username', {
   selector: 'input',
 })
 ```
-
-Otherwise `byRole('textbox', { name: 'Username' })` works as well and is robust
-against switching to `aria-label` or `aria-labelledby`.
 
 ### `ByPlaceholderText`
 
@@ -594,12 +594,12 @@ a specific element if multiple elements with the same role are present on the
 rendered content. For an in-depth guide check out
 ["What is an accessible name?" from ThePacielloGroup](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/).
 If you only query for a single element with `getByText('The name')` it's
-oftentimes better to use `byRole(expectedRole, { name: 'The name' })`. The
+oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The
 accessible name query does not replace other queries such as `byAlt` or
 `byTitle`. While the accessible name can be equal to these attributes, it does
 not replace the functionality of these attributes. For example
 `<img aria-label="fancy image" src="fancy.jpg" />` will be returned for both
-`getByAlt('fancy image')` and `byRole('image', { name: 'fancy image' })`.
+`getByAlt('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
 However, the image will not display its description if `fancy.jpg` could not be
 loaded. Whether you want assert this functionality in your test or not is up to
 you.
