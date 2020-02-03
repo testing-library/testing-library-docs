@@ -27,9 +27,8 @@ and `queryAllBy` commands off the global `cy` object.
 [See the `DOM Testing Library` docs for reference](https://testing-library.com/docs/dom-testing-library/api-queries).
 
 > Note: the `get*` queries are not supported because for reasonable Cypress tests you
-> need retryability and `find*` queries already support that. The reason the `query*`
-> variants are supported is to allow you to assert that elements do _not_ appear on
-> the screen.
+> need retryability and `find*` queries already support that. `query*` queries are not
+> necessary, but supported.
 
 ## With TypeScript
 
@@ -53,9 +52,12 @@ To show some simple examples (from
 
 ```javascript
 cy.findAllByText('Jackie Chan').click()
-cy.queryByText('Button Text').should('exist')
-cy.queryByText('Non-existing Button Text').should('not.exist')
-cy.queryByLabelText('Label text', {timeout: 7000}).should('exist')
+cy.findByText('Button Text').should('exist')
+cy.findByText('Non-existing Button Text').should('not.exist')
+cy.findByLabelText('Label text', {timeout: 7000}).should('exist')
+
+// findAllByText _inside_ a form element
+cy.get('form').findByText('Button Text').should('exist')
 cy.get('form').within(() => {
   cy.findByText('Button Text').should('exist')
 })
