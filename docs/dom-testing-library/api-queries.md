@@ -595,8 +595,8 @@ rendered content. For an in-depth guide check out
 ["What is an accessible name?" from ThePacielloGroup](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/).
 If you only query for a single element with `getByText('The name')` it's
 oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The
-accessible name query does not replace other queries such as `byAlt` or
-`byTitle`. While the accessible name can be equal to these attributes, it does
+accessible name query does not replace other queries such as `*ByAlt` or
+`*ByTitle`. While the accessible name can be equal to these attributes, it does
 not replace the functionality of these attributes. For example
 `<img aria-label="fancy image" src="fancy.jpg" />` will be returned for both
 `getByAlt('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
