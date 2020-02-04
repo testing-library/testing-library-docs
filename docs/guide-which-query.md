@@ -14,17 +14,17 @@ possible. With this in mind, we recommend this order of priority:
    1. `getByLabelText`: Only really good for form fields, but this is the number
       one method a user finds those elements, so it should be your top
       preference.
-   1. `getByRole`: With the `name` option you can basically query the full
-      accessibility tree. It can query all the elements you can query with the
-      other accessility query. But consider that you still might want to assert
-      if an element has an actual `<label>` element or a `placeholder`
-      attribute.
    1. `getByPlaceholderText`:
       [A placeholder is not a substitute for a label](https://www.nngroup.com/articles/form-design-placeholders/).
       But if that's all you have, then it's better than alternatives.
+   1. `getByRole`: This can be used to query every element that is exposed in
+      the
+      [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/AOM).
+      With the `name` option you can filter the returned elements by their
+      [accessible name](https://www.w3.org/TR/accname-1.1/). This should be your
+      top preference for interactive elements such as buttons.
    1. `getByText`: Not useful for forms, but this is the number 1 method a user
-      finds other elements (like buttons to click), so it should be your top
-      preference for non-form elements.
+      finds most non-interactive elements (listitems or divs).
    1. `getByDisplayValue`: The current value of a form element can be useful
       when navigating a page with filled-in values.
 1. **Semantic Queries** HTML5 and ARIA compliant selectors. Note that the user
