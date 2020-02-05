@@ -16,7 +16,7 @@ import '@testing-library/jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
 
-jest.mock('axios')
+jest.mock('axiosMock')
 
 test('loads and displays greeting', async () => {
   const url = '/greeting'
@@ -57,7 +57,7 @@ import axiosMock from 'axios'
 import Fetch from '../fetch'
 
 // https://jestjs.io/docs/en/mock-functions#mocking-modules
-jest.mock('axios')
+jest.mock('axiosMock')
 ```
 
 ```jsx
