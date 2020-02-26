@@ -102,7 +102,7 @@ module.exports = {
 
 You can define your own custom queries as described in the example in the
 [Helpers API](/docs/dom-testing-library/api-helpers) documentation, or via the
-[`buildQueries`](/docs/dom-testing-library/api-helpers#buildQueries) helper. Then
+[`buildQueries`](/docs/dom-testing-library/api-helpers#buildqueries) helper. Then
 you can use them in any render call using the `queries` option. To make the
 custom queries available globally, you can add them to your custom render method
 as shown below.
