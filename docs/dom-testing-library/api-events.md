@@ -57,6 +57,16 @@ fireEvent.change(getByLabelText(/picture/i), {
     files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
   },
 })
+
+// note: The value attribute must abide by ISO 8601 standards when firing a 
+// change event on an input of type "date". Otherwise the element will not 
+// reflect the changed value.
+
+// Invalid:
+fireEvent.change(input, { target: { value: '12/05/2020' } })
+
+// Valid:
+fireEvent.change(input, { target: { value: '2020-05-12' } })
 ```
 
 **dataTransfer**: Drag events have a `dataTransfer` property that contains
