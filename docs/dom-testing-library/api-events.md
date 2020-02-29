@@ -57,6 +57,16 @@ fireEvent.change(getByLabelText(/picture/i), {
     files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
   },
 })
+
+// note: When firing change events please be careful to use valid values.
+// For example if changing a target's value to a date you must abide by ISO 8601
+// standards. Otherwise the element will not update with the new value.
+
+// Invalid:
+fireEvent.change(input, { target: { value: '12/05/2020' } });
+
+// Valid:
+fireEvent.change(input, { target: { value: '2020-05-12' } });
 ```
 
 **Keyboard events**: There are three event types related to keyboard input -
