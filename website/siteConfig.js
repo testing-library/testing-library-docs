@@ -106,6 +106,12 @@ const users = [
     infoLink: 'https://radity.com',
     pinned: true,
   },
+  {
+    caption: 'Gusto',
+    image: '/img/users/gusto.svg',
+    infoLink: 'https://gusto.com/',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
