@@ -36,5 +36,6 @@ sidebar_label: Learning Material
   by [Scott Sauber](https://github.com/scottsauber)
 - [How to Test Asynchronous Methods](https://www.polvara.me/posts/how-to-test-asynchronous-methods/)
   by [Gpx](https://twitter.com/Gpx)
+- [Writing better tests with react-testing-library](https://www.youtube.com/watch?v=O0VxvRqgm7g) by [Billy Mathews](https://twitter.com/BillRMathews)
 
 Feel free to contribute more!
