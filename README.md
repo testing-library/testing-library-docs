@@ -108,6 +108,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://numb86.net/"><img src="https://avatars1.githubusercontent.com/u/16703337?v=4" width="100px;" alt=""/><br /><sub><b>numb86</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=numb86" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/NicholasBoll"><img src="https://avatars2.githubusercontent.com/u/338257?v=4" width="100px;" alt=""/><br /><sub><b>Nicholas Boll</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=NicholasBoll" title="Documentation">📖</a></td>
   </tr>
 </table>
 
