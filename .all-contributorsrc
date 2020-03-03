@@ -521,6 +521,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "NicholasBoll",
+      "name": "Nicholas Boll",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/338257?v=4",
+      "profile": "https://github.com/NicholasBoll",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
