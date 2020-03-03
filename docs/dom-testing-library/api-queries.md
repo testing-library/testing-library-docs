@@ -182,7 +182,7 @@ const inputNode = getByLabelText('username')
 <!--Cypress-->
 
 ```js
-cy.getByLabelText('username').should('exist')
+cy.findByLabelText('username').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
