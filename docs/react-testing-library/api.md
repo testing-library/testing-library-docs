@@ -173,6 +173,10 @@ debug()
 //   <h1>Hello World</h1>
 // </div>
 // you can also pass an element: debug(getByTestId('messages'))
+// and you can pass all the same arguemnts to debug as you can
+// to prettyDOM:
+// const maxLengthToPrint = 10000
+// debug(getByTestId('messages'), maxLengthToPrint, {highlight: false})
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
