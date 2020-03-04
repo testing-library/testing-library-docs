@@ -540,6 +540,15 @@
         "talk",
         "doc"
       ]
+    },
+    {
+      "login": "dale-french",
+      "name": "Dale French",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6544116?v=4",
+      "profile": "https://github.com/dale-french",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
