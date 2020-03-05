@@ -11,7 +11,7 @@ See the following sections for a detailed breakdown of the test
 ```jsx
 // __tests__/fetch.test.js
 import React from 'react'
-import { render, fireEvent, waitForElement } from '@testing-library/react'
+import { render, fireEvent, waitForElement, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
@@ -20,20 +20,20 @@ jest.mock('axios')
 
 test('loads and displays greeting', async () => {
   const url = '/greeting'
-  const { getByText, getByRole } = render(<Fetch url={url} />)
+  const { container, asFragment } = render(<Fetch url={url} />)
 
   axiosMock.get.mockResolvedValueOnce({
     data: { greeting: 'hello there' },
   })
 
-  fireEvent.click(getByText('Load Greeting'))
+  fireEvent.click(screen.getByText('Load Greeting'))
 
-  const greetingTextNode = await waitForElement(() => getByRole('heading'))
+  await waitForElement(() => screen.getByRole('heading'))
 
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith(url)
-  expect(getByRole('heading')).toHaveTextContent('hello there')
-  expect(getByRole('button')).toHaveAttribute('disabled')
+  expect(screen.getByRole('heading')).toHaveTextContent('hello there')
+  expect(screen.getByRole('button')).toHaveAttribute('disabled')
 })
 ```
 
@@ -48,7 +48,7 @@ test('loads and displays greeting', async () => {
 import React from 'react'
 
 // import react-testing methods
-import { render, fireEvent, waitForElement } from '@testing-library/react'
+import { render, fireEvent, waitForElement, screen } from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom/extend-expect'
@@ -70,14 +70,11 @@ test('loads and displays greeting', async () => {
 
 ### Arrange
 
-The [`render`](./api#render) method renders a React element into the DOM and
-returns utility functions for testing the component.
+The [`render`](./api#render) method renders a React element into the DOM and returns utility functions for testing the component.
 
 ```jsx
 const url = '/greeting'
-const { getByText, getByRole, container, asFragment } = render(
-  <Fetch url={url} />
-)
+const { container, asFragment } = render(<Fetch url={url} />)
 ```
 
 ### Act
@@ -96,9 +93,9 @@ fireEvent.click(getByText('Load Greeting'))
 // the component calls setState and re-renders.
 // `waitForElement` waits until the callback doesn't throw an error
 
-const greetingTextNode = await waitForElement(() =>
+await waitForElement(() =>
   // getByRole throws an error if it cannot find an element
-  getByRole('heading')
+  screen.getByRole('heading')
 )
 ```
 
@@ -138,8 +135,8 @@ export default function Fetch({ url }) {
 ```jsx
 expect(axiosMock.get).toHaveBeenCalledTimes(1)
 expect(axiosMock.get).toHaveBeenCalledWith(url)
-expect(getByRole('heading')).toHaveTextContent('hello there')
-expect(getByRole('button')).toHaveAttribute('disabled')
+expect(screen.getByRole('heading')).toHaveTextContent('hello there')
+expect(screen.getByRole('button')).toHaveAttribute('disabled')
 
 // snapshots work great with regular DOM nodes!
 expect(container).toMatchInlineSnapshot(`
