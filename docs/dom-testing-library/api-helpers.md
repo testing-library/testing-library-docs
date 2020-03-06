@@ -87,7 +87,7 @@ and add it here!
 getNodeText(node: HTMLElement)
 ```
 
-Returns the complete text content of a html element, removing any extra
+Returns the complete text content of an HTML element, removing any extra
 whitespace. The intention is to treat text in nodes exactly as how it is
 perceived by users in a browser, where any extra whitespace within words in the
 html code is not meaningful when the text is rendered.
