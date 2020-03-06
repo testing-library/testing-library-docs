@@ -21,6 +21,10 @@ Configuration options:
 `testIdAttribute`: The attribute used by [`getByTestId`](api-queries#bytestid)
 and related queries. Defaults to `data-testid`.
 
+`getElementError`: A function that returns the error used when
+[`getBy*`](api-queries#getby) or [`getAllBy*`](api-queries#getallby) fail. Takes
+the error message and container object as arguments.
+
 <!--DOCUSAURUS_CODE_TABS-->
 
 <!--Native-->
@@ -28,8 +32,17 @@ and related queries. Defaults to `data-testid`.
 ```js
 // setup-tests.js
 import { configure } from '@testing-library/dom'
+import serialize from 'my-custom-dom-serializer'
 
-configure({testIdAttribute: 'data-my-test-id'})
+configure({
+  testIdAttribute: 'data-my-test-id',
+  getElementError: (message, container) => {
+    const customMessage = [message, serialize(container.firstChild)].join(
+      '\n\n'
+    )
+    return new Error(customMessage)
+  },
+})
 ```
 
 <!--React-->
@@ -38,7 +51,7 @@ configure({testIdAttribute: 'data-my-test-id'})
 // setup-tests.js
 import { configure } from '@testing-library/react'
 
-configure({testIdAttribute: 'data-my-test-id'})
+configure({ testIdAttribute: 'data-my-test-id' })
 ```
 
 <!--Cypress-->
@@ -47,7 +60,7 @@ configure({testIdAttribute: 'data-my-test-id'})
 // setup-tests.js
 import { configure } from '@testing-library/cypress'
 
-configure({testIdAttribute: 'data-my-test-id'})
+configure({ testIdAttribute: 'data-my-test-id' })
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
