@@ -17,9 +17,14 @@ possible. With this in mind, we recommend this order of priority:
    1. `getByPlaceholderText`:
       [A placeholder is not a substitute for a label](https://www.nngroup.com/articles/form-design-placeholders/).
       But if that's all you have, then it's better than alternatives.
+   1. `getByRole`: This can be used to query every element that is exposed in
+      the
+      [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/AOM).
+      With the `name` option you can filter the returned elements by their
+      [accessible name](https://www.w3.org/TR/accname-1.1/). This should be your
+      top preference for interactive elements such as buttons.
    1. `getByText`: Not useful for forms, but this is the number 1 method a user
-      finds other elements (like buttons to click), so it should be your top
-      preference for non-form elements.
+      finds most non-interactive elements (listitems or divs).
    1. `getByDisplayValue`: The current value of a form element can be useful
       when navigating a page with filled-in values.
 1. **Semantic Queries** HTML5 and ARIA compliant selectors. Note that the user
@@ -29,8 +34,6 @@ possible. With this in mind, we recommend this order of priority:
       `area`, and `input`), then you can use this to find that element.
    1. `getByTitle`: The title attribute is not consistently read by
       screenreaders, and is not visible by default for sighted users
-   1. `getByRole`: This can be used to select dialog boxes and other
-      difficult-to-capture elements in a more semantic way
 1. **Test IDs**
    1. `getByTestId`: The user cannot see (or hear) these, so this is only
       recommended for cases where you can't match by role or text or it doesn't
