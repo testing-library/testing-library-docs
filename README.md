@@ -111,6 +111,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/NicholasBoll"><img src="https://avatars2.githubusercontent.com/u/338257?v=4" width="100px;" alt=""/><br /><sub><b>Nicholas Boll</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=NicholasBoll" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Billy-"><img src="https://avatars2.githubusercontent.com/u/4316168?v=4" width="100px;" alt=""/><br /><sub><b>Billy Matthews</b></sub></a><br /><a href="#talk-Billy-" title="Talks">📢</a> <a href="https://github.com/testing-library/testing-library-docs/commits?author=Billy-" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dale-french"><img src="https://avatars3.githubusercontent.com/u/6544116?v=4" width="100px;" alt=""/><br /><sub><b>Dale French</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dale-french" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/aw-davidson"><img src="https://avatars2.githubusercontent.com/u/32170938?v=4" width="100px;" alt=""/><br /><sub><b>aw-davidson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=aw-davidson" title="Documentation">📖</a></td>
   </tr>
 </table>
 
