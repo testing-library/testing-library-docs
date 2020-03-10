@@ -63,7 +63,7 @@ import Example from './example.js'
 it('shows success message after confirm button is clicked', () => {
   const { getByText } = render(<Example />)
 
-  expect(getByText(/waiting/i).textContent).toBeInTheDocument()
+  expect(getByText(/waiting/i)).toBeInTheDocument()
 
   fireEvent.click(getByText('Confirm'))
 
