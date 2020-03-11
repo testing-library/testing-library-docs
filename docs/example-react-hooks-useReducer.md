@@ -67,6 +67,6 @@ it('shows success message after confirm button is clicked', () => {
 
   fireEvent.click(getByText('Confirm'))
 
-  expect(getByText('Confirmed')).toBeInTheDocument()
+  expect(getByText('Confirmed!')).toBeInTheDocument()
 })
 ```
