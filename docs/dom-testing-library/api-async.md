@@ -56,7 +56,7 @@ changes. When any of those changes occur, it will re-run the callback.
 
 ```typescript
 function waitForElementToBeRemoved<T>(
-  callback: () => T | T,
+  callback: (() => T) | T,
   options?: {
     container?: HTMLElement
     timeout?: number
