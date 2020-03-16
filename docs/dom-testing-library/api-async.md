@@ -7,12 +7,12 @@ Several utilities are provided for dealing with asynchronous code. These can be
 useful to wait for an element to appear or disappear in response to an action.
 (See the [guide to testing disappearance](guide-disappearance.md).)
 
-All the async utils are built on top of `wait`.
+All the async utils are built on top of `waitFor`.
 
-## `wait`
+## `waitFor`
 
 ```typescript
-function wait<T>(
+function waitFor<T>(
   callback: () => void,
   options?: {
     container?: HTMLElement
@@ -23,14 +23,14 @@ function wait<T>(
 ): Promise<T>
 ```
 
-When in need to wait for any period of time you can use `wait`, to wait for your
+When in need to wait for any period of time you can use `waitFor`, to wait for your
 expectations to pass. Here's a simple example:
 
 ```javascript
 // ...
 // Wait until the callback does not throw an error. In this case, that means
 // it'll wait until we can get a form control with a label that matches "username".
-await wait(() => expect(mockAPI).toHaveBeenCalledTimes(1))
+await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
 
@@ -101,9 +101,26 @@ waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err => console.log
 // Error: The element(s) given to waitForElementToBeRemoved are already removed. waitForElementToBeRemoved requires that the element(s) exist(s) before waiting for removal.
 ```
 
-The options object is forwarded to `wait`.
+The options object is forwarded to `waitFor`.
 
-## `waitForDomChange` (DEPRECATED, use wait instead)
+## `wait` (DEPRECATED, use waitFor instead)
+
+## `wait`
+
+```typescript
+function wait<T>(
+  callback: () => void,
+  options?: {
+    container?: HTMLElement
+    timeout?: number
+    interval?: number
+    mutationObserverOptions?: MutationObserverInit
+  }
+): Promise<T>
+```
+Previously, wait was a wrapper around wait-for-expect and used polling instead of a MutationObserver to look for changes.  It is now an alias to waitFor and will be removed in a future release.
+
+## `waitForDomChange` (DEPRECATED, use waitFor instead)
 
 ```typescript
 function waitForDomChange<T>(options?: {
@@ -167,7 +184,7 @@ the `container` and any of its descendants. It will also detect attribute
 changes.
 
 
-## `waitForElement` (DEPRECATED, use `find*` queries or `wait`)
+## `waitForElement` (DEPRECATED, use `find*` queries or `waitFor`)
 
 ```typescript
 function waitForElement<T>(
@@ -191,7 +208,7 @@ Here's a simple example:
 // ...
 // Wait until the callback does not throw an error and returns a truthy value. In this case, that means
 // it'll wait until we can get a form control with a label that matches "username".
-// The difference from `wait` is that rather than running your callback on
+// Previously, the difference from `wait` is that rather than running your callback on
 // an interval, it's run as soon as there are DOM changes in the container
 // and returns the value returned by the callback.
 const usernameElement = await waitForElement(
