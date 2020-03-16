@@ -113,6 +113,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/dale-french"><img src="https://avatars3.githubusercontent.com/u/6544116?v=4" width="100px;" alt=""/><br /><sub><b>Dale French</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dale-french" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/aw-davidson"><img src="https://avatars2.githubusercontent.com/u/32170938?v=4" width="100px;" alt=""/><br /><sub><b>aw-davidson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=aw-davidson" title="Documentation">📖</a></td>
     <td align="center"><a href="https://twitter.com/B_Blackwo"><img src="https://avatars0.githubusercontent.com/u/7598058?v=4" width="100px;" alt=""/><br /><sub><b>Benjamin Blackwood</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=BBlackwo" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/rockingskier"><img src="https://avatars1.githubusercontent.com/u/681614?v=4" width="100px;" alt=""/><br /><sub><b>Ben</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rockingskier" title="Documentation">📖</a></td>
   </tr>
 </table>
 
