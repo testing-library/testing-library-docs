@@ -291,7 +291,7 @@ nav.innerHTML = `
   <li>Item 2</li>
 </ul>`
 
-console.log(logRoles(nav))
+logRoles(nav)
 
 // navigation:
 //
