@@ -567,6 +567,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rockingskier",
+      "name": "Ben",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/681614?v=4",
+      "profile": "https://github.com/rockingskier",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
