@@ -20,7 +20,7 @@ jest.mock('axios')
 
 test('loads and displays greeting', async () => {
   const url = '/greeting'
-  const { container, asFragment } = render(<Fetch url={url} />)
+  render(<Fetch url={url} />)
 
   axiosMock.get.mockResolvedValueOnce({
     data: { greeting: 'hello there' },
