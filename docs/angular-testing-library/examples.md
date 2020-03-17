@@ -36,7 +36,7 @@ counter.component.spec.ts
 
 ```typescript
 import { render } from '@testing-library/angular'
-import CounterComponent from './counter.component.ts'
+import { CounterComponent } from './counter.component.ts'
 
 describe('Counter', () => {
   test('should render counter', async () => {
