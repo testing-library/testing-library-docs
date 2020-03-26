@@ -36,6 +36,7 @@ The example below sets up data providers using the
 
 ```js
 // test-utils.js
+import React from "react"
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
