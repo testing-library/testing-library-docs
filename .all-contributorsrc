@@ -585,6 +585,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "NomanGul",
+      "name": "Noman Gul",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/39244918?v=4",
+      "profile": "https://dev.to/nomangul",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
