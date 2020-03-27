@@ -27,7 +27,7 @@ Add the following to your .testcaferc.json file:
 
 ```json
   "clientScripts": [
-    "module":"@testing-library/dom/dist/@testing-library/dom.umd.js"
+    { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
   ],
 ```
 
