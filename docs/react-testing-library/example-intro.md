@@ -11,7 +11,7 @@ See the following sections for a detailed breakdown of the test
 ```jsx
 // __tests__/fetch.test.js
 import React from 'react'
-import { render, fireEvent, waitForElement, screen } from '@testing-library/react'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import axiosMock from 'axios'
 import Fetch from '../fetch'
@@ -28,7 +28,7 @@ test('loads and displays greeting', async () => {
 
   fireEvent.click(screen.getByText('Load Greeting'))
 
-  await waitForElement(() => screen.getByRole('heading'))
+  await waitFor(() => screen.getByRole('heading'))
 
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
   expect(axiosMock.get).toHaveBeenCalledWith(url)
@@ -48,7 +48,7 @@ test('loads and displays greeting', async () => {
 import React from 'react'
 
 // import react-testing methods
-import { render, fireEvent, waitForElement, screen } from '@testing-library/react'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom/extend-expect'
@@ -91,9 +91,9 @@ fireEvent.click(getByText('Load Greeting'))
 
 // Wait until the mocked `get` request promise resolves and
 // the component calls setState and re-renders.
-// `waitForElement` waits until the callback doesn't throw an error
+// `waitFor` waits until the callback doesn't throw an error
 
-await waitForElement(() =>
+await waitFor(() =>
   // getByRole throws an error if it cannot find an element
   screen.getByRole('heading')
 )
