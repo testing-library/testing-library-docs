@@ -87,20 +87,23 @@ test('rendering a component that uses withRouter', () => {
 
 ## Reducing boilerplate
 
-1. You can use the `wrapper` option to wrap a `MemoryRouter` around the component you want to render (`MemoryRouter` works when you don't need access to the history object itself in the test, but just need the components to be able to render and navigate).
+1. You can use the `wrapper` option to wrap a `MemoryRouter` around the
+   component you want to render (`MemoryRouter` works when you don't need access
+   to the history object itself in the test, but just need the components to be
+   able to render and navigate).
 
 ```jsx
 import { MemoryRouter } from 'react-router-dom'
 
 test('full app rendering/navigating', () => {
-  const { container, getByText } = render(<App />, {wrapper: MemoryRouter})
+  const { container, getByText } = render(<App />, { wrapper: MemoryRouter })
   // verify page content for expected route
   expect(getByRole('heading')).toMatch('Home')
 })
 ```
 
-2. If you find yourself adding Router components to your tests a lot, you may want to create
-a helper function that wraps around `render`. 
+2. If you find yourself adding Router components to your tests a lot, you may
+   want to create a helper function that wraps around `render`.
 
 ```jsx
 // test utils file
@@ -111,9 +114,11 @@ function renderWithRouter(
     history = createMemoryHistory({ initialEntries: [route] }),
   } = {}
 ) {
-  const Wrapper = ({children}) => <Router history={history}>{children}</Router>
+  const Wrapper = ({ children }) => (
+    <Router history={history}>{children}</Router>
+  )
   return {
-    ...render(ui, {wrapper: Wrapper}),
+    ...render(ui, { wrapper: Wrapper }),
     // adding `history` to the returned utilities to allow us
     // to reference it in our tests (just try to avoid using
     // this to test implementation details).
@@ -137,4 +142,3 @@ test('rendering a component that uses withRouter', () => {
   expect(getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
-
