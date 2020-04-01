@@ -14,7 +14,7 @@ import {
   queryByTestId,
   // Tip: all queries are also exposed on an object
   // called "queries" which you could import here as well
-  wait,
+  waitFor,
 } from '@testing-library/dom'
 // adds special assertions like toHaveTextContent
 import '@testing-library/jest-dom/extend-expect'
@@ -57,7 +57,7 @@ test('examples of some things', async () => {
   // Get elements by their text, just like a real user does.
   getByText(container, 'Print Username').click()
 
-  await wait(() =>
+  await waitFor(() =>
     expect(queryByTestId(container, 'printed-username')).toBeTruthy()
   )
 

@@ -32,7 +32,7 @@ const $email = await getByLabelText($form, 'Email')
 // interact with puppeteer like usual
 await $email.type('pptr@example.com')
 // waiting works too!
-await wait(() => getByText('Loading...'))
+await waitFor(() => getByText('Loading...'))
 ```
 
 A little too un-puppeteer for you? You can attach all the `DOM Testing Library`
