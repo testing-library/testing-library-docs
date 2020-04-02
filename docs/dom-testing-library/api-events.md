@@ -29,7 +29,7 @@ fireEvent[eventName](node: HTMLElement, eventProperties: Object)
 ```
 
 Convenience methods for firing DOM events. Check out
-[src/events.js](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
+[src/event-map.js](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 for a full list as well as default `eventProperties`.
 
 ```javascript
