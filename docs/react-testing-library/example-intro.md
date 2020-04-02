@@ -122,12 +122,12 @@ export default function Fetch({ url }) {
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
 
   return (
-    <div>
+    <>
       <button onClick={fetchGreeting} disabled={buttonClicked}>
         {buttonText}
       </button>
-      {greeting ? <h1>{greeting}</h1> : null}
-    </div>
+      {greeting && <h1>{greeting}</h1>}
+    </>
   )
 }
 ```
@@ -141,7 +141,6 @@ expect(screen.getByRole('button')).toHaveAttribute('disabled')
 // snapshots work great with regular DOM nodes!
 expect(container).toMatchInlineSnapshot(`
   <div>
-    <div>
       <button
         disabled=""
       >
@@ -150,7 +149,6 @@ expect(container).toMatchInlineSnapshot(`
       <h1>
         hello there
       </h1>
-    </div>
   </div>
 `)
 
