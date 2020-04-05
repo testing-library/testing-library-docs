@@ -8,27 +8,25 @@ title: React Redux
 import React from 'react'
 import { connect } from 'react-redux'
 
-class Counter extends React.Component {
-  increment = () => {
-    this.props.dispatch({ type: 'INCREMENT' })
+const Counter = ({ dispatch, count }) => {
+  const increment = () => {
+    dispatch({ type: 'INCREMENT' })
   }
 
-  decrement = () => {
-    this.props.dispatch({ type: 'DECREMENT' })
+  const decrement = () => {
+    dispatch({ type: 'DECREMENT' })
   }
 
-  render() {
-    return (
+  return (
+    <div>
+      <h2>Counter</h2>
       <div>
-        <h2>Counter</h2>
-        <div>
-          <button onClick={this.decrement}>-</button>
-          <h1>{this.props.count}</h1>
-          <button onClick={this.increment}>+</button>
-        </div>
+        <button onClick={this.decrement}>-</button>
+        <span data-testid="count-value">{count}</span>
+        <button onClick={this.increment}>+</button>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default connect(state => ({ count: state.count }))(Counter)
@@ -100,7 +98,7 @@ import Counter from './counter.js'
 test('can render with redux with defaults', () => {
   renderWithRedux(<Counter />)
   fireEvent.click(screen.getByText('+'))
-  expect(screen.getByRole('heading')).toHaveTextContent('1')
+  expect(screen.getByTestId('count-value')).toHaveTextContent('1')
 })
 
 test('can render with redux with custom initial state', () => {
@@ -108,7 +106,7 @@ test('can render with redux with custom initial state', () => {
     initialState: { count: 3 },
   })
   fireEvent.click(screen.getByText('-'))
-  expect(screen.getByRole('heading')).toHaveTextContent('2')
+  expect(screen.getByTestId('count-value')).toHaveTextContent('2')
 })
 
 test('can render with redux with custom store', () => {
@@ -118,8 +116,8 @@ test('can render with redux with custom store', () => {
     store,
   })
   fireEvent.click(screen.getByText('+'))
-  expect(screen.getByRole('heading')).toHaveTextContent('1000')
+  expect(screen.getByTestId('count-value')).toHaveTextContent('1000')
   fireEvent.click(screen.getByText('-'))
-  expect(screen.getByRole('heading')).toHaveTextContent('1000')
+  expect(screen.getByTestId('count-value')).toHaveTextContent('1000')
 })
 ```
