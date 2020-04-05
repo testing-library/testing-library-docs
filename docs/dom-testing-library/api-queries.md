@@ -34,7 +34,7 @@ return an empty array (`[]`) if no elements match.
 
 `findBy*` queries return a promise which resolves when an element is found which
 matches the given query. The promise is rejected if no element is found or if
-more than one element is found after a default timeout of `4500`ms. If you need
+more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
 > Note, this is a simple combination of `getBy*` queries and
@@ -46,7 +46,7 @@ to find more than one element, then use `findAllBy`.
 
 `findAllBy*` queries return a promise which resolves to an array of elements
 when any elements are found which match the given query. The promise is rejected
-if no elements are found after a default timeout of `4500`ms.
+if no elements are found after a default timeout of `1000`ms.
 
 ## Options
 
