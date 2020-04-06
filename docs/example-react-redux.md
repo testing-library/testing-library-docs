@@ -81,6 +81,12 @@ function render(
   }
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
 }
+
+// re-export everything
+export * from '@testing-library/react'
+
+// override render method
+export { render }
 ```
 
 ```jsx
@@ -88,9 +94,11 @@ function render(
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { fireEvent, screen } from '@testing-library/react'
+import {  } from '@testing-library/react'
 // We're using our own custom render function and not RTL's render
-import { render } from './test-utils.js
+// our custom utils also re-export everything from RTL
+// so we can import fireEvent and screen here as well
+import { render, fireEvent, screen } from './test-utils.js
 import '@testing-library/jest-dom/extend-expect'
 import { initialState, reducer } from './reducer.js'
 import Counter from './counter.js'
