@@ -55,6 +55,13 @@
   status = 301
   force = true
 
+# React Native landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/react-native/"
+  to = "https://testing-library.com/docs/native-testing-library/intro"
+  status = 301
+  force = true
+
 # Cypress landing page to home page
 [[redirects]]
   from = "https://testing-library.com/cypress/"
