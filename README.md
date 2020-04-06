@@ -121,6 +121,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://rafatech.tk"><img src="https://avatars2.githubusercontent.com/u/20307803?v=4" width="100px;" alt=""/><br /><sub><b>Rafael Souza</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rafaelangical" title="Documentation">📖</a></td>
     <td align="center"><a href="http://pustovalov.dev"><img src="https://avatars2.githubusercontent.com/u/1568885?v=4" width="100px;" alt=""/><br /><sub><b>Pavel Pustovalov</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pustovalov" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dymafr"><img src="https://avatars2.githubusercontent.com/u/32801166?v=4" width="100px;" alt=""/><br /><sub><b>Dyma</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dymafr" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitter.com/matan_bobi"><img src="https://avatars2.githubusercontent.com/u/12711091?v=4" width="100px;" alt=""/><br /><sub><b>Matan Borenkraout</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=MatanBobi" title="Documentation">📖</a></td>
   </tr>
 </table>
 
