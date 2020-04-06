@@ -20,38 +20,38 @@ have two options:
     meaning all ICU's.  
     All you need to do is embed the set of ICU data you need:
 
-        ```js
-        // test-utils.js
-        export const setupTests = () => {
-          if (global.Intl) {
-            Intl.NumberFormat = new Intl.NumberFormat('pt')
-            Intl.DateTimeFormat = new Intl.DateTimeFormat('pt')
-          } else {
-            global.Intl = IntlPolyfill
-          }
-        }
-        ```
+    ```js
+    // test-utils.js
+    export const setupTests = () => {
+      if (global.Intl) {
+        Intl.NumberFormat = new Intl.NumberFormat('pt')
+        Intl.DateTimeFormat = new Intl.DateTimeFormat('pt')
+      } else {
+        global.Intl = IntlPolyfill
+      }
+    }
+    ```
 
 2.  If you're using Node with prior versions and you need to load a locale, you
     must load the Polyfills according to that language.  
     In order to do so, you may use this small setup and/or combine it with other
     setups.
 
-        ```js
-        // test-utils.js
-        import IntlPolyfill from 'intl'
-        import 'intl/locale-data/jsonp/pt'
+    ```js
+    // test-utils.js
+    import IntlPolyfill from 'intl'
+    import 'intl/locale-data/jsonp/pt'
 
-        export const setupTests = () => {
-          // https://formatjs.io/guides/runtime-environments/#server
-          if (global.Intl) {
-            Intl.NumberFormat = IntlPolyfill.NumberFormat
-            Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
-          } else {
-            global.Intl = IntlPolyfill
-          }
-        }
-        ```
+    export const setupTests = () => {
+      // https://formatjs.io/guides/runtime-environments/#server
+      if (global.Intl) {
+        Intl.NumberFormat = IntlPolyfill.NumberFormat
+        Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
+      } else {
+        global.Intl = IntlPolyfill
+      }
+    }
+    ```
 
 ## Creating a custom render function
 
