@@ -8,27 +8,25 @@ title: React Redux
 import React from 'react'
 import { connect } from 'react-redux'
 
-class Counter extends React.Component {
-  increment = () => {
-    this.props.dispatch({ type: 'INCREMENT' })
+const Counter = ({ dispatch, count }) => {
+  const increment = () => {
+    dispatch({ type: 'INCREMENT' })
   }
 
-  decrement = () => {
-    this.props.dispatch({ type: 'DECREMENT' })
+  const decrement = () => {
+    dispatch({ type: 'DECREMENT' })
   }
 
-  render() {
-    return (
+  return (
+    <div>
+      <h2>Counter</h2>
       <div>
-        <h2>Counter</h2>
-        <div>
-          <button onClick={this.decrement}>-</button>
-          <span data-testid="count-value">{this.props.count}</span>
-          <button onClick={this.increment}>+</button>
-        </div>
+        <button onClick={this.decrement}>-</button>
+        <span data-testid="count-value">{count}</span>
+        <button onClick={this.increment}>+</button>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default connect(state => ({ count: state.count }))(Counter)
@@ -58,58 +56,76 @@ export function reducer(state = initialState, action) {
 }
 ```
 
-Now here's what your test will look like:
+To test our connected component we can create a custom `render` function using
+the `wrapper` option as explained in the
+[setup](./react-testing-library/setup.md) page.  
+Our custom `render` function can look like this:
+
+```js
+// test-utils.js
+import React from 'react'
+import { render as rtlRender } from '@testing-library/react'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+function render(
+  ui,
+  {
+    initialState,
+    store = createStore(reducer, initialState),
+    ...renderOptions
+  } = {}
+) {
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>
+  }
+  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
+}
+
+// re-export everything
+export * from '@testing-library/react'
+
+// override render method
+export { render }
+```
 
 ```jsx
 // counter.test.js
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { render, fireEvent } from '@testing-library/react'
+import {  } from '@testing-library/react'
+// We're using our own custom render function and not RTL's render
+// our custom utils also re-export everything from RTL
+// so we can import fireEvent and screen here as well
+import { render, fireEvent, screen } from './test-utils.js
 import '@testing-library/jest-dom/extend-expect'
 import { initialState, reducer } from './reducer.js'
 import Counter from './counter.js'
 
-
-// this is a handy function that I normally make available for all my tests
-// that deal with connected components.
-// you can provide initialState for the entire store that the ui is rendered with
-function renderWithRedux(
-  ui,
-  { initialState, store = createStore(reducer, initialState) } = {}
-) {
-  return {
-    ...render(<Provider store={store}>{ui}</Provider>),
-    // adding `store` to the returned utilities to allow us
-    // to reference it in our tests (just try to avoid using
-    // this to test implementation details).
-    store,
-  }
-}
-
 test('can render with redux with defaults', () => {
-  const { getByTestId, getByText } = renderWithRedux(<Counter />)
-  fireEvent.click(getByText('+'))
-  expect(getByTestId('count-value')).toHaveTextContent('1')
+  renderWithRedux(<Counter />)
+  fireEvent.click(screen.getByText('+'))
+  expect(screen.getByTestId('count-value')).toHaveTextContent('1')
 })
 
 test('can render with redux with custom initial state', () => {
-  const { getByTestId, getByText } = renderWithRedux(<Counter />, {
+  renderWithRedux(<Counter />, {
     initialState: { count: 3 },
   })
-  fireEvent.click(getByText('-'))
-  expect(getByTestId('count-value')).toHaveTextContent('2')
+  fireEvent.click(screen.getByText('-'))
+  expect(screen.getByTestId('count-value')).toHaveTextContent('2')
 })
 
 test('can render with redux with custom store', () => {
   // this is a silly store that can never be changed
   const store = createStore(() => ({ count: 1000 }))
-  const { getByTestId, getByText } = renderWithRedux(<Counter />, {
+  renderWithRedux(<Counter />, {
     store,
   })
-  fireEvent.click(getByText('+'))
-  expect(getByTestId('count-value')).toHaveTextContent('1000')
-  fireEvent.click(getByText('-'))
-  expect(getByTestId('count-value')).toHaveTextContent('1000')
+  fireEvent.click(screen.getByText('+'))
+  expect(screen.getByTestId('count-value')).toHaveTextContent('1000')
+  fireEvent.click(screen.getByText('-'))
+  expect(screen.getByTestId('count-value')).toHaveTextContent('1000')
 })
 ```
