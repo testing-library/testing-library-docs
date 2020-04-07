@@ -67,6 +67,7 @@ import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { initialState, reducer } from './reducer'
 
 function render(
   ui,
@@ -96,10 +97,9 @@ import { createStore } from 'redux'
 // We're using our own custom render function and not RTL's render
 // our custom utils also re-export everything from RTL
 // so we can import fireEvent and screen here as well
-import { render, fireEvent, screen } from './test-utils.js
+import { render, fireEvent, screen } from './test-utils'
 import '@testing-library/jest-dom/extend-expect'
-import { initialState, reducer } from './reducer.js'
-import Counter from './counter.js'
+import Counter from './counter'
 
 test('can render with redux with defaults', () => {
   render(<Counter />)
