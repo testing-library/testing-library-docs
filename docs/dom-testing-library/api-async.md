@@ -105,8 +105,6 @@ The options object is forwarded to `waitFor`.
 
 ## `wait` (DEPRECATED, use waitFor instead)
 
-## `wait`
-
 ```typescript
 function wait<T>(
   callback: () => void,
@@ -119,6 +117,8 @@ function wait<T>(
 ): Promise<T>
 ```
 Previously, wait was a wrapper around wait-for-expect and used polling instead of a MutationObserver to look for changes.  It is now an alias to waitFor and will be removed in a future release.
+
+Unlike wait, the callback parameter is mandatory in waitFor. Although you can migrate an existing `wait()` call to `waitFor( () => {} )`, it is considered bad practice to use an empty callback because it will make the tests more fragile. 
 
 ## `waitForDomChange` (DEPRECATED, use waitFor instead)
 
