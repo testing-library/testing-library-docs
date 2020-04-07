@@ -21,9 +21,9 @@ const Counter = ({ dispatch, count }) => {
     <div>
       <h2>Counter</h2>
       <div>
-        <button onClick={this.decrement}>-</button>
+        <button onClick={decrement}>-</button>
         <span data-testid="count-value">{count}</span>
-        <button onClick={this.increment}>+</button>
+        <button onClick={increment}>+</button>
       </div>
     </div>
   )
@@ -67,11 +67,12 @@ import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { initialState as reducerInitialState, reducer } from './reducer'
 
 function render(
   ui,
   {
-    initialState,
+    initialState = reducerInitialState,
     store = createStore(reducer, initialState),
     ...renderOptions
   } = {}
@@ -93,24 +94,21 @@ export { render }
 // counter.test.js
 import React from 'react'
 import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import {  } from '@testing-library/react'
 // We're using our own custom render function and not RTL's render
 // our custom utils also re-export everything from RTL
 // so we can import fireEvent and screen here as well
-import { render, fireEvent, screen } from './test-utils.js
+import { render, fireEvent, screen } from './test-utils'
 import '@testing-library/jest-dom/extend-expect'
-import { initialState, reducer } from './reducer.js'
-import Counter from './counter.js'
+import Counter from './counter'
 
 test('can render with redux with defaults', () => {
-  renderWithRedux(<Counter />)
+  render(<Counter />)
   fireEvent.click(screen.getByText('+'))
   expect(screen.getByTestId('count-value')).toHaveTextContent('1')
 })
 
 test('can render with redux with custom initial state', () => {
-  renderWithRedux(<Counter />, {
+  render(<Counter />, {
     initialState: { count: 3 },
   })
   fireEvent.click(screen.getByText('-'))
@@ -120,7 +118,7 @@ test('can render with redux with custom initial state', () => {
 test('can render with redux with custom store', () => {
   // this is a silly store that can never be changed
   const store = createStore(() => ({ count: 1000 }))
-  renderWithRedux(<Counter />, {
+  render(<Counter />, {
     store,
   })
   fireEvent.click(screen.getByText('+'))
