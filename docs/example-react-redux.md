@@ -67,12 +67,12 @@ import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { initialState, reducer } from './reducer'
+import { initialState as reducerInitialState, reducer } from './reducer'
 
 function render(
   ui,
   {
-    initialState,
+    initialState = reducerInitialState,
     store = createStore(reducer, initialState),
     ...renderOptions
   } = {}
