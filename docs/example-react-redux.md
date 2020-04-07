@@ -21,9 +21,9 @@ const Counter = ({ dispatch, count }) => {
     <div>
       <h2>Counter</h2>
       <div>
-        <button onClick={this.decrement}>-</button>
+        <button onClick={decrement}>-</button>
         <span data-testid="count-value">{count}</span>
-        <button onClick={this.increment}>+</button>
+        <button onClick={increment}>+</button>
       </div>
     </div>
   )
