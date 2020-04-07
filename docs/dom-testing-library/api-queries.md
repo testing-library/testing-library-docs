@@ -40,7 +40,7 @@ to find more than one element, then use `findAllBy`.
 > Note, this is a simple combination of `getBy*` queries and
 > [`waitForElement`](/docs/api-async#waitforelement). The `findBy*` queries
 > accept the `waitForElement` options as the last argument. (i.e.
-> `findByText(container, 'text', queryOptions, waitForElementOptions)`)
+> `screen.findByText('text', queryOptions, waitForElementOptions)`)
 
 ### findAllBy
 
@@ -111,7 +111,7 @@ screen.debug(screen.getAllByText('multi-test'))
 > a pre-bound version of these queries when you render your components with them
 > which means you do not have to provide a container. In addition, if you just
 > want to query `document.body` then you can use the [`screen`](#screen) export
-> as demonstrated above.
+> as demonstrated above (using `screen` is recommended).
 
 ### `ByLabelText`
 
@@ -120,7 +120,7 @@ screen.debug(screen.getAllByText('multi-test'))
 
 ```typescript
 getByLabelText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     selector?: string = '*',
@@ -163,20 +163,19 @@ The example below will find the input node for the following DOM structures:
 <!--Native-->
 
 ```javascript
-import { getByLabelText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const inputNode = getByLabelText(container, 'Username')
+const inputNode = screen.getByLabelText('Username')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByLabelText } = render(<Login />)
+render(<Login />)
 
-const inputNode = getByLabelText('username')
+const inputNode = screen.getByLabelText('username')
 ```
 
 <!--Cypress-->
@@ -199,10 +198,7 @@ If it is important that you query an actual `<label>` element you can provide a
 ```
 
 ```js
-const container = document.body
-const inputNode = getByLabelText(container, 'Username', {
-  selector: 'input',
-})
+const inputNode = screen.getByLabelText('Username', {selector: 'input'})
 ```
 
 ### `ByPlaceholderText`
@@ -212,7 +208,7 @@ const inputNode = getByLabelText(container, 'Username', {
 
 ```typescript
 getByPlaceholderText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -232,19 +228,18 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByPlaceholderText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const inputNode = getByPlaceholderText(container, 'Username')
+const inputNode = screen.getByPlaceholderText('Username')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByPlaceholderText } = render(<MyComponent />)
-const inputNode = getByPlaceholderText('Username')
+render(<MyComponent />)
+const inputNode = screen.getByPlaceholderText('Username')
 ```
 
 <!--Cypress-->
@@ -267,7 +262,7 @@ cy.getByPlaceholderText('Username').should('exist')
 
 ```typescript
 getByText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     selector?: string = '*',
@@ -289,19 +284,18 @@ matching the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const aboutAnchorNode = getByText(container, /about/i)
+const aboutAnchorNode = screen.getByText(/about/i)
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByText } = render(<MyComponent />)
-const aboutAnchorNode = getByText(/about/i)
+render(<MyComponent />)
+const aboutAnchorNode = screen.getByText(/about/i)
 ```
 
 <!--Cypress-->
@@ -339,7 +333,7 @@ If you'd rather disable this behavior, set `ignore` to `false`.
 
 ```typescript
 getByAltText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -365,19 +359,18 @@ as it's deprecated).
 <!--Native-->
 
 ```js
-import { getByAltText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const incrediblesPosterImg = getByAltText(container, /incredibles.*? poster/i)
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByAltText } = render(<MyComponent />)
-const incrediblesPosterImg = getByAltText(/incredibles.*? poster/i)
+render(<MyComponent />)
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 
 <!--Cypress-->
@@ -395,7 +388,7 @@ cy.getByAltText(/incredibles.*? poster/i).should('exist')
 
 ```typescript
 getByTitle(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   title: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -420,21 +413,20 @@ Will also find a `title` element within an SVG.
 <!--Native-->
 
 ```js
-import { getByTitle } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const deleteElement = getByTitle(container, 'Delete')
-const closeElement = getByTitle(container, 'Close')
+const deleteElement = screen.getByTitle('Delete')
+const closeElement = screen.getByTitle('Close')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByTitle } = render(<MyComponent />)
-const deleteElement = getByTitle('Delete')
-const closeElement = getByTitle('Close')
+render(<MyComponent />)
+const deleteElement = screen.getByTitle('Delete')
+const closeElement = screen.getByTitle('Close')
 ```
 
 <!--Cypress-->
@@ -453,7 +445,7 @@ cy.getByTitle('Close').should('exist')
 
 ```typescript
 getByDisplayValue(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   value: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -479,19 +471,18 @@ document.getElementById('lastName').value = 'Norris'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const lastNameInput = getByDisplayValue(container, 'Norris')
+const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByDisplayValue } = render(<MyComponent />)
-const lastNameInput = getByDisplayValue('Norris')
+render(<MyComponent />)
+const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
 <!--Cypress-->
@@ -517,19 +508,18 @@ document.getElementById('messageTextArea').value = 'Hello World'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const messageTextArea = getByDisplayValue(container, 'Hello World')
+const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByDisplayValue } = render(<MyComponent />)
-const messageTextArea = getByDisplayValue('Hello World')
+render(<MyComponent />)
+const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
 <!--Cypress-->
@@ -559,19 +549,18 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const selectElement = getByDisplayValue(container, 'Alaska')
+const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByDisplayValue } = render(<MyComponent />)
-const selectElement = getByDisplayValue('Alaska')
+render(<MyComponent />)
+const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
 <!--Cypress-->
@@ -589,7 +578,7 @@ cy.getByDisplayValue('Alaska').should('exist')
 
 ```typescript
 getByRole(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   role: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -659,19 +648,18 @@ The default value can [be configured](api-configuration#configuration).
 <!--Native-->
 
 ```js
-import { getByRole } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const dialogContainer = getByRole(container, 'dialog')
+const dialogContainer = screen.getByRole('dialog')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByRole } = render(<MyComponent />)
-const dialogContainer = getByRole('dialog')
+render(<MyComponent />)
+const dialogContainer = screen.getByRole('dialog')
 ```
 
 <!--Cypress-->
@@ -689,7 +677,7 @@ cy.getByRole('dialog').should('exist')
 
 ```typescript
 getByTestId(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -709,19 +697,18 @@ also accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByTestId } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const element = getByTestId(container, 'custom-element')
+const element = screen.getByTestId('custom-element')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByTestId } = render(<MyComponent />)
-const element = getByTestId('custom-element')
+render(<MyComponent />)
+const element = screen.getByTestId('custom-element')
 ```
 
 <!--Cypress-->
@@ -797,7 +784,7 @@ behaviour:
 To perform a match against text without trimming:
 
 ```javascript
-getByText(node, 'text', {
+screen.getByText('text', {
   normalizer: getDefaultNormalizer({ trim: false }),
 })
 ```
@@ -806,7 +793,7 @@ To override normalization to remove some Unicode characters whilst keeping some
 (but not all) of the built-in normalization behavior:
 
 ```javascript
-getByText(node, 'text', {
+screen.getByText('text', {
   normalizer: str =>
     getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
 })
@@ -824,31 +811,31 @@ Given the following HTML:
 
 ```javascript
 // Matching a string:
-getByText(container, 'Hello World') // full string match
-getByText(container, 'llo Worl', { exact: false }) // substring match
-getByText(container, 'hello world', { exact: false }) // ignore case
+screen.getByText('Hello World') // full string match
+screen.getByText('llo Worl', { exact: false }) // substring match
+screen.getByText('hello world', { exact: false }) // ignore case
 
 // Matching a regex:
-getByText(container, /World/) // substring match
-getByText(container, /world/i) // substring match, ignore case
-getByText(container, /^hello world$/i) // full string match, ignore case
-getByText(container, /Hello W?oRlD/i) // advanced regex
+screen.getByText(/World/) // substring match
+screen.getByText(/world/i) // substring match, ignore case
+screen.getByText(/^hello world$/i) // full string match, ignore case
+screen.getByText(/Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
-getByText(container, (content, element) => content.startsWith('Hello'))
+screen.getByText((content, element) => content.startsWith('Hello'))
 ```
 
 **_Will not_ find the div:**
 
 ```javascript
 // full string does not match
-getByText(container, 'Goodbye World')
+screen.getByText('Goodbye World')
 
 // case-sensitive regex with different case
-getByText(container, /hello world/)
+screen.getByText(/hello world/)
 
 // function looking for a span when it's actually a div:
-getByText(container, (content, element) => {
+screen.getByText((content, element) => {
   return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
 })
 ```
