@@ -103,13 +103,13 @@ import { initialState, reducer } from './reducer.js'
 import Counter from './counter.js'
 
 test('can render with redux with defaults', () => {
-  renderWithRedux(<Counter />)
+  render(<Counter />)
   fireEvent.click(screen.getByText('+'))
   expect(screen.getByTestId('count-value')).toHaveTextContent('1')
 })
 
 test('can render with redux with custom initial state', () => {
-  renderWithRedux(<Counter />, {
+  render(<Counter />, {
     initialState: { count: 3 },
   })
   fireEvent.click(screen.getByText('-'))
@@ -119,7 +119,7 @@ test('can render with redux with custom initial state', () => {
 test('can render with redux with custom store', () => {
   // this is a silly store that can never be changed
   const store = createStore(() => ({ count: 1000 }))
-  renderWithRedux(<Counter />, {
+  render(<Counter />, {
     store,
   })
   fireEvent.click(screen.getByText('+'))
