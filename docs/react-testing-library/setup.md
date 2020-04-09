@@ -214,7 +214,7 @@ _Typescript config needs to be updated as follow:_
     // ...,
 +   "baseUrl": "src",
 +   "paths": {
-+     "test-utils": ["../utils/test-utils"]
++     "test-utils": ["./utils/test-utils"]
 +   }
   }
 }
