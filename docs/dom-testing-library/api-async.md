@@ -29,7 +29,7 @@ expectations to pass. Here's a simple example:
 ```javascript
 // ...
 // Wait until the callback does not throw an error. In this case, that means
-// it'll wait until we can get a form control with a label that matches "username".
+// it'll wait until the mock function has been called once.
 await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
