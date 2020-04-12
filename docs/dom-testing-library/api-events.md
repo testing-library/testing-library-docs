@@ -66,7 +66,7 @@ element in the DOM and the key you want to fire.
 ```javascript
 fireEvent.keyDown(domNode, { key: 'Enter', code: 'Enter' })
 
-fireEvent.keyDown(domNode, { key: 'A', code: 'KeyQ' })
+fireEvent.keyDown(domNode, { key: 'A', code: 'KeyA' })
 ```
 
 You can find out which key code to use at
