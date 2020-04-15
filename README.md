@@ -128,6 +128,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://manueldugue.de"><img src="https://avatars1.githubusercontent.com/u/894149?v=4" width="100px;" alt=""/><br /><sub><b>Manuel Dugué</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mdugue" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/karthik20"><img src="https://avatars2.githubusercontent.com/u/12153250?v=4" width="100px;" alt=""/><br /><sub><b>karthik20</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=karthik20" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/pobch"><img src="https://avatars3.githubusercontent.com/u/19894957?v=4" width="100px;" alt=""/><br /><sub><b>Pob Ch</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pobch" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mkermani144"><img src="https://avatars2.githubusercontent.com/u/12621708?v=4" width="100px;" alt=""/><br /><sub><b>Mohammad Kermani</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mkermani144" title="Documentation">📖</a></td>
   </tr>
 </table>
 
