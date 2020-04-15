@@ -38,9 +38,9 @@ more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
 > Note, this is a simple combination of `getBy*` queries and
-> [`waitForElement`](/docs/api-async#waitforelement). The `findBy*` queries
-> accept the `waitForElement` options as the last argument. (i.e.
-> `screen.findByText('text', queryOptions, waitForElementOptions)`)
+> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries
+> accept the `waitFor` options as the last argument. (i.e.
+> `screen.findByText('text', queryOptions, waitForOptions)`)
 
 ### findAllBy
 
