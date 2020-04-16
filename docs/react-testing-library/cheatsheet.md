@@ -127,7 +127,7 @@ See [Events API](dom-testing-library/api-events.md)
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
-  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 - **act** wrapper around
   [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
   React Testing Library wraps render and fireEvent in a call to `act` already so
