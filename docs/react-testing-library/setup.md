@@ -26,7 +26,7 @@ all your imports. See [below](#configuring-jest-with-test-utils) for a way to
 make your test util file accessible without using relative paths.
 
 The example below sets up data providers using the
-[`wrapper`](api.md#render-options) option to `render`.
+[`wrapper`](api.md#wrapper) option to `render`.
 
 ```diff
 // my-component.test.js
