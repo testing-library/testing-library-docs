@@ -87,7 +87,7 @@ axiosMock.get.mockResolvedValueOnce({
   data: { greeting: 'hello there' },
 })
 
-fireEvent.click(getByText('Load Greeting'))
+fireEvent.click(screen.getByText('Load Greeting'))
 
 // Wait until the mocked `get` request promise resolves and
 // the component calls setState and re-renders.
