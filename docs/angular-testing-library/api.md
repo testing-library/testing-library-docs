@@ -9,6 +9,16 @@ well as these methods:
 
 - [`render`](<(#render)>)
 
+Some of the `DOM Testing Library` re-exports are patched to work easier with
+Angular:
+
+- The events on `fireEvent` automatically invoke a change detection cycle after
+  the event has been fired
+- The `findBy` queries automatically invoke a change detection cycle before the
+  query is invoked function
+- The `waitFor` functions automatically invoke a change detection cycle before
+  invoking the callback function
+
 ## `render`
 
 ```typescript
@@ -189,6 +199,20 @@ const component = await render(AppComponent, {
 })
 ```
 
+### `removeAngularAttributes`
+
+Removes the Angular attributes (ng-version, and root-id) from the fixture.
+
+**default** : `false`
+
+**example**:
+
+```typescript
+const component = await render(AppComponent, {
+  removeAngularAttributes: true,
+})
+```
+
 ## Directive RenderOptions
 
 To test a directive, the render API is a bit different. The API has the same
@@ -244,11 +268,11 @@ component.debug(component.getByRole('alert'))
 
 ### `rerender`
 
-Re-render the same component with different props.
-Will call `detectChanges` after props has been updated.
+Re-render the same component with different props. Will call `detectChanges`
+after props has been updated.
 
 ```typescript
-const component = await render(Counter, { componentProperties: { count: 4 }})
+const component = await render(Counter, { componentProperties: { count: 4 } })
 
 expect(component.getByTestId('count-value').textContent).toBe('4')
 
@@ -258,11 +282,11 @@ expect(component.getByTestId('count-value').textContent).toBe('7')
 
 ### `fireEvent.***`
 
-The second most important feature of `render` is that the events from
-[DOM Testing Library](https://testing-library.com/docs/dom-testing-library) are
-automatically bound to the Angular Component. This to ensure that the Angular
-change detection has been run by calling `detectChanges` after an event has been
-fired.
+The `fireEvents` re-exported from
+[DOM Testing Library](https://testing-library.com/docs/dom-testing-library) that
+are automatically bound to the Angular Component. This to ensure that the
+Angular change detection has been run by invoking `detectChanges` after an event
+has been fired.
 
 See
 [Firing Events](https://testing-library.com/docs/dom-testing-library/api-events)
@@ -280,6 +304,12 @@ component.change(component.getByLabelText('Username'), {
 })
 component.click(component.getByText('Login'))
 ```
+
+### `debugElement`
+
+The Angular `DebugElement` of the component.
+
+For more info see the [Angular docs](https://angular.io/api/core/DebugElement).
 
 ### `fixture`
 
@@ -355,23 +385,19 @@ component.type(component.getByLabelText('Username'), 'Tim')
 component.type(component.getByLabelText('Username'), 'Tim', { delay: 250 })
 ```
 
-### `waitForDomChange`
+### `waitFor`
 
-Wait for the DOM to change.
-For more info see the [DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitfordomchange).
+When in need to wait for any period of time you can use waitFor, to wait for
+your expectations to pass. For more info see the
+[DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitFor).
 
-This function will also call `detectChanges` repeatably to update the DOM, is helpful to test async functionality.
-
-### `waitForElement`
-
-Wait for DOM elements to appear, disappear, or change.
-For more info see the [DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitforelement).
-
-This function will also call `detectChanges` repeatably to update the DOM, is helpful to test async functionality.
+This function will also call `detectChanges` repeatably to update the DOM, which
+is helpful to test async functionalities.
 
 ### `waitForElementToBeRemoved`
 
-Wait for the removal of element(s) from the DOM.
-For more info see the [DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitforelementtoberemoved).
+Wait for the removal of element(s) from the DOM. For more info see the
+[DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitforelementtoberemoved).
 
-This function will also call `detectChanges` repeatably to update the DOM, is helpful to test async functionality.
+This function will also call `detectChanges` repeatably to update the DOM, which
+is helpful to test async functionalities.
