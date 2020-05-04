@@ -38,4 +38,8 @@ sidebar_label: Learning Material
   by [Gpx](https://twitter.com/Gpx)
 - [Writing better tests with react-testing-library](https://www.youtube.com/watch?v=O0VxvRqgm7g) by [Billy Mathews](https://twitter.com/BillRMathews)
 
+## Portuguese 🇧🇷
+
+- [Do Enzyme ao Testing Library](https://www.infoq.com/br/presentations/enzyme-para-react-testing-library/) by [Pablo Dinella](https://github.com/PabloDinella)
+
 Feel free to contribute more!
