@@ -8,7 +8,7 @@ sidebar_label: Learning Material
   about testing JavaScript applications (See also the
   [course material with many examples using React Testing Library](https://github.com/kentcdodds/react-testing-library-course))
   by [Kent C. Dodds](https://github.com/kentcdodds)
-- [Kent C. Dodds's testing related blog post are all relevant](https://kentcdodds.com/blog?q=test)
+- [Kent C. Dodds's testing related blog posts are all relevant](https://kentcdodds.com/blog?q=test)
   (especially
   [Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library))
 - [Migrating from Enzyme shallow rendering to explicit component mocks](https://www.youtube.com/watch?v=LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
