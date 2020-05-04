@@ -17,7 +17,9 @@ possible. With this in mind, we recommend this order of priority:
       With the `name` option you can filter the returned elements by their
       [accessible name](https://www.w3.org/TR/accname-1.1/). This should be your
       top preference for just about everything. There's not much you can't get
-      with this (if you can't, it's possible your UI is inaccessible).
+      with this (if you can't, it's possible your UI is inaccessible). Most
+      often, this will be used with the `name` option like so:
+      `getByRole('button', {name: /submit/i})`
    1. `getByLabelText`: Only really good for form fields, but this is the number
       one method a user finds those elements, so it should be your top
       preference.
