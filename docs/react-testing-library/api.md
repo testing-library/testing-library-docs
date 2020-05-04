@@ -160,6 +160,10 @@ renders its HTML directly in the body.
 
 ### `debug`
 
+> NOTE: It's recommended to use
+> [`screen.debug`](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug)
+> instead.
+
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
