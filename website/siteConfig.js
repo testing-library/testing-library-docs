@@ -11,21 +11,9 @@
 // List of projects/orgs using your project for the users page.
 const users = [
   {
-    caption: 'PayPal',
-    image: '/img/users/paypal.svg',
-    infoLink: 'https://www.paypal.com',
-    pinned: true,
-  },
-  {
-    caption: 'Walmart Labs',
-    pinned: true,
-    image: '/img/users/walmart.png',
-    infoLink: 'https://www.walmartlabs.com/',
-  },
-  {
-    caption: 'Tiller',
-    image: '/img/users/tiller.svg',
-    infoLink: 'https://www.tillersystems.com',
+    caption: 'Autodesk',
+    image: '/img/users/autodesk.svg',
+    infoLink: 'https://www.autodesk.com',
     pinned: true,
   },
   {
@@ -35,33 +23,9 @@ const users = [
     pinned: true,
   },
   {
-    caption: 'Autodesk',
-    image: '/img/users/autodesk.svg',
-    infoLink: 'https://www.autodesk.com',
-    pinned: true,
-  },
-  {
-    caption: 'Sweepbright',
-    image: '/img/users/sweepbright.svg',
-    infoLink: 'https://sweepbright.com',
-    pinned: true,
-  },
-  {
-    caption: 'TravelPerk',
-    image: '/img/users/travelperk.svg',
-    infoLink: 'https://www.travelperk.com',
-    pinned: true,
-  },
-  {
-    caption: 'Velo Payments',
-    image: '/img/users/velopayments.svg',
-    infoLink: 'https://www.velopayments.com',
-    pinned: true,
-  },
-  {
-    caption: 'Parsley Health',
-    image: '/img/users/parsleyhealth.svg',
-    infoLink: 'https://www.parsleyhealth.com',
+    caption: 'Expedia Group',
+    image: '/img/users/expediagroup.svg',
+    infoLink: 'https://www.expediagroup.com',
     pinned: true,
   },
   {
@@ -71,27 +35,27 @@ const users = [
     pinned: true,
   },
   {
-    caption: 'Expedia Group',
-    image: '/img/users/expediagroup.svg',
-    infoLink: 'https://www.expediagroup.com',
-    pinned: true,
-  },
-  {
-    caption: 'Wix.com',
-    image: '/img/users/wix.svg',
-    infoLink: 'https://www.wix.com',
-    pinned: true,
-  },
-  {
-    caption: 'Testsigma',
-    image: '/img/users/testsigma.svg',
-    infoLink: 'https://www.testsigma.com',
+    caption: 'Gusto',
+    image: '/img/users/gusto.svg',
+    infoLink: 'https://gusto.com/',
     pinned: true,
   },
   {
     caption: 'intelliHR',
     image: '/img/users/intellihr.svg',
     infoLink: 'https://intellihr.com.au',
+    pinned: true,
+  },
+  {
+    caption: 'Parsley Health',
+    image: '/img/users/parsleyhealth.svg',
+    infoLink: 'https://www.parsleyhealth.com',
+    pinned: true,
+  },
+  {
+    caption: 'PayPal',
+    image: '/img/users/paypal.svg',
+    infoLink: 'https://www.paypal.com',
     pinned: true,
   },
   {
@@ -107,9 +71,45 @@ const users = [
     pinned: true,
   },
   {
-    caption: 'Gusto',
-    image: '/img/users/gusto.svg',
-    infoLink: 'https://gusto.com/',
+    caption: 'Sweepbright',
+    image: '/img/users/sweepbright.svg',
+    infoLink: 'https://sweepbright.com',
+    pinned: true,
+  },
+  {
+    caption: 'Testsigma',
+    image: '/img/users/testsigma.svg',
+    infoLink: 'https://www.testsigma.com',
+    pinned: true,
+  },
+  {
+    caption: 'Tiller',
+    image: '/img/users/tiller.svg',
+    infoLink: 'https://www.tillersystems.com',
+    pinned: true,
+  },
+  {
+    caption: 'TravelPerk',
+    image: '/img/users/travelperk.svg',
+    infoLink: 'https://www.travelperk.com',
+    pinned: true,
+  },
+  {
+    caption: 'Velo Payments',
+    image: '/img/users/velopayments.svg',
+    infoLink: 'https://www.velopayments.com',
+    pinned: true,
+  },
+  {
+    caption: 'Walmart Labs',
+    pinned: true,
+    image: '/img/users/walmart.png',
+    infoLink: 'https://www.walmartlabs.com/',
+  },
+  {
+    caption: 'Wix.com',
+    image: '/img/users/wix.svg',
+    infoLink: 'https://www.wix.com',
     pinned: true,
   },
 ]
