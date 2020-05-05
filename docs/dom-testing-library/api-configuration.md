@@ -18,6 +18,13 @@ Configuration options:
 `defaultHidden`: The default value for the `hidden` option used by
 [`getByRole`](api-queries#byrole). Defaults to `false`.
 
+`showOriginalStackTrace`: By default, `waitFor` will ensure that the stack trace
+for errors thrown by Testing Library is cleaned up and shortened so it's easier
+for you to identify the part of your code that resulted in the error (async
+stack traces are hard to debug). If you want to disable this, then set
+`showOriginalStackTrace` to `false`. You can also disable this for a specific
+call in the options you pass to `waitFor`.
+
 `testIdAttribute`: The attribute used by [`getByTestId`](api-queries#bytestid)
 and related queries. Defaults to `data-testid`.
 
