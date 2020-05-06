@@ -261,13 +261,33 @@ class Index extends React.Component {
         return null
       }
 
-      const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
-          </a>
-        ))
+      const getRandom = (arr, n) => {
+        var result = new Array(n),
+          len = arr.length,
+          taken = new Array(len)
+        if (n > len) return arr
+        while (n--) {
+          var x = Math.floor(Math.random() * len)
+          result[n] = arr[x in taken ? taken[x] : x]
+          taken[x] = --len in taken ? taken[len] : len
+        }
+        return result
+      }
+
+      const randomizedList = () => {
+        const NUMBER_OF_USERS_TO_SHOW = 3
+
+        return getRandom(
+          siteConfig.users.filter(user => user.pinned),
+          NUMBER_OF_USERS_TO_SHOW
+        )
+      }
+
+      const showcase = randomizedList().map(user => (
+        <a href={user.infoLink} key={user.infoLink}>
+          <img src={user.image} alt={user.caption} title={user.caption} />
+        </a>
+      ))
 
       const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
 
