@@ -260,8 +260,9 @@ class Index extends React.Component {
       if ((siteConfig.users || []).length === 0) {
         return null
       }
+      const NUMBER_OF_USERS_TO_SHOW = 3
 
-      const getRandom = (arr, n) => {
+      const randomizedList = (arr, n) => {
         var result = new Array(n),
           len = arr.length,
           taken = new Array(len)
@@ -274,16 +275,10 @@ class Index extends React.Component {
         return result
       }
 
-      const randomizedList = () => {
-        const NUMBER_OF_USERS_TO_SHOW = 3
-
-        return getRandom(
-          siteConfig.users.filter(user => user.pinned),
-          NUMBER_OF_USERS_TO_SHOW
-        )
-      }
-
-      const showcase = randomizedList().map(user => (
+      const showcase = randomizedList(
+        siteConfig.users,
+        NUMBER_OF_USERS_TO_SHOW
+      ).map(user => (
         <a href={user.infoLink} key={user.infoLink}>
           <img src={user.image} alt={user.caption} title={user.caption} />
         </a>
