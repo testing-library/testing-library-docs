@@ -585,6 +585,7 @@ getByRole(
     hidden?: boolean = true,
     name?: TextMatch,
     normalizer?: NormalizerFn,
+    selected?: boolean,
   }): HTMLElement
 ```
 
@@ -637,7 +638,27 @@ case. For example in
 assertions about the `Open dialog`-button you would need to use
 `getAllByRole('button', { hidden: true })`.
 
-The default value can [be configured](api-configuration#configuration).
+The default value for `hidden` can [be configured](api-configuration#configuration).
+
+Certain roles can have a selected state. You can filter the 
+returned elements that by their selected state
+by setting `selected: true` or `selected: false`.
+
+For example in
+
+```html
+<body>
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Native</button>
+    <button role="tab" aria-selected="false">React</button>
+    <button role="tab" aria-selected="false">Cypress</button>
+  </div>
+</body>
+```
+
+you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
+To learn more about the selected state and which elements can 
+have this state see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
 
 ```html
 <div role="dialog">...</div>
