@@ -17,6 +17,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Coches.net',
+    image: '/img/users/coches.svg',
+    infoLink: 'https://www.coches.net/',
+    pinned: true,
+  },
+  {
     caption: 'Codecademy',
     image: '/img/users/codecademy.svg',
     infoLink: 'https://www.codecademy.com',
@@ -35,15 +41,39 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Fotocasa',
+    image: '/img/users/fotocasa.svg',
+    infoLink: 'https://www.fotocasa.es/',
+    pinned: true,
+  },
+  {
     caption: 'Gusto',
     image: '/img/users/gusto.svg',
     infoLink: 'https://gusto.com/',
     pinned: true,
   },
   {
+    caption: 'Habitaclia',
+    image: '/img/users/habitaclia.svg',
+    infoLink: 'https://www.habitaclia.com/',
+    pinned: true,
+  },
+  {
+    caption: 'Infojobs',
+    image: '/img/users/infojobs.svg',
+    infoLink: 'https://www.infojobs.net/',
+    pinned: true,
+  },
+  {
     caption: 'intelliHR',
     image: '/img/users/intellihr.svg',
     infoLink: 'https://intellihr.com.au',
+    pinned: true,
+  },
+  {
+    caption: 'Milanuncios',
+    image: '/img/users/milanuncios.svg',
+    infoLink: 'https://www.milanuncios.com',
     pinned: true,
   },
   {
@@ -68,6 +98,12 @@ const users = [
     caption: 'Radity',
     image: '/img/users/radity.svg',
     infoLink: 'https://radity.com',
+    pinned: true,
+  },
+  {
+    caption: 'SUI Components',
+    image: '/img/users/sui.svg',
+    infoLink: 'https://sui-components.now.sh/',
     pinned: true,
   },
   {
