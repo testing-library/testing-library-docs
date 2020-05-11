@@ -150,7 +150,7 @@ within(signinModal).getByPlaceholderText('Username')
 
 ```js
 cy.get('form').within(() => {
-  cy.getByText('Button Text').should('be.disabled')
+  cy.findByText('Button Text').should('be.disabled')
 })
 ```
 
