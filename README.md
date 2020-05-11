@@ -135,6 +135,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://jamie.tokyo"><img src="https://avatars0.githubusercontent.com/u/5964236?v=4" width="100px;" alt=""/><br /><sub><b>Jamie</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jamsinclair" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.bitnative.com"><img src="https://avatars2.githubusercontent.com/u/1688997?v=4" width="100px;" alt=""/><br /><sub><b>Cory House</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=coryhouse" title="Documentation">📖</a></td>
   </tr>
 </table>
 
