@@ -720,6 +720,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "bugzpodder",
+      "name": "Jack Zhao",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/14841421?v=4",
+      "profile": "http://fb.me/yz",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
