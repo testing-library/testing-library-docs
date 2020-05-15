@@ -19,7 +19,7 @@ possible. With this in mind, we recommend this order of priority:
       top preference for just about everything. There's not much you can't get
       with this (if you can't, it's possible your UI is inaccessible). Most
       often, this will be used with the `name` option like so:
-      `getByRole('button', {name: /submit/i})`
+      `getByRole('button', {name: /submit/i})`. Check the [list of roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Roles).
    1. `getByLabelText`: Only really good for form fields, but this is the number
       one method a user finds those elements, so it should be your top
       preference.
