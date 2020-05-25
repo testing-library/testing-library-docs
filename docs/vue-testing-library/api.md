@@ -213,7 +213,7 @@ await fireEvent.blur(getByLabelText('username'))
 ### `update(elem, value)`
 
 Properly handles inputs controlled by `v-model`. It updates the
-input/select/textarea inner value while emitting the appropiate native event.
+input/select/textarea inner value while emitting the appropriate native event.
 
 See a working example of `update` in the
 [v-model example test](/docs/vue-testing-library/examples#example-using-v-model).
