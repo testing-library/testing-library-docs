@@ -138,6 +138,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.bitnative.com"><img src="https://avatars2.githubusercontent.com/u/1688997?v=4" width="100px;" alt=""/><br /><sub><b>Cory House</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=coryhouse" title="Documentation">📖</a></td>
     <td align="center"><a href="http://fb.me/yz"><img src="https://avatars3.githubusercontent.com/u/14841421?v=4" width="100px;" alt=""/><br /><sub><b>Jack Zhao</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bugzpodder" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/rkennel"><img src="https://avatars2.githubusercontent.com/u/28492538?v=4" width="100px;" alt=""/><br /><sub><b>Ryan Kennel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rkennel" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/JesuHrz"><img src="https://avatars0.githubusercontent.com/u/28031187?v=4" width="100px;" alt=""/><br /><sub><b>Jesus Hernandez</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=JesuHrz" title="Documentation">📖</a></td>
   </tr>
 </table>
 
