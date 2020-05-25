@@ -115,7 +115,7 @@ screen.debug(screen.getAllByText('multi-test'))
 
 ### `ByLabelText`
 
-> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText,
 > findByLabelText, findAllByLabelText
 
 ```typescript
