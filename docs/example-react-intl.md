@@ -124,7 +124,7 @@ const FormatDateView = () => {
 
 setupTests()
 
-test('it should render FormattedDate and have a formated pt date', () => {
+test('it should render FormattedDate and have a formatted pt date', () => {
   render(<FormatDateView />)
   expect(screen.getByTestId('date-display')).toHaveTextContent('11/03/2019')
 })

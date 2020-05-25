@@ -59,23 +59,29 @@ fireEvent.change(getByLabelText(/picture/i), {
 })
 ```
 
+**dataTransfer**: Drag events have a `dataTransfer` property that contains
+data transferred during the operation. As a convenience, if you provide a
+`dataTransfer` property in the `eventProperties` (second argument), then
+those properties will be added to the event.
+
+This should predominantly be used for testing drag and drop interactions.
+
+```javascript
+fireEvent.drop(getByLabelText(/drop files here/i), {
+  dataTransfer: {
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
+  },
+})
+```
+
 **Keyboard events**: There are three event types related to keyboard input -
 `keyPress`, `keyDown`, and `keyUp`. When firing these you need to reference an
 element in the DOM and the key you want to fire.
 
 ```javascript
-fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
+fireEvent.keyDown(domNode, { key: 'Enter', code: 'Enter' })
 
-// note: you should set the charCode or it will be fallback to 0
-// will fire a KeyboardEvent with charCode = 13
-fireEvent.keyDown(domNode, { key: 'Enter', code: 13 })
-
-// If using event.which, be sure to set the keyCode or it will be fallback to 0
-// will fire a KeyboardEvent with expected which = 13
-fireEvent.keyDown(domNode, { key: 'Enter', keyCode: 13 })
-
-// will fire a KeyboardEvent with charCode = 65
-fireEvent.keyDown(domNode, { key: 'A', code: 65, charCode: 65 })
+fireEvent.keyDown(domNode, { key: 'A', code: 'KeyA' })
 ```
 
 You can find out which key code to use at

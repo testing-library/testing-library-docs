@@ -11,20 +11,24 @@ possible. With this in mind, we recommend this order of priority:
 
 1. **Queries Accessible to Everyone** queries that reflect the experience of
    visual/mouse users as well as those that use assistive technology
+   1. `getByRole`: This can be used to query every element that is exposed in
+      the
+      [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/AOM).
+      With the `name` option you can filter the returned elements by their
+      [accessible name](https://www.w3.org/TR/accname-1.1/). This should be your
+      top preference for just about everything. There's not much you can't get
+      with this (if you can't, it's possible your UI is inaccessible). Most
+      often, this will be used with the `name` option like so:
+      `getByRole('button', {name: /submit/i})`. Check the
+      [list of roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Roles).
    1. `getByLabelText`: Only really good for form fields, but this is the number
       one method a user finds those elements, so it should be your top
       preference.
    1. `getByPlaceholderText`:
       [A placeholder is not a substitute for a label](https://www.nngroup.com/articles/form-design-placeholders/).
       But if that's all you have, then it's better than alternatives.
-   1. `getByRole`: This can be used to query every element that is exposed in
-      the
-      [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/AOM).
-      With the `name` option you can filter the returned elements by their
-      [accessible name](https://www.w3.org/TR/accname-1.1/). This should be your
-      top preference for interactive elements such as buttons.
    1. `getByText`: Not useful for forms, but this is the number 1 method a user
-      finds most non-interactive elements (listitems or divs).
+      finds most non-interactive elements (like divs and spans).
    1. `getByDisplayValue`: The current value of a form element can be useful
       when navigating a page with filled-in values.
 1. **Semantic Queries** HTML5 and ARIA compliant selectors. Note that the user
@@ -52,3 +56,10 @@ testid if you have to.
 const { container } = render(<MyComponent />)
 const foo = container.querySelector('[data-foo="bar"]')
 ```
+
+## Playground
+
+If you want to get more familiar with these queries, you can try them out on
+[testing-playground.com](https://testing-playground.com). Testing Playground is
+an interactive sandbox where you can run different queries against your own
+html, and get visual feedback matching the rules mentioned above.

@@ -98,7 +98,7 @@ See [Considerations for fireEvent](guide-events.md), [Events API](api-events.md)
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
-  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 
 ## Other
 

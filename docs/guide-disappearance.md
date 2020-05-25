@@ -65,7 +65,7 @@ if you want to make an assertion that an element is _not_ present in the DOM,
 you can use `queryBy` APIs instead:
 
 ```javascript
-const submitButton = queryByText(container, 'submit')
+const submitButton = screen.queryByText('submit')
 expect(submitButton).toBeNull() // it doesn't exist
 ```
 
@@ -74,7 +74,7 @@ array can be useful for assertions after elements are added or removed from the
 DOM.
 
 ```javascript
-const submitButtons = queryAllByText(container, 'submit')
+const submitButtons = screen.queryAllByText('submit')
 expect(submitButtons).toHaveLength(2) // expect 2 elements
 ```
 
@@ -88,7 +88,7 @@ a query result is `null`.
 ```javascript
 import '@testing-library/jest-dom/extend-expect'
 // use `queryBy` to avoid throwing an error with `getBy`
-const submitButton = queryByText(container, 'submit')
+const submitButton = screen.queryByText('submit')
 expect(submitButton).not.toBeInTheDocument()
 ```
 

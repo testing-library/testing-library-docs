@@ -29,7 +29,7 @@ expectations to pass. Here's a simple example:
 ```javascript
 // ...
 // Wait until the callback does not throw an error. In this case, that means
-// it'll wait until we can get a form control with a label that matches "username".
+// it'll wait until the mock function has been called once.
 await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
@@ -105,8 +105,6 @@ The options object is forwarded to `waitFor`.
 
 ## `wait` (DEPRECATED, use waitFor instead)
 
-## `wait`
-
 ```typescript
 function wait<T>(
   callback: () => void,
@@ -119,6 +117,8 @@ function wait<T>(
 ): Promise<T>
 ```
 Previously, wait was a wrapper around wait-for-expect and used polling instead of a MutationObserver to look for changes.  It is now an alias to waitFor and will be removed in a future release.
+
+Unlike wait, the callback parameter is mandatory in waitFor. Although you can migrate an existing `wait()` call to `waitFor( () => {} )`, it is considered bad practice to use an empty callback because it will make the tests more fragile. 
 
 ## `waitForDomChange` (DEPRECATED, use waitFor instead)
 
