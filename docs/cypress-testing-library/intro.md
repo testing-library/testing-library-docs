@@ -52,16 +52,15 @@ To show some simple examples (from
 [cypress/integration/query.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/query.spec.js) or [cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/find.spec.js)):
 
 ```javascript
-cy.findAllByText('Jackie Chan').click()
-cy.findByText('Button Text').should('exist')
-// Note: Use a regex to test for non-existence
-cy.findByText(/Non-existing Button Text/).should('not.exist')
-cy.findByLabelText('Label text', {timeout: 7000}).should('exist')
+cy.findByRole('button', {name: /Jackie Chan/i}).click()
+cy.findByRole('button', {name: /Button Text/i}).should('exist')
+cy.findByRole('button', {name: /Non-existing Button Text/i}).should('not.exist')
+cy.findByLabelText(/Label text/i, {timeout: 7000}).should('exist')
 
 // findAllByText _inside_ a form element
-cy.get('form').findByText('Button Text').should('exist')
-cy.get('form').then(subject => {
-  cy.findByText('Button Text', {container: subject}).should('exist')
+cy.get('form').findByText('button', {name: /Button Text/i}).should('exist')
+cy.findByRole('dialog').within(() => {
+  cy.findByRole('button', {name: /confirm/i})
 })
 ```
 
