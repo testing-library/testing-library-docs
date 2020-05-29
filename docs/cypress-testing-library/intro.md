@@ -54,7 +54,8 @@ To show some simple examples (from
 ```javascript
 cy.findAllByText('Jackie Chan').click()
 cy.findByText('Button Text').should('exist')
-cy.findByText('Non-existing Button Text').should('not.exist')
+// Note: Use a regex to test for non-existence
+cy.findByText(/Non-existing Button Text/).should('not.exist')
 cy.findByLabelText('Label text', {timeout: 7000}).should('exist')
 
 // findAllByText _inside_ a form element
