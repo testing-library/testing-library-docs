@@ -582,7 +582,7 @@ getByRole(
   role: TextMatch,
   options?: {
     exact?: boolean = true,
-    hidden?: boolean = true,
+    hidden?: boolean = false,
     name?: TextMatch,
     normalizer?: NormalizerFn,
     selected?: boolean,
