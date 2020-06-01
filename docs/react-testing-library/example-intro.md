@@ -11,27 +11,29 @@ See the following sections for a detailed breakdown of the test
 ```jsx
 // __tests__/fetch.test.js
 import React from 'react'
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import axiosMock from 'axios'
 import Fetch from '../fetch'
 
-jest.mock('axios')
+const server = setupServer(
+  rest.get('/greeting', (req, res, ctx) => {
+    return res(ctx.json({ greeting: 'hello there' }))
+  })
+)
+
+beforeAll(() => server.listen())
+afterAll(() => server.close())
 
 test('loads and displays greeting', async () => {
   const url = '/greeting'
   render(<Fetch url={url} />)
 
-  axiosMock.get.mockResolvedValueOnce({
-    data: { greeting: 'hello there' },
-  })
-
   fireEvent.click(screen.getByText('Load Greeting'))
 
   await waitFor(() => screen.getByRole('heading'))
 
-  expect(axiosMock.get).toHaveBeenCalledTimes(1)
-  expect(axiosMock.get).toHaveBeenCalledWith(url)
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
   expect(screen.getByRole('button')).toHaveAttribute('disabled')
 })
@@ -47,17 +49,32 @@ test('loads and displays greeting', async () => {
 // import dependencies
 import React from 'react'
 
+// import API mocking utilities from Mock Service Worker
+// (see https://github.com/mswjs/msw)
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+
 // import react-testing methods
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom/extend-expect'
-import axiosMock from 'axios'
 // the component to test
 import Fetch from '../fetch'
 
-// https://jestjs.io/docs/en/mock-functions#mocking-modules
-jest.mock('axios')
+// declare which API requests to mock
+const server = setupServer(
+  // capture "GET /greeting" requests
+  rest.get('/greeting', (req, res, ctx) => {
+    // respond using a mocked JSON body
+    return res(ctx.json({ greeting: 'hello there' }))
+  })
+)
+
+// establish API mocking before all tests
+// and clean up once the tests are finished
+beforeAll(() => server.listen())
+afterAll(() => server.close())
 ```
 
 ```jsx
@@ -70,7 +87,8 @@ test('loads and displays greeting', async () => {
 
 ### Arrange
 
-The [`render`](./api#render) method renders a React element into the DOM and returns utility functions for testing the component.
+The [`render`](./api#render) method renders a React element into the DOM and
+returns utility functions for testing the component.
 
 ```jsx
 const url = '/greeting'
@@ -83,10 +101,6 @@ The [`fireEvent`](dom-testing-library/api-events.md) method allows you to fire
 events to simulate user actions.
 
 ```jsx
-axiosMock.get.mockResolvedValueOnce({
-  data: { greeting: 'hello there' },
-})
-
 fireEvent.click(screen.getByText('Load Greeting'))
 
 // Wait until the mocked `get` request promise resolves and
@@ -133,8 +147,6 @@ export default function Fetch({ url }) {
 ```
 
 ```jsx
-expect(axiosMock.get).toHaveBeenCalledTimes(1)
-expect(axiosMock.get).toHaveBeenCalledWith(url)
 expect(screen.getByRole('heading')).toHaveTextContent('hello there')
 expect(screen.getByRole('button')).toHaveAttribute('disabled')
 
