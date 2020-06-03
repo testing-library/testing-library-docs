@@ -39,6 +39,10 @@ test('loads and displays greeting', async () => {
 })
 ```
 
+> We recommend using [Mock Service Worker](https://github.com/mswjs/msw) library
+> to declaratively mock API communication in your tests instead of stubbing
+> `window.fetch`, or relying on third-party adapters.
+
 ---
 
 ## Step-By-Step
@@ -50,7 +54,6 @@ test('loads and displays greeting', async () => {
 import React from 'react'
 
 // import API mocking utilities from Mock Service Worker
-// (see https://github.com/mswjs/msw)
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
