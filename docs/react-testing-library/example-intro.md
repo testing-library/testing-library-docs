@@ -145,28 +145,3 @@ export default function Fetch({ url }) {
   )
 }
 ```
-
-```jsx
-expect(screen.getByRole('heading')).toHaveTextContent('hello there')
-expect(screen.getByRole('button')).toHaveAttribute('disabled')
-
-// snapshots work great with regular DOM nodes!
-expect(container).toMatchInlineSnapshot(`
-  <div>
-    <div>
-      <button
-        disabled=""
-      >
-        Ok
-      </button>
-      <h1>
-        hello there
-      </h1>
-    </div>
-  </div>
-`)
-
-// you can also use get a `DocumentFragment`,
-// which is useful if you want to compare nodes across render
-expect(asFragment()).toMatchSnapshot()
-```
