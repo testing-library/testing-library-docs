@@ -64,7 +64,22 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 // the component to test
 import Fetch from '../fetch'
+```
 
+```jsx
+test('loads and displays greeting', async () => {
+  // Arrange
+  // Act
+  // Assert
+})
+```
+
+### Mock
+
+Use the `setupServer` function from `msw` to mock an API request that our tested
+component makes.
+
+```js
 // declare which API requests to mock
 const server = setupServer(
   // capture "GET /greeting" requests
@@ -78,14 +93,6 @@ const server = setupServer(
 // and clean up once the tests are finished
 beforeAll(() => server.listen())
 afterAll(() => server.close())
-```
-
-```jsx
-test('loads and displays greeting', async () => {
-  // Arrange
-  // Act
-  // Assert
-})
 ```
 
 ### Arrange
