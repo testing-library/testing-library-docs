@@ -112,6 +112,12 @@ const users = [
     infoLink: 'https://gusto.com/',
     pinned: true,
   },
+  {
+    caption: 'Zup I.T. Innovation',
+    image: '/img/users/zup.svg',
+    infoLink: 'https://www.zup.com.br/',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
