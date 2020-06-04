@@ -114,7 +114,7 @@ const users = [
   },
   {
     caption: 'Zup I.T. Innovation',
-    image: '/img/users/zup.svg',
+    image: '/img/users/zup.png',
     infoLink: 'https://www.zup.com.br/',
     pinned: true,
   },
