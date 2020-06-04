@@ -24,11 +24,11 @@ const server = setupServer(
 )
 
 beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 test('loads and displays greeting', async () => {
-  const url = '/greeting'
-  render(<Fetch url={url} />)
+  render(<Fetch url="/greeting" />)
 
   fireEvent.click(screen.getByText('Load Greeting'))
 
@@ -36,6 +36,23 @@ test('loads and displays greeting', async () => {
 
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
   expect(screen.getByRole('button')).toHaveAttribute('disabled')
+})
+
+test('handlers server error', async () => {
+  server.use(
+    rest.get('/greeting', (req, res, ctx) => {
+      return res(ctx.status(500))
+    })
+  )
+
+  render(<Fetch url="/greeting" />)
+
+  fireEvent.click(screen.getByText('Load Greeting'))
+
+  await waitFor(() => screen.getByRole('alert'))
+
+  expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+  expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
 })
 ```
 
@@ -90,9 +107,26 @@ const server = setupServer(
 )
 
 // establish API mocking before all tests
-// and clean up once the tests are finished
 beforeAll(() => server.listen())
+// reset any request handlers that are declared as a part of our tests
+// (i.e. for testing one-time error scenarios)
+afterEach(() => server.resetHandlers())
+// clean up once the tests are done
 afterAll(() => server.close())
+
+// ...
+
+test('handlers server error', async () => {
+  server.use(
+    // override the initial "GET /greeting" request handler
+    // to return a 500 Server Error
+    rest.get('/greeting', (req, res, ctx) => {
+      return res(ctx.status(500))
+    })
+  )
+
+  // ...
+})
 ```
 
 ### Arrange
@@ -101,8 +135,7 @@ The [`render`](./api#render) method renders a React element into the DOM and
 returns utility functions for testing the component.
 
 ```jsx
-const url = '/greeting'
-const { container, asFragment } = render(<Fetch url={url} />)
+const { container, asFragment } = render(<Fetch url="/greeting" />)
 ```
 
 ### Act
@@ -113,7 +146,7 @@ events to simulate user actions.
 ```jsx
 fireEvent.click(screen.getByText('Load Greeting'))
 
-// Wait until the mocked `get` request promise resolves and
+// wait until the `get` request promise resolves and
 // the component calls setState and re-renders.
 // `waitFor` waits until the callback doesn't throw an error
 
@@ -131,16 +164,39 @@ fetch.js
 import React, { useState } from 'react'
 import axios from 'axios'
 
+function greetingReducer(state, action) {
+  switch (action.type) {
+    case 'SUCCESS': {
+      return {
+        error: null,
+        greeting: action.greeting,
+      }
+    }
+    case: 'ERROR': {
+      error: action.error,
+      greeting: null
+    }
+    default: {
+      return state
+    }
+  }
+}
+
 export default function Fetch({ url }) {
-  const [greeting, setGreeting] = useState('')
+  const [{ error, greeting }, dispatch] = useReducer(greetingReducer)
   const [buttonClicked, setButtonClicked] = useState(false)
 
   const fetchGreeting = async () => {
-    const response = await axios.get(url)
-    const data = response.data
-    const { greeting } = data
-    setGreeting(greeting)
-    setButtonClicked(true)
+    axios.get(url)
+      .then((response) => {
+        const { data } = response
+        const { greeting } = data
+        dispatch({ type: 'SUCCESS', greeting })
+        setButtonClicked(true)
+      })
+      .catch((error) => {
+        dispatch({ type: 'ERROR' })
+      })
   }
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
@@ -150,7 +206,8 @@ export default function Fetch({ url }) {
       <button onClick={fetchGreeting} disabled={buttonClicked}>
         {buttonText}
       </button>
-      {greeting ? <h1>{greeting}</h1> : null}
+      {greeting && <h1>{greeting}</h1>}
+      {error && <p role="alert">Oops, failed to fetch!</p>}
     </div>
   )
 }
