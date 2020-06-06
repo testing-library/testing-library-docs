@@ -5,13 +5,17 @@ title: Testcafe Testing Library
 
 ## Introduction
 
-[`testcafe-testing-library`][gh] allows the use of dom testing library queries within
-[Testcafe](https://devexpress.github.io/testcafe/) for cross-browser end-to-end web
-testing.
+[`testcafe-testing-library`][gh] allows the use of dom testing library queries
+within [Testcafe](https://devexpress.github.io/testcafe/) for cross-browser
+end-to-end web testing.
 
-If you are new to the testing-library approach for writing tests, check out the [this guide on which query to use](https://testing-library.com/docs/guide-which-query) as well as the [cheat sheet](https://testing-library.com/docs/dom-testing-library/cheatsheet).   
+If you are new to the testing-library approach for writing tests, check out the
+[this guide on which query to use](https://testing-library.com/docs/guide-which-query)
+as well as the
+[cheat sheet](https://testing-library.com/docs/dom-testing-library/cheatsheet).
 
 ## Install
+
 ```
 npm install --save-dev testcafe @testing-library/testcafe
 ```
@@ -35,7 +39,12 @@ You can now import & use get[All]By*, query[All]By*, find[All]By\* selectors in
 your tests.
 [See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
-> A note about queries in testcafe.  Testcafe has [built in waiting](https://devexpress.github.io/testcafe/documentation/test-api/built-in-waiting-mechanisms.html#wait-mechanism-for-selectors), for this reason, there's no difference between `queryBy` and `findBy` queries in testcafe testing library.  `getBy` queries will throw an exception (as designed) so they will fail immediately and do not work with the built in waiting that Testcafe provides.
+> A note about queries in testcafe. Testcafe has
+> [built in waiting](https://devexpress.github.io/testcafe/documentation/test-api/built-in-waiting-mechanisms.html#wait-mechanism-for-selectors),
+> for this reason, there's no difference between `queryBy` and `findBy` queries
+> in testcafe testing library. `getBy` queries will throw an exception (as
+> designed) so they will fail immediately and do not work with the built in
+> waiting that Testcafe provides.
 
 ## Examples
 
@@ -43,7 +52,6 @@ To show some simple examples (from
 [https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js)):
 
 ```javascript
-
 test('getByPlaceHolderText', async t => {
   await t.typeText(
     getByPlaceholderText('Placeholder Text'),
@@ -116,7 +124,7 @@ test('still works after browser page load and reload', async t => {
 
 ```json
   "clientScripts": [
-    "./node_modules/@testing-library/dom/dist/@testing-library/dom.umd.js"
+    "./node_modules/@testing-library/dom/dist/@testing-library/dom.umd.js",
     "./path/to/my-app-testcafe.config.js"
   ]
 ```
@@ -131,8 +139,8 @@ window.TestingLibraryDom.configure({ testIdAttribute: 'data-automation-id' })
 
 By default the selectors come pre-bound to `document.body`, so no need to
 provide a container. However, if you want to restrict your query using a
-container, you can use `within` which can take either a
-string or a query (get[All]By*, query[All]By*, find[All]By\*).
+container, you can use `within` which can take either a string or a query
+(get[All]By*, query[All]By*, find[All]By\*).
 
 ### Examples using `within`
 
