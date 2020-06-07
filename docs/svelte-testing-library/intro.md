@@ -1,137 +1,44 @@
 ---
 id: intro
-title: Svelte Testing Library
+title: Intro
+sidebar_label: Introduction
 ---
 
-[`svelte-testing-library`][gh] simplifies the use of dom-testing with
-[Svelte](https://svelte.dev/) components & applications.
+[Svelte Testing Library on GitHub][gh]
+
+[gh]: https://github.com/testing-library/svelte-testing-library
 
 ```
 npm install --save-dev @testing-library/svelte
 ```
 
-- [svelte-testing-library on GitHub][gh]
+> This library is built on top of
+> [`DOM Testing Library`](dom-testing-library/intro.md) which is where most of
+> the logic behind the queries is.
 
-## Usage
+## The Problem
 
-You will first need to install and configure
-[jest-transform-svelte](https://www.npmjs.com/package/jest-transform-svelte) in
-order to use svelte in jest.
+You want to write tests for your Svelte components so that they avoid including
+implementation details, and are maintainable in the long run.
 
-You must add `cleanup` to your test fixture's `beforeEach` hook:
+## This Solution
 
-```javascript
-import { render, cleanup } from '@testing-library/svelte'
+The Svelte Testing Library is a very lightweight solution for testing Svelte
+components. It provides light utility functions on top of `svelte`, in a way
+that encourages better testing practices. Its primary guiding principle is:
 
-beforeEach(cleanup) //this is required.
-```
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
 
-## Examples
+So rather than dealing with instances of rendered Svelte components, your tests
+will work with actual DOM nodes. See the [Dom
+Introduction][dom-solution-explainer] for a more in-depth explanation.
 
-App.svelte
+[dom-solution-explainer]: ../dom-testing-library/intro.md#this-solution
+[react-solution-explainer]: ../react-testing-library/intro#this-solution
 
-```html
-<script>
-  export let name
-</script>
+**What this library is not**:
 
-<style>
-  h1 {
-    color: purple;
-  }
-</style>
+1.  A test runner or framework.
+2.  Specific to a testing framework.
 
-<h1>Hello {name}!</h1>
-```
-
-App.spec.js
-
-```javascript
-import App from '../src/App.svelte'
-import { render, cleanup } from '@testing-library/svelte'
-beforeEach(cleanup)
-describe('App', () => {
-  test('should render greeting', () => {
-    const { getByText } = render(App, { props: { name: 'world' } })
-
-    expect(getByText('Hello world!'))
-  })
-
-  test('should change button text after click', async () => {
-    const { getByText } = render(App, { props: { name: 'world' } })
-
-    fireEvent.click(getByText('Button Text'))
-
-    const button = await waitForElement(() => getByText('Button Clicked'))
-
-    expect(button).toBeInTheDocument()
-  })
-})
-```
-
-### Containers
-
-Useful for snapshot tests. You can use query the container if you need more
-granular tests.
-
-App.svelte
-
-```html
-<script>
-  export let name
-</script>
-
-<style>
-  h1 {
-    color: purple;
-  }
-</style>
-
-<h1>Hello {name}!</h1>
-```
-
-App.spec.js
-
-```javascript
-import App from '../src/App.svelte'
-import { render, cleanup } from '@testing-library/svelte'
-beforeEach(cleanup)
-describe('App', () => {
-  test('should render greeting', () => {
-    const { container } = render(App, { props: { name: 'world' } })
-
-    expect(container.querySelector('h1').innerHTML).toBe('Hello world!')
-    expect(container).toMatchInlineSnapshot(`
-  <div>
-    <h1>
-      Hello
-      {name}
-      !
-    </h1>
-  </div>
-`)
-  })
-})
-```
-
-### Cleanup
-
-You can ensure [`cleanup`](./api#cleanup) is called after each test and import
-additional assertions by adding it to the setup configuration in Jest.
-
-In Jest 24 and up, add the
-[`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array)
-option to your Jest config:
-
-```javascript
-// jest.config.js
-module.exports = {
-  setupFilesAfterEnv: [
-    '@testing-library/svelte/cleanup-after-each',
-    // ... other setup files ...
-  ],
-  // ... other options ...
-}
-```
-
-[gh]: https://github.com/testing-library/svelte-testing-library
+We recommend Jest as our preference.

@@ -17,6 +17,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Walmart Labs',
+    pinned: true,
+    image: '/img/users/walmart.png',
+    infoLink: 'https://www.walmartlabs.com/',
+  },
+  {
     caption: 'Tiller',
     image: '/img/users/tiller.svg',
     infoLink: 'https://www.tillersystems.com',
@@ -86,6 +92,24 @@ const users = [
     caption: 'intelliHR',
     image: '/img/users/intellihr.svg',
     infoLink: 'https://intellihr.com.au',
+    pinned: true,
+  },
+  {
+    caption: 'Quizlet',
+    image: '/img/users/quizlet.svg',
+    infoLink: 'https://quizlet.com',
+    pinned: true,
+  },
+  {
+    caption: 'Radity',
+    image: '/img/users/radity.svg',
+    infoLink: 'https://radity.com',
+    pinned: true,
+  },
+  {
+    caption: 'Gusto',
+    image: '/img/users/gusto.svg',
+    infoLink: 'https://gusto.com/',
     pinned: true,
   },
 ]

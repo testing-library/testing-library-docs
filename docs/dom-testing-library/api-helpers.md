@@ -77,7 +77,8 @@ for other popular assertion libraries:
 
 - [chai-dom](https://github.com/nathanboktae/chai-dom)
 
-If you're aware of some other alternatives, please [make a pull request](https://github.com/testing-library/testing-library-docs/pulls)
+If you're aware of some other alternatives, please
+[make a pull request](https://github.com/testing-library/testing-library-docs/pulls)
 and add it here!
 
 ## `getNodeText`
@@ -86,7 +87,7 @@ and add it here!
 getNodeText(node: HTMLElement)
 ```
 
-Returns the complete text content of a html element, removing any extra
+Returns the complete text content of an HTML element, removing any extra
 whitespace. The intention is to treat text in nodes exactly as how it is
 perceived by users in a browser, where any extra whitespace within words in the
 html code is not meaningful when the text is rendered.
@@ -149,7 +150,7 @@ within(signinModal).getByPlaceholderText('Username')
 
 ```js
 cy.get('form').within(() => {
-  cy.getByText('Button Text').should('be.disabled')
+  cy.findByText('Button Text').should('be.disabled')
 })
 ```
 
@@ -185,6 +186,19 @@ console.log(getRoles(nav))
 // }
 ```
 
+## `isInaccessible`
+
+This function will compute if the given element should be excluded from the
+accessibility API by the browser. It implements every **MUST** criteria from the
+[Excluding Elements from the Accessibility Tree](https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion)
+section in WAI-ARIA 1.2 with the exception of checking the `role` attribute.
+
+It is defined as:
+
+```typescript
+function isInaccessible(element: Element): boolean
+```
+
 ## Debugging
 
 When you use any `get` calls in your test cases, the current state of the
@@ -203,7 +217,7 @@ Unable to find an element with the text: Goodbye world. This could be because th
 Here is the state of your container:
 <div>
   <div>
-    Hello World!
+    Hello world
   </div>
 </div>
 ```
@@ -218,7 +232,7 @@ Here's how you might increase this limit when running tests:
 DEBUG_PRINT_LIMIT=10000 npm test
 ```
 
-This works on macOS/linux, you'll need to do something else for windows. If
+This works on macOS/Linux, you'll need to do something else for Windows. If
 you'd like a solution that works for both, see
 [`cross-env`](https://www.npmjs.com/package/cross-env)
 
@@ -277,7 +291,7 @@ nav.innerHTML = `
   <li>Item 2</li>
 </ul>`
 
-console.log(logRoles(nav))
+logRoles(nav)
 
 // navigation:
 //

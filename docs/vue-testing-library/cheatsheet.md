@@ -36,7 +36,7 @@ A short guide to all the exported functions in `Vue Testing Library`.
 | **...ByAltText**         | img alt attribute                | `<img alt="movie poster" />`          |
 | **...ByTitle**           | title attribute or svg title tag | `<span title="Add" />` or `<title />` |
 | **...ByRole**            | ARIA role                        | `<div role="dialog" />`               |
-| **...ByTestId**          | data-testid attribute            | `<input data-testid="input" />`       |
+| **...ByTestId**          | data-testid attribute            | `<div data-testid="some-message" />`  |
 
 > You can write any combination of Search variants and Search types.
 
@@ -71,7 +71,7 @@ For more information, see
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
   - **input** `fireEvent.input(node, event)`
-  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 
 For more information, see [Events API](dom-testing-library/api-events.md)
 
@@ -89,8 +89,6 @@ For more information, see [Events API](dom-testing-library/api-events.md)
   to it: `within(getByTestId("global-header")).getByText("hello")`.
 - **configure(config)** change global options:
   `configure({testIdAttribute: 'my-test-id'})`.
-- **cleanup()** clears the DOM ([use with `afterEach`](setup.md#cleanup) to
-  reset DOM between tests).
 
 For more information, see [Helpers API](dom-testing-library/api-helpers.md) and
 [Config API](dom-testing-library/api-configuration.md).

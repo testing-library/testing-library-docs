@@ -1,0 +1,142 @@
+---
+id: intro
+title: Nightwatch Testing Library
+---
+
+
+[`nightwatch-testing-library`][gh] allows the use of dom-testing-library queries
+in [Nightwatch](https://nightwatchjs.org) for end-to-end web testing.
+
+
+## Install
+
+> Be sure to follow the
+> [Nightwatch install & config instructions first](https://nightwatchjs.org/gettingstarted/installation/)
+
+then just
+
+```
+npm install -D @testing-library/nightwatch
+```
+
+- [nightwatch-testing-library on GitHub][gh]
+
+## READ THIS FIRST
+
+At it's core, `nightwatch-testing-library` translates between
+dom-testing-library queries and css selectors. This is due to the fact that
+Nightwatch adheres to the WebDriver standards for
+[locator strategies](https://www.w3.org/TR/webdriver/#locator-strategies). For
+now, this means that the logging will have some very detailed css paths. PRs
+welcome for a
+[custom reporter](https://nightwatchjs.org/guide/extending-nightwatch/#custom-reporter)
+to solve this problem 🤗.
+
+**So remember, the results from NWTL queries are WebDriver locators, not DOM
+nodes.**
+
+> Note, in NWTL, all queries must be `await`ed.
+
+## Usage
+
+```javascript
+const { getQueriesFrom } = require('@testing-library/nightwatch')
+
+module.exports = {
+  beforeEach(browser, done) {
+    browser.url('http://localhost:13370')
+    done()
+  },
+
+  async getByLabelText(browser) {
+    const { getByLabelText } = getQueriesFrom(browser)
+
+    const input = await getByLabelText('Label Text')
+    browser.setValue(input, '@TL FTW')
+
+    browser.expect.element(input).value.to.equal('@TL FTW')
+  },
+
+  async getByAltText(browser) {
+    const { getByAltText } = getQueriesFrom(browser)
+    const image = await getByAltText('Image Alt Text')
+
+    browser.click(image)
+    browser.expect
+      .element(image)
+      .to.have.css('border')
+      .which.equals('5px solid rgb(255, 0, 0)')
+  },
+}
+```
+
+### `AllBy` queries
+
+The results of `AllBy` queries have an additional function added to them: `nth`
+which can be used in nightwatch functions as well as in the `within` function of
+NWTL.
+
+```javascript
+
+    async 'getAllByText - regex'(browser) {
+        const { getAllByText } = getQueriesFrom(browser);
+        const chans = await getAllByText(/Jackie Chan/)
+
+
+        browser.expect.elements(chans).count.to.equal(2)
+
+        const firstChan = chans.nth(0);
+        const secondChan = chans.nth(1);
+
+
+        browser.click(chans.nth(0));
+        browser.click(chans.nth(1));
+
+        browser.expect.element(secondChan).text.to.equal('Jackie Kicked');
+        browser.expect.element(firstChan).text.to.equal('Jackie Kicked');
+
+    },
+
+```
+
+## Configure
+
+You can customize the testIdAttribute using the `configure` function just like
+[dom-testing-library][config]:
+
+```javascript
+const { configure } = require('@testing-library/nightwatch')
+
+configure({ testIdAttribute: 'data-automation-id' })
+```
+
+## Containers
+
+By default the queries come pre-bound to `document.body`, so no need to provide
+a container. However, if you want to restrict your query using a container, you
+can use `within`.
+
+### Examples using `within`
+
+```javascript
+const { getQueriesFrom, within } = require('@testing-library/nightwatch')
+
+module.exports = {
+  beforeEach(browser, done) {
+    browser.url('http://localhost:13370')
+    done()
+  },
+  async 'getByText within container'(browser) {
+    const { getByTestId } = getQueriesFrom(browser)
+
+    const nested = await getByTestId('nested')
+    const button = await within(nested).getByText('Button Text')
+
+    browser.click(button)
+    browser.expect.element(button).text.to.equal('Button Clicked')
+  },
+}
+```
+
+[config]: https://testing-library.com/docs/dom-testing-library/api-configuration
+[gh]: https://github.com/testing-library/nightwatch-testing-library

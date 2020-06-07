@@ -4,6 +4,10 @@ title: Examples
 sidebar_label: Examples
 ---
 
+> Read
+> [Good testing practices with 🦔 Angular Testing Library](https://timdeschryver.dev/posts/good-testing-practices-with-angular-testing-library)
+> for a guided example
+
 counter.component.ts
 
 ```typescript
@@ -31,26 +35,26 @@ export class CounterComponent {
 counter.component.spec.ts
 
 ```typescript
-import { render } from '@testing-library/angular'
-import CounterComponent from './counter.component.ts'
+import { render, screen, fireEvent } from '@testing-library/angular'
+import { CounterComponent } from './counter.component.ts'
 
 describe('Counter', () => {
   test('should render counter', async () => {
-    const { getByText } = await render(CounterComponent, {
+    await render(CounterComponent, {
       componentProperties: { counter: 5 },
     })
 
-    expect(getByText('Current Count: 5'))
+    expect(screen.getByText('Current Count: 5'))
   })
 
   test('should increment the counter on click', async () => {
-    const { getByText, click } = await render(CounterComponent, {
+    await render(CounterComponent, {
       componentProperties: { counter: 5 },
     })
 
-    click(getByText('+'))
+    fireEvent.click(screen.getByText('+'))
 
-    expect(getByText('Current Count: 6'))
+    expect(screen.getByText('Current Count: 6'))
   })
 })
 ```

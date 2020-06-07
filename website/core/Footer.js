@@ -81,6 +81,9 @@ class Footer extends React.Component {
             <ExternalLink href={`${this.props.config.docsRepoUrl}`}>
               Edit Docs on GitHub
             </ExternalLink>
+            <ExternalLink href="https://netlify.com">
+              Hosted by Netlify
+            </ExternalLink>
           </div>
         </section>
         <section className="copyright">{this.props.config.copyright}</section>

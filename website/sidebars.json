@@ -90,10 +90,20 @@
           "preact-testing-library/learn"
         ]
       },
+      {
+        "type": "subcategory",
+        "label": "Svelte Testing Library",
+        "ids": [
+          "svelte-testing-library/intro",
+          "svelte-testing-library/setup",
+          "svelte-testing-library/example",
+          "svelte-testing-library/api"
+        ]
+      },
       "cypress-testing-library/intro",
-      "svelte-testing-library/intro",
       "pptr-testing-library/intro",
-      "testcafe-testing-library/intro"
+      "testcafe-testing-library/intro",
+      "nightwatch-testing-library/intro"
     ],
     "Ecosystem": [
       "ecosystem-user-event",
@@ -101,7 +111,9 @@
       "ecosystem-bs-jest-dom",
       "ecosystem-jest-native",
       "ecosystem-react-select-event",
-      "ecosystem-eslint-plugin-testing-library"
+      "ecosystem-eslint-plugin-testing-library",
+      "ecosystem-eslint-plugin-jest-dom",
+      "ecosystem-riot-testing-library"
     ],
     "Help": ["faq", "learning", "contributing"]
   },

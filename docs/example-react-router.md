@@ -7,12 +7,11 @@ title: React Router
 // app.js
 import React from 'react'
 import { withRouter } from 'react-router'
-import { Link, Route, Router, Switch } from 'react-router-dom'
-import { render, fireEvent } from '@testing-library/react'
+import { Link, Route, Switch } from 'react-router-dom'
 
-const About = () => <div>You are on the about page</div>
-const Home = () => <div>You are home</div>
-const NoMatch = () => <div>No match</div>
+const About = () => <h1>You are on the about page</h1>
+const Home = () => <h1>You are home</h1>
+const NoMatch = () => <h1>404 Not Found</h1>
 
 const LocationDisplay = withRouter(({ location }) => (
   <div data-testid="location-display">{location.pathname}</div>
@@ -32,12 +31,18 @@ function App() {
     </div>
   )
 }
+
+export { LocationDisplay, App }
 ```
 
 ```jsx
 // app.test.js
+import React from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
+import { render, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { LocationDisplay, App } from './app'
 
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
@@ -60,7 +65,7 @@ test('landing on a bad page shows 404 page', () => {
   const history = createMemoryHistory()
   history.push('/some/bad/route')
   const { getByRole } = render(
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   )
@@ -68,33 +73,37 @@ test('landing on a bad page shows 404 page', () => {
 })
 
 test('rendering a component that uses withRouter', () => {
+  const history = createMemoryHistory()
   const route = '/some-route'
-  window.history.pushState({}, '', route)
+  history.push(route)
   const { getByTestId } = render(
-    <Router>
+    <Router history={history}>
       <LocationDisplay />
     </Router>
   )
-  expect(getByTestId('location-display').textContent).toBe(route)
+  expect(getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
 
 ## Reducing boilerplate
 
-1. You can use the `wrapper` option to wrap a `MemoryRouter` around the component you want to render (`MemoryRouter` works when you don't need access to the history object itself in the test, but just need the components to be able to render and navigate).
+1. You can use the `wrapper` option to wrap a `MemoryRouter` around the
+   component you want to render (`MemoryRouter` works when you don't need access
+   to the history object itself in the test, but just need the components to be
+   able to render and navigate).
 
 ```jsx
 import { MemoryRouter } from 'react-router-dom'
 
 test('full app rendering/navigating', () => {
-  const { container, getByText } = render(<App />, {wrapper: MemoryRouter})
+  const { container, getByText } = render(<App />, { wrapper: MemoryRouter })
   // verify page content for expected route
   expect(getByRole('heading')).toMatch('Home')
 })
 ```
 
-2. If you find yourself adding Router components to your tests a lot, you may want to create
-a helper function that wraps around `render`. 
+2. If you find yourself adding Router components to your tests a lot, you may
+   want to create a helper function that wraps around `render`.
 
 ```jsx
 // test utils file
@@ -105,9 +114,11 @@ function renderWithRouter(
     history = createMemoryHistory({ initialEntries: [route] }),
   } = {}
 ) {
-  const Wrapper = ({children}) => <Router history={history}>{children}</Router>
+  const Wrapper = ({ children }) => (
+    <Router history={history}>{children}</Router>
+  )
   return {
-    ...render(ui, {wrapper: Wrapper}),
+    ...render(ui, { wrapper: Wrapper }),
     // adding `history` to the returned utilities to allow us
     // to reference it in our tests (just try to avoid using
     // this to test implementation details).
@@ -128,7 +139,6 @@ test('landing on a bad page', () => {
 test('rendering a component that uses withRouter', () => {
   const route = '/some-route'
   const { getByTestId } = renderWithRouter(<LocationDisplay />, { route })
-  expect(getByTestId('location-display').textContent).toBe(route)
+  expect(getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
-

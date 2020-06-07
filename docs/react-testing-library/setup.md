@@ -26,7 +26,7 @@ all your imports. See [below](#configuring-jest-with-test-utils) for a way to
 make your test util file accessible without using relative paths.
 
 The example below sets up data providers using the
-[`wrapper`](api.md#render-options) option to `render`.
+[`wrapper`](api.md#wrapper) option to `render`.
 
 ```diff
 // my-component.test.js
@@ -36,6 +36,7 @@ The example below sets up data providers using the
 
 ```js
 // test-utils.js
+import React from "react"
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
@@ -102,7 +103,7 @@ module.exports = {
 
 You can define your own custom queries as described in the example in the
 [Helpers API](/docs/dom-testing-library/api-helpers) documentation, or via the
-[`buildQueries`](/docs/dom-testing-library/api-helpers#buildQueries) helper. Then
+[`buildQueries`](/docs/dom-testing-library/api-helpers#buildqueries) helper. Then
 you can use them in any render call using the `queries` option. To make the
 custom queries available globally, you can add them to your custom render method
 as shown below.
@@ -213,7 +214,7 @@ _Typescript config needs to be updated as follow:_
     // ...,
 +   "baseUrl": "src",
 +   "paths": {
-+     "test-utils": ["../utils/test-utils"]
++     "test-utils": ["./utils/test-utils"]
 +   }
   }
 }
@@ -242,6 +243,29 @@ $ app
 
 // example if your utils folder is inside the /src directory.
 NODE_PATH=src/utils
+```
+
+### Jest 24 (or lower) and defaults
+
+If you're using the Jest testing framework version 24 or lower with the default
+configuration, it's recommended to use `jest-environment-jsdom-fifteen` package
+as Jest uses a version of the jsdom environment that misses some features and
+fixes, required by React Testing Library.
+
+First, install `jest-environment-jsdom-fifteen`.
+
+```
+npm install --save-dev jest-environment-jsdom-fifteen
+```
+
+Then specify `jest-environment-jsdom-fifteen` as the `testEnvironment`:
+
+```diff
+ // jest.config.js
+ module.exports = {
++  testEnvironment: 'jest-environment-jsdom-fifteen',
+   // ... other options ...
+ }
 ```
 
 ## Using without Jest

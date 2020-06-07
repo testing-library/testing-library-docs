@@ -29,11 +29,8 @@ title: Examples
 ```
 
 ```js
-import { render, fireEvent, cleanup } from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
 import Component from './Component.vue'
-
-// automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
 
 test('increments value on click', async () => {
   // The render method returns a collection of utilities to query your component.
@@ -75,10 +72,8 @@ test('increments value on click', async () => {
 ```
 
 ```js
-import { render, fireEvent, cleanup } from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
 import Component from './Component.vue'
-
-afterEach(cleanup)
 
 test('properly handles v-model', async () => {
   const { getByLabelText, getByText } = render(Component)
@@ -107,3 +102,5 @@ Some included are:
 - [`vuex`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuex.js)
 - [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__/vue-router.js)
 - [`vee-validate`](https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__/validate-plugin.js)
+- [`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vueI18n.js)
+- [`vuetify`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vuetify.js)

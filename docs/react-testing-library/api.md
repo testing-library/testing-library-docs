@@ -160,6 +160,10 @@ renders its HTML directly in the body.
 
 ### `debug`
 
+> NOTE: It's recommended to use
+> [`screen.debug`](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug)
+> instead.
+
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
@@ -173,10 +177,14 @@ debug()
 //   <h1>Hello World</h1>
 // </div>
 // you can also pass an element: debug(getByTestId('messages'))
+// and you can pass all the same arguments to debug as you can
+// to prettyDOM:
+// const maxLengthToPrint = 10000
+// debug(getByTestId('messages'), maxLengthToPrint, {highlight: false})
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`DOM Testing Library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
+[`DOM Testing Library`](dom-testing-library/api-helpers.md#prettydom).
 
 ### `rerender`
 

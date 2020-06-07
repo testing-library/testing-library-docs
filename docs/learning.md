@@ -8,6 +8,9 @@ sidebar_label: Learning Material
   about testing JavaScript applications (See also the
   [course material with many examples using React Testing Library](https://github.com/kentcdodds/react-testing-library-course))
   by [Kent C. Dodds](https://github.com/kentcdodds)
+- [Kent C. Dodds's testing related blog posts are all relevant](https://kentcdodds.com/blog?q=test)
+  (especially
+  [Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library))
 - [Migrating from Enzyme shallow rendering to explicit component mocks](https://www.youtube.com/watch?v=LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
 - [Confident React](https://www.youtube.com/watch?v=qXRPHRgcXJ0&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 - [Test Driven Development with React Testing Library](https://www.youtube.com/watch?v=kCR3JAR7CHE&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
@@ -36,5 +39,10 @@ sidebar_label: Learning Material
   by [Scott Sauber](https://github.com/scottsauber)
 - [How to Test Asynchronous Methods](https://www.polvara.me/posts/how-to-test-asynchronous-methods/)
   by [Gpx](https://twitter.com/Gpx)
+- [Writing better tests with react-testing-library](https://www.youtube.com/watch?v=O0VxvRqgm7g) by [Billy Mathews](https://twitter.com/BillRMathews)
+
+## Portuguese 🇧🇷
+
+- [Do Enzyme ao Testing Library](https://www.infoq.com/br/presentations/enzyme-para-react-testing-library/) by [Pablo Dinella](https://github.com/PabloDinella)
 
 Feel free to contribute more!

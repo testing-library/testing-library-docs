@@ -76,7 +76,7 @@ function Support(props) {
               TestingJavaScript.com course.
             </p>
             <p align="center">
-              You can support Kent buy purchasing a license to
+              You can support Kent by purchasing a license to{' '}
               <ExternalLink href="https://testingjavascript.com">
                 TestingJavaScript.com
               </ExternalLink>

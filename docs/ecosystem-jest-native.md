@@ -13,7 +13,7 @@ npm install --save-dev @testing-library/jest-native
 ```
 
 ```javascript
-;<View>
+<View>
   <View testID="not-empty">
     <Text testID="empty" />
   </View>

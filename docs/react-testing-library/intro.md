@@ -36,7 +36,7 @@ primary guiding principle is:
 
 So rather than dealing with instances of rendered React components, your tests
 will work with actual DOM nodes. The utilities this library provides facilitate
-querying the DOM in the same way the user would. Finding for elements by their
+querying the DOM in the same way the user would. Finding form elements by their
 label text (just like a user would), finding links and buttons from their text
 (like a user would). It also exposes a recommended way to find elements by a
 `data-testid` as an "escape hatch" for elements where the text content and label

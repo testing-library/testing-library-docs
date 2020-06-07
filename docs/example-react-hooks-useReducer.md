@@ -1,5 +1,5 @@
 ---
-id: example-react-useReducer
+id: example-react-hooks-useReducer
 title: useReducer
 ---
 
@@ -42,7 +42,7 @@ const Example = () => {
           <p>Waiting for confirmation...</p>
         )}
       </div>
-      <button onClick={dispatch({ type: 'SUCCESS' })}>Confirm</button>
+      <button onClick={() => dispatch({ type: 'SUCCESS' })}>Confirm</button>
     </div>
   )
 }
@@ -63,10 +63,10 @@ import Example from './example.js'
 it('shows success message after confirm button is clicked', () => {
   const { getByText } = render(<Example />)
 
-  expect(getByText(/waiting/i).textContent).toBeInTheDocument()
+  expect(getByText(/waiting/i)).toBeInTheDocument()
 
   fireEvent.click(getByText('Confirm'))
 
-  expect(getByText('Confirmed')).toBeInTheDocument()
+  expect(getByText('Confirmed!')).toBeInTheDocument()
 })
 ```
