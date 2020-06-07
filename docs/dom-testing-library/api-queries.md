@@ -152,6 +152,12 @@ The example below will find the input node for the following DOM structures:
 // Wrapper labels
 <label>Username <input /></label>
 
+// Wrapper labels where the label text is in another child element
+<label>
+  <span>Username</span>
+  <input />
+</label>
+
 // aria-label attributes
 // Take care because this is not a label that users can see on the page,
 // so the purpose of your input must be obvious to visual users.
@@ -193,8 +199,21 @@ switching to `aria-label` or `aria-labelledby`.
 If it is important that you query an actual `<label>` element you can provide a
 `selector` in the options:
 
-```html
-<label> <span>Username</span> <input /> </label>
+```js
+// Multiple elements labelled via aria-labelledby
+<label id="username">Username</label>
+<input aria-labelledby="username" />
+<span aria-labelledby="username">Please enter your username</span>
+
+// Multiple labels with the same text
+<label>
+  Username
+  <input />
+</label>
+<label>
+  Username
+  <textarea></textarea>
+</label>
 ```
 
 ```js
