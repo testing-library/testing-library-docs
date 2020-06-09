@@ -173,8 +173,10 @@ function greetingReducer(state, action) {
       }
     }
     case: 'ERROR': {
-      error: action.error,
-      greeting: null
+      return {
+        error: action.error,
+        greeting: null
+      }
     }
     default: {
       return state
