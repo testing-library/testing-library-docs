@@ -35,8 +35,11 @@ Add the following to your .testcaferc.json file:
   ],
 ```
 
-You can now import & use get[All]By*, query[All]By*, find[All]By\* selectors in
+You can now import `screen` which has all the get[All]By*, query[All]By*, find[All]By\* selectors that you can use in
 your tests.
+
+`import { screen } from '@testing-library/testcafe'`
+
 [See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
 
 > A note about queries in testcafe. Testcafe has
@@ -52,26 +55,28 @@ To show some simple examples (from
 [https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js)):
 
 ```javascript
+import { screen } from '@testing-library/testcafe'
+
 test('getByPlaceHolderText', async t => {
   await t.typeText(
-    getByPlaceholderText('Placeholder Text'),
+    screen.getByPlaceholderText('Placeholder Text'),
     'Hello Placeholder'
   )
 })
 test('getByText', async t => {
-  await t.click(getByText('getByText'))
+  await t.click(screen.getByText('getByText'))
 })
 
 test('getByLabelText', async t => {
   await t.typeText(
-    getByLabelText('Label For Input Labelled By Id'),
+    screen.getByLabelText('Label For Input Labelled By Id'),
     'Hello Input Labelled By Id'
   )
 })
 
 test('queryAllByText', async t => {
-  await t.expect(queryAllByText('Button Text').exists).ok()
-  await t.expect(queryAllByText('Non-existing Button Text').exists).notOk()
+  await t.expect(screen.queryAllByText('Button Text').exists).ok()
+  await t.expect(screen.queryAllByText('Non-existing Button Text').exists).notOk()
 })
 ```
 
@@ -87,31 +92,31 @@ import { configureOnce, getByTestId } from '@testing-library/testcafe'
 
 test('can be configured once in a single page load', async t => {
   await configureOnce({ testIdAttribute: 'data-other-test-id' })
-  await t.click(getByTestId('other-id'))
+  await t.click(screen.getByTestId('other-id'))
 })
 ```
 
 ### For every test & page load in a fixture:
 
 ```javascript
-import { configure, getByTestId, getByText } from '@testing-library/testcafe'
+import { configure, screen } from '@testing-library/testcafe'
 
 fixture`configure`.clientScripts(
   configure({ testIdAttribute: 'data-automation-id' })
 ).page`http://localhost:13370`
 
 test('supports alternative testIdAttribute', async t => {
-  await t.click(getByTestId('image-with-random-alt-tag'))
+  await t.click(screen.getByTestId('image-with-random-alt-tag'))
 })
 
 test('still works after browser page load and reload', async t => {
-  await t.click(getByText('Go to Page 2'))
+  await t.click(screen.getByText('Go to Page 2'))
 
   await t.eval(() => location.reload(true))
 
   await t
-    .click(getByTestId('page2-thing'))
-    .expect(getByText('second page').exists)
+    .click(screen.getByTestId('page2-thing'))
+    .expect(screen.getByText('second page').exists)
     .ok()
 })
 ```
@@ -145,13 +150,13 @@ container, you can use `within` which can take either a string or a query
 ### Examples using `within`
 
 ```javascript
-import { within } from '@testing-library/testcafe'
+import { within, screen } from '@testing-library/testcafe'
 
 fixture`within`.page`http://localhost:13370`
 
 test('works with getBy* selectors', async t => {
   await t
-    .expect(within(getByTestId('nested')).getByText('Button Text').exists)
+    .expect(within(screen.getByTestId('nested')).getByText('Button Text').exists)
     .ok()
 })
 
@@ -167,7 +172,7 @@ test('works on any testcafe selector', async t => {
 })
 
 test('works with results from "byAll" query with index - regex', async t => {
-  const nestedDivs = getAllByTestId(/nested/)
+  const nestedDivs = screen.getAllByTestId(/nested/)
   await t.expect(nestedDivs.count).eql(2)
 
   await t
