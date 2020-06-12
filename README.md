@@ -140,6 +140,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/rkennel"><img src="https://avatars2.githubusercontent.com/u/28492538?v=4" width="100px;" alt=""/><br /><sub><b>Ryan Kennel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rkennel" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/JesuHrz"><img src="https://avatars0.githubusercontent.com/u/28031187?v=4" width="100px;" alt=""/><br /><sub><b>Jesus Hernandez</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=JesuHrz" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/airjp73"><img src="https://avatars2.githubusercontent.com/u/25882770?v=4" width="100px;" alt=""/><br /><sub><b>Aaron Pettengill</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=airjp73" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Izhaki"><img src="https://avatars1.githubusercontent.com/u/880132?v=4" width="100px;" alt=""/><br /><sub><b>Izhaki</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Izhaki" title="Documentation">📖</a></td>
   </tr>
 </table>
 
