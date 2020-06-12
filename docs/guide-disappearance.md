@@ -95,9 +95,8 @@ As opposed to waiting for removal, this is for when you are at a point in your
 test where you know an element shouldn't be present.
 
 You might reach for `getBy` to check that something is not present, but `getBy`
-queries throw an error when they can't find an element, which means you don't
-get the chance to use the result in an expectation. If you want to make an
-assertion that an element is _not_ present in the document, you can use
+queries throw an error when they can't find an element. If you want to make an
+assertion that an element is _not_ present in the document, you need to use
 `queryBy` queries instead:
 
 ```javascript
