@@ -130,7 +130,7 @@ const submitButton = screen.queryByText('submit')
 expect(submitButton).not.toBeInTheDocument()
 ```
 
-Read about how to set this up [in the documentation](jest-dom).
+Read about how to set this up [in the jest-dom documentation][jest-dom].
 
 [async-api]: dom-testing-library/api-async.md
 [find-by]: dom-testing-library/api-queries.md#findby
