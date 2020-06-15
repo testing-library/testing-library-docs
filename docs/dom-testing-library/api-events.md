@@ -103,3 +103,16 @@ const myEvent = createEvent.click(node, { button: 2 })
 fireEvent(node, myEvent)
 // myEvent.timeStamp can be accessed just like any other properties from myEvent
 ```
+
+You can also create generic events:
+
+```javascript
+// simulate the 'input' event on a file input
+fireEvent(
+  input,
+  createEvent('input', input, {
+    target: {files: inputFiles},
+    ...init,
+  }),
+)
+```
