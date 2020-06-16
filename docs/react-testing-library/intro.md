@@ -64,7 +64,7 @@ facilitate testing implementation details). Read more about this in
 > [`DOM Testing Library`](dom-testing-library/intro.md) which is where most of
 > the logic behind the queries is.
 
-## Video
+## Tutorials
 
 Have a look at the "What is React Testing library?" video below for an
 introduction to the library.
@@ -72,3 +72,5 @@ introduction to the library.
 <a href="https://youtu.be/JKOwJUM4_RM">
   <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style="margin-left: 0" />
 </a>
+
+If you prefer reading over watching, check this [tutorial for React Testing Library](https://www.robinwieruch.de/react-testing-library).
