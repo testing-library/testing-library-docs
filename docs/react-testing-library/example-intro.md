@@ -140,8 +140,8 @@ const { container, asFragment } = render(<Fetch url="/greeting" />)
 
 ### Act
 
-The [`fireEvent`](dom-testing-library/api-events.md) method allows you to fire
-events to simulate user actions.
+The [`fireEvent`](universal-api-events.md) method allows you to fire events to
+simulate user actions.
 
 ```jsx
 fireEvent.click(screen.getByText('Load Greeting'))

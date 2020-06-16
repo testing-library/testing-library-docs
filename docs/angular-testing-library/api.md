@@ -288,9 +288,7 @@ are automatically bound to the Angular Component. This to ensure that the
 Angular change detection has been run by invoking `detectChanges` after an event
 has been fired.
 
-See
-[Firing Events](https://testing-library.com/docs/dom-testing-library/api-events)
-for a complete list.
+See [Firing Events](universal-api-events.md) for a complete list.
 
 **example**:
 

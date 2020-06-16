@@ -71,7 +71,7 @@ const { results } = render(YourComponent, { myProp: 'value' })
 | `debug`      | Logs the `container` using [prettyDom](https://testing-library.com/docs/dom-testing-library/api-helpers#prettydom).                                                                                                                                                                                                                                                                                                                                                                                 |
 | `unmount`    | Unmounts the component from the `target` by calling `component.$destroy()`.                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `rerender`   | Calls render again destroying the old component, and mounting the new component on the original `target` with any new options passed in.                                                                                                                                                                                                                                                                                                                                                            |
-| `...queries` | Returns all [query functions](https://testing-library.com/docs/dom-testing-library/api-queries) that are bound to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                                                                                                                                                                                                                        |
+| `...queries` | Returns all [query functions](https://testing-library.com/docs/dom-testing-library/api-queries) that are bound to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                                                                                                                                                                                                                         |
 
 ## `cleanup`
 
@@ -104,9 +104,9 @@ DOM.
 
 ## `fireEvent` (`async`)
 
-Calls `@testing-library/dom` [fireEvent](../dom-testing-library/api-events). It
-is an `async` method due to calling [`tick`][svelte-tick] which tells Svelte to
-flush all pending state changes, basically it updates the DOM to reflect the new
+Calls `@testing-library/dom` [fireEvent](../universal-api-events). It is an
+`async` method due to calling [`tick`][svelte-tick] which tells Svelte to flush
+all pending state changes, basically it updates the DOM to reflect the new
 changes.
 
 **Component**

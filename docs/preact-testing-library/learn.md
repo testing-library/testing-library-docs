@@ -16,7 +16,7 @@ If you're still hungry for more at this point than checkout:
 - The dom-testing-library:
   - [Introduction](../intro.md)
   - [Queries](../dom-testing-library/api-queries)
-  - [Firing Events](../dom-testing-library/api-events)
+  - [Firing Events](../universal-api-events)
   - [Async Utilities](../dom-testing-library/api-async.md)
   - [Helpers](../dom-testing-library/api-helpers)
   - [FAQ](../dom-testing-library/faq.md)

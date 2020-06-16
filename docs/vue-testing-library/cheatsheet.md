@@ -73,7 +73,7 @@ For more information, see
   - **input** `fireEvent.input(node, event)`
   - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 
-For more information, see [Events API](dom-testing-library/api-events.md)
+For more information, see [Events API](universal-api-events.md)
 
 > **Difference from DOM Testing Library**
 >

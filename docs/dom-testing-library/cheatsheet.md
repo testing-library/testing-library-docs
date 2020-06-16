@@ -93,7 +93,8 @@ See [Async API](dom-testing-library/api-async.md)
 
 ## Events
 
-See [Considerations for fireEvent](guide-events.md), [Events API](api-events.md)
+See [Considerations for fireEvent](guide-events.md),
+[Events API](universal-api-events.md)
 
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types

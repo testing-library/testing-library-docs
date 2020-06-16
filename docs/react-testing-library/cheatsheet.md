@@ -122,7 +122,7 @@ See [dom-testing-library Async API](dom-testing-library/api-async.md)
 
 ## Events
 
-See [Events API](dom-testing-library/api-events.md)
+See [Events API](universal-api-events.md)
 
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types

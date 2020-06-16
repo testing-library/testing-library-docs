@@ -81,9 +81,8 @@ Even thought it's for React, it gives you an idea of why it's needed.
 
 ## `fireEvent`
 
-Passes it to the @testing-library/dom
-[fireEvent](../dom-testing-library/api-events). It's also wrapped in `act` so
-you don't need to worry about doing it.
+Passes it to the @testing-library/dom [fireEvent](../universal-api-events). It's
+also wrapped in `act` so you don't need to worry about doing it.
 
 📝 Keep in mind mainly when using `h / Preact.createElement` that React uses a
 Synthetic event system, and Preact uses the browser's native `addEventListener`

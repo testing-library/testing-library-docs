@@ -189,7 +189,7 @@ It returns a Promise through `wait()`, so you can `await updateProps(...)`.
 ## `fireEvent`
 
 Vue Testing Library re-exports all DOM Testing Library
-[firing events](https://deploy-preview-132--testing-library.netlify.com/docs/dom-testing-library/api-events).
+[firing events](https://deploy-preview-132--testing-library.netlify.com/docs/universal-api-events).
 However, it alters them so that all events are async.
 
 ```js
