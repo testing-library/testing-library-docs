@@ -73,4 +73,4 @@ introduction to the library.
   <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style="margin-left: 0" />
 </a>
 
-If you prefer reading over watching, check this [tutorial for React Testing Library](https://www.robinwieruch.de/react-testing-library).
+Also, don't miss this [tutorial for React Testing Library](https://www.robinwieruch.de/react-testing-library).
