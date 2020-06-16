@@ -1,5 +1,5 @@
 ---
-id: api-events
+id: universal-api-events
 title: Firing Events
 ---
 
@@ -59,10 +59,10 @@ fireEvent.change(getByLabelText(/picture/i), {
 })
 ```
 
-**dataTransfer**: Drag events have a `dataTransfer` property that contains
-data transferred during the operation. As a convenience, if you provide a
-`dataTransfer` property in the `eventProperties` (second argument), then
-those properties will be added to the event.
+**dataTransfer**: Drag events have a `dataTransfer` property that contains data
+transferred during the operation. As a convenience, if you provide a
+`dataTransfer` property in the `eventProperties` (second argument), then those
+properties will be added to the event.
 
 This should predominantly be used for testing drag and drop interactions.
 
@@ -111,8 +111,8 @@ You can also create generic events:
 fireEvent(
   input,
   createEvent('input', input, {
-    target: {files: inputFiles},
+    target: { files: inputFiles },
     ...init,
-  }),
+  })
 )
 ```
