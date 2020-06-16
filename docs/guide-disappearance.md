@@ -44,7 +44,7 @@ _Note: `toBeInTheDocument()` comes from [`@testing-library/jest-dom`][jest-dom]_
 ## Waiting for disappearance
 
 When you want to wait until an element has disappeared, you can use
-`waitForElementToBeRemoved` or `waitFor`.
+`waitForElementToBeRemoved`.
 
 The `waitForElementToBeRemoved` [async wait utility][async-api] takes an element
 as an argument and waits until that element has been removed from the document.
@@ -67,27 +67,6 @@ efficient way.
 
 You can also pass an array or a callback to `waitForElementToBeRemoved` -
 [see the documentation for more options](dom-testing-library/api-async.md#waitforelementtoberemoved).
-
-Another option is using the `waitFor` helper.
-
-The `waitFor` [async wait utility][async-api] retries until the wrapped function
-stops throwing an error. Because expectations throw errors when they fail,
-putting one in the wrapped function can be used to wait for the element to be
-removed.
-
-```javascript
-test('movie title goes away', async () => {
-  // element is initially present...
-  // note use of queryBy instead of getBy to return null
-  // instead of throwing in the query itself
-  await waitFor(() => {
-    expect(screen.queryByText('i, robot')).not.toBeInTheDocument()
-  })
-})
-```
-
-Polling like this is not as efficient as observing for mutations using
-`waitForElementToBeRemoved`, but sometimes it's the best option.
 
 ## Asserting elements are not present
 
