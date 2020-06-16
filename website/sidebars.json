@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Getting Started": ["intro", "guiding-principles"],
+    "Getting Started": ["intro", "guiding-principles", "universal-api-events"],
     "Frameworks": [
       {
         "type": "subcategory",
@@ -11,7 +11,6 @@
           "dom-testing-library/example-intro",
           "dom-testing-library/setup",
           "dom-testing-library/api-queries",
-          "dom-testing-library/api-events",
           "dom-testing-library/api-async",
           "dom-testing-library/api-helpers",
           "dom-testing-library/api-configuration",
