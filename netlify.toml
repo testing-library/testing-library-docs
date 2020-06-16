@@ -41,6 +41,13 @@
   status = 301
   force = false # do not redirect if route is not 404
 
+# DTL fire event page to universal user event page due to merge
+[[redirects]]
+  from = "https://testing-library.com/docs/dom-testing-library/api-events"
+  to = "https://testing-library.com/docs/universal-api-events"
+  status = 301
+  force = true
+
 # DOM landing page to home page
 [[redirects]]
   from = "https://testing-library.com/dom/"
