@@ -774,6 +774,15 @@
       "contributions": [
         "tutorial"
       ]
+    },
+    {
+      "login": "Alex-Sokolov",
+      "name": "Alexander Sokolov",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4497128?v=4",
+      "profile": "https://github.com/Alex-Sokolov",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
