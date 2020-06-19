@@ -17,7 +17,17 @@ If you are using a framework or library such as React, you will likely want to
 install the wrapper:
 
 - [React Testing Library](react-testing-library/intro.md)
+- [Reason Testing Library](bs-react-testing-library/intro.md)
+- [Native Testing Library](native-testing-library/intro.md)
+- [Vue Testing Library](vue-testing-library/intro.md)
+- [Marko Testing Library](marko-testing-library/intro.md)
+- [Angular Testing Library](angular-testing-library/intro.md)
+- [Preact Testing Library](preact-testing-library/intro.md)
+- [Svelte Testing Library](svelte-testing-library/intro.md)
 - [Cypress Testing Library](cypress-testing-library/intro.md)
+- [Puppeteer Testing Library](pptr-testing-library/intro.md)
+- [Testcafe Testing Library](testcafe-testing-library/intro.md)
+- [Nightwatch Testing Library](nightwatch-testing-library/intro.md)
 
 ## Ecosystem
 
