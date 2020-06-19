@@ -13,6 +13,13 @@
   # Default build command.
   command = "cd website; npm install; npm run format-docs; npm run build"
 
+# Shortcut to discord server invite
+[[redirects]]
+  from = "https://testing-library.com/discord"
+  to = "https://discord.gg/c6JN9fM"
+  status = 301
+  force = true
+
 # React root to React landing page
 [[redirects]]
   from = "https://react-testing-library.com/"
