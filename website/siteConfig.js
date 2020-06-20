@@ -136,7 +136,6 @@ const siteConfig = {
     { doc: 'intro', label: 'Docs' },
     { doc: 'recipes', label: 'Recipes' },
     { page: 'help', label: 'Help' },
-    { page: 'support', label: 'Support Us' },
     { blog: true, label: 'Blog' },
   ],
 

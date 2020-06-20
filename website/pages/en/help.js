@@ -86,6 +86,32 @@ function Help(props) {
               </ExternalLink>
             </div>
           </section>
+          <header className="postHeader">
+            <h1>Want to help?</h1>
+          </header>
+          <p>
+            Thanks! The Testing Library maintainers are happy to maintain this
+            library along with you, the community. We aren't looking for
+            funding, but we need everyone to pitch in to make this project and
+            community successful and improve tests for everyone in the long run.
+          </p>
+          <p>
+            Please consider helping us answer community questions and update
+            documentation content via the help links above. You can also help
+            support{' '}
+            <ExternalLink href="https://kentcdodds.com">
+              Kent C. Dodds
+            </ExternalLink>{' '}
+            financially by purchasing his{' '}
+            <ExternalLink href="https://kentcdodds.com/courses">
+              courses
+            </ExternalLink>{' '}
+            or{' '}
+            <ExternalLink href="https://kentcdodds.com/workshops/">
+              remote workshops
+            </ExternalLink>
+            .
+          </p>
         </div>
       </Container>
     </div>
