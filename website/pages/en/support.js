@@ -28,7 +28,7 @@ function Support(props) {
       title: 'Spectrum',
     },
     {
-      content: `Chat on [Discord](https://www.reactiflux.com/)`,
+      content: `Chat on [Discord](https://discord.gg/c6JN9fM)`,
       title: 'Discord',
     },
     {
