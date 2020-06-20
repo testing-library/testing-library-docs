@@ -48,6 +48,13 @@
   status = 301
   force = false # do not redirect if route is not 404
 
+# Support page to help page
+[[redirects]]
+  from = "/support"
+  to = "/help"
+  status = 301
+  force = true
+
 # DOM landing page to home page
 [[redirects]]
   from = "https://testing-library.com/dom/"
