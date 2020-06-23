@@ -112,6 +112,12 @@ const users = [
     infoLink: 'https://gusto.com/',
     pinned: true,
   },
+  {
+    caption: 'iFood',
+    image: '/img/users/ifood.svg',
+    infoLink: 'https://www.ifood.com.br',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {
