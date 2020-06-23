@@ -114,7 +114,7 @@ const users = [
   },
   {
     caption: 'iFood',
-    image: '/img/users/ifood.svg',
+    image: '/img/users/ifood.png',
     infoLink: 'https://www.ifood.com.br',
     pinned: true,
   },
