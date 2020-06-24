@@ -783,6 +783,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "sastan",
+      "name": "Sascha Tandel",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/514405?v=4",
+      "profile": "https://github.com/sastan",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
