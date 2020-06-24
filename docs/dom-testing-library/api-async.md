@@ -18,6 +18,7 @@ function waitFor<T>(
     container?: HTMLElement
     timeout?: number
     interval?: number
+    onTimeout?: (error: Error) => Error
     mutationObserverOptions?: MutationObserverInit
   }
 ): Promise<T>
@@ -46,6 +47,10 @@ before starting the intervals.
 The default `timeout` is `1000ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://jestjs.io/docs/en/jest-object.html#jestsettimeouttimeout).
 
+The default `onTimeout` takes the error and appends the `container`'s printed
+state to the error message which should hopefully make it easier to track down
+what caused the timeout.
+
 <a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
 `{subtree: true, childList: true, attributes: true, characterData: true}` which
 will detect additions and removals of child elements (including text nodes) in
@@ -61,6 +66,7 @@ function waitForElementToBeRemoved<T>(
     container?: HTMLElement
     timeout?: number
     interval?: number
+    onTimeout?: (error: Error) => Error
     mutationObserverOptions?: MutationObserverInit
   }
 ): Promise<void>
