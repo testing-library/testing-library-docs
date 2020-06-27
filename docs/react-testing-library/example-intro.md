@@ -158,6 +158,16 @@ await waitFor(() =>
 
 ### Assert
 
+```jsx
+// assert that the alert message is correct.
+expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+
+// assert that the button is not disabled.
+expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
+```
+
+### System Under Test
+
 fetch.js
 
 ```jsx
