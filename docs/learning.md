@@ -46,4 +46,5 @@ sidebar_label: Learning Material
 
 - [Do Enzyme ao Testing Library](https://www.infoq.com/br/presentations/enzyme-para-react-testing-library/) by [Pablo Dinella](https://github.com/PabloDinella)
 - [React Hooks broke my tests, now what? (Portuguese)](https://youtu.be/t46n7REGswQ?t=99) by [Daniel Afonso](https://twitter.com/danieljcafonso)
+
 Feel free to contribute more!
