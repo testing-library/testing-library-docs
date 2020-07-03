@@ -711,7 +711,7 @@ cy.findByRole('dialog').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-By default, it's assumed that the first role of each element is supported, so only the first role can be queried. If you need to query an element by any role in its fallbacks instead, you can use `queryFallbacks: true`.
+By default, it's assumed that the first role of each element is supported, so only the first role can be queried. If you need to query an element by any of its fallback roles instead, you can use `queryFallbacks: true`.
 
 > An element doesn't have multiple roles in a given environment. It has a single one. Multiple roles in the attribute are evaluated from left to right until the environment finds the first role it understands. This is useful when new roles get introduced and you want to start supporting those as well as older environments that don't understand that role (yet).
 
