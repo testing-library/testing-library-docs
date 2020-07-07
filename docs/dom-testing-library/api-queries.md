@@ -38,8 +38,8 @@ more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
 > Note, this is a simple combination of `getBy*` queries and
-> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries
-> accept the `waitFor` options as the last argument. (i.e.
+> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries accept the
+> `waitFor` options as the last argument. (i.e.
 > `screen.findByText('text', queryOptions, waitForOptions)`)
 
 ### findAllBy
@@ -88,7 +88,7 @@ This method is essentially a shortcut for `console.log(prettyDOM())`. It
 supports debugging the document, a single element, or an array of elements.
 
 ```javascript
-import {screen} from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
 document.body.innerHTML = `
   <button>test</button>
@@ -217,7 +217,7 @@ If it is important that you query an actual `<label>` element you can provide a
 ```
 
 ```js
-const inputNode = screen.getByLabelText('Username', {selector: 'input'})
+const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 ```
 
 ### `ByPlaceholderText`
@@ -619,6 +619,10 @@ Library uses `aria-query` under the hood to find those elements by their default
 ARIA roles, you can find in their docs
 [which HTML Elements with inherent roles are mapped to each role](https://github.com/A11yance/aria-query#elements-to-roles).
 
+> Roles are matched literally by string equality, without inheriting from the
+> ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
+> will not include elements with a subclass role like `switch`.
+
 You can query the returned element(s) by their
 [accessible name](https://www.w3.org/TR/accname-1.1/). The accessible name is
 for simple cases equal to e.g. the label of a form element, or the text content
@@ -658,11 +662,11 @@ case. For example in
 assertions about the `Open dialog`-button you would need to use
 `getAllByRole('button', { hidden: true })`.
 
-The default value for `hidden` can [be configured](api-configuration#configuration).
+The default value for `hidden` can
+[be configured](api-configuration#configuration).
 
-Certain roles can have a selected state. You can filter the 
-returned elements by their selected state
-by setting `selected: true` or `selected: false`.
+Certain roles can have a selected state. You can filter the returned elements by
+their selected state by setting `selected: true` or `selected: false`.
 
 For example in
 
@@ -677,8 +681,8 @@ For example in
 ```
 
 you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
-To learn more about the selected state and which elements can 
-have this state see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
+To learn more about the selected state and which elements can have this state
+see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
 
 ```html
 <div role="dialog">...</div>
@@ -711,11 +715,21 @@ cy.findByRole('dialog').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-By default, it's assumed that the first role of each element is supported, so only the first role can be queried. If you need to query an element by any of its fallback roles instead, you can use `queryFallbacks: true`.
+By default, it's assumed that the first role of each element is supported, so
+only the first role can be queried. If you need to query an element by any of
+its fallback roles instead, you can use `queryFallbacks: true`.
 
-For example, `getByRole('switch')` would always match `<div role="switch checkbox" />` because it's the first role, while `getByRole('checkbox')` would not. However, `getByRole('checkbox', { queryFallbacks: true })` would enable all fallback roles and therefore match the same element.
+For example, `getByRole('switch')` would always match
+`<div role="switch checkbox" />` because it's the first role, while
+`getByRole('checkbox')` would not. However,
+`getByRole('checkbox', { queryFallbacks: true })` would enable all fallback
+roles and therefore match the same element.
 
-> An element doesn't have multiple roles in a given environment. It has a single one. Multiple roles in the attribute are evaluated from left to right until the environment finds the first role it understands. This is useful when new roles get introduced and you want to start supporting those as well as older environments that don't understand that role (yet).
+> An element doesn't have multiple roles in a given environment. It has a single
+> one. Multiple roles in the attribute are evaluated from left to right until
+> the environment finds the first role it understands. This is useful when new
+> roles get introduced and you want to start supporting those as well as older
+> environments that don't understand that role (yet).
 
 ### `ByTestId`
 
