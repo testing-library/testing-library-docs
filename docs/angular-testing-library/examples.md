@@ -60,7 +60,7 @@ describe('Counter', () => {
 ```
 
 More examples can be found in the
-[GitHub project](https://github.com/testing-library/angular-testing-library/tree/master/src/app/examples).
+[GitHub project](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/app/examples).
 These examples include:
 
 - `@Input` and `@Output` properties
