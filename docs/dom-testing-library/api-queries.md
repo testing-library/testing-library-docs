@@ -605,6 +605,7 @@ getByRole(
     name?: TextMatch,
     normalizer?: NormalizerFn,
     selected?: boolean,
+    checked?: boolean,
     queryFallbacks?: boolean,
   }): HTMLElement
 ```
@@ -683,6 +684,29 @@ For example in
 you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
 To learn more about the selected state and which elements can have this state
 see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
+
+Certain roles can have a checked state. You can filter the returned elements by
+their checked state by setting `checked: true` or `checked: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button role="checkbox" aria-checked="true">Sugar</button>
+    <button role="checkbox" aria-checked="false">Gummy bears</button>
+    <button role="checkbox" aria-checked="false">Whipped cream</button>
+  </section>
+</body>
+```
+
+you can get the "Sugar" option by calling
+`getByRole('checkbox', { checked: true })`. To learn more about the checked
+state and which elements can have this state see
+[ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
+
+> **Note:** Checkboxes have a "mixed" state, which is considered neither checked
+> nor unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
 
 ```html
 <div role="dialog">...</div>
