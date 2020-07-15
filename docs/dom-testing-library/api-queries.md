@@ -700,7 +700,7 @@ For example in
 </body>
 ```
 
-you can get the "Suger" option by calling
+you can get the "Sugar" option by calling
 `getByRole('checkbox', { checked: true })`. To learn more about the checked
 state and which elements can have this state see
 [ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
