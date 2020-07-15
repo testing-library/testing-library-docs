@@ -693,9 +693,9 @@ For example in
 ```html
 <body>
   <section>
-    <button role="checkbox" aria-checked="true">Suger</button>
-    <button role="checkbox" aria-checked="false">Gummybears</button>
-    <button role="checkbox" aria-checked="false">Whipcream</button>
+    <button role="checkbox" aria-checked="true">Sugar</button>
+    <button role="checkbox" aria-checked="false">Gummy bears</button>
+    <button role="checkbox" aria-checked="false">Whipped cream</button>
   </section>
 </body>
 ```
