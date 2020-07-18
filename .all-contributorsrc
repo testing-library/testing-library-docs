@@ -801,6 +801,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "just-boris",
+      "name": "Boris Serdiuk",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/812240?v=4",
+      "profile": "https://twitter.com/boriscoder",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
