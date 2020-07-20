@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Getting Started": ["intro", "guiding-principles"],
+    "Getting Started": ["intro", "guiding-principles", "using-fake-timers"],
     "Frameworks": [
       {
         "type": "subcategory",
