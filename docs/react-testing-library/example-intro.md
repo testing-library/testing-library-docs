@@ -171,7 +171,7 @@ expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
 fetch.js
 
 ```jsx
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import axios from 'axios'
 
 function greetingReducer(state, action) {
@@ -182,7 +182,7 @@ function greetingReducer(state, action) {
         greeting: action.greeting,
       }
     }
-    case: 'ERROR': {
+    case 'ERROR': {
       return {
         error: action.error,
         greeting: null
@@ -207,7 +207,7 @@ export default function Fetch({ url }) {
         setButtonClicked(true)
       })
       .catch((error) => {
-        dispatch({ type: 'ERROR' })
+        dispatch({ type: 'ERROR', error })
       })
   }
 
