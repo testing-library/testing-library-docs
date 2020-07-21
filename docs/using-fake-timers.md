@@ -5,8 +5,8 @@ sidebar_label: Using Fake Timers
 ---
 
 Using real timers in your tests is less common since they depend on real time
-lapse. For that, some testing frameworks offer the option to use fake timers in
-your tests so you won't need to depend on real times.
+lapse. For that, most testing frameworks offer the option to use fake timers in
+your tests so you won't need to rely on real times.
 
 When using fake timers in your tests, all of the code inside your test uses fake
 timers. The common pattern to setup fake timers is usually within the
@@ -20,14 +20,15 @@ beforeEach(() => {
 
 When doing so, you'll probably want to restore the timers after your test runs.
 For that you usually call `useRealTimers` in `afterEach`. It's important to
-remember that before calling `useRealTimers` you have to `clearAllTimers`. This
-will ensure you clear all the timers even if they weren't executed. That way,
-your fake timers are encapsulated to your tests only and when we try to cleanup,
-we will work with real timers. So you'll need to do something like this:
+remember that before calling `useRealTimers` you should call
+`runOnlyPendingTimers`. This will ensure you progress all pending timers so non
+of them are left hanging and don't get executed.  
+That way,your fake timers are encapsulated to your tests only and all of them
+behave as you would expect. Here's an example of doing that in jest:
 
 ```js
 afterEach(() => {
-  jest.clearAllTimers()
+  jest.runOnlyPendingTimers()
   jest.useRealTimers()
 })
 ```
