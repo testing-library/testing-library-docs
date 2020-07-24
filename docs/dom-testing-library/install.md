@@ -35,6 +35,12 @@ install the wrapper:
 
 - [user-event](ecosystem-user-event.md) browser event simulation
 - [jest-dom](ecosystem-jest-dom.md) custom Jest matchers
+- [bs-jest-dom](ecosystem-bs-jest-dom.md) companion library for `bs-react-testing-library`
+- [jest-native](ecosystem-jest-native.md) companion library for `Native Testing Library`
+- [react-select-event](ecosystem-react-select-event.md) companion library for `React Testing Library`
+- [eslint-plugin-testing-library](ecosystem-eslint-plugin-testing-library.md) ESLint plugin for Testing Library
+- [eslint-plugin-jest-dom](ecosystem-eslint-plugin-jest-dom.md) ESLint plugin for Jest DOM
+- [riot-testing-library](ecosystem-riot-testing-library.md) adds APIs for working with Riot.js components
 
 ## Main Exports
 
