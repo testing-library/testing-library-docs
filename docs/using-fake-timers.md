@@ -4,14 +4,14 @@ title: Using Fake Timers
 sidebar_label: Using Fake Timers
 ---
 
-Using real timers in your tests is problematic since they depend on real time
-lapse.  
-When you depend on real time, your tests can be unpredictable, slow, flaky. This
-will will also prevent you from making any assumptions about timestamps within
-your tests.
+In some cases, when your code uses timers (`setTimeout`, `setInterval`,
+`clearTimeout`, `clearInterval`), your tests may become unpredictable, slow and
+flaky.
 
-To solve these problems, most testing frameworks offer the option to use fake
-timers in your tests so you won't need to rely on real times.
+To solve these problems, or if you need to rely on specific timestamps in your
+tests, most testing frameworks offer the option to replace the real timers in
+your tests with fake ones. This should be used sporadically and not on a regular
+basis since using it contains some overhead.
 
 When using fake timers in your tests, all of the code inside your test uses fake
 timers.  
