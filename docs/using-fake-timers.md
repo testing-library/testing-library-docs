@@ -9,7 +9,7 @@ In some cases, when your code uses timers (`setTimeout`, `setInterval`,
 flaky.
 
 To solve these problems, or if you need to rely on specific timestamps in your
-tests, most testing frameworks offer the option to replace the real timers in
+code, most testing frameworks offer the option to replace the real timers in
 your tests with fake ones. This should be used sporadically and not on a regular
 basis since using it contains some overhead.
 
