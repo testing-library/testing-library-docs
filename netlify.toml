@@ -124,3 +124,17 @@
   to = "https://testing-library.com/docs/ecosystem-jest-dom"
   status = 301
   force = true
+
+# Testcafe landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/testcafe/"
+  to = "https://testing-library.com/docs/testcafe-testing-library/intro"
+  status = 301
+  force = true
+
+# Nightwatch landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/nightwatch/"
+  to = "https://testing-library.com/docs/nightwatch-testing-library/intro"
+  status = 301
+  force = true
