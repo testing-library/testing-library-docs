@@ -111,12 +111,10 @@
   status = 301
   force = true
 
-# Preact page. Hopefully it'll join this website eventually
-# but for now it'll be nice to be able to use the URL in content/twitter/etc.
-# and not have to worry about updating those URLs in the future.
+# Preact landing page to home page
 [[redirects]]
   from = "https://testing-library.com/preact/"
-  to = "https://github.com/antsmartian/preact-testing-library"
+  to = "https://testing-library.com/docs/preact-testing-library/intro"
   status = 301
   force = true
 
