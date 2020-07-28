@@ -149,6 +149,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://gyuwon.github.io/"><img src="https://avatars3.githubusercontent.com/u/973743?v=4" width="100px;" alt=""/><br /><sub><b>Gyuwon Yi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=gyuwon" title="Documentation">📖</a></td>
     <td align="center"><a href="https://twitter.com/boriscoder"><img src="https://avatars2.githubusercontent.com/u/812240?v=4" width="100px;" alt=""/><br /><sub><b>Boris Serdiuk</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=just-boris" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/balavishnuvj"><img src="https://avatars3.githubusercontent.com/u/13718688?v=4" width="100px;" alt=""/><br /><sub><b>balavishnuvj</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=balavishnuvj" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://jesupaul.com/"><img src="https://avatars1.githubusercontent.com/u/7876997?v=4" width="100px;" alt=""/><br /><sub><b>Sharmila Jesupaul</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=sharmilajesupaul" title="Documentation">📖</a></td>
   </tr>
 </table>
 
