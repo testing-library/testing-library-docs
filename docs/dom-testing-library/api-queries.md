@@ -220,6 +220,16 @@ If it is important that you query an actual `<label>` element you can provide a
 const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 ```
 
+Note that it will not work in the case where a `for` attr on a `label` matches and `id` field on a non-form element.
+
+```js
+// This case is not valid
+// for/htmlFor between label and an element that is not a form element
+<section id="photos-section">
+<label for="photos-section">Photos</label>
+</section>
+```
+
 ### `ByPlaceholderText`
 
 > getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
