@@ -174,6 +174,11 @@ fetch.js
 import React, { useState, useReducer } from 'react'
 import axios from 'axios'
 
+const initialState = {
+  error: null,
+  greeting: null,
+}
+
 function greetingReducer(state, action) {
   switch (action.type) {
     case 'SUCCESS': {
@@ -185,7 +190,7 @@ function greetingReducer(state, action) {
     case 'ERROR': {
       return {
         error: action.error,
-        greeting: null
+        greeting: null,
       }
     }
     default: {
@@ -195,18 +200,22 @@ function greetingReducer(state, action) {
 }
 
 export default function Fetch({ url }) {
-  const [{ error, greeting }, dispatch] = useReducer(greetingReducer)
+  const [{ error, greeting }, dispatch] = useReducer(
+    greetingReducer,
+    initialState
+  )
   const [buttonClicked, setButtonClicked] = useState(false)
 
   const fetchGreeting = async () => {
-    axios.get(url)
-      .then((response) => {
+    axios
+      .get(url)
+      .then(response => {
         const { data } = response
         const { greeting } = data
         dispatch({ type: 'SUCCESS', greeting })
         setButtonClicked(true)
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({ type: 'ERROR', error })
       })
   }
