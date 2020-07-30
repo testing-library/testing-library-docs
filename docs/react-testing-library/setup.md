@@ -4,12 +4,12 @@ title: Setup
 sidebar_label: Setup
 ---
 
-`React Testing Library` does not require any configuration to be used (as
-demonstrated in the example above). However, there are some things you can do
-when configuring your testing framework to reduce some boilerplate. In these
-docs we'll demonstrate configuring Jest, but you should be able to do similar
-things with [any testing framework](#using-without-jest) (React Testing Library
-does not require that you use Jest).
+`React Testing Library` does not require any configuration to be used. However,
+there are some things you can do when configuring your testing framework to
+reduce some boilerplate. In these docs we'll demonstrate configuring Jest, but
+you should be able to do similar things with
+[any testing framework](#using-without-jest) (React Testing Library does not
+require that you use Jest).
 
 ## Global Config
 
@@ -25,8 +25,8 @@ approach is to define a utility file that re-exports everything from
 all your imports. See [below](#configuring-jest-with-test-utils) for a way to
 make your test util file accessible without using relative paths.
 
-The example below sets up data providers using the
-[`wrapper`](api.md#wrapper) option to `render`.
+The example below sets up data providers using the [`wrapper`](api.md#wrapper)
+option to `render`.
 
 ```diff
 // my-component.test.js
@@ -36,7 +36,7 @@ The example below sets up data providers using the
 
 ```js
 // test-utils.js
-import React from "react"
+import React from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
@@ -103,8 +103,8 @@ module.exports = {
 
 You can define your own custom queries as described in the example in the
 [Helpers API](/docs/dom-testing-library/api-helpers) documentation, or via the
-[`buildQueries`](/docs/dom-testing-library/api-helpers#buildqueries) helper. Then
-you can use them in any render call using the `queries` option. To make the
+[`buildQueries`](/docs/dom-testing-library/api-helpers#buildqueries) helper.
+Then you can use them in any render call using the `queries` option. To make the
 custom queries available globally, you can add them to your custom render method
 as shown below.
 
@@ -328,6 +328,6 @@ Or with mocha's `-r` flag:
 mocha -r @testing-library/react/dont-cleanup-after-each
 ```
 
-Alternatively, you could import `@testing-library/react/pure` in all your
-tests that you don't want the `cleanup` to run and the `afterEach` won't
-be setup automatically.
+Alternatively, you could import `@testing-library/react/pure` in all your tests
+that you don't want the `cleanup` to run and the `afterEach` won't be setup
+automatically.
