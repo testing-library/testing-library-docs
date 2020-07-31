@@ -26,14 +26,16 @@ You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy`
 and `queryAllBy` commands off the global `cy` object.
 [See the `DOM Testing Library` docs for reference](https://testing-library.com/docs/dom-testing-library/api-queries).
 
-> Note: the `get*` queries are not supported because for reasonable Cypress tests you
-> need retryability and `find*` queries already support that. `query*` queries are no longer
-> necessary since v5 and will be removed in v6. `find*` fully support built-in Cypress
-> assertions (removes the only use-case for `query*`).
+> Note: the `get*` queries are not supported because for reasonable Cypress
+> tests you need retryability and `find*` queries already support that. `query*`
+> queries are no longer necessary since v5 and will be removed in v6. `find*`
+> fully support built-in Cypress assertions (removes the only use-case for
+> `query*`).
 
 ## With TypeScript
 
-Typings are defined in `@types/testing-library__cypress` at [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
+Typings are defined in `@types/testing-library__cypress` at
+[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
 and should be added as follows in `tsconfig.json`:
 
 ```json
@@ -44,23 +46,30 @@ and should be added as follows in `tsconfig.json`:
 }
 ```
 
-You can find [all Library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
+You can find
+[all Library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
 
 ## Examples
 
 To show some simple examples (from
-[cypress/integration/query.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/query.spec.js) or [cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/find.spec.js)):
+[cypress/integration/query.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/query.spec.js)
+or
+[cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/find.spec.js)):
 
 ```javascript
-cy.findByRole('button', {name: /Jackie Chan/i}).click()
-cy.findByRole('button', {name: /Button Text/i}).should('exist')
-cy.findByRole('button', {name: /Non-existing Button Text/i}).should('not.exist')
-cy.findByLabelText(/Label text/i, {timeout: 7000}).should('exist')
+cy.findByRole('button', { name: /Jackie Chan/i }).click()
+cy.findByRole('button', { name: /Button Text/i }).should('exist')
+cy.findByRole('button', { name: /Non-existing Button Text/i }).should(
+  'not.exist'
+)
+cy.findByLabelText(/Label text/i, { timeout: 7000 }).should('exist')
 
 // findAllByText _inside_ a form element
-cy.get('form').findByText('button', {name: /Button Text/i}).should('exist')
+cy.get('form')
+  .findByText('button', { name: /Button Text/i })
+  .should('exist')
 cy.findByRole('dialog').within(() => {
-  cy.findByRole('button', {name: /confirm/i})
+  cy.findByRole('button', { name: /confirm/i })
 })
 ```
 

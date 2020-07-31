@@ -72,7 +72,7 @@
 # React Native landing page to home page
 [[redirects]]
   from = "https://testing-library.com/react-native/"
-  to = "https://testing-library.com/docs/native-testing-library/intro"
+  to = "https://testing-library.com/docs/react-native-testing-library/intro"
   status = 301
   force = true
 

@@ -3,11 +3,12 @@ id: example-react-hooks-useReducer
 title: useReducer
 ---
 
-Basic example showing how to test the `useReducer` hook.
-The most important thing is that we aren't testing the reducer directly - it's an
-implementation detail of the component! Instead we are testing the component interface.
+Basic example showing how to test the `useReducer` hook. The most important
+thing is that we aren't testing the reducer directly - it's an implementation
+detail of the component! Instead we are testing the component interface.
 
-The component we are testing changes some text depending on an `isConfirmed` state.
+The component we are testing changes some text depending on an `isConfirmed`
+state.
 
 ```jsx
 // example.js
@@ -50,8 +51,8 @@ const Example = () => {
 export default Example
 ```
 
-We are testing to see if we get the correct output in our JSX
-based on the reducer state.
+We are testing to see if we get the correct output in our JSX based on the
+reducer state.
 
 ```jsx
 // example.test.js

@@ -41,12 +41,11 @@
       },
       {
         "type": "subcategory",
-        "label": "Native Testing Library",
+        "label": "React Native Testing Library",
         "ids": [
-          "native-testing-library/intro",
-          "native-testing-library/example-intro",
-          "native-testing-library/setup",
-          "native-testing-library/api"
+          "react-native-testing-library/intro",
+          "react-native-testing-library/example-intro",
+          "react-native-testing-library/setup"
         ]
       },
       {

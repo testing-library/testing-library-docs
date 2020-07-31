@@ -35,8 +35,8 @@ Add the following to your .testcaferc.json file:
   ],
 ```
 
-You can now import `screen` which has all the get[All]By*, query[All]By*, find[All]By\* selectors that you can use in
-your tests.
+You can now import `screen` which has all the get[All]By*, query[All]By*,
+find[All]By\* selectors that you can use in your tests.
 
 `import { screen } from '@testing-library/testcafe'`
 
@@ -76,7 +76,9 @@ test('getByLabelText', async t => {
 
 test('queryAllByText', async t => {
   await t.expect(screen.queryAllByText('Button Text').exists).ok()
-  await t.expect(screen.queryAllByText('Non-existing Button Text').exists).notOk()
+  await t
+    .expect(screen.queryAllByText('Non-existing Button Text').exists)
+    .notOk()
 })
 ```
 
@@ -156,7 +158,9 @@ fixture`within`.page`http://localhost:13370`
 
 test('works with getBy* selectors', async t => {
   await t
-    .expect(within(screen.getByTestId('nested')).getByText('Button Text').exists)
+    .expect(
+      within(screen.getByTestId('nested')).getByText('Button Text').exists
+    )
     .ok()
 })
 

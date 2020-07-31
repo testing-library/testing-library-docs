@@ -18,7 +18,7 @@ install the wrapper:
 
 - [React Testing Library](react-testing-library/intro.md)
 - [Reason Testing Library](bs-react-testing-library/intro.md)
-- [Native Testing Library](native-testing-library/intro.md)
+- [React Native Testing Library](react-native-testing-library/intro.md)
 - [Vue Testing Library](vue-testing-library/intro.md)
 - [Marko Testing Library](marko-testing-library/intro.md)
 - [Angular Testing Library](angular-testing-library/intro.md)
@@ -35,12 +35,18 @@ install the wrapper:
 
 - [user-event](ecosystem-user-event.md) browser event simulation
 - [jest-dom](ecosystem-jest-dom.md) custom Jest matchers
-- [bs-jest-dom](ecosystem-bs-jest-dom.md) companion library for `bs-react-testing-library`
-- [jest-native](ecosystem-jest-native.md) companion library for `Native Testing Library`
-- [react-select-event](ecosystem-react-select-event.md) companion library for `React Testing Library`
-- [eslint-plugin-testing-library](ecosystem-eslint-plugin-testing-library.md) ESLint plugin for Testing Library
-- [eslint-plugin-jest-dom](ecosystem-eslint-plugin-jest-dom.md) ESLint plugin for Jest DOM
-- [riot-testing-library](ecosystem-riot-testing-library.md) adds APIs for working with Riot.js components
+- [bs-jest-dom](ecosystem-bs-jest-dom.md) companion library for
+  `bs-react-testing-library`
+- [jest-native](ecosystem-jest-native.md) companion library for
+  `React Native Testing Library`
+- [react-select-event](ecosystem-react-select-event.md) companion library for
+  `React Testing Library`
+- [eslint-plugin-testing-library](ecosystem-eslint-plugin-testing-library.md)
+  ESLint plugin for Testing Library
+- [eslint-plugin-jest-dom](ecosystem-eslint-plugin-jest-dom.md) ESLint plugin
+  for Jest DOM
+- [riot-testing-library](ecosystem-riot-testing-library.md) adds APIs for
+  working with Riot.js components
 
 ## Main Exports
 

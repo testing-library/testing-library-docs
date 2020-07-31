@@ -220,13 +220,14 @@ If it is important that you query an actual `<label>` element you can provide a
 const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 ```
 
-Note that it will not work in the case where a `for` attr on a `label` matches and `id` field on a non-form element.
+Note that it will not work in the case where a `for` attr on a `label` matches
+and `id` field on a non-form element.
 
 ```js
 // This case is not valid
 // for/htmlFor between label and an element that is not a form element
 <section id="photos-section">
-<label for="photos-section">Photos</label>
+  <label for="photos-section">Photos</label>
 </section>
 ```
 
@@ -716,7 +717,8 @@ state and which elements can have this state see
 [ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
 
 > **Note:** Checkboxes have a "mixed" state, which is considered neither checked
-> nor unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+> nor unchecked (details
+> [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
 
 ```html
 <div role="dialog">...</div>

@@ -29,7 +29,7 @@ it.
 The core library has been wrapped to provide ergonomic APIs for several
 frameworks, including [React][react], [Angular][angular], and [Vue][vue]. There
 is also a plugin to use testing-library queries for end-to-end tests in
-[Cypress][cypress] and an implementation for [React Native][native].
+[Cypress][cypress] and an implementation for [React Native][react-native].
 
 ### What this library is not
 
@@ -46,5 +46,5 @@ Jest, Mocha + JSDOM, or a real browser
 [angular]: angular-testing-library/intro.md
 [vue]: vue-testing-library/intro.md
 [cypress]: cypress-testing-library/intro.md
-[native]: ecosystem-native-testing-library.md
+[react-native]: react-native-testing-library/intro.md
 [npm]: https://www.npmjs.com/org/testing-library

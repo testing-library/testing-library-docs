@@ -10,7 +10,8 @@ provides custom DOM element matchers for Jest
 npm install --save-dev @testing-library/jest-dom
 ```
 
-Then follow [usage section][gh-usage] from jest-dom's documentation to add the matchers to Jest.
+Then follow [usage section][gh-usage] from jest-dom's documentation to add the
+matchers to Jest.
 
 ```jsx
 <span data-testid="not-empty"><span data-testid="empty"></span></span>
