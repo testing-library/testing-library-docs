@@ -7,7 +7,7 @@ sidebar_label: Example
 ```javascript
 import React from 'react'
 import { Button, Text, TextInput, View } from 'react-native'
-import { fireEvent, render, wait } from '@testing-library/react-native'
+import { fireEvent, render, waitFor } from '@testing-library/react-native'
 
 function Example() {
   const [name, setUser] = React.useState('')
@@ -32,9 +32,7 @@ function Example() {
 }
 
 test('examples of some things', async () => {
-  const { getByTestId, getByText, queryByTestId, baseElement } = render(
-    <Example />
-  )
+  const { getByTestId, getByText, queryByTestId, toJSON } = render(<Example />)
   const famousWomanInHistory = 'Ada Lovelace'
 
   const input = getByTestId('input')
@@ -43,11 +41,11 @@ test('examples of some things', async () => {
   const button = getByText('Print Username')
   fireEvent.press(button)
 
-  await wait(() => expect(queryByTestId('printed-username')).toBeTruthy())
+  await waitFor(() => expect(queryByTestId('printed-username')).toBeTruthy())
 
   expect(getByTestId('printed-username').props.children).toBe(
     famousWomanInHistory
   )
-  expect(baseElement).toMatchSnapshot()
+  expect(toJSON).toMatchSnapshot()
 })
 ```

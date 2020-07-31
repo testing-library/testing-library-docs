@@ -43,9 +43,9 @@ Using
 [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 is more efficient than polling the DOM at regular intervals with `waitFor`.
 
-The `waitFor` [async helper][async-api] function retries until the wrapped function
-stops throwing an error. This can be used to assert that an element disappears
-from the page.
+The `waitFor` [async helper][async-api] function retries until the wrapped
+function stops throwing an error. This can be used to assert that an element
+disappears from the page.
 
 ```jsx
 test('movie title goes away', async () => {

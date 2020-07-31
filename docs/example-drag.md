@@ -6,14 +6,15 @@ sidebar_label: Drag
 
 > **Note**
 >
-> This example only works with a real browser (not with jsdom, as it does not support `getBoundingClientRect`).
+> This example only works with a real browser (not with jsdom, as it does not
+> support `getBoundingClientRect`).
 
 # Usage
 
 ```js
 await drag(slider, {
   delta: { x: -100, y: 0 },
-});
+})
 ```
 
 # Kapture
@@ -23,79 +24,79 @@ await drag(slider, {
 # Code
 
 ```js
-import { fireEvent } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/dom'
 
 // https://stackoverflow.com/a/53946549/1179377
 function isElement(obj) {
   if (typeof obj !== 'object') {
-    return false;
+    return false
   }
-  let prototypeStr, prototype;
+  let prototypeStr, prototype
   do {
-    prototype = Object.getPrototypeOf(obj);
+    prototype = Object.getPrototypeOf(obj)
     // to work in iframe
-    prototypeStr = Object.prototype.toString.call(prototype);
+    prototypeStr = Object.prototype.toString.call(prototype)
     // '[object Document]' is used to detect document
     if (
       prototypeStr === '[object Element]' ||
       prototypeStr === '[object Document]'
     ) {
-      return true;
+      return true
     }
-    obj = prototype;
+    obj = prototype
     // null is the terminal of object
-  } while (prototype !== null);
-  return false;
+  } while (prototype !== null)
+  return false
 }
 
 function getElementClientCenter(element) {
-  const { left, top, width, height } = element.getBoundingClientRect();
+  const { left, top, width, height } = element.getBoundingClientRect()
   return {
     x: left + width / 2,
     y: top + height / 2,
-  };
+  }
 }
 
-const getCoords = (charlie) =>
-  isElement(charlie) ? getElementClientCenter(charlie) : charlie;
+const getCoords = charlie =>
+  isElement(charlie) ? getElementClientCenter(charlie) : charlie
 
-const sleep = (ms) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+const sleep = ms =>
+  new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
 
 export default async function drag(
   element,
   { to: inTo, delta, steps = 20, duration = 500 }
 ) {
-  const from = getElementClientCenter(element);
+  const from = getElementClientCenter(element)
   const to = delta
     ? {
         x: from.x + delta.x,
         y: from.y + delta.y,
       }
-    : getCoords(inTo);
+    : getCoords(inTo)
 
   const step = {
     x: (to.x - from.x) / steps,
     y: (to.y - from.y) / steps,
-  };
+  }
 
   const current = {
     clientX: from.x,
     clientY: from.y,
-  };
-
-  fireEvent.mouseEnter(element, current);
-  fireEvent.mouseOver(element, current);
-  fireEvent.mouseMove(element, current);
-  fireEvent.mouseDown(element, current);
-  for (let i = 0; i < steps; i++) {
-    current.clientX += step.x;
-    current.clientY += step.y;
-    await sleep(duration / steps);
-    fireEvent.mouseMove(element, current);
   }
-  fireEvent.mouseUp(element, current);
+
+  fireEvent.mouseEnter(element, current)
+  fireEvent.mouseOver(element, current)
+  fireEvent.mouseMove(element, current)
+  fireEvent.mouseDown(element, current)
+  for (let i = 0; i < steps; i++) {
+    current.clientX += step.x
+    current.clientY += step.y
+    await sleep(duration / steps)
+    fireEvent.mouseMove(element, current)
+  }
+  fireEvent.mouseUp(element, current)
 }
 ```
