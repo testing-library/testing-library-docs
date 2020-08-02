@@ -72,9 +72,30 @@ with any testing framework and runner you're comfortable with.
     npm run test
     ```
 
+## Typescript
+
+In order to support Typescript, you need to enable `preprocess`.
+
+1. Update your jest configuration
+
+  ```json
+  {
+    "jest": {
+      "transform": {
+        "^.+\\.svelte$": ["svelte-jester", { "preprocess": true }]
+      },
+      "moduleFileExtensions": ["js", "ts", "svelte"]
+    }
+  }
+  ```
+
 ## Babel / Preprocessors
 
 If you'd like to also include [Babel](https://babeljs.io/) or any
 [Svelte preprocessors](https://github.com/kaisermann/svelte-preprocess) then
 simply follow the instructions over at
 [svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
+
+```
+
+```
