@@ -153,6 +153,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/BatuhanW"><img src="https://avatars3.githubusercontent.com/u/16444991?v=4" width="100px;" alt=""/><br /><sub><b>Batuhan Wilhelm</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=BatuhanW" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/deadkff01"><img src="https://avatars2.githubusercontent.com/u/5138179?v=4" width="100px;" alt=""/><br /><sub><b>Dennis Kaffer</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=deadkff01" title="Documentation">📖</a></td>
   </tr>
 </table>
 
