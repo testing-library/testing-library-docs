@@ -107,6 +107,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Global CTO Forum',
+    image: '/img/users/global-cto-forum.svg',
+    infoLink: 'https://globalctoforum.org',
+    pinned: true,
+  },
+  {
     caption: 'Gusto',
     image: '/img/users/gusto.svg',
     infoLink: 'https://gusto.com/',
