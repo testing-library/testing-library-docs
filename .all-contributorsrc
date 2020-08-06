@@ -864,6 +864,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "yakirn",
+      "name": "Yakir Narkis",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6659632?v=4",
+      "profile": "https://github.com/yakirn",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
