@@ -617,6 +617,7 @@ getByRole(
     normalizer?: NormalizerFn,
     selected?: boolean,
     checked?: boolean,
+    pressed?: boolean,
     queryFallbacks?: boolean,
   }): HTMLElement
 ```
@@ -677,8 +678,10 @@ assertions about the `Open dialog`-button you would need to use
 The default value for `hidden` can
 [be configured](api-configuration#configuration).
 
-Certain roles can have a selected state. You can filter the returned elements by
-their selected state by setting `selected: true` or `selected: false`.
+#### `selected`
+
+You can filter the returned elements by their selected state by setting
+`selected: true` or `selected: false`.
 
 For example in
 
@@ -696,8 +699,10 @@ you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
 To learn more about the selected state and which elements can have this state
 see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
 
-Certain roles can have a checked state. You can filter the returned elements by
-their checked state by setting `checked: true` or `checked: false`.
+#### `checked`
+
+You can filter the returned elements by their checked state by setting
+`checked: true` or `checked: false`.
 
 For example in
 
@@ -719,6 +724,27 @@ state and which elements can have this state see
 > **Note:** Checkboxes have a "mixed" state, which is considered neither checked
 > nor unchecked (details
 > [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+
+#### `pressed`
+
+Buttons can have a pressed state. You can filter the returned elements by
+their pressed state by setting `pressed: true` or `pressed: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+you can get the "👍" button by calling
+`getByRole('button', { pressed: true })`. To learn more about the pressed
+state see
+[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
 
 ```html
 <div role="dialog">...</div>
