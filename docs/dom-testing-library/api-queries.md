@@ -678,9 +678,7 @@ assertions about the `Open dialog`-button you would need to use
 The default value for `hidden` can
 [be configured](api-configuration#configuration).
 
-#### Querying by ARIA states
-
-##### `aria-selected`
+#### `selected`
 
 You can filter the returned elements by their selected state by setting
 `selected: true` or `selected: false`.
@@ -701,7 +699,7 @@ you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
 To learn more about the selected state and which elements can have this state
 see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
 
-##### `aria-checked`
+#### `checked`
 
 You can filter the returned elements by their checked state by setting
 `checked: true` or `checked: false`.
@@ -727,7 +725,7 @@ state and which elements can have this state see
 > nor unchecked (details
 > [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
 
-##### `aria-pressed`
+#### `pressed`
 
 Buttons can have a pressed state. You can filter the returned elements by
 their pressed state by setting `pressed: true` or `pressed: false`.
