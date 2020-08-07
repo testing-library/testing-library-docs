@@ -7,7 +7,10 @@ sidebar_label: Introduction
 [`React Testing Library`][gh] builds on top of `DOM Testing Library` by adding
 APIs for working with React components.
 
-> Projects created with [`Create React App`](https://create-react-app.dev/) have out of the box support for ***React Testing Library***. If that is not the case, you can add it as following.
+> Projects created with [`Create React App`](https://create-react-app.dev/) have
+> out of the box support for ***React Testing Library***. If that is not the case,
+> you can add it via `npm` like so:
+
 ```
 npm install --save-dev @testing-library/react
 ```
