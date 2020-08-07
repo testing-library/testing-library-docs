@@ -157,6 +157,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://camjackson.net"><img src="https://avatars0.githubusercontent.com/u/1930451?v=4" width="100px;" alt=""/><br /><sub><b>Cam Jackson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=camjackson" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.jaredlux.com"><img src="https://avatars0.githubusercontent.com/u/450478?v=4" width="100px;" alt=""/><br /><sub><b>Jared Luxenberg</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jluxenberg" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/yakirn"><img src="https://avatars3.githubusercontent.com/u/6659632?v=4" width="100px;" alt=""/><br /><sub><b>Yakir Narkis</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=yakirn" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://rahulbhooteshwar.github.io/"><img src="https://avatars2.githubusercontent.com/u/15920476?v=4" width="100px;" alt=""/><br /><sub><b>Rahul Bhooteshwar</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rahulbhooteshwar" title="Documentation">📖</a></td>
   </tr>
 </table>
 
