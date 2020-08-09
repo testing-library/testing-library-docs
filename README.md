@@ -160,6 +160,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://rahulbhooteshwar.github.io/"><img src="https://avatars2.githubusercontent.com/u/15920476?v=4" width="100px;" alt=""/><br /><sub><b>Rahul Bhooteshwar</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rahulbhooteshwar" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/majapw"><img src="https://avatars1.githubusercontent.com/u/1383861?v=4" width="100px;" alt=""/><br /><sub><b>Maja Wichrowska</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=majapw" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://medium.com/@kermani"><img src="https://avatars2.githubusercontent.com/u/7496103?v=4" width="100px;" alt=""/><br /><sub><b>Kermani</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=m98" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
