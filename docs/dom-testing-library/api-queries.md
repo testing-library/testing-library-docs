@@ -625,12 +625,10 @@ getByRole(
 Queries for elements with the given role (and it also accepts a
 [`TextMatch`](#textmatch)). Default roles are taken into consideration e.g.
 `<button />` has the `button` role without explicitly setting the `role`
-attribute. The
-[W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents) lists
-all HTML elements with their default ARIA roles. Additionally, as DOM Testing
-Library uses `aria-query` under the hood to find those elements by their default
-ARIA roles, you can find in their docs
-[which HTML Elements with inherent roles are mapped to each role](https://github.com/A11yance/aria-query#elements-to-roles).
+attribute. Here you can see
+[a table of HTML elements with their default and desired roles](https://www.w3.org/TR/html-aria/#docconformance).
+
+Please note that setting a `role` and/or `aria-*` attribute that matches the implicit ARIA semantics is unnecessary and is **not recomended** as these properties are already set by the browser, and we must not use the `role` and `aria-*` attributes in a manner that conflicts with the semantics described. For example, a `button` element can't have the `role` attribute of `heading`, because the `button` element has default characteristics that conflict with the `heading` role.
 
 > Roles are matched literally by string equality, without inheriting from the
 > ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
