@@ -15,6 +15,16 @@ The library can be configured via the `configure` function, which accepts:
 
 Configuration options:
 
+`computedStyleSupportsPseudoElements`: Set to `true` if
+`window.getComputedStyle` supports pseudo-elements i.e. a second argument. If
+you're using testing-library in a browser you almost always want to set this to
+`true`. Only very old browser don't support his property (such as IE 8 and
+earlier). However, `jsdom` does not support the second argument currently. This
+includes versions of `jsdom` prior to `16.4.0` and any version that logs a
+`not implemented` warning when calling `getComputedStyle` with a second argument
+e.g. `window.getComputedStyle(document.createElement('div'), '::after')`.
+Defaults to `false`
+
 `defaultHidden`: The default value for the `hidden` option used by
 [`getByRole`](api-queries#byrole). Defaults to `false`.
 
