@@ -3,6 +3,9 @@ id: api-events
 title: Firing Events
 ---
 
+> Most projects have a few use cases for `fireEvent`, but the majority of the time you should
+> probably use [`@testing-library/user-event`](https://github.com/testing-library/user-event).
+
 ## `fireEvent`
 
 ```typescript
