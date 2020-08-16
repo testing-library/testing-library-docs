@@ -28,8 +28,30 @@ Re-writing your tests in React Testing library worth it because you're trading t
 down for tests that give you more confidence and increase your productivity in the long run.
 
 ### How to migrate from Enzyme to React Testing Library?
-One thing to keep in mind that there's not a one-to-one mapping of Enzyme features to React 
-Testing Library features. Many Enzyme features result in inefficient tests, and we are here to 
-learn the React Testing Library’s philosophy and testing approach.
+One thing to keep in mind that there's not a one-to-one mapping of Enzyme features 
+to React Testing Library features. Many Enzyme features result in inefficient tests, 
+and we are here to learn the React Testing Library’s philosophy and testing approach.
+
+One of the keys to a successful migrate is to do it incrementally, by running the 
+two test libraries side by side in the same application and porting Enzyme’s tests 
+to React Testing Library one by one. It makes it possible to migrate even large 
+and complex applications without disrupting other businesses because the work can 
+be done collaboratively and spread over some time. 
+
+### How to install the React Testing Library?
+You can check [this page](https://testing-library.com/docs/react-testing-library/setup) 
+for the complete installation and setup guide.
+
+Here is what you should do, first you need to have React Testing Library installed 
+on your machine:
+
+npm
+`npm install --save-dev @testing-library/react @testing-library/jest-dom`
+
+or install via yarn
+`yarn add --dev @testing-library/react @testing-library/jest-dom`
+
+
+
 
 
