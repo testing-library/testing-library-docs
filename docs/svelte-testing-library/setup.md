@@ -76,8 +76,7 @@ with any testing framework and runner you're comfortable with.
 
 To use Typescript, you'll need to install and configure `svelte-preprocess` and
 `ts-jest`. For full instructions, see the
-[`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript)
-docs.
+[`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
 
 ## Babel / Preprocessors
 
