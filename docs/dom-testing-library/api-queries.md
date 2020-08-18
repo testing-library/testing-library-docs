@@ -226,8 +226,8 @@ const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 
 > **Note** 
 >
-> `getByLabelText` will not work in the case where a `for` attr on a `<label>` 
-> element matches and `id` field on a non-form element.
+> `getByLabelText` will not work in the case where a `for` attribute on a
+> `<label>` element matches an `id` attribute on a non-form element.
 
 
 ```js
