@@ -37,7 +37,9 @@ matches the given query. The promise is rejected if no element is found or if
 more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
-> Note, this is a simple combination of `getBy*` queries and
+> **Note**
+> 
+> this is a simple combination of `getBy*` queries and
 > [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries accept the
 > `waitFor` options as the last argument. (i.e.
 > `screen.findByText('text', queryOptions, waitForOptions)`)
@@ -106,7 +108,9 @@ screen.debug(screen.getAllByText('multi-test'))
 
 ## Queries
 
-> NOTE: These queries are the base queries and require you pass a `container` as
+> **Note**
+>
+> These queries are the base queries and require you to pass a `container` as
 > the first argument. Most framework-implementations of Testing Library provide
 > a pre-bound version of these queries when you render your components with them
 > which means you do not have to provide a container. In addition, if you just
@@ -220,8 +224,11 @@ If it is important that you query an actual `<label>` element you can provide a
 const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 ```
 
-Note that it will not work in the case where a `for` attr on a `label` matches
-and `id` field on a non-form element.
+> **Note** 
+>
+> `getByLabelText` will not work in the case where a `for` attr on a `<label>` 
+> element matches and `id` field on a non-form element.
+
 
 ```js
 // This case is not valid
@@ -719,7 +726,9 @@ you can get the "Sugar" option by calling
 state and which elements can have this state see
 [ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
 
-> **Note:** Checkboxes have a "mixed" state, which is considered neither checked
+> **Note**
+> 
+> Checkboxes have a "mixed" state, which is considered neither checked
 > nor unchecked (details
 > [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
 
@@ -889,9 +898,11 @@ If you want to prevent that normalization, or provide alternative normalization
 function in the options object. This function will be given a string and is
 expected to return a normalized version of that string.
 
-Note: Specifying a value for `normalizer` _replaces_ the built-in normalization,
-but you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
-to adjust that normalization or to call it from your own normalizer.
+> **Note**
+>
+> Specifying a value for `normalizer` _replaces_ the built-in normalization,
+> but you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
+> to adjust that normalization or to call it from your own normalizer.
 
 `getDefaultNormalizer` takes an options object which allows the selection of
 behaviour:
