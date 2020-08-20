@@ -57,6 +57,10 @@ const { container } = render(<MyComponent />)
 const foo = container.querySelector('[data-foo="bar"]')
 ```
 
+## Chrome extension
+Do you still have problems knowing how to use Testing Library queries? 
+We got your back by creating a cool Chrome extension named [which-query](https://github.com/testing-library/which-query) that you can download [from here](https://chrome.google.com/webstore/detail/testing-library-which-que/olmmagdolfehlpjmbkmondggbebeimoh), and it aims to enable developers to find a better query when writing tests. Right click on an element on any web page and it will copy the best possible query for that element into your clipboard. Then simply paste into your test code. That also helps you to learn how to use React Testing Library queries.
+
 ## Playground
 
 If you want to get more familiar with these queries, you can try them out on
