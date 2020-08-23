@@ -17,7 +17,7 @@ matchers to Jest.
 <span data-testid="not-empty"><span data-testid="empty"></span></span>
 <div data-testid="visible">Visible Example</div>
 
-expect(queryByTestId(container, 'not-empty')).not.toBeEmpty()
+expect(queryByTestId(container, 'not-empty')).not.toBeEmptyDOMElement()
 expect(getByText(container, 'Visible Example')).toBeVisible()
 ```
 
