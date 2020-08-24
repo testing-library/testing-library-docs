@@ -900,6 +900,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "malykhinvi",
+      "name": "Vasily Malykhin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5537715?v=4",
+      "profile": "https://malykhinvi.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
