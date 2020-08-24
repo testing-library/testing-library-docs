@@ -112,7 +112,8 @@
       "ecosystem-react-select-event",
       "ecosystem-eslint-plugin-testing-library",
       "ecosystem-eslint-plugin-jest-dom",
-      "ecosystem-riot-testing-library"
+      "ecosystem-riot-testing-library",
+      "ecosystem-jasmine-dom"
     ],
     "Help": ["faq", "learning", "contributing"]
   },
