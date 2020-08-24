@@ -58,7 +58,7 @@ the error message and container object as arguments.
 [`getBy*`](api-queries#getby) or [`getAllBy*`](api-queries#getallby) fail. Takes
 the error message and container object as arguments.
 
-`timeout`: The global timeout value in milliseconds used by `waitFor` utilities.
+`asyncUtilTimeout`: The global timeout value in milliseconds used by `waitFor` utilities.
 Defaults to 1000ms.
 
 <!--DOCUSAURUS_CODE_TABS-->
