@@ -39,6 +39,11 @@ is also a plugin to use testing-library queries for end-to-end tests in
 `DOM Testing Library` works with any environment that provides DOM APIs, such as
 Jest, Mocha + JSDOM, or a real browser
 
+### What this library can't test
+1. Internal state of the component
+1. Lifecycle methods of the component
+1. Child component
+
 [jest]: https://jestjs.io
 [jsdom]: https://github.com/jsdom/jsdom
 [dom]: dom-testing-library/intro.md
