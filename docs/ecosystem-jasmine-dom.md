@@ -17,8 +17,8 @@ the matchers to Jasmine.
 <span data-testid="not-empty"><span data-testid="empty"></span></span>
 <div data-testid="visible">Visible Example</div>
 
-expect(queryByTestId(container, 'not-empty')).not.toBeEmptyDOMElement()
-expect(getByText(container, 'Visible Example')).toBeVisible()
+expect(screen.queryByTestId('not-empty')).not.toBeEmptyDOMElement()
+expect(screen.getByText('Visible Example')).toBeVisible()
 ```
 
 > Note: when using some of these matchers, you may need to make sure you use a
