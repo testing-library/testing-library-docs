@@ -3,7 +3,7 @@ id: ecosystem-jasmine-dom
 title: jasmine-dom
 ---
 
-[`jasmine-dom`][gh] is a companion library for `React Testing Library` that
+[`jasmine-dom`][gh] is a companion library for Testing Library that
 provides custom DOM element matchers for Jasmine
 
 ```
