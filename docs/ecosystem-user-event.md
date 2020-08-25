@@ -20,7 +20,7 @@ test('click', async () => {
   const { getByRole } = render(<textarea />)
 
   await userEvent.type(getByRole('textbox'), 'Hello, World!')
-  expect(getByRole('textbox')).toHaveAttribute('value', 'Hello, World!')
+  expect(getByRole("textbox")).toHaveProperty("value", "Hello, World!");
 })
 ```
 
