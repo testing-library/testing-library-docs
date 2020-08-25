@@ -3,7 +3,7 @@ id: ecosystem-jest-dom
 title: jest-dom
 ---
 
-[`jest-dom`][gh] is a companion library for `React Testing Library` that
+[`jest-dom`][gh] is a companion library for Testing Library that
 provides custom DOM element matchers for Jest
 
 ```
