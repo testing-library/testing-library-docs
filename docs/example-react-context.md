@@ -21,16 +21,19 @@ test('NameConsumer shows default value', () => {
 })
 
 /**
+ * To avoid repetition when creating wrappers
+ */
+const makeWrapper = (props) => ({ children }) => (
+  <NameContext.Provider {...props}>{children}</NameContext.Provider>
+)
+
+/**
  * To test a component tree that uses a context consumer but not the provider,
  * wrap the tree with a matching provider
  */
 test('NameConsumer shows value from provider', () => {
-  const tree = (
-    <NameContext.Provider value="C3P0">
-      <NameConsumer />
-    </NameContext.Provider>
-  )
-  render(tree)
+  const wrapper = makeWrapper({ value: 'C3PO' })
+  render(<NameConsumer />, { wrapper })
   expect(screen.getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: C3P0')
 })
 
@@ -39,14 +42,13 @@ test('NameConsumer shows value from provider', () => {
  * consumer as the child
  */
 test('NameProvider composes full name from first, last', () => {
-  const tree = (
-    <NameProvider first="Boba" last="Fett">
-      <NameContext.Consumer>
-        {(value) => <span>Received: {value}</span>}
-      </NameContext.Consumer>
-    </NameProvider>
+  const wrapper = makeWrapper({ first: 'Boba', last: 'Fett' })
+  render(
+    <NameContext.Consumer>
+      {(value) => <span>Received: {value}</span>}
+    </NameContext.Consumer>,
+    { wrapper }
   )
-  render(tree)
   expect(screen.getByText(/^Received:/).textContent).toBe('Received: Boba Fett')
 })
 
@@ -54,12 +56,13 @@ test('NameProvider composes full name from first, last', () => {
  * A tree containing both a providers and consumer can be rendered normally
  */
 test('NameProvider/Consumer shows name of character', () => {
-  const tree = (
+  const wrapper = ({ children }) => (
     <NameProvider first="Leia" last="Organa">
-      <NameConsumer />
+      {children}
     </NameProvider>
   )
-  render(tree)
+
+  render(<NameConsumer />, { wrapper })
   expect(screen.getByText(/^My Name Is:/).textContent).toBe(
     'My Name Is: Leia Organa'
   )
