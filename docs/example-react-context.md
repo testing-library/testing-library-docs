@@ -21,19 +21,24 @@ test('NameConsumer shows default value', () => {
 })
 
 /**
- * To avoid repetition when creating wrappers
+ * A custom render to setup providers. Extends regular
+ * render options with `providerProps` to allow injecting
+ * different scenarios to test with.
+ *
+ * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
  */
-const makeWrapper = (props) => ({ children }) => (
-  <NameContext.Provider {...props}>{children}</NameContext.Provider>
-)
+const customRender = (ui, { providerProps, ...renderOptions }) => {
+  return render(
+    <NameContext.Provider {...providerProps}>{ui}</NameContext.Provider>,
+    renderOptions
+  )
+}
 
-/**
- * To test a component tree that uses a context consumer but not the provider,
- * wrap the tree with a matching provider
- */
 test('NameConsumer shows value from provider', () => {
-  const wrapper = makeWrapper({ value: 'C3PO' })
-  render(<NameConsumer />, { wrapper })
+  const providerProps = {
+    value: 'C3PO',
+  }
+  customRender(<NameConsumer />, { providerProps })
   expect(screen.getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: C3P0')
 })
 
@@ -42,12 +47,15 @@ test('NameConsumer shows value from provider', () => {
  * consumer as the child
  */
 test('NameProvider composes full name from first, last', () => {
-  const wrapper = makeWrapper({ first: 'Boba', last: 'Fett' })
-  render(
+  const providerProps = {
+    first: 'Boba',
+    last: 'Fett',
+  }
+  customRender(
     <NameContext.Consumer>
       {(value) => <span>Received: {value}</span>}
     </NameContext.Consumer>,
-    { wrapper }
+    { providerProps }
   )
   expect(screen.getByText(/^Received:/).textContent).toBe('Received: Boba Fett')
 })
