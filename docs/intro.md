@@ -39,8 +39,12 @@ is also a plugin to use testing-library queries for end-to-end tests in
 `DOM Testing Library` works with any environment that provides DOM APIs, such as
 Jest, Mocha + JSDOM, or a real browser
 
-### What this library can't test
+### What you should avoid with Testing Library
+Testing Library encourages you to avoid testing internals of the component (though you can test them). The Guiding Principles of this library emphasize on tests that closely resemble how your web pages are interacted by the users.
+
+You may want to avoid following internals for testing - 
 1. Internal state of the component
+1.  Internal methods
 1. Lifecycle methods of the component
 1. Child component
 
