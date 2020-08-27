@@ -839,7 +839,7 @@ getByRole('heading', { level: 1 })
 getAllByRole('heading', { level: 2 })
 // [
 //   <h2>First Heading Level Two</h2>,
-//   div role="heading" aria-level="2">Second Heading Level Two</div>
+//   <div role="heading" aria-level="2">Second Heading Level Two</div>
 // ]
 ```
 
