@@ -4,10 +4,10 @@ title: Migrate from Enzyme
 sidebar_label: Migrate from Enzyme
 ---
 This page would not go into detail, but it’s for those who have experience in working with Enzyme and are trying to
- understand how to move to React Testing Library. It also has some helpful information for those who are comparing 
- Enzyme with React Testing Library.
+understand how to move to React Testing Library. It also has some helpful information for those who are comparing 
+Enzyme with React Testing Library.
 
-### What is React Testing Library?
+## What is React Testing Library?
 React Testing Library is part of an open-source project named [Testing Library](https://github.com/testing-library). 
 There are several other helpful tools and libraries in the Testing Library project which you can use them to write more 
 efficient tests. Beside the React Testing Library, here are some other Testing Library’s libraries that can help you 
@@ -20,7 +20,7 @@ you can use to extend jest. These will make your tests more declarative, clear t
 would happen in the browser as the user interacts with it. For example, userEvent.click(checkbox) would change the 
 state of the checkbox.
 
-### Why should I use the React Testing Library?
+## Why should I use the React Testing Library?
 Enzyme is a good test library. The library and its contributors did so much for the community. We thank them all, 
 but it does not mean we should not talk about differences and how we are doing better.
 
@@ -40,13 +40,13 @@ the component’s output.
 Re-writing your tests in React Testing library worth it because you're trading tests that slow you down for tests 
 that give you more confidence and increase your productivity in the long run.
 
-### How to migrate from Enzyme to React Testing Library?
+## How to migrate from Enzyme to React Testing Library?
 One of the keys to a successful migrate is to do it incrementally, by running the two test libraries side by side in 
 the same application and porting Enzyme’s tests to React Testing Library one by one. It makes it possible to migrate 
 even large and complex applications without disrupting other businesses because the work can be done collaboratively 
 and spread over some time. 
 
-### Install React Testing Library
+## Install React Testing Library
 You can check [this page](https://testing-library.com/docs/react-testing-library/setup) for the complete installation 
 and setup guide.
 
@@ -60,7 +60,7 @@ With Yarn
 
 `yarn add --dev @testing-library/react @testing-library/jest-dom`
 
-### Import React Testing Library to your test 
+## Import React Testing Library to your test 
 Let’s say we’re using Jest (you can use other test frameworks as well), then you just have to import the following 
 modules into your test file:
 
@@ -86,7 +86,7 @@ describe('Describe the test', () => {
 
 ```
 
-### Basic Enzyme to React Testing Library migration
+## Basic Enzyme to React Testing Library migration
 One thing to keep in mind that there's not a one-to-one mapping of Enzyme features to React Testing Library features. 
 Many Enzyme features result in inefficient tests, and we are here to learn the React Testing Library’s philosophy and 
 testing approach.
@@ -130,16 +130,32 @@ Something else that people have a problem with is that they’re not sure which 
 a great page which explains [which query to use](https://testing-library.com/docs/guide-which-query), so don’t forget 
 to check it out!
 
-If you still have a problem with the React Testing Library’s queries, and you’re not sure which query to use, just 
-don’t worry! we’ve created a useful Chrome extension named 
-**[which-query](https://chrome.google.com/webstore/detail/testing-library-which-que/olmmagdolfehlpjmbkmondggbebeimoh)**  
-that aims to enable developers to find a better query when writing tests. Right-click on an element on any web page 
-and it will copy the best possible query for that element into your clipboard. Then simply paste into your test code. 
+If you still have a problem with the React Testing Library’s queries, and you’re not sure which query to use, 
+there is an awesome Chrome extension named 
+**[Testing Playground](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano/related)**  
+that aims to enable developers to find a better query when writing tests. nd it helps you find the best queries 
+to select elements. It allows you to inspect the element hierarchies in the Chrome Developer Tools, 
+and provides you with suggestions on how to select them, while encouraging good testing practices. 
+
+## using act() and wrapper.update()
+In Enzyme, for some asynchronous purposes, you have to call `act()` to run your tests correctly, but you don't need to use 
+`act()` most of the times since React Testing Library will wrap APIs with `act()` so you don't need to manually wrap it.
+
+`update()` syncs the Enzyme component tree snapshot with the react component tree, often time you might see `wrapper.update()`
+ in Enzyme, but React Testing Library does not need something like that, good for you since you need to handle fewer things!
+ 
+## Finding elements
+As for Enzyme, there are several ways to access elements in React Testing Library as well. Let's imagine we have the 
+following Enzyme test
+@todo continue from here
 
 
-### Simulate user events
-Testing Libray has a perfect library named `user-event` and it simulates the real events that would happen in the 
-browser as the user interacts with it.
+## Simulate user events
+There are two ways to simulate user events, one is a perfect library named 
+[`user-event`](https://github.com/testing-library/user-event), and the other way is  to use 
+[`fireEvent`](https://testing-library.com/docs/dom-testing-library/api-events) which simulated
+a copy of the DOM on Node by using jsdom. We recommend using `user-event` since it simulates the real events that would 
+happen in the browser as the user interacts with it.  
 
 To use the `user-event`, you simply need to install it:
 
