@@ -927,6 +927,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ljosberinn",
+      "name": "Gerrit Alex",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/29307652?v=4",
+      "profile": "http://gerritalex.de",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
