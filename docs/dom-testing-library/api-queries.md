@@ -625,6 +625,7 @@ getByRole(
     checked?: boolean,
     pressed?: boolean,
     queryFallbacks?: boolean,
+    level?: number,
   }): HTMLElement
 ```
 
@@ -635,7 +636,7 @@ attribute. Here you can see
 [a table of HTML elements with their default and desired roles](https://www.w3.org/TR/html-aria/#docconformance).
 
 Please note that setting a `role` and/or `aria-*` attribute that matches the
-implicit ARIA semantics is unnecessary and is **not recomended** as these
+implicit ARIA semantics is unnecessary and is **not recommended** as these
 properties are already set by the browser, and we must not use the `role` and
 `aria-*` attributes in a manner that conflicts with the semantics described. For
 example, a `button` element can't have the `role` attribute of `heading`,
@@ -787,6 +788,8 @@ cy.findByRole('dialog').should('exist')
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+#### `queryFallbacks`
+
 By default, it's assumed that the first role of each element is supported, so
 only the first role can be queried. If you need to query an element by any of
 its fallback roles instead, you can use `queryFallbacks: true`.
@@ -802,6 +805,53 @@ roles and therefore match the same element.
 > the environment finds the first role it understands. This is useful when new
 > roles get introduced and you want to start supporting those as well as older
 > environments that don't understand that role (yet).
+
+#### `level`
+
+An element with the `heading` role can be queried by any heading level
+`getByRole('heading')` or by a specific heading level using the `level` option
+`getByRole('heading', { level: 2 })`.
+
+The `level` option queries the element(s) with the `heading` role matching the
+indicated level determined by the semantic HTML heading elements `<h1>-<h6>` or
+matching the `aria-level` attribute.
+
+Given the example below,
+
+```html
+<body>
+  <section>
+    <h1>Heading Level One</h1>
+    <h2>First Heading Level Two</h2>
+    <h3>Heading Level Three</h3>
+    <div role="heading" aria-level="2">Second Heading Level Two</div>
+  </section>
+</body>
+```
+
+you can query the `Heading Level Three` heading using
+`getByRole('heading', { level: 3 })`.
+
+```js
+getByRole('heading', { level: 1 })
+// <h1>Heading Level One</h1>
+
+getAllByRole('heading', { level: 2 })
+// [
+//   <h2>First Heading Level Two</h2>,
+//   div role="heading" aria-level="2">Second Heading Level Two</div>
+// ]
+```
+
+While it is possible to explicitly set `role="heading"` and `aria-level`
+attribute on an element, it is **strongly encouraged** to use the semantic HTML
+headings `<h1>-<h6>`.
+
+To learn more about the `aria-level` property, see
+[ARIA `aria-level`](https://www.w3.org/TR/wai-aria-1.2/#aria-level).
+
+> The `level` option is _only_ applicable to the `heading` role. An error will
+> be thrown when used with any other role.
 
 ### `ByTestId`
 
