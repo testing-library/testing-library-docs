@@ -40,11 +40,16 @@ is also a plugin to use testing-library queries for end-to-end tests in
 Jest, Mocha + JSDOM, or a real browser
 
 ### What you should avoid with Testing Library
-Testing Library encourages you to avoid testing internals of the component (though you can test them). The Guiding Principles of this library emphasize on tests that closely resemble how your web pages are interacted by the users.
+Testing Library encourages you to avoid testing
+[implementation details](https://kentcdodds.com/blog/testing-implementation-details)
+like the internals of a component you're testing (though it's still possible).
+[The Guiding Principles](/docs/guiding-principles) of this library emphasize a
+focus on tests that closely resemble how your web pages are interacted by the users.
 
-You may want to avoid following internals for testing - 
+You may want to avoid following internals for testing
+
 1. Internal state of the component
-1.  Internal methods
+1. Internal methods
 1. Lifecycle methods of the component
 1. Child component
 
