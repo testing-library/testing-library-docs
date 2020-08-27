@@ -21,7 +21,7 @@ would happen in the browser as the user interacts with it. For example, userEven
 state of the checkbox.
 
 ### Why should I use the React Testing Library?
-The Enzyme is a good test library. The library and its contributors did so much for the community. We thank them all, 
+Enzyme is a good test library. The library and its contributors did so much for the community. We thank them all, 
 but it does not mean we should not talk about differences and how we are doing better.
 
 The primary purpose of the React Testing Library is to give you confidence by testing your components, like how your 
