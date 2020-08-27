@@ -166,6 +166,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/brrianalexis"><img src="https://avatars2.githubusercontent.com/u/51463930?v=4" width="100px;" alt=""/><br /><sub><b>Brian Alexis</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=brrianalexis" title="Documentation">📖</a></td>
     <td align="center"><a href="http://KnowKalpesh.in"><img src="https://avatars2.githubusercontent.com/u/13119410?v=4" width="100px;" alt=""/><br /><sub><b>Kalpesh Singh</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=kalpeshsingh" title="Documentation">📖</a></td>
     <td align="center"><a href="http://gerritalex.de"><img src="https://avatars1.githubusercontent.com/u/29307652?v=4" width="100px;" alt=""/><br /><sub><b>Gerrit Alex</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ljosberinn" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/winterlamon"><img src="https://avatars0.githubusercontent.com/u/16295605?v=4" width="100px;" alt=""/><br /><sub><b>Winter LaMon</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=winterlamon" title="Documentation">📖</a></td>
   </tr>
 </table>
 
