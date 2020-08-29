@@ -23,7 +23,7 @@ test('loads items eventually', async () => {
   fireEvent.click(getByText('Load'))
 
   // Wait for page to update with query text
-  const items = await findByText(/Item #[0-9]: /)
+  const items = await findAllByText(/Item #[0-9]: /)
   expect(items).toHaveLength(10)
 })
 ```
