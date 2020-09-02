@@ -81,6 +81,6 @@ To use Typescript, you'll need to install and configure `svelte-preprocess` and
 ## Babel / Preprocessors
 
 If you'd like to also include [Babel](https://babeljs.io/) or any
-[Svelte preprocessors](https://github.com/kaisermann/svelte-preprocess) then
+[Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then
 simply follow the instructions over at
 [svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
