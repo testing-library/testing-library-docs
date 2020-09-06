@@ -138,3 +138,10 @@
   to = "https://testing-library.com/docs/nightwatch-testing-library/intro"
   status = 301
   force = true
+
+# React Redux recipe to Redux's recipe
+[[redirects]]
+  from = "https://testing-library.com/docs/example-react-redux"
+  to = "https://redux.js.org/recipes/writing-tests#connected-components"
+  status = 301
+  force = true
