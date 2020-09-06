@@ -4,7 +4,7 @@
   publish = "website/build/testing-library-docs"
 
   # Default build command.
-  command = "cd website; yarn; yarn format-docs; yarn build"
+  command = "npm i -g yarn; cd website; yarn; yarn format-docs; yarn build"
 
 [dev]
   autoLaunch = true # a Boolean value that determines if Netlify Dev launches the local server address in your browser
