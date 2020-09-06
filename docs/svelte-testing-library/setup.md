@@ -47,7 +47,7 @@ with any testing framework and runner you're comfortable with.
     }
     ```
 
-5.  If you are using es6 modules in your project you have to add jest's babel
+5.  If you are using ES6 modules in your project you have to add Jest's babel
     transform setting (it is set by default, but since we are overriding the
     transform config, we have to add it explicitly)
 
