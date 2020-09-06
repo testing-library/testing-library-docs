@@ -4,7 +4,7 @@
   publish = "website/build/testing-library-docs"
 
   # Default build command.
-  command = "cd website; npm install; npm run format-docs; npm run build"
+  command = "cd website; yarn; yarn format-docs; yarn build"
 
 # Shortcut to discord server invite
 [[redirects]]
