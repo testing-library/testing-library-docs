@@ -37,11 +37,10 @@
   to = "https://testing-library.com/:splat"
   force = true
 
-# Redirects due to reorganization
+# Redirects due to reorganization (do not redirect if route is not 404)
 [[redirects]]
   from = "/docs/*"
   to = "/docs/dom-testing-library/:splat"
-  force = false # do not redirect if route is not 404
 
 # Support page to help page
 [[redirects]]
