@@ -11,26 +11,26 @@
 
 # Shortcut to discord server invite
 [[redirects]]
-  from = "https://testing-library.com/discord"
+  from = "/discord"
   to = "https://discord.gg/c6JN9fM"
   force = true
 
 # React root to React landing page
 [[redirects]]
   from = "https://react-testing-library.com/"
-  to = "https://testing-library.com/react/"
+  to = "/react/"
   force = true
 
 # React to main domain
 [[redirects]]
   from = "https://react-testing-library.com/*"
-  to = "https://testing-library.com/:splat"
+  to = "/:splat"
   force = true
 
 # Netlify subdomain to main domain
 [[redirects]]
   from = "https://testing-library.netlify.com/*"
-  to = "https://testing-library.com/:splat"
+  to = "/:splat"
   force = true
 
 # Redirects due to reorganization (do not redirect if route is not 404)
@@ -46,78 +46,78 @@
 
 # DOM landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/dom/"
-  to = "https://testing-library.com/docs/dom-testing-library/intro"
+  from = "/dom/"
+  to = "/docs/dom-testing-library/intro"
   force = true
 
 # React landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/react/"
-  to = "https://testing-library.com/docs/react-testing-library/intro"
+  from = "/react/"
+  to = "/docs/react-testing-library/intro"
   force = true
 
 # React Native landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/react-native/"
-  to = "https://testing-library.com/docs/react-native-testing-library/intro"
+  from = "/react-native/"
+  to = "/docs/react-native-testing-library/intro"
   force = true
 
 # Cypress landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/cypress/"
-  to = "https://testing-library.com/docs/cypress-testing-library/intro"
+  from = "/cypress/"
+  to = "/docs/cypress-testing-library/intro"
   force = true
 
 # Vue landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/vue/"
-  to = "https://testing-library.com/docs/vue-testing-library/intro"
+  from = "/vue/"
+  to = "/docs/vue-testing-library/intro"
   force = true
 
 # Angular landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/angular/"
-  to = "https://testing-library.com/docs/angular-testing-library/intro"
+  from = "/angular/"
+  to = "/docs/angular-testing-library/intro"
   force = true
 
 # Puppeteer landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/pptr/"
-  to = "https://testing-library.com/docs/pptr-testing-library/intro"
+  from = "/pptr/"
+  to = "/docs/pptr-testing-library/intro"
   force = true
 
 # Svelte landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/svelte/"
-  to = "https://testing-library.com/docs/svelte-testing-library/intro"
+  from = "/svelte/"
+  to = "/docs/svelte-testing-library/intro"
   force = true
 
 # Preact landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/preact/"
-  to = "https://testing-library.com/docs/preact-testing-library/intro"
+  from = "/preact/"
+  to = "/docs/preact-testing-library/intro"
   force = true
 
 # jest-dom landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/jest-dom/"
-  to = "https://testing-library.com/docs/ecosystem-jest-dom"
+  from = "/jest-dom/"
+  to = "/docs/ecosystem-jest-dom"
   force = true
 
 # Testcafe landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/testcafe/"
-  to = "https://testing-library.com/docs/testcafe-testing-library/intro"
+  from = "/testcafe/"
+  to = "/docs/testcafe-testing-library/intro"
   force = true
 
 # Nightwatch landing page to home page
 [[redirects]]
-  from = "https://testing-library.com/nightwatch/"
-  to = "https://testing-library.com/docs/nightwatch-testing-library/intro"
+  from = "/nightwatch/"
+  to = "/docs/nightwatch-testing-library/intro"
   force = true
 
 # React Redux recipe to Redux's recipe
 [[redirects]]
-  from = "https://testing-library.com/docs/example-react-redux"
+  from = "/docs/example-react-redux"
   to = "https://redux.js.org/recipes/writing-tests#connected-components"
   force = true
