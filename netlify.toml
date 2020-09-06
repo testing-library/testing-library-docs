@@ -6,6 +6,9 @@
   # Default build command.
   command = "cd website; yarn; yarn format-docs; yarn build"
 
+[dev]
+  autoLaunch = true # a Boolean value that determines if Netlify Dev launches the local server address in your browser
+
 # Shortcut to discord server invite
 [[redirects]]
   from = "https://testing-library.com/discord"
