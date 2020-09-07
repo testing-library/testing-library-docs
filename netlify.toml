@@ -13,7 +13,6 @@
 [[redirects]]
   from = "/discord"
   to = "https://discord.gg/c6JN9fM"
-  force = true
 
 # React root to React landing page
 [[redirects]]
@@ -37,7 +36,6 @@
 [[redirects]]
   from = "/docs/example-react-redux"
   to = "https://redux.js.org/recipes/writing-tests#connected-components"
-  force = true
 
 # Redirects due to reorganization (do not redirect if route is not 404)
 [[redirects]]
@@ -48,76 +46,63 @@
 [[redirects]]
   from = "/support"
   to = "/help"
-  force = true
 
 # DOM landing page to home page
 [[redirects]]
   from = "/dom/"
   to = "/docs/dom-testing-library/intro"
-  force = true
 
 # React landing page to home page
 [[redirects]]
   from = "/react/"
   to = "/docs/react-testing-library/intro"
-  force = true
 
 # React Native landing page to home page
 [[redirects]]
   from = "/react-native/"
   to = "/docs/react-native-testing-library/intro"
-  force = true
 
 # Cypress landing page to home page
 [[redirects]]
   from = "/cypress/"
   to = "/docs/cypress-testing-library/intro"
-  force = true
 
 # Vue landing page to home page
 [[redirects]]
   from = "/vue/"
   to = "/docs/vue-testing-library/intro"
-  force = true
 
 # Angular landing page to home page
 [[redirects]]
   from = "/angular/"
   to = "/docs/angular-testing-library/intro"
-  force = true
 
 # Puppeteer landing page to home page
 [[redirects]]
   from = "/pptr/"
   to = "/docs/pptr-testing-library/intro"
-  force = true
 
 # Svelte landing page to home page
 [[redirects]]
   from = "/svelte/"
   to = "/docs/svelte-testing-library/intro"
-  force = true
 
 # Preact landing page to home page
 [[redirects]]
   from = "/preact/"
   to = "/docs/preact-testing-library/intro"
-  force = true
 
 # jest-dom landing page to home page
 [[redirects]]
   from = "/jest-dom/"
   to = "/docs/ecosystem-jest-dom"
-  force = true
 
 # Testcafe landing page to home page
 [[redirects]]
   from = "/testcafe/"
   to = "/docs/testcafe-testing-library/intro"
-  force = true
 
 # Nightwatch landing page to home page
 [[redirects]]
   from = "/nightwatch/"
   to = "/docs/nightwatch-testing-library/intro"
-  force = true
