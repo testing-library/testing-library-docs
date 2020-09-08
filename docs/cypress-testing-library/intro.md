@@ -48,8 +48,7 @@ You can find [all Library definitions here](https://github.com/DefinitelyTyped/D
 
 ## Examples
 
-To show some simple examples (from
-[cypress/integration/query.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/query.spec.js) or [cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/find.spec.js)):
+To show some simple examples ([cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/find.spec.js)):
 
 ```javascript
 cy.findByRole('button', {name: /Jackie Chan/i}).click()
