@@ -1,6 +1,6 @@
 ---
 id: example-reach-router
-title: Reach Router
+title: React Router
 ---
 
 ```jsx
