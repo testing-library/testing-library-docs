@@ -10,100 +10,76 @@
   # A Boolean value that determines if Netlify Dev launches the local server address in your browser
   autoLaunch = true
 
-# Shortcut to discord server invite
-[[redirects]]
-  from = "/discord"
-  to = "https://discord.gg/c6JN9fM"
+# Redirects
 
-# React root to React landing page
+# Domains
 [[redirects]]
   from = "https://react-testing-library.com/"
   to = "/react/"
   force = true
-
-# React to main domain
 [[redirects]]
   from = "https://react-testing-library.com/*"
   to = "/:splat"
   force = true
-
-# Netlify subdomain to main domain
 [[redirects]]
   from = "https://testing-library.netlify.com/*"
   to = "/:splat"
   force = true
 
-# React Redux recipe to Redux's recipe
+# Shortcut to Discord server invite
 [[redirects]]
-  from = "/docs/example-react-redux"
-  to = "https://redux.js.org/recipes/writing-tests#connected-components"
-
-# Redirects due to reorganization (do not redirect if route is not 404)
-[[redirects]]
-  from = "/docs/*"
-  to = "/docs/dom-testing-library/:splat"
+  from = "/discord"
+  to = "https://discord.gg/c6JN9fM"
 
 # Support page to help page
 [[redirects]]
   from = "/support"
   to = "/help"
 
-# DOM landing page to home page
+# React Redux recipe to Redux's recipe
+[[redirects]]
+  from = "/docs/example-react-redux"
+  to = "https://redux.js.org/recipes/writing-tests#connected-components"
+
+# Reorganization (do not redirect if route is not 404)
+[[redirects]]
+  from = "/docs/*"
+  to = "/docs/dom-testing-library/:splat"
+
+# Landing pages
 [[redirects]]
   from = "/dom/"
   to = "/docs/dom-testing-library/intro"
-
-# React landing page to home page
 [[redirects]]
   from = "/react/"
   to = "/docs/react-testing-library/intro"
-
-# React Native landing page to home page
 [[redirects]]
   from = "/react-native/"
   to = "/docs/react-native-testing-library/intro"
-
-# Cypress landing page to home page
 [[redirects]]
   from = "/cypress/"
   to = "/docs/cypress-testing-library/intro"
-
-# Vue landing page to home page
 [[redirects]]
   from = "/vue/"
   to = "/docs/vue-testing-library/intro"
-
-# Angular landing page to home page
 [[redirects]]
   from = "/angular/"
   to = "/docs/angular-testing-library/intro"
-
-# Puppeteer landing page to home page
 [[redirects]]
   from = "/pptr/"
   to = "/docs/pptr-testing-library/intro"
-
-# Svelte landing page to home page
 [[redirects]]
   from = "/svelte/"
   to = "/docs/svelte-testing-library/intro"
-
-# Preact landing page to home page
 [[redirects]]
   from = "/preact/"
   to = "/docs/preact-testing-library/intro"
-
-# jest-dom landing page to home page
 [[redirects]]
   from = "/jest-dom/"
   to = "/docs/ecosystem-jest-dom"
-
-# Testcafe landing page to home page
 [[redirects]]
   from = "/testcafe/"
   to = "/docs/testcafe-testing-library/intro"
-
-# Nightwatch landing page to home page
 [[redirects]]
   from = "/nightwatch/"
   to = "/docs/nightwatch-testing-library/intro"
