@@ -964,6 +964,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "eps1lon",
+      "name": "Sebastian Silbermann",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12292047?v=4",
+      "profile": "https://solverfox.dev",
+      "contributions": [
+        "doc",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
