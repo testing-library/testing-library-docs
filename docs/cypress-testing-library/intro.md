@@ -34,14 +34,12 @@ and `queryAllBy` commands off the global `cy` object.
 
 ## With TypeScript
 
-Typings are defined in `@types/testing-library__cypress` at
-[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress),
-and should be added as follows in `tsconfig.json`:
+Typings should be added as follows in `tsconfig.json`:
 
 ```json
 {
   "compilerOptions": {
-    "types": ["cypress", "@types/testing-library__cypress"]
+    "types": ["cypress", "@testing-library/cypress"]
   }
 }
 ```
