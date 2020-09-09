@@ -169,6 +169,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/winterlamon"><img src="https://avatars0.githubusercontent.com/u/16295605?v=4" width="100px;" alt=""/><br /><sub><b>Winter LaMon</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=winterlamon" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jpenna"><img src="https://avatars1.githubusercontent.com/u/16005946?v=4" width="100px;" alt=""/><br /><sub><b>Juliano Penna</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jpenna" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://www.pcoroneos.com"><img src="https://avatars2.githubusercontent.com/u/40515238?v=4" width="100px;" alt=""/><br /><sub><b>Paul Coroneos</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=PaulACoroneos" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
