@@ -27,7 +27,7 @@
           "react-testing-library/example-intro",
           "react-testing-library/setup",
           "react-testing-library/api",
-          "react-testing-library/migrate  ",
+          "react-testing-library/migrate",
           "react-testing-library/faq",
           "react-testing-library/cheatsheet"
         ]
