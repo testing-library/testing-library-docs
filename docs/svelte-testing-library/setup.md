@@ -51,6 +51,22 @@ with any testing framework and runner you're comfortable with.
     transform setting (it is set by default, but since we are overriding the
     transform config, we have to add it explicitly)
 
+    5.1 Install `babel-jest`
+
+    ```bash
+    npm install --save-dev babel-jest
+    ```
+
+    5.2. Add a basic `.babelrc` configuration
+
+    ```json
+    {
+      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]]
+    }
+    ```
+
+    5.3. Update the Jest transform configuration
+
     ```json
     "transform": {
       "^.+\\.js$": "babel-jest",
@@ -89,9 +105,9 @@ To use Typescript, you'll need to install and configure `svelte-preprocess` and
 `ts-jest`. For full instructions, see the
 [`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
 
-## Babel / Preprocessors
+## Preprocessors
 
-If you'd like to also include [Babel](https://babeljs.io/) or any
+If you'd like to also include any
 [Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then
 simply follow the instructions over at
 [svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
