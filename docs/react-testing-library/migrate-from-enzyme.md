@@ -1,5 +1,5 @@
 ---
-id: migrate
+id: migrate-from-enzyme
 title: Migrate from Enzyme
 sidebar_label: Migrate from Enzyme
 ---
