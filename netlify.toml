@@ -145,3 +145,10 @@
   to = "https://redux.js.org/recipes/writing-tests#connected-components"
   status = 301
   force = true
+
+# Redirect screen error messe to correct page
+[[redirects]]
+  from = "https://testing-library.com/s/screen-global-error"
+  to = "https://testing-library.com/docs/dom-testing-library/api-queries#screen"
+  status = 301
+  force = true
