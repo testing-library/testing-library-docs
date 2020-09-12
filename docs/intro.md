@@ -16,7 +16,7 @@ tests to avoid including implementation details so refactors of your components
 (changes to implementation but not functionality) don't break your tests and
 slow you and your team down.
 
-## This solution
+## The solution
 
 The core library, [`DOM Testing Library`][dom], is a light-weight solution for
 testing web pages by querying and interacting with DOM nodes (whether simulated
