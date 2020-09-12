@@ -106,9 +106,9 @@ Please refer to the [Guiding Principles](../guiding-principles) of this testing
 library for more info.
 
 </details>
-<!--
-Links:
--->
+
+<!-- Links: -->
+
 
 <!-- prettier-ignore-start -->
 

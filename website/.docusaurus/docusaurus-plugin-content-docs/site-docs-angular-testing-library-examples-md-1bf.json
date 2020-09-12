@@ -1,0 +1,22 @@
+{
+  "unversionedId": "angular-testing-library/examples",
+  "id": "angular-testing-library/examples",
+  "isDocsHomePage": false,
+  "title": "Examples",
+  "description": "Read",
+  "source": "@site/../docs/angular-testing-library/examples.md",
+  "permalink": "/docs/angular-testing-library/examples",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/angular-testing-library/examples.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Examples",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Angular Testing Library",
+    "permalink": "/docs/angular-testing-library/intro"
+  },
+  "next": {
+    "title": "API",
+    "permalink": "/docs/angular-testing-library/api"
+  }
+}

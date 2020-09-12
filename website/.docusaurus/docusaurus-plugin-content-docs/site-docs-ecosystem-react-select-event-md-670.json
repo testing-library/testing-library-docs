@@ -1,0 +1,21 @@
+{
+  "unversionedId": "ecosystem-react-select-event",
+  "id": "ecosystem-react-select-event",
+  "isDocsHomePage": false,
+  "title": "react-select-event",
+  "description": "react-select-event is a companion library for React Testing Library",
+  "source": "@site/../docs/ecosystem-react-select-event.md",
+  "permalink": "/docs/ecosystem-react-select-event",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-react-select-event.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "jest-native",
+    "permalink": "/docs/ecosystem-jest-native"
+  },
+  "next": {
+    "title": "eslint-plugin-testing-library",
+    "permalink": "/docs/ecosystem-eslint-plugin-testing-library"
+  }
+}

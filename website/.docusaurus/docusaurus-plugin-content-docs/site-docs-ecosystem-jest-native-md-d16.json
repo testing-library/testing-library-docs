@@ -1,0 +1,22 @@
+{
+  "unversionedId": "ecosystem-jest-native",
+  "id": "ecosystem-jest-native",
+  "isDocsHomePage": false,
+  "title": "jest-native",
+  "description": "Jest Native is a companion",
+  "source": "@site/../docs/ecosystem-jest-native.md",
+  "permalink": "/docs/ecosystem-jest-native",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-jest-native.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "jest-native",
+  "sidebar": "docs",
+  "previous": {
+    "title": "bs-jest-dom",
+    "permalink": "/docs/ecosystem-bs-jest-dom"
+  },
+  "next": {
+    "title": "react-select-event",
+    "permalink": "/docs/ecosystem-react-select-event"
+  }
+}

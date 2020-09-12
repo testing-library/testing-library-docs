@@ -1,0 +1,21 @@
+{
+  "unversionedId": "guide-events",
+  "id": "guide-events",
+  "isDocsHomePage": false,
+  "title": "Considerations for fireEvent",
+  "description": "Interactions vs. events",
+  "source": "@site/../docs/guide-events.md",
+  "permalink": "/docs/guide-events",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guide-events.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Appearance and Disappearance",
+    "permalink": "/docs/guide-disappearance"
+  },
+  "next": {
+    "title": "Codesandbox Examples",
+    "permalink": "/docs/example-codesandbox"
+  }
+}

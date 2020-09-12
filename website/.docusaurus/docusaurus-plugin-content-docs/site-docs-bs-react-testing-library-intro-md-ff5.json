@@ -1,0 +1,22 @@
+{
+  "unversionedId": "bs-react-testing-library/intro",
+  "id": "bs-react-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "Reason Testing Library",
+  "description": "Bindings for several testing libraries have been ported to ReasonML.",
+  "source": "@site/../docs/bs-react-testing-library/intro.md",
+  "permalink": "/docs/bs-react-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/bs-react-testing-library/intro.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Introduction",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Cheatsheet",
+    "permalink": "/docs/react-testing-library/cheatsheet"
+  },
+  "next": {
+    "title": "Examples",
+    "permalink": "/docs/bs-react-testing-library/examples"
+  }
+}

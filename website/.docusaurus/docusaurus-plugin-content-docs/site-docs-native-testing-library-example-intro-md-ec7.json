@@ -1,0 +1,22 @@
+{
+  "unversionedId": "native-testing-library/example-intro",
+  "id": "native-testing-library/example-intro",
+  "isDocsHomePage": false,
+  "title": "Example",
+  "description": "`javascript",
+  "source": "@site/../docs/native-testing-library/example-intro.md",
+  "permalink": "/docs/native-testing-library/example-intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/native-testing-library/example-intro.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Example",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/docs/native-testing-library/intro"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/docs/native-testing-library/setup"
+  }
+}

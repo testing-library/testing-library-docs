@@ -1,0 +1,22 @@
+{
+  "unversionedId": "react-testing-library/example-intro",
+  "id": "react-testing-library/example-intro",
+  "isDocsHomePage": false,
+  "title": "Example",
+  "description": "Full Example",
+  "source": "@site/../docs/react-testing-library/example-intro.md",
+  "permalink": "/docs/react-testing-library/example-intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/example-intro.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Example",
+  "sidebar": "docs",
+  "previous": {
+    "title": "React Testing Library",
+    "permalink": "/docs/react-testing-library/intro"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/docs/react-testing-library/setup"
+  }
+}

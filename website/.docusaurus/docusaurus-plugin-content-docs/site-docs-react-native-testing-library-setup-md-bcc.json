@@ -1,0 +1,22 @@
+{
+  "unversionedId": "react-native-testing-library/setup",
+  "id": "react-native-testing-library/setup",
+  "isDocsHomePage": false,
+  "title": "Setup",
+  "description": "Setting up your project",
+  "source": "@site/../docs/react-native-testing-library/setup.md",
+  "permalink": "/docs/react-native-testing-library/setup",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-native-testing-library/setup.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Setup",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Example",
+    "permalink": "/docs/react-native-testing-library/example-intro"
+  },
+  "next": {
+    "title": "Intro",
+    "permalink": "/docs/vue-testing-library/intro"
+  }
+}

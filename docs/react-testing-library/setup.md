@@ -69,7 +69,6 @@ export { customRender as render }
 > [#169](https://github.com/testing-library/react-testing-library/issues/169)
 > and the workaround below.
 
-<details>
 <summary>Workaround for Babel 6</summary>
 
 You can use CommonJS modules instead of ES modules, which should work in Node:
@@ -89,8 +88,6 @@ module.exports = {
   render: customRender,
 }
 ```
-
-</details>
 
 ### Add custom queries
 
@@ -174,8 +171,6 @@ const { getByDataCy } = render(<Component />)
 
 expect(getByDataCy('my-component')).toHaveTextContent('Hello')
 ```
-
-</details>
 
 ### Configuring Jest with Test Utils
 

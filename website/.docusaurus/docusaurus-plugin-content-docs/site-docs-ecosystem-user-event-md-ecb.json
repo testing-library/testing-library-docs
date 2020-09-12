@@ -1,0 +1,21 @@
+{
+  "unversionedId": "ecosystem-user-event",
+  "id": "ecosystem-user-event",
+  "isDocsHomePage": false,
+  "title": "user-event",
+  "description": "user-event is a companion library for Testing Library that provides more",
+  "source": "@site/../docs/ecosystem-user-event.md",
+  "permalink": "/docs/ecosystem-user-event",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-user-event.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Nightwatch Testing Library",
+    "permalink": "/docs/nightwatch-testing-library/intro"
+  },
+  "next": {
+    "title": "jest-dom",
+    "permalink": "/docs/ecosystem-jest-dom"
+  }
+}

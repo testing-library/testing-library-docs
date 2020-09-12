@@ -1,0 +1,22 @@
+{
+  "unversionedId": "react-testing-library/setup",
+  "id": "react-testing-library/setup",
+  "isDocsHomePage": false,
+  "title": "Setup",
+  "description": "React Testing Library does not require any configuration to be used. However,",
+  "source": "@site/../docs/react-testing-library/setup.md",
+  "permalink": "/docs/react-testing-library/setup",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/setup.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Setup",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Example",
+    "permalink": "/docs/react-testing-library/example-intro"
+  },
+  "next": {
+    "title": "API",
+    "permalink": "/docs/react-testing-library/api"
+  }
+}

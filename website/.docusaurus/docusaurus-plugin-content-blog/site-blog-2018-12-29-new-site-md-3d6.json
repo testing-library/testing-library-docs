@@ -1,0 +1,14 @@
+{
+  "permalink": "/blog/2018/12/29/new-site",
+  "source": "@site/blog/2018-12-29-new-site.md",
+  "description": "We have a docs site now! It's built with Docusaurus.",
+  "date": "2018-12-29T00:00:00.000Z",
+  "tags": [],
+  "title": "New Site",
+  "readingTime": 0.52,
+  "truncated": false,
+  "prevItem": {
+    "title": "Multi-Framework Code Blocks",
+    "permalink": "/blog/2019/03/17/code-blocks"
+  }
+}

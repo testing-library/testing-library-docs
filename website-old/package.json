@@ -1,0 +1,34 @@
+{
+  "name": "react-testing-library-docs",
+  "author": "Alex Krolick",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "examples": "docusaurus-examples",
+    "start": "docusaurus-start",
+    "build": "docusaurus-build",
+    "write-translations": "docusaurus-write-translations",
+    "version": "docusaurus-version",
+    "rename-version": "docusaurus-rename-version",
+    "format-docs": "prettier --write '../docs/**/*.md'"
+  },
+  "devDependencies": {
+    "docusaurus": "^1.7.2",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": ["prettier --write", "git add"],
+      "../docs/**/*.md": ["prettier --write --parser=markdown", "git add"],
+      "*.md": ["prettier --write --parser=markdown", "git add"],
+      "*.json": ["prettier --write --parser=json", "git add"]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

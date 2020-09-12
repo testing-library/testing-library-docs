@@ -1,0 +1,22 @@
+{
+  "unversionedId": "react-native-testing-library/intro",
+  "id": "react-native-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "Introduction",
+  "description": "React Native Testing Library is a testing library for React Native inspired",
+  "source": "@site/../docs/react-native-testing-library/intro.md",
+  "permalink": "/docs/react-native-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-native-testing-library/intro.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Introduction",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Examples",
+    "permalink": "/docs/bs-react-testing-library/examples"
+  },
+  "next": {
+    "title": "Example",
+    "permalink": "/docs/react-native-testing-library/example-intro"
+  }
+}

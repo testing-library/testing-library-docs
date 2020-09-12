@@ -1,0 +1,21 @@
+{
+  "unversionedId": "guide-which-query",
+  "id": "guide-which-query",
+  "isDocsHomePage": false,
+  "title": "Which query should I use?",
+  "description": "Priority",
+  "source": "@site/../docs/guide-which-query.md",
+  "permalink": "/docs/guide-which-query",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guide-which-query.md",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Recipes",
+    "permalink": "/docs/recipes"
+  },
+  "next": {
+    "title": "Appearance and Disappearance",
+    "permalink": "/docs/guide-disappearance"
+  }
+}

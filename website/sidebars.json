@@ -3,9 +3,9 @@
     "Getting Started": ["intro", "guiding-principles", "using-fake-timers"],
     "Frameworks": [
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "DOM Testing Library",
-        "ids": [
+        "items": [
           "dom-testing-library/intro",
           "dom-testing-library/install",
           "dom-testing-library/example-intro",
@@ -20,39 +20,38 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "React Testing Library",
-        "ids": [
+        "items": [
           "react-testing-library/intro",
           "react-testing-library/example-intro",
           "react-testing-library/setup",
           "react-testing-library/api",
-          "react-testing-library/migrate-from-enzyme",
           "react-testing-library/faq",
           "react-testing-library/cheatsheet"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Reason Testing Library",
-        "ids": [
+        "items": [
           "bs-react-testing-library/intro",
           "bs-react-testing-library/examples"
         ]
       },
       {
-        "type": "subcategory",
-        "label": "React Native Testing Library",
-        "ids": [
+        "type": "category",
+        "label": "Native Testing Library",
+        "items": [
           "react-native-testing-library/intro",
           "react-native-testing-library/example-intro",
           "react-native-testing-library/setup"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Vue Testing Library",
-        "ids": [
+        "items": [
           "vue-testing-library/intro",
           "vue-testing-library/examples",
           "vue-testing-library/setup",
@@ -62,9 +61,9 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Marko Testing Library",
-        "ids": [
+        "items": [
           "marko-testing-library/intro",
           "marko-testing-library/setup",
           "marko-testing-library/api"
@@ -72,18 +71,18 @@
       },
       "angular-testing-library/intro",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Angular Testing Library",
-        "ids": [
+        "items": [
           "angular-testing-library/intro",
           "angular-testing-library/examples",
           "angular-testing-library/api"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Preact Testing Library",
-        "ids": [
+        "items": [
           "preact-testing-library/intro",
           "preact-testing-library/example",
           "preact-testing-library/api",
@@ -91,9 +90,9 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Svelte Testing Library",
-        "ids": [
+        "items": [
           "svelte-testing-library/intro",
           "svelte-testing-library/setup",
           "svelte-testing-library/example",
@@ -113,10 +112,9 @@
       "ecosystem-react-select-event",
       "ecosystem-eslint-plugin-testing-library",
       "ecosystem-eslint-plugin-jest-dom",
-      "ecosystem-riot-testing-library",
-      "ecosystem-jasmine-dom"
+      "ecosystem-riot-testing-library"
     ],
-    "Help": ["faq", "learning", "contributing"]
+    "Help": ["learning", "contributing"]
   },
   "recipes": {
     "Guides": [
@@ -139,6 +137,6 @@
       "example-react-modal",
       "example-external"
     ],
-    "Help": ["faq", "learning", "contributing"]
+    "Help": ["learning", "contributing"]
   }
 }

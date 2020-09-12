@@ -51,7 +51,7 @@ The default `onTimeout` takes the error and appends the `container`'s printed
 state to the error message which should hopefully make it easier to track down
 what caused the timeout.
 
-<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
+The default `mutationObserverOptions` is
 `{subtree: true, childList: true, attributes: true, characterData: true}` which
 will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
@@ -99,14 +99,14 @@ el.parentElement.removeChild(el)
 or an empty array:
 
 ```javascript
-waitForElementToBeRemoved(null).catch(err => console.log(err))
-waitForElementToBeRemoved(queryByText(/not here/i)).catch(err =>
+waitForElementToBeRemoved(null).catch((err) => console.log(err))
+waitForElementToBeRemoved(queryByText(/not here/i)).catch((err) =>
   console.log(err)
 )
-waitForElementToBeRemoved(queryAllByText(/not here/i)).catch(err =>
+waitForElementToBeRemoved(queryAllByText(/not here/i)).catch((err) =>
   console.log(err)
 )
-waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err =>
+waitForElementToBeRemoved(() => getByText(/not here/i)).catch((err) =>
   console.log(err)
 )
 
@@ -158,7 +158,7 @@ changed:
 const container = document.createElement('div')
 waitForDomChange({ container })
   .then(() => console.log('DOM changed!'))
-  .catch(err => console.log(`Error you need to deal with: ${err}`))
+  .catch((err) => console.log(`Error you need to deal with: ${err}`))
 container.append(document.createElement('p'))
 // if 👆 was the only code affecting the container and it was not run,
 // waitForDomChange would throw an error
@@ -172,7 +172,7 @@ container
 ```javascript
 const container = document.createElement('div')
 container.setAttribute('data-cool', 'true')
-waitForDomChange({ container }).then(mutationsList => {
+waitForDomChange({ container }).then((mutationsList) => {
   const mutation = mutationsList[0]
   console.log(
     `was cool: ${mutation.oldValue}\ncurrently cool: ${mutation.target.dataset.cool}`
@@ -192,7 +192,7 @@ wait for are descendants of `container`.
 The default `timeout` is `1000ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://jestjs.io/docs/en/jest-object.html#jestsettimeouttimeout).
 
-<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
+The default `mutationObserverOptions` is
 `{subtree: true, childList: true, attributes: true, characterData: true}` which
 will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
@@ -251,7 +251,7 @@ wait for will be attached to it, or set a different `container`.
 The default `timeout` is `4500ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://facebook.github.io/jest/docs/en/jest-object.html#jestsettimeouttimeout).
 
-<a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
+The default `mutationObserverOptions` is
 `{subtree: true, childList: true, attributes: true, characterData: true}` which
 will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
