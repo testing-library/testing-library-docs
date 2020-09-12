@@ -172,6 +172,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://www.pcoroneos.com"><img src="https://avatars2.githubusercontent.com/u/40515238?v=4" width="100px;" alt=""/><br /><sub><b>Paul Coroneos</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=PaulACoroneos" title="Documentation">📖</a></td>
     <td align="center"><a href="https://solverfox.dev"><img src="https://avatars3.githubusercontent.com/u/12292047?v=4" width="100px;" alt=""/><br /><sub><b>Sebastian Silbermann</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=eps1lon" title="Documentation">📖</a> <a href="https://github.com/testing-library/testing-library-docs/pulls?q=is%3Apr+reviewed-by%3Aeps1lon" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://paulsalaets.com/"><img src="https://avatars0.githubusercontent.com/u/123952?v=4" width="100px;" alt=""/><br /><sub><b>Paul Salaets</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=psalaets" title="Documentation">📖</a></td>
   </tr>
 </table>
 
