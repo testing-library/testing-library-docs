@@ -7,6 +7,14 @@ title: API
 as these methods:
 
 - [`render`](#render)
+  - [`render` Options](#render-options)
+    - [`container`](#container)
+- [`render` Result](#render-result)
+  - [`...queries`](#queries)
+  - [`debug`](#debug)
+  - [`rerender`](#rerender)
+  - [`emitted`](#emitted)
+  - [`container`](#container-1)
 - [`cleanup`](#cleanup)
 
 ---
@@ -207,8 +215,9 @@ expect(emitted()).toMatchInlineSnapshot(`
 ### `container`
 
 The containing DOM node of your rendered Marko Component. For server side tests
-this is a [JSDOM.fragment](), and for client side tests this will be whatever is
-passed as the `container` render option.
+this is a [JSDOM.fragment](https://github.com/jsdom/jsdom#fragment), and for
+client side tests this will be whatever is passed as the `container` render
+option.
 
 > Tip: To get the root element of your rendered element, use
 > `container.firstChild`.
