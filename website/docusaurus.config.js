@@ -144,8 +144,7 @@ module.exports = {
           editUrl:
             'https://github.com/testing-library/testing-library-docs/blob/master/docs/',
           path: '../docs',
-          sidebarPath:
-            '/Users/matan/Dev/testing-library-docs/website/sidebars.json',
+          sidebarPath: './sidebars.json',
         },
         blog: {
           path: 'blog',
