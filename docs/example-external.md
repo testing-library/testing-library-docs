@@ -20,5 +20,5 @@ sidebar_label: External Examples
   Tolinski
 
 <a href="https://youtu.be/JKOwJUM4_RM">
-  <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style="margin-left: 36px" />
+  <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style={{marginLeft: 36}} />
 </a>

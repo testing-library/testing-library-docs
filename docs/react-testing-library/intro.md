@@ -74,7 +74,7 @@ Have a look at the "What is React Testing library?" video below for an
 introduction to the library.
 
 <a href="https://youtu.be/JKOwJUM4_RM">
-  <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style="margin-left: 0" />
+  <img width="200px" alt="what is react testing library" src='https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg' style={{marginLeft: 0}} />
 </a>
 
 Also, don't miss this
