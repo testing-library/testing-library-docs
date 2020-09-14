@@ -168,17 +168,20 @@ The example below will find the input node for the following DOM structures:
 <input aria-label="username" />
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
-```javascript
+```js
 import { screen } from '@testing-library/dom'
 
 const inputNode = screen.getByLabelText('Username')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
 ```js
 import { render, screen } from '@testing-library/react'
@@ -188,13 +191,15 @@ render(<Login />)
 const inputNode = screen.getByLabelText('username')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByLabelText('username').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 It will NOT find the input node for label text broken up by elements. You can
 use `getByRole('textbox', { name: 'Username' })` instead which is robust against
@@ -259,9 +264,9 @@ matches the given [`TextMatch`](#textmatch).
 <input placeholder="Username" />
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -269,7 +274,8 @@ import { screen } from '@testing-library/dom'
 const inputNode = screen.getByPlaceholderText('Username')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
 ```js
 import { render, screen } from '@testing-library/react'
@@ -278,13 +284,15 @@ render(<MyComponent />)
 const inputNode = screen.getByPlaceholderText('Username')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByPlaceholderText('Username').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 > **Note**
 >
@@ -315,9 +323,9 @@ matching the given [`TextMatch`](#textmatch).
 <a href="/about">About ℹ️</a>
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -325,7 +333,8 @@ import { screen } from '@testing-library/dom'
 const aboutAnchorNode = screen.getByText(/about/i)
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
 ```js
 import { render, screen } from '@testing-library/react'
@@ -334,13 +343,15 @@ render(<MyComponent />)
 const aboutAnchorNode = screen.getByText(/about/i)
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByText(/about/i).should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 It also works with `input`s whose `type` attribute is either `submit` or
 `button`:
@@ -390,9 +401,9 @@ as it's deprecated).
 <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -400,22 +411,25 @@ import { screen } from '@testing-library/dom'
 const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
 const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByAltText(/incredibles.*? poster/i).should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 ### `ByTitle`
 
@@ -444,9 +458,9 @@ Will also find a `title` element within an SVG.
 </svg>
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -455,9 +469,10 @@ const deleteElement = screen.getByTitle('Delete')
 const closeElement = screen.getByTitle('Close')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
@@ -465,14 +480,16 @@ const deleteElement = screen.getByTitle('Delete')
 const closeElement = screen.getByTitle('Close')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByTitle('Delete').should('exist')
 cy.findByTitle('Close').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 ### `ByDisplayValue`
 
@@ -502,9 +519,9 @@ display value.
 document.getElementById('lastName').value = 'Norris'
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -512,22 +529,25 @@ import { screen } from '@testing-library/dom'
 const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
 const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByDisplayValue('Norris').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 #### `textarea`
 
@@ -539,9 +559,9 @@ cy.findByDisplayValue('Norris').should('exist')
 document.getElementById('messageTextArea').value = 'Hello World'
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -549,22 +569,25 @@ import { screen } from '@testing-library/dom'
 const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
 const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByDisplayValue('Hello World').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 #### `select`
 
@@ -580,9 +603,9 @@ matches the given [`TextMatch`](#textmatch).
 </select>
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -590,22 +613,25 @@ import { screen } from '@testing-library/dom'
 const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
 const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByDisplayValue('Alaska').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 ### `ByRole`
 
@@ -761,9 +787,9 @@ To learn more about the pressed state see
 <div role="dialog">...</div>
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -771,22 +797,25 @@ import { screen } from '@testing-library/dom'
 const dialogContainer = screen.getByRole('dialog')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
 const dialogContainer = screen.getByRole('dialog')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByRole('dialog').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 #### `queryFallbacks`
 
@@ -875,9 +904,9 @@ also accepts a [`TextMatch`](#textmatch)).
 <div data-testid="custom-element" />
 ```
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -885,22 +914,25 @@ import { screen } from '@testing-library/dom'
 const element = screen.getByTestId('custom-element')
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
 const element = screen.getByTestId('custom-element')
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
 ```js
 cy.findByTestId('custom-element').should('exist')
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>
 
 > In the spirit of [the guiding principles](guiding-principles.md), it is
 > recommended to use this only after the other queries don't work for your use

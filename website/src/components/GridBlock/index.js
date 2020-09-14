@@ -10,7 +10,6 @@ import classNames from 'classnames'
 
 export default class GridBlock extends React.Component {
   renderBlock(origBlock) {
-    debugger
     const blockDefaults = {
       imageAlign: 'left',
     }

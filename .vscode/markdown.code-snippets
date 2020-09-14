@@ -14,40 +14,5 @@
 	// 		"$2"
 	// 	],
 	// 	"description": "Log output to console"
-	// },
-	"Multilanguage Code Block": {
-		"scope": "markdown",
-		"prefix": "docblock",
-		"body": [
-			"```html",
-			"$4",
-			"```",
-			"",
-			"<!--DOCUSAURUS_CODE_TABS-->",
-			"",
-			"<!--Native-->",
-			"```js",
-			"import { $1 } from '@testing-library/dom'",
-			"",
-			"const container = document.body",
-			"const $3 = $1(container, '$2')",
-			"```",
-			"",
-			"<!--React-->",
-			"```js",
-			"import { render } from '@testing-library/react'",
-			"",
-			"const { $1 } = render(<MyComponent />)",
-			"const $3 = $1('$2')",
-			"```",
-			"",
-			"<!--Cypress-->",
-			"```js",
-			"cy.$1('$2').should('exist')",
-			"```",
-			"",
-			"<!--END_DOCUSAURUS_CODE_TABS-->"
-		],
-		"description": "Create a Docusaurus multi-language code block"
-	}
+	// }
 }

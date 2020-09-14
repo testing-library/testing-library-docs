@@ -14,8 +14,8 @@ import Layout from '@theme/Layout'
 const HomeSplash = props => {
   const { language = '' } = props
   const { siteConfig } = useDocusaurusContext()
-  const { baseUrl, docsUrl } = siteConfig
-  const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
+  const { baseUrl, customFields } = siteConfig
+  const docsPart = `${customFields.docsPath ? `${customFields.docsPath}/` : ''}`
   const langPart = `${language ? `${language}/` : ''}`
   const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
 
@@ -254,11 +254,11 @@ export default class Index extends React.Component {
     )
 
     const Showcase = () => {
-      if ((siteConfig.users || []).length === 0) {
+      if ((siteConfig.customFields.users || []).length === 0) {
         return null
       }
 
-      const showcase = siteConfig.users
+      const showcase = siteConfig.customFields.users
         .filter(user => user.pinned)
         .map(user => (
           <a href={user.infoLink} key={user.infoLink}>

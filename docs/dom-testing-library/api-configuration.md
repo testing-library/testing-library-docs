@@ -54,15 +54,16 @@ and related queries. Defaults to `data-testid`.
 [`getBy*`](api-queries#getby) or [`getAllBy*`](api-queries#getallby) fail. Takes
 the error message and container object as arguments.
 
-`asyncUtilTimeout`: The global timeout value in milliseconds used by `waitFor` utilities.
-Defaults to 1000ms.
+`asyncUtilTimeout`: The global timeout value in milliseconds used by `waitFor`
+utilities. Defaults to 1000ms.
 
-<!--DOCUSAURUS_CODE_TABS-->
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
-<!--Native-->
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
 
-```js
-// setup-tests.js
+```js title="setup-tests.js"
 import { configure } from '@testing-library/dom'
 import serialize from 'my-custom-dom-serializer'
 
@@ -77,22 +78,23 @@ configure({
 })
 ```
 
-<!--React-->
+  </TabItem>
+  <TabItem value="react">
 
-```js
-// setup-tests.js
+```js title="setup-tests.js"
 import { configure } from '@testing-library/react'
 
 configure({ testIdAttribute: 'data-my-test-id' })
 ```
 
-<!--Cypress-->
+  </TabItem>
+  <TabItem value="cypress">
 
-```js
-// setup-tests.js
+```js title="setup-tests.js"
 import { configure } from '@testing-library/cypress'
 
 configure({ testIdAttribute: 'data-my-test-id' })
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+  </TabItem>
+  </Tabs>

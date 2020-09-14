@@ -132,6 +132,7 @@ module.exports = {
     },
     repoUrl: 'https://github.com/testing-library/dom-testing-library',
     docsRepoUrl: 'https://github.com/testing-library/testing-library-docs',
+    docsPath: 'docs',
   },
   onBrokenLinks: 'log',
   presets: [
