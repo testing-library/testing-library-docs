@@ -183,7 +183,7 @@ const inputNode = screen.getByLabelText('Username')
   </TabItem>
   <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<Login />)
@@ -277,7 +277,7 @@ const inputNode = screen.getByPlaceholderText('Username')
   </TabItem>
   <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)
@@ -336,7 +336,7 @@ const aboutAnchorNode = screen.getByText(/about/i)
   </TabItem>
   <TabItem value="react">
 
-```js
+```jsx
 import { render, screen } from '@testing-library/react'
 
 render(<MyComponent />)

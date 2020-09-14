@@ -148,7 +148,7 @@ module.exports = {
           sidebarPath: './sidebars.json',
         },
         blog: {
-          path: 'blog',
+          path: './blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -177,6 +177,11 @@ module.exports = {
         {
           to: '/help',
           label: 'Help',
+          position: 'left',
+        },
+        {
+          to: '/blog',
+          label: 'Blog',
           position: 'left',
         },
       ],
