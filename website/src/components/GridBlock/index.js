@@ -7,6 +7,7 @@
 
 import React from 'react'
 import classNames from 'classnames'
+import { MarkdownBlock } from '../MarkdownBlock'
 
 export default class GridBlock extends React.Component {
   renderBlock(origBlock) {
@@ -47,7 +48,7 @@ export default class GridBlock extends React.Component {
         {topLeftImage}
         <div className="blockContent">
           {this.renderBlockTitle(block.title)}
-          {block.content}
+          <MarkdownBlock>{block.content}</MarkdownBlock>
         </div>
         {bottomRightImage}
       </div>
@@ -77,7 +78,11 @@ export default class GridBlock extends React.Component {
       return null
     }
 
-    return <h2>{title}</h2>
+    return (
+      <h2>
+        <MarkdownBlock>{title}</MarkdownBlock>
+      </h2>
+    )
   }
 
   render() {
