@@ -286,7 +286,7 @@ export default class Index extends React.Component {
           <div className="more-users">
             <a
               className="button button--primary button--outline"
-              href={pageUrl('users.html')}
+              href={pageUrl('users')}
             >
               More {siteConfig.title} Users
             </a>
