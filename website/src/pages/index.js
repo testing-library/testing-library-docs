@@ -53,7 +53,11 @@ const HomeSplash = props => {
 
   const Button = props => (
     <div className="pluginWrapper buttonWrapper">
-      <a className="button" href={props.href} target={props.target}>
+      <a
+        className="button button--primary button--outline"
+        href={props.href}
+        target={props.target}
+      >
         {props.children}
       </a>
     </div>
@@ -280,7 +284,10 @@ export default class Index extends React.Component {
           <h2>Who is Using This?</h2>
           <div className="logos">{showcase}</div>
           <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
+            <a
+              className="button button--primary button--outline"
+              href={pageUrl('users.html')}
+            >
               More {siteConfig.title} Users
             </a>
           </div>

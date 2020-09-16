@@ -347,10 +347,6 @@
   padding: 0 2px;
 }
 
-.promoSection .promoRow .pluginRowBlock .pluginWrapper .button {
-  color: var(--ifm-heading-color)
-}
-
 .promoSection .promoRow .pluginRowBlock iframe {
   margin-left: 2px;
   margin-top: 5px;
