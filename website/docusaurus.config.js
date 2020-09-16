@@ -16,112 +16,132 @@ module.exports = {
   ],
   favicon: 'img/octopus-32x32.png',
   customFields: {
+    // List of projects/orgs using your project for the users page.
+    // You should add a lightImage and a darkImage for each theme.
     users: [
       {
         caption: 'PayPal',
-        image: '/img/users/paypal.svg',
+        lightImage: '/img/users/paypal.svg',
+        darkImage: '/img/users/paypal.svg',
         infoLink: 'https://www.paypal.com',
         pinned: true,
       },
       {
         caption: 'Walmart Labs',
         pinned: true,
-        image: '/img/users/walmart.png',
+        lightImage: '/img/users/walmart.png',
+        darkImage: '/img/users/walmart.png',
         infoLink: 'https://www.walmartlabs.com/',
       },
       {
         caption: 'Tiller',
-        image: '/img/users/tiller.svg',
+        lightImage: '/img/users/tiller.svg',
+        darkImage: '/img/users/tiller.svg',
         infoLink: 'https://www.tillersystems.com',
         pinned: true,
       },
       {
         caption: 'Codecademy',
-        image: '/img/users/codecademy.svg',
+        lightImage: '/img/users/codecademy.svg',
+        darkImage: '/img/users/codecademy.svg',
         infoLink: 'https://www.codecademy.com',
         pinned: true,
       },
       {
         caption: 'Autodesk',
-        image: '/img/users/autodesk.svg',
+        lightImage: '/img/users/autodesk.svg',
+        darkImage: '/img/users/autodesk.svg',
         infoLink: 'https://www.autodesk.com',
         pinned: true,
       },
       {
         caption: 'Sweepbright',
-        image: '/img/users/sweepbright.svg',
+        lightImage: '/img/users/sweepbright.svg',
+        darkImage: '/img/users/sweepbright.svg',
         infoLink: 'https://sweepbright.com',
         pinned: true,
       },
       {
         caption: 'TravelPerk',
-        image: '/img/users/travelperk.svg',
+        lightImage: '/img/users/travelperk.svg',
+        darkImage: '/img/users/travelperk.svg',
         infoLink: 'https://www.travelperk.com',
         pinned: true,
       },
       {
         caption: 'Velo Payments',
-        image: '/img/users/velopayments.svg',
+        lightImage: '/img/users/velopayments.svg',
+        darkImage: '/img/users/velopayments.svg',
         infoLink: 'https://www.velopayments.com',
         pinned: true,
       },
       {
         caption: 'Parsley Health',
-        image: '/img/users/parsleyhealth.svg',
+        lightImage: '/img/users/parsleyhealth.svg',
+        darkImage: '/img/users/parsleyhealth.svg',
         infoLink: 'https://www.parsleyhealth.com',
         pinned: true,
       },
       {
         caption: 'Facebook Open Source',
-        image: '/img/users/facebook-open-source.png',
+        lightImage: '/img/users/facebook-open-source.png',
+        darkImage: '/img/users/facebook-open-source.png',
         infoLink: 'https://opensource.facebook.com',
         pinned: true,
       },
       {
         caption: 'Expedia Group',
-        image: '/img/users/expediagroup.svg',
+        lightImage: '/img/users/expediagroup.svg',
+        darkImage: '/img/users/expediagroup.svg',
         infoLink: 'https://www.expediagroup.com',
         pinned: true,
       },
       {
         caption: 'Wix.com',
-        image: '/img/users/wix.svg',
+        lightImage: '/img/users/wix.svg',
+        darkImage: '/img/users/wix.svg',
         infoLink: 'https://www.wix.com',
         pinned: true,
       },
       {
         caption: 'Testsigma',
-        image: '/img/users/testsigma.svg',
+        lightImage: '/img/users/testsigma.svg',
+        darkImage: '/img/users/testsigma.svg',
         infoLink: 'https://www.testsigma.com',
         pinned: true,
       },
       {
         caption: 'intelliHR',
-        image: '/img/users/intellihr.svg',
+        lightImage: '/img/users/intellihr.svg',
+        darkImage: '/img/users/intellihr.svg',
         infoLink: 'https://intellihr.com.au',
         pinned: true,
       },
       {
         caption: 'Quizlet',
-        image: '/img/users/quizlet.svg',
+        lightImage: '/img/users/quizlet.svg',
+        darkImage: '/img/users/quizlet.svg',
         infoLink: 'https://quizlet.com',
         pinned: true,
       },
       {
         caption: 'Radity',
-        image: '/img/users/radity.svg',
+        lightImage: '/img/users/radity.svg',
+        darkImage: '/img/users/radity.svg',
         infoLink: 'https://radity.com',
         pinned: true,
       },
       {
         caption: 'Gusto',
-        image: '/img/users/gusto.svg',
+        lightImage: '/img/users/gusto.svg',
+        darkImage: '/img/users/gusto.svg',
         infoLink: 'https://gusto.com/',
         pinned: true,
       },
       {
         caption: 'iFood',
-        image: '/img/users/ifood.png',
+        lightImage: '/img/users/ifood.png',
+        darkImage: '/img/users/ifood.png',
         infoLink: 'https://www.ifood.com.br',
         pinned: true,
       },
@@ -235,12 +255,11 @@ module.exports = {
               html: `
               <a target="_blank" rel="noreferrer noopener" class="github-button"
                 href="https://github.com/testing-library/react-testing-library"
-                data-color-scheme="no-preference: light; light: light; dark: dark;"
                 data-icon="octicon-star"
                 data-count-href="/testing-library/react-testing-library/stargazers"
                 data-show-count="true"
                 data-count-aria-label="# stargazers on GitHub"
-                aria-label="Star this project on GitHub" />
+                aria-label="Star this project on GitHub">Star</a>
               `,
             },
             {

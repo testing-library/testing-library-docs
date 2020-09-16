@@ -7,6 +7,7 @@
 
 import React from 'react'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import useThemeContext from '@theme/hooks/useThemeContext'
 import GridBlock from '../components/GridBlock'
 import Container from '../components/Container'
 import Layout from '@theme/Layout'
@@ -254,6 +255,8 @@ export default class Index extends React.Component {
     )
 
     const Showcase = () => {
+      const { isDarkTheme } = useThemeContext()
+
       if ((siteConfig.customFields.users || []).length === 0) {
         return null
       }
@@ -262,7 +265,11 @@ export default class Index extends React.Component {
         .filter(user => user.pinned)
         .map(user => (
           <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
+            <img
+              src={isDarkTheme ? user.darkImage : user.lightImage}
+              alt={user.caption}
+              title={user.caption}
+            />
           </a>
         ))
 
