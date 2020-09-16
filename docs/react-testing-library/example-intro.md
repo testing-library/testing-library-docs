@@ -38,7 +38,7 @@ test('loads and displays greeting', async () => {
   expect(screen.getByRole('button')).toHaveAttribute('disabled')
 })
 
-test('handlers server error', async () => {
+test('handles server error', async () => {
   server.use(
     rest.get('/greeting', (req, res, ctx) => {
       return res(ctx.status(500))
@@ -158,11 +158,26 @@ await waitFor(() =>
 
 ### Assert
 
+```jsx
+// assert that the alert message is correct.
+expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+
+// assert that the button is not disabled.
+expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
+```
+
+### System Under Test
+
 fetch.js
 
 ```jsx
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import axios from 'axios'
+
+const initialState = {
+  error: null,
+  greeting: null,
+}
 
 function greetingReducer(state, action) {
   switch (action.type) {
@@ -172,9 +187,11 @@ function greetingReducer(state, action) {
         greeting: action.greeting,
       }
     }
-    case: 'ERROR': {
-      error: action.error,
-      greeting: null
+    case 'ERROR': {
+      return {
+        error: action.error,
+        greeting: null,
+      }
     }
     default: {
       return state
@@ -183,19 +200,23 @@ function greetingReducer(state, action) {
 }
 
 export default function Fetch({ url }) {
-  const [{ error, greeting }, dispatch] = useReducer(greetingReducer)
+  const [{ error, greeting }, dispatch] = useReducer(
+    greetingReducer,
+    initialState
+  )
   const [buttonClicked, setButtonClicked] = useState(false)
 
   const fetchGreeting = async () => {
-    axios.get(url)
-      .then((response) => {
+    axios
+      .get(url)
+      .then(response => {
         const { data } = response
         const { greeting } = data
         dispatch({ type: 'SUCCESS', greeting })
         setButtonClicked(true)
       })
-      .catch((error) => {
-        dispatch({ type: 'ERROR' })
+      .catch(error => {
+        dispatch({ type: 'ERROR', error })
       })
   }
 

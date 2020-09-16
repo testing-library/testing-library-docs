@@ -72,9 +72,15 @@ with any testing framework and runner you're comfortable with.
     npm run test
     ```
 
+## Typescript
+
+To use Typescript, you'll need to install and configure `svelte-preprocess` and
+`ts-jest`. For full instructions, see the
+[`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
+
 ## Babel / Preprocessors
 
 If you'd like to also include [Babel](https://babeljs.io/) or any
-[Svelte preprocessors](https://github.com/kaisermann/svelte-preprocess) then
+[Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then
 simply follow the instructions over at
 [svelte-jester](https://github.com/mihar-22/svelte-jester#babel).

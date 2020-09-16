@@ -57,6 +57,17 @@ const { container } = render(<MyComponent />)
 const foo = container.querySelector('[data-foo="bar"]')
 ```
 
+## Chrome extension
+
+Do you still have problems knowing how to use Testing Library queries?
+
+There is a very cool Chrome extension named
+[Testing Playground](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano/related),
+and it helps you find the best queries to select elements. It allows you to
+inspect the element hierarchies in the Chrome Developer Tools, and provides you
+with suggestions on how to select them, while encouraging good testing
+practices.
+
 ## Playground
 
 If you want to get more familiar with these queries, you can try them out on

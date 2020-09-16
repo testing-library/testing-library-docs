@@ -39,10 +39,16 @@ sidebar_label: Learning Material
   by [Scott Sauber](https://github.com/scottsauber)
 - [How to Test Asynchronous Methods](https://www.polvara.me/posts/how-to-test-asynchronous-methods/)
   by [Gpx](https://twitter.com/Gpx)
-- [Writing better tests with react-testing-library](https://www.youtube.com/watch?v=O0VxvRqgm7g) by [Billy Mathews](https://twitter.com/BillRMathews)
+- [Writing better tests with react-testing-library](https://www.youtube.com/watch?v=O0VxvRqgm7g)
+  by [Billy Mathews](https://twitter.com/BillRMathews)
+- [React Hooks broke my tests, now what?](https://youtu.be/p3WS9GmfX_Q) by
+  [Daniel Afonso](https://twitter.com/danieljcafonso)
 
 ## Portuguese 🇧🇷
 
-- [Do Enzyme ao Testing Library](https://www.infoq.com/br/presentations/enzyme-para-react-testing-library/) by [Pablo Dinella](https://github.com/PabloDinella)
+- [Do Enzyme ao Testing Library](https://www.infoq.com/br/presentations/enzyme-para-react-testing-library/)
+  by [Pablo Dinella](https://github.com/PabloDinella)
+- [React Hooks broke my tests, now what? (Portuguese)](https://youtu.be/t46n7REGswQ?t=99)
+  by [Daniel Afonso](https://twitter.com/danieljcafonso)
 
 Feel free to contribute more!

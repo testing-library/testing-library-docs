@@ -13,6 +13,13 @@
   # Default build command.
   command = "cd website; npm install; npm run format-docs; npm run build"
 
+# Shortcut to discord server invite
+[[redirects]]
+  from = "https://testing-library.com/discord"
+  to = "https://discord.gg/c6JN9fM"
+  status = 301
+  force = true
+
 # React root to React landing page
 [[redirects]]
   from = "https://react-testing-library.com/"
@@ -41,6 +48,13 @@
   status = 301
   force = false # do not redirect if route is not 404
 
+# Support page to help page
+[[redirects]]
+  from = "/support"
+  to = "/help"
+  status = 301
+  force = true
+
 # DOM landing page to home page
 [[redirects]]
   from = "https://testing-library.com/dom/"
@@ -58,7 +72,7 @@
 # React Native landing page to home page
 [[redirects]]
   from = "https://testing-library.com/react-native/"
-  to = "https://testing-library.com/docs/native-testing-library/intro"
+  to = "https://testing-library.com/docs/react-native-testing-library/intro"
   status = 301
   force = true
 
@@ -97,12 +111,10 @@
   status = 301
   force = true
 
-# Preact page. Hopefully it'll join this website eventually
-# but for now it'll be nice to be able to use the URL in content/twitter/etc.
-# and not have to worry about updating those URLs in the future.
+# Preact landing page to home page
 [[redirects]]
   from = "https://testing-library.com/preact/"
-  to = "https://github.com/antsmartian/preact-testing-library"
+  to = "https://testing-library.com/docs/preact-testing-library/intro"
   status = 301
   force = true
 
@@ -110,5 +122,33 @@
 [[redirects]]
   from = "https://testing-library.com/jest-dom/"
   to = "https://testing-library.com/docs/ecosystem-jest-dom"
+  status = 301
+  force = true
+
+# Testcafe landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/testcafe/"
+  to = "https://testing-library.com/docs/testcafe-testing-library/intro"
+  status = 301
+  force = true
+
+# Nightwatch landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/nightwatch/"
+  to = "https://testing-library.com/docs/nightwatch-testing-library/intro"
+  status = 301
+  force = true
+
+# React Redux recipe to Redux's recipe
+[[redirects]]
+  from = "https://testing-library.com/docs/example-react-redux"
+  to = "https://redux.js.org/recipes/writing-tests#connected-components"
+  status = 301
+  force = true
+
+# Redirect screen error messe to correct page
+[[redirects]]
+  from = "https://testing-library.com/s/screen-global-error"
+  to = "https://testing-library.com/docs/dom-testing-library/api-queries#screen"
   status = 301
   force = true

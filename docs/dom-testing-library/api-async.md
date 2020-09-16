@@ -18,13 +18,14 @@ function waitFor<T>(
     container?: HTMLElement
     timeout?: number
     interval?: number
+    onTimeout?: (error: Error) => Error
     mutationObserverOptions?: MutationObserverInit
   }
 ): Promise<T>
 ```
 
-When in need to wait for any period of time you can use `waitFor`, to wait for your
-expectations to pass. Here's a simple example:
+When in need to wait for any period of time you can use `waitFor`, to wait for
+your expectations to pass. Here's a simple example:
 
 ```javascript
 // ...
@@ -46,6 +47,10 @@ before starting the intervals.
 The default `timeout` is `1000ms` which will keep you under
 [Jest's default timeout of `5000ms`](https://jestjs.io/docs/en/jest-object.html#jestsettimeouttimeout).
 
+The default `onTimeout` takes the error and appends the `container`'s printed
+state to the error message which should hopefully make it easier to track down
+what caused the timeout.
+
 <a name="mutationobserveroptions"></a>The default `mutationObserverOptions` is
 `{subtree: true, childList: true, attributes: true, characterData: true}` which
 will detect additions and removals of child elements (including text nodes) in
@@ -61,26 +66,27 @@ function waitForElementToBeRemoved<T>(
     container?: HTMLElement
     timeout?: number
     interval?: number
+    onTimeout?: (error: Error) => Error
     mutationObserverOptions?: MutationObserverInit
   }
-): Promise<T>
+): Promise<void>
 ```
 
 To wait for the removal of element(s) from the DOM you can use
 `waitForElementToBeRemoved`. The `waitForElementToBeRemoved` function is a small
-wrapper around the `wait` utility.
+wrapper around the `waitFor` utility.
 
-The first argument must be an element, array of elements, or a callback which returns
-an element or array of elements.
+The first argument must be an element, array of elements, or a callback which
+returns an element or array of elements.
 
-Here is an example where the promise resolves with `true` because the element is
-removed:
+Here is an example where the promise resolves because the element is removed:
 
 ```javascript
 const el = document.querySelector('div.getOuttaHere')
 
-waitForElementToBeRemoved(document.querySelector('div.getOuttaHere'))
-  .then(() => console.log('Element no longer in DOM'))
+waitForElementToBeRemoved(document.querySelector('div.getOuttaHere')).then(() =>
+  console.log('Element no longer in DOM')
+)
 
 el.setAttribute('data-neat', true)
 // other mutations are ignored...
@@ -94,9 +100,15 @@ or an empty array:
 
 ```javascript
 waitForElementToBeRemoved(null).catch(err => console.log(err))
-waitForElementToBeRemoved(queryByText(/not here/i)).catch(err => console.log(err))
-waitForElementToBeRemoved(queryAllByText(/not here/i)).catch(err => console.log(err))
-waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err => console.log(err))
+waitForElementToBeRemoved(queryByText(/not here/i)).catch(err =>
+  console.log(err)
+)
+waitForElementToBeRemoved(queryAllByText(/not here/i)).catch(err =>
+  console.log(err)
+)
+waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err =>
+  console.log(err)
+)
 
 // Error: The element(s) given to waitForElementToBeRemoved are already removed. waitForElementToBeRemoved requires that the element(s) exist(s) before waiting for removal.
 ```
@@ -116,9 +128,14 @@ function wait<T>(
   }
 ): Promise<T>
 ```
-Previously, wait was a wrapper around wait-for-expect and used polling instead of a MutationObserver to look for changes.  It is now an alias to waitFor and will be removed in a future release.
 
-Unlike wait, the callback parameter is mandatory in waitFor. Although you can migrate an existing `wait()` call to `waitFor( () => {} )`, it is considered bad practice to use an empty callback because it will make the tests more fragile. 
+Previously, wait was a wrapper around wait-for-expect and used polling instead
+of a MutationObserver to look for changes. It is now an alias to waitFor and
+will be removed in a future release.
+
+Unlike wait, the callback parameter is mandatory in waitFor. Although you can
+migrate an existing `wait()` call to `waitFor( () => {} )`, it is considered bad
+practice to use an empty callback because it will make the tests more fragile.
 
 ## `waitForDomChange` (DEPRECATED, use waitFor instead)
 
@@ -158,9 +175,7 @@ container.setAttribute('data-cool', 'true')
 waitForDomChange({ container }).then(mutationsList => {
   const mutation = mutationsList[0]
   console.log(
-    `was cool: ${mutation.oldValue}\ncurrently cool: ${
-      mutation.target.dataset.cool
-    }`
+    `was cool: ${mutation.oldValue}\ncurrently cool: ${mutation.target.dataset.cool}`
   )
 })
 container.setAttribute('data-cool', 'false')
@@ -182,7 +197,6 @@ The default `timeout` is `1000ms` which will keep you under
 will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
 changes.
-
 
 ## `waitForElement` (DEPRECATED, use `find*` queries or `waitFor`)
 

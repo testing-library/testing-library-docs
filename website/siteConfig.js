@@ -107,6 +107,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Global CTO Forum',
+    image: '/img/users/global-cto-forum.svg',
+    infoLink: 'https://globalctoforum.org',
+    pinned: true,
+  },
+  {
     caption: 'Gusto',
     image: '/img/users/gusto.svg',
     infoLink: 'https://gusto.com/',
@@ -116,6 +122,12 @@ const users = [
     caption: 'Zup I.T. Innovation',
     image: '/img/users/zup.png',
     infoLink: 'https://www.zup.com.br/',
+    pinned: true,
+  },
+  {
+    caption: 'iFood',
+    image: '/img/users/ifood.png',
+    infoLink: 'https://www.ifood.com.br',
     pinned: true,
   },
 ]
@@ -142,7 +154,6 @@ const siteConfig = {
     { doc: 'intro', label: 'Docs' },
     { doc: 'recipes', label: 'Recipes' },
     { page: 'help', label: 'Help' },
-    { page: 'support', label: 'Support Us' },
     { blog: true, label: 'Blog' },
   ],
 

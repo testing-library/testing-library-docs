@@ -3,6 +3,10 @@ id: api-events
 title: Firing Events
 ---
 
+> Most projects have a few use cases for `fireEvent`, but the majority of the
+> time you should probably use
+> [`@testing-library/user-event`](https://github.com/testing-library/user-event).
+
 ## `fireEvent`
 
 ```typescript
@@ -59,10 +63,10 @@ fireEvent.change(getByLabelText(/picture/i), {
 })
 ```
 
-**dataTransfer**: Drag events have a `dataTransfer` property that contains
-data transferred during the operation. As a convenience, if you provide a
-`dataTransfer` property in the `eventProperties` (second argument), then
-those properties will be added to the event.
+**dataTransfer**: Drag events have a `dataTransfer` property that contains data
+transferred during the operation. As a convenience, if you provide a
+`dataTransfer` property in the `eventProperties` (second argument), then those
+properties will be added to the event.
 
 This should predominantly be used for testing drag and drop interactions.
 
@@ -102,4 +106,17 @@ programmatically (such as `timeStamp`).
 const myEvent = createEvent.click(node, { button: 2 })
 fireEvent(node, myEvent)
 // myEvent.timeStamp can be accessed just like any other properties from myEvent
+```
+
+You can also create generic events:
+
+```javascript
+// simulate the 'input' event on a file input
+fireEvent(
+  input,
+  createEvent('input', input, {
+    target: { files: inputFiles },
+    ...init,
+  })
+)
 ```
