@@ -28,7 +28,6 @@ module.exports = {
       },
       {
         caption: 'Walmart Labs',
-        pinned: true,
         lightImage: '/img/users/walmart.png',
         darkImage: '/img/users/walmart.png',
         infoLink: 'https://www.walmartlabs.com/',
@@ -38,7 +37,6 @@ module.exports = {
         lightImage: '/img/users/tiller.svg',
         darkImage: '/img/users/tiller.svg',
         infoLink: 'https://www.tillersystems.com',
-        pinned: true,
       },
       {
         caption: 'Codecademy',
@@ -52,14 +50,12 @@ module.exports = {
         lightImage: '/img/users/autodesk.svg',
         darkImage: '/img/users/autodesk.svg',
         infoLink: 'https://www.autodesk.com',
-        pinned: true,
       },
       {
         caption: 'Sweepbright',
         lightImage: '/img/users/sweepbright.svg',
         darkImage: '/img/users/sweepbright.svg',
         infoLink: 'https://sweepbright.com',
-        pinned: true,
       },
       {
         caption: 'TravelPerk',
@@ -87,7 +83,6 @@ module.exports = {
         lightImage: '/img/users/facebook-open-source.png',
         darkImage: '/img/users/facebook-open-source.png',
         infoLink: 'https://opensource.facebook.com',
-        pinned: true,
       },
       {
         caption: 'Expedia Group',
@@ -101,7 +96,6 @@ module.exports = {
         lightImage: '/img/users/wix.svg',
         darkImage: '/img/users/wix.svg',
         infoLink: 'https://www.wix.com',
-        pinned: true,
       },
       {
         caption: 'Testsigma',
@@ -129,7 +123,6 @@ module.exports = {
         lightImage: '/img/users/radity.svg',
         darkImage: '/img/users/radity.svg',
         infoLink: 'https://radity.com',
-        pinned: true,
       },
       {
         caption: 'Gusto',
