@@ -8,7 +8,7 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import GridBlock from '../components/GridBlock'
+import { GridBlock } from '../components/GridBlock'
 
 const ExternalLink = props => (
   <a target="_blank" rel="noreferrer noopener" {...props} />
