@@ -167,29 +167,98 @@ module.exports = {
         {
           to: 'docs/',
           label: 'Docs',
-          position: 'left',
+          position: 'right',
         },
         {
           to: 'docs/recipes',
           label: 'Recipes',
-          position: 'left',
+          position: 'right',
         },
         {
           to: '/help',
           label: 'Help',
-          position: 'left',
+          position: 'right',
         },
         {
           to: '/blog',
           label: 'Blog',
-          position: 'left',
+          position: 'right',
         },
       ],
     },
     image: 'img/octopus-128x128.png',
     footer: {
-      links: [],
-      copyright: 'Copyright © 2018-2020 Kent C. Dodds and contributors',
+      links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Getting Started',
+              to: 'docs',
+            },
+            {
+              label: 'Examples',
+              to: 'docs/example-codesandbox',
+            },
+            {
+              label: 'API',
+              to: 'docs/dom-testing-library/api-queries',
+            },
+            {
+              label: 'Help',
+              to: 'docs/dom-testing-library/faq',
+            },
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'Blog',
+              to: 'blog',
+            },
+            {
+              label: 'Stack Overflow',
+              href:
+                'https://stackoverflow.com/questions/tagged/react-testing-library',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/c6JN9fM',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              html: `
+              <a target="_blank" rel="noreferrer noopener" class="github-button"
+                href="https://github.com/testing-library/react-testing-library"
+                data-color-scheme="no-preference: light; light: light; dark: dark;"
+                data-icon="octicon-star"
+                data-count-href="/testing-library/react-testing-library/stargazers"
+                data-show-count="true"
+                data-count-aria-label="# stargazers on GitHub"
+                aria-label="Star this project on GitHub" />
+              `,
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/testing-library',
+            },
+            {
+              label: 'Edit Docs on GitHub',
+              href: 'https://github.com/testing-library/testing-library-docs',
+            },
+            {
+              label: 'Hosted by Netlify',
+              href: 'https://netlify.com',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © 2018-${new Date().getFullYear()} Kent C. Dodds and contributors`,
       logo: {
         src: 'img/octopus-128x128.png',
       },
