@@ -8,7 +8,7 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import useThemeContext from '@theme/hooks/useThemeContext'
+import { Showcase } from '../components/Showcase'
 
 export default function Users(props) {
   const { siteConfig } = useDocusaurusContext()
@@ -30,7 +30,7 @@ export default function Users(props) {
               <p>This project is used by many folks</p>
             </div>
             <div className="logos">
-              <Showcase />
+              <Showcase users={siteConfig.customFields.users} />
             </div>
             <p>Are you using this project?</p>
             <a
@@ -44,18 +44,4 @@ export default function Users(props) {
       </div>
     </Layout>
   )
-}
-
-const Showcase = () => {
-  const { isDarkTheme } = useThemeContext()
-  const { siteConfig } = useDocusaurusContext()
-  return siteConfig.customFields.users.map(user => (
-    <a href={user.infoLink} key={user.infoLink}>
-      <img
-        src={isDarkTheme ? user.darkImage : user.lightImage}
-        alt={user.caption}
-        title={user.caption}
-      />
-    </a>
-  ))
 }

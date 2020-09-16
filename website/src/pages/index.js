@@ -7,9 +7,9 @@
 
 import React from 'react'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import useThemeContext from '@theme/hooks/useThemeContext'
-import GridBlock from '../components/GridBlock'
-import Container from '../components/Container'
+import { GridBlock } from '../components/GridBlock'
+import { Container } from '../components/Container'
+import { Showcase } from '../components/Showcase'
 import Layout from '@theme/Layout'
 
 const HomeSplash = props => {
@@ -258,31 +258,21 @@ export default class Index extends React.Component {
       </Block>
     )
 
-    const Showcase = () => {
-      const { isDarkTheme } = useThemeContext()
-
+    const ShowcaseWrapper = () => {
       if ((siteConfig.customFields.users || []).length === 0) {
         return null
       }
 
-      const showcase = siteConfig.customFields.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img
-              src={isDarkTheme ? user.darkImage : user.lightImage}
-              alt={user.caption}
-              title={user.caption}
-            />
-          </a>
-        ))
+      const users = siteConfig.customFields.users.filter(user => user.pinned)
 
       const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
 
       return (
         <div className="productShowcaseSection paddingBottom">
           <h2>Who is Using This?</h2>
-          <div className="logos">{showcase}</div>
+          <div className="logos">
+            <Showcase users={users} />
+          </div>
           <div className="more-users">
             <a
               className="button button--primary button--outline"
@@ -307,7 +297,7 @@ export default class Index extends React.Component {
           <Features />
           <Problem />
           <Solution />
-          <Showcase />
+          <ShowcaseWrapper />
           <Ecosystem />
         </div>
       </Layout>
