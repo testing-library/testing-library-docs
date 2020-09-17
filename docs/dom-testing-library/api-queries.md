@@ -40,8 +40,8 @@ to find more than one element, then use `findAllBy`.
 > **Note**
 >
 > this is a simple combination of `getBy*` queries and
-> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries accept the
-> `waitFor` options as the last argument. (i.e.
+> [`waitFor`](api-async#waitfor). The `findBy*` queries accept the `waitFor`
+> options as the last argument. (i.e.
 > `screen.findByText('text', queryOptions, waitForOptions)`)
 
 ### findAllBy

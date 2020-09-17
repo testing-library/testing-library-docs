@@ -4,18 +4,15 @@ title: Marko Testing Library
 sidebar_label: Introduction
 ---
 
-The [`Marko Testing Library`](gh) is a very lightweight solution for testing
-Marko components. It provides light utility functions on top of
+The [`Marko Testing Library`](https://github.com/marko-js/testing-library) is a
+very lightweight solution for testing Marko components. It provides light
+utility functions on top of
 [`@testing-library/dom`](https://github.com/testing-library/dom-testing-library)
 in a way that encourages better testing practices.
 
 ```
 npm install --save-dev @marko/testing-library
 ```
-
-- [Marko Testing Library on GitHub][gh]
-
-[gh]: https://github.com/marko-js/testing-library
 
 ## The problem
 

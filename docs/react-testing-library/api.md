@@ -7,6 +7,20 @@ title: API
 as these methods:
 
 - [`render`](#render)
+- [`render` Options](#render-options)
+  - [`container`](#container)
+  - [`baseElement`](#baseelement)
+  - [`hydrate`](#hydrate)
+  - [`wrapper`](#wrapper)
+  - [`queries`](#queries)
+- [`render` Result](#render-result)
+  - [`...queries`](#queries-1)
+  - [`container`](#container-1)
+  - [`baseElement`](#baseelement-1)
+  - [`debug`](#debug)
+  - [`rerender`](#rerender)
+  - [`unmount`](#unmount)
+  - [`asFragment`](#asfragment)
 - [`cleanup`](#cleanup)
 - [`act`](#act)
 
@@ -101,7 +115,7 @@ const { getByRowColumn, getByText } = render(<MyTable />, {
 })
 ```
 
-See [helpers](dom-testing-library/api-helpers.md) for guidance on using utility
+See [helpers](dom-testing-library/api-helpers.mdx) for guidance on using utility
 functions to create custom queries.
 
 Custom queries can also be added globally by following the
@@ -184,7 +198,7 @@ debug()
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`DOM Testing Library`](dom-testing-library/api-helpers.md#prettydom).
+[`DOM Testing Library`](dom-testing-library/api-helpers.mdx#prettydom).
 
 ### `rerender`
 

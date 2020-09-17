@@ -7,7 +7,7 @@ sidebar_label: API
 `Angular Testing Library` re-exports everything from `DOM Testing Library` as
 well as these methods:
 
-- [`render`](<(#render)>)
+- [`render`](#render)
 
 Some of the `DOM Testing Library` re-exports are patched to work easier with
 Angular:

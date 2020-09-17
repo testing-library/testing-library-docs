@@ -81,7 +81,7 @@ For more information, see [Events API](dom-testing-library/api-events.md)
 > `await` or `then()` the result.
 >
 > VTL also exposes `fireEvent.update(node, value)` event to deal with `v-model`.
-> See [the API](vue-testing-library/api#updateelem-value) for more details.
+> See [the API](api#updateelem-value) for more details.
 
 ## Other
 
@@ -90,7 +90,7 @@ For more information, see [Events API](dom-testing-library/api-events.md)
 - **configure(config)** change global options:
   `configure({testIdAttribute: 'my-test-id'})`.
 
-For more information, see [Helpers API](dom-testing-library/api-helpers.md) and
+For more information, see [Helpers API](dom-testing-library/api-helpers.mdx) and
 [Config API](dom-testing-library/api-configuration.md).
 
 ## Text Match Options

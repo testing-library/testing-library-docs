@@ -135,7 +135,7 @@ See [Events API](dom-testing-library/api-events.md)
 
 ## Other
 
-See [Helpers API](dom-testing-library/api-helpers.md),
+See [Helpers API](dom-testing-library/api-helpers.mdx),
 [Config API](dom-testing-library/api-configuration.md)
 
 - **within** take a node and return an object with all the queries bound to the

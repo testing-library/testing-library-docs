@@ -13,8 +13,11 @@ information about the library, including examples, on the project sites:
 - [Docs][docs]
 - [Project repo][gh]
 
-The project is maintained by [Callstack](callstack) which is one of the React
-Native [Partners](rn-partners), active throughout the React Native Community.
+The project is maintained by
+[Callstack](https://callstack.com/open-source/?utm_source=testing-library.com&utm_medium=referral&utm_campaign=react-native-testing-library)
+which is one of the React Native
+[Partners](https://github.com/facebook/react-native/blob/d48f7ba748a905818e8c64fe70fe5b24aa098b05/ECOSYSTEM.md#partners),
+active throughout the React Native Community.
 
 ## Quickstart
 
@@ -26,10 +29,6 @@ npm install --save-dev @testing-library/react-native
 
 [docs]: https://callstack.github.io/react-native-testing-library/
 [gh]: https://github.com/callstack/react-native-testing-library
-[callstack]:
-  https://callstack.com/open-source/?utm_source=testing-library.com&utm_medium=referral&utm_campaign=react-native-testing-library
-[rn-partners]:
-  https://github.com/facebook/react-native/blob/d48f7ba748a905818e8c64fe70fe5b24aa098b05/ECOSYSTEM.md#partners
 
 ## The problem
 
