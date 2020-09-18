@@ -35,6 +35,8 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
 
+⚠️  Using this utility with `expect.assertions` will result in flaky tests. Beware!
+
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
 
