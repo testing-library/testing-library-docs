@@ -134,7 +134,7 @@ const renderWithRouter = (ui, { route = '/' } = {}) => {
 ```jsx
 // app.test.js
 test('full app rendering/navigating', () => {
-  render(<App />)
+  renderWithRouter(<App />)
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
   const leftClick = { button: 0 }
@@ -144,14 +144,14 @@ test('full app rendering/navigating', () => {
 })
 
 test('landing on a bad page', () => {
-  render(<App />, { route: '/something-that-does-not-match' })
+  renderWithRouter(<App />, { route: '/something-that-does-not-match' })
 
   expect(screen.getByText(/no match/i)).toBeInTheDocument()
 })
 
 test('rendering a component that uses useLocation', () => {
   const route = '/some-route'
-  render(<LocationDisplay />, { route })
+  renderWithRouter(<LocationDisplay />, { route })
 
   expect(screen.getByTestId('location-display')).toHaveTextContent(route)
 })
