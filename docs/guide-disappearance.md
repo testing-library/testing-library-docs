@@ -10,7 +10,7 @@ vice versa.
 
 If you need to wait for an element to appear, the [async wait
 utilities][async-api] allow you to wait for an assertion to be satisfied before
-proceeding. The wait utilities retry until the query passes or times out.
+proceeding. The wait utilities retry until the query passes or times out. *You must always use await or some of your expectations inside the wait utility may be skipped!
 
 ```jsx
 test('movie title appears', async () => {
