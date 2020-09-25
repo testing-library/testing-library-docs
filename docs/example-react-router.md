@@ -6,99 +6,116 @@ title: React Router
 ```jsx
 // app.js
 import React from 'react'
-import { withRouter } from 'react-router'
 import { Link, Route, Switch } from 'react-router-dom'
 
-const About = () => <h1>You are on the about page</h1>
-const Home = () => <h1>You are home</h1>
-const NoMatch = () => <h1>404 Not Found</h1>
+const About = () => <div>You are on the about page</div>
+const Home = () => <div>You are home</div>
+const NoMatch = () => <div>No match</div>
 
-const LocationDisplay = withRouter(({ location }) => (
-  <div data-testid="location-display">{location.pathname}</div>
-))
+export const LocationDisplay = () => {
+  const location = useLocation()
 
-function App() {
-  return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route component={NoMatch} />
-      </Switch>
-      <LocationDisplay />
-    </div>
-  )
+  return <div data-testid="location-display">{location.pathname}</div>
 }
 
-export { LocationDisplay, App }
+export const App = () => (
+  <div>
+    <Link to="/">Home</Link>
+
+    <Link to="/about">About</Link>
+
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+
+      <Route path="/about">
+        <About />
+      </Route>
+
+      <Route>
+        <NoMatch />
+      </Route>
+    </Switch>
+
+    <LocationDisplay />
+  </div>
+)
 ```
 
 ```jsx
 // app.test.js
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { createMemoryHistory } from 'history'
 import React from 'react'
 import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
-import { render, fireEvent } from '@testing-library/react'
+
 import '@testing-library/jest-dom/extend-expect'
-import { LocationDisplay, App } from './app'
+
+import { App, LocationDisplay } from './app'
 
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
-  const { container, getByText } = render(
+  render(
     <Router history={history}>
       <App />
     </Router>
   )
   // verify page content for expected route
   // often you'd use a data-testid or role query, but this is also possible
-  expect(container.innerHTML).toMatch('You are home')
+  expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
-  fireEvent.click(getByText(/about/i))
+  const leftClick = { button: 0 }
+  userEvent.click(screen.getByText(/about/i), leftClick)
 
   // check that the content changed to the new page
-  expect(container.innerHTML).toMatch('You are on the about page')
+  expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
 })
 
-test('landing on a bad page shows 404 page', () => {
+test('landing on a bad page', () => {
   const history = createMemoryHistory()
   history.push('/some/bad/route')
-  const { getByRole } = render(
+  render(
     <Router history={history}>
       <App />
     </Router>
   )
-  expect(getByRole('heading')).toHaveTextContent('404 Not Found')
+
+  expect(screen.getByText(/no match/i)).toBeInTheDocument()
 })
 
-test('rendering a component that uses withRouter', () => {
+test('rendering a component that uses useLocation', () => {
   const history = createMemoryHistory()
   const route = '/some-route'
   history.push(route)
-  const { getByTestId } = render(
+  render(
     <Router history={history}>
       <LocationDisplay />
     </Router>
   )
-  expect(getByTestId('location-display')).toHaveTextContent(route)
+
+  expect(screen.getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
 
 ## Reducing boilerplate
 
 1. You can use the `wrapper` option to wrap a `MemoryRouter` around the
-   component you want to render (`MemoryRouter` works when you don't need access
-   to the history object itself in the test, but just need the components to be
-   able to render and navigate).
+   component you want to render.  
+   `MemoryRouter` works when you don't need access to the history object itself
+   in the test, but just need the components to be able to render and
+   navigate.  
+   If you _do_ need to change the history, you could use `BrowserRouter`.
 
 ```jsx
 import { MemoryRouter } from 'react-router-dom'
 
 test('full app rendering/navigating', () => {
-  const { container, getByText } = render(<App />, { wrapper: MemoryRouter })
+  render(<App />, { wrapper: MemoryRouter })
+
   // verify page content for expected route
-  expect(getByRole('heading')).toMatch('Home')
+  expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 })
 ```
 
@@ -107,38 +124,35 @@ test('full app rendering/navigating', () => {
 
 ```jsx
 // test utils file
-function renderWithRouter(
-  ui,
-  {
-    route = '/',
-    history = createMemoryHistory({ initialEntries: [route] }),
-  } = {}
-) {
-  const Wrapper = ({ children }) => (
-    <Router history={history}>{children}</Router>
-  )
-  return {
-    ...render(ui, { wrapper: Wrapper }),
-    // adding `history` to the returned utilities to allow us
-    // to reference it in our tests (just try to avoid using
-    // this to test implementation details).
-    history,
-  }
+const renderWithRouter = (ui, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route)
+
+  return render(ui, { wrapper: BrowserRouter })
 }
 ```
 
 ```jsx
 // app.test.js
-test('landing on a bad page', () => {
-  const { container } = renderWithRouter(<App />, {
-    route: '/something-that-does-not-match',
-  })
-  expect(container.innerHTML).toMatch('No match')
+test('full app rendering/navigating', () => {
+  renderWithRouter(<App />)
+  expect(screen.getByText(/you are home/i)).toBeInTheDocument()
+
+  const leftClick = { button: 0 }
+  userEvent.click(screen.getByText(/about/i), leftClick)
+
+  expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
 })
 
-test('rendering a component that uses withRouter', () => {
+test('landing on a bad page', () => {
+  renderWithRouter(<App />, { route: '/something-that-does-not-match' })
+
+  expect(screen.getByText(/no match/i)).toBeInTheDocument()
+})
+
+test('rendering a component that uses useLocation', () => {
   const route = '/some-route'
-  const { getByTestId } = renderWithRouter(<LocationDisplay />, { route })
-  expect(getByTestId('location-display')).toHaveTextContent(route)
+  renderWithRouter(<LocationDisplay />, { route })
+
+  expect(screen.getByTestId('location-display')).toHaveTextContent(route)
 })
 ```
