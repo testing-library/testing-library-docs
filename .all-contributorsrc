@@ -983,6 +983,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "michaeldeboey",
+      "name": "Michaël De Boey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6643991?v=4",
+      "profile": "https://michaeldeboey.be",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
