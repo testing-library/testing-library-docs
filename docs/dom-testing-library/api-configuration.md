@@ -54,8 +54,8 @@ and related queries. Defaults to `data-testid`.
 [`getBy*`](api-queries#getby) or [`getAllBy*`](api-queries#getallby) fail. Takes
 the error message and container object as arguments.
 
-`asyncUtilTimeout`: The global timeout value in milliseconds used by `waitFor` utilities.
-Defaults to 1000ms.
+`asyncUtilTimeout`: The global timeout value in milliseconds used by `waitFor`
+utilities. Defaults to 1000ms.
 
 <!--DOCUSAURUS_CODE_TABS-->
 

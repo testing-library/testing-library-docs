@@ -45,7 +45,8 @@ Testing Library encourages you to avoid testing
 [implementation details](https://kentcdodds.com/blog/testing-implementation-details)
 like the internals of a component you're testing (though it's still possible).
 [The Guiding Principles](/docs/guiding-principles) of this library emphasize a
-focus on tests that closely resemble how your web pages are interacted by the users.
+focus on tests that closely resemble how your web pages are interacted by the
+users.
 
 You may want to avoid following implementation details:
 
