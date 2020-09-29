@@ -992,6 +992,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "washingtonsoares",
+      "name": "Washington Soares",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5726140?v=4",
+      "profile": "https://thewashington.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
