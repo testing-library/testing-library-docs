@@ -1001,6 +1001,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jamisuomalainen",
+      "name": "Jami Suomalainen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19325270?v=4",
+      "profile": "https://github.com/jamisuomalainen",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
