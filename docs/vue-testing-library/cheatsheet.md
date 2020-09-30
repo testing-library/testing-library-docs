@@ -81,7 +81,7 @@ For more information, see [Events API](dom-testing-library/api-events.md)
 > `await` or `then()` the result.
 >
 > VTL also exposes `fireEvent.update(node, value)` event to deal with `v-model`.
-> See [the API](vue-testing-library/api#updateelem-value) for more details.
+> See [the API](vue-testing-library/api.md#updateelem-value) for more details.
 
 ## Other
 
