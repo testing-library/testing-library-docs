@@ -175,6 +175,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://paulsalaets.com/"><img src="https://avatars0.githubusercontent.com/u/123952?v=4" width="100px;" alt=""/><br /><sub><b>Paul Salaets</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=psalaets" title="Documentation">📖</a></td>
     <td align="center"><a href="https://michaeldeboey.be"><img src="https://avatars3.githubusercontent.com/u/6643991?v=4" width="100px;" alt=""/><br /><sub><b>Michaël De Boey</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=michaeldeboey" title="Documentation">📖</a></td>
     <td align="center"><a href="https://thewashington.dev"><img src="https://avatars3.githubusercontent.com/u/5726140?v=4" width="100px;" alt=""/><br /><sub><b>Washington Soares</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=washingtonsoares" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jamisuomalainen"><img src="https://avatars2.githubusercontent.com/u/19325270?v=4" width="100px;" alt=""/><br /><sub><b>Jami Suomalainen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jamisuomalainen" title="Documentation">📖</a></td>
   </tr>
 </table>
 
