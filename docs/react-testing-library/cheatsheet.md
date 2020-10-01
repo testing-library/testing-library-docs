@@ -8,22 +8,23 @@ title: Cheatsheet
 A short guide to all the exported functions in `React Testing Library`
 
 - **render** `const {/* */} = render(Component)` returns:
-  - all the queries from `DOM Testing Library`, bound to the document so there
-    is no need to pass a node as the first argument
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
+  - all the queries from `DOM Testing Library`, bound to the document so there
+    is no need to pass a node as the first argument (usually, you can use
+    the `screen` import instead)
 
 ```jsx
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 
 test('loads items eventually', async () => {
-  const { getByText, findByText } = render(<Page />)
+  render(<Page />)
 
   // Click button
   fireEvent.click(getByText('Load'))
 
   // Wait for page to update with query text
-  const items = await findByText(/Item #[0-9]: /)
+  const items = await screen.findAllByText(/Item #[0-9]: /)
   expect(items).toHaveLength(10)
 })
 ```
