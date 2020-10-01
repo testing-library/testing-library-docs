@@ -50,13 +50,13 @@ const users = [
     caption: 'Global CTO Forum',
     image: '/img/users/global-cto-forum.svg',
     infoLink: 'https://globalctoforum.org',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'Gusto',
     image: '/img/users/gusto.svg',
     infoLink: 'https://gusto.com/',
-    pinned: false,
+    pinned: true,
   },
   {
     caption: 'Habitaclia',
@@ -68,7 +68,7 @@ const users = [
     caption: 'iFood',
     image: '/img/users/ifood.png',
     infoLink: 'https://www.ifood.com.br',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'Infojobs',
@@ -164,7 +164,7 @@ const users = [
     caption: 'Zup I.T. Innovation',
     image: '/img/users/zup.png',
     infoLink: 'https://www.zup.com.br/',
-    pinned: true,
+    pinned: false,
   },
 ]
 
