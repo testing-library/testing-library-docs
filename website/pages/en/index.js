@@ -227,7 +227,7 @@ class Index extends React.Component {
             image: `${baseUrl}img/puppeteer-275x275.png`,
             imageAlign: 'top',
             title:
-              '[Puppeteer Testing Library](./docs/pptr-testing-library/intro)',
+              '[Puppeteer](./docs/pptr-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/react-native-128x128.png`,
