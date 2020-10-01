@@ -147,12 +147,6 @@ The example below will find the input node for the following DOM structures:
 <label id="username-label">Username</label>
 <input aria-labelledby="username-label" />
 
-// The aria-labelledby attribute with non-form elements
-<section aria-labelledby="section-one-header">
-  <h3 id="section-one-header">Section One</h3>
-  <p>some content</p>
-</section>
-
 // Wrapper labels
 <label>Username <input /></label>
 

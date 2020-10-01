@@ -898,7 +898,8 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/7496103?v=4",
       "profile": "http://medium.com/@kermani",
       "contributions": [
-        "doc"
+        "doc",
+        "review"
       ]
     },
     {
@@ -951,6 +952,61 @@
       "name": "Juliano Penna",
       "avatar_url": "https://avatars1.githubusercontent.com/u/16005946?v=4",
       "profile": "https://github.com/jpenna",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "PaulACoroneos",
+      "name": "Paul Coroneos",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/40515238?v=4",
+      "profile": "http://www.pcoroneos.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "eps1lon",
+      "name": "Sebastian Silbermann",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12292047?v=4",
+      "profile": "https://solverfox.dev",
+      "contributions": [
+        "doc",
+        "review"
+      ]
+    },
+    {
+      "login": "psalaets",
+      "name": "Paul Salaets",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/123952?v=4",
+      "profile": "https://paulsalaets.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "michaeldeboey",
+      "name": "Michaël De Boey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6643991?v=4",
+      "profile": "https://michaeldeboey.be",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "washingtonsoares",
+      "name": "Washington Soares",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5726140?v=4",
+      "profile": "https://thewashington.dev",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jamisuomalainen",
+      "name": "Jami Suomalainen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19325270?v=4",
+      "profile": "https://github.com/jamisuomalainen",
       "contributions": [
         "doc"
       ]

@@ -52,7 +52,7 @@ find[All]By\* selectors that you can use in your tests.
 ## Examples
 
 To show some simple examples (from
-[https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.js)):
+[https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts](https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts)):
 
 ```javascript
 import { screen } from '@testing-library/testcafe'

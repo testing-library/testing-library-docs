@@ -47,17 +47,44 @@ with any testing framework and runner you're comfortable with.
     }
     ```
 
-5.  This is optional but it is recommended, you can install
+5.  If you are using ES6 modules in your project you have to add Jest's babel
+    transform setting (it is set by default, but since we are overriding the
+    transform config, we have to add it explicitly)
+
+    5.1 Install `babel-jest`
+
+    ```bash
+    npm install --save-dev babel-jest
+    ```
+
+    5.2. Add a basic `.babelrc` configuration
+
+    ```json
+    {
+      "presets": [["@babel/preset-env", { "targets": { "node": "current" } }]]
+    }
+    ```
+
+    5.3. Update the Jest transform configuration
+
+    ```json
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    ```
+
+6.  This is optional but it is recommended, you can install
     [jest-dom](https://github.com/testing-library/jest-dom) to add handy
     assertions to Jest
 
-    5.1 Install jest-dom
+    6.1 Install jest-dom
 
     ```
     npm install --save-dev @testing-library/jest-dom
     ```
 
-    5.2 Add the following to your Jest configuration in `package.json`
+    6.2 Add the following to your Jest configuration in `package.json`
 
     ```json
     {
@@ -65,7 +92,7 @@ with any testing framework and runner you're comfortable with.
     }
     ```
 
-6.  Create your component + test file (checkout the rest of the docs to see how)
+7.  Create your component + test file (checkout the rest of the docs to see how)
     and run it
 
     ```
@@ -78,9 +105,9 @@ To use Typescript, you'll need to install and configure `svelte-preprocess` and
 `ts-jest`. For full instructions, see the
 [`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
 
-## Babel / Preprocessors
+## Preprocessors
 
-If you'd like to also include [Babel](https://babeljs.io/) or any
+If you'd like to also include any
 [Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then
 simply follow the instructions over at
 [svelte-jester](https://github.com/mihar-22/svelte-jester#babel).

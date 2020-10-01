@@ -16,7 +16,7 @@ tests to avoid including implementation details so refactors of your components
 (changes to implementation but not functionality) don't break your tests and
 slow you and your team down.
 
-## This solution
+## The solution
 
 The core library, [`DOM Testing Library`][dom], is a light-weight solution for
 testing web pages by querying and interacting with DOM nodes (whether simulated
@@ -45,7 +45,8 @@ Testing Library encourages you to avoid testing
 [implementation details](https://kentcdodds.com/blog/testing-implementation-details)
 like the internals of a component you're testing (though it's still possible).
 [The Guiding Principles](/docs/guiding-principles) of this library emphasize a
-focus on tests that closely resemble how your web pages are interacted by the users.
+focus on tests that closely resemble how your web pages are interacted by the
+users.
 
 You may want to avoid following implementation details:
 

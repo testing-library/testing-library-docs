@@ -119,6 +119,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Zup I.T. Innovation',
+    image: '/img/users/zup.png',
+    infoLink: 'https://www.zup.com.br/',
+    pinned: true,
+  },
+  {
     caption: 'iFood',
     image: '/img/users/ifood.png',
     infoLink: 'https://www.ifood.com.br',

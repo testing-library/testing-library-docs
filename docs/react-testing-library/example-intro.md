@@ -131,11 +131,10 @@ test('handlers server error', async () => {
 
 ### Arrange
 
-The [`render`](./api#render) method renders a React element into the DOM and
-returns utility functions for testing the component.
+The [`render`](./api#render) method renders a React element into the DOM.
 
 ```jsx
-const { container, asFragment } = render(<Fetch url="/greeting" />)
+render(<Fetch url="/greeting" />)
 ```
 
 ### Act
