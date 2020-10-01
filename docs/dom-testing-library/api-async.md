@@ -35,7 +35,7 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
 
-`waitFor` may run the callback a variable number of times
+`waitFor` may run the callback a variable number of times.
 
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
