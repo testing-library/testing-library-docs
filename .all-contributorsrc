@@ -1010,6 +1010,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "oriolpuig",
+      "name": "Oriol Puig",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3933098?v=4",
+      "profile": "http://www.oriolpuig.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
