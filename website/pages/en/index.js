@@ -260,21 +260,41 @@ class Index extends React.Component {
       if ((siteConfig.users || []).length === 0) {
         return null
       }
+      const NUMBER_OF_UNPINNED_USERS_TO_SHOWCASE = 3
 
-      const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
-          </a>
-        ))
+      const randomizedList = (arr, n) => {
+        var result = new Array(n),
+          len = arr.length,
+          taken = new Array(len)
+        if (n > len) return arr
+        while (n--) {
+          var x = Math.floor(Math.random() * len)
+          result[n] = arr[x in taken ? taken[x] : x]
+          taken[x] = --len in taken ? taken[len] : len
+        }
+        return result
+      }
+
+      const userShowcase = [
+        ...siteConfig.users.filter(u => u.pinned),
+        ...randomizedList(
+          siteConfig.users.filter(u => !u.pinned),
+          NUMBER_OF_UNPINNED_USERS_TO_SHOWCASE
+        ),
+      ]
+      
+      const userLogos = userShowcase.map(user => (
+        <a href={user.infoLink} key={user.infoLink}>
+          <img src={user.image} alt={user.caption} title={user.caption} />
+        </a>
+      ))
 
       const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
 
       return (
         <div className="productShowcaseSection paddingBottom">
           <h2>Who is Using This?</h2>
-          <div className="logos">{showcase}</div>
+          <div className="logos">{userLogos}</div>
           <div className="more-users">
             <a className="button" href={pageUrl('users.html')}>
               More {siteConfig.title} Users
