@@ -130,3 +130,29 @@ fireEvent(
   })
 )
 ```
+
+## Using Jest Function Mocks
+
+[Jest's Mock functions](https://jestjs.io/docs/en/mock-functions) can be used to test
+that a callback passed to the function was called, or what it was called when the event
+that **should** trigger the callback function does trigger the bound callback.
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--React-->
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+const Button = ({onClick, children}) => <button onClick={onClick}>{children}</button>
+
+test('calls onClick prop when clicked', () => {
+  const handleClick = jest.fn()
+  render(<Button onClick={handleClick}>Click Me</Button>)
+  fireEvent.click(screen.getByText(/click me/i))
+  expect(handleClick).toHaveBeenCalledTimes(1)
+})
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
