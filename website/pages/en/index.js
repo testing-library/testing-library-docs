@@ -260,7 +260,7 @@ class Index extends React.Component {
       if ((siteConfig.users || []).length === 0) {
         return null
       }
-      const NUMBER_OF_USERS_TO_SHOW = 3
+      const NUMBER_OF_UNPINNED_USERS_TO_SHOWCASE = 3
 
       const randomizedList = (arr, n) => {
         var result = new Array(n),
@@ -275,10 +275,15 @@ class Index extends React.Component {
         return result
       }
 
-      const showcase = randomizedList(
-        siteConfig.users,
-        NUMBER_OF_USERS_TO_SHOW
-      ).map(user => (
+      const userShowcase = [
+        ...siteConfig.users.filter(u => u.pinned),
+        ...randomizedList(
+          siteConfig.users.filter(u => !u.pinned),
+          NUMBER_OF_UNPINNED_USERS_TO_SHOWCASE
+        ),
+      ]
+      
+      const userLogos = userShowcase.map(user => (
         <a href={user.infoLink} key={user.infoLink}>
           <img src={user.image} alt={user.caption} title={user.caption} />
         </a>
@@ -289,7 +294,7 @@ class Index extends React.Component {
       return (
         <div className="productShowcaseSection paddingBottom">
           <h2>Who is Using This?</h2>
-          <div className="logos">{showcase}</div>
+          <div className="logos">{userLogos}</div>
           <div className="more-users">
             <a className="button" href={pageUrl('users.html')}>
               More {siteConfig.title} Users
