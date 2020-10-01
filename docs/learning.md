@@ -8,6 +8,9 @@ sidebar_label: Learning Material
   about testing JavaScript applications (See also the
   [course material with many examples using React Testing Library](https://github.com/kentcdodds/react-testing-library-course))
   by [Kent C. Dodds](https://github.com/kentcdodds)
+- [Kent C. Dodds's testing related blog posts are all relevant](https://kentcdodds.com/blog?q=test)
+  (especially
+  [Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library))
 - [Migrating from Enzyme shallow rendering to explicit component mocks](https://www.youtube.com/watch?v=LHUdxkThTM0&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
 - [Confident React](https://www.youtube.com/watch?v=qXRPHRgcXJ0&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 - [Test Driven Development with React Testing Library](https://www.youtube.com/watch?v=kCR3JAR7CHE&list=PLV5CVI1eNcJgCrPH_e6d57KRUTiDZgs0u)
@@ -30,8 +33,22 @@ sidebar_label: Learning Material
 - [A sample repo using React Testing Library to test a Relay Modern GraphQL app](https://github.com/zth/relay-modern-flow-jest-example)
 - [Creating Readable Tests Using React Testing Library](https://medium.com/flatiron-labs/creating-readable-tests-using-react-testing-library-2bd03c49c284)
   by [Lukeghenco](https://github.com/Lukeghenco)
-- [My Experience moving from Enzyme to React Testing Library](https://medium.com/@boyney123/my-experience-moving-from-enzyme-to-react-testing-library-5ac65d992ce) by [David Boyne](https://github.com/boyney123)
-- [Testing Formik with React Testing Library](https://scottsauber.com/2019/05/25/testing-formik-with-react-testing-library/) by [Scott Sauber](https://github.com/scottsauber)
-- [How to Test Asynchronous Methods](https://www.polvara.me/posts/how-to-test-asynchronous-methods/) by [Gpx](https://twitter.com/Gpx)
+- [My Experience moving from Enzyme to React Testing Library](https://medium.com/@boyney123/my-experience-moving-from-enzyme-to-react-testing-library-5ac65d992ce)
+  by [David Boyne](https://github.com/boyney123)
+- [Testing Formik with React Testing Library](https://scottsauber.com/2019/05/25/testing-formik-with-react-testing-library/)
+  by [Scott Sauber](https://github.com/scottsauber)
+- [How to Test Asynchronous Methods](https://www.polvara.me/posts/how-to-test-asynchronous-methods/)
+  by [Gpx](https://twitter.com/Gpx)
+- [Writing better tests with react-testing-library](https://www.youtube.com/watch?v=O0VxvRqgm7g)
+  by [Billy Mathews](https://twitter.com/BillRMathews)
+- [React Hooks broke my tests, now what?](https://youtu.be/p3WS9GmfX_Q) by
+  [Daniel Afonso](https://twitter.com/danieljcafonso)
+
+## Portuguese 🇧🇷
+
+- [Do Enzyme ao Testing Library](https://www.infoq.com/br/presentations/enzyme-para-react-testing-library/)
+  by [Pablo Dinella](https://github.com/PabloDinella)
+- [React Hooks broke my tests, now what? (Portuguese)](https://youtu.be/t46n7REGswQ?t=99)
+  by [Daniel Afonso](https://twitter.com/danieljcafonso)
 
 Feel free to contribute more!

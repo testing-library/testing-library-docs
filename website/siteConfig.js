@@ -17,6 +17,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Walmart Labs',
+    pinned: true,
+    image: '/img/users/walmart.png',
+    infoLink: 'https://www.walmartlabs.com/',
+  },
+  {
     caption: 'Tiller',
     image: '/img/users/tiller.svg',
     infoLink: 'https://www.tillersystems.com',
@@ -81,7 +87,49 @@ const users = [
     image: '/img/users/testsigma.svg',
     infoLink: 'https://www.testsigma.com',
     pinned: true,
-  }
+  },
+  {
+    caption: 'intelliHR',
+    image: '/img/users/intellihr.svg',
+    infoLink: 'https://intellihr.com.au',
+    pinned: true,
+  },
+  {
+    caption: 'Quizlet',
+    image: '/img/users/quizlet.svg',
+    infoLink: 'https://quizlet.com',
+    pinned: true,
+  },
+  {
+    caption: 'Radity',
+    image: '/img/users/radity.svg',
+    infoLink: 'https://radity.com',
+    pinned: true,
+  },
+  {
+    caption: 'Global CTO Forum',
+    image: '/img/users/global-cto-forum.svg',
+    infoLink: 'https://globalctoforum.org',
+    pinned: true,
+  },
+  {
+    caption: 'Gusto',
+    image: '/img/users/gusto.svg',
+    infoLink: 'https://gusto.com/',
+    pinned: true,
+  },
+  {
+    caption: 'Zup I.T. Innovation',
+    image: '/img/users/zup.png',
+    infoLink: 'https://www.zup.com.br/',
+    pinned: true,
+  },
+  {
+    caption: 'iFood',
+    image: '/img/users/ifood.png',
+    infoLink: 'https://www.ifood.com.br',
+    pinned: true,
+  },
 ]
 
 const siteConfig = {

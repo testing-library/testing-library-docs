@@ -25,9 +25,9 @@ principle is:
 > [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.md)
 
 As part of this goal, the utilities this library provides facilitate querying
-the DOM in the same way the user would. Finding for elements by their label text
-(just like a user would), finding links and buttons from their text (like a user
-would), and more. It also exposes a recommended way to find elements by a
+the DOM in the same way the user would. Finding form elements by their label
+text (just like a user would), finding links and buttons from their text (like a
+user would), and more. It also exposes a recommended way to find elements by a
 `data-testid` as an "escape hatch" for elements where the text content and label
 do not make sense or is not practical.
 

@@ -12,12 +12,10 @@ to Vue testing.
 Short answer: yes, it is. If you use Vue Testing Library (VTL) there's no need
 to install [@vue/test-utils][vue-test-utils].
 
-Longer answer: VTL is built on top of the official testing library. It is used
-to render Vue components (by calling [`mount`][mount]) and exposes some of its
-methods (while hiding others).
-
-You can check the full list of available methods in the
-[API](vue-testing-library/api.md) section.
+Longer answer: VTL is built on top of @vue/test-utils. The official library is
+used to render Vue components (by calling [`mount`][mount]) and exposes some of
+its methods (while hiding others). You can check the full list of available
+methods in the [API](vue-testing-library/api.md) section.
 
 </details>
 
@@ -63,6 +61,26 @@ VTL.
 
 </details>
 
+<details>
+<summary>**How can I test if an element has appeared / has disappeared?**</summary>
+
+Check the
+[Appearance and Disappearance](https://testing-library.com/docs/guide-disappearance)
+section of the Guide for available methods to test appearance and disappearance.
+
+If you want to check if an element was never rendered, you might want to write
+something like the following:
+
+```js
+expect(queryByText('submit')).toBeNull()
+
+// or, if using extend/expect:
+import '@testing-library/jest-dom/extend-expect'
+expect(queryByText('submit')).not.toBeInTheDocument()
+```
+
+</details>
+
 <!--
 Links:
 -->
@@ -72,6 +90,6 @@ Links:
 [vue-test-utils]: https://github.com/vuejs/vue-test-utils
 [mount]: https://vue-test-utils.vuejs.org/api/#mount
 [stubs]: https://vue-test-utils.vuejs.org/api/options.html#stubs
-[stubs-example]: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/stubs.js
+[stubs-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/stubs.js
 
 <!-- prettier-ignore-end -->

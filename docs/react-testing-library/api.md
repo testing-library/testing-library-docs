@@ -32,9 +32,8 @@ render(<div />)
 ```
 
 ```jsx
-import { render, cleanup } from '@testing-library/react'
-import 'jest-dom/extend-expect'
-afterEach(cleanup)
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 
 test('renders a message', () => {
   const { container, getByText } = render(<Greeting />)
@@ -45,24 +44,19 @@ test('renders a message', () => {
 })
 ```
 
-> Note
->
-> The [cleanup](#cleanup) function should be called between tests to remove the
-> created DOM nodes and keep the tests isolated.
-
 ## `render` Options
 
-You wont often need to specify options, but if you ever do, here are the
+You won't often need to specify options, but if you ever do, here are the
 available options which you could provide as a second argument to `render`.
 
 ### `container`
 
-By default, `React Testing Library` will create a `div` and append that div to
-the `document.body` and this is where your react component will be rendered. If
+By default, `React Testing Library` will create a `div` and append that `div` to
+the `document.body` and this is where your React component will be rendered. If
 you provide your own HTMLElement `container` via this option, it will not be
 appended to the `document.body` automatically.
 
-For Example: If you are unit testing a `tablebody` element, it cannot be a child
+For example: If you are unit testing a `tablebody` element, it cannot be a child
 of a `div`. In this case, you can specify a `table` as the render `container`.
 
 ```jsx
@@ -76,8 +70,8 @@ const { container } = render(<TableBody {...props} />, {
 ### `baseElement`
 
 If the `container` is specified, then this defaults to that, otherwise this
-defaults to `document.documentElement`. This is used as the base element for the
-queries as well as what is printed when you use `debug()`.
+defaults to `document.body`. This is used as the base element for the queries as
+well as what is printed when you use `debug()`.
 
 ### `hydrate`
 
@@ -100,7 +94,7 @@ merged.
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import queries from '@testing-library/react'
+import { queries } from '@testing-library/react'
 
 const { getByRowColumn, getByText } = render(<MyTable />, {
   queries: { ...queries, ...tableQueries },
@@ -147,7 +141,7 @@ The containing DOM node of your rendered React Element (rendered using
 > Fragment itself.
 
 > 🚨 If you find yourself using `container` to query for rendered elements then
-> you should reconsider! The other queries are designed to be more resiliant to
+> you should reconsider! The other queries are designed to be more resilient to
 > changes that will be made to the component you're testing. Avoid using
 > `container` to query for elements!
 
@@ -166,6 +160,10 @@ renders its HTML directly in the body.
 
 ### `debug`
 
+> NOTE: It's recommended to use
+> [`screen.debug`](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug)
+> instead.
+
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
@@ -179,10 +177,14 @@ debug()
 //   <h1>Hello World</h1>
 // </div>
 // you can also pass an element: debug(getByTestId('messages'))
+// and you can pass all the same arguments to debug as you can
+// to prettyDOM:
+// const maxLengthToPrint = 10000
+// debug(getByTestId('messages'), maxLengthToPrint, {highlight: false})
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`DOM Testing Library`](https://github.com/testing-library/dom-testing-library/blob/master/README.md#prettydom).
+[`DOM Testing Library`](dom-testing-library/api-helpers.md#prettydom).
 
 ### `rerender`
 
@@ -226,23 +228,17 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
+import React, { useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-class TestComponent extends React.Component {
-  constructor() {
-    super()
-    this.state = { count: 0 }
-  }
+const TestComponent = () => {
+  const [count, setCounter] = useState(0)
 
-  render() {
-    const { count } = this.state
-
-    return (
-      <button onClick={() => this.setState({ count: count + 1 })}>
-        Click to increase: {count}
-      </button>
-    )
-  }
+  return (
+    <button onClick={() => setCounter(count => count + 1)}>
+      Click to increase: {count}
+    </button>
+  )
 }
 
 const { getByText, asFragment } = render(<TestComponent />)
@@ -262,10 +258,18 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 
 Unmounts React trees that were mounted with [render](#render).
 
+> Please note that this is done automatically if the testing framework you're
+> using supports the `afterEach` global (like mocha, Jest, and Jasmine). If not,
+> you will need to do manual cleanups after each test.
+
+For example, if you're using the [ava](https://github.com/avajs/ava) testing
+framework, then you would need to use the `test.afterEach` hook like so:
+
 ```jsx
 import { cleanup, render } from '@testing-library/react'
+import test from 'ava'
 
-afterEach(cleanup) // <-- add this
+test.afterEach(cleanup)
 
 test('renders into document', () => {
   render(<div />)
@@ -279,11 +283,6 @@ Failing to call `cleanup` when you've called `render` could result in a memory
 leak and tests which are not "idempotent" (which can lead to difficult to debug
 errors in your tests).
 
-**If you don't want to add this to _every single test file_** then we recommend
-that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](./setup) section for guidance on how to
-set up your framework.
-
 ---
 
 ## `act`
@@ -291,4 +290,5 @@ set up your framework.
 This is a light wrapper around the
 [`react-dom/test-utils` `act` function](https://reactjs.org/docs/test-utils.html#act).
 All it does is forward all arguments to the act function if your version of
-react supports `act`.
+react supports `act`. It is recommended to use the import from
+`@testing-library/react` over `react-dom/test-utils` for consistency reasons.

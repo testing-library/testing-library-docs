@@ -14,7 +14,7 @@ npm install --save-dev cypress @testing-library/cypress
 
 ## Usage
 
-`Cypress Testing Library` extends Cypress' `cy` command.
+`Cypress Testing Library` extends Cypress's `cy` commands.
 
 Add this line to your project's `cypress/support/commands.js`:
 
@@ -22,25 +22,50 @@ Add this line to your project's `cypress/support/commands.js`:
 import '@testing-library/cypress/add-commands';
 ```
 
-You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
-and `queryAllBy` commands.
-[See `DOM Testing Library` API for reference](dom-testing-library/api-queries.md)
+You can now use all of `DOM Testing Library`'s `findBy`, `findAllBy`, `queryBy`
+and `queryAllBy` commands off the global `cy` object.
+[See the `DOM Testing Library` docs for reference](https://testing-library.com/docs/dom-testing-library/api-queries).
+
+> Note: the `get*` queries are not supported because for reasonable Cypress
+> tests you need retryability and `find*` queries already support that. `query*`
+> queries are no longer necessary since v5 and will be removed in v6. `find*`
+> fully support built-in Cypress assertions (removes the only use-case for
+> `query*`).
+
+## With TypeScript
+
+Typings should be added as follows in `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["cypress", "@testing-library/cypress"]
+  }
+}
+```
+
+You can find
+[all Library definitions here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/testing-library__cypress/index.d.ts).
 
 ## Examples
 
 To show some simple examples (from
-[https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js](https://github.com/testing-library/cypress-testing-library/blob/master/cypress/integration/commands.spec.js)):
+[cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/97939da7d4707a71049884c0324c0eda56e26fc2/cypress/integration/find.spec.js)):
 
 ```javascript
-cy.getAllByText('Jackie Chan').click()
-cy.queryByText('Button Text').should('exist')
-cy.queryByText('Non-existing Button Text').should('not.exist')
-cy.queryByLabelText('Label text', { timeout: 7000 }).should('exist')
-cy.get('form').within(() => {
-  cy.getByText('Button Text').should('exist')
-})
-cy.get('form').then(subject => {
-  cy.getByText('Button Text', { container: subject }).should('exist')
+cy.findByRole('button', { name: /Jackie Chan/i }).click()
+cy.findByRole('button', { name: /Button Text/i }).should('exist')
+cy.findByRole('button', { name: /Non-existing Button Text/i }).should(
+  'not.exist'
+)
+cy.findByLabelText(/Label text/i, { timeout: 7000 }).should('exist')
+
+// findAllByText _inside_ a form element
+cy.get('form')
+  .findByText('button', { name: /Button Text/i })
+  .should('exist')
+cy.findByRole('dialog').within(() => {
+  cy.findByRole('button', { name: /confirm/i })
 })
 ```
 
@@ -48,6 +73,6 @@ cy.get('form').then(subject => {
 necessary because Cypress uses jQuery elements, while `DOM Testing Library`
 expects DOM nodes. When you pass a jQuery element as `container`, it will get
 the first DOM node from the collection and use that as the `container` parameter
-for the DOM Testing Library functions.
+for the `DOM Testing Library` functions.
 
 [gh]: https://github.com/testing-library/cypress-testing-library

@@ -37,7 +37,11 @@ export function getAllByTestId(container, id, ...rest) {
 }
 
 export function getByTestId(...args) {
-  return queryHelpers.firstResultOrNull(getAllByTestId, ...args)
+  const result = getAllByTestId(...args)
+  if (result.length > 0) {
+    return result[0]
+  }
+  return null
 }
 
 // re-export with overrides
@@ -56,6 +60,15 @@ module.exports = {
 > adding `queries` to the options config object. See the render
 > [options](/docs/react-testing-library/api#render-options).
 
+## `buildQueries`
+
+The `buildQueries` helper allows you to create custom queries with all standard
+[variants](api-queries.md) of queries in testing-library.
+
+See the
+[Add custom queries](/docs/react-testing-library/setup#add-custom-queries)
+section of the custom render guide for example usage.
+
 ### Using other assertion libraries
 
 If you're not using jest, you may be able to find a similar set of custom
@@ -64,7 +77,8 @@ for other popular assertion libraries:
 
 - [chai-dom](https://github.com/nathanboktae/chai-dom)
 
-If you're aware of some other alternatives, please [make a pull request][prs]
+If you're aware of some other alternatives, please
+[make a pull request](https://github.com/testing-library/testing-library-docs/pulls)
 and add it here!
 
 ## `getNodeText`
@@ -73,7 +87,7 @@ and add it here!
 getNodeText(node: HTMLElement)
 ```
 
-Returns the complete text content of a html element, removing any extra
+Returns the complete text content of an HTML element, removing any extra
 whitespace. The intention is to treat text in nodes exactly as how it is
 perceived by users in a browser, where any extra whitespace within words in the
 html code is not meaningful when the text is rendered.
@@ -136,11 +150,54 @@ within(signinModal).getByPlaceholderText('Username')
 
 ```js
 cy.get('form').within(() => {
-  cy.getByText('Button Text').should('be.disabled')
+  cy.findByText('Button Text').should('be.disabled')
 })
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+## `getRoles`
+
+This function allows iteration over the implicit ARIA roles represented in a
+given tree of DOM nodes.
+
+It returns an object, indexed by role name, with each value being an array of
+elements which have that implicit ARIA role.
+
+See
+[ARIA in HTML](https://www.w3.org/TR/html-aria/#document-conformance-requirements-for-use-of-aria-attributes-in-html)
+for more information about implicit ARIA roles.
+
+```javascript
+import { getRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+console.log(getRoles(nav))
+
+// Object {
+//   navigation: [<nav />],
+//   list: [<ul />],
+//   listitem: [<li />, <li />]
+// }
+```
+
+## `isInaccessible`
+
+This function will compute if the given element should be excluded from the
+accessibility API by the browser. It implements every **MUST** criteria from the
+[Excluding Elements from the Accessibility Tree](https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion)
+section in WAI-ARIA 1.2 with the exception of checking the `role` attribute.
+
+It is defined as:
+
+```typescript
+function isInaccessible(element: Element): boolean
+```
 
 ## Debugging
 
@@ -160,7 +217,7 @@ Unable to find an element with the text: Goodbye world. This could be because th
 Here is the state of your container:
 <div>
   <div>
-    Hello World!
+    Hello world
   </div>
 </div>
 ```
@@ -175,23 +232,32 @@ Here's how you might increase this limit when running tests:
 DEBUG_PRINT_LIMIT=10000 npm test
 ```
 
-This works on macOS/linux, you'll need to do something else for windows. If
+This works on macOS/Linux, you'll need to do something else for Windows. If
 you'd like a solution that works for both, see
 [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 ### `prettyDOM`
 
-This helper function can be used to print out readable representation of the DOM
+Built on top of
+[`pretty-format`](https://github.com/facebook/jest/tree/master/packages/pretty-format),
+this helper function can be used to print out readable representation of the DOM
 tree of a node. This can be helpful for instance when debugging tests.
 
 It is defined as:
 
 ```typescript
-function prettyDOM(node: HTMLElement, maxLength?: number): string
+function prettyDOM(
+  node: HTMLElement,
+  maxLength?: number,
+  options?: Options
+): string
 ```
 
-It receives the root node to print out, and an optional extra argument to limit
-the size of the resulting string, for cases when it becomes too large.
+It receives the root node to print out, an optional extra parameter to limit the
+size of the resulting string, for cases when it becomes too large. It has a last
+parameter which allows you to configure your formatting as defined in the
+[options](https://github.com/facebook/jest/tree/master/packages/pretty-format#usage-with-options)
+of `pretty-format`.
 
 This function is usually used alongside `console.log` to temporarily print out
 DOM trees during tests for debugging purposes:
@@ -207,3 +273,44 @@ console.log(prettyDOM(div))
 
 This function is what also powers
 [the automatic debugging output described above](#debugging).
+
+### `logRoles`
+
+This helper function can be used to print out a list of all the implicit ARIA
+roles within a tree of DOM nodes, each role containing a list of all of the
+nodes which match that role. This can be helpful for finding ways to query the
+DOM under test with [getByRole](api-queries.md#byrole)
+
+```javascript
+import { logRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+
+logRoles(nav)
+
+// navigation:
+//
+// <nav />
+//
+//
+// --------------------------------------------------
+// list:
+//
+// <ul />
+//
+//
+// --------------------------------------------------
+// listitem:
+//
+// <li />
+//
+// <li />
+//
+//
+// --------------------------------------------------
+```

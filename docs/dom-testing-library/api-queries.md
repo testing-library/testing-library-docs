@@ -10,19 +10,19 @@ title: Queries
 
 ### getBy
 
-`getBy*` queries returns the first matching node for a query, and throws an
-error if no elements match or if more than one match is found (use `getAllBy`
+`getBy*` queries return the first matching node for a query, and throw an error
+if no elements match or if more than one match is found (use `getAllBy`
 instead).
 
 ### getAllBy
 
-`getAllBy*` queries return an array of all matching nodes for a query, and
-throws an error if no elements match.
+`getAllBy*` queries return an array of all matching nodes for a query, and throw
+an error if no elements match.
 
 ### queryBy
 
-`queryBy*` queries returns the first matching node for a query, and return
-`null` if no elements match. This is useful for asserting an element is not
+`queryBy*` queries return the first matching node for a query, and return `null`
+if no elements match. This is useful for asserting an element that is not
 present. This throws if more than one match is found (use `queryAllBy` instead).
 
 ### queryAllBy
@@ -34,19 +34,21 @@ return an empty array (`[]`) if no elements match.
 
 `findBy*` queries return a promise which resolves when an element is found which
 matches the given query. The promise is rejected if no element is found or if
-more than one element is found after a default timeout of `4500`ms. If you need
+more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
-> Note, this is a simple combination of `getBy*` queries and
-> [`waitForElement`](/docs/api-async#waitforelement). The `findBy*` queries
-> accept the `waitForElement` options as the last argument. (i.e.
-> `findByText(container, 'text', queryOptions, waitForElementOptions)`)
+> **Note**
+>
+> this is a simple combination of `getBy*` queries and
+> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries accept the
+> `waitFor` options as the last argument. (i.e.
+> `screen.findByText('text', queryOptions, waitForOptions)`)
 
 ### findAllBy
 
 `findAllBy*` queries return a promise which resolves to an array of elements
 when any elements are found which match the given query. The promise is rejected
-if no elements are found after a default timeout of `4500`ms.
+if no elements are found after a default timeout of `1000`ms.
 
 ## Options
 
@@ -55,16 +57,74 @@ There are also options to adjust how node text is parsed.
 
 See [TextMatch](#textmatch) for documentation on what can be passed to a query.
 
+## `screen`
+
+All of the queries exported by DOM Testing Library accept a `container` as the
+first argument. Because querying the entire `document.body` is very common, DOM
+Testing Library also exports a `screen` object which has every query that is
+pre-bound to `document.body` (using the
+[`within`](/docs/dom-testing-library/api-helpers#within-and-getqueriesforelement-apis)
+functionality).
+
+Here's how you use it:
+
+```javascript
+import { screen } from '@testing-library/dom'
+// NOTE: many framework-implementations of Testing Library
+// re-export everything from `@testing-library/dom` so you
+// may be able to import screen from your framework-implementation:
+// import {render, screen} from '@testing-library/react'
+
+const exampleHTML = `
+  <label for="example">Example</label>
+  <input id="example" />
+`
+document.body.innerHTML = exampleHTML
+const exampleInput = screen.getByLabelText(/example/i)
+```
+
+### `screen.debug`
+
+For convenience screen also exposes a `debug` method in addition to the queries.
+This method is essentially a shortcut for `console.log(prettyDOM())`. It
+supports debugging the document, a single element, or an array of elements.
+
+```javascript
+import { screen } from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// debug document
+screen.debug()
+// debug single element
+screen.debug(screen.getByText('test'))
+// debug multiple elements
+screen.debug(screen.getAllByText('multi-test'))
+```
+
 ## Queries
+
+> **Note**
+>
+> These queries are the base queries and require you to pass a `container` as
+> the first argument. Most framework-implementations of Testing Library provide
+> a pre-bound version of these queries when you render your components with them
+> which means you do not have to provide a container. In addition, if you just
+> want to query `document.body` then you can use the [`screen`](#screen) export
+> as demonstrated above (using `screen` is recommended).
 
 ### `ByLabelText`
 
-> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText,
 > findByLabelText, findAllByLabelText
 
 ```typescript
 getByLabelText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     selector?: string = '*',
@@ -87,14 +147,14 @@ The example below will find the input node for the following DOM structures:
 <label id="username-label">Username</label>
 <input aria-labelledby="username-label" />
 
-// The aria-labelledby attribute with non-form elements
-<section aria-labelledby="section-one-header">
-  <h3 id="section-one-header">Section One</h3>
-  <p>some content</p>
-</section>
-
 // Wrapper labels
 <label>Username <input /></label>
+
+// Wrapper labels where the label text is in another child element
+<label>
+  <span>Username</span>
+  <input />
+</label>
 
 // aria-label attributes
 // Take care because this is not a label that users can see on the page,
@@ -107,42 +167,68 @@ The example below will find the input node for the following DOM structures:
 <!--Native-->
 
 ```javascript
-import { getByLabelText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const inputNode = getByLabelText(container, 'Username')
+const inputNode = screen.getByLabelText('Username')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByLabelText } = render(<Login />)
+render(<Login />)
 
-const inputNode = getByLabelText('username')
+const inputNode = screen.getByLabelText('username')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByLabelText('username').should('exist')
+cy.findByLabelText('username').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-It will NOT find the input node for label text broken up by elements. For this
-case, you can provide a `selector` in the options:
+It will NOT find the input node for label text broken up by elements. You can
+use `getByRole('textbox', { name: 'Username' })` instead which is robust against
+switching to `aria-label` or `aria-labelledby`.
 
-```html
-<label> <span>Username</span> <input /> </label>
+If it is important that you query an actual `<label>` element you can provide a
+`selector` in the options:
+
+```js
+// Multiple elements labelled via aria-labelledby
+<label id="username">Username</label>
+<input aria-labelledby="username" />
+<span aria-labelledby="username">Please enter your username</span>
+
+// Multiple labels with the same text
+<label>
+  Username
+  <input />
+</label>
+<label>
+  Username
+  <textarea></textarea>
+</label>
 ```
 
 ```js
-const container = document.body
-const inputNode = getByLabelText(container, 'username', {
-  selector: 'input',
-})
+const inputNode = screen.getByLabelText('Username', { selector: 'input' })
+```
+
+> **Note**
+>
+> `getByLabelText` will not work in the case where a `for` attribute on a
+> `<label>` element matches an `id` attribute on a non-form element.
+
+```js
+// This case is not valid
+// for/htmlFor between label and an element that is not a form element
+<section id="photos-section">
+  <label for="photos-section">Photos</label>
+</section>
 ```
 
 ### `ByPlaceholderText`
@@ -152,7 +238,7 @@ const inputNode = getByLabelText(container, 'username', {
 
 ```typescript
 getByPlaceholderText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -172,25 +258,24 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByPlaceholderText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const inputNode = getByPlaceholderText(container, 'Username')
+const inputNode = screen.getByPlaceholderText('Username')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByPlaceholderText } = render(<MyComponent />)
-const inputNode = getByPlaceholderText('Username')
+render(<MyComponent />)
+const inputNode = screen.getByPlaceholderText('Username')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByPlaceholderText('Username').should('exist')
+cy.findByPlaceholderText('Username').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -207,7 +292,7 @@ cy.getByPlaceholderText('Username').should('exist')
 
 ```typescript
 getByText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     selector?: string = '*',
@@ -229,25 +314,24 @@ matching the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const aboutAnchorNode = getByText(container, /about/i)
+const aboutAnchorNode = screen.getByText(/about/i)
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByText } = render(<MyComponent />)
-const aboutAnchorNode = getByText(/about/i)
+render(<MyComponent />)
+const aboutAnchorNode = screen.getByText(/about/i)
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByText(/about/i).should('exist')
+cy.findByText(/about/i).should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -279,7 +363,7 @@ If you'd rather disable this behavior, set `ignore` to `false`.
 
 ```typescript
 getByAltText(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -305,25 +389,24 @@ as it's deprecated).
 <!--Native-->
 
 ```js
-import { getByAltText } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const incrediblesPosterImg = getByAltText(container, /incredibles.*? poster/i)
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByAltText } = render(<MyComponent />)
-const incrediblesPosterImg = getByAltText(/incredibles.*? poster/i)
+render(<MyComponent />)
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByAltText(/incredibles.*? poster/i).should('exist')
+cy.findByAltText(/incredibles.*? poster/i).should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -335,7 +418,7 @@ cy.getByAltText(/incredibles.*? poster/i).should('exist')
 
 ```typescript
 getByTitle(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   title: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -360,28 +443,27 @@ Will also find a `title` element within an SVG.
 <!--Native-->
 
 ```js
-import { getByTitle } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const deleteElement = getByTitle(container, 'Delete')
-const closeElement = getByTitle(container, 'Close')
+const deleteElement = screen.getByTitle('Delete')
+const closeElement = screen.getByTitle('Close')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByTitle } = render(<MyComponent />)
-const deleteElement = getByTitle('Delete')
-const closeElement = getByTitle('Close')
+render(<MyComponent />)
+const deleteElement = screen.getByTitle('Delete')
+const closeElement = screen.getByTitle('Close')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByTitle('Delete').should('exist')
-cy.getByTitle('Close').should('exist')
+cy.findByTitle('Delete').should('exist')
+cy.findByTitle('Close').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -393,7 +475,7 @@ cy.getByTitle('Close').should('exist')
 
 ```typescript
 getByDisplayValue(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   value: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -419,25 +501,24 @@ document.getElementById('lastName').value = 'Norris'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const lastNameInput = getByDisplayValue(container, 'Norris')
+const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByDisplayValue } = render(<MyComponent />)
-const lastNameInput = getByDisplayValue('Norris')
+render(<MyComponent />)
+const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByDisplayValue('Norris').should('exist')
+cy.findByDisplayValue('Norris').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -457,25 +538,24 @@ document.getElementById('messageTextArea').value = 'Hello World'
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const messageTextArea = getByDisplayValue(container, 'Hello World')
+const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByDisplayValue } = render(<MyComponent />)
-const messageTextArea = getByDisplayValue('Hello World')
+render(<MyComponent />)
+const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByDisplayValue('Hello World').should('exist')
+cy.findByDisplayValue('Hello World').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -486,7 +566,7 @@ In case of `select`, this will search for a `<select>` whose selected `<option>`
 matches the given [`TextMatch`](#textmatch).
 
 ```html
-<select id="state-select" data-testid="state">
+<select>
   <option value="">State</option>
   <option value="AL">Alabama</option>
   <option selected value="AK">Alaska</option>
@@ -499,25 +579,24 @@ matches the given [`TextMatch`](#textmatch).
 <!--Native-->
 
 ```js
-import { getByDisplayValue } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const selectElement = getByDisplayValue(container, 'Alaska')
+const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByDisplayValue } = render(<MyComponent />)
-const selectElement = getByDisplayValue('Alaska')
+render(<MyComponent />)
+const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByDisplayValue('Alaska').should('exist')
+cy.findByDisplayValue('Alaska').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -529,16 +608,148 @@ cy.getByDisplayValue('Alaska').should('exist')
 
 ```typescript
 getByRole(
-  container: HTMLElement,
-  text: TextMatch,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
+  role: TextMatch,
   options?: {
     exact?: boolean = true,
+    hidden?: boolean = false,
+    name?: TextMatch,
     normalizer?: NormalizerFn,
+    selected?: boolean,
+    checked?: boolean,
+    pressed?: boolean,
+    queryFallbacks?: boolean,
+    level?: number,
   }): HTMLElement
 ```
 
-A shortcut to `` container.querySelector(`[role="${yourRole}"]`) `` (and it also
-accepts a [`TextMatch`](#textmatch)).
+Queries for elements with the given role (and it also accepts a
+[`TextMatch`](#textmatch)). Default roles are taken into consideration e.g.
+`<button />` has the `button` role without explicitly setting the `role`
+attribute. Here you can see
+[a table of HTML elements with their default and desired roles](https://www.w3.org/TR/html-aria/#docconformance).
+
+Please note that setting a `role` and/or `aria-*` attribute that matches the
+implicit ARIA semantics is unnecessary and is **not recommended** as these
+properties are already set by the browser, and we must not use the `role` and
+`aria-*` attributes in a manner that conflicts with the semantics described. For
+example, a `button` element can't have the `role` attribute of `heading`,
+because the `button` element has default characteristics that conflict with the
+`heading` role.
+
+> Roles are matched literally by string equality, without inheriting from the
+> ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
+> will not include elements with a subclass role like `switch`.
+
+You can query the returned element(s) by their
+[accessible name](https://www.w3.org/TR/accname-1.1/). The accessible name is
+for simple cases equal to e.g. the label of a form element, or the text content
+of a button, or the value of the `aria-label` attribute. It can be used to query
+a specific element if multiple elements with the same role are present on the
+rendered content. For an in-depth guide check out
+["What is an accessible name?" from ThePacielloGroup](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/).
+If you only query for a single element with `getByText('The name')` it's
+oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The
+accessible name query does not replace other queries such as `*ByAlt` or
+`*ByTitle`. While the accessible name can be equal to these attributes, it does
+not replace the functionality of these attributes. For example
+`<img aria-label="fancy image" src="fancy.jpg" />` will be returned for both
+`getByAltText('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
+However, the image will not display its description if `fancy.jpg` could not be
+loaded. Whether you want assert this functionality in your test or not is up to
+you.
+
+If you set `hidden` to `true` elements that are normally excluded from the
+accessibility tree are considered for the query as well. The default behavior
+follows https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion with the exception of
+`role="none"` and `role="presentation"` which are considered in the query in any
+case. For example in
+
+```html
+<body>
+  <main aria-hidden="true">
+    <button>Open dialog</button>
+  </main>
+  <div role="dialog">
+    <button>Close dialog</button>
+  </div>
+</body>
+```
+
+`getByRole('button')` would only return the `Close dialog`-button. To make
+assertions about the `Open dialog`-button you would need to use
+`getAllByRole('button', { hidden: true })`.
+
+The default value for `hidden` can
+[be configured](api-configuration#configuration).
+
+#### `selected`
+
+You can filter the returned elements by their selected state by setting
+`selected: true` or `selected: false`.
+
+For example in
+
+```html
+<body>
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Native</button>
+    <button role="tab" aria-selected="false">React</button>
+    <button role="tab" aria-selected="false">Cypress</button>
+  </div>
+</body>
+```
+
+you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
+To learn more about the selected state and which elements can have this state
+see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
+
+#### `checked`
+
+You can filter the returned elements by their checked state by setting
+`checked: true` or `checked: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button role="checkbox" aria-checked="true">Sugar</button>
+    <button role="checkbox" aria-checked="false">Gummy bears</button>
+    <button role="checkbox" aria-checked="false">Whipped cream</button>
+  </section>
+</body>
+```
+
+you can get the "Sugar" option by calling
+`getByRole('checkbox', { checked: true })`. To learn more about the checked
+state and which elements can have this state see
+[ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
+
+> **Note**
+>
+> Checkboxes have a "mixed" state, which is considered neither checked nor
+> unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+
+#### `pressed`
+
+Buttons can have a pressed state. You can filter the returned elements by their
+pressed state by setting `pressed: true` or `pressed: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
+To learn more about the pressed state see
+[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
 
 ```html
 <div role="dialog">...</div>
@@ -549,28 +760,92 @@ accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByRole } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const dialogContainer = getByRole(container, 'dialog')
+const dialogContainer = screen.getByRole('dialog')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByRole } = render(<MyComponent />)
-const dialogContainer = getByRole('dialog')
+render(<MyComponent />)
+const dialogContainer = screen.getByRole('dialog')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByRole('dialog').should('exist')
+cy.findByRole('dialog').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+#### `queryFallbacks`
+
+By default, it's assumed that the first role of each element is supported, so
+only the first role can be queried. If you need to query an element by any of
+its fallback roles instead, you can use `queryFallbacks: true`.
+
+For example, `getByRole('switch')` would always match
+`<div role="switch checkbox" />` because it's the first role, while
+`getByRole('checkbox')` would not. However,
+`getByRole('checkbox', { queryFallbacks: true })` would enable all fallback
+roles and therefore match the same element.
+
+> An element doesn't have multiple roles in a given environment. It has a single
+> one. Multiple roles in the attribute are evaluated from left to right until
+> the environment finds the first role it understands. This is useful when new
+> roles get introduced and you want to start supporting those as well as older
+> environments that don't understand that role (yet).
+
+#### `level`
+
+An element with the `heading` role can be queried by any heading level
+`getByRole('heading')` or by a specific heading level using the `level` option
+`getByRole('heading', { level: 2 })`.
+
+The `level` option queries the element(s) with the `heading` role matching the
+indicated level determined by the semantic HTML heading elements `<h1>-<h6>` or
+matching the `aria-level` attribute.
+
+Given the example below,
+
+```html
+<body>
+  <section>
+    <h1>Heading Level One</h1>
+    <h2>First Heading Level Two</h2>
+    <h3>Heading Level Three</h3>
+    <div role="heading" aria-level="2">Second Heading Level Two</div>
+  </section>
+</body>
+```
+
+you can query the `Heading Level Three` heading using
+`getByRole('heading', { level: 3 })`.
+
+```js
+getByRole('heading', { level: 1 })
+// <h1>Heading Level One</h1>
+
+getAllByRole('heading', { level: 2 })
+// [
+//   <h2>First Heading Level Two</h2>,
+//   <div role="heading" aria-level="2">Second Heading Level Two</div>
+// ]
+```
+
+While it is possible to explicitly set `role="heading"` and `aria-level`
+attribute on an element, it is **strongly encouraged** to use the semantic HTML
+headings `<h1>-<h6>`.
+
+To learn more about the `aria-level` property, see
+[ARIA `aria-level`](https://www.w3.org/TR/wai-aria-1.2/#aria-level).
+
+> The `level` option is _only_ applicable to the `heading` role. An error will
+> be thrown when used with any other role.
 
 ### `ByTestId`
 
@@ -579,7 +854,7 @@ cy.getByRole('dialog').should('exist')
 
 ```typescript
 getByTestId(
-  container: HTMLElement,
+  container: HTMLElement, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -591,7 +866,7 @@ A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
 also accepts a [`TextMatch`](#textmatch)).
 
 ```html
-<input data-testid="username-input" />
+<div data-testid="custom-element" />
 ```
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -599,36 +874,35 @@ also accepts a [`TextMatch`](#textmatch)).
 <!--Native-->
 
 ```js
-import { getByTestId } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
-const container = document.body
-const usernameInput = getByTestId(container, 'username-input')
+const element = screen.getByTestId('custom-element')
 ```
 
 <!--React-->
 
 ```js
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-const { getByTestId } = render(<MyComponent />)
-const usernameInput = getByTestId('username-input')
+render(<MyComponent />)
+const element = screen.getByTestId('custom-element')
 ```
 
 <!--Cypress-->
 
 ```js
-cy.getByTestId('username-input').should('exist')
+cy.findByTestId('custom-element').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> In the spirit of [the guiding principles](#guiding-principles), it is
+> In the spirit of [the guiding principles](guiding-principles.md), it is
 > recommended to use this only after the other queries don't work for your use
 > case. Using data-testid attributes do not resemble how your software is used
 > and should be avoided if possible. That said, they are _way_ better than
 > querying based on DOM structure or styling css class names. Learn more about
 > `data-testid`s from the blog post
-> ["Making your UI tests resilient to change"](https://blog.kentcdodds.com/making-your-ui-tests-resilient-to-change-d37a6ee37269)
+> ["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
 
 #### Overriding `data-testid`
 
@@ -671,9 +945,11 @@ If you want to prevent that normalization, or provide alternative normalization
 function in the options object. This function will be given a string and is
 expected to return a normalized version of that string.
 
-Note: Specifying a value for `normalizer` _replaces_ the built-in normalization,
-but you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
-to adjust that normalization or to call it from your own normalizer.
+> **Note**
+>
+> Specifying a value for `normalizer` _replaces_ the built-in normalization, but
+> you can call `getDefaultNormalizer` to obtain a built-in normalizer, either to
+> adjust that normalization or to call it from your own normalizer.
 
 `getDefaultNormalizer` takes an options object which allows the selection of
 behaviour:
@@ -687,7 +963,7 @@ behaviour:
 To perform a match against text without trimming:
 
 ```javascript
-getByText(node, 'text', {
+screen.getByText('text', {
   normalizer: getDefaultNormalizer({ trim: false }),
 })
 ```
@@ -696,7 +972,7 @@ To override normalization to remove some Unicode characters whilst keeping some
 (but not all) of the built-in normalization behavior:
 
 ```javascript
-getByText(node, 'text', {
+screen.getByText('text', {
   normalizer: str =>
     getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
 })
@@ -714,31 +990,31 @@ Given the following HTML:
 
 ```javascript
 // Matching a string:
-getByText(container, 'Hello World') // full string match
-getByText(container, 'llo Worl', { exact: false }) // substring match
-getByText(container, 'hello world', { exact: false }) // ignore case
+screen.getByText('Hello World') // full string match
+screen.getByText('llo Worl', { exact: false }) // substring match
+screen.getByText('hello world', { exact: false }) // ignore case
 
 // Matching a regex:
-getByText(container, /World/) // substring match
-getByText(container, /world/i) // substring match, ignore case
-getByText(container, /^hello world$/i) // full string match, ignore case
-getByText(container, /Hello W?oRlD/i) // advanced regex
+screen.getByText(/World/) // substring match
+screen.getByText(/world/i) // substring match, ignore case
+screen.getByText(/^hello world$/i) // full string match, ignore case
+screen.getByText(/Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
-getByText(container, (content, element) => content.startsWith('Hello'))
+screen.getByText((content, element) => content.startsWith('Hello'))
 ```
 
 **_Will not_ find the div:**
 
 ```javascript
 // full string does not match
-getByText(container, 'Goodbye World')
+screen.getByText('Goodbye World')
 
 // case-sensitive regex with different case
-getByText(container, /hello world/)
+screen.getByText(/hello world/)
 
 // function looking for a span when it's actually a div:
-getByText(container, (content, element) => {
+screen.getByText((content, element) => {
   return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
 })
 ```

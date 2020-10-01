@@ -8,22 +8,23 @@ title: Cheatsheet
 A short guide to all the exported functions in `React Testing Library`
 
 - **render** `const {/* */} = render(Component)` returns:
-  - all the queries from `DOM Testing Library`, bound to the document so there
-    is no need to pass a node as the first argument
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
+  - all the queries from `DOM Testing Library`, bound to the document so there
+    is no need to pass a node as the first argument (usually, you can use
+    the `screen` import instead)
 
 ```jsx
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 
 test('loads items eventually', async () => {
-  const { getByText, findByText } = render(<Page />)
+  render(<Page />)
 
   // Click button
   fireEvent.click(getByText('Load'))
 
   // Wait for page to update with query text
-  const items = await findByText(/Item #[0-9]: /)
+  const items = await screen.findAllByText(/Item #[0-9]: /)
   expect(items).toHaveLength(10)
 })
 ```
@@ -108,11 +109,15 @@ See [Which query should I use?](guide-which-query.md)
 
 See [dom-testing-library Async API](dom-testing-library/api-async.md)
 
-- **wait** (Promise) retry function within until it stops throwing or times out
-- **waitForElement** (Promise) retry function or array of functions and return
-  the result
-- `findBy` and `findAllBy` queries are async and retry until either a timeout or
-  if the query returns successfully; they wrap `waitForElement`.
+- **wait** (Promise) retry the function within until it stops throwing or times
+  out
+- **waitForElement** (Promise) retry the function until it returns an element or
+  an array of elements
+  - `findBy` and `findAllBy` queries are async and retry until either a timeout
+    or if the query returns successfully; they wrap `waitForElement`
+- **waitForDomChange** (Promise) retry the function each time the DOM is changed
+- **waitForElementToBeRemoved** (Promise) retry the function until it no longer
+  returns a DOM node
 
 > Remember to `await` or `.then()` the result of async functions in your tests!
 
@@ -123,7 +128,7 @@ See [Events API](dom-testing-library/api-events.md)
 - **fireEvent** trigger DOM event: `fireEvent(node, event)`
 - **fireEvent.\*** helpers for default event types
   - **click** `fireEvent.click(node)`
-  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/events.js)
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 - **act** wrapper around
   [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
   React Testing Library wraps render and fireEvent in a call to `act` already so
@@ -154,18 +159,18 @@ Given the following HTML:
 
 ```javascript
 // Matching a string:
-getByText(container, 'Hello World') // full string match
-getByText(container, 'llo Worl', { exact: false }) // substring match
-getByText(container, 'hello world', { exact: false }) // ignore case
+getByText('Hello World') // full string match
+getByText('llo Worl', { exact: false }) // substring match
+getByText('hello world', { exact: false }) // ignore case
 
 // Matching a regex:
-getByText(container, /World/) // substring match
-getByText(container, /world/i) // substring match, ignore case
-getByText(container, /^hello world$/i) // full string match, ignore case
-getByText(container, /Hello W?oRlD/i) // advanced regex
+getByText(/World/) // substring match
+getByText(/world/i) // substring match, ignore case
+getByText(/^hello world$/i) // full string match, ignore case
+getByText(/Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
-getByText(container, (content, element) => content.startsWith('Hello'))
+getByText((content, element) => content.startsWith('Hello'))
 ```
 
 **[Get the printable cheat sheet][cheatsheet]**

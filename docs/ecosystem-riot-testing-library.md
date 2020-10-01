@@ -1,0 +1,33 @@
+---
+id: ecosystem-riot-testing-library
+title: riot-testing-library
+---
+
+[`riot-testing-library`][gh] builds on top of
+[DOM Testing Library](https://github.com/testing-library/dom-testing-library) by
+adding APIs for working with [Riot.js](https://riot.js.org/) components.
+
+```
+npm install --save-dev riot-testing-library
+```
+
+```javascript
+import render, { fireEvent } from 'riot-testing-library'
+import TestTag from './test.tag'
+
+test('should show count text  when rendered', () => {
+  const { queryByTestId } = render(TestTag, { count: 10 })
+  expect(queryByTestId('count').textContent).toBe('10')
+})
+
+test('should add count when click add button text', () => {
+  const { queryByTestId } = render(TestTag, { count: 1 })
+  expect(queryByTestId('count').textContent).toBe('1')
+  fireEvent.click(queryByTestId('button'))
+  expect(queryByTestId('count').textContent).toBe('2')
+})
+```
+
+- [riot-testing-library on GitHub][gh]
+
+[gh]: https://github.com/ariesjia/riot-testing-library

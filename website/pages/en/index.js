@@ -190,7 +190,7 @@ class Index extends React.Component {
               '[React Testing Library](./docs/react-testing-library/intro)',
           },
           {
-            image: `${baseUrl}img/evergreen-128x128.png`,
+            image: `${baseUrl}img/cypress-128x128.png`,
             imageAlign: 'top',
             title:
               '[Cypress Testing Library](./docs/cypress-testing-library/intro)',
@@ -233,7 +233,19 @@ class Index extends React.Component {
             image: `${baseUrl}img/react-native-128x128.png`,
             imageAlign: 'top',
             title:
-              '[Native Testing Library](./docs/native-testing-library/intro)',
+              '[React Native Testing Library](./docs/react-native-testing-library/intro)',
+          },
+          {
+            image: `${baseUrl}img/preact-128x128.png`,
+            imageAlign: 'top',
+            title:
+              '[Preact Testing Library](./docs/preact-testing-library/intro)',
+          },
+          {
+            image: `${baseUrl}img/nightwatch-128x128.png`,
+            imageAlign: 'top',
+            title:
+              '[Nightwatch Testing Library](./docs/nightwatch-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/construction-128x128.png`,

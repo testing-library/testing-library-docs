@@ -11,7 +11,14 @@
   publish = "website/build/testing-library-docs"
 
   # Default build command.
-  command = "cd website; npm install; npm run build"
+  command = "cd website; npm install; npm run format-docs; npm run build"
+
+# Shortcut to discord server invite
+[[redirects]]
+  from = "https://testing-library.com/discord"
+  to = "https://discord.gg/c6JN9fM"
+  status = 301
+  force = true
 
 # React root to React landing page
 [[redirects]]
@@ -41,10 +48,31 @@
   status = 301
   force = false # do not redirect if route is not 404
 
+# Support page to help page
+[[redirects]]
+  from = "/support"
+  to = "/help"
+  status = 301
+  force = true
+
+# DOM landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/dom/"
+  to = "https://testing-library.com/docs/dom-testing-library/intro"
+  status = 301
+  force = true
+
 # React landing page to home page
 [[redirects]]
   from = "https://testing-library.com/react/"
   to = "https://testing-library.com/docs/react-testing-library/intro"
+  status = 301
+  force = true
+
+# React Native landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/react-native/"
+  to = "https://testing-library.com/docs/react-native-testing-library/intro"
   status = 301
   force = true
 
@@ -73,5 +101,54 @@
 [[redirects]]
   from = "https://testing-library.com/pptr/"
   to = "https://testing-library.com/docs/pptr-testing-library/intro"
+  status = 301
+  force = true
+
+# Svelte landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/svelte/"
+  to = "https://testing-library.com/docs/svelte-testing-library/intro"
+  status = 301
+  force = true
+
+# Preact landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/preact/"
+  to = "https://testing-library.com/docs/preact-testing-library/intro"
+  status = 301
+  force = true
+
+# jest-dom landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/jest-dom/"
+  to = "https://testing-library.com/docs/ecosystem-jest-dom"
+  status = 301
+  force = true
+
+# Testcafe landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/testcafe/"
+  to = "https://testing-library.com/docs/testcafe-testing-library/intro"
+  status = 301
+  force = true
+
+# Nightwatch landing page to home page
+[[redirects]]
+  from = "https://testing-library.com/nightwatch/"
+  to = "https://testing-library.com/docs/nightwatch-testing-library/intro"
+  status = 301
+  force = true
+
+# React Redux recipe to Redux's recipe
+[[redirects]]
+  from = "https://testing-library.com/docs/example-react-redux"
+  to = "https://redux.js.org/recipes/writing-tests#connected-components"
+  status = 301
+  force = true
+
+# Redirect screen error messe to correct page
+[[redirects]]
+  from = "https://testing-library.com/s/screen-global-error"
+  to = "https://testing-library.com/docs/dom-testing-library/api-queries#screen"
   status = 301
   force = true

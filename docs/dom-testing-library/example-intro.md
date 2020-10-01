@@ -14,10 +14,10 @@ import {
   queryByTestId,
   // Tip: all queries are also exposed on an object
   // called "queries" which you could import here as well
-  wait,
+  waitFor,
 } from '@testing-library/dom'
 // adds special assertions like toHaveTextContent
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 function getExampleDOM() {
   // This is just a raw example of setting up some DOM
@@ -57,12 +57,12 @@ test('examples of some things', async () => {
   // Get elements by their text, just like a real user does.
   getByText(container, 'Print Username').click()
 
-  await wait(() =>
+  await waitFor(() =>
     expect(queryByTestId(container, 'printed-username')).toBeTruthy()
   )
 
   // getByTestId and queryByTestId are an escape hatch to get elements
-  // by a test id (could also attempt to get this element by it's text)
+  // by a test id (could also attempt to get this element by its text)
   expect(getByTestId(container, 'printed-username')).toHaveTextContent(
     famousWomanInHistory
   )

@@ -3,27 +3,27 @@ id: ecosystem-user-event
 title: user-event
 ---
 
-[`user-event`][gh] is a companion library for `React Testing Library` that
-provides more advanced simulation of browser interactions than the built-in
-`fireEvent` method.
+[`user-event`][gh] is a companion library for Testing Library that provides more
+advanced simulation of browser interactions than the built-in [`fireEvent`][docs]
+method.
 
 ```
-npm install --save-dev user-event
+npm install --save-dev @testing-library/user-event
 ```
 
 ```jsx
-import React from 'react'
-import { render } from '@testing-library/react'
-import userEvent from 'user-event'
+import { screen } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
-const { getByText } = test('click', () => {
-  render(<textarea data-testid="email" />)
+test('types inside textarea', async () => {
+  document.body.innerHTML = `<textarea />`
+
+  await userEvent.type(screen.getByRole('textbox'), 'Hello, World!')
+  expect(screen.getByRole('textbox')).toHaveValue('Hello, World!')
 })
-
-userEvent.type(getByTestId('email'), 'Hello, World!')
-expect(getByTestId('email')).toHaveAttribute('value', 'Hello, World!')
 ```
 
 - [user-event on GitHub][gh]
 
-[gh]: https://github.com/Gpx/user-event
+[gh]: https://github.com/testing-library/user-event
+[docs]: https://testing-library.com/docs/dom-testing-library/api-events#fireevent

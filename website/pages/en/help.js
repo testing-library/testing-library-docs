@@ -35,13 +35,11 @@ function Help(props) {
       title: 'Spectrum',
     },
     {
-      content: `Chat on [Discord](https://www.reactiflux.com/)`,
+      content: `Chat on [Discord](https://discord.gg/c6JN9fM)`,
       title: 'Discord',
     },
     {
-      content: `Stay up to date by following the [blog](${
-        props.config.baseUrl
-        }blog)`,
+      content: `Stay up to date by following the [blog](${props.config.baseUrl}blog)`,
       title: 'Blog',
     },
     {
@@ -69,19 +67,51 @@ function Help(props) {
           <section>
             <h2 align="center">Buy a Course</h2>
             <p align="center">
-              Learn how to test React with Kent C. Dodds, the creator of
-              React Testing Library
+              Learn how to test JavaScript with{' '}
+              <ExternalLink href="https://kentcdodds.com">
+                Kent C. Dodds
+              </ExternalLink>
+              , the creator of Testing Library, on{' '}
+              <ExternalLink href="https://testingjavascript.com">
+                TestingJavaScript.com
+              </ExternalLink>
             </p>
             <div align="center">
-              <a href="https://testingjavascript.com">
+              <ExternalLink href="https://testingjavascript.com">
                 <img
                   width="500"
                   alt="TestingJavaScript.com Learn the smart, efficient way to test any JavaScript application."
-                  src="https://raw.githubusercontent.com/testing-library/react-testing-library/master/other/testingjavascript.jpg"
+                  src={`${baseUrl}img/testingjavascript.jpg`}
                 />
-              </a>
+              </ExternalLink>
             </div>
           </section>
+          <header className="postHeader">
+            <h1>Want to help?</h1>
+          </header>
+          <p>
+            Thanks! The Testing Library maintainers are happy to maintain this
+            library along with you, the community. We aren't looking for
+            funding, but we need everyone to pitch in to make this project and
+            community successful and improve tests for everyone in the long run.
+          </p>
+          <p>
+            Please consider helping us answer community questions and update
+            documentation content via the help links above. You can also help
+            support{' '}
+            <ExternalLink href="https://kentcdodds.com">
+              Kent C. Dodds
+            </ExternalLink>{' '}
+            financially by purchasing his{' '}
+            <ExternalLink href="https://kentcdodds.com/courses">
+              courses
+            </ExternalLink>{' '}
+            or{' '}
+            <ExternalLink href="https://kentcdodds.com/workshops/">
+              remote workshops
+            </ExternalLink>
+            .
+          </p>
         </div>
       </Container>
     </div>

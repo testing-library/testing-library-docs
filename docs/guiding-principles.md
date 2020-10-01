@@ -13,7 +13,7 @@ that closely resemble how your web pages are used.
 Utilities are included in this project based on the following guiding
 principles:
 
-1.  If it relates to rendering components, then it should deal with DOM nodes 
+1.  If it relates to rendering components, then it should deal with DOM nodes
     rather than component instances, and it should not encourage dealing with
     component instances.
 2.  It should be generally useful for testing the application components in the

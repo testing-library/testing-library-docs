@@ -17,7 +17,6 @@ In summary:
 
 ```javascript
 import React from 'react'
-import '@testing-library/react/cleanup-after-each'
 import { render, fireEvent } from '@testing-library/react'
 
 test('change values via the fireEvent.change method', () => {
@@ -27,6 +26,25 @@ test('change values via the fireEvent.change method', () => {
   fireEvent.change(input, { target: { value: 'a' } })
   expect(handleChange).toHaveBeenCalledTimes(1)
   expect(input.value).toBe('a')
+})
+
+test('select drop-downs must use the fireEvent.change', () => {
+  const handleChange = jest.fn()
+  const { container } = render(
+    <select onChange={handleChange}>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+  )
+  const select = container.firstChild
+  const option1 = container.getElementsByTagName('option').item(0)
+  const option2 = container.getElementsByTagName('option').item(1)
+
+  fireEvent.change(select, { target: { value: '2' } })
+
+  expect(handleChange).toHaveBeenCalledTimes(1)
+  expect(option1.selected).toBe(false)
+  expect(option2.selected).toBe(true)
 })
 
 test('checkboxes (and radios) must use fireEvent.click', () => {
@@ -55,7 +73,7 @@ the `change` event, React thinks that the value hasn't actually been changed.
 
 This works for Simulate because they use internal APIs to fire special simulated
 events. With React Testing Library, we try to avoid implementation details to
-make your tests more resiliant.
+make your tests more resilient.
 
 So we have it worked out for the change event handler to set the property for
 you in a way that's not trackable by React. This is why you must pass the value
@@ -119,16 +137,15 @@ assertions on those as well if you wanted.
 
 [Open full test](example-react-transition-group.md) for the full example.
 
-This looks like more work that shallow rendering (and it is), but it gives you
+This looks like more work than shallow rendering (and it is), but it gives you
 more confidence so long as your mock resembles the thing you're mocking closely
 enough.
 
 If you want to make things more like shallow rendering, then you could do
-something more [like this]([Open full test](example-react-transition-group.md)
-).
+something more [like this](example-react-transition-group.md).
 
 Learn more about how Jest mocks work from my blog post:
-["But really, what is a JavaScript mock?"](https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d)
+["But really, what is a JavaScript mock?"](https://kentcdodds.com/blog/but-really-what-is-a-javascript-mock)
 
 </details>
 
@@ -177,6 +194,57 @@ const firstVersion = container.cloneNode(true)
 // Do some changes
 snapshotDiff(firstVersion, container.cloneNode(true))
 ```
+
+</details>
+
+<details>
+  
+<summary>How do I fix "an update was not wrapped in act(...)" warnings?</summary>
+
+This warning is usually caused by an async operation causing an update after the
+test has already finished. There are 2 approaches to resolve it:
+
+1. Wait for the result of the operation in your test by using one of
+   [the async utilities](/docs/dom-testing-library/api-async) like
+   [wait](/docs/dom-testing-library/api-async#wait) or a
+   [`find*` query](/docs/dom-testing-library/api-queries#findby). For example:
+   `const userAddress = await findByLabel(/address/i)`.
+2. Mocking out the asynchronous operation so that it doesn't trigger state
+   updates.
+
+Generally speaking, approach 1 is preferred since it better matches the
+expectations of a user interacting with your app.
+
+In addition, you may find
+[this blog post](https://kentcdodds.com/blog/write-fewer-longer-tests) helpful
+as you consider how best to write tests that give you confidence and avoid these
+warnings.
+
+</details>
+
+<details>
+  
+<summary>What level of a component tree should I test? Children, parents, or both?</summary>
+
+Following the guiding principle of this library, it is useful to break down how
+tests are organized around how the user experiences and interacts with
+application functionality rather than around specific components themselves. In
+some cases, for example for reusable component libraries, it might be useful to
+include developers in the list of users to test for and test each of the
+reusable components individually. Other times, the specific break down of a
+component tree is just an implementation detail and testing every component
+within that tree individually can cause issues (see
+https://kentcdodds.com/blog/avoid-the-test-user).
+
+In practice this means that it is often preferable to test high enough up the
+component tree to simulate realistic user interactions. The question of whether
+it is worth additionally testing at a higher or lower level on top of this comes
+down to a question of tradeoffs and what will provide enough value for the cost
+(see https://kentcdodds.com/blog/unit-vs-integration-vs-e2e-tests on more info
+on different levels of testing).
+
+For a more in-depth discussion of this topic see
+[this video](https://youtu.be/0qmPdcV-rN8).
 
 </details>
 

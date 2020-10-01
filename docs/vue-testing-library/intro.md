@@ -1,6 +1,7 @@
 ---
 id: intro
 title: Intro
+sidebar_label: Introduction
 ---
 
 Vue Testing Library builds on top of `DOM Testing Library` by adding APIs for
@@ -14,7 +15,7 @@ In short, Vue Testing Library does three things:
 
 1. Re-exports query utilities and helpers from `DOM Testing Library`.
 2. Hides `@vue/test-utils` methods that are in conflict with Testing Library
-   [Guiding Principle](/docs/guiding-principles).
+   [Guiding Principle](guiding-principles.md).
 3. Tweaks some methods from both sources.
 
 ## Quickstart
@@ -25,7 +26,7 @@ npm install --save-dev @testing-library/vue
 
 You can now use all of `DOM Testing Library`'s `getBy`, `getAllBy`, `queryBy`
 and `queryAllBy` commands. See here the
-[full llist of queries](dom-testing-library/api-queries.md).
+[full list of queries](dom-testing-library/api-queries.md).
 
 You may also be interested in installing `jest-dom` so you can use
 [the custom Jest matchers](https://github.com/gnapse/jest-dom#readme) for the

@@ -5,7 +5,7 @@ title: Reach Router
 
 ```jsx
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import {
   Router,
   Link,
@@ -13,7 +13,7 @@ import {
   createMemorySource,
   LocationProvider,
 } from '@reach/router'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
@@ -34,8 +34,6 @@ function App() {
 }
 
 // Ok, so here's what your tests might look like
-
-afterEach(cleanup)
 
 // this is a handy function that I would utilize for any component
 // that relies on the router being in context
@@ -73,5 +71,36 @@ test('landing on a bad page', () => {
   })
   // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(container.innerHTML).toMatch('No match')
+})
+
+// If your route component has parameters, you'll have to change the render function a little bit
+// example of a route component with parameter
+const Routes = () => (
+  <Router>
+    <SomeComponent path="/some-component/:id" />
+  </Router>
+)
+
+// render function with Router wrapper from @reach/router
+function renderWithRouterWrapper(
+  ui,
+  { route = '/', history = createHistory(createMemorySource(route)) } = {}
+) {
+  return {
+    ...render(
+      <LocationProvider history={history}>
+        <Router>{ui}</Router>
+      </LocationProvider>
+    ),
+    history,
+  }
+}
+
+test('renders the component with params', () => {
+  // you'll have to declare the path prop in the component, exactly like the route
+  renderWithRouterWrapper(<SomeComponent path="/some-component/:id" />, {
+    // and pass the parameter value on the route config
+    route: '/some-component/1',
+  })
 })
 ```

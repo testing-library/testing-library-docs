@@ -8,7 +8,7 @@ title: React Transition Group
 ```jsx
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 function Fade({ children, ...props }) {
   return (
@@ -34,8 +34,6 @@ class HiddenMessage extends React.Component {
     )
   }
 }
-
-afterEach(cleanup)
 
 jest.mock('react-transition-group', () => {
   const FakeTransition = jest.fn(({ children }) => children)
@@ -64,7 +62,7 @@ test('you can mock things with jest.mock', () => {
 ```jsx
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 function Fade({ children, ...props }) {
   return (
@@ -90,8 +88,6 @@ class HiddenMessage extends React.Component {
     )
   }
 }
-
-afterEach(cleanup)
 
 jest.mock('react-transition-group', () => {
   const FakeCSSTransition = jest.fn(() => null)

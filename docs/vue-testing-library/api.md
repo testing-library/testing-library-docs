@@ -16,7 +16,7 @@ It also exposes these methods:
     - [`...queries`](#queries)
     - [`container`](#container)
     - [`baseElement`](#baseelement)
-    - [`debug()`](#debug)
+    - [`debug(element)`](#debugelement)
     - [`unmount()`](#unmount)
     - [`isUnmounted()`](#isunmounted)
     - [`html()`](#html)
@@ -107,20 +107,37 @@ const { getByLabelText, queryAllByTestId } = render(Component)
 
 #### `container`
 
-The containing DOM node of your rendered Vue Component. It's a `div`. This is a
-regular DOM node, so you can call `container.querySelector` etc. to inspect the
-children.
+By default, `Vue Testing Library` will create a `div` and append it to the
+`baseElement`. This is where your component will be rendered. If you provide
+your own HTMLElement container via this option, it will not be appended to the
+`baseElement` automatically.
+
+```js
+const table = document.createElement('table')
+
+const { container } = render(TableBody, {
+  container: document.body.appendChild(table),
+})
+```
 
 > Tip: To get the root element of your rendered element, use
 > `container.firstChild`.
 
 #### `baseElement`
 
-Returns `document.body`, the DOM node where your Vue component is rendered.
+`baseElement` is used as the base element for the queries as well as what is
+printed when you use `debug()`.
 
-#### `debug()`
+It matches `container` if no custom `baseElement` is provided. If neither
+`baseElement` or `container` options are provided, `baseElement` defaults to
+`document.body`.
 
-This method is a shortcut for `console.log(prettyDOM(baseElement))`.
+#### `debug(element)`
+
+This method is a shortcut for `console.log(prettyDOM(element))`.
+
+`element` can either be a DOM element or an array containing DOM elements. It
+defaults to `baseElement`
 
 ```jsx
 import { render } from '@testing-library/vue'
@@ -196,7 +213,7 @@ await fireEvent.blur(getByLabelText('username'))
 ### `update(elem, value)`
 
 Properly handles inputs controlled by `v-model`. It updates the
-input/select/textarea inner value while emitting the appropiate native event.
+input/select/textarea inner value while emitting the appropriate native event.
 
 See a working example of `update` in the
 [v-model example test](/docs/vue-testing-library/examples#example-using-v-model).
@@ -207,25 +224,10 @@ See a working example of `update` in the
 
 Unmounts Vue trees that were mounted with [render](#render).
 
-```jsx
-import { cleanup, render } from '@testing-library/vue'
-import Component from './Component.vue'
-
-afterEach(cleanup) // <-- add this
-
-test('renders into document', () => {
-  render(Component)
-  // ...
-})
-
-// ... more tests ...
-```
+> If you are using an environment that supports `afterEach` hook (as in Jest),
+> there's no need to call `cleanup` manually. Vue Testing Library handles it for
+> you.
 
 Failing to call `cleanup` when you've called `render` could result in a memory
-leak and tests which are not "idempotent" (which can lead to difficult to debug
+leak and tests which are not idempotent (which can lead to difficult to debug
 errors in your tests).
-
-**If you don't want to add this to _every single test file_** then we recommend
-that you configure your test framework to run a file before your tests which
-does this automatically. See the [setup](./setup) section for guidance on how to
-set up your framework.

@@ -76,24 +76,36 @@ in the selector.
 const thirdLiInUl = container.querySelector('ul > li:nth-child(3)')
 ```
 
-Or you could include the index or an ID in your attribute:
-
-```javascript
-;`<li data-testid="item-${item.id}">{item.text}</li>`
-```
-
-And then you could use the `getByTestId` utility:
+Or you could use `getAllByRole` to query the `listitem` role and access the
+index in question:
 
 ```javascript
 const items = [
   /* your items */
 ]
 const container = render(/* however you render this stuff */)
-const thirdItem = getByTestId(container, `item-${items[2].id}`)
+const thirdItem = getAllByRole(container, 'listitem')[2]
 ```
 
 </details>
 
+<details>
+<summary>
+  Help! I can't access component methods or the component instance!
+</summary>
+
+This is **intentional**.
+
+We want you to focus on testing the output and functionality of the component as
+it is observed by the user and to **avoid worrying about the implementation
+details** of the component.
+
+We believe this leads to less brittle and more meaningful test code.
+
+Please refer to the [Guiding Principles](../guiding-principles) of this testing
+library for more info.
+
+</details>
 <!--
 Links:
 -->
