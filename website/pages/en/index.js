@@ -233,7 +233,7 @@ class Index extends React.Component {
             image: `${baseUrl}img/react-native-128x128.png`,
             imageAlign: 'top',
             title:
-              '[Native Testing Library](./docs/native-testing-library/intro)',
+              '[React Native Testing Library](./docs/react-native-testing-library/intro)',
           },
           {
             image: `${baseUrl}img/preact-128x128.png`,

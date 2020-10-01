@@ -50,3 +50,7 @@ test('changes button text on click', async () => {
   expect(button).toHaveTextContent('Button Clicked')
 })
 ```
+
+For additional resources, patterns and best practices about testing svelte
+components and other svelte features take a look at
+[svelte-society/recipes-mvp/testing](https://github.com/svelte-society/recipes-mvp/blob/master/testing.md).

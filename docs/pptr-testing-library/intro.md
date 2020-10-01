@@ -16,7 +16,7 @@ npm install --save-dev puppeteer pptr-testing-library
 
 ```js
 const puppeteer = require('puppeteer')
-const { getDocument, queries, wait } = require('pptr-testing-library')
+const { getDocument, queries, waitFor } = require('pptr-testing-library')
 
 const { getByTestId, getByLabelText } = queries
 

@@ -9,6 +9,11 @@ sidebar_label: External Examples
 - You can find more React Testing Library examples at
   [react-testing-examples.com](https://react-testing-examples.com/jest-rtl/).
 
+## Playground
+
+- An interactive sandbox with visual feedback on different queries
+  [testing-playground.com](https://testing-playground.com).
+
 ## Videos
 
 - [What is React Testing Library?](https://youtu.be/JKOwJUM4_RM) by Scott

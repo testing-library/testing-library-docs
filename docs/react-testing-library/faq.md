@@ -28,6 +28,25 @@ test('change values via the fireEvent.change method', () => {
   expect(input.value).toBe('a')
 })
 
+test('select drop-downs must use the fireEvent.change', () => {
+  const handleChange = jest.fn()
+  const { container } = render(
+    <select onChange={handleChange}>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+  )
+  const select = container.firstChild
+  const option1 = container.getElementsByTagName('option').item(0)
+  const option2 = container.getElementsByTagName('option').item(1)
+
+  fireEvent.change(select, { target: { value: '2' } })
+
+  expect(handleChange).toHaveBeenCalledTimes(1)
+  expect(option1.selected).toBe(false)
+  expect(option2.selected).toBe(true)
+})
+
 test('checkboxes (and radios) must use fireEvent.click', () => {
   const handleChange = jest.fn()
   const { container } = render(

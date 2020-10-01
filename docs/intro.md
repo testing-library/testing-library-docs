@@ -16,7 +16,7 @@ tests to avoid including implementation details so refactors of your components
 (changes to implementation but not functionality) don't break your tests and
 slow you and your team down.
 
-## This solution
+## The solution
 
 The core library, [`DOM Testing Library`][dom], is a light-weight solution for
 testing web pages by querying and interacting with DOM nodes (whether simulated
@@ -29,7 +29,7 @@ it.
 The core library has been wrapped to provide ergonomic APIs for several
 frameworks, including [React][react], [Angular][angular], and [Vue][vue]. There
 is also a plugin to use testing-library queries for end-to-end tests in
-[Cypress][cypress] and an implementation for [React Native][native].
+[Cypress][cypress] and an implementation for [React Native][react-native].
 
 ### What this library is not
 
@@ -39,6 +39,22 @@ is also a plugin to use testing-library queries for end-to-end tests in
 `DOM Testing Library` works with any environment that provides DOM APIs, such as
 Jest, Mocha + JSDOM, or a real browser
 
+### What you should avoid with Testing Library
+
+Testing Library encourages you to avoid testing
+[implementation details](https://kentcdodds.com/blog/testing-implementation-details)
+like the internals of a component you're testing (though it's still possible).
+[The Guiding Principles](/docs/guiding-principles) of this library emphasize a
+focus on tests that closely resemble how your web pages are interacted by the
+users.
+
+You may want to avoid following implementation details:
+
+1. Internal state of a component
+1. Internal methods of a component
+1. Lifecycle methods of a component
+1. Child components
+
 [jest]: https://jestjs.io
 [jsdom]: https://github.com/jsdom/jsdom
 [dom]: dom-testing-library/intro.md
@@ -46,5 +62,5 @@ Jest, Mocha + JSDOM, or a real browser
 [angular]: angular-testing-library/intro.md
 [vue]: vue-testing-library/intro.md
 [cypress]: cypress-testing-library/intro.md
-[native]: ecosystem-native-testing-library.md
+[react-native]: react-native-testing-library/intro.md
 [npm]: https://www.npmjs.com/org/testing-library

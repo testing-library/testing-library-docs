@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Getting Started": ["intro", "guiding-principles"],
+    "Getting Started": ["intro", "guiding-principles", "using-fake-timers"],
     "Frameworks": [
       {
         "type": "subcategory",
@@ -27,6 +27,7 @@
           "react-testing-library/example-intro",
           "react-testing-library/setup",
           "react-testing-library/api",
+          "react-testing-library/migrate-from-enzyme",
           "react-testing-library/faq",
           "react-testing-library/cheatsheet"
         ]
@@ -41,12 +42,11 @@
       },
       {
         "type": "subcategory",
-        "label": "Native Testing Library",
+        "label": "React Native Testing Library",
         "ids": [
-          "native-testing-library/intro",
-          "native-testing-library/example-intro",
-          "native-testing-library/setup",
-          "native-testing-library/api"
+          "react-native-testing-library/intro",
+          "react-native-testing-library/example-intro",
+          "react-native-testing-library/setup"
         ]
       },
       {
@@ -113,7 +113,9 @@
       "ecosystem-react-select-event",
       "ecosystem-eslint-plugin-testing-library",
       "ecosystem-eslint-plugin-jest-dom",
-      "ecosystem-riot-testing-library"
+      "ecosystem-riot-testing-library",
+      "ecosystem-jasmine-dom",
+      "ecosystem-query-extensions"
     ],
     "Help": ["faq", "learning", "contributing"]
   },

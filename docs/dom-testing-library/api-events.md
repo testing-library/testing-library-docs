@@ -3,6 +3,10 @@ id: api-events
 title: Firing Events
 ---
 
+> Most projects have a few use cases for `fireEvent`, but the majority of the
+> time you should probably use
+> [`@testing-library/user-event`](https://github.com/testing-library/user-event).
+
 ## `fireEvent`
 
 ```typescript
@@ -57,6 +61,31 @@ fireEvent.change(getByLabelText(/picture/i), {
     files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
   },
 })
+
+// Note: The 'value' attribute must use ISO 8601 format when firing a 
+// change event on an input of type "date". Otherwise the element will not 
+// reflect the changed value.
+
+// Invalid:
+fireEvent.change(input, { target: { value: '12/05/2020' } })
+
+// Valid:
+fireEvent.change(input, { target: { value: '2020-05-12' } })
+```
+
+**dataTransfer**: Drag events have a `dataTransfer` property that contains data
+transferred during the operation. As a convenience, if you provide a
+`dataTransfer` property in the `eventProperties` (second argument), then those
+properties will be added to the event.
+
+This should predominantly be used for testing drag and drop interactions.
+
+```javascript
+fireEvent.drop(getByLabelText(/drop files here/i), {
+  dataTransfer: {
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
+  },
+})
 ```
 
 **Keyboard events**: There are three event types related to keyboard input -
@@ -88,3 +117,42 @@ const myEvent = createEvent.click(node, { button: 2 })
 fireEvent(node, myEvent)
 // myEvent.timeStamp can be accessed just like any other properties from myEvent
 ```
+
+You can also create generic events:
+
+```javascript
+// simulate the 'input' event on a file input
+fireEvent(
+  input,
+  createEvent('input', input, {
+    target: { files: inputFiles },
+    ...init,
+  })
+)
+```
+
+## Using Jest Function Mocks
+
+[Jest's Mock functions](https://jestjs.io/docs/en/mock-functions) can be used to test
+that a callback passed to the function was called, or what it was called when the event
+that **should** trigger the callback function does trigger the bound callback.
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--React-->
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+const Button = ({onClick, children}) => <button onClick={onClick}>{children}</button>
+
+test('calls onClick prop when clicked', () => {
+  const handleClick = jest.fn()
+  render(<Button onClick={handleClick}>Click Me</Button>)
+  fireEvent.click(screen.getByText(/click me/i))
+  expect(handleClick).toHaveBeenCalledTimes(1)
+})
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->

@@ -90,6 +90,6 @@ Links:
 [vue-test-utils]: https://github.com/vuejs/vue-test-utils
 [mount]: https://vue-test-utils.vuejs.org/api/#mount
 [stubs]: https://vue-test-utils.vuejs.org/api/options.html#stubs
-[stubs-example]: https://github.com/testing-library/vue-testing-library/blob/master/tests/__tests__/stubs.js
+[stubs-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/stubs.js
 
 <!-- prettier-ignore-end -->

@@ -5,7 +5,7 @@ title: React Context
 
 ```jsx
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { NameContext, NameProvider, NameConsumer } from '../react-context'
 
@@ -14,22 +14,32 @@ import { NameContext, NameProvider, NameConsumer } from '../react-context'
  * matching provider
  */
 test('NameConsumer shows default value', () => {
-  const { getByText } = render(<NameConsumer />)
-  expect(getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: Unknown')
+  render(<NameConsumer />)
+  expect(screen.getByText(/^My Name Is:/)).toHaveTextContent(
+    'My Name Is: Unknown'
+  )
 })
 
 /**
- * To test a component tree that uses a context consumer but not the provider,
- * wrap the tree with a matching provider
+ * A custom render to setup providers. Extends regular
+ * render options with `providerProps` to allow injecting
+ * different scenarios to test with.
+ *
+ * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
  */
-test('NameConsumer shows value from provider', () => {
-  const tree = (
-    <NameContext.Provider value="C3P0">
-      <NameConsumer />
-    </NameContext.Provider>
+const customRender = (ui, { providerProps, ...renderOptions }) => {
+  return render(
+    <NameContext.Provider {...providerProps}>{ui}</NameContext.Provider>,
+    renderOptions
   )
-  const { getByText } = render(tree)
-  expect(getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: C3P0')
+}
+
+test('NameConsumer shows value from provider', () => {
+  const providerProps = {
+    value: 'C3PO',
+  }
+  customRender(<NameConsumer />, { providerProps })
+  expect(screen.getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: C3P0')
 })
 
 /**
@@ -37,27 +47,32 @@ test('NameConsumer shows value from provider', () => {
  * consumer as the child
  */
 test('NameProvider composes full name from first, last', () => {
-  const tree = (
-    <NameProvider first="Boba" last="Fett">
-      <NameContext.Consumer>
-        {value => <span>Received: {value}</span>}
-      </NameContext.Consumer>
-    </NameProvider>
+  const providerProps = {
+    first: 'Boba',
+    last: 'Fett',
+  }
+  customRender(
+    <NameContext.Consumer>
+      {value => <span>Received: {value}</span>}
+    </NameContext.Consumer>,
+    { providerProps }
   )
-  const { getByText } = render(tree)
-  expect(getByText(/^Received:/).textContent).toBe('Received: Boba Fett')
+  expect(screen.getByText(/^Received:/).textContent).toBe('Received: Boba Fett')
 })
 
 /**
  * A tree containing both a providers and consumer can be rendered normally
  */
 test('NameProvider/Consumer shows name of character', () => {
-  const tree = (
+  const wrapper = ({ children }) => (
     <NameProvider first="Leia" last="Organa">
-      <NameConsumer />
+      {children}
     </NameProvider>
   )
-  const { getByText } = render(tree)
-  expect(getByText(/^My Name Is:/).textContent).toBe('My Name Is: Leia Organa')
+
+  render(<NameConsumer />, { wrapper })
+  expect(screen.getByText(/^My Name Is:/).textContent).toBe(
+    'My Name Is: Leia Organa'
+  )
 })
 ```

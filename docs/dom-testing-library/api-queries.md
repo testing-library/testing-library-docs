@@ -37,9 +37,11 @@ matches the given query. The promise is rejected if no element is found or if
 more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
-> Note, this is a simple combination of `getBy*` queries and
-> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries
-> accept the `waitFor` options as the last argument. (i.e.
+> **Note**
+>
+> this is a simple combination of `getBy*` queries and
+> [`waitFor`](/docs/api-async#waitfor). The `findBy*` queries accept the
+> `waitFor` options as the last argument. (i.e.
 > `screen.findByText('text', queryOptions, waitForOptions)`)
 
 ### findAllBy
@@ -88,7 +90,7 @@ This method is essentially a shortcut for `console.log(prettyDOM())`. It
 supports debugging the document, a single element, or an array of elements.
 
 ```javascript
-import {screen} from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
 document.body.innerHTML = `
   <button>test</button>
@@ -106,7 +108,9 @@ screen.debug(screen.getAllByText('multi-test'))
 
 ## Queries
 
-> NOTE: These queries are the base queries and require you pass a `container` as
+> **Note**
+>
+> These queries are the base queries and require you to pass a `container` as
 > the first argument. Most framework-implementations of Testing Library provide
 > a pre-bound version of these queries when you render your components with them
 > which means you do not have to provide a container. In addition, if you just
@@ -115,7 +119,7 @@ screen.debug(screen.getAllByText('multi-test'))
 
 ### `ByLabelText`
 
-> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText,
 > findByLabelText, findAllByLabelText
 
 ```typescript
@@ -143,14 +147,14 @@ The example below will find the input node for the following DOM structures:
 <label id="username-label">Username</label>
 <input aria-labelledby="username-label" />
 
-// The aria-labelledby attribute with non-form elements
-<section aria-labelledby="section-one-header">
-  <h3 id="section-one-header">Section One</h3>
-  <p>some content</p>
-</section>
-
 // Wrapper labels
 <label>Username <input /></label>
+
+// Wrapper labels where the label text is in another child element
+<label>
+  <span>Username</span>
+  <input />
+</label>
 
 // aria-label attributes
 // Take care because this is not a label that users can see on the page,
@@ -193,12 +197,38 @@ switching to `aria-label` or `aria-labelledby`.
 If it is important that you query an actual `<label>` element you can provide a
 `selector` in the options:
 
-```html
-<label> <span>Username</span> <input /> </label>
+```js
+// Multiple elements labelled via aria-labelledby
+<label id="username">Username</label>
+<input aria-labelledby="username" />
+<span aria-labelledby="username">Please enter your username</span>
+
+// Multiple labels with the same text
+<label>
+  Username
+  <input />
+</label>
+<label>
+  Username
+  <textarea></textarea>
+</label>
 ```
 
 ```js
-const inputNode = screen.getByLabelText('Username', {selector: 'input'})
+const inputNode = screen.getByLabelText('Username', { selector: 'input' })
+```
+
+> **Note**
+>
+> `getByLabelText` will not work in the case where a `for` attribute on a
+> `<label>` element matches an `id` attribute on a non-form element.
+
+```js
+// This case is not valid
+// for/htmlFor between label and an element that is not a form element
+<section id="photos-section">
+  <label for="photos-section">Photos</label>
+</section>
 ```
 
 ### `ByPlaceholderText`
@@ -245,7 +275,7 @@ const inputNode = screen.getByPlaceholderText('Username')
 <!--Cypress-->
 
 ```js
-cy.getByPlaceholderText('Username').should('exist')
+cy.findByPlaceholderText('Username').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -301,7 +331,7 @@ const aboutAnchorNode = screen.getByText(/about/i)
 <!--Cypress-->
 
 ```js
-cy.getByText(/about/i).should('exist')
+cy.findByText(/about/i).should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -376,7 +406,7 @@ const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 <!--Cypress-->
 
 ```js
-cy.getByAltText(/incredibles.*? poster/i).should('exist')
+cy.findByAltText(/incredibles.*? poster/i).should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -432,8 +462,8 @@ const closeElement = screen.getByTitle('Close')
 <!--Cypress-->
 
 ```js
-cy.getByTitle('Delete').should('exist')
-cy.getByTitle('Close').should('exist')
+cy.findByTitle('Delete').should('exist')
+cy.findByTitle('Close').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -488,7 +518,7 @@ const lastNameInput = screen.getByDisplayValue('Norris')
 <!--Cypress-->
 
 ```js
-cy.getByDisplayValue('Norris').should('exist')
+cy.findByDisplayValue('Norris').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -525,7 +555,7 @@ const messageTextArea = screen.getByDisplayValue('Hello World')
 <!--Cypress-->
 
 ```js
-cy.getByDisplayValue('Hello World').should('exist')
+cy.findByDisplayValue('Hello World').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -566,7 +596,7 @@ const selectElement = screen.getByDisplayValue('Alaska')
 <!--Cypress-->
 
 ```js
-cy.getByDisplayValue('Alaska').should('exist')
+cy.findByDisplayValue('Alaska').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -582,21 +612,34 @@ getByRole(
   role: TextMatch,
   options?: {
     exact?: boolean = true,
-    hidden?: boolean = true,
+    hidden?: boolean = false,
     name?: TextMatch,
     normalizer?: NormalizerFn,
+    selected?: boolean,
+    checked?: boolean,
+    pressed?: boolean,
+    queryFallbacks?: boolean,
+    level?: number,
   }): HTMLElement
 ```
 
 Queries for elements with the given role (and it also accepts a
 [`TextMatch`](#textmatch)). Default roles are taken into consideration e.g.
 `<button />` has the `button` role without explicitly setting the `role`
-attribute. The
-[W3C HTML recommendation](https://www.w3.org/TR/html5/index.html#contents) lists
-all HTML elements with their default ARIA roles. Additionally, as DOM Testing
-Library uses `aria-query` under the hood to find those elements by their default
-ARIA roles, you can find in their docs
-[which HTML Elements with inherent roles are mapped to each role](https://github.com/A11yance/aria-query#elements-to-roles).
+attribute. Here you can see
+[a table of HTML elements with their default and desired roles](https://www.w3.org/TR/html-aria/#docconformance).
+
+Please note that setting a `role` and/or `aria-*` attribute that matches the
+implicit ARIA semantics is unnecessary and is **not recommended** as these
+properties are already set by the browser, and we must not use the `role` and
+`aria-*` attributes in a manner that conflicts with the semantics described. For
+example, a `button` element can't have the `role` attribute of `heading`,
+because the `button` element has default characteristics that conflict with the
+`heading` role.
+
+> Roles are matched literally by string equality, without inheriting from the
+> ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
+> will not include elements with a subclass role like `switch`.
 
 You can query the returned element(s) by their
 [accessible name](https://www.w3.org/TR/accname-1.1/). The accessible name is
@@ -611,7 +654,7 @@ accessible name query does not replace other queries such as `*ByAlt` or
 `*ByTitle`. While the accessible name can be equal to these attributes, it does
 not replace the functionality of these attributes. For example
 `<img aria-label="fancy image" src="fancy.jpg" />` will be returned for both
-`getByAlt('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
+`getByAltText('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
 However, the image will not display its description if `fancy.jpg` could not be
 loaded. Whether you want assert this functionality in your test or not is up to
 you.
@@ -637,7 +680,76 @@ case. For example in
 assertions about the `Open dialog`-button you would need to use
 `getAllByRole('button', { hidden: true })`.
 
-The default value can [be configured](api-configuration#configuration).
+The default value for `hidden` can
+[be configured](api-configuration#configuration).
+
+#### `selected`
+
+You can filter the returned elements by their selected state by setting
+`selected: true` or `selected: false`.
+
+For example in
+
+```html
+<body>
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Native</button>
+    <button role="tab" aria-selected="false">React</button>
+    <button role="tab" aria-selected="false">Cypress</button>
+  </div>
+</body>
+```
+
+you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
+To learn more about the selected state and which elements can have this state
+see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
+
+#### `checked`
+
+You can filter the returned elements by their checked state by setting
+`checked: true` or `checked: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button role="checkbox" aria-checked="true">Sugar</button>
+    <button role="checkbox" aria-checked="false">Gummy bears</button>
+    <button role="checkbox" aria-checked="false">Whipped cream</button>
+  </section>
+</body>
+```
+
+you can get the "Sugar" option by calling
+`getByRole('checkbox', { checked: true })`. To learn more about the checked
+state and which elements can have this state see
+[ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
+
+> **Note**
+>
+> Checkboxes have a "mixed" state, which is considered neither checked nor
+> unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+
+#### `pressed`
+
+Buttons can have a pressed state. You can filter the returned elements by their
+pressed state by setting `pressed: true` or `pressed: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
+To learn more about the pressed state see
+[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
 
 ```html
 <div role="dialog">...</div>
@@ -665,10 +777,75 @@ const dialogContainer = screen.getByRole('dialog')
 <!--Cypress-->
 
 ```js
-cy.getByRole('dialog').should('exist')
+cy.findByRole('dialog').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+#### `queryFallbacks`
+
+By default, it's assumed that the first role of each element is supported, so
+only the first role can be queried. If you need to query an element by any of
+its fallback roles instead, you can use `queryFallbacks: true`.
+
+For example, `getByRole('switch')` would always match
+`<div role="switch checkbox" />` because it's the first role, while
+`getByRole('checkbox')` would not. However,
+`getByRole('checkbox', { queryFallbacks: true })` would enable all fallback
+roles and therefore match the same element.
+
+> An element doesn't have multiple roles in a given environment. It has a single
+> one. Multiple roles in the attribute are evaluated from left to right until
+> the environment finds the first role it understands. This is useful when new
+> roles get introduced and you want to start supporting those as well as older
+> environments that don't understand that role (yet).
+
+#### `level`
+
+An element with the `heading` role can be queried by any heading level
+`getByRole('heading')` or by a specific heading level using the `level` option
+`getByRole('heading', { level: 2 })`.
+
+The `level` option queries the element(s) with the `heading` role matching the
+indicated level determined by the semantic HTML heading elements `<h1>-<h6>` or
+matching the `aria-level` attribute.
+
+Given the example below,
+
+```html
+<body>
+  <section>
+    <h1>Heading Level One</h1>
+    <h2>First Heading Level Two</h2>
+    <h3>Heading Level Three</h3>
+    <div role="heading" aria-level="2">Second Heading Level Two</div>
+  </section>
+</body>
+```
+
+you can query the `Heading Level Three` heading using
+`getByRole('heading', { level: 3 })`.
+
+```js
+getByRole('heading', { level: 1 })
+// <h1>Heading Level One</h1>
+
+getAllByRole('heading', { level: 2 })
+// [
+//   <h2>First Heading Level Two</h2>,
+//   <div role="heading" aria-level="2">Second Heading Level Two</div>
+// ]
+```
+
+While it is possible to explicitly set `role="heading"` and `aria-level`
+attribute on an element, it is **strongly encouraged** to use the semantic HTML
+headings `<h1>-<h6>`.
+
+To learn more about the `aria-level` property, see
+[ARIA `aria-level`](https://www.w3.org/TR/wai-aria-1.2/#aria-level).
+
+> The `level` option is _only_ applicable to the `heading` role. An error will
+> be thrown when used with any other role.
 
 ### `ByTestId`
 
@@ -714,7 +891,7 @@ const element = screen.getByTestId('custom-element')
 <!--Cypress-->
 
 ```js
-cy.getByTestId('custom-element').should('exist')
+cy.findByTestId('custom-element').should('exist')
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -768,9 +945,11 @@ If you want to prevent that normalization, or provide alternative normalization
 function in the options object. This function will be given a string and is
 expected to return a normalized version of that string.
 
-Note: Specifying a value for `normalizer` _replaces_ the built-in normalization,
-but you can call `getDefaultNormalizer` to obtain a built-in normalizer, either
-to adjust that normalization or to call it from your own normalizer.
+> **Note**
+>
+> Specifying a value for `normalizer` _replaces_ the built-in normalization, but
+> you can call `getDefaultNormalizer` to obtain a built-in normalizer, either to
+> adjust that normalization or to call it from your own normalizer.
 
 `getDefaultNormalizer` takes an options object which allows the selection of
 behaviour:

@@ -23,6 +23,7 @@ If you're still hungry for more at this point than checkout:
 - The react-testing-library:
   - [API](../react-testing-library/api.md)
   - [Example](../react-testing-library/example-intro.md)
+  - [Migrate from Enzyme](../react-testing-library/migrate-from-enzyme.md)
   - [Sandbox](https://codesandbox.io/s/github/kentcdodds/react-testing-library-examples)
   - [FAQ](../react-testing-library/faq.md)
 - This YouTube video by LevelUpTuts called

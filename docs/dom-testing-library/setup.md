@@ -34,5 +34,5 @@ mocha --require jsdom-global/register
 ```
 
 > Note, depending on the version of Node you're running, you may also need to
-> add `core-js` and `regenerator-runtime` (if you're using babel 7) or 
+> add `core-js` and `regenerator-runtime` (if you're using babel 7) or
 > `babel-polyfill` (for babel 6).

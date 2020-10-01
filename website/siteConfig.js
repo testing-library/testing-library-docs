@@ -14,7 +14,7 @@ const users = [
     caption: 'Autodesk',
     image: '/img/users/autodesk.svg',
     infoLink: 'https://www.autodesk.com',
-    pinned: false,
+    pinned: true,
   },
   {
     caption: 'Coches.net',
@@ -26,25 +26,31 @@ const users = [
     caption: 'Codecademy',
     image: '/img/users/codecademy.svg',
     infoLink: 'https://www.codecademy.com',
-    pinned: false,
+    pinned: true,
   },
   {
     caption: 'Expedia Group',
     image: '/img/users/expediagroup.svg',
     infoLink: 'https://www.expediagroup.com',
-    pinned: false,
+    pinned: true,
   },
   {
     caption: 'Facebook Open Source',
     image: '/img/users/facebook-open-source.png',
     infoLink: 'https://opensource.facebook.com',
-    pinned: false,
+    pinned: true,
   },
   {
     caption: 'Fotocasa',
     image: '/img/users/fotocasa.svg',
     infoLink: 'https://www.fotocasa.es/',
     pinned: false,
+  },
+  {
+    caption: 'Global CTO Forum',
+    image: '/img/users/global-cto-forum.svg',
+    infoLink: 'https://globalctoforum.org',
+    pinned: true,
   },
   {
     caption: 'Gusto',
@@ -57,6 +63,12 @@ const users = [
     image: '/img/users/habitaclia.svg',
     infoLink: 'https://www.habitaclia.com/',
     pinned: false,
+  },
+  {
+    caption: 'iFood',
+    image: '/img/users/ifood.png',
+    infoLink: 'https://www.ifood.com.br',
+    pinned: true,
   },
   {
     caption: 'Infojobs',
@@ -86,7 +98,7 @@ const users = [
     caption: 'PayPal',
     image: '/img/users/paypal.svg',
     infoLink: 'https://www.paypal.com',
-    pinned: false,
+    pinned: true,
   },
   {
     caption: 'Quizlet',
@@ -138,7 +150,7 @@ const users = [
   },
   {
     caption: 'Walmart Labs',
-    pinned: false,
+    pinned: true,
     image: '/img/users/walmart.png',
     infoLink: 'https://www.walmartlabs.com/',
   },
@@ -147,6 +159,12 @@ const users = [
     image: '/img/users/wix.svg',
     infoLink: 'https://www.wix.com',
     pinned: false,
+  },
+  {
+    caption: 'Zup I.T. Innovation',
+    image: '/img/users/zup.png',
+    infoLink: 'https://www.zup.com.br/',
+    pinned: true,
   },
 ]
 
@@ -172,7 +190,6 @@ const siteConfig = {
     { doc: 'intro', label: 'Docs' },
     { doc: 'recipes', label: 'Recipes' },
     { page: 'help', label: 'Help' },
-    { page: 'support', label: 'Support Us' },
     { blog: true, label: 'Blog' },
   ],
 

@@ -11,31 +11,54 @@ See the following sections for a detailed breakdown of the test
 ```jsx
 // __tests__/fetch.test.js
 import React from 'react'
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import axiosMock from 'axios'
 import Fetch from '../fetch'
 
-jest.mock('axios')
+const server = setupServer(
+  rest.get('/greeting', (req, res, ctx) => {
+    return res(ctx.json({ greeting: 'hello there' }))
+  })
+)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 test('loads and displays greeting', async () => {
-  const url = '/greeting'
-  render(<Fetch url={url} />)
-
-  axiosMock.get.mockResolvedValueOnce({
-    data: { greeting: 'hello there' },
-  })
+  render(<Fetch url="/greeting" />)
 
   fireEvent.click(screen.getByText('Load Greeting'))
 
   await waitFor(() => screen.getByRole('heading'))
 
-  expect(axiosMock.get).toHaveBeenCalledTimes(1)
-  expect(axiosMock.get).toHaveBeenCalledWith(url)
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
   expect(screen.getByRole('button')).toHaveAttribute('disabled')
 })
+
+test('handles server error', async () => {
+  server.use(
+    rest.get('/greeting', (req, res, ctx) => {
+      return res(ctx.status(500))
+    })
+  )
+
+  render(<Fetch url="/greeting" />)
+
+  fireEvent.click(screen.getByText('Load Greeting'))
+
+  await waitFor(() => screen.getByRole('alert'))
+
+  expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+  expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
+})
 ```
+
+> We recommend using [Mock Service Worker](https://github.com/mswjs/msw) library
+> to declaratively mock API communication in your tests instead of stubbing
+> `window.fetch`, or relying on third-party adapters.
 
 ---
 
@@ -47,17 +70,17 @@ test('loads and displays greeting', async () => {
 // import dependencies
 import React from 'react'
 
+// import API mocking utilities from Mock Service Worker
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+
 // import react-testing methods
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom/extend-expect'
-import axiosMock from 'axios'
 // the component to test
 import Fetch from '../fetch'
-
-// https://jestjs.io/docs/en/mock-functions#mocking-modules
-jest.mock('axios')
 ```
 
 ```jsx
@@ -68,13 +91,50 @@ test('loads and displays greeting', async () => {
 })
 ```
 
+### Mock
+
+Use the `setupServer` function from `msw` to mock an API request that our tested
+component makes.
+
+```js
+// declare which API requests to mock
+const server = setupServer(
+  // capture "GET /greeting" requests
+  rest.get('/greeting', (req, res, ctx) => {
+    // respond using a mocked JSON body
+    return res(ctx.json({ greeting: 'hello there' }))
+  })
+)
+
+// establish API mocking before all tests
+beforeAll(() => server.listen())
+// reset any request handlers that are declared as a part of our tests
+// (i.e. for testing one-time error scenarios)
+afterEach(() => server.resetHandlers())
+// clean up once the tests are done
+afterAll(() => server.close())
+
+// ...
+
+test('handlers server error', async () => {
+  server.use(
+    // override the initial "GET /greeting" request handler
+    // to return a 500 Server Error
+    rest.get('/greeting', (req, res, ctx) => {
+      return res(ctx.status(500))
+    })
+  )
+
+  // ...
+})
+```
+
 ### Arrange
 
-The [`render`](./api#render) method renders a React element into the DOM and returns utility functions for testing the component.
+The [`render`](./api#render) method renders a React element into the DOM.
 
 ```jsx
-const url = '/greeting'
-const { container, asFragment } = render(<Fetch url={url} />)
+render(<Fetch url="/greeting" />)
 ```
 
 ### Act
@@ -83,13 +143,9 @@ The [`fireEvent`](dom-testing-library/api-events.md) method allows you to fire
 events to simulate user actions.
 
 ```jsx
-axiosMock.get.mockResolvedValueOnce({
-  data: { greeting: 'hello there' },
-})
-
 fireEvent.click(screen.getByText('Load Greeting'))
 
-// Wait until the mocked `get` request promise resolves and
+// wait until the `get` request promise resolves and
 // the component calls setState and re-renders.
 // `waitFor` waits until the callback doesn't throw an error
 
@@ -101,22 +157,66 @@ await waitFor(() =>
 
 ### Assert
 
+```jsx
+// assert that the alert message is correct.
+expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+
+// assert that the button is not disabled.
+expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
+```
+
+### System Under Test
+
 fetch.js
 
 ```jsx
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import axios from 'axios'
 
+const initialState = {
+  error: null,
+  greeting: null,
+}
+
+function greetingReducer(state, action) {
+  switch (action.type) {
+    case 'SUCCESS': {
+      return {
+        error: null,
+        greeting: action.greeting,
+      }
+    }
+    case 'ERROR': {
+      return {
+        error: action.error,
+        greeting: null,
+      }
+    }
+    default: {
+      return state
+    }
+  }
+}
+
 export default function Fetch({ url }) {
-  const [greeting, setGreeting] = useState('')
+  const [{ error, greeting }, dispatch] = useReducer(
+    greetingReducer,
+    initialState
+  )
   const [buttonClicked, setButtonClicked] = useState(false)
 
   const fetchGreeting = async () => {
-    const response = await axios.get(url)
-    const data = response.data
-    const { greeting } = data
-    setGreeting(greeting)
-    setButtonClicked(true)
+    axios
+      .get(url)
+      .then(response => {
+        const { data } = response
+        const { greeting } = data
+        dispatch({ type: 'SUCCESS', greeting })
+        setButtonClicked(true)
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', error })
+      })
   }
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
@@ -126,35 +226,9 @@ export default function Fetch({ url }) {
       <button onClick={fetchGreeting} disabled={buttonClicked}>
         {buttonText}
       </button>
-      {greeting ? <h1>{greeting}</h1> : null}
+      {greeting && <h1>{greeting}</h1>}
+      {error && <p role="alert">Oops, failed to fetch!</p>}
     </div>
   )
 }
-```
-
-```jsx
-expect(axiosMock.get).toHaveBeenCalledTimes(1)
-expect(axiosMock.get).toHaveBeenCalledWith(url)
-expect(screen.getByRole('heading')).toHaveTextContent('hello there')
-expect(screen.getByRole('button')).toHaveAttribute('disabled')
-
-// snapshots work great with regular DOM nodes!
-expect(container).toMatchInlineSnapshot(`
-  <div>
-    <div>
-      <button
-        disabled=""
-      >
-        Ok
-      </button>
-      <h1>
-        hello there
-      </h1>
-    </div>
-  </div>
-`)
-
-// you can also use get a `DocumentFragment`,
-// which is useful if you want to compare nodes across render
-expect(asFragment()).toMatchSnapshot()
 ```
