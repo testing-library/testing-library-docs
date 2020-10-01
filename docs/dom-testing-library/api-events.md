@@ -58,7 +58,7 @@ fireEvent.change(getByLabelText(/picture/i), {
   },
 })
 
-// note: The value attribute must abide by ISO 8601 standards when firing a 
+// Note: The 'value' attribute must use ISO 8601 format when firing a 
 // change event on an input of type "date". Otherwise the element will not 
 // reflect the changed value.
 
