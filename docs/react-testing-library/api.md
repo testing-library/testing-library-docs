@@ -84,8 +84,8 @@ const { container } = render(<TableBody {...props} />, {
 ### `baseElement`
 
 If the `container` is specified, then this defaults to that, otherwise this
-defaults to `document.documentElement`. This is used as the base element for the
-queries as well as what is printed when you use `debug()`.
+defaults to `document.body`. This is used as the base element for the queries as
+well as what is printed when you use `debug()`.
 
 ### `hydrate`
 

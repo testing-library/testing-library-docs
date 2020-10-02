@@ -18,14 +18,14 @@ This website was created with [Docusaurus](https://v2.docusaurus.io).
 
 ```sh
 # Install dependencies
-$ yarn
+$ npm install
 ```
 
 2. Run your dev server:
 
 ```sh
 # Start the site
-$ yarn start
+$ npm start
 ```
 
 ## Directory Structure

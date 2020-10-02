@@ -10,7 +10,9 @@ vice versa.
 
 If you need to wait for an element to appear, the [async wait
 utilities][async-api] allow you to wait for an assertion to be satisfied before
-proceeding. The wait utilities retry until the query passes or times out.
+proceeding. The wait utilities retry until the query passes or times out. _The
+async methods return a Promise, so you must always use `await` or .then(done)
+when calling them._
 
 ```jsx
 test('movie title appears', async () => {

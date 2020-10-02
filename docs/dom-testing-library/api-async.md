@@ -35,6 +35,8 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 // ...
 ```
 
+`waitFor` may run the callback a variable number of times.
+
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
 
@@ -99,14 +101,14 @@ el.parentElement.removeChild(el)
 or an empty array:
 
 ```javascript
-waitForElementToBeRemoved(null).catch((err) => console.log(err))
-waitForElementToBeRemoved(queryByText(/not here/i)).catch((err) =>
+waitForElementToBeRemoved(null).catch(err => console.log(err))
+waitForElementToBeRemoved(queryByText(/not here/i)).catch(err =>
   console.log(err)
 )
-waitForElementToBeRemoved(queryAllByText(/not here/i)).catch((err) =>
+waitForElementToBeRemoved(queryAllByText(/not here/i)).catch(err =>
   console.log(err)
 )
-waitForElementToBeRemoved(() => getByText(/not here/i)).catch((err) =>
+waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err =>
   console.log(err)
 )
 
@@ -158,7 +160,7 @@ changed:
 const container = document.createElement('div')
 waitForDomChange({ container })
   .then(() => console.log('DOM changed!'))
-  .catch((err) => console.log(`Error you need to deal with: ${err}`))
+  .catch(err => console.log(`Error you need to deal with: ${err}`))
 container.append(document.createElement('p'))
 // if 👆 was the only code affecting the container and it was not run,
 // waitForDomChange would throw an error
@@ -172,7 +174,7 @@ container
 ```javascript
 const container = document.createElement('div')
 container.setAttribute('data-cool', 'true')
-waitForDomChange({ container }).then((mutationsList) => {
+waitForDomChange({ container }).then(mutationsList => {
   const mutation = mutationsList[0]
   console.log(
     `was cool: ${mutation.oldValue}\ncurrently cool: ${mutation.target.dataset.cool}`

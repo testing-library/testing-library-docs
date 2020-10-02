@@ -1,0 +1,16 @@
+---
+id: ecosystem-query-extensions
+title: query-extensions
+---
+
+[`query-extensions`][gh] is an experimental companion library for Testing
+Library that mixes a higher-level API into the standard `@testing-library` core
+queries
+
+```
+npm install --save-dev query-extensions
+```
+
+Check out the [github repo][gh] for documentation for examples and rationale.
+
+[gh]: https://github.com/tjefferson08/query-extensions

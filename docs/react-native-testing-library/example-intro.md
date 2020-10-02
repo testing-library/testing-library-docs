@@ -46,6 +46,6 @@ test('examples of some things', async () => {
   expect(getByTestId('printed-username').props.children).toBe(
     famousWomanInHistory
   )
-  expect(toJSON).toMatchSnapshot()
+  expect(toJSON()).toMatchSnapshot()
 })
 ```
