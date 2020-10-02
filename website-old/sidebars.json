@@ -1,0 +1,144 @@
+{
+  "docs": {
+    "Getting Started": ["intro", "guiding-principles", "using-fake-timers"],
+    "Frameworks": [
+      {
+        "type": "subcategory",
+        "label": "DOM Testing Library",
+        "ids": [
+          "dom-testing-library/intro",
+          "dom-testing-library/install",
+          "dom-testing-library/example-intro",
+          "dom-testing-library/setup",
+          "dom-testing-library/api-queries",
+          "dom-testing-library/api-events",
+          "dom-testing-library/api-async",
+          "dom-testing-library/api-helpers",
+          "dom-testing-library/api-configuration",
+          "dom-testing-library/faq",
+          "dom-testing-library/cheatsheet"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "React Testing Library",
+        "ids": [
+          "react-testing-library/intro",
+          "react-testing-library/example-intro",
+          "react-testing-library/setup",
+          "react-testing-library/api",
+          "react-testing-library/migrate-from-enzyme",
+          "react-testing-library/faq",
+          "react-testing-library/cheatsheet"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Reason Testing Library",
+        "ids": [
+          "bs-react-testing-library/intro",
+          "bs-react-testing-library/examples"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "React Native Testing Library",
+        "ids": [
+          "react-native-testing-library/intro",
+          "react-native-testing-library/example-intro",
+          "react-native-testing-library/setup"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Vue Testing Library",
+        "ids": [
+          "vue-testing-library/intro",
+          "vue-testing-library/examples",
+          "vue-testing-library/setup",
+          "vue-testing-library/api",
+          "vue-testing-library/cheatsheet",
+          "vue-testing-library/faq"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Marko Testing Library",
+        "ids": [
+          "marko-testing-library/intro",
+          "marko-testing-library/setup",
+          "marko-testing-library/api"
+        ]
+      },
+      "angular-testing-library/intro",
+      {
+        "type": "subcategory",
+        "label": "Angular Testing Library",
+        "ids": [
+          "angular-testing-library/intro",
+          "angular-testing-library/examples",
+          "angular-testing-library/api"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Preact Testing Library",
+        "ids": [
+          "preact-testing-library/intro",
+          "preact-testing-library/example",
+          "preact-testing-library/api",
+          "preact-testing-library/learn"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Svelte Testing Library",
+        "ids": [
+          "svelte-testing-library/intro",
+          "svelte-testing-library/setup",
+          "svelte-testing-library/example",
+          "svelte-testing-library/api"
+        ]
+      },
+      "cypress-testing-library/intro",
+      "pptr-testing-library/intro",
+      "testcafe-testing-library/intro",
+      "nightwatch-testing-library/intro"
+    ],
+    "Ecosystem": [
+      "ecosystem-user-event",
+      "ecosystem-jest-dom",
+      "ecosystem-bs-jest-dom",
+      "ecosystem-jest-native",
+      "ecosystem-react-select-event",
+      "ecosystem-eslint-plugin-testing-library",
+      "ecosystem-eslint-plugin-jest-dom",
+      "ecosystem-riot-testing-library",
+      "ecosystem-jasmine-dom"
+    ],
+    "Help": ["faq", "learning", "contributing"]
+  },
+  "recipes": {
+    "Guides": [
+      "recipes",
+      "guide-which-query",
+      "guide-disappearance",
+      "guide-events"
+    ],
+    "Examples": [
+      "example-codesandbox",
+      "example-input-event",
+      "example-update-props",
+      "example-react-context",
+      "example-react-hooks-useReducer",
+      "example-react-intl",
+      "example-react-redux",
+      "example-react-router",
+      "example-reach-router",
+      "example-react-transition-group",
+      "example-react-modal",
+      "example-external"
+    ],
+    "Help": ["faq", "learning", "contributing"]
+  }
+}

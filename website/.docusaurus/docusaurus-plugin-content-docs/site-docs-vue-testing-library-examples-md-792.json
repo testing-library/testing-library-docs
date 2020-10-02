@@ -1,0 +1,21 @@
+{
+  "unversionedId": "vue-testing-library/examples",
+  "id": "vue-testing-library/examples",
+  "isDocsHomePage": false,
+  "title": "Examples",
+  "description": "Basic example",
+  "source": "@site/../docs/vue-testing-library/examples.md",
+  "permalink": "/docs/vue-testing-library/examples",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/examples.md",
+  "lastUpdatedBy": "Maxence Poutord",
+  "lastUpdatedAt": 1582633881,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Intro",
+    "permalink": "/docs/vue-testing-library/intro"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/docs/vue-testing-library/setup"
+  }
+}

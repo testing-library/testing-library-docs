@@ -1,0 +1,23 @@
+{
+  "unversionedId": "guide-disappearance",
+  "id": "guide-disappearance",
+  "isDocsHomePage": false,
+  "title": "Appearance and Disappearance",
+  "description": "Sometimes you need to test that an element is present and then disappears or",
+  "source": "@site/../docs/guide-disappearance.md",
+  "slug": "/guide-disappearance",
+  "permalink": "/docs/guide-disappearance",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guide-disappearance.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Which query should I use?",
+    "permalink": "/docs/guide-which-query"
+  },
+  "next": {
+    "title": "Considerations for fireEvent",
+    "permalink": "/docs/guide-events"
+  }
+}

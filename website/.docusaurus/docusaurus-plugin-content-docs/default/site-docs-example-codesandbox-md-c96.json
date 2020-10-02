@@ -1,0 +1,24 @@
+{
+  "unversionedId": "example-codesandbox",
+  "id": "example-codesandbox",
+  "isDocsHomePage": false,
+  "title": "Codesandbox Examples",
+  "description": "You can find runnable examples for many common use cases on Codesandbox.",
+  "source": "@site/../docs/example-codesandbox.md",
+  "slug": "/example-codesandbox",
+  "permalink": "/docs/example-codesandbox",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-codesandbox.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Codesandbox Examples",
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Considerations for fireEvent",
+    "permalink": "/docs/guide-events"
+  },
+  "next": {
+    "title": "Input Event",
+    "permalink": "/docs/example-input-event"
+  }
+}

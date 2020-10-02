@@ -1,0 +1,23 @@
+{
+  "unversionedId": "react-testing-library/cheatsheet",
+  "id": "react-testing-library/cheatsheet",
+  "isDocsHomePage": false,
+  "title": "Cheatsheet",
+  "description": "Get the printable cheat sheet",
+  "source": "@site/../docs/react-testing-library/cheatsheet.md",
+  "slug": "/react-testing-library/cheatsheet",
+  "permalink": "/docs/react-testing-library/cheatsheet",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/cheatsheet.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/docs/react-testing-library/faq"
+  },
+  "next": {
+    "title": "Reason Testing Library",
+    "permalink": "/docs/bs-react-testing-library/intro"
+  }
+}

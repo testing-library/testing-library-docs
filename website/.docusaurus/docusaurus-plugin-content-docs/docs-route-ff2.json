@@ -1,0 +1,588 @@
+{
+  "docsSidebars": {
+    "docs": [
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Getting Started",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/docs/"
+          },
+          {
+            "type": "link",
+            "label": "Guiding Principles",
+            "href": "/docs/guiding-principles"
+          },
+          {
+            "type": "link",
+            "label": "Using Fake Timers",
+            "href": "/docs/using-fake-timers"
+          }
+        ]
+      },
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Frameworks",
+        "items": [
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "DOM Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/dom-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Install",
+                "href": "/docs/dom-testing-library/install"
+              },
+              {
+                "type": "link",
+                "label": "Example",
+                "href": "/docs/dom-testing-library/example-intro"
+              },
+              {
+                "type": "link",
+                "label": "Setup",
+                "href": "/docs/dom-testing-library/setup"
+              },
+              {
+                "type": "link",
+                "label": "Queries",
+                "href": "/docs/dom-testing-library/api-queries"
+              },
+              {
+                "type": "link",
+                "label": "Firing Events",
+                "href": "/docs/dom-testing-library/api-events"
+              },
+              {
+                "type": "link",
+                "label": "Async Utilities",
+                "href": "/docs/dom-testing-library/api-async"
+              },
+              {
+                "type": "link",
+                "label": "Helpers",
+                "href": "/docs/dom-testing-library/api-helpers"
+              },
+              {
+                "type": "link",
+                "label": "Configuration",
+                "href": "/docs/dom-testing-library/api-configuration"
+              },
+              {
+                "type": "link",
+                "label": "FAQ",
+                "href": "/docs/dom-testing-library/faq"
+              },
+              {
+                "type": "link",
+                "label": "Cheatsheet",
+                "href": "/docs/dom-testing-library/cheatsheet"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "React Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/react-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Example",
+                "href": "/docs/react-testing-library/example-intro"
+              },
+              {
+                "type": "link",
+                "label": "Setup",
+                "href": "/docs/react-testing-library/setup"
+              },
+              {
+                "type": "link",
+                "label": "API",
+                "href": "/docs/react-testing-library/api"
+              },
+              {
+                "type": "link",
+                "label": "FAQ",
+                "href": "/docs/react-testing-library/faq"
+              },
+              {
+                "type": "link",
+                "label": "Cheatsheet",
+                "href": "/docs/react-testing-library/cheatsheet"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Reason Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/bs-react-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Examples",
+                "href": "/docs/bs-react-testing-library/examples"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Native Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/react-native-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Example",
+                "href": "/docs/react-native-testing-library/example-intro"
+              },
+              {
+                "type": "link",
+                "label": "Setup",
+                "href": "/docs/react-native-testing-library/setup"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Vue Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/vue-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Examples",
+                "href": "/docs/vue-testing-library/examples"
+              },
+              {
+                "type": "link",
+                "label": "Setup",
+                "href": "/docs/vue-testing-library/setup"
+              },
+              {
+                "type": "link",
+                "label": "API",
+                "href": "/docs/vue-testing-library/api"
+              },
+              {
+                "type": "link",
+                "label": "Cheatsheet",
+                "href": "/docs/vue-testing-library/cheatsheet"
+              },
+              {
+                "type": "link",
+                "label": "FAQ",
+                "href": "/docs/vue-testing-library/faq"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Marko Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/marko-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Setup",
+                "href": "/docs/marko-testing-library/setup"
+              },
+              {
+                "type": "link",
+                "label": "API",
+                "href": "/docs/marko-testing-library/api"
+              }
+            ]
+          },
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/docs/angular-testing-library/intro"
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Angular Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/angular-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Examples",
+                "href": "/docs/angular-testing-library/examples"
+              },
+              {
+                "type": "link",
+                "label": "API",
+                "href": "/docs/angular-testing-library/api"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Preact Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/preact-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Example",
+                "href": "/docs/preact-testing-library/example"
+              },
+              {
+                "type": "link",
+                "label": "API",
+                "href": "/docs/preact-testing-library/api"
+              },
+              {
+                "type": "link",
+                "label": "Learn",
+                "href": "/docs/preact-testing-library/learn"
+              }
+            ]
+          },
+          {
+            "collapsed": true,
+            "type": "category",
+            "label": "Svelte Testing Library",
+            "items": [
+              {
+                "type": "link",
+                "label": "Introduction",
+                "href": "/docs/svelte-testing-library/intro"
+              },
+              {
+                "type": "link",
+                "label": "Setup",
+                "href": "/docs/svelte-testing-library/setup"
+              },
+              {
+                "type": "link",
+                "label": "Example",
+                "href": "/docs/svelte-testing-library/example"
+              },
+              {
+                "type": "link",
+                "label": "API",
+                "href": "/docs/svelte-testing-library/api"
+              }
+            ]
+          },
+          {
+            "type": "link",
+            "label": "Cypress Testing Library",
+            "href": "/docs/cypress-testing-library/intro"
+          },
+          {
+            "type": "link",
+            "label": "Puppeteer Testing Library",
+            "href": "/docs/pptr-testing-library/intro"
+          },
+          {
+            "type": "link",
+            "label": "Testcafe Testing Library",
+            "href": "/docs/testcafe-testing-library/intro"
+          },
+          {
+            "type": "link",
+            "label": "Nightwatch Testing Library",
+            "href": "/docs/nightwatch-testing-library/intro"
+          }
+        ]
+      },
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Ecosystem",
+        "items": [
+          {
+            "type": "link",
+            "label": "user-event",
+            "href": "/docs/ecosystem-user-event"
+          },
+          {
+            "type": "link",
+            "label": "jest-dom",
+            "href": "/docs/ecosystem-jest-dom"
+          },
+          {
+            "type": "link",
+            "label": "bs-jest-dom",
+            "href": "/docs/ecosystem-bs-jest-dom"
+          },
+          {
+            "type": "link",
+            "label": "jest-native",
+            "href": "/docs/ecosystem-jest-native"
+          },
+          {
+            "type": "link",
+            "label": "react-select-event",
+            "href": "/docs/ecosystem-react-select-event"
+          },
+          {
+            "type": "link",
+            "label": "eslint-plugin-testing-library",
+            "href": "/docs/ecosystem-eslint-plugin-testing-library"
+          },
+          {
+            "type": "link",
+            "label": "eslint-plugin-jest-dom",
+            "href": "/docs/ecosystem-eslint-plugin-jest-dom"
+          },
+          {
+            "type": "link",
+            "label": "riot-testing-library",
+            "href": "/docs/ecosystem-riot-testing-library"
+          }
+        ]
+      },
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Help",
+        "items": [
+          {
+            "type": "link",
+            "label": "Learning Material",
+            "href": "/docs/learning"
+          },
+          {
+            "type": "link",
+            "label": "Contributing",
+            "href": "/docs/contributing"
+          }
+        ]
+      }
+    ],
+    "recipes": [
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Guides",
+        "items": [
+          {
+            "type": "link",
+            "label": "Recipes",
+            "href": "/docs/recipes"
+          },
+          {
+            "type": "link",
+            "label": "Which query should I use?",
+            "href": "/docs/guide-which-query"
+          },
+          {
+            "type": "link",
+            "label": "Appearance and Disappearance",
+            "href": "/docs/guide-disappearance"
+          },
+          {
+            "type": "link",
+            "label": "Considerations for fireEvent",
+            "href": "/docs/guide-events"
+          }
+        ]
+      },
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Examples",
+        "items": [
+          {
+            "type": "link",
+            "label": "Codesandbox Examples",
+            "href": "/docs/example-codesandbox"
+          },
+          {
+            "type": "link",
+            "label": "Input Event",
+            "href": "/docs/example-input-event"
+          },
+          {
+            "type": "link",
+            "label": "Update Props",
+            "href": "/docs/example-update-props"
+          },
+          {
+            "type": "link",
+            "label": "React Context",
+            "href": "/docs/example-react-context"
+          },
+          {
+            "type": "link",
+            "label": "useReducer",
+            "href": "/docs/example-react-hooks-useReducer"
+          },
+          {
+            "type": "link",
+            "label": "React Intl",
+            "href": "/docs/example-react-intl"
+          },
+          {
+            "type": "link",
+            "label": "React Redux",
+            "href": "/docs/example-react-redux"
+          },
+          {
+            "type": "link",
+            "label": "React Router",
+            "href": "/docs/example-react-router"
+          },
+          {
+            "type": "link",
+            "label": "Reach Router",
+            "href": "/docs/example-reach-router"
+          },
+          {
+            "type": "link",
+            "label": "React Transition Group",
+            "href": "/docs/example-react-transition-group"
+          },
+          {
+            "type": "link",
+            "label": "Modals",
+            "href": "/docs/example-react-modal"
+          },
+          {
+            "type": "link",
+            "label": "External Examples",
+            "href": "/docs/example-external"
+          }
+        ]
+      },
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Help",
+        "items": [
+          {
+            "type": "link",
+            "label": "Learning Material",
+            "href": "/docs/learning"
+          },
+          {
+            "type": "link",
+            "label": "Contributing",
+            "href": "/docs/contributing"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/": "docs",
+    "/docs/angular-testing-library/api": "docs",
+    "/docs/angular-testing-library/examples": "docs",
+    "/docs/angular-testing-library/intro": "docs",
+    "/docs/bs-react-testing-library/examples": "docs",
+    "/docs/bs-react-testing-library/intro": "docs",
+    "/docs/contributing": "recipes",
+    "/docs/cypress-testing-library/intro": "docs",
+    "/docs/dom-testing-library/api-async": "docs",
+    "/docs/dom-testing-library/api-configuration": "docs",
+    "/docs/dom-testing-library/api-events": "docs",
+    "/docs/dom-testing-library/api-helpers": "docs",
+    "/docs/dom-testing-library/api-queries": "docs",
+    "/docs/dom-testing-library/cheatsheet": "docs",
+    "/docs/dom-testing-library/example-intro": "docs",
+    "/docs/dom-testing-library/faq": "docs",
+    "/docs/dom-testing-library/install": "docs",
+    "/docs/dom-testing-library/intro": "docs",
+    "/docs/dom-testing-library/setup": "docs",
+    "/docs/ecosystem-bs-jest-dom": "docs",
+    "/docs/ecosystem-eslint-plugin-jest-dom": "docs",
+    "/docs/ecosystem-eslint-plugin-testing-library": "docs",
+    "/docs/ecosystem-jest-dom": "docs",
+    "/docs/ecosystem-jest-native": "docs",
+    "/docs/ecosystem-react-select-event": "docs",
+    "/docs/ecosystem-riot-testing-library": "docs",
+    "/docs/ecosystem-user-event": "docs",
+    "/docs/example-codesandbox": "recipes",
+    "/docs/example-external": "recipes",
+    "/docs/example-input-event": "recipes",
+    "/docs/example-reach-router": "recipes",
+    "/docs/example-react-context": "recipes",
+    "/docs/example-react-hooks-useReducer": "recipes",
+    "/docs/example-react-intl": "recipes",
+    "/docs/example-react-modal": "recipes",
+    "/docs/example-react-redux": "recipes",
+    "/docs/example-react-router": "recipes",
+    "/docs/example-react-transition-group": "recipes",
+    "/docs/example-update-props": "recipes",
+    "/docs/guide-disappearance": "recipes",
+    "/docs/guide-events": "recipes",
+    "/docs/guide-which-query": "recipes",
+    "/docs/guiding-principles": "docs",
+    "/docs/learning": "recipes",
+    "/docs/marko-testing-library/api": "docs",
+    "/docs/marko-testing-library/intro": "docs",
+    "/docs/marko-testing-library/setup": "docs",
+    "/docs/nightwatch-testing-library/intro": "docs",
+    "/docs/pptr-testing-library/intro": "docs",
+    "/docs/preact-testing-library/api": "docs",
+    "/docs/preact-testing-library/example": "docs",
+    "/docs/preact-testing-library/intro": "docs",
+    "/docs/preact-testing-library/learn": "docs",
+    "/docs/react-native-testing-library/example-intro": "docs",
+    "/docs/react-native-testing-library/intro": "docs",
+    "/docs/react-native-testing-library/setup": "docs",
+    "/docs/react-testing-library/api": "docs",
+    "/docs/react-testing-library/cheatsheet": "docs",
+    "/docs/react-testing-library/example-intro": "docs",
+    "/docs/react-testing-library/faq": "docs",
+    "/docs/react-testing-library/intro": "docs",
+    "/docs/react-testing-library/setup": "docs",
+    "/docs/recipes": "recipes",
+    "/docs/svelte-testing-library/api": "docs",
+    "/docs/svelte-testing-library/example": "docs",
+    "/docs/svelte-testing-library/intro": "docs",
+    "/docs/svelte-testing-library/setup": "docs",
+    "/docs/testcafe-testing-library/intro": "docs",
+    "/docs/using-fake-timers": "docs",
+    "/docs/vue-testing-library/api": "docs",
+    "/docs/vue-testing-library/cheatsheet": "docs",
+    "/docs/vue-testing-library/examples": "docs",
+    "/docs/vue-testing-library/faq": "docs",
+    "/docs/vue-testing-library/intro": "docs",
+    "/docs/vue-testing-library/setup": "docs"
+  },
+  "version": null
+}

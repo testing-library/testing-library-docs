@@ -1,0 +1,13 @@
+{
+  "unversionedId": "react-testing-library/migrate-from-enzyme",
+  "id": "react-testing-library/migrate-from-enzyme",
+  "isDocsHomePage": false,
+  "title": "Migrate from Enzyme",
+  "description": "This page does not go into detail, but it's for those who have experience in",
+  "source": "@site/../docs/react-testing-library/migrate-from-enzyme.md",
+  "permalink": "/docs/react-testing-library/migrate-from-enzyme",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/migrate-from-enzyme.md",
+  "lastUpdatedBy": "Kermani",
+  "lastUpdatedAt": 1599696039,
+  "sidebar_label": "Migrate from Enzyme"
+}

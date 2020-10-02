@@ -1,0 +1,23 @@
+{
+  "unversionedId": "example-reach-router",
+  "id": "example-reach-router",
+  "isDocsHomePage": false,
+  "title": "Reach Router",
+  "description": "`jsx",
+  "source": "@site/../docs/example-reach-router.md",
+  "slug": "/example-reach-router",
+  "permalink": "/docs/example-reach-router",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-reach-router.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "React Router",
+    "permalink": "/docs/example-react-router"
+  },
+  "next": {
+    "title": "React Transition Group",
+    "permalink": "/docs/example-react-transition-group"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "unversionedId": "example-external",
+  "id": "example-external",
+  "isDocsHomePage": false,
+  "title": "External Examples",
+  "description": "Code Samples",
+  "source": "@site/../docs/example-external.md",
+  "permalink": "/docs/example-external",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-external.md",
+  "lastUpdatedBy": "Stephan Meijer",
+  "lastUpdatedAt": 1590172259,
+  "sidebar_label": "External Examples",
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Modals",
+    "permalink": "/docs/example-react-modal"
+  },
+  "next": {
+    "title": "Learning Material",
+    "permalink": "/docs/learning"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "unversionedId": "vue-testing-library/intro",
+  "id": "vue-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "Intro",
+  "description": "Vue Testing Library builds on top of DOM Testing Library by adding APIs for",
+  "source": "@site/../docs/vue-testing-library/intro.md",
+  "permalink": "/docs/vue-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/intro.md",
+  "lastUpdatedBy": "Tim Deschryver",
+  "lastUpdatedAt": 1567342623,
+  "sidebar_label": "Introduction",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/docs/react-native-testing-library/setup"
+  },
+  "next": {
+    "title": "Examples",
+    "permalink": "/docs/vue-testing-library/examples"
+  }
+}

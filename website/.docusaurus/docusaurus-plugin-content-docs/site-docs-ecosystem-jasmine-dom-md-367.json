@@ -1,0 +1,12 @@
+{
+  "unversionedId": "ecosystem-jasmine-dom",
+  "id": "ecosystem-jasmine-dom",
+  "isDocsHomePage": false,
+  "title": "jasmine-dom",
+  "description": "jasmine-dom is a companion library for Testing Library that",
+  "source": "@site/../docs/ecosystem-jasmine-dom.md",
+  "permalink": "/docs/ecosystem-jasmine-dom",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-jasmine-dom.md",
+  "lastUpdatedBy": "Brian Alexis",
+  "lastUpdatedAt": 1598282535
+}

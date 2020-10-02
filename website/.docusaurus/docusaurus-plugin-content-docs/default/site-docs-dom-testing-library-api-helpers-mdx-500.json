@@ -1,0 +1,23 @@
+{
+  "unversionedId": "dom-testing-library/api-helpers",
+  "id": "dom-testing-library/api-helpers",
+  "isDocsHomePage": false,
+  "title": "Helpers",
+  "description": "Custom Queries",
+  "source": "@site/../docs/dom-testing-library/api-helpers.mdx",
+  "slug": "/dom-testing-library/api-helpers",
+  "permalink": "/docs/dom-testing-library/api-helpers",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/api-helpers.mdx",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Async Utilities",
+    "permalink": "/docs/dom-testing-library/api-async"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/docs/dom-testing-library/api-configuration"
+  }
+}

@@ -1,0 +1,125 @@
+/* your custom css */
+body {
+  font-family: $fontMain;
+  font-size: 18px;
+}
+
+pre,
+code {
+  font-family: $fontCode;
+}
+
+/* highlighted code blocks */
+.hljs {
+  font-size: 13px;
+}
+
+.projectTaglineWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.projectTagline {
+  max-width: 500px;
+  flex: 1;
+  font-size: 115%;
+}
+
+.imageAlignSide .blockImage {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Reset link styling because they aren't visible with a dark primary color */
+a {
+  color: $secondaryColor;
+}
+
+/* Change styling of selected navigation item */
+.container .docsNavContainer {
+  padding-left: 12px;
+}
+
+.navListItemActive {
+  position: relative;
+}
+
+.navListItemActive a.navItem {
+  color: red !important;
+}
+
+.navListItem,
+.subNavGroup {
+  padding-left: 1rem !important;
+}
+
+.navListItem.navListItemActive:before {
+  content: '🐙';
+  position: absolute;
+  left: -0.5rem;
+  bottom: 0;
+}
+
+/* Change styling of logos in showcaseSection */
+.productShowcaseSection .logos img,
+.showcaseSection .logos img {
+  width: auto;
+  max-width: 250px;
+}
+
+/* Code Tabs */
+.nav-tabs {
+  background-color: #fff;
+  border-bottom: none;
+}
+
+.tabs .nav-tabs > div {
+  font-size: 12px;
+  padding: 6px 24px;
+  font-weight: 500;
+}
+
+.tabs .nav-tabs > div.active {
+  border-bottom: none;
+  background: #F0F0F0; /* same as code block */
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.tabs {
+  border-top: none;
+}
+
+details > summary {
+  cursor: pointer; 
+}
+
+/* Responsive */
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+  .projectTitle {
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1200px) {
+  .homeContainer .homeWrapper .projectLogo img {
+    max-height: 128px;
+    max-width: 128px;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}

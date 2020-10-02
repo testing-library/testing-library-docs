@@ -1,0 +1,21 @@
+{
+  "unversionedId": "dom-testing-library/intro",
+  "id": "dom-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "Introduction",
+  "description": "The problem",
+  "source": "@site/../docs/dom-testing-library/intro.md",
+  "permalink": "/docs/dom-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/intro.md",
+  "lastUpdatedBy": "Michał Pierzchała",
+  "lastUpdatedAt": 1596220157,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Using Fake Timers",
+    "permalink": "/docs/using-fake-timers"
+  },
+  "next": {
+    "title": "Install",
+    "permalink": "/docs/dom-testing-library/install"
+  }
+}

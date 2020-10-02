@@ -1,0 +1,24 @@
+{
+  "unversionedId": "angular-testing-library/intro",
+  "id": "angular-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "Angular Testing Library",
+  "description": "Angular Testing Library",
+  "source": "@site/../docs/angular-testing-library/intro.md",
+  "slug": "/angular-testing-library/intro",
+  "permalink": "/docs/angular-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/angular-testing-library/intro.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Introduction",
+  "sidebar": "docs",
+  "previous": {
+    "title": "API",
+    "permalink": "/docs/marko-testing-library/api"
+  },
+  "next": {
+    "title": "Angular Testing Library",
+    "permalink": "/docs/angular-testing-library/intro"
+  }
+}

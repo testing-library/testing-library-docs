@@ -1,0 +1,24 @@
+{
+  "unversionedId": "example-input-event",
+  "id": "example-input-event",
+  "isDocsHomePage": false,
+  "title": "Input Event",
+  "description": "Note",
+  "source": "@site/../docs/example-input-event.md",
+  "slug": "/example-input-event",
+  "permalink": "/docs/example-input-event",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-input-event.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Input Event",
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Codesandbox Examples",
+    "permalink": "/docs/example-codesandbox"
+  },
+  "next": {
+    "title": "Update Props",
+    "permalink": "/docs/example-update-props"
+  }
+}

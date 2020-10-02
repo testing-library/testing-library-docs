@@ -1,0 +1,22 @@
+{
+  "unversionedId": "marko-testing-library/setup",
+  "id": "marko-testing-library/setup",
+  "isDocsHomePage": false,
+  "title": "Setup",
+  "description": "Marko Testing Library is not dependent on any test runner, however it is",
+  "source": "@site/../docs/marko-testing-library/setup.md",
+  "permalink": "/docs/marko-testing-library/setup",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/marko-testing-library/setup.md",
+  "lastUpdatedBy": "Dylan Piercey",
+  "lastUpdatedAt": 1561163025,
+  "sidebar_label": "Setup",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Marko Testing Library",
+    "permalink": "/docs/marko-testing-library/intro"
+  },
+  "next": {
+    "title": "API",
+    "permalink": "/docs/marko-testing-library/api"
+  }
+}

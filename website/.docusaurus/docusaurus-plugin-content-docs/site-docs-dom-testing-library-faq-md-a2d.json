@@ -1,0 +1,21 @@
+{
+  "unversionedId": "dom-testing-library/faq",
+  "id": "dom-testing-library/faq",
+  "isDocsHomePage": false,
+  "title": "FAQ",
+  "description": "Which get method should I use?",
+  "source": "@site/../docs/dom-testing-library/faq.md",
+  "permalink": "/docs/dom-testing-library/faq",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/faq.md",
+  "lastUpdatedBy": "Matan Borenkraout",
+  "lastUpdatedAt": 1599894658,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Configuration",
+    "permalink": "/docs/dom-testing-library/api-configuration"
+  },
+  "next": {
+    "title": "Cheatsheet",
+    "permalink": "/docs/dom-testing-library/cheatsheet"
+  }
+}

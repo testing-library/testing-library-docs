@@ -1,0 +1,23 @@
+{
+  "unversionedId": "ecosystem-eslint-plugin-testing-library",
+  "id": "ecosystem-eslint-plugin-testing-library",
+  "isDocsHomePage": false,
+  "title": "eslint-plugin-testing-library",
+  "description": "eslint-plugin-testing-library is an ESLint plugin for Testing Library",
+  "source": "@site/../docs/ecosystem-eslint-plugin-testing-library.md",
+  "slug": "/ecosystem-eslint-plugin-testing-library",
+  "permalink": "/docs/ecosystem-eslint-plugin-testing-library",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-eslint-plugin-testing-library.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "react-select-event",
+    "permalink": "/docs/ecosystem-react-select-event"
+  },
+  "next": {
+    "title": "eslint-plugin-jest-dom",
+    "permalink": "/docs/ecosystem-eslint-plugin-jest-dom"
+  }
+}

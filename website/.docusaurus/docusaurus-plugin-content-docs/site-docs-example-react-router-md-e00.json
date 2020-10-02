@@ -1,0 +1,21 @@
+{
+  "unversionedId": "example-react-router",
+  "id": "example-react-router",
+  "isDocsHomePage": false,
+  "title": "React Router",
+  "description": "`jsx",
+  "source": "@site/../docs/example-react-router.md",
+  "permalink": "/docs/example-react-router",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-router.md",
+  "lastUpdatedBy": "Pavel Pustovalov",
+  "lastUpdatedAt": 1585777857,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "React Redux",
+    "permalink": "/docs/example-react-redux"
+  },
+  "next": {
+    "title": "Reach Router",
+    "permalink": "/docs/example-reach-router"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "marko-testing-library/api",
+  "id": "marko-testing-library/api",
+  "isDocsHomePage": false,
+  "title": "API",
+  "description": "Marko Testing Library re-exports everything from DOM Testing Library as well",
+  "source": "@site/../docs/marko-testing-library/api.md",
+  "slug": "/marko-testing-library/api",
+  "permalink": "/docs/marko-testing-library/api",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/marko-testing-library/api.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/docs/marko-testing-library/setup"
+  },
+  "next": {
+    "title": "Angular Testing Library",
+    "permalink": "/docs/angular-testing-library/intro"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "cypress-testing-library/intro",
+  "id": "cypress-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "Cypress Testing Library",
+  "description": "Cypress Testing Library allows the use of dom-testing queries within",
+  "source": "@site/../docs/cypress-testing-library/intro.md",
+  "permalink": "/docs/cypress-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/cypress-testing-library/intro.md",
+  "lastUpdatedBy": "Paul Coroneos",
+  "lastUpdatedAt": 1599667966,
+  "sidebar": "docs",
+  "previous": {
+    "title": "API",
+    "permalink": "/docs/svelte-testing-library/api"
+  },
+  "next": {
+    "title": "Puppeteer Testing Library",
+    "permalink": "/docs/pptr-testing-library/intro"
+  }
+}

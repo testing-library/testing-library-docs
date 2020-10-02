@@ -1,0 +1,21 @@
+{
+  "unversionedId": "example-react-hooks-useReducer",
+  "id": "example-react-hooks-useReducer",
+  "isDocsHomePage": false,
+  "title": "useReducer",
+  "description": "Basic example showing how to test the useReducer hook. The most important",
+  "source": "@site/../docs/example-react-hooks-useReducer.md",
+  "permalink": "/docs/example-react-hooks-useReducer",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-hooks-useReducer.md",
+  "lastUpdatedBy": "Michał Pierzchała",
+  "lastUpdatedAt": 1596220157,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "React Context",
+    "permalink": "/docs/example-react-context"
+  },
+  "next": {
+    "title": "React Intl",
+    "permalink": "/docs/example-react-intl"
+  }
+}

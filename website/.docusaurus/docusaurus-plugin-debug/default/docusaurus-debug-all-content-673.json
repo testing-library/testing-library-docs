@@ -1,0 +1,2427 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "versionLabel": "Next",
+          "versionPath": "/docs",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/Users/matan/Dev/testing-library-docs/website/sidebars.json",
+          "docsDirPath": "/Users/matan/Dev/testing-library-docs/docs",
+          "mainDocId": "intro",
+          "sidebars": {
+            "docs": [
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Getting Started",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "guiding-principles"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "using-fake-timers"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Frameworks",
+                "items": [
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "DOM Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/install"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/example-intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/setup"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/api-queries"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/api-events"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/api-async"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/api-helpers"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/api-configuration"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/faq"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "dom-testing-library/cheatsheet"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "React Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "react-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-testing-library/example-intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-testing-library/setup"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-testing-library/api"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-testing-library/faq"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-testing-library/cheatsheet"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Reason Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "bs-react-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "bs-react-testing-library/examples"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Native Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "react-native-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-native-testing-library/example-intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "react-native-testing-library/setup"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Vue Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "vue-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "vue-testing-library/examples"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "vue-testing-library/setup"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "vue-testing-library/api"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "vue-testing-library/cheatsheet"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "vue-testing-library/faq"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Marko Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "marko-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "marko-testing-library/setup"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "marko-testing-library/api"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "angular-testing-library/intro"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Angular Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "angular-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "angular-testing-library/examples"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "angular-testing-library/api"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Preact Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "preact-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "preact-testing-library/example"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "preact-testing-library/api"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "preact-testing-library/learn"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Svelte Testing Library",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "svelte-testing-library/intro"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "svelte-testing-library/setup"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "svelte-testing-library/example"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "svelte-testing-library/api"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "cypress-testing-library/intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "pptr-testing-library/intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "testcafe-testing-library/intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "nightwatch-testing-library/intro"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Ecosystem",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-user-event"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-jest-dom"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-bs-jest-dom"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-jest-native"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-react-select-event"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-eslint-plugin-testing-library"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-eslint-plugin-jest-dom"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ecosystem-riot-testing-library"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Help",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "learning"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "contributing"
+                  }
+                ]
+              }
+            ],
+            "recipes": [
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Guides",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "recipes"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "guide-which-query"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "guide-disappearance"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "guide-events"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Examples",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "example-codesandbox"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-input-event"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-update-props"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-context"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-hooks-useReducer"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-intl"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-redux"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-router"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-reach-router"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-transition-group"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-react-modal"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "example-external"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Help",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "learning"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "contributing"
+                  }
+                ]
+              }
+            ]
+          },
+          "permalinkToSidebar": {
+            "/docs/angular-testing-library/api": "docs",
+            "/docs/angular-testing-library/examples": "docs",
+            "/docs/angular-testing-library/intro": "docs",
+            "/docs/bs-react-testing-library/examples": "docs",
+            "/docs/bs-react-testing-library/intro": "docs",
+            "/docs/contributing": "docs",
+            "/docs/cypress-testing-library/intro": "docs",
+            "/docs/dom-testing-library/api-async": "docs",
+            "/docs/dom-testing-library/api-configuration": "docs",
+            "/docs/dom-testing-library/api-events": "docs",
+            "/docs/dom-testing-library/api-helpers": "docs",
+            "/docs/dom-testing-library/api-queries": "docs",
+            "/docs/dom-testing-library/cheatsheet": "docs",
+            "/docs/dom-testing-library/example-intro": "docs",
+            "/docs/dom-testing-library/faq": "docs",
+            "/docs/dom-testing-library/install": "docs",
+            "/docs/dom-testing-library/intro": "docs",
+            "/docs/dom-testing-library/setup": "docs",
+            "/docs/ecosystem-bs-jest-dom": "docs",
+            "/docs/ecosystem-eslint-plugin-jest-dom": "docs",
+            "/docs/ecosystem-eslint-plugin-testing-library": "docs",
+            "/docs/ecosystem-jest-dom": "docs",
+            "/docs/ecosystem-jest-native": "docs",
+            "/docs/ecosystem-react-select-event": "docs",
+            "/docs/ecosystem-riot-testing-library": "docs",
+            "/docs/ecosystem-user-event": "docs",
+            "/docs/example-codesandbox": "recipes",
+            "/docs/example-external": "recipes",
+            "/docs/example-input-event": "recipes",
+            "/docs/example-reach-router": "recipes",
+            "/docs/example-react-context": "recipes",
+            "/docs/example-react-hooks-useReducer": "recipes",
+            "/docs/example-react-intl": "recipes",
+            "/docs/example-react-modal": "recipes",
+            "/docs/example-react-redux": "recipes",
+            "/docs/example-react-router": "recipes",
+            "/docs/example-react-transition-group": "recipes",
+            "/docs/example-update-props": "recipes",
+            "/docs/guide-disappearance": "recipes",
+            "/docs/guide-events": "recipes",
+            "/docs/guide-which-query": "recipes",
+            "/docs/guiding-principles": "docs",
+            "/docs/": "docs",
+            "/docs/learning": "docs",
+            "/docs/marko-testing-library/api": "docs",
+            "/docs/marko-testing-library/intro": "docs",
+            "/docs/marko-testing-library/setup": "docs",
+            "/docs/nightwatch-testing-library/intro": "docs",
+            "/docs/pptr-testing-library/intro": "docs",
+            "/docs/preact-testing-library/api": "docs",
+            "/docs/preact-testing-library/example": "docs",
+            "/docs/preact-testing-library/intro": "docs",
+            "/docs/preact-testing-library/learn": "docs",
+            "/docs/react-native-testing-library/example-intro": "docs",
+            "/docs/react-native-testing-library/intro": "docs",
+            "/docs/react-native-testing-library/setup": "docs",
+            "/docs/react-testing-library/api": "docs",
+            "/docs/react-testing-library/cheatsheet": "docs",
+            "/docs/react-testing-library/example-intro": "docs",
+            "/docs/react-testing-library/faq": "docs",
+            "/docs/react-testing-library/intro": "docs",
+            "/docs/react-testing-library/setup": "docs",
+            "/docs/recipes": "recipes",
+            "/docs/svelte-testing-library/api": "docs",
+            "/docs/svelte-testing-library/example": "docs",
+            "/docs/svelte-testing-library/intro": "docs",
+            "/docs/svelte-testing-library/setup": "docs",
+            "/docs/testcafe-testing-library/intro": "docs",
+            "/docs/using-fake-timers": "docs",
+            "/docs/vue-testing-library/api": "docs",
+            "/docs/vue-testing-library/cheatsheet": "docs",
+            "/docs/vue-testing-library/examples": "docs",
+            "/docs/vue-testing-library/faq": "docs",
+            "/docs/vue-testing-library/intro": "docs",
+            "/docs/vue-testing-library/setup": "docs"
+          },
+          "docs": [
+            {
+              "unversionedId": "angular-testing-library/api",
+              "id": "angular-testing-library/api",
+              "isDocsHomePage": false,
+              "title": "API",
+              "description": "Angular Testing Library re-exports everything from DOM Testing Library as",
+              "source": "@site/../docs/angular-testing-library/api.md",
+              "slug": "/angular-testing-library/api",
+              "permalink": "/docs/angular-testing-library/api",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/angular-testing-library/api.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "API",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Examples",
+                "permalink": "/docs/angular-testing-library/examples"
+              },
+              "next": {
+                "title": "Intro",
+                "permalink": "/docs/preact-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "angular-testing-library/examples",
+              "id": "angular-testing-library/examples",
+              "isDocsHomePage": false,
+              "title": "Examples",
+              "description": "Read",
+              "source": "@site/../docs/angular-testing-library/examples.md",
+              "slug": "/angular-testing-library/examples",
+              "permalink": "/docs/angular-testing-library/examples",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/angular-testing-library/examples.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Examples",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Angular Testing Library",
+                "permalink": "/docs/angular-testing-library/intro"
+              },
+              "next": {
+                "title": "API",
+                "permalink": "/docs/angular-testing-library/api"
+              }
+            },
+            {
+              "unversionedId": "angular-testing-library/intro",
+              "id": "angular-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Angular Testing Library",
+              "description": "Angular Testing Library",
+              "source": "@site/../docs/angular-testing-library/intro.md",
+              "slug": "/angular-testing-library/intro",
+              "permalink": "/docs/angular-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/angular-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "API",
+                "permalink": "/docs/marko-testing-library/api"
+              },
+              "next": {
+                "title": "Angular Testing Library",
+                "permalink": "/docs/angular-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "bs-react-testing-library/examples",
+              "id": "bs-react-testing-library/examples",
+              "isDocsHomePage": false,
+              "title": "Examples",
+              "description": "You can find more bs-dom-testing-library examples at",
+              "source": "@site/../docs/bs-react-testing-library/examples.md",
+              "slug": "/bs-react-testing-library/examples",
+              "permalink": "/docs/bs-react-testing-library/examples",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/bs-react-testing-library/examples.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Reason Testing Library",
+                "permalink": "/docs/bs-react-testing-library/intro"
+              },
+              "next": {
+                "title": "Introduction",
+                "permalink": "/docs/react-native-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "bs-react-testing-library/intro",
+              "id": "bs-react-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Reason Testing Library",
+              "description": "Bindings for several testing libraries have been ported to ReasonML.",
+              "source": "@site/../docs/bs-react-testing-library/intro.md",
+              "slug": "/bs-react-testing-library/intro",
+              "permalink": "/docs/bs-react-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/bs-react-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Cheatsheet",
+                "permalink": "/docs/react-testing-library/cheatsheet"
+              },
+              "next": {
+                "title": "Examples",
+                "permalink": "/docs/bs-react-testing-library/examples"
+              }
+            },
+            {
+              "unversionedId": "contributing",
+              "id": "contributing",
+              "isDocsHomePage": false,
+              "title": "Contributing",
+              "description": "License",
+              "source": "@site/../docs/contributing.md",
+              "slug": "/contributing",
+              "permalink": "/docs/contributing",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/contributing.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Contributing",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Learning Material",
+                "permalink": "/docs/learning"
+              }
+            },
+            {
+              "unversionedId": "cypress-testing-library/intro",
+              "id": "cypress-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Cypress Testing Library",
+              "description": "Cypress Testing Library allows the use of dom-testing queries within",
+              "source": "@site/../docs/cypress-testing-library/intro.md",
+              "slug": "/cypress-testing-library/intro",
+              "permalink": "/docs/cypress-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/cypress-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "API",
+                "permalink": "/docs/svelte-testing-library/api"
+              },
+              "next": {
+                "title": "Puppeteer Testing Library",
+                "permalink": "/docs/pptr-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/api-async",
+              "id": "dom-testing-library/api-async",
+              "isDocsHomePage": false,
+              "title": "Async Utilities",
+              "description": "Several utilities are provided for dealing with asynchronous code. These can be",
+              "source": "@site/../docs/dom-testing-library/api-async.md",
+              "slug": "/dom-testing-library/api-async",
+              "permalink": "/docs/dom-testing-library/api-async",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/api-async.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Firing Events",
+                "permalink": "/docs/dom-testing-library/api-events"
+              },
+              "next": {
+                "title": "Helpers",
+                "permalink": "/docs/dom-testing-library/api-helpers"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/api-configuration",
+              "id": "dom-testing-library/api-configuration",
+              "isDocsHomePage": false,
+              "title": "Configuration",
+              "description": "Configuration",
+              "source": "@site/../docs/dom-testing-library/api-configuration.md",
+              "slug": "/dom-testing-library/api-configuration",
+              "permalink": "/docs/dom-testing-library/api-configuration",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/api-configuration.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Helpers",
+                "permalink": "/docs/dom-testing-library/api-helpers"
+              },
+              "next": {
+                "title": "FAQ",
+                "permalink": "/docs/dom-testing-library/faq"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/api-events",
+              "id": "dom-testing-library/api-events",
+              "isDocsHomePage": false,
+              "title": "Firing Events",
+              "description": "Most projects have a few use cases for fireEvent, but the majority of the",
+              "source": "@site/../docs/dom-testing-library/api-events.md",
+              "slug": "/dom-testing-library/api-events",
+              "permalink": "/docs/dom-testing-library/api-events",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/api-events.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Queries",
+                "permalink": "/docs/dom-testing-library/api-queries"
+              },
+              "next": {
+                "title": "Async Utilities",
+                "permalink": "/docs/dom-testing-library/api-async"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/api-helpers",
+              "id": "dom-testing-library/api-helpers",
+              "isDocsHomePage": false,
+              "title": "Helpers",
+              "description": "Custom Queries",
+              "source": "@site/../docs/dom-testing-library/api-helpers.mdx",
+              "slug": "/dom-testing-library/api-helpers",
+              "permalink": "/docs/dom-testing-library/api-helpers",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/api-helpers.mdx",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Async Utilities",
+                "permalink": "/docs/dom-testing-library/api-async"
+              },
+              "next": {
+                "title": "Configuration",
+                "permalink": "/docs/dom-testing-library/api-configuration"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/api-queries",
+              "id": "dom-testing-library/api-queries",
+              "isDocsHomePage": false,
+              "title": "Queries",
+              "description": "Variants",
+              "source": "@site/../docs/dom-testing-library/api-queries.md",
+              "slug": "/dom-testing-library/api-queries",
+              "permalink": "/docs/dom-testing-library/api-queries",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/api-queries.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/dom-testing-library/setup"
+              },
+              "next": {
+                "title": "Firing Events",
+                "permalink": "/docs/dom-testing-library/api-events"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/cheatsheet",
+              "id": "dom-testing-library/cheatsheet",
+              "isDocsHomePage": false,
+              "title": "Cheatsheet",
+              "description": "A short guide to all the exported functions in DOM Testing Library",
+              "source": "@site/../docs/dom-testing-library/cheatsheet.md",
+              "slug": "/dom-testing-library/cheatsheet",
+              "permalink": "/docs/dom-testing-library/cheatsheet",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/cheatsheet.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "FAQ",
+                "permalink": "/docs/dom-testing-library/faq"
+              },
+              "next": {
+                "title": "React Testing Library",
+                "permalink": "/docs/react-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/example-intro",
+              "id": "dom-testing-library/example-intro",
+              "isDocsHomePage": false,
+              "title": "Example",
+              "description": "`javascript",
+              "source": "@site/../docs/dom-testing-library/example-intro.md",
+              "slug": "/dom-testing-library/example-intro",
+              "permalink": "/docs/dom-testing-library/example-intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/example-intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Example",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Install",
+                "permalink": "/docs/dom-testing-library/install"
+              },
+              "next": {
+                "title": "Setup",
+                "permalink": "/docs/dom-testing-library/setup"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/faq",
+              "id": "dom-testing-library/faq",
+              "isDocsHomePage": false,
+              "title": "FAQ",
+              "description": "Which get method should I use?",
+              "source": "@site/../docs/dom-testing-library/faq.md",
+              "slug": "/dom-testing-library/faq",
+              "permalink": "/docs/dom-testing-library/faq",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/faq.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Configuration",
+                "permalink": "/docs/dom-testing-library/api-configuration"
+              },
+              "next": {
+                "title": "Cheatsheet",
+                "permalink": "/docs/dom-testing-library/cheatsheet"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/install",
+              "id": "dom-testing-library/install",
+              "isDocsHomePage": false,
+              "title": "Install",
+              "description": "This module is distributed via npm which is bundled with node and",
+              "source": "@site/../docs/dom-testing-library/install.md",
+              "slug": "/dom-testing-library/install",
+              "permalink": "/docs/dom-testing-library/install",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/install.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Install",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/docs/dom-testing-library/intro"
+              },
+              "next": {
+                "title": "Example",
+                "permalink": "/docs/dom-testing-library/example-intro"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/intro",
+              "id": "dom-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Introduction",
+              "description": "The problem",
+              "source": "@site/../docs/dom-testing-library/intro.md",
+              "slug": "/dom-testing-library/intro",
+              "permalink": "/docs/dom-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Using Fake Timers",
+                "permalink": "/docs/using-fake-timers"
+              },
+              "next": {
+                "title": "Install",
+                "permalink": "/docs/dom-testing-library/install"
+              }
+            },
+            {
+              "unversionedId": "dom-testing-library/setup",
+              "id": "dom-testing-library/setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "If you're running your tests in the browser bundled with webpack (or similar)",
+              "source": "@site/../docs/dom-testing-library/setup.md",
+              "slug": "/dom-testing-library/setup",
+              "permalink": "/docs/dom-testing-library/setup",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/setup.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Setup",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Example",
+                "permalink": "/docs/dom-testing-library/example-intro"
+              },
+              "next": {
+                "title": "Queries",
+                "permalink": "/docs/dom-testing-library/api-queries"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-bs-jest-dom",
+              "id": "ecosystem-bs-jest-dom",
+              "isDocsHomePage": false,
+              "title": "bs-jest-dom",
+              "description": "bs-jest-dom is a companion library for",
+              "source": "@site/../docs/ecosystem-bs-jest-dom.md",
+              "slug": "/ecosystem-bs-jest-dom",
+              "permalink": "/docs/ecosystem-bs-jest-dom",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-bs-jest-dom.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "jest-dom",
+                "permalink": "/docs/ecosystem-jest-dom"
+              },
+              "next": {
+                "title": "jest-native",
+                "permalink": "/docs/ecosystem-jest-native"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-eslint-plugin-jest-dom",
+              "id": "ecosystem-eslint-plugin-jest-dom",
+              "isDocsHomePage": false,
+              "title": "eslint-plugin-jest-dom",
+              "description": "eslint-plugin-jest-dom is an ESLint plugin for Jest DOM that helps users",
+              "source": "@site/../docs/ecosystem-eslint-plugin-jest-dom.md",
+              "slug": "/ecosystem-eslint-plugin-jest-dom",
+              "permalink": "/docs/ecosystem-eslint-plugin-jest-dom",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-eslint-plugin-jest-dom.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "eslint-plugin-testing-library",
+                "permalink": "/docs/ecosystem-eslint-plugin-testing-library"
+              },
+              "next": {
+                "title": "riot-testing-library",
+                "permalink": "/docs/ecosystem-riot-testing-library"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-eslint-plugin-testing-library",
+              "id": "ecosystem-eslint-plugin-testing-library",
+              "isDocsHomePage": false,
+              "title": "eslint-plugin-testing-library",
+              "description": "eslint-plugin-testing-library is an ESLint plugin for Testing Library",
+              "source": "@site/../docs/ecosystem-eslint-plugin-testing-library.md",
+              "slug": "/ecosystem-eslint-plugin-testing-library",
+              "permalink": "/docs/ecosystem-eslint-plugin-testing-library",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-eslint-plugin-testing-library.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "react-select-event",
+                "permalink": "/docs/ecosystem-react-select-event"
+              },
+              "next": {
+                "title": "eslint-plugin-jest-dom",
+                "permalink": "/docs/ecosystem-eslint-plugin-jest-dom"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-jasmine-dom",
+              "id": "ecosystem-jasmine-dom",
+              "isDocsHomePage": false,
+              "title": "jasmine-dom",
+              "description": "jasmine-dom is a companion library for Testing Library that",
+              "source": "@site/../docs/ecosystem-jasmine-dom.md",
+              "slug": "/ecosystem-jasmine-dom",
+              "permalink": "/docs/ecosystem-jasmine-dom",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-jasmine-dom.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055
+            },
+            {
+              "unversionedId": "ecosystem-jest-dom",
+              "id": "ecosystem-jest-dom",
+              "isDocsHomePage": false,
+              "title": "jest-dom",
+              "description": "jest-dom is a companion library for Testing Library that provides custom",
+              "source": "@site/../docs/ecosystem-jest-dom.md",
+              "slug": "/ecosystem-jest-dom",
+              "permalink": "/docs/ecosystem-jest-dom",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-jest-dom.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "user-event",
+                "permalink": "/docs/ecosystem-user-event"
+              },
+              "next": {
+                "title": "bs-jest-dom",
+                "permalink": "/docs/ecosystem-bs-jest-dom"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-jest-native",
+              "id": "ecosystem-jest-native",
+              "isDocsHomePage": false,
+              "title": "jest-native",
+              "description": "Jest Native is a companion",
+              "source": "@site/../docs/ecosystem-jest-native.md",
+              "slug": "/ecosystem-jest-native",
+              "permalink": "/docs/ecosystem-jest-native",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-jest-native.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "jest-native",
+              "sidebar": "docs",
+              "previous": {
+                "title": "bs-jest-dom",
+                "permalink": "/docs/ecosystem-bs-jest-dom"
+              },
+              "next": {
+                "title": "react-select-event",
+                "permalink": "/docs/ecosystem-react-select-event"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-react-select-event",
+              "id": "ecosystem-react-select-event",
+              "isDocsHomePage": false,
+              "title": "react-select-event",
+              "description": "react-select-event is a companion library for React Testing Library",
+              "source": "@site/../docs/ecosystem-react-select-event.md",
+              "slug": "/ecosystem-react-select-event",
+              "permalink": "/docs/ecosystem-react-select-event",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-react-select-event.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "jest-native",
+                "permalink": "/docs/ecosystem-jest-native"
+              },
+              "next": {
+                "title": "eslint-plugin-testing-library",
+                "permalink": "/docs/ecosystem-eslint-plugin-testing-library"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-riot-testing-library",
+              "id": "ecosystem-riot-testing-library",
+              "isDocsHomePage": false,
+              "title": "riot-testing-library",
+              "description": "riot-testing-library builds on top of",
+              "source": "@site/../docs/ecosystem-riot-testing-library.md",
+              "slug": "/ecosystem-riot-testing-library",
+              "permalink": "/docs/ecosystem-riot-testing-library",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-riot-testing-library.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "eslint-plugin-jest-dom",
+                "permalink": "/docs/ecosystem-eslint-plugin-jest-dom"
+              },
+              "next": {
+                "title": "Learning Material",
+                "permalink": "/docs/learning"
+              }
+            },
+            {
+              "unversionedId": "ecosystem-user-event",
+              "id": "ecosystem-user-event",
+              "isDocsHomePage": false,
+              "title": "user-event",
+              "description": "user-event is a companion library for Testing Library that provides more",
+              "source": "@site/../docs/ecosystem-user-event.md",
+              "slug": "/ecosystem-user-event",
+              "permalink": "/docs/ecosystem-user-event",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/ecosystem-user-event.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Nightwatch Testing Library",
+                "permalink": "/docs/nightwatch-testing-library/intro"
+              },
+              "next": {
+                "title": "jest-dom",
+                "permalink": "/docs/ecosystem-jest-dom"
+              }
+            },
+            {
+              "unversionedId": "example-codesandbox",
+              "id": "example-codesandbox",
+              "isDocsHomePage": false,
+              "title": "Codesandbox Examples",
+              "description": "You can find runnable examples for many common use cases on Codesandbox.",
+              "source": "@site/../docs/example-codesandbox.md",
+              "slug": "/example-codesandbox",
+              "permalink": "/docs/example-codesandbox",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-codesandbox.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Codesandbox Examples",
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Considerations for fireEvent",
+                "permalink": "/docs/guide-events"
+              },
+              "next": {
+                "title": "Input Event",
+                "permalink": "/docs/example-input-event"
+              }
+            },
+            {
+              "unversionedId": "example-drag",
+              "id": "example-drag",
+              "isDocsHomePage": false,
+              "title": "Drag",
+              "description": "Note",
+              "source": "@site/../docs/example-drag.md",
+              "slug": "/example-drag",
+              "permalink": "/docs/example-drag",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-drag.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Drag"
+            },
+            {
+              "unversionedId": "example-external",
+              "id": "example-external",
+              "isDocsHomePage": false,
+              "title": "External Examples",
+              "description": "Code Samples",
+              "source": "@site/../docs/example-external.md",
+              "slug": "/example-external",
+              "permalink": "/docs/example-external",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-external.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "External Examples",
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Modals",
+                "permalink": "/docs/example-react-modal"
+              },
+              "next": {
+                "title": "Learning Material",
+                "permalink": "/docs/learning"
+              }
+            },
+            {
+              "unversionedId": "example-input-event",
+              "id": "example-input-event",
+              "isDocsHomePage": false,
+              "title": "Input Event",
+              "description": "Note",
+              "source": "@site/../docs/example-input-event.md",
+              "slug": "/example-input-event",
+              "permalink": "/docs/example-input-event",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-input-event.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Input Event",
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Codesandbox Examples",
+                "permalink": "/docs/example-codesandbox"
+              },
+              "next": {
+                "title": "Update Props",
+                "permalink": "/docs/example-update-props"
+              }
+            },
+            {
+              "unversionedId": "example-reach-router",
+              "id": "example-reach-router",
+              "isDocsHomePage": false,
+              "title": "Reach Router",
+              "description": "`jsx",
+              "source": "@site/../docs/example-reach-router.md",
+              "slug": "/example-reach-router",
+              "permalink": "/docs/example-reach-router",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-reach-router.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "React Router",
+                "permalink": "/docs/example-react-router"
+              },
+              "next": {
+                "title": "React Transition Group",
+                "permalink": "/docs/example-react-transition-group"
+              }
+            },
+            {
+              "unversionedId": "example-react-context",
+              "id": "example-react-context",
+              "isDocsHomePage": false,
+              "title": "React Context",
+              "description": "`jsx",
+              "source": "@site/../docs/example-react-context.md",
+              "slug": "/example-react-context",
+              "permalink": "/docs/example-react-context",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-context.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Update Props",
+                "permalink": "/docs/example-update-props"
+              },
+              "next": {
+                "title": "useReducer",
+                "permalink": "/docs/example-react-hooks-useReducer"
+              }
+            },
+            {
+              "unversionedId": "example-react-hooks-useReducer",
+              "id": "example-react-hooks-useReducer",
+              "isDocsHomePage": false,
+              "title": "useReducer",
+              "description": "Basic example showing how to test the useReducer hook. The most important",
+              "source": "@site/../docs/example-react-hooks-useReducer.md",
+              "slug": "/example-react-hooks-useReducer",
+              "permalink": "/docs/example-react-hooks-useReducer",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-hooks-useReducer.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "React Context",
+                "permalink": "/docs/example-react-context"
+              },
+              "next": {
+                "title": "React Intl",
+                "permalink": "/docs/example-react-intl"
+              }
+            },
+            {
+              "unversionedId": "example-react-intl",
+              "id": "example-react-intl",
+              "isDocsHomePage": false,
+              "title": "React Intl",
+              "description": "Note",
+              "source": "@site/../docs/example-react-intl.md",
+              "slug": "/example-react-intl",
+              "permalink": "/docs/example-react-intl",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-intl.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "useReducer",
+                "permalink": "/docs/example-react-hooks-useReducer"
+              },
+              "next": {
+                "title": "React Redux",
+                "permalink": "/docs/example-react-redux"
+              }
+            },
+            {
+              "unversionedId": "example-react-modal",
+              "id": "example-react-modal",
+              "isDocsHomePage": false,
+              "title": "Modals",
+              "description": "`jsx",
+              "source": "@site/../docs/example-react-modal.md",
+              "slug": "/example-react-modal",
+              "permalink": "/docs/example-react-modal",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-modal.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "React Transition Group",
+                "permalink": "/docs/example-react-transition-group"
+              },
+              "next": {
+                "title": "External Examples",
+                "permalink": "/docs/example-external"
+              }
+            },
+            {
+              "unversionedId": "example-react-redux",
+              "id": "example-react-redux",
+              "isDocsHomePage": false,
+              "title": "React Redux",
+              "description": "Moved to",
+              "source": "@site/../docs/example-react-redux.md",
+              "slug": "/example-react-redux",
+              "permalink": "/docs/example-react-redux",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-redux.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "React Intl",
+                "permalink": "/docs/example-react-intl"
+              },
+              "next": {
+                "title": "React Router",
+                "permalink": "/docs/example-react-router"
+              }
+            },
+            {
+              "unversionedId": "example-react-router",
+              "id": "example-react-router",
+              "isDocsHomePage": false,
+              "title": "React Router",
+              "description": "`jsx",
+              "source": "@site/../docs/example-react-router.md",
+              "slug": "/example-react-router",
+              "permalink": "/docs/example-react-router",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-router.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "React Redux",
+                "permalink": "/docs/example-react-redux"
+              },
+              "next": {
+                "title": "Reach Router",
+                "permalink": "/docs/example-reach-router"
+              }
+            },
+            {
+              "unversionedId": "example-react-transition-group",
+              "id": "example-react-transition-group",
+              "isDocsHomePage": false,
+              "title": "React Transition Group",
+              "description": "Mock",
+              "source": "@site/../docs/example-react-transition-group.md",
+              "slug": "/example-react-transition-group",
+              "permalink": "/docs/example-react-transition-group",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-transition-group.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Reach Router",
+                "permalink": "/docs/example-reach-router"
+              },
+              "next": {
+                "title": "Modals",
+                "permalink": "/docs/example-react-modal"
+              }
+            },
+            {
+              "unversionedId": "example-update-props",
+              "id": "example-update-props",
+              "isDocsHomePage": false,
+              "title": "Update Props",
+              "description": "`jsx",
+              "source": "@site/../docs/example-update-props.md",
+              "slug": "/example-update-props",
+              "permalink": "/docs/example-update-props",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-update-props.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Update Props",
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Input Event",
+                "permalink": "/docs/example-input-event"
+              },
+              "next": {
+                "title": "React Context",
+                "permalink": "/docs/example-react-context"
+              }
+            },
+            {
+              "unversionedId": "guide-disappearance",
+              "id": "guide-disappearance",
+              "isDocsHomePage": false,
+              "title": "Appearance and Disappearance",
+              "description": "Sometimes you need to test that an element is present and then disappears or",
+              "source": "@site/../docs/guide-disappearance.md",
+              "slug": "/guide-disappearance",
+              "permalink": "/docs/guide-disappearance",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guide-disappearance.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Which query should I use?",
+                "permalink": "/docs/guide-which-query"
+              },
+              "next": {
+                "title": "Considerations for fireEvent",
+                "permalink": "/docs/guide-events"
+              }
+            },
+            {
+              "unversionedId": "guide-events",
+              "id": "guide-events",
+              "isDocsHomePage": false,
+              "title": "Considerations for fireEvent",
+              "description": "Interactions vs. events",
+              "source": "@site/../docs/guide-events.md",
+              "slug": "/guide-events",
+              "permalink": "/docs/guide-events",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guide-events.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Appearance and Disappearance",
+                "permalink": "/docs/guide-disappearance"
+              },
+              "next": {
+                "title": "Codesandbox Examples",
+                "permalink": "/docs/example-codesandbox"
+              }
+            },
+            {
+              "unversionedId": "guide-which-query",
+              "id": "guide-which-query",
+              "isDocsHomePage": false,
+              "title": "Which query should I use?",
+              "description": "Priority",
+              "source": "@site/../docs/guide-which-query.md",
+              "slug": "/guide-which-query",
+              "permalink": "/docs/guide-which-query",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guide-which-query.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "previous": {
+                "title": "Recipes",
+                "permalink": "/docs/recipes"
+              },
+              "next": {
+                "title": "Appearance and Disappearance",
+                "permalink": "/docs/guide-disappearance"
+              }
+            },
+            {
+              "unversionedId": "guiding-principles",
+              "id": "guiding-principles",
+              "isDocsHomePage": false,
+              "title": "Guiding Principles",
+              "description": "[The more your tests resemble the way your software is used, the more",
+              "source": "@site/../docs/guiding-principles.md",
+              "slug": "/guiding-principles",
+              "permalink": "/docs/guiding-principles",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guiding-principles.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Guiding Principles",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/docs/"
+              },
+              "next": {
+                "title": "Using Fake Timers",
+                "permalink": "/docs/using-fake-timers"
+              }
+            },
+            {
+              "unversionedId": "intro",
+              "id": "intro",
+              "isDocsHomePage": false,
+              "title": "Introduction",
+              "description": "The @testing-library family of packages helps you test UI components in",
+              "source": "@site/../docs/intro.md",
+              "slug": "/",
+              "permalink": "/docs/",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "next": {
+                "title": "Guiding Principles",
+                "permalink": "/docs/guiding-principles"
+              }
+            },
+            {
+              "unversionedId": "learning",
+              "id": "learning",
+              "isDocsHomePage": false,
+              "title": "Learning Material",
+              "description": "- TestingJavaScript.com 🏆 A HUGE course all",
+              "source": "@site/../docs/learning.md",
+              "slug": "/learning",
+              "permalink": "/docs/learning",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/learning.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Learning Material",
+              "sidebar": "docs",
+              "previous": {
+                "title": "riot-testing-library",
+                "permalink": "/docs/ecosystem-riot-testing-library"
+              },
+              "next": {
+                "title": "Contributing",
+                "permalink": "/docs/contributing"
+              }
+            },
+            {
+              "unversionedId": "marko-testing-library/api",
+              "id": "marko-testing-library/api",
+              "isDocsHomePage": false,
+              "title": "API",
+              "description": "Marko Testing Library re-exports everything from DOM Testing Library as well",
+              "source": "@site/../docs/marko-testing-library/api.md",
+              "slug": "/marko-testing-library/api",
+              "permalink": "/docs/marko-testing-library/api",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/marko-testing-library/api.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/marko-testing-library/setup"
+              },
+              "next": {
+                "title": "Angular Testing Library",
+                "permalink": "/docs/angular-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "marko-testing-library/intro",
+              "id": "marko-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Marko Testing Library",
+              "description": "The Marko Testing Library is a",
+              "source": "@site/../docs/marko-testing-library/intro.md",
+              "slug": "/marko-testing-library/intro",
+              "permalink": "/docs/marko-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/marko-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "FAQ",
+                "permalink": "/docs/vue-testing-library/faq"
+              },
+              "next": {
+                "title": "Setup",
+                "permalink": "/docs/marko-testing-library/setup"
+              }
+            },
+            {
+              "unversionedId": "marko-testing-library/setup",
+              "id": "marko-testing-library/setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "Marko Testing Library is not dependent on any test runner, however it is",
+              "source": "@site/../docs/marko-testing-library/setup.md",
+              "slug": "/marko-testing-library/setup",
+              "permalink": "/docs/marko-testing-library/setup",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/marko-testing-library/setup.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Setup",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Marko Testing Library",
+                "permalink": "/docs/marko-testing-library/intro"
+              },
+              "next": {
+                "title": "API",
+                "permalink": "/docs/marko-testing-library/api"
+              }
+            },
+            {
+              "unversionedId": "nightwatch-testing-library/intro",
+              "id": "nightwatch-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Nightwatch Testing Library",
+              "description": "nightwatch-testing-library allows the use of dom-testing-library queries",
+              "source": "@site/../docs/nightwatch-testing-library/intro.md",
+              "slug": "/nightwatch-testing-library/intro",
+              "permalink": "/docs/nightwatch-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/nightwatch-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Testcafe Testing Library",
+                "permalink": "/docs/testcafe-testing-library/intro"
+              },
+              "next": {
+                "title": "user-event",
+                "permalink": "/docs/ecosystem-user-event"
+              }
+            },
+            {
+              "unversionedId": "pptr-testing-library/intro",
+              "id": "pptr-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Puppeteer Testing Library",
+              "description": "pptr-testing-library is a lightweight adapter allowing",
+              "source": "@site/../docs/pptr-testing-library/intro.md",
+              "slug": "/pptr-testing-library/intro",
+              "permalink": "/docs/pptr-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/pptr-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Cypress Testing Library",
+                "permalink": "/docs/cypress-testing-library/intro"
+              },
+              "next": {
+                "title": "Testcafe Testing Library",
+                "permalink": "/docs/testcafe-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "preact-testing-library/api",
+              "id": "preact-testing-library/api",
+              "isDocsHomePage": false,
+              "title": "API",
+              "description": "- @testing-library/dom",
+              "source": "@site/../docs/preact-testing-library/api.md",
+              "slug": "/preact-testing-library/api",
+              "permalink": "/docs/preact-testing-library/api",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/preact-testing-library/api.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "API",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Example",
+                "permalink": "/docs/preact-testing-library/example"
+              },
+              "next": {
+                "title": "Learn",
+                "permalink": "/docs/preact-testing-library/learn"
+              }
+            },
+            {
+              "unversionedId": "preact-testing-library/example",
+              "id": "preact-testing-library/example",
+              "isDocsHomePage": false,
+              "title": "Example",
+              "description": "Preact Testing Library works with both Preact Hooks and Classes. Your tests",
+              "source": "@site/../docs/preact-testing-library/example.md",
+              "slug": "/preact-testing-library/example",
+              "permalink": "/docs/preact-testing-library/example",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/preact-testing-library/example.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Example",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Intro",
+                "permalink": "/docs/preact-testing-library/intro"
+              },
+              "next": {
+                "title": "API",
+                "permalink": "/docs/preact-testing-library/api"
+              }
+            },
+            {
+              "unversionedId": "preact-testing-library/intro",
+              "id": "preact-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Intro",
+              "description": "Preact Testing Library on GitHub",
+              "source": "@site/../docs/preact-testing-library/intro.md",
+              "slug": "/preact-testing-library/intro",
+              "permalink": "/docs/preact-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/preact-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "API",
+                "permalink": "/docs/angular-testing-library/api"
+              },
+              "next": {
+                "title": "Example",
+                "permalink": "/docs/preact-testing-library/example"
+              }
+            },
+            {
+              "unversionedId": "preact-testing-library/learn",
+              "id": "preact-testing-library/learn",
+              "isDocsHomePage": false,
+              "title": "Learn",
+              "description": "Due to the similarities between React and Preact (including the testing",
+              "source": "@site/../docs/preact-testing-library/learn.md",
+              "slug": "/preact-testing-library/learn",
+              "permalink": "/docs/preact-testing-library/learn",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/preact-testing-library/learn.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Learn",
+              "sidebar": "docs",
+              "previous": {
+                "title": "API",
+                "permalink": "/docs/preact-testing-library/api"
+              },
+              "next": {
+                "title": "Intro",
+                "permalink": "/docs/svelte-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "react-native-testing-library/example-intro",
+              "id": "react-native-testing-library/example-intro",
+              "isDocsHomePage": false,
+              "title": "Example",
+              "description": "`javascript",
+              "source": "@site/../docs/react-native-testing-library/example-intro.md",
+              "slug": "/react-native-testing-library/example-intro",
+              "permalink": "/docs/react-native-testing-library/example-intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-native-testing-library/example-intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Example",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/docs/react-native-testing-library/intro"
+              },
+              "next": {
+                "title": "Setup",
+                "permalink": "/docs/react-native-testing-library/setup"
+              }
+            },
+            {
+              "unversionedId": "react-native-testing-library/intro",
+              "id": "react-native-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Introduction",
+              "description": "React Native Testing Library is a testing library for React Native inspired",
+              "source": "@site/../docs/react-native-testing-library/intro.md",
+              "slug": "/react-native-testing-library/intro",
+              "permalink": "/docs/react-native-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-native-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Examples",
+                "permalink": "/docs/bs-react-testing-library/examples"
+              },
+              "next": {
+                "title": "Example",
+                "permalink": "/docs/react-native-testing-library/example-intro"
+              }
+            },
+            {
+              "unversionedId": "react-native-testing-library/setup",
+              "id": "react-native-testing-library/setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "Setting up your project",
+              "source": "@site/../docs/react-native-testing-library/setup.md",
+              "slug": "/react-native-testing-library/setup",
+              "permalink": "/docs/react-native-testing-library/setup",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-native-testing-library/setup.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Setup",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Example",
+                "permalink": "/docs/react-native-testing-library/example-intro"
+              },
+              "next": {
+                "title": "Intro",
+                "permalink": "/docs/vue-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "react-testing-library/api",
+              "id": "react-testing-library/api",
+              "isDocsHomePage": false,
+              "title": "API",
+              "description": "React Testing Library re-exports everything from DOM Testing Library as well",
+              "source": "@site/../docs/react-testing-library/api.md",
+              "slug": "/react-testing-library/api",
+              "permalink": "/docs/react-testing-library/api",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/api.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/react-testing-library/setup"
+              },
+              "next": {
+                "title": "FAQ",
+                "permalink": "/docs/react-testing-library/faq"
+              }
+            },
+            {
+              "unversionedId": "react-testing-library/cheatsheet",
+              "id": "react-testing-library/cheatsheet",
+              "isDocsHomePage": false,
+              "title": "Cheatsheet",
+              "description": "Get the printable cheat sheet",
+              "source": "@site/../docs/react-testing-library/cheatsheet.md",
+              "slug": "/react-testing-library/cheatsheet",
+              "permalink": "/docs/react-testing-library/cheatsheet",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/cheatsheet.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "FAQ",
+                "permalink": "/docs/react-testing-library/faq"
+              },
+              "next": {
+                "title": "Reason Testing Library",
+                "permalink": "/docs/bs-react-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "react-testing-library/example-intro",
+              "id": "react-testing-library/example-intro",
+              "isDocsHomePage": false,
+              "title": "Example",
+              "description": "Full Example",
+              "source": "@site/../docs/react-testing-library/example-intro.md",
+              "slug": "/react-testing-library/example-intro",
+              "permalink": "/docs/react-testing-library/example-intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/example-intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Example",
+              "sidebar": "docs",
+              "previous": {
+                "title": "React Testing Library",
+                "permalink": "/docs/react-testing-library/intro"
+              },
+              "next": {
+                "title": "Setup",
+                "permalink": "/docs/react-testing-library/setup"
+              }
+            },
+            {
+              "unversionedId": "react-testing-library/faq",
+              "id": "react-testing-library/faq",
+              "isDocsHomePage": false,
+              "title": "FAQ",
+              "description": "See also the main FAQ for questions not specific",
+              "source": "@site/../docs/react-testing-library/faq.md",
+              "slug": "/react-testing-library/faq",
+              "permalink": "/docs/react-testing-library/faq",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/faq.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "API",
+                "permalink": "/docs/react-testing-library/api"
+              },
+              "next": {
+                "title": "Cheatsheet",
+                "permalink": "/docs/react-testing-library/cheatsheet"
+              }
+            },
+            {
+              "unversionedId": "react-testing-library/intro",
+              "id": "react-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "React Testing Library",
+              "description": "React Testing Library builds on top of DOM Testing Library by adding",
+              "source": "@site/../docs/react-testing-library/intro.md",
+              "slug": "/react-testing-library/intro",
+              "permalink": "/docs/react-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Cheatsheet",
+                "permalink": "/docs/dom-testing-library/cheatsheet"
+              },
+              "next": {
+                "title": "Example",
+                "permalink": "/docs/react-testing-library/example-intro"
+              }
+            },
+            {
+              "unversionedId": "react-testing-library/migrate-from-enzyme",
+              "id": "react-testing-library/migrate-from-enzyme",
+              "isDocsHomePage": false,
+              "title": "Migrate from Enzyme",
+              "description": "This page does not go into detail, but it's for those who have experience in",
+              "source": "@site/../docs/react-testing-library/migrate-from-enzyme.md",
+              "slug": "/react-testing-library/migrate-from-enzyme",
+              "permalink": "/docs/react-testing-library/migrate-from-enzyme",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/migrate-from-enzyme.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Migrate from Enzyme"
+            },
+            {
+              "unversionedId": "react-testing-library/setup",
+              "id": "react-testing-library/setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "React Testing Library does not require any configuration to be used. However,",
+              "source": "@site/../docs/react-testing-library/setup.md",
+              "slug": "/react-testing-library/setup",
+              "permalink": "/docs/react-testing-library/setup",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/setup.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Setup",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Example",
+                "permalink": "/docs/react-testing-library/example-intro"
+              },
+              "next": {
+                "title": "API",
+                "permalink": "/docs/react-testing-library/api"
+              }
+            },
+            {
+              "unversionedId": "recipes",
+              "id": "recipes",
+              "isDocsHomePage": false,
+              "title": "Recipes",
+              "description": "This section contains guides and examples for the testing library ecosystem",
+              "source": "@site/../docs/recipes.md",
+              "slug": "/recipes",
+              "permalink": "/docs/recipes",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/recipes.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "recipes",
+              "next": {
+                "title": "Which query should I use?",
+                "permalink": "/docs/guide-which-query"
+              }
+            },
+            {
+              "unversionedId": "svelte-testing-library/api",
+              "id": "svelte-testing-library/api",
+              "isDocsHomePage": false,
+              "title": "API",
+              "description": "- @testing-library/dom",
+              "source": "@site/../docs/svelte-testing-library/api.md",
+              "slug": "/svelte-testing-library/api",
+              "permalink": "/docs/svelte-testing-library/api",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/svelte-testing-library/api.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "API",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Example",
+                "permalink": "/docs/svelte-testing-library/example"
+              },
+              "next": {
+                "title": "Cypress Testing Library",
+                "permalink": "/docs/cypress-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "svelte-testing-library/example",
+              "id": "svelte-testing-library/example",
+              "isDocsHomePage": false,
+              "title": "Example",
+              "description": "Component",
+              "source": "@site/../docs/svelte-testing-library/example.md",
+              "slug": "/svelte-testing-library/example",
+              "permalink": "/docs/svelte-testing-library/example",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/svelte-testing-library/example.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Example",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/svelte-testing-library/setup"
+              },
+              "next": {
+                "title": "API",
+                "permalink": "/docs/svelte-testing-library/api"
+              }
+            },
+            {
+              "unversionedId": "svelte-testing-library/intro",
+              "id": "svelte-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Intro",
+              "description": "Svelte Testing Library on GitHub",
+              "source": "@site/../docs/svelte-testing-library/intro.md",
+              "slug": "/svelte-testing-library/intro",
+              "permalink": "/docs/svelte-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/svelte-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Learn",
+                "permalink": "/docs/preact-testing-library/learn"
+              },
+              "next": {
+                "title": "Setup",
+                "permalink": "/docs/svelte-testing-library/setup"
+              }
+            },
+            {
+              "unversionedId": "svelte-testing-library/setup",
+              "id": "svelte-testing-library/setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "We recommend using Jest but you're free to use the library",
+              "source": "@site/../docs/svelte-testing-library/setup.md",
+              "slug": "/svelte-testing-library/setup",
+              "permalink": "/docs/svelte-testing-library/setup",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/svelte-testing-library/setup.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Setup",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Intro",
+                "permalink": "/docs/svelte-testing-library/intro"
+              },
+              "next": {
+                "title": "Example",
+                "permalink": "/docs/svelte-testing-library/example"
+              }
+            },
+            {
+              "unversionedId": "testcafe-testing-library/intro",
+              "id": "testcafe-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Testcafe Testing Library",
+              "description": "Introduction",
+              "source": "@site/../docs/testcafe-testing-library/intro.md",
+              "slug": "/testcafe-testing-library/intro",
+              "permalink": "/docs/testcafe-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/testcafe-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Puppeteer Testing Library",
+                "permalink": "/docs/pptr-testing-library/intro"
+              },
+              "next": {
+                "title": "Nightwatch Testing Library",
+                "permalink": "/docs/nightwatch-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "using-fake-timers",
+              "id": "using-fake-timers",
+              "isDocsHomePage": false,
+              "title": "Using Fake Timers",
+              "description": "In some cases, when your code uses timers (setTimeout, setInterval,",
+              "source": "@site/../docs/using-fake-timers.md",
+              "slug": "/using-fake-timers",
+              "permalink": "/docs/using-fake-timers",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/using-fake-timers.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Using Fake Timers",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Guiding Principles",
+                "permalink": "/docs/guiding-principles"
+              },
+              "next": {
+                "title": "Introduction",
+                "permalink": "/docs/dom-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "vue-testing-library/api",
+              "id": "vue-testing-library/api",
+              "isDocsHomePage": false,
+              "title": "API",
+              "description": "Vue Testing Library re-exports everything from DOM Testing Library.",
+              "source": "@site/../docs/vue-testing-library/api.md",
+              "slug": "/vue-testing-library/api",
+              "permalink": "/docs/vue-testing-library/api",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/api.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/vue-testing-library/setup"
+              },
+              "next": {
+                "title": "Cheatsheet",
+                "permalink": "/docs/vue-testing-library/cheatsheet"
+              }
+            },
+            {
+              "unversionedId": "vue-testing-library/cheatsheet",
+              "id": "vue-testing-library/cheatsheet",
+              "isDocsHomePage": false,
+              "title": "Cheatsheet",
+              "description": "A short guide to all the exported functions in Vue Testing Library.",
+              "source": "@site/../docs/vue-testing-library/cheatsheet.md",
+              "slug": "/vue-testing-library/cheatsheet",
+              "permalink": "/docs/vue-testing-library/cheatsheet",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/cheatsheet.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "API",
+                "permalink": "/docs/vue-testing-library/api"
+              },
+              "next": {
+                "title": "FAQ",
+                "permalink": "/docs/vue-testing-library/faq"
+              }
+            },
+            {
+              "unversionedId": "vue-testing-library/examples",
+              "id": "vue-testing-library/examples",
+              "isDocsHomePage": false,
+              "title": "Examples",
+              "description": "Basic example",
+              "source": "@site/../docs/vue-testing-library/examples.md",
+              "slug": "/vue-testing-library/examples",
+              "permalink": "/docs/vue-testing-library/examples",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/examples.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Intro",
+                "permalink": "/docs/vue-testing-library/intro"
+              },
+              "next": {
+                "title": "Setup",
+                "permalink": "/docs/vue-testing-library/setup"
+              }
+            },
+            {
+              "unversionedId": "vue-testing-library/faq",
+              "id": "vue-testing-library/faq",
+              "isDocsHomePage": false,
+              "title": "FAQ",
+              "description": "See also the main FAQ for questions not specific",
+              "source": "@site/../docs/vue-testing-library/faq.md",
+              "slug": "/vue-testing-library/faq",
+              "permalink": "/docs/vue-testing-library/faq",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/faq.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Cheatsheet",
+                "permalink": "/docs/vue-testing-library/cheatsheet"
+              },
+              "next": {
+                "title": "Marko Testing Library",
+                "permalink": "/docs/marko-testing-library/intro"
+              }
+            },
+            {
+              "unversionedId": "vue-testing-library/intro",
+              "id": "vue-testing-library/intro",
+              "isDocsHomePage": false,
+              "title": "Intro",
+              "description": "Vue Testing Library builds on top of DOM Testing Library by adding APIs for",
+              "source": "@site/../docs/vue-testing-library/intro.md",
+              "slug": "/vue-testing-library/intro",
+              "permalink": "/docs/vue-testing-library/intro",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/intro.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar_label": "Introduction",
+              "sidebar": "docs",
+              "previous": {
+                "title": "Setup",
+                "permalink": "/docs/react-native-testing-library/setup"
+              },
+              "next": {
+                "title": "Examples",
+                "permalink": "/docs/vue-testing-library/examples"
+              }
+            },
+            {
+              "unversionedId": "vue-testing-library/setup",
+              "id": "vue-testing-library/setup",
+              "isDocsHomePage": false,
+              "title": "Setup",
+              "description": "Vue Testing Library does not require any configuration to be used.",
+              "source": "@site/../docs/vue-testing-library/setup.md",
+              "slug": "/vue-testing-library/setup",
+              "permalink": "/docs/vue-testing-library/setup",
+              "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/setup.md",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "sidebar": "docs",
+              "previous": {
+                "title": "Examples",
+                "permalink": "/docs/vue-testing-library/examples"
+              },
+              "next": {
+                "title": "API",
+                "permalink": "/docs/vue-testing-library/api"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogPosts": [
+        {
+          "id": "Testing Library Updates: new release, github org, open collective, and twitter account",
+          "metadata": {
+            "permalink": "/blog/2019/04/25/new-org",
+            "source": "@site/blog/2019-04-25-new-org.md",
+            "description": "Hello friends! I'm pleased to announce the recent updates to the testing-library",
+            "date": "2019-04-25T00:00:00.000Z",
+            "tags": [],
+            "title": "Testing Library Updates: new release, github org, open collective, and twitter account",
+            "readingTime": 5.56,
+            "truncated": false,
+            "nextItem": {
+              "title": "Multi-Framework Code Blocks",
+              "permalink": "/blog/2019/03/17/code-blocks"
+            }
+          }
+        },
+        {
+          "id": "Multi-Framework Code Blocks",
+          "metadata": {
+            "permalink": "/blog/2019/03/17/code-blocks",
+            "source": "@site/blog/2019-03-17-code-blocks.md",
+            "description": "Many of the code samples have been updated to include tabs to switch between",
+            "date": "2019-03-17T00:00:00.000Z",
+            "tags": [],
+            "title": "Multi-Framework Code Blocks",
+            "readingTime": 0.3,
+            "truncated": false,
+            "prevItem": {
+              "title": "Testing Library Updates: new release, github org, open collective, and twitter account",
+              "permalink": "/blog/2019/04/25/new-org"
+            },
+            "nextItem": {
+              "title": "New Site",
+              "permalink": "/blog/2018/12/29/new-site"
+            }
+          }
+        },
+        {
+          "id": "New Site",
+          "metadata": {
+            "permalink": "/blog/2018/12/29/new-site",
+            "source": "@site/blog/2018-12-29-new-site.md",
+            "description": "We have a docs site now! It's built with Docusaurus.",
+            "date": "2018-12-29T00:00:00.000Z",
+            "tags": [],
+            "title": "New Site",
+            "readingTime": 0.52,
+            "truncated": false,
+            "prevItem": {
+              "title": "Multi-Framework Code Blocks",
+              "permalink": "/blog/2019/03/17/code-blocks"
+            }
+          }
+        }
+      ],
+      "blogListPaginated": [
+        {
+          "metadata": {
+            "permalink": "/blog",
+            "page": 1,
+            "postsPerPage": 10,
+            "totalPages": 1,
+            "totalCount": 3,
+            "previousPage": null,
+            "nextPage": null,
+            "blogDescription": "Blog"
+          },
+          "items": [
+            "Testing Library Updates: new release, github org, open collective, and twitter account",
+            "Multi-Framework Code Blocks",
+            "New Site"
+          ]
+        }
+      ],
+      "blogTags": {},
+      "blogTagsListPath": null
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/help",
+        "source": "@site/src/pages/help.js"
+      },
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "jsx",
+        "permalink": "/users",
+        "source": "@site/src/pages/users.js"
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {
+    "default": null
+  },
+  "docusaurus-theme-classic": {
+    "default": null
+  },
+  "docusaurus-theme-search-algolia": {
+    "default": null
+  }
+}

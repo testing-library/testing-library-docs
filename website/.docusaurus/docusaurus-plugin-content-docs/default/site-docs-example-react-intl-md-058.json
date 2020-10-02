@@ -1,0 +1,23 @@
+{
+  "unversionedId": "example-react-intl",
+  "id": "example-react-intl",
+  "isDocsHomePage": false,
+  "title": "React Intl",
+  "description": "Note",
+  "source": "@site/../docs/example-react-intl.md",
+  "slug": "/example-react-intl",
+  "permalink": "/docs/example-react-intl",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-intl.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "useReducer",
+    "permalink": "/docs/example-react-hooks-useReducer"
+  },
+  "next": {
+    "title": "React Redux",
+    "permalink": "/docs/example-react-redux"
+  }
+}

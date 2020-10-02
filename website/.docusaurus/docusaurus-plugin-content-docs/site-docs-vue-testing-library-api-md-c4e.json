@@ -1,0 +1,21 @@
+{
+  "unversionedId": "vue-testing-library/api",
+  "id": "vue-testing-library/api",
+  "isDocsHomePage": false,
+  "title": "API",
+  "description": "Vue Testing Library re-exports everything from DOM Testing Library.",
+  "source": "@site/../docs/vue-testing-library/api.md",
+  "permalink": "/docs/vue-testing-library/api",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/api.md",
+  "lastUpdatedBy": "Pierre Grimaud",
+  "lastUpdatedAt": 1590420033,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/docs/vue-testing-library/setup"
+  },
+  "next": {
+    "title": "Cheatsheet",
+    "permalink": "/docs/vue-testing-library/cheatsheet"
+  }
+}

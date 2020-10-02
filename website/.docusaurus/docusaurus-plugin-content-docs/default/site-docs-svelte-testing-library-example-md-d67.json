@@ -1,0 +1,24 @@
+{
+  "unversionedId": "svelte-testing-library/example",
+  "id": "svelte-testing-library/example",
+  "isDocsHomePage": false,
+  "title": "Example",
+  "description": "Component",
+  "source": "@site/../docs/svelte-testing-library/example.md",
+  "slug": "/svelte-testing-library/example",
+  "permalink": "/docs/svelte-testing-library/example",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/svelte-testing-library/example.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Example",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Setup",
+    "permalink": "/docs/svelte-testing-library/setup"
+  },
+  "next": {
+    "title": "API",
+    "permalink": "/docs/svelte-testing-library/api"
+  }
+}

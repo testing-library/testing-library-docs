@@ -1,0 +1,22 @@
+{
+  "unversionedId": "example-update-props",
+  "id": "example-update-props",
+  "isDocsHomePage": false,
+  "title": "Update Props",
+  "description": "`jsx",
+  "source": "@site/../docs/example-update-props.md",
+  "permalink": "/docs/example-update-props",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-update-props.md",
+  "lastUpdatedBy": "Dustin Myers",
+  "lastUpdatedAt": 1565391659,
+  "sidebar_label": "Update Props",
+  "sidebar": "recipes",
+  "previous": {
+    "title": "Input Event",
+    "permalink": "/docs/example-input-event"
+  },
+  "next": {
+    "title": "React Context",
+    "permalink": "/docs/example-react-context"
+  }
+}

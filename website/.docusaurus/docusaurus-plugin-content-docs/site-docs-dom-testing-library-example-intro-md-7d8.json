@@ -1,0 +1,22 @@
+{
+  "unversionedId": "dom-testing-library/example-intro",
+  "id": "dom-testing-library/example-intro",
+  "isDocsHomePage": false,
+  "title": "Example",
+  "description": "`javascript",
+  "source": "@site/../docs/dom-testing-library/example-intro.md",
+  "permalink": "/docs/dom-testing-library/example-intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/example-intro.md",
+  "lastUpdatedBy": "Pavel Pustovalov",
+  "lastUpdatedAt": 1585777857,
+  "sidebar_label": "Example",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Install",
+    "permalink": "/docs/dom-testing-library/install"
+  },
+  "next": {
+    "title": "Setup",
+    "permalink": "/docs/dom-testing-library/setup"
+  }
+}

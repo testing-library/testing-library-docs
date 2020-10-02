@@ -1,0 +1,21 @@
+{
+  "unversionedId": "dom-testing-library/cheatsheet",
+  "id": "dom-testing-library/cheatsheet",
+  "isDocsHomePage": false,
+  "title": "Cheatsheet",
+  "description": "A short guide to all the exported functions in DOM Testing Library",
+  "source": "@site/../docs/dom-testing-library/cheatsheet.md",
+  "permalink": "/docs/dom-testing-library/cheatsheet",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/dom-testing-library/cheatsheet.md",
+  "lastUpdatedBy": "mayas",
+  "lastUpdatedAt": 1587047749,
+  "sidebar": "docs",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/docs/dom-testing-library/faq"
+  },
+  "next": {
+    "title": "React Testing Library",
+    "permalink": "/docs/react-testing-library/intro"
+  }
+}

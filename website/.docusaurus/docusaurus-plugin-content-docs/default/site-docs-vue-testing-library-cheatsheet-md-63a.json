@@ -1,0 +1,23 @@
+{
+  "unversionedId": "vue-testing-library/cheatsheet",
+  "id": "vue-testing-library/cheatsheet",
+  "isDocsHomePage": false,
+  "title": "Cheatsheet",
+  "description": "A short guide to all the exported functions in Vue Testing Library.",
+  "source": "@site/../docs/vue-testing-library/cheatsheet.md",
+  "slug": "/vue-testing-library/cheatsheet",
+  "permalink": "/docs/vue-testing-library/cheatsheet",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/vue-testing-library/cheatsheet.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "API",
+    "permalink": "/docs/vue-testing-library/api"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/docs/vue-testing-library/faq"
+  }
+}

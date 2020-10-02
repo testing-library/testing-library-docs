@@ -1,0 +1,22 @@
+{
+  "unversionedId": "preact-testing-library/api",
+  "id": "preact-testing-library/api",
+  "isDocsHomePage": false,
+  "title": "API",
+  "description": "- @testing-library/dom",
+  "source": "@site/../docs/preact-testing-library/api.md",
+  "permalink": "/docs/preact-testing-library/api",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/preact-testing-library/api.md",
+  "lastUpdatedBy": "mark g romano",
+  "lastUpdatedAt": 1574710494,
+  "sidebar_label": "API",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Example",
+    "permalink": "/docs/preact-testing-library/example"
+  },
+  "next": {
+    "title": "Learn",
+    "permalink": "/docs/preact-testing-library/learn"
+  }
+}

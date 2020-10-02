@@ -1,0 +1,15 @@
+{
+  "unversionedId": "example-drag",
+  "id": "example-drag",
+  "isDocsHomePage": false,
+  "title": "Drag",
+  "description": "Note",
+  "source": "@site/../docs/example-drag.md",
+  "slug": "/example-drag",
+  "permalink": "/docs/example-drag",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-drag.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Drag"
+}

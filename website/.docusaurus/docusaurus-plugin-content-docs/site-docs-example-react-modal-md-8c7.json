@@ -1,0 +1,21 @@
+{
+  "unversionedId": "example-react-modal",
+  "id": "example-react-modal",
+  "isDocsHomePage": false,
+  "title": "Modals",
+  "description": "`jsx",
+  "source": "@site/../docs/example-react-modal.md",
+  "permalink": "/docs/example-react-modal",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/example-react-modal.md",
+  "lastUpdatedBy": "Stefan Wille",
+  "lastUpdatedAt": 1579124440,
+  "sidebar": "recipes",
+  "previous": {
+    "title": "React Transition Group",
+    "permalink": "/docs/example-react-transition-group"
+  },
+  "next": {
+    "title": "External Examples",
+    "permalink": "/docs/example-external"
+  }
+}

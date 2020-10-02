@@ -1,0 +1,24 @@
+{
+  "unversionedId": "preact-testing-library/learn",
+  "id": "preact-testing-library/learn",
+  "isDocsHomePage": false,
+  "title": "Learn",
+  "description": "Due to the similarities between React and Preact (including the testing",
+  "source": "@site/../docs/preact-testing-library/learn.md",
+  "slug": "/preact-testing-library/learn",
+  "permalink": "/docs/preact-testing-library/learn",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/preact-testing-library/learn.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Learn",
+  "sidebar": "docs",
+  "previous": {
+    "title": "API",
+    "permalink": "/docs/preact-testing-library/api"
+  },
+  "next": {
+    "title": "Intro",
+    "permalink": "/docs/svelte-testing-library/intro"
+  }
+}

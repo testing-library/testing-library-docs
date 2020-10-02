@@ -1,0 +1,21 @@
+{
+  "unversionedId": "bs-react-testing-library/examples",
+  "id": "bs-react-testing-library/examples",
+  "isDocsHomePage": false,
+  "title": "Examples",
+  "description": "You can find more bs-dom-testing-library examples at",
+  "source": "@site/../docs/bs-react-testing-library/examples.md",
+  "permalink": "/docs/bs-react-testing-library/examples",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/bs-react-testing-library/examples.md",
+  "lastUpdatedBy": "Alex Krolick",
+  "lastUpdatedAt": 1550080910,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Reason Testing Library",
+    "permalink": "/docs/bs-react-testing-library/intro"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/docs/react-native-testing-library/intro"
+  }
+}

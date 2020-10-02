@@ -1,0 +1,24 @@
+{
+  "unversionedId": "react-testing-library/intro",
+  "id": "react-testing-library/intro",
+  "isDocsHomePage": false,
+  "title": "React Testing Library",
+  "description": "React Testing Library builds on top of DOM Testing Library by adding",
+  "source": "@site/../docs/react-testing-library/intro.md",
+  "slug": "/react-testing-library/intro",
+  "permalink": "/docs/react-testing-library/intro",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/react-testing-library/intro.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Introduction",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Cheatsheet",
+    "permalink": "/docs/dom-testing-library/cheatsheet"
+  },
+  "next": {
+    "title": "Example",
+    "permalink": "/docs/react-testing-library/example-intro"
+  }
+}

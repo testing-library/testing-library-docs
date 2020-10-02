@@ -1,0 +1,24 @@
+{
+  "unversionedId": "guiding-principles",
+  "id": "guiding-principles",
+  "isDocsHomePage": false,
+  "title": "Guiding Principles",
+  "description": "[The more your tests resemble the way your software is used, the more",
+  "source": "@site/../docs/guiding-principles.md",
+  "slug": "/guiding-principles",
+  "permalink": "/docs/guiding-principles",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/guiding-principles.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Guiding Principles",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/docs/"
+  },
+  "next": {
+    "title": "Using Fake Timers",
+    "permalink": "/docs/using-fake-timers"
+  }
+}

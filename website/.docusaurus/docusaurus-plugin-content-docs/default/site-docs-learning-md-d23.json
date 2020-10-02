@@ -1,0 +1,24 @@
+{
+  "unversionedId": "learning",
+  "id": "learning",
+  "isDocsHomePage": false,
+  "title": "Learning Material",
+  "description": "- TestingJavaScript.com 🏆 A HUGE course all",
+  "source": "@site/../docs/learning.md",
+  "slug": "/learning",
+  "permalink": "/docs/learning",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/learning.md",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Learning Material",
+  "sidebar": "docs",
+  "previous": {
+    "title": "riot-testing-library",
+    "permalink": "/docs/ecosystem-riot-testing-library"
+  },
+  "next": {
+    "title": "Contributing",
+    "permalink": "/docs/contributing"
+  }
+}

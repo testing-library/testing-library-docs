@@ -1,0 +1,22 @@
+{
+  "unversionedId": "using-fake-timers",
+  "id": "using-fake-timers",
+  "isDocsHomePage": false,
+  "title": "Using Fake Timers",
+  "description": "In some cases, when your code uses timers (setTimeout, setInterval,",
+  "source": "@site/../docs/using-fake-timers.md",
+  "permalink": "/docs/using-fake-timers",
+  "editUrl": "https://github.com/testing-library/testing-library-docs/blob/master/docs/../docs/using-fake-timers.md",
+  "lastUpdatedBy": "Matan Borenkraout",
+  "lastUpdatedAt": 1595961468,
+  "sidebar_label": "Using Fake Timers",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Guiding Principles",
+    "permalink": "/docs/guiding-principles"
+  },
+  "next": {
+    "title": "Introduction",
+    "permalink": "/docs/dom-testing-library/intro"
+  }
+}
