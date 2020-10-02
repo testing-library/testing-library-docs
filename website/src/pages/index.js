@@ -276,19 +276,13 @@ export default class Index extends React.Component {
         ),
       ]
 
-      const userLogos = userShowcase.map(user => (
-        <a href={user.infoLink} key={user.infoLink}>
-          <img src={user.image} alt={user.caption} title={user.caption} />
-        </a>
-      ))
-
       const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
 
       return (
         <div className="productShowcaseSection paddingBottom">
           <h2>Who is Using This?</h2>
           <div className="logos">
-            <Showcase users={userLogos} />
+            <Showcase users={userShowcase} />
           </div>
           <div className="more-users">
             <a
