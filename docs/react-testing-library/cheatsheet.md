@@ -11,8 +11,8 @@ A short guide to all the exported functions in `React Testing Library`
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
   - all the queries from `DOM Testing Library`, bound to the document so there
-    is no need to pass a node as the first argument (usually, you can use
-    the `screen` import instead)
+    is no need to pass a node as the first argument (usually, you can use the
+    `screen` import instead)
 
 ```jsx
 import { render, fireEvent, screen } from '@testing-library/react'
