@@ -3,6 +3,9 @@ id: api-events
 title: Firing Events
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 > Most projects have a few use cases for `fireEvent`, but the majority of the
 > time you should probably use
 > [`@testing-library/user-event`](https://github.com/testing-library/user-event).
@@ -137,9 +140,6 @@ fireEvent(
 test that a callback passed to the function was called, or what it was called
 when the event that **should** trigger the callback function does trigger the
 bound callback.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
   <Tabs
     defaultValue="react"

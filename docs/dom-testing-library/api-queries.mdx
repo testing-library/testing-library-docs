@@ -3,6 +3,9 @@ id: api-queries
 title: Queries
 ---
 
+import Tabs from '@theme/Tabs'; 
+import TabItem from '@theme/TabItem';
+
 ## Variants
 
 > `getBy` queries are shown by default in the [query documentation](#queries)
@@ -161,8 +164,6 @@ The example below will find the input node for the following DOM structures:
 // so the purpose of your input must be obvious to visual users.
 <input aria-label="username" />
 ```
-
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 <Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
