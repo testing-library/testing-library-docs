@@ -115,7 +115,8 @@
       "ecosystem-eslint-plugin-jest-dom",
       "ecosystem-riot-testing-library",
       "ecosystem-jasmine-dom",
-      "ecosystem-query-extensions"
+      "ecosystem-query-extensions",
+      "ecosystem-rtl-simple-queries"
     ],
     "Help": ["faq", "learning", "contributing"]
   },
