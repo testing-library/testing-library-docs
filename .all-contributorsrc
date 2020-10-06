@@ -1019,6 +1019,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "hedgecox",
+      "name": "hedgecox",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/41297418?v=4",
+      "profile": "https://hedgecox.dev/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
