@@ -109,6 +109,11 @@ See [Which query should I use?](guide-which-query.md)
 The [dom-testing-library Async API](dom-testing-library/api-async.md) is
 re-exported from React Testing Library.
 
+- **waitFor** (Promise) retry the function within until it stops throwing or
+  times out
+- **waitForElementToBeRemoved** (Promise) retry the function until it no longer
+  returns a DOM node
+
 ## Events
 
 See [Events API](dom-testing-library/api-events.md)
