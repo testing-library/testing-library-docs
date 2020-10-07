@@ -77,16 +77,15 @@ See [Which query should I use?](guide-which-query.md)
 
 ## Async
 
-See [Async API](dom-testing-library/api-async.md)
+See [Async API](dom-testing-library/api-async.md). Remember to `await` or `.then()`
+the result of async functions in your tests!
 
 - **waitFor** (Promise) retry the function within until it stops throwing or times
   out
 - **waitForElementToBeRemoved** (Promise) retry the function until it no longer
   returns a DOM node
 
-> Remember to `await` or `.then()` the result of async functions in your tests!
-
-> Deprecated since v7.0.0
+> **Deprecated since v7.0.0:**
 > - **wait** (Promise) retry the function within until it stops throwing or times
 > - **waitForElement** (Promise) retry the function until it returns an element or
 >  an array of elements
