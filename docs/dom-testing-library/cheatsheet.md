@@ -86,6 +86,14 @@ See [Async API](dom-testing-library/api-async.md)
 
 > Remember to `await` or `.then()` the result of async functions in your tests!
 
+> Deprecated since v7.0.0
+> - **wait** (Promise) retry the function within until it stops throwing or times
+> - **waitForElement** (Promise) retry the function until it returns an element or
+>  an array of elements
+>  - `findBy` and `findAllBy` queries are async and retry until either a timeout
+>    or if the query returns successfully; they wrap `waitForElement`
+> - **waitForDomChange** (Promise) retry the function each time the DOM is changed
+
 ## Events
 
 See [Considerations for fireEvent](guide-events.md), [Events API](api-events.md)
