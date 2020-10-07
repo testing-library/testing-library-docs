@@ -129,8 +129,9 @@
     ],
     "Examples": [
       "example-codesandbox",
+      "example-external",
+      "example-findByText",
       "example-input-event",
-      "example-update-props",
       "example-react-context",
       "example-react-hooks-useReducer",
       "example-react-intl",
@@ -139,7 +140,7 @@
       "example-reach-router",
       "example-react-transition-group",
       "example-react-modal",
-      "example-external"
+      "example-update-props"
     ],
     "Help": ["faq", "learning", "contributing"]
   }

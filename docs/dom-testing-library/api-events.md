@@ -62,8 +62,8 @@ fireEvent.change(getByLabelText(/picture/i), {
   },
 })
 
-// Note: The 'value' attribute must use ISO 8601 format when firing a 
-// change event on an input of type "date". Otherwise the element will not 
+// Note: The 'value' attribute must use ISO 8601 format when firing a
+// change event on an input of type "date". Otherwise the element will not
 // reflect the changed value.
 
 // Invalid:
@@ -133,10 +133,10 @@ fireEvent(
 
 ## Using Jest Function Mocks
 
-[Jest's Mock functions](https://jestjs.io/docs/en/mock-functions) can be used to test
-that a callback passed to the function was called, or what it was called when the event
-that **should** trigger the callback function does trigger the bound callback.
-
+[Jest's Mock functions](https://jestjs.io/docs/en/mock-functions) can be used to
+test that a callback passed to the function was called, or what it was called
+when the event that **should** trigger the callback function does trigger the
+bound callback.
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -145,7 +145,9 @@ that **should** trigger the callback function does trigger the bound callback.
 ```jsx
 import { render, screen } from '@testing-library/react'
 
-const Button = ({onClick, children}) => <button onClick={onClick}>{children}</button>
+const Button = ({ onClick, children }) => (
+  <button onClick={onClick}>{children}</button>
+)
 
 test('calls onClick prop when clicked', () => {
   const handleClick = jest.fn()
