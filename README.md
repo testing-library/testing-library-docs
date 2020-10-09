@@ -178,6 +178,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/jamisuomalainen"><img src="https://avatars2.githubusercontent.com/u/19325270?v=4" width="100px;" alt=""/><br /><sub><b>Jami Suomalainen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jamisuomalainen" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.oriolpuig.com"><img src="https://avatars3.githubusercontent.com/u/3933098?v=4" width="100px;" alt=""/><br /><sub><b>Oriol Puig</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=oriolpuig" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://hedgecox.dev/"><img src="https://avatars3.githubusercontent.com/u/41297418?v=4" width="100px;" alt=""/><br /><sub><b>hedgecox</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=hedgecox" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/shermanhui"><img src="https://avatars2.githubusercontent.com/u/11592023?v=4" width="100px;" alt=""/><br /><sub><b>Sherman Hui</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=shermanhui" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->

@@ -11,33 +11,30 @@ sidebar_label: Input Event
 > [`user-event`](ecosystem-user-event.mdx)
 
 ```jsx
-import React from 'react'
+import React, {useState} from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-class CostInput extends React.Component {
-  state = {
-    value: '',
-  }
+function CostInput() {
+  const [value, setValue] = useState('')
 
   removeDollarSign = value => (value[0] === '$' ? value.slice(1) : value)
   getReturnValue = value => (value === '' ? '' : `$${value}`)
+  
   handleChange = ev => {
     ev.preventDefault()
     const inputtedValue = ev.currentTarget.value
-    const noDollarSign = this.removeDollarSign(inputtedValue)
+    const noDollarSign = removeDollarSign(inputtedValue)
     if (isNaN(noDollarSign)) return
-    this.setState({ value: this.getReturnValue(noDollarSign) })
+    setValue(getReturnValue(noDollarSign))
   }
 
-  render() {
     return (
       <input
-        value={this.state.value}
+        value={value}
         aria-label="cost-input"
-        onChange={this.handleChange}
+        onChange={handleChange}
       />
     )
-  }
 }
 
 const setup = () => {

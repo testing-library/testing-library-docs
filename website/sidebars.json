@@ -114,7 +114,8 @@
       "ecosystem-eslint-plugin-jest-dom",
       "ecosystem-riot-testing-library",
       "ecosystem-jasmine-dom",
-      "ecosystem-query-extensions"
+      "ecosystem-query-extensions",
+      "ecosystem-rtl-simple-queries"
     ],
     "Help": ["learning", "contributing"]
   },
@@ -127,8 +128,9 @@
     ],
     "Examples": [
       "example-codesandbox",
+      "example-external",
+      "example-findByText",
       "example-input-event",
-      "example-update-props",
       "example-react-context",
       "example-react-hooks-useReducer",
       "example-react-intl",
@@ -137,7 +139,7 @@
       "example-reach-router",
       "example-react-transition-group",
       "example-react-modal",
-      "example-external"
+      "example-update-props"
     ],
     "Help": ["learning", "contributing"]
   }

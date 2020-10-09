@@ -1019,6 +1019,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "hedgecox",
+      "name": "hedgecox",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/41297418?v=4",
+      "profile": "https://hedgecox.dev/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "shermanhui",
+      "name": "Sherman Hui",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11592023?v=4",
+      "profile": "https://github.com/shermanhui",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
