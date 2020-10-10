@@ -133,6 +133,7 @@
       "example-findByText",
       "example-input-event",
       "example-react-context",
+      "example-react-formik",
       "example-react-hooks-useReducer",
       "example-react-intl",
       "example-react-redux",
