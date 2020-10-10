@@ -43,14 +43,6 @@ const HomeSplash = props => {
     </div>
   )
 
-  const PromoSection = props => (
-    <div className="section promoSection">
-      <div className="promoRow">
-        <div className="pluginRowBlock">{props.children}</div>
-      </div>
-    </div>
-  )
-
   const Button = props => (
     <div className="pluginWrapper buttonWrapper">
       <a
@@ -68,11 +60,7 @@ const HomeSplash = props => {
       <Logo img_src={`${baseUrl}img/logo-large.png`} />
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
-        <PromoSection>
-          <Button href={docUrl('dom-testing-library/intro')}>
-            Get Started
-          </Button>
-        </PromoSection>
+        <Button href={docUrl('dom-testing-library/intro')}>Get Started</Button>
       </div>
     </SplashContainer>
   )
@@ -284,14 +272,12 @@ export default class Index extends React.Component {
           <div className="logos">
             <Showcase users={userShowcase} />
           </div>
-          <div className="more-users">
-            <a
-              className="button button--primary button--outline"
-              href={pageUrl('users')}
-            >
-              More {siteConfig.title} Users
-            </a>
-          </div>
+          <a
+            className="button button--primary button--outline"
+            href={pageUrl('users')}
+          >
+            More {siteConfig.title} Users
+          </a>
         </div>
       )
     }

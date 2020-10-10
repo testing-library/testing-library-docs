@@ -57,10 +57,10 @@ export default function Help(props) {
       title={siteConfig.title}
       description={siteConfig.tagline}
     >
-      <div className="docMainWrapper wrapper">
+      <div className="wrapper">
         <div className="mainContainer documentContainer postContainer helpContainer">
-          <div className="post">
-            <header className="postHeader">
+          <div>
+            <header>
               <h1>Need help?</h1>
             </header>
             <GridBlock
