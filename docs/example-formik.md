@@ -1,7 +1,9 @@
 ---
 id: example-react-formik
 title: Formik
----Example based in this
+---
+
+Example based in this
 [Async Submission Formik example](https://formik.org/docs/examples/async-submission)
 
 ```jsx
