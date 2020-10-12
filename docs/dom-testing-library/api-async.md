@@ -13,7 +13,7 @@ All the async utils are built on top of `waitFor`.
 
 ```typescript
 function waitFor<T>(
-  callback: () => void,
+  callback: () => T | Promise<T>,
   options?: {
     container?: HTMLElement
     timeout?: number
@@ -39,6 +39,11 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
+
+If you return a promise in the `waitFor` callback (either explicitely or
+implicitly with `async` syntax), then the `waitFor` utility will not call your
+callback again until that promise rejects. This allows you to `waitFor` things
+that must be checked asynchronously.
 
 The default `container` is the global `document`. Make sure the elements you
 wait for are descendants of `container`.
