@@ -15,10 +15,10 @@ npm install --save-dev @testing-library/user-event
 import { screen } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-test('types inside textarea', async () => {
+test('types inside textarea', () => {
   document.body.innerHTML = `<textarea />`
 
-  await userEvent.type(screen.getByRole('textbox'), 'Hello, World!')
+  userEvent.type(screen.getByRole('textbox'), 'Hello, World!')
   expect(screen.getByRole('textbox')).toHaveValue('Hello, World!')
 })
 ```
