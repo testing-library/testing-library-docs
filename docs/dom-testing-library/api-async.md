@@ -40,7 +40,7 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
 
-If you return a promise in the `waitFor` callback (either explicitely or
+If you return a promise in the `waitFor` callback (either explicitly or
 implicitly with `async` syntax), then the `waitFor` utility will not call your
 callback again until that promise rejects. This allows you to `waitFor` things
 that must be checked asynchronously.
