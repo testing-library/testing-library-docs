@@ -11,8 +11,8 @@ A short guide to all the exported functions in `React Testing Library`
   - `unmount` function to unmount the component
   - `container` reference to the DOM node where the component is mounted
   - all the queries from `DOM Testing Library`, bound to the document so there
-    is no need to pass a node as the first argument (usually, you can use
-    the `screen` import instead)
+    is no need to pass a node as the first argument (usually, you can use the
+    `screen` import instead)
 
 ```jsx
 import { render, fireEvent, screen } from '@testing-library/react'
@@ -107,19 +107,13 @@ See [Which query should I use?](guide-which-query.md)
 
 ## Async
 
-See [dom-testing-library Async API](dom-testing-library/api-async.md)
+The [dom-testing-library Async API](dom-testing-library/api-async.md) is
+re-exported from React Testing Library.
 
-- **wait** (Promise) retry the function within until it stops throwing or times
-  out
-- **waitForElement** (Promise) retry the function until it returns an element or
-  an array of elements
-  - `findBy` and `findAllBy` queries are async and retry until either a timeout
-    or if the query returns successfully; they wrap `waitForElement`
-- **waitForDomChange** (Promise) retry the function each time the DOM is changed
+- **waitFor** (Promise) retry the function within until it stops throwing or
+  times out
 - **waitForElementToBeRemoved** (Promise) retry the function until it no longer
   returns a DOM node
-
-> Remember to `await` or `.then()` the result of async functions in your tests!
 
 ## Events
 

@@ -9,12 +9,12 @@ sidebar_label: Update Props
 // the basic idea is to simply call `render` again and provide the same container
 // that your first call created for you.
 
-import React, {useRef} from 'react'
-import {render, screen} from '@testing-library/react'
+import React, { useRef } from 'react'
+import { render, screen } from '@testing-library/react'
 
 let idCounter = 1
 
-const NumberDisplay = ({number}) => {
+const NumberDisplay = ({ number }) => {
   const id = useRef(idCounter++) // to ensure we don't remount a different instance
 
   return (
@@ -26,7 +26,7 @@ const NumberDisplay = ({number}) => {
 }
 
 test('calling render with the same component on the same container does not remount', () => {
-  const {rerender} = render(<NumberDisplay number={1} />)
+  const { rerender } = render(<NumberDisplay number={1} />)
   expect(screen.getByTestId('number-display')).toHaveTextContent('1')
 
   // re-render the same component with different props

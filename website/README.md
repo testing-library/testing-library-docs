@@ -110,7 +110,10 @@ title: This Doc Needs To Be Edited
 My new content here..
 ```
 
-1. Refer to that doc's ID in an existing sidebar in `website/sidebar.json`:
+Note: Ensure the file name and the id value do not include non-url safe
+characters i.e. '\*'.
+
+2. Refer to that doc's ID in an existing sidebar in `website/sidebar.json`:
 
 ```javascript
 // Add newly-created-doc to the Getting Started category of docs
@@ -192,7 +195,7 @@ For more information about the navigation bar, click
 
 1. Docusaurus uses React components to build pages. The components are saved as
    .js files in `website/pages/en`:
-1. If you want your page to show up in your navigation header, you will need to
+2. If you want your page to show up in your navigation header, you will need to
    update `website/siteConfig.js` to add to the `headerLinks` element:
 
 `website/siteConfig.js`
