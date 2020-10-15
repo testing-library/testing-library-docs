@@ -156,7 +156,7 @@ const users = [
   },
   {
     caption: 'CDK Global Inc.',
-    image: '/img/users/cdkglobal.svg',
+    image: '/img/users/cdkglobal.png',
     infoLink: 'https://www.cdkglobal.com/us',
     pinned: true,
   },
