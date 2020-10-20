@@ -28,3 +28,8 @@ test('types inside textarea', () => {
 [gh]: https://github.com/testing-library/user-event
 [docs]:
   https://testing-library.com/docs/dom-testing-library/api-events#fireevent
+
+## Known limitations
+
+- No `<input type="color" />` support.
+  [#423](https://github.com/testing-library/user-event/issues/423#issuecomment-669368863)
