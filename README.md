@@ -182,6 +182,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://hedgecox.dev/"><img src="https://avatars3.githubusercontent.com/u/41297418?v=4" width="100px;" alt=""/><br /><sub><b>hedgecox</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=hedgecox" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/shermanhui"><img src="https://avatars2.githubusercontent.com/u/11592023?v=4" width="100px;" alt=""/><br /><sub><b>Sherman Hui</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=shermanhui" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jesujcastillom"><img src="https://avatars3.githubusercontent.com/u/7827281?v=4" width="100px;" alt=""/><br /><sub><b>Jesu Castillo</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jesujcastillom" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://corehtml5canvas.com"><img src="https://avatars1.githubusercontent.com/u/1553693?v=4" width="100px;" alt=""/><br /><sub><b>Core HTML5 Canvas, the book</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=corehtml5canvas" title="Documentation">📖</a></td>
   </tr>
 </table>
 
