@@ -83,8 +83,12 @@ To wait for the removal of element(s) from the DOM you can use
 `waitForElementToBeRemoved`. The `waitForElementToBeRemoved` function is a small
 wrapper around the `waitFor` utility.
 
-The first argument must be an element, array of elements, or a callback which
-returns an element or array of elements.
+The first argument must be a callback which returns an element or array of
+elements, an element, or an array of elements. The recommended approach is to
+use a callback that returns an element or array of elements. This is because DOM
+nodes aren't guaranteed to be removed but rather updated in frameworks such as
+React. This could lead to unexpected results when passing an element or array of
+elements as the element is not actually removed, but instead updated.
 
 Here is an example where the promise resolves because the element is removed:
 
