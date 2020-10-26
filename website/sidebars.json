@@ -116,7 +116,8 @@
       "ecosystem-riot-testing-library",
       "ecosystem-jasmine-dom",
       "ecosystem-query-extensions",
-      "ecosystem-rtl-simple-queries"
+      "ecosystem-rtl-simple-queries",
+      "ecosystem-react-hooks-testing-library"
     ],
     "Help": ["faq", "learning", "contributing"]
   },
