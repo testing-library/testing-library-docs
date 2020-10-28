@@ -10,7 +10,7 @@
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
-    "format-docs": "prettier --write '../docs/**/*.md'",
+    "format-docs": "prettier --write '../docs/**/*.mdx'",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus"
@@ -23,8 +23,8 @@
   "lint-staged": {
     "linters": {
       "*.js": ["prettier --write", "git add"],
-      "../docs/**/*.md": ["prettier --write --parser=markdown", "git add"],
-      "*.md": ["prettier --write --parser=markdown", "git add"],
+      "../docs/**/*.mdx": ["prettier --write --parser=markdown", "git add"],
+      "*.mdx": ["prettier --write --parser=markdown", "git add"],
       "*.json": ["prettier --write --parser=json", "git add"]
     }
   },
@@ -34,8 +34,8 @@
     }
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.64",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.64",
+    "@docusaurus/core": "^2.0.0-alpha.66",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.66",
     "clsx": "^1.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

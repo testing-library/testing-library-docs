@@ -1,3 +1,7 @@
+html[data-theme='dark'] {
+  --ifm-link-color: #679df5;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1100px;

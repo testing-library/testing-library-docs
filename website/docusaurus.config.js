@@ -219,10 +219,12 @@ module.exports = {
           editUrl:
             'https://github.com/testing-library/testing-library-docs/blob/master/docs/',
           path: '../docs',
-          sidebarPath: './sidebars.json',
+          sidebarPath: './sidebars.js',
         },
         blog: {
           path: './blog',
+          blogSidebarCount: 'ALL',
+          blogSidebarTitle: 'All posts',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -239,12 +241,14 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/',
+          type: 'doc',
+          docId: 'intro',
           label: 'Docs',
           position: 'right',
         },
         {
-          to: 'docs/recipes',
+          type: 'doc',
+          docId: 'recipes',
           label: 'Recipes',
           position: 'right',
         },

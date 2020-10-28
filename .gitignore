@@ -10,7 +10,6 @@ website/build/
 website/i18n/*
 website/.docusaurus
 website/.cache-loader
-website-old
 
 *.log
 
