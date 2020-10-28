@@ -106,9 +106,6 @@ module.exports = {
         'ecosystem-rtl-simple-queries',
       ],
     },
-    {
-      Help: ['learning', 'contributing'],
-    },
   ],
   recipes: [
     {
