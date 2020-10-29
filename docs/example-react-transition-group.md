@@ -6,33 +6,29 @@ title: React Transition Group
 ## Mock
 
 ```jsx
-import React from 'react'
+import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { render, fireEvent } from '@testing-library/react'
 
 function Fade({ children, ...props }) {
   return (
-    <CSSTransition {...props} timeout={1000} className="fade">
+    <CSSTransition {...props} timeout={1000} classNames="fade">
       {children}
     </CSSTransition>
   )
 }
 
-class HiddenMessage extends React.Component {
-  state = { show: this.props.initialShow || false }
-  toggle = () => {
-    this.setState(({ show }) => ({ show: !show }))
-  }
-  render() {
-    return (
-      <div>
-        <button onClick={this.toggle}>Toggle</button>
-        <Fade in={this.state.show}>
-          <div>Hello world</div>
-        </Fade>
-      </div>
-    )
-  }
+function HiddenMessage({ initialShow }) {
+  const [show, setShow] = useState(initialShow || false)
+  const toggle = () => setShow(prevState => !prevState)
+  return (
+    <div>
+      <button onClick={toggle}>Toggle</button>
+      <Fade in={show}>
+        <div>Hello world</div>
+      </Fade>
+    </div>
+  )
 }
 
 jest.mock('react-transition-group', () => {
@@ -66,27 +62,23 @@ import { render, fireEvent } from '@testing-library/react'
 
 function Fade({ children, ...props }) {
   return (
-    <CSSTransition {...props} timeout={1000} className="fade">
+    <CSSTransition {...props} timeout={1000} classNames="fade">
       {children}
     </CSSTransition>
   )
 }
 
-class HiddenMessage extends React.Component {
-  state = { show: this.props.initialShow || false }
-  toggle = () => {
-    this.setState(({ show }) => ({ show: !show }))
-  }
-  render() {
-    return (
-      <div>
-        <button onClick={this.toggle}>Toggle</button>
-        <Fade in={this.state.show}>
-          <div>Hello world</div>
-        </Fade>
-      </div>
-    )
-  }
+function HiddenMessage({ initialShow }) {
+  const [show, setShow] = useState(initialShow || false)
+  const toggle = () => setShow(prevState => !prevState)
+  return (
+    <div>
+      <button onClick={toggle}>Toggle</button>
+      <Fade in={show}>
+        <div>Hello world</div>
+      </Fade>
+    </div>
+  )
 }
 
 jest.mock('react-transition-group', () => {
