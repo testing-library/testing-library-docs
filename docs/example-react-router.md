@@ -6,7 +6,7 @@ title: React Router
 ```jsx
 // app.js
 import React from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useLocation } from 'react-router-dom'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
