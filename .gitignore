@@ -5,11 +5,11 @@ node_modules
 lib/core/metadata.js
 lib/core/MetadataBlog.js
 
-website/translated_docs
-website/build/
-website/i18n/*
-website/.docusaurus
-website/.cache-loader
+translated_docs
+build/
+i18n/*
+.docusaurus
+.cache-loader
 
 *.log
 

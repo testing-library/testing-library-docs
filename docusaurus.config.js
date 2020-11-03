@@ -218,7 +218,7 @@ module.exports = {
           showLastUpdateTime: true,
           editUrl:
             'https://github.com/testing-library/testing-library-docs/blob/master/docs/',
-          path: '../docs',
+          path: './docs',
           sidebarPath: './sidebars.js',
         },
         blog: {
