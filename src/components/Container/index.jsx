@@ -9,7 +9,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 export const Container = props => {
-  const containerClasses = classNames('container', props.className, {
+  const containerClasses = classNames('block-container', props.className, {
     darkBackground: props.background === 'dark',
     highlightBackground: props.background === 'highlight',
     lightBackground: props.background === 'light',

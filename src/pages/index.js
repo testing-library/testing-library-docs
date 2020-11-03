@@ -267,7 +267,7 @@ export default class Index extends React.Component {
       const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
 
       return (
-        <div className="productShowcaseSection paddingBottom">
+        <div className="productShowcaseSection paddingBottom paddingTop">
           <h2>Who is Using This?</h2>
           <div className="logos">
             <Showcase users={userShowcase} />

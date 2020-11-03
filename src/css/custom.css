@@ -1,3 +1,7 @@
+:root{
+  --ifm-light-background-color: var(--ifm-color-emphasis-100)
+}
+
 html[data-theme='dark'] {
   --ifm-link-color: #679df5;
 }
@@ -261,21 +265,39 @@ html[data-theme='dark'] {
   margin-right: 40px;
 }
 
-.container .gridBlock .blockContent p {
+.block-container .gridBlock .blockContent p {
   padding: 0;
 }
 
-.container .wrapper .alignCenter h2 {
+.block-container .wrapper .alignCenter h2 {
   text-align: center;
 }
 
-.container .wrapper .imageAlignSide h2 {
+.block-container .wrapper .imageAlignSide h2 {
   text-align: left;
 }
 
-.container .wrapper .imageAlignSide p {
+.block-container .wrapper .imageAlignSide p {
   margin: 0 0 40px;
   max-width: 560px;
+}
+
+.block-container {
+  padding-left: 1rem;
+  padding-left: var(--ifm-spacing-horizontal);
+  padding-right: 1rem;
+  padding-right: var(--ifm-spacing-horizontal);
+  width: 100%;
+}
+
+.block-container.lightBackground {
+  background: var(--ifm-light-background-color);
+}
+
+.block-container .wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
+  max-width: var(--ifm-container-width);
 }
 
 .highlightBackground {
@@ -287,32 +309,32 @@ html[data-theme='dark'] {
   font-weight: 800;
 }
 
-.container.paddingAll {
+.block-container.paddingAll {
   padding: 40px;
 }
 
-.container.paddingBottom {
+.block-container.paddingBottom {
   padding-bottom: 80px;
 }
 
-.container.paddingLeft {
+.block-container.paddingLeft {
   padding-left: 40px;
 }
 
-.container.paddingRight {
+.block-container.paddingRight {
   padding-right: 40px;
 }
 
-.container.paddingTop {
+.block-container.paddingTop {
   padding-top: 80px;
 }
 
 @media only screen and (max-width: 735px) {
-  .container.paddingBottom {
+  .block-container.paddingBottom {
     padding-bottom: 40px;
   }
 
-  .container.paddingTop {
+  .block-container.paddingTop {
     padding-top: 20px;
   }
 }
