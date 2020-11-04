@@ -112,13 +112,9 @@ describe('findByText Examples', () => {
       })
     )
 
-    expect(
-      await findByText(container, "User Name Required")
-    ).toBeVisible();
+    expect(await findByText(container, 'User Name Required')).toBeVisible()
 
-    expect(
-      await findByText(container, "Password Required")
-    ).toBeVisible();
+    expect(await findByText(container, 'Password Required')).toBeVisible()
   })
 
   it('should show invalid field errors for each invalid input field', async () => {

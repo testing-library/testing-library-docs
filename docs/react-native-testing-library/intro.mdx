@@ -1,0 +1,56 @@
+---
+id: intro
+title: Introduction
+sidebar_label: Introduction
+---
+
+React Native Testing Library is a testing library for **React Native** inspired
+by `React Testing Library`. Because React Native does not run in a browser
+environment, the core queries are implemented independently, unlike other
+wrappers that use `DOM Testing Library` as the base. You'll find much more
+information about the library, including examples, on the project sites:
+
+- [Docs][docs]
+- [Project repo][gh]
+
+The project is maintained by
+[Callstack](https://callstack.com/open-source/?utm_source=testing-library.com&utm_medium=referral&utm_campaign=react-native-testing-library)
+which is one of the React Native
+[Partners](https://github.com/facebook/react-native/blob/d48f7ba748a905818e8c64fe70fe5b24aa098b05/ECOSYSTEM.md#partners),
+active throughout the React Native Community.
+
+## Quickstart
+
+```
+npm install --save-dev @testing-library/react-native
+```
+
+- [React Native Testing Library on GitHub][gh]
+
+[docs]: https://callstack.github.io/react-native-testing-library/
+[gh]: https://github.com/callstack/react-native-testing-library
+
+## The problem
+
+You want to write maintainable tests for your React Native components. As a part
+of this goal, you want your tests to avoid including implementation details of
+your components and rather focus on making your tests give you the confidence
+for which they are intended. As part of this, you want your testbase to be
+maintainable in the long run so refactors of your components (changes to
+implementation but not functionality) don't break your tests and slow you and
+your team down.
+
+## This solution
+
+The React Native Testing Library (RNTL) is a lightweight solution for testing
+React Native components. It provides light utility functions on top of
+`react-test-renderer`, in a way that encourages better testing practices. Its
+primary guiding principle is:
+
+> The more your tests resemble the way your software is used, the more
+> confidence they can give you.
+
+This Project is tested to work with Jest, but it should work with other test
+runners as well.
+
+[jest]: https://jestjs.io

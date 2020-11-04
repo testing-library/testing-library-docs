@@ -2,5 +2,8 @@
   "editor.rulers": [
     60, // try to keep examples this long
     80, // hard wrap
-  ]
+  ],
+  "files.associations": {
+    "*.md": "mdx"
+   },
 }
