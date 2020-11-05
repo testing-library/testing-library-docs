@@ -28,6 +28,7 @@ module.exports = {
             'react-testing-library/example-intro',
             'react-testing-library/setup',
             'react-testing-library/api',
+            'react-testing-library/migrate-from-enzyme',
             'react-testing-library/faq',
             'react-testing-library/cheatsheet',
           ],

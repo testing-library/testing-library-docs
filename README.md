@@ -29,10 +29,8 @@ This website was created with [Docusaurus](https://v2.docusaurus.io).
 # What's In This Document
 
 - [Get Started in 5 Minutes](#get-started-in-5-minutes)
-- [Directory Structure](#directory-structure)
 - [Editing Content](#editing-content)
 - [Adding Content](#adding-content)
-- [Full Documentation](#full-documentation)
 
 # Get Started in 5 Minutes
 
