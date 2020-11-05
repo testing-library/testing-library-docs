@@ -1046,6 +1046,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "corehtml5canvas",
+      "name": "Core HTML5 Canvas, the book",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1553693?v=4",
+      "profile": "http://gearysite.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
