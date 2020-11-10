@@ -282,6 +282,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/jesujcastillom"><img src="https://avatars3.githubusercontent.com/u/7827281?v=4" width="100px;" alt=""/><br /><sub><b>Jesu Castillo</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jesujcastillom" title="Documentation">📖</a></td>
     <td align="center"><a href="http://gearysite.com/"><img src="https://avatars1.githubusercontent.com/u/1553693?v=4" width="100px;" alt=""/><br /><sub><b>Core HTML5 Canvas, the book</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=corehtml5canvas" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/johnste"><img src="https://avatars3.githubusercontent.com/u/886051?v=4" width="100px;" alt=""/><br /><sub><b>John Sterling</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=johnste" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://tarojsx.github.io"><img src="https://avatars3.githubusercontent.com/u/127009?v=4" width="100px;" alt=""/><br /><sub><b>Yanlin Jiang</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=cncolder" title="Documentation">📖</a></td>
   </tr>
 </table>
 
