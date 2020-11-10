@@ -225,6 +225,9 @@ module.exports = {
           path: './blog',
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'All posts',
+          feedOptions: {
+            type: 'all',
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
