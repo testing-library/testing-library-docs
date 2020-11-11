@@ -38,14 +38,14 @@ This website was created with [Docusaurus](https://v2.docusaurus.io).
 
 ```sh
 # Install dependencies
-$ npm install
+$ npm i
 ```
 
 2. Run your dev server:
 
 ```sh
 # Start the site
-$ npm run start
+$ npm start
 ```
 
 # Editing Content
