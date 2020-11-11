@@ -205,9 +205,9 @@ This warning is usually caused by an async operation causing an update after the
 test has already finished. There are 2 approaches to resolve it:
 
 1. Wait for the result of the operation in your test by using one of
-   [the async utilities](/docs/dom-testing-library/api-async) like
-   [wait](/docs/dom-testing-library/api-async#wait) or a
-   [`find*` query](/docs/dom-testing-library/api-queries#findby). For example:
+   [the async utilities](/docs/dom-testing-library/api-async.mdx) like
+   [wait](/docs/dom-testing-library/api-async.mdx#wait) or a
+   [`find*` query](/docs/dom-testing-library/api-queries.mdx#findby). For example:
    `const userAddress = await findByLabel(/address/i)`.
 2. Mocking out the asynchronous operation so that it doesn't trigger state
    updates.

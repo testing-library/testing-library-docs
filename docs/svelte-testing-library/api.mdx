@@ -60,7 +60,7 @@ const { results } = render(YourComponent, { myProp: 'value' })
 | Option      | Description                                                                                                                            | Default         |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `container` | The HTML element the component is mounted into.                                                                                        | `document.body` |
-| `queries`   | Queries to bind to the container. See [getQueriesForElement](../dom-testing-library/api-helpers#within-and-getqueriesforelement-apis). | `null`          |
+| `queries`   | Queries to bind to the container. See [getQueriesForElement](../dom-testing-library/api-helpers.mdx#within-and-getqueriesforelement-apis). | `null`          |
 
 ### Results
 
@@ -68,10 +68,10 @@ const { results } = render(YourComponent, { myProp: 'value' })
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `container`  | The HTML element the component is mounted into.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `component`  | The newly created Svelte component. Generally, this should only be used when testing exported functions, or when you're testing developer facing API's. Outside of said cases avoid using the component directly to build tests, instead of interacting with the rendered Svelte component, work with the DOM. Have a read of [Avoid the Test User](https://kentcdodds.com/blog/avoid-the-test-user) by Kent C. Dodds to understand the difference between the **end user** and **developer user**. |
-| `debug`      | Logs the `container` using [prettyDom](https://testing-library.com/docs/dom-testing-library/api-helpers#prettydom).                                                                                                                                                                                                                                                                                                                                                                                 |
+| `debug`      | Logs the `container` using [prettyDom](../dom-testing-library/api-helpers.mdx#prettydom).                                                                                                                                                                                                                                                                                                                                                                                 |
 | `unmount`    | Unmounts the component from the `target` by calling `component.$destroy()`.                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `rerender`   | Calls render again destroying the old component, and mounting the new component on the original `target` with any new options passed in.                                                                                                                                                                                                                                                                                                                                                            |
-| `...queries` | Returns all [query functions](https://testing-library.com/docs/dom-testing-library/api-queries) that are bound to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                                                                                                                                                                                                                         |
+| `...queries` | Returns all [query functions](../dom-testing-library/api-queries.mdx) that are bound to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                                                                                                                                                                                                                         |
 
 ## `cleanup`
 
@@ -104,7 +104,7 @@ DOM.
 
 ## `fireEvent` (`async`)
 
-Calls `@testing-library/dom` [fireEvent](../dom-testing-library/api-events). It
+Calls `@testing-library/dom` [fireEvent](../dom-testing-library/api-events.mdx). It
 is an `async` method due to calling [`tick`][svelte-tick] which tells Svelte to
 flush all pending state changes, basically it updates the DOM to reflect the new
 changes.
