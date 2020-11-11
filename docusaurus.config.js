@@ -217,7 +217,7 @@ module.exports = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           editUrl:
-            'https://github.com/testing-library/testing-library-docs/blob/master/docs/',
+            'https://github.com/testing-library/testing-library-docs/edit/master/',
           path: './docs',
           sidebarPath: './sidebars.js',
         },
@@ -225,6 +225,9 @@ module.exports = {
           path: './blog',
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'All posts',
+          feedOptions: {
+            type: 'all',
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

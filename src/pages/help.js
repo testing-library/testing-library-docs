@@ -46,7 +46,7 @@ export default function Help(props) {
       title: 'Resources',
     },
     {
-      content: `Get support on [GitHub](${props.config.repoUrl})`,
+      content: `Get support on [GitHub](${siteConfig.customFields.repoUrl})`,
       title: 'GitHub',
     },
   ]
