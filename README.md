@@ -283,6 +283,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://gearysite.com/"><img src="https://avatars1.githubusercontent.com/u/1553693?v=4" width="100px;" alt=""/><br /><sub><b>Core HTML5 Canvas, the book</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=corehtml5canvas" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/johnste"><img src="https://avatars3.githubusercontent.com/u/886051?v=4" width="100px;" alt=""/><br /><sub><b>John Sterling</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=johnste" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.velusgautam.com"><img src="https://avatars3.githubusercontent.com/u/8556085?v=4" width="100px;" alt=""/><br /><sub><b>Velu S Gautam</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=velusgautam" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.youtube.com/c/RichardBray"><img src="https://avatars2.githubusercontent.com/u/1377253?v=4" width="100px;" alt=""/><br /><sub><b>Richard Oliver Bray</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=RichardBray" title="Documentation">📖</a></td>
   </tr>
 </table>
 
