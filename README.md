@@ -45,7 +45,7 @@ $ npm install
 
 ```sh
 # Start the site
-$ npm run start
+$ npm start
 ```
 
 # Editing Content
