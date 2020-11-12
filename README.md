@@ -38,7 +38,7 @@ This website was created with [Docusaurus](https://v2.docusaurus.io).
 
 ```sh
 # Install dependencies
-$ npm i
+$ npm install
 ```
 
 2. Run your dev server:
