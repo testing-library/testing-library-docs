@@ -3,8 +3,8 @@ id: api-queries
 title: Queries
 ---
 
-import Tabs from '@theme/Tabs'; 
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 ## Variants
 
@@ -169,6 +169,7 @@ The example below will find the input node for the following DOM structures:
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -177,6 +178,7 @@ const inputNode = screen.getByLabelText('Username')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -189,12 +191,14 @@ const inputNode = screen.getByLabelText('username')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByLabelText('username').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 It will NOT find the input node for label text broken up by elements. You can
 use `getByRole('textbox', { name: 'Username' })` instead which is robust against
@@ -263,6 +267,7 @@ matches the given [`TextMatch`](#textmatch).
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -271,6 +276,7 @@ const inputNode = screen.getByPlaceholderText('Username')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -282,12 +288,14 @@ const inputNode = screen.getByPlaceholderText('Username')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByPlaceholderText('Username').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 > **Note**
 >
@@ -322,6 +330,7 @@ matching the given [`TextMatch`](#textmatch).
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -330,6 +339,7 @@ const aboutAnchorNode = screen.getByText(/about/i)
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -341,12 +351,14 @@ const aboutAnchorNode = screen.getByText(/about/i)
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByText(/about/i).should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 It also works with `input`s whose `type` attribute is either `submit` or
 `button`:
@@ -400,6 +412,7 @@ as it's deprecated).
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -408,6 +421,7 @@ const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -419,12 +433,14 @@ const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByAltText(/incredibles.*? poster/i).should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 ### `ByTitle`
 
@@ -457,6 +473,7 @@ Will also find a `title` element within an SVG.
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -466,6 +483,7 @@ const closeElement = screen.getByTitle('Close')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -478,6 +496,7 @@ const closeElement = screen.getByTitle('Close')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByTitle('Delete').should('exist')
 cy.findByTitle('Close').should('exist')
@@ -485,6 +504,7 @@ cy.findByTitle('Close').should('exist')
 
   </TabItem>
   </Tabs>
+
 
 ### `ByDisplayValue`
 
@@ -518,6 +538,7 @@ document.getElementById('lastName').value = 'Norris'
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -526,6 +547,7 @@ const lastNameInput = screen.getByDisplayValue('Norris')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -537,12 +559,14 @@ const lastNameInput = screen.getByDisplayValue('Norris')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByDisplayValue('Norris').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 #### `textarea`
 
@@ -558,6 +582,7 @@ document.getElementById('messageTextArea').value = 'Hello World'
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -566,6 +591,7 @@ const messageTextArea = screen.getByDisplayValue('Hello World')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -577,12 +603,14 @@ const messageTextArea = screen.getByDisplayValue('Hello World')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByDisplayValue('Hello World').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 #### `select`
 
@@ -602,6 +630,7 @@ matches the given [`TextMatch`](#textmatch).
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -610,6 +639,7 @@ const selectElement = screen.getByDisplayValue('Alaska')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -621,12 +651,14 @@ const selectElement = screen.getByDisplayValue('Alaska')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByDisplayValue('Alaska').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 ### `ByRole`
 
@@ -645,6 +677,7 @@ getByRole(
     selected?: boolean,
     checked?: boolean,
     pressed?: boolean,
+    expanded?: boolean,
     queryFallbacks?: boolean,
     level?: number,
   }): HTMLElement
@@ -778,6 +811,37 @@ you can get the "👍" button by calling `getByRole('button', { pressed: true })
 To learn more about the pressed state see
 [ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
 
+#### `expanded`
+
+You can filter the returned elements by their expanded state by setting
+`expanded: true` or `expanded: false`.
+
+For example in
+
+```html
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a aria-expanded="false" aria-haspopup="true" href="..."
+          >Expandable Menu Item</a
+        >
+        <ul>
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Regular Menu Item</a></li>
+    </ul>
+  </nav>
+</body>
+```
+
+you can get the "Expandable Menu Item" link by calling
+`getByRole('link', { expanded: false })`. To learn more about the checked state
+and which elements can have this state see
+[ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-expanded).
+
 ```html
 <div role="dialog">...</div>
 ```
@@ -785,6 +849,7 @@ To learn more about the pressed state see
 <Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
+
 
 ```js
 import { screen } from '@testing-library/dom'
@@ -794,6 +859,7 @@ const dialogContainer = screen.getByRole('dialog')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -805,12 +871,14 @@ const dialogContainer = screen.getByRole('dialog')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByRole('dialog').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 #### `queryFallbacks`
 
@@ -903,6 +971,7 @@ also accepts a [`TextMatch`](#textmatch)).
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
+
 ```js
 import { screen } from '@testing-library/dom'
 
@@ -911,6 +980,7 @@ const element = screen.getByTestId('custom-element')
 
   </TabItem>
   <TabItem value="react">
+
 
 ```jsx
 import { render, screen } from '@testing-library/react'
@@ -922,12 +992,14 @@ const element = screen.getByTestId('custom-element')
   </TabItem>
   <TabItem value="cypress">
 
+
 ```js
 cy.findByTestId('custom-element').should('exist')
 ```
 
   </TabItem>
   </Tabs>
+
 
 > In the spirit of [the guiding principles](guiding-principles.mdx), it is
 > recommended to use this only after the other queries don't work for your use
@@ -1006,7 +1078,7 @@ To override normalization to remove some Unicode characters whilst keeping some
 
 ```javascript
 screen.getByText('text', {
-  normalizer: str =>
+  normalizer: (str) =>
     getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```
