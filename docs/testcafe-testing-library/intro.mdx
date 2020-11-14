@@ -10,9 +10,9 @@ within [Testcafe](https://devexpress.github.io/testcafe/) for cross-browser
 end-to-end web testing.
 
 If you are new to the testing-library approach for writing tests, check out the
-[this guide on which query to use](https://testing-library.com/docs/guide-which-query)
+[this guide on which query to use](guide-which-query.mdx)
 as well as the
-[cheat sheet](https://testing-library.com/docs/dom-testing-library/cheatsheet).
+[cheat sheet](dom-testing-library/cheatsheet.mdx).
 
 ## Install
 
@@ -127,18 +127,14 @@ test('still works after browser page load and reload', async t => {
 
 > Note: the dom-testing-library umd must come before your configure script
 
-.testcaferc.json
-
-```json
+```json title=".testcaferc.json"
   "clientScripts": [
     "./node_modules/@testing-library/dom/dist/@testing-library/dom.umd.js",
     "./path/to/my-app-testcafe.config.js"
   ]
 ```
 
-./path/to/my-app-testcafe.config.js
-
-```javascript
+```js title="./path/to/my-app-testcafe.config.js"
 window.TestingLibraryDom.configure({ testIdAttribute: 'data-automation-id' })
 ```
 
@@ -189,7 +185,7 @@ test('works with results from "byAll" query with index - regex', async t => {
 })
 ```
 
-[config]: https://testing-library.com/docs/dom-testing-library/api-configuration
+[config]: dom-testing-library/api-configuration.mdx
 [gh]: https://github.com/testing-library/testcafe-testing-library
 [inject]:
   https://devexpress.github.io/testcafe/documentation/using-testcafe/common-concepts/inject-scripts-into-tested-pages.html#add-client-scripts-to-all-tests
