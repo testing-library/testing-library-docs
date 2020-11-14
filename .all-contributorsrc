@@ -1082,6 +1082,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "cncolder",
+      "name": "Yanlin Jiang",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/127009?v=4",
+      "profile": "https://github.com/cncolder",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
