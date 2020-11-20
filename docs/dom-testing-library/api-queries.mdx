@@ -3,8 +3,8 @@ id: api-queries
 title: Queries
 ---
 
-import Tabs from '@theme/Tabs'; 
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 ## Variants
 
@@ -127,13 +127,13 @@ screen.debug(screen.getAllByText('multi-test'))
 
 ```typescript
 getByLabelText(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     selector?: string = '*',
     exact?: boolean = true,
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 This will search for the label that matches the given [`TextMatch`](#textmatch),
@@ -244,12 +244,12 @@ const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 
 ```typescript
 getByPlaceholderText(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 This will search for all elements with a placeholder attribute and find one that
@@ -301,14 +301,14 @@ cy.findByPlaceholderText('Username').should('exist')
 
 ```typescript
 getByText(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     selector?: string = '*',
     exact?: boolean = true,
     ignore?: string|boolean = 'script, style',
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 This will search for all elements that have a text node with `textContent`
@@ -375,12 +375,12 @@ If you'd rather disable this behavior, set `ignore` to `false`.
 
 ```typescript
 getByAltText(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 This will return the element (normally an `<img>`) that has the given `alt`
@@ -433,12 +433,12 @@ cy.findByAltText(/incredibles.*? poster/i).should('exist')
 
 ```typescript
 getByTitle(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   title: TextMatch,
   options?: {
     exact?: boolean = true,
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 Returns the element that has the matching `title` attribute.
@@ -493,12 +493,12 @@ cy.findByTitle('Close').should('exist')
 
 ```typescript
 getByDisplayValue(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   value: TextMatch,
   options?: {
     exact?: boolean = true,
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 Returns the `input`, `textarea`, or `select` element that has the matching
@@ -635,7 +635,7 @@ cy.findByDisplayValue('Alaska').should('exist')
 
 ```typescript
 getByRole(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   role: TextMatch,
   options?: {
     exact?: boolean = true,
@@ -647,7 +647,7 @@ getByRole(
     pressed?: boolean,
     queryFallbacks?: boolean,
     level?: number,
-  }): HTMLElement
+  }): Element
 ```
 
 Queries for elements with the given role (and it also accepts a
@@ -884,12 +884,12 @@ To learn more about the `aria-level` property, see
 
 ```typescript
 getByTestId(
-  container: HTMLElement, // if you're using `screen`, then skip this argument
+  container: Element, // if you're using `screen`, then skip this argument
   text: TextMatch,
   options?: {
     exact?: boolean = true,
     normalizer?: NormalizerFn,
-  }): HTMLElement
+  }): Element
 ```
 
 A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
@@ -1006,7 +1006,7 @@ To override normalization to remove some Unicode characters whilst keeping some
 
 ```javascript
 screen.getByText('text', {
-  normalizer: str =>
+  normalizer: (str) =>
     getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```

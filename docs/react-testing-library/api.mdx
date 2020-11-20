@@ -67,7 +67,7 @@ available options which you could provide as a second argument to `render`.
 
 By default, `React Testing Library` will create a `div` and append that `div` to
 the `document.body` and this is where your React component will be rendered. If
-you provide your own HTMLElement `container` via this option, it will not be
+you provide your own Element `container` via this option, it will not be
 appended to the `document.body` automatically.
 
 For example: If you are unit testing a `tablebody` element, it cannot be a child
@@ -249,7 +249,7 @@ const TestComponent = () => {
   const [count, setCounter] = useState(0)
 
   return (
-    <button onClick={() => setCounter(count => count + 1)}>
+    <button onClick={() => setCounter((count) => count + 1)}>
       Click to increase: {count}
     </button>
   )

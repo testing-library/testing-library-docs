@@ -68,8 +68,8 @@ available options which you could provide as the third argument to `render`.
 
 By default for client side tests, `Marko Testing Library` will create a `div`
 and append that `div` to the `document.body` and this is where your component
-will be rendered. If you provide your own HTMLElement `container` via this
-option, it will not be appended to the `document.body` automatically.
+will be rendered. If you provide your own Element `container` via this option,
+it will not be appended to the `document.body` automatically.
 
 For example: If you are unit testing a `tablebody` element, it cannot be a child
 of a `div`. In this case, you can specify a `table` as the render `container`.
@@ -229,9 +229,9 @@ option.
 
 ## `cleanup`
 
-With client side tests your components are rendered into a placeholder
-HTMLElement. To ensure that your components are properly removed, and destroyed,
-you can call `cleanup` at any time which will remove any attached components.
+With client side tests your components are rendered into a placeholder Element.
+To ensure that your components are properly removed, and destroyed, you can call
+`cleanup` at any time which will remove any attached components.
 
 ```javascript
 import { cleanup } from '@marko/testing-library'
