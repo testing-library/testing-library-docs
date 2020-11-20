@@ -109,7 +109,7 @@ const { getByLabelText, queryAllByTestId } = render(Component)
 
 By default, `Vue Testing Library` will create a `div` and append it to the
 `baseElement`. This is where your component will be rendered. If you provide
-your own HTMLElement container via this option, it will not be appended to the
+your own Element container via this option, it will not be appended to the
 `baseElement` automatically.
 
 ```js
@@ -189,8 +189,8 @@ It returns a Promise through `wait()`, so you can `await updateProps(...)`.
 ## `fireEvent`
 
 Vue Testing Library re-exports all DOM Testing Library
-[firing events](dom-testing-library/api-events.mdx).
-However, it alters them so that all events are async.
+[firing events](dom-testing-library/api-events.mdx). However, it alters them so
+that all events are async.
 
 ```js
 await fireEvent.click(getByText('Click me'))

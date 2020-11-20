@@ -15,7 +15,7 @@ All the async utils are built on top of `waitFor`.
 function waitFor<T>(
   callback: () => T | Promise<T>,
   options?: {
-    container?: HTMLElement
+    container?: Element
     timeout?: number
     interval?: number
     onTimeout?: (error: Error) => Error
@@ -70,7 +70,7 @@ changes. When any of those changes occur, it will re-run the callback.
 function waitForElementToBeRemoved<T>(
   callback: (() => T) | T,
   options?: {
-    container?: HTMLElement
+    container?: Element
     timeout?: number
     interval?: number
     onTimeout?: (error: Error) => Error
@@ -106,14 +106,14 @@ el.parentElement.removeChild(el)
 or an empty array:
 
 ```javascript
-waitForElementToBeRemoved(null).catch(err => console.log(err))
-waitForElementToBeRemoved(queryByText(/not here/i)).catch(err =>
+waitForElementToBeRemoved(null).catch((err) => console.log(err))
+waitForElementToBeRemoved(queryByText(/not here/i)).catch((err) =>
   console.log(err)
 )
-waitForElementToBeRemoved(queryAllByText(/not here/i)).catch(err =>
+waitForElementToBeRemoved(queryAllByText(/not here/i)).catch((err) =>
   console.log(err)
 )
-waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err =>
+waitForElementToBeRemoved(() => getByText(/not here/i)).catch((err) =>
   console.log(err)
 )
 
@@ -128,7 +128,7 @@ The options object is forwarded to `waitFor`.
 function wait<T>(
   callback: () => void,
   options?: {
-    container?: HTMLElement
+    container?: Element
     timeout?: number
     interval?: number
     mutationObserverOptions?: MutationObserverInit
@@ -148,7 +148,7 @@ practice to use an empty callback because it will make the tests more fragile.
 
 ```typescript
 function waitForDomChange<T>(options?: {
-  container?: HTMLElement
+  container?: Element
   timeout?: number
   mutationObserverOptions?: MutationObserverInit
 }): Promise<T>
@@ -165,7 +165,7 @@ changed:
 const container = document.createElement('div')
 waitForDomChange({ container })
   .then(() => console.log('DOM changed!'))
-  .catch(err => console.log(`Error you need to deal with: ${err}`))
+  .catch((err) => console.log(`Error you need to deal with: ${err}`))
 container.append(document.createElement('p'))
 // if 👆 was the only code affecting the container and it was not run,
 // waitForDomChange would throw an error
@@ -179,7 +179,7 @@ container
 ```javascript
 const container = document.createElement('div')
 container.setAttribute('data-cool', 'true')
-waitForDomChange({ container }).then(mutationsList => {
+waitForDomChange({ container }).then((mutationsList) => {
   const mutation = mutationsList[0]
   console.log(
     `was cool: ${mutation.oldValue}\ncurrently cool: ${mutation.target.dataset.cool}`
@@ -211,7 +211,7 @@ changes.
 function waitForElement<T>(
   callback: () => T,
   options?: {
-    container?: HTMLElement
+    container?: Element
     timeout?: number
     mutationObserverOptions?: MutationObserverInit
   }
