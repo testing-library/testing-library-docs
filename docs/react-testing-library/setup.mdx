@@ -97,8 +97,8 @@ module.exports = {
 
 You can define your own custom queries as described in the example in the
 [Helpers API](dom-testing-library/api-helpers.mdx) documentation, or via the
-[`buildQueries`](dom-testing-library/api-helpers.mdx#buildqueries) helper.
-Then you can use them in any render call using the `queries` option. To make the
+[`buildQueries`](dom-testing-library/api-helpers.mdx#buildqueries) helper. Then
+you can use them in any render call using the `queries` option. To make the
 custom queries available globally, you can add them to your custom render method
 as shown below.
 
@@ -281,16 +281,12 @@ With mocha, the test command would look something like this:
 mocha --require jsdom-global/register
 ```
 
-Note, depending on the version of Node you're running, you may also need to
-install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
-6).
-
 ### Skipping Auto Cleanup
 
-[`Cleanup`](api.mdx#cleanup) is called after each test automatically by default if
-the testing framework you're using supports the `afterEach` global (like mocha,
-Jest, and Jasmine). However, you may choose to skip the auto cleanup by setting
-the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with
+[`Cleanup`](api.mdx#cleanup) is called after each test automatically by default
+if the testing framework you're using supports the `afterEach` global (like
+mocha, Jest, and Jasmine). However, you may choose to skip the auto cleanup by
+setting the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with
 [`cross-env`](https://github.com/kentcdodds/cross-env) like so:
 
 ```
