@@ -61,8 +61,8 @@ import userEvent from '@testing-library/user-event'
 import { MyForm } from './myForm.js'
 
 test('rendering and submiting a basic Formik form', async () => {
-  const mockedOnSubmit = jest.fn()
-  render(<MyForm onSubmit={mockedOnSubmit} />)
+  const handleSubmit = jest.fn()
+  render(<MyForm onSubmit={handleSubmit} />)
 
   userEvent.type(screen.getByLabelText(/first name/i), 'Jhon')
   userEvent.type(screen.getByLabelText(/last name/i), 'Dee')
@@ -71,7 +71,7 @@ test('rendering and submiting a basic Formik form', async () => {
   userEvent.click(screen.getByRole('button', { name: /submit/i }))
 
   await waitFor(() =>
-    expect(mockedOnSubmit).toHaveBeenCalledWith({
+    expect(handleSubmit).toHaveBeenCalledWith({
       email: 'jhon.dee@someemail.com',
       firstName: 'Jhon',
       lastName: 'Dee',
