@@ -125,6 +125,7 @@ module.exports = {
         'example-input-event',
         'example-react-context',
         'example-react-hooks-useReducer',
+        'example-react-formik',
         'example-react-intl',
         'example-react-redux',
         'example-react-router',
