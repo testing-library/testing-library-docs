@@ -289,6 +289,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/cncolder"><img src="https://avatars3.githubusercontent.com/u/127009?v=4" width="100px;" alt=""/><br /><sub><b>Yanlin Jiang</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=cncolder" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/lidoravitan"><img src="https://avatars0.githubusercontent.com/u/35113398?v=4" width="100px;" alt=""/><br /><sub><b>Lidor Avitan</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=lidoravitan" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/ITenthusiasm"><img src="https://avatars0.githubusercontent.com/u/47364027?v=4" width="100px;" alt=""/><br /><sub><b>Isaiah Thomason</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ITenthusiasm" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://barushev.net"><img src="https://avatars3.githubusercontent.com/u/805?v=4" width="100px;" alt=""/><br /><sub><b>Denis Barushev</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=denis" title="Documentation">📖</a></td>
   </tr>
 </table>
 
