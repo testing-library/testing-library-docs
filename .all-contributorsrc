@@ -1109,6 +1109,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "denis",
+      "name": "Denis Barushev",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/805?v=4",
+      "profile": "http://barushev.net",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
