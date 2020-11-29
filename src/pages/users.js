@@ -15,7 +15,7 @@ export default function Users(props) {
   if ((siteConfig.customFields.users || []).length === 0) {
     return null
   }
-  const editUrl = `${siteConfig.customFields.docsRepoUrl}/edit/master/website/docusaurus.config.js`
+  const editUrl = `${siteConfig.customFields.docsRepoUrl}/edit/master/docusaurus.config.js`
   return (
     <Layout
       permalink="/users"
