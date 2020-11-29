@@ -105,6 +105,7 @@ module.exports = {
         'ecosystem-jasmine-dom',
         'ecosystem-query-extensions',
         'ecosystem-rtl-simple-queries',
+        'ecosystem-testing-library-selector',
       ],
     },
   ],
