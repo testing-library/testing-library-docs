@@ -1118,6 +1118,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "domasx2",
+      "name": "Domas",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/847684?v=4",
+      "profile": "https://github.com/domasx2",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
