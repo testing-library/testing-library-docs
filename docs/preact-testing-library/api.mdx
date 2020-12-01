@@ -16,7 +16,7 @@ sidebar_label: API
 
 This library re-exports everything from the DOM Testing Library
 (`@testing-library/dom`). See the
-[documentation](../dom-testing-library/api-queries.mdx) to see what goodies you
+[documentation](dom-testing-library/api-queries.mdx) to see what goodies you
 can use.
 
 ## `render`
@@ -33,7 +33,7 @@ const { results } = render(<YourComponent />, { options })
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `container`   | The HTML element the component is mounted to.                                                                                                                     | baseElement   |
 | `baseElement` | The root HTML element to which the container is appended to.                                                                                                      | document.body |
-| `queries`     | Queries to bind to the baseElement. See [getQueriesForElement](../dom-testing-library/api-helpers#within-and-getqueriesforelement-apis).                          | null          |
+| `queries`     | Queries to bind to the baseElement. See [getQueriesForElement](dom-testing-library/api-helpers.mdx#within-and-getqueriesforelement-apis).                          | null          |
 | `hydrate`     | Used when the component has already been mounted and requires a rerender. Not needed for most people. The rerender function passed back to you does this already. | false         |
 | `wrapper`     | A parent component to wrap YourComponent.                                                                                                                         | null          |
 
@@ -43,11 +43,11 @@ const { results } = render(<YourComponent />, { options })
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `container`   | The HTML element the component is mounted to.                                                                                                                                                           |
 | `baseElement` | The root HTML element to which the container is appended to.                                                                                                                                            |
-| `debug`       | Logs the baseElement using [prettyDom](https://testing-library.com/docs/dom-testing-library/api-helpers#prettydom).                                                                                     |
+| `debug`       | Logs the baseElement using [prettyDom](dom-testing-library/api-helpers.mdx#prettydom).                                                                                     |
 | `unmount`     | Unmounts the component from the container.                                                                                                                                                              |
 | `rerender`    | Calls render again passing in the original arguments and sets hydrate to true.                                                                                                                          |
 | `asFragment`  | Returns the innerHTML of the container.                                                                                                                                                                 |
-| `...queries`  | Returns all [query functions](https://testing-library.com/docs/dom-testing-library/api-queries) to be used on the baseElement. If you pass in `query` arguments than this will be those, otherwise all. |
+| `...queries`  | Returns all [query functions](dom-testing-library/api-queries.mdx) to be used on the baseElement. If you pass in `query` arguments than this will be those, otherwise all. |
 
 ## `cleanup`
 
@@ -77,12 +77,12 @@ responsible for flushing all effects and rerenders after invoking it.
 
 📝 If you'd love to learn more, checkout
 [this explanation](https://github.com/threepointone/react-act-examples/blob/master/sync.md).
-Even thought it's for React, it gives you an idea of why it's needed.
+Even though it's for React, it gives you an idea of why it's needed.
 
 ## `fireEvent`
 
 Passes it to the @testing-library/dom
-[fireEvent](../dom-testing-library/api-events). It's also wrapped in `act` so
+[fireEvent](dom-testing-library/api-events.mdx). It's also wrapped in `act` so
 you don't need to worry about doing it.
 
 📝 Keep in mind mainly when using `h / Preact.createElement` that React uses a

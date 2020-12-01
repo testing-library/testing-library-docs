@@ -64,7 +64,7 @@ work can be done collaboratively and spread over some time.
 ## Install React Testing Library
 
 You can check
-[this page](https://testing-library.com/docs/react-testing-library/setup) for
+[this page](setup.mdx) for
 the complete installation and setup guide.
 
 Here is what you should do, first you need to install the React Testing Library:
@@ -201,7 +201,7 @@ automatically cleans up the output for each test, so you don't need to call
 The other thing that you might notice is `getByRole` which has `heading` as its
 value. `heading` is the accessible role of the `h1` element. You can learn more
 about them on
-[queries](https://testing-library.com/docs/dom-testing-library/api-queries#byrole)
+[queries](dom-testing-library/api-queries.mdx#byrole)
 documentation page. One of the things people quickly learn to love about Testing
 Library is how it encourages you to write more accessible applications (because
 if it's not accessible, then it's harder to test).
@@ -245,7 +245,7 @@ like `<div>` do not have one. You could use different approaches to access the
 `<div>` element, but we recommend trying to access elements by their implicit
 `role` to make sure your component is accessible by people with disabilities and
 those who are using screen readers. This
-[section](https://testing-library.com/docs/dom-testing-library/api-queries#byrole)
+[section](dom-testing-library/api-queries.mdx#byrole)
 of the query page might help you to understand better.
 
 > Keep in mind that a `<form>` must have a `name` attribute in order to have an
@@ -260,12 +260,12 @@ it's not recommended for the reasons stated in this paragraph).
 
 We made some handy query APIs which help you to access the component elements
 very efficiently, and you can see the
-[list of available queries](https://testing-library.com/docs/dom-testing-library/api-queries)
+[list of available queries](dom-testing-library/api-queries.mdx)
 in detail.
 
 Something else that people have a problem with is that they're not sure which
 query should they use, luckily we have a great page which explains
-[which query to use](https://testing-library.com/docs/guide-which-query), so
+[which query to use](guide-which-query.mdx), so
 don't forget to check it out!
 
 If you still have a problem with the React Testing Library's queries, and you're
@@ -295,7 +295,7 @@ to handle fewer things!
 There are two ways to simulate user events, one is a perfect library named
 [`user-event`](https://github.com/testing-library/user-event), and the other way
 is to use
-[`fireEvent`](https://testing-library.com/docs/dom-testing-library/api-events).
+[`fireEvent`](dom-testing-library/api-events.mdx).
 `user-event` is actually built on top of `fireEvent` which simply calls
 `dispatchEvent` on the element given. However, `user-event` is generally
 recommended because it ensures that all the events are fired in the correct
@@ -353,7 +353,7 @@ can have a look at its
 ### Triggering class methods in tests (`wrapper.instance()`)
 
 As we already discussed, we are against testing implementation details and
-things that uses are not aware of it, and we aim to test and interact with the
+things that users are not aware of, and we aim to test and interact with the
 component like how our users would.
 
 > if your test uses instance() or state(), know that you're testing things that
@@ -371,4 +371,4 @@ Then make your test do that.
 Generally, you should avoid mocking out components. However, if you need to,
 then it's pretty trivial using
 [Jest's mocking](https://jestjs.io/docs/en/manual-mocks.html) feature. (see our
-[FAQ](https://testing-library.com/docs/react-testing-library/faq))
+[FAQ](react-testing-library/faq.mdx))

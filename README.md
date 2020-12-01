@@ -45,7 +45,7 @@ $ npm install
 
 ```sh
 # Start the site
-$ npm run start
+$ npm start
 ```
 
 # Editing Content
@@ -283,6 +283,16 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://gearysite.com/"><img src="https://avatars1.githubusercontent.com/u/1553693?v=4" width="100px;" alt=""/><br /><sub><b>Core HTML5 Canvas, the book</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=corehtml5canvas" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/johnste"><img src="https://avatars3.githubusercontent.com/u/886051?v=4" width="100px;" alt=""/><br /><sub><b>John Sterling</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=johnste" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.velusgautam.com"><img src="https://avatars3.githubusercontent.com/u/8556085?v=4" width="100px;" alt=""/><br /><sub><b>Velu S Gautam</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=velusgautam" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.youtube.com/c/RichardBray"><img src="https://avatars2.githubusercontent.com/u/1377253?v=4" width="100px;" alt=""/><br /><sub><b>Richard Oliver Bray</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=RichardBray" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/cncolder"><img src="https://avatars3.githubusercontent.com/u/127009?v=4" width="100px;" alt=""/><br /><sub><b>Yanlin Jiang</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=cncolder" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/lidoravitan"><img src="https://avatars0.githubusercontent.com/u/35113398?v=4" width="100px;" alt=""/><br /><sub><b>Lidor Avitan</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=lidoravitan" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/ITenthusiasm"><img src="https://avatars0.githubusercontent.com/u/47364027?v=4" width="100px;" alt=""/><br /><sub><b>Isaiah Thomason</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ITenthusiasm" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://barushev.net"><img src="https://avatars3.githubusercontent.com/u/805?v=4" width="100px;" alt=""/><br /><sub><b>Denis Barushev</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=denis" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/domasx2"><img src="https://avatars1.githubusercontent.com/u/847684?v=4" width="100px;" alt=""/><br /><sub><b>Domas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=domasx2" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.antn.se"><img src="https://avatars0.githubusercontent.com/u/785676?v=4" width="100px;" alt=""/><br /><sub><b>Anton Niklasson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=AntonNiklasson" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/nick722"><img src="https://avatars3.githubusercontent.com/u/31370625?v=4" width="100px;" alt=""/><br /><sub><b>Nikolai Yakuschenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=nick722" title="Documentation">📖</a></td>
   </tr>
 </table>
 

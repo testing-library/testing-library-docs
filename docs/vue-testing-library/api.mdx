@@ -188,9 +188,10 @@ It returns a Promise through `wait()`, so you can `await updateProps(...)`.
 
 ## `fireEvent`
 
-Vue Testing Library re-exports all DOM Testing Library
-[firing events](https://deploy-preview-132--testing-library.netlify.com/docs/dom-testing-library/api-events).
-However, it alters them so that all events are async.
+Because Vue applies DOM updates asynchronously during re-renders, the
+[fireEvent](dom-testing-library/api-events.mdx) tools are re-exported as `async`
+functions. To ensure that the DOM is properly updated in response to an event in
+a test, it's recommended to always `await` `fireEvent`.
 
 ```js
 await fireEvent.click(getByText('Click me'))
@@ -216,7 +217,7 @@ Properly handles inputs controlled by `v-model`. It updates the
 input/select/textarea inner value while emitting the appropriate native event.
 
 See a working example of `update` in the
-[v-model example test](/docs/vue-testing-library/examples#example-using-v-model).
+[v-model example test](vue-testing-library/examples.mdx#example-using-v-model).
 
 ---
 

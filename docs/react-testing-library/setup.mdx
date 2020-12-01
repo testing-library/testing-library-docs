@@ -28,14 +28,12 @@ make your test util file accessible without using relative paths.
 The example below sets up data providers using the [`wrapper`](api.mdx#wrapper)
 option to `render`.
 
-```diff
-// my-component.test.js
+```diff title="my-component.test.js"
 - import { render, fireEvent } from '@testing-library/react';
 + import { render, fireEvent } from '../test-utils';
 ```
 
-```js
-// test-utils.js
+```js title="test-utils.js"
 import React from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
@@ -73,8 +71,7 @@ export { customRender as render }
 
 You can use CommonJS modules instead of ES modules, which should work in Node:
 
-```js
-// test-utils.js
+```js title="test-utils.js"
 const rtl = require('@testing-library/react')
 
 const customRender = (ui, options) =>
@@ -99,9 +96,9 @@ module.exports = {
 > implementation details.
 
 You can define your own custom queries as described in the example in the
-[Helpers API](/docs/dom-testing-library/api-helpers) documentation, or via the
-[`buildQueries`](/docs/dom-testing-library/api-helpers#buildqueries) helper.
-Then you can use them in any render call using the `queries` option. To make the
+[Helpers API](dom-testing-library/api-helpers.mdx) documentation, or via the
+[`buildQueries`](dom-testing-library/api-helpers.mdx#buildqueries) helper. Then
+you can use them in any render call using the `queries` option. To make the
 custom queries available globally, you can add them to your custom render method
 as shown below.
 
@@ -110,8 +107,7 @@ elements by `data-cy`, a "test ID" convention mentioned in the
 [Cypress.io](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
 documentation.
 
-```js
-// custom-queries.js
+```js title="custom-queries.js"
 import { queryHelpers, buildQueries } from '@testing-library/react'
 
 // The queryAllByAttribute is a shortcut for attribute-based matchers
@@ -149,7 +145,7 @@ passing a [`queries`](api.mdx#render-options) option.
 If you want to add custom queries globally, you can do this by defining a custom
 render method:
 
-```js
+```js title="test-utils.js"
 // test-utils.js
 import { render, queries } from '@testing-library/react'
 import * as customQueries from './custom-queries'
@@ -181,14 +177,12 @@ Jest `moduleDirectories` option.
 This will make all the `.js` files in the test-utils directory importable
 without `../`.
 
-```diff
-// my-component.test.js
+```diff title="my-component.test.js"
 - import { render, fireEvent } from '../test-utils';
 + import { render, fireEvent } from 'test-utils';
 ```
 
-```diff
-// jest.config.js
+```diff title="jest.config.js"
 module.exports = {
   moduleDirectories: [
     'node_modules',
@@ -202,8 +196,7 @@ module.exports = {
 
 _Typescript config needs to be updated as follow:_
 
-```diff
-// tsconfig.json
+```diff title="tsconfig.json"
 {
   "compilerOptions": {
     // ...,
@@ -255,8 +248,7 @@ npm install --save-dev jest-environment-jsdom-fifteen
 
 Then specify `jest-environment-jsdom-fifteen` as the `testEnvironment`:
 
-```diff
- // jest.config.js
+```diff title="jest.config.js"
  module.exports = {
 +  testEnvironment: 'jest-environment-jsdom-fifteen',
    // ... other options ...
@@ -289,16 +281,12 @@ With mocha, the test command would look something like this:
 mocha --require jsdom-global/register
 ```
 
-Note, depending on the version of Node you're running, you may also need to
-install @babel/polyfill (if you're using babel 7) or babel-polyfill (for babel
-6).
-
 ### Skipping Auto Cleanup
 
-[`Cleanup`](api.mdx#cleanup) is called after each test automatically by default if
-the testing framework you're using supports the `afterEach` global (like mocha,
-Jest, and Jasmine). However, you may choose to skip the auto cleanup by setting
-the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with
+[`Cleanup`](api.mdx#cleanup) is called after each test automatically by default
+if the testing framework you're using supports the `afterEach` global (like
+mocha, Jest, and Jasmine). However, you may choose to skip the auto cleanup by
+setting the `RTL_SKIP_AUTO_CLEANUP` env variable to 'true'. You can do this with
 [`cross-env`](https://github.com/kentcdodds/cross-env) like so:
 
 ```
