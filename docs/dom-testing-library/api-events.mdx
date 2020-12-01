@@ -70,10 +70,10 @@ fireEvent.change(getByLabelText(/picture/i), {
 // reflect the changed value.
 
 // Invalid:
-fireEvent.change(input, { target: { value: '12/05/2020' } })
+fireEvent.change(input, { target: { value: '24/05/2020' } })
 
 // Valid:
-fireEvent.change(input, { target: { value: '2020-05-12' } })
+fireEvent.change(input, { target: { value: '2020-05-24' } })
 ```
 
 **dataTransfer**: Drag events have a `dataTransfer` property that contains data
