@@ -3,8 +3,8 @@ id: api-configuration
 title: Configuration
 ---
 
-import Tabs from '@theme/Tabs'; 
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 ## Configuration
 
@@ -50,12 +50,13 @@ option.
 screen.getByTestId('foo', { suggest: false }) // will not throw a suggestion
 ```
 
-`testIdAttribute`: The attribute used by [`getByTestId`](api-queries.mdx#bytestid)
-and related queries. Defaults to `data-testid`.
+`testIdAttribute`: The attribute used by
+[`getByTestId`](api-queries.mdx#bytestid) and related queries. Defaults to
+`data-testid`.
 
 `getElementError`: A function that returns the error used when
-[`getBy*`](api-queries.mdx#getby) or [`getAllBy*`](api-queries.mdx#getallby) fail. Takes
-the error message and container object as arguments.
+[`getBy*`](api-queries.mdx#getby) or [`getAllBy*`](api-queries.mdx#getallby)
+fail. Takes the error message and container object as arguments.
 
 `asyncUtilTimeout`: The global timeout value in milliseconds used by `waitFor`
 utilities. Defaults to 1000ms.

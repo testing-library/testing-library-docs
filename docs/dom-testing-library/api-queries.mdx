@@ -3,8 +3,8 @@ id: api-queries
 title: Queries
 ---
 
-import Tabs from '@theme/Tabs'; 
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 ## Variants
 
@@ -1006,7 +1006,7 @@ To override normalization to remove some Unicode characters whilst keeping some
 
 ```javascript
 screen.getByText('text', {
-  normalizer: str =>
+  normalizer: (str) =>
     getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```

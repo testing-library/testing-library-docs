@@ -27,7 +27,9 @@ As you write your tests, keep in mind:
 
 <details>
 
-<summary>What if my app is localized and I don't have access to the text in test?</summary>
+<summary>
+  What if my app is localized and I don't have access to the text in test?
+</summary>
 
 This is fairly common. Our first bit of advice is to try to get the default text
 used in your tests. That will make everything much easier (more than just using
@@ -38,7 +40,10 @@ with `data-testid`s (which is not bad anyway).
 
 <details>
 
-<summary>I really don't like data-testids, but none of the other queries make sense. Do I have to use a data-testid?</summary>
+<summary>
+  I really don't like data-testids, but none of the other queries make sense. Do
+  I have to use a data-testid?
+</summary>
 
 Definitely not. That said, a common reason people don't like the `data-testid`
 attribute is they're concerned about shipping that to production. I'd suggest
@@ -67,7 +72,10 @@ const rootElement = container.firstChild
 
 <details>
 
-<summary>What if I’m iterating over a list of items that I want to put the data-testid="item" attribute on. How do I distinguish them from each other?</summary>
+<summary>
+  What if I’m iterating over a list of items that I want to put the
+  data-testid="item" attribute on. How do I distinguish them from each other?
+</summary>
 
 You can make your selector just choose the one you want by including :nth-child
 in the selector.
@@ -108,7 +116,6 @@ library for more info.
 </details>
 
 <!-- Links: -->
-
 
 <!-- prettier-ignore-start -->
 

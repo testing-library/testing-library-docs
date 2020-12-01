@@ -100,7 +100,9 @@ As you write your tests, keep in mind:
 
 <details>
 
-<summary>If I can't use shallow rendering, how do I mock out components in tests?</summary>
+<summary>
+  If I can't use shallow rendering, how do I mock out components in tests?
+</summary>
 
 In general, you should avoid mocking out components (see
 [the Guiding Principles section](guiding-principles.mdx)). However if you need
@@ -112,7 +114,7 @@ libraries. I don't want my tests to wait for animations to end.
 ```javascript
 jest.mock('react-transition-group', () => {
   const FakeTransition = jest.fn(({ children }) => children)
-  const FakeCSSTransition = jest.fn(props =>
+  const FakeCSSTransition = jest.fn((props) =>
     props.in ? <FakeTransition>{props.children}</FakeTransition> : null
   )
   return { CSSTransition: FakeCSSTransition, Transition: FakeTransition }
@@ -151,8 +153,10 @@ Learn more about how Jest mocks work from my blog post:
 
 <details>
 
-<summary>What about enzyme is "bloated with complexity and features" and "encourage
-poor testing practices"?</summary>
+<summary>
+  What about enzyme is "bloated with complexity and features" and "encourage
+  poor testing practices"?
+</summary>
 
 Most of the damaging features have to do with encouraging testing implementation
 details. Primarily, these are

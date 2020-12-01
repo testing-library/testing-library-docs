@@ -10,8 +10,7 @@ within [Testcafe](https://devexpress.github.io/testcafe/) for cross-browser
 end-to-end web testing.
 
 If you are new to the testing-library approach for writing tests, check out the
-[this guide on which query to use](guide-which-query.mdx)
-as well as the
+[this guide on which query to use](guide-which-query.mdx) as well as the
 [cheat sheet](dom-testing-library/cheatsheet.mdx).
 
 ## Install
@@ -57,24 +56,24 @@ To show some simple examples (from
 ```javascript
 import { screen } from '@testing-library/testcafe'
 
-test('getByPlaceHolderText', async t => {
+test('getByPlaceHolderText', async (t) => {
   await t.typeText(
     screen.getByPlaceholderText('Placeholder Text'),
     'Hello Placeholder'
   )
 })
-test('getByText', async t => {
+test('getByText', async (t) => {
   await t.click(screen.getByText('getByText'))
 })
 
-test('getByLabelText', async t => {
+test('getByLabelText', async (t) => {
   await t.typeText(
     screen.getByLabelText('Label For Input Labelled By Id'),
     'Hello Input Labelled By Id'
   )
 })
 
-test('queryAllByText', async t => {
+test('queryAllByText', async (t) => {
   await t.expect(screen.queryAllByText('Button Text').exists).ok()
   await t
     .expect(screen.queryAllByText('Non-existing Button Text').exists)
@@ -92,7 +91,7 @@ Testing Library][config] in a few different ways:
 ```javascript
 import { configureOnce, getByTestId } from '@testing-library/testcafe'
 
-test('can be configured once in a single page load', async t => {
+test('can be configured once in a single page load', async (t) => {
   await configureOnce({ testIdAttribute: 'data-other-test-id' })
   await t.click(screen.getByTestId('other-id'))
 })
@@ -107,11 +106,11 @@ fixture`configure`.clientScripts(
   configure({ testIdAttribute: 'data-automation-id' })
 ).page`http://localhost:13370`
 
-test('supports alternative testIdAttribute', async t => {
+test('supports alternative testIdAttribute', async (t) => {
   await t.click(screen.getByTestId('image-with-random-alt-tag'))
 })
 
-test('still works after browser page load and reload', async t => {
+test('still works after browser page load and reload', async (t) => {
   await t.click(screen.getByText('Go to Page 2'))
 
   await t.eval(() => location.reload(true))
@@ -152,7 +151,7 @@ import { within, screen } from '@testing-library/testcafe'
 
 fixture`within`.page`http://localhost:13370`
 
-test('works with getBy* selectors', async t => {
+test('works with getBy* selectors', async (t) => {
   await t
     .expect(
       within(screen.getByTestId('nested')).getByText('Button Text').exists
@@ -160,18 +159,18 @@ test('works with getBy* selectors', async t => {
     .ok()
 })
 
-test('works with CSS selector strings', async t => {
+test('works with CSS selector strings', async (t) => {
   const { getByText } = await within('#nested')
   await t.click(getByText('Button Text')).ok()
 })
 
-test('works on any testcafe selector', async t => {
+test('works on any testcafe selector', async (t) => {
   const nested = Selector('#nested')
 
   await t.expect(within(nested).getByText('Button Text').exists).ok()
 })
 
-test('works with results from "byAll" query with index - regex', async t => {
+test('works with results from "byAll" query with index - regex', async (t) => {
   const nestedDivs = screen.getAllByTestId(/nested/)
   await t.expect(nestedDivs.count).eql(2)
 
