@@ -3,8 +3,8 @@ id: api-events
 title: Firing Events
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 > Most projects have a few use cases for `fireEvent`, but the majority of the
 > time you should probably use
@@ -149,20 +149,20 @@ bound callback.
   }>
   <TabItem value="react">
 
-  ```jsx
-  import { render, screen, fireEvent } from '@testing-library/react'
+```jsx
+import { render, screen, fireEvent } from '@testing-library/react'
 
-  const Button = ({ onClick, children }) => (
-    <button onClick={onClick}>{children}</button>
-  )
+const Button = ({ onClick, children }) => (
+  <button onClick={onClick}>{children}</button>
+)
 
-  test('calls onClick prop when clicked', () => {
-    const handleClick = jest.fn()
-    render(<Button onClick={handleClick}>Click Me</Button>)
-    fireEvent.click(screen.getByText(/click me/i))
-    expect(handleClick).toHaveBeenCalledTimes(1)
-  })
-  ```
+test('calls onClick prop when clicked', () => {
+  const handleClick = jest.fn()
+  render(<Button onClick={handleClick}>Click Me</Button>)
+  fireEvent.click(screen.getByText(/click me/i))
+  expect(handleClick).toHaveBeenCalledTimes(1)
+})
+```
 
   </TabItem>
   </Tabs>

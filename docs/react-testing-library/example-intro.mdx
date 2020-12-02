@@ -208,13 +208,13 @@ export default function Fetch({ url }) {
   const fetchGreeting = async () => {
     axios
       .get(url)
-      .then(response => {
+      .then((response) => {
         const { data } = response
         const { greeting } = data
         dispatch({ type: 'SUCCESS', greeting })
         setButtonClicked(true)
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch({ type: 'ERROR', error })
       })
   }

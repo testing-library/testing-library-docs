@@ -3,8 +3,8 @@ id: api-helpers
 title: Helpers
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 
 ## Custom Queries
 
@@ -68,8 +68,7 @@ module.exports = {
 The `buildQueries` helper allows you to create custom queries with all standard
 [variants](api-queries.mdx) of queries in testing-library.
 
-See the
-[Add custom queries](react-testing-library/setup.mdx#add-custom-queries)
+See the [Add custom queries](react-testing-library/setup.mdx#add-custom-queries)
 section of the custom render guide for example usage.
 
 ### Using other assertion libraries
@@ -138,32 +137,32 @@ could do:
   }>
   <TabItem value="native">
 
-  ```js
-  import { within } from '@testing-library/dom'
+```js
+import { within } from '@testing-library/dom'
 
-  const { getByText } = within(document.getElementById('messages'))
-  const helloMessage = getByText('hello')
-  ```
+const { getByText } = within(document.getElementById('messages'))
+const helloMessage = getByText('hello')
+```
 
   </TabItem>
   <TabItem value="react">
 
-  ```jsx
-  import { render, within } from '@testing-library/react'
+```jsx
+import { render, within } from '@testing-library/react'
 
-  const { getByLabelText } = render(<MyComponent />)
-  const signinModal = getByLabelText('Sign In')
-  within(signinModal).getByPlaceholderText('Username')
-  ```
+const { getByLabelText } = render(<MyComponent />)
+const signinModal = getByLabelText('Sign In')
+within(signinModal).getByPlaceholderText('Username')
+```
 
   </TabItem>
   <TabItem value="cypress">
 
-  ```js
-  cy.get('form').within(() => {
-    cy.findByText('Button Text').should('be.disabled')
-  })
-  ```
+```js
+cy.get('form').within(() => {
+  cy.findByText('Button Text').should('be.disabled')
+})
+```
 
   </TabItem>
   </Tabs>

@@ -249,7 +249,7 @@ const TestComponent = () => {
   const [count, setCounter] = useState(0)
 
   return (
-    <button onClick={() => setCounter(count => count + 1)}>
+    <button onClick={() => setCounter((count) => count + 1)}>
       Click to increase: {count}
     </button>
   )

@@ -57,11 +57,11 @@ function getElementClientCenter(element) {
   }
 }
 
-const getCoords = charlie =>
+const getCoords = (charlie) =>
   isElement(charlie) ? getElementClientCenter(charlie) : charlie
 
-const sleep = ms =>
-  new Promise(resolve => {
+const sleep = (ms) =>
+  new Promise((resolve) => {
     setTimeout(resolve, ms)
   })
 

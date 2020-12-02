@@ -53,7 +53,7 @@ test('NameProvider composes full name from first, last', () => {
   }
   customRender(
     <NameContext.Consumer>
-      {value => <span>Received: {value}</span>}
+      {(value) => <span>Received: {value}</span>}
     </NameContext.Consumer>,
     { providerProps }
   )
