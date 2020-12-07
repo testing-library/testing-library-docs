@@ -294,6 +294,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.antn.se"><img src="https://avatars0.githubusercontent.com/u/785676?v=4" width="100px;" alt=""/><br /><sub><b>Anton Niklasson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=AntonNiklasson" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/nick722"><img src="https://avatars3.githubusercontent.com/u/31370625?v=4" width="100px;" alt=""/><br /><sub><b>Nikolai Yakuschenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=nick722" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/vier31"><img src="https://avatars1.githubusercontent.com/u/34372068?v=4" width="100px;" alt=""/><br /><sub><b>Jan Schröder</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vier31" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
