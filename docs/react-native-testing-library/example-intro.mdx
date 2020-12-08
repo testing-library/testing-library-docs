@@ -33,10 +33,10 @@ function Example() {
 
 test('examples of some things', async () => {
   const { getByTestId, getByText, queryByTestId, toJSON } = render(<Example />)
-  const famousWomanInHistory = 'Ada Lovelace'
+  const famousProgrammerInHistory = 'Ada Lovelace'
 
   const input = getByTestId('input')
-  fireEvent.changeText(input, famousWomanInHistory)
+  fireEvent.changeText(input, famousProgrammerInHistory)
 
   const button = getByText('Print Username')
   fireEvent.press(button)
@@ -44,7 +44,7 @@ test('examples of some things', async () => {
   await waitFor(() => expect(queryByTestId('printed-username')).toBeTruthy())
 
   expect(getByTestId('printed-username').props.children).toBe(
-    famousWomanInHistory
+    famousProgrammerInHistory
   )
   expect(toJSON()).toMatchSnapshot()
 })
