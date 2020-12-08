@@ -12,15 +12,15 @@ import { Container } from '../components/Container'
 import { Showcase } from '../components/Showcase'
 import Layout from '@theme/Layout'
 
-const HomeSplash = props => {
+const HomeSplash = (props) => {
   const { language = '' } = props
   const { siteConfig } = useDocusaurusContext()
   const { baseUrl, customFields } = siteConfig
   const docsPart = `${customFields.docsPath ? `${customFields.docsPath}/` : ''}`
   const langPart = `${language ? `${language}/` : ''}`
-  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
+  const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`
 
-  const SplashContainer = props => (
+  const SplashContainer = (props) => (
     <div className="homeContainer">
       <div className="homeSplashFade">
         <div className="wrapper homeWrapper">{props.children}</div>
@@ -28,7 +28,7 @@ const HomeSplash = props => {
     </div>
   )
 
-  const Logo = props => (
+  const Logo = (props) => (
     <div className="projectLogo">
       <img src={props.img_src} alt="Project Logo" />
     </div>
@@ -43,7 +43,7 @@ const HomeSplash = props => {
     </div>
   )
 
-  const Button = props => (
+  const Button = (props) => (
     <div className="pluginWrapper buttonWrapper">
       <a
         className="button button--primary button--outline"
@@ -71,7 +71,7 @@ export default class Index extends React.Component {
     const { config: siteConfig, language = '' } = this.props
     const { baseUrl } = siteConfig
 
-    const Block = props => (
+    const Block = (props) => (
       <Container
         padding={['bottom', 'top']}
         id={props.id}
@@ -241,36 +241,17 @@ export default class Index extends React.Component {
       if ((siteConfig.customFields.users || []).length === 0) {
         return null
       }
-      const NUMBER_OF_UNPINNED_USERS_TO_SHOWCASE = 3
 
-      const randomizedList = (arr, n) => {
-        var result = new Array(n),
-          len = arr.length,
-          taken = new Array(len)
-        if (n > len) return arr
-        while (n--) {
-          var x = Math.floor(Math.random() * len)
-          result[n] = arr[x in taken ? taken[x] : x]
-          taken[x] = --len in taken ? taken[len] : len
-        }
-        return result
-      }
-
-      const userShowcase = [
-        ...siteConfig.customFields.users.filter(u => u.pinned),
-        ...randomizedList(
-          siteConfig.customFields.users.filter(u => !u.pinned),
-          NUMBER_OF_UNPINNED_USERS_TO_SHOWCASE
-        ),
-      ]
-
-      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
+      const pageUrl = (page) =>
+        baseUrl + (language ? `${language}/` : '') + page
 
       return (
         <div className="productShowcaseSection paddingBottom paddingTop">
           <h2>Who is Using This?</h2>
           <div className="logos">
-            <Showcase users={userShowcase} />
+            <Showcase
+              users={siteConfig.customFields.users.filter((u) => u.pinned)}
+            />
           </div>
           <a
             className="button button--primary button--outline"
