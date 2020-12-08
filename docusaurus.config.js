@@ -36,7 +36,7 @@ module.exports = {
         darkImage: '/img/users/codecademy.svg',
         lightImage: '/img/users/codecademy.svg',
         infoLink: 'https://www.codecademy.com',
-        pinned: true,
+        pinned: false,
       },
       {
         caption: 'Expedia Group',
@@ -71,7 +71,7 @@ module.exports = {
         darkImage: '/img/users/gusto.svg',
         lightImage: '/img/users/gusto.svg',
         infoLink: 'https://gusto.com/',
-        pinned: true,
+        pinned: false,
       },
       {
         caption: 'Habitaclia',
@@ -180,10 +180,10 @@ module.exports = {
       },
       {
         caption: 'Walmart Labs',
-        pinned: true,
         darkImage: '/img/users/walmart.png',
         lightImage: '/img/users/walmart.png',
         infoLink: 'https://www.walmartlabs.com/',
+        pinned: true,
       },
       {
         caption: 'Wix.com',
