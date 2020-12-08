@@ -296,6 +296,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/vier31"><img src="https://avatars1.githubusercontent.com/u/34372068?v=4" width="100px;" alt=""/><br /><sub><b>Jan Schröder</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vier31" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://nickmccurdy.com/"><img src="https://avatars0.githubusercontent.com/u/927220?v=4" width="100px;" alt=""/><br /><sub><b>Nick McCurdy</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=nickmccurdy" title="Documentation">📖</a> <a href="https://github.com/testing-library/testing-library-docs/pulls?q=is%3Apr+reviewed-by%3Anickmccurdy" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/testing-library/testing-library-docs/commits?author=nickmccurdy" title="Code">💻</a></td>
   </tr>
 </table>
 
