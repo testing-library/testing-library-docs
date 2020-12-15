@@ -46,7 +46,7 @@ find[All]By\* selectors that you can use in your tests.
 > for this reason, there's no difference between `queryBy` and `findBy` queries
 > in testcafe testing library. `getBy` queries will throw an exception (as
 > designed) so they will fail immediately and do not work with the built in
-> waiting that Testcafe provides.
+> waiting that Testcafe provides. Please see the [gotchas](#gotchas) section for an example.
 
 ## Examples
 
@@ -183,6 +183,52 @@ test('works with results from "byAll" query with index - regex', async (t) => {
     .ok()
 })
 ```
+
+# Gotchas
+
+```javascript
+import "testcafe";
+import { screen } from "@testing-library/testcafe";
+import { config } from "../config";
+
+fixture`gotchas`
+  .page`http://localhost:3000`;
+
+test("getBy methods do not work with testcafe's built in timing mechanism", async (t) => {
+// If you are used to using testcafe's t.expect() method, you might expect to be able to do this:
+
+  await t
+    .expect(
+      screen.getByRole("heading", {
+        name: /manage clients/i,
+        level: 1,
+      }).exists
+    )
+    .ok();
+
+// However, this will not work because the getBy* methods will throw instantly if an element is not found, 
+// so this is not compatible with testcafe's timing mechanism. This however will work:
+
+  await t
+    .expect(
+      screen.findByRole("heading", {
+        name: /manage clients/i,
+        level: 1,
+      }).exists
+    )
+    .ok();
+
+// You can also still use the implicit assertion that testing library provides, 
+// just by moving the getBy* call outside of t.expect():
+
+  await screen.getByRole("heading", {
+    name: /manage clients/i,
+    level: 1,
+  });
+});
+
+```
+
 
 [config]: dom-testing-library/api-configuration.mdx
 [gh]: https://github.com/testing-library/testcafe-testing-library
