@@ -1166,6 +1166,15 @@
         "review",
         "code"
       ]
+    },
+    {
+      "login": "tsuki42",
+      "name": "Sudhanshu",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/22864071?v=4",
+      "profile": "http://sudhanshu-ranjan.tech",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
