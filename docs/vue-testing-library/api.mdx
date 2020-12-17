@@ -81,7 +81,8 @@ Router.
 function callbackFunction(vueInstance, vuexStore, router) {}
 ```
 
-A callback function that receives the Vue instance as a parameter. This allows
+A callback function that receives the Vue instance as a parameter. Its return value passes additional options to `@vue/test-utils`
+[mount](https://vue-test-utils.vuejs.org/api/options.html#context). This allows
 3rd party plugins to be installed prior to mount.
 
 The function will also receive the Store or the Router object if the associated
