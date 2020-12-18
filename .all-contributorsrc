@@ -1175,6 +1175,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "aleks-rope",
+      "name": "Aleksandr Chernov",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/58922379?v=4",
+      "profile": "http://newrope.biz",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
