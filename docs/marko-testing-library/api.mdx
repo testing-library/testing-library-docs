@@ -54,10 +54,8 @@ test('renders a message', async () => {
 })
 ```
 
-> Note
->
-> The [cleanup](#cleanup) function should be called between tests to remove the
-> created DOM nodes and keep the tests isolated.
+:::tip The [cleanup](#cleanup) function should be called between tests to remove
+the created DOM nodes and keep the tests isolated. :::
 
 ### `render` Options
 
@@ -219,13 +217,13 @@ this is a [JSDOM.fragment](https://github.com/jsdom/jsdom#fragment), and for
 client side tests this will be whatever is passed as the `container` render
 option.
 
-> Tip: To get the root element of your rendered element, use
-> `container.firstChild`.
+:::tip Tip: To get the root element of your rendered element, use
+`container.firstChild`. :::
 
-> 🚨 If you find yourself using `container` to query for rendered elements then
-> you should reconsider! The other queries are designed to be more resilient to
-> changes that will be made to the component you're testing. Avoid using
-> `container` to query for elements!
+:::caution If you find yourself using `container` to query for rendered elements
+then you should reconsider! The other queries are designed to be more resilient
+to changes that will be made to the component you're testing. Avoid using
+`container` to query for elements! :::
 
 ## `cleanup`
 

@@ -146,18 +146,18 @@ The containing DOM node of your rendered React Element (rendered using
 `ReactDOM.render`). It's a `div`. This is a regular DOM node, so you can call
 `container.querySelector` etc. to inspect the children.
 
-> Tip: To get the root element of your rendered element, use
-> `container.firstChild`.
->
-> NOTE: When that root element is a
-> [React Fragment](https://reactjs.org/docs/fragments.html),
-> `container.firstChild` will only get the first child of that Fragment, not the
-> Fragment itself.
+:::tip Tip: To get the root element of your rendered element, use
+`container.firstChild`. :::
 
-> 🚨 If you find yourself using `container` to query for rendered elements then
-> you should reconsider! The other queries are designed to be more resilient to
-> changes that will be made to the component you're testing. Avoid using
-> `container` to query for elements!
+:::info When that root element is a
+[React Fragment](https://reactjs.org/docs/fragments.html),
+`container.firstChild` will only get the first child of that Fragment, not the
+Fragment itself. :::
+
+:::caution 🚨 If you find yourself using `container` to query for rendered
+elements then you should reconsider! The other queries are designed to be more
+resilient to changes that will be made to the component you're testing. Avoid
+using `container` to query for elements! :::
 
 ### `baseElement`
 
@@ -169,14 +169,14 @@ This is useful when the component you want to test renders something outside the
 container div, e.g. when you want to snapshot test your portal component which
 renders its HTML directly in the body.
 
-> Note: the queries returned by the `render` looks into baseElement, so you can
-> use queries to test your portal component without the baseElement.
+:::info The queries returned by the `render` looks into baseElement, so you can
+use queries to test your portal component without the baseElement. :::
 
 ### `debug`
 
-> NOTE: It's recommended to use
-> [`screen.debug`](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug)
-> instead.
+:::caution NOTE: It's recommended to use
+[`screen.debug`](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug)
+instead. :::
 
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
@@ -225,8 +225,8 @@ This will cause the rendered component to be unmounted. This is useful for
 testing what happens when your component is removed from the page (like testing
 that you don't leave event handlers hanging around causing memory leaks).
 
-> This method is a pretty small abstraction over
-> `ReactDOM.unmountComponentAtNode`
+:::info This method is a pretty small abstraction over
+`ReactDOM.unmountComponentAtNode` :::
 
 ```jsx
 import { render } from '@testing-library/react'
@@ -249,7 +249,7 @@ const TestComponent = () => {
   const [count, setCounter] = useState(0)
 
   return (
-    <button onClick={() => setCounter((count) => count + 1)}>
+    <button onClick={() => setCounter(count => count + 1)}>
       Click to increase: {count}
     </button>
   )
@@ -272,10 +272,10 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 
 Unmounts React trees that were mounted with [render](#render).
 
-> Please note that this is done automatically if the testing framework you're
-> using supports the `afterEach` global and it is injected to your testing
-> environment (like mocha, Jest, and Jasmine). If not, you will need to do
-> manual cleanups after each test.
+:::info This is done automatically if the testing framework you're using
+supports the `afterEach` global and it is injected to your testing environment
+(like mocha, Jest, and Jasmine). If not, you will need to do manual cleanups
+after each test. :::
 
 For example, if you're using the [ava](https://github.com/avajs/ava) testing
 framework, then you would need to use the `test.afterEach` hook like so:

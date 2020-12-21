@@ -324,9 +324,9 @@ const component = await render(AppComponent)
 const componentInstance = component.fixture.componentInstance as AppComponent
 ```
 
-> 🚨 If you find yourself using `fixture` to access the component's internal
-> values you should reconsider! This probable means, you're testing
-> implementation details.
+:::danger If you find yourself using `fixture` to access the component's
+internal values you should reconsider! This probable means, you're testing
+implementation details. :::
 
 ### `navigate`
 
