@@ -177,6 +177,10 @@ Jest `moduleDirectories` option.
 This will make all the `.js` files in the test-utils directory importable
 without `../`.
 
+> **Note**
+>
+> This can't be used with Create React App.
+
 ```diff title="my-component.test.js"
 - import { render, fireEvent } from '../test-utils';
 + import { render, fireEvent } from 'test-utils';
@@ -194,43 +198,18 @@ module.exports = {
 }
 ```
 
-_Typescript config needs to be updated as follow:_
+If you're using TypeScript, merge this into your `tsconfig.json`. If you're
+using Create React App without TypeScript, save this to `jsconfig.json` instead.
 
 ```diff title="tsconfig.json"
 {
   "compilerOptions": {
-    // ...,
-+   "baseUrl": "src",
-+   "paths": {
-+     "test-utils": ["./utils/test-utils"]
-+   }
+    "baseUrl": "src",
+    "paths": {
+      "test-utils": ["./utils/test-utils"]
+    }
   }
 }
-```
-
-### Jest and Create React App
-
-If your project is based on top of Create React App, to make the `test-utils`
-file accessible without using relative imports, you just need to create a `.env`
-file in the root of your project with the following configuration:
-
-```
-// Create React App project structure
-
-$ app
-.
-├── .env
-├── src
-│   ├── utils
-│   │  └── test-utils.js
-│
-```
-
-```
-// .env
-
-// example if your utils folder is inside the /src directory.
-NODE_PATH=src/utils
 ```
 
 ### Jest 24 (or lower) and defaults
