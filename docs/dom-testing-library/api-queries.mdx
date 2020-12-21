@@ -26,7 +26,8 @@ an error if no elements match.
 
 `queryBy*` queries return the first matching node for a query, and return `null`
 if no elements match. This is useful for asserting an element that is not
-present. This throws an error if more than one match is found (use `queryAllBy` instead).
+present. This throws an error if more than one match is found (use `queryAllBy`
+instead).
 
 ### queryAllBy
 
@@ -85,6 +86,17 @@ const exampleHTML = `
 document.body.innerHTML = exampleHTML
 const exampleInput = screen.getByLabelText(/example/i)
 ```
+
+> **Note**
+>
+> You need a global DOM environment to use `screen`. If you're using jest, with
+> the
+> [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
+> set to `jsdom`, a global DOM environment will be available for you.
+>
+> If you're loading your test with a `script` tag, make sure it comes after the
+> `body`. An example can be seen
+> [here](https://github.com/testing-library/dom-testing-library/issues/700#issuecomment-692218886).
 
 ### `screen.debug`
 
