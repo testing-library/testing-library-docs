@@ -8,8 +8,10 @@ import TabItem from '@theme/TabItem'
 
 ## Variants
 
-> `getBy` queries are shown by default in the [query documentation](#queries)
-> below.
+:::info
+`getBy` queries are shown by default in the [query documentation](#queries)
+below.
+:::
 
 ### getBy
 
@@ -41,12 +43,12 @@ matches the given query. The promise is rejected if no element is found or if
 more than one element is found after a default timeout of `1000`ms. If you need
 to find more than one element, then use `findAllBy`.
 
-> **Note**
->
-> this is a simple combination of `getBy*` queries and
-> [`waitFor`](api-async.mdx#waitfor). The `findBy*` queries accept the `waitFor`
-> options as the last argument. (i.e.
-> `screen.findByText('text', queryOptions, waitForOptions)`)
+:::info
+this is a simple combination of `getBy*` queries and
+[`waitFor`](api-async.mdx#waitfor). The `findBy*` queries accept the `waitFor`
+options as the last argument. (i.e.
+`screen.findByText('text', queryOptions, waitForOptions)`)
+:::
 
 ### findAllBy
 
@@ -87,16 +89,16 @@ document.body.innerHTML = exampleHTML
 const exampleInput = screen.getByLabelText(/example/i)
 ```
 
-> **Note**
->
-> You need a global DOM environment to use `screen`. If you're using jest, with
-> the
-> [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
-> set to `jsdom`, a global DOM environment will be available for you.
->
-> If you're loading your test with a `script` tag, make sure it comes after the
-> `body`. An example can be seen
-> [here](https://github.com/testing-library/dom-testing-library/issues/700#issuecomment-692218886).
+:::caution
+You need a global DOM environment to use `screen`. If you're using jest, with
+the
+[testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
+set to `jsdom`, a global DOM environment will be available for you.
+
+If you're loading your test with a `script` tag, make sure it comes after the
+`body`. An example can be seen
+[here](https://github.com/testing-library/dom-testing-library/issues/700#issuecomment-692218886).
+:::
 
 ### `screen.debug`
 
@@ -143,14 +145,14 @@ screen.logTestingPlaygroundURL(screen.getByText('test'))
 
 ## Queries
 
-> **Note**
->
-> These queries are the base queries and require you to pass a `container` as
-> the first argument. Most framework-implementations of Testing Library provide
-> a pre-bound version of these queries when you render your components with them
-> which means you do not have to provide a container. In addition, if you just
-> want to query `document.body` then you can use the [`screen`](#screen) export
-> as demonstrated above (using `screen` is recommended).
+:::info
+These queries are the base queries and require you to pass a `container` as
+the first argument. Most framework-implementations of Testing Library provide
+a pre-bound version of these queries when you render your components with them
+which means you do not have to provide a container. In addition, if you just
+want to query `document.body` then you can use the [`screen`](#screen) export
+as demonstrated above (using `screen` is recommended).
+:::
 
 ### `ByLabelText`
 
@@ -256,10 +258,10 @@ If it is important that you query an actual `<label>` element you can provide a
 const inputNode = screen.getByLabelText('Username', { selector: 'input' })
 ```
 
-> **Note**
->
-> `getByLabelText` will not work in the case where a `for` attribute on a
-> `<label>` element matches an `id` attribute on a non-form element.
+:::danger
+`getByLabelText` will not work in the case where a `for` attribute on a
+`<label>` element matches an `id` attribute on a non-form element.
+:::
 
 ```js
 // This case is not valid
@@ -321,10 +323,10 @@ cy.findByPlaceholderText('Username').should('exist')
   </TabItem>
   </Tabs>
 
-> **Note**
->
-> A placeholder is not a good substitute for a label so you should generally use
-> `getByLabelText` instead.
+:::tip
+A placeholder is not a good substitute for a label so you should generally use
+`getByLabelText` instead.
+:::
 
 ### `ByText`
 
@@ -387,10 +389,10 @@ It also works with `input`s whose `type` attribute is either `submit` or
 <input type="submit" value="Send data" />
 ```
 
-> **Note**
->
-> See [`getByLabelText`](#bylabeltext) for more details on how and when to use
-> the `selector` option
+:::info
+See [`getByLabelText`](#bylabeltext) for more details on how and when to use
+the `selector` option
+:::
 
 The `ignore` option accepts a query selector. If the
 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
@@ -697,9 +699,11 @@ example, a `button` element can't have the `role` attribute of `heading`,
 because the `button` element has default characteristics that conflict with the
 `heading` role.
 
-> Roles are matched literally by string equality, without inheriting from the
-> ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
-> will not include elements with a subclass role like `switch`.
+:::caution
+Roles are matched literally by string equality, without inheriting from the
+ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
+will not include elements with a subclass role like `switch`.
+:::
 
 You can query the returned element(s) by their
 [accessible name](https://www.w3.org/TR/accname-1.1/). The accessible name is
@@ -786,10 +790,10 @@ you can get the "Sugar" option by calling
 state and which elements can have this state see
 [ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
 
-> **Note**
->
-> Checkboxes have a "mixed" state, which is considered neither checked nor
-> unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+:::info
+Checkboxes have a "mixed" state, which is considered neither checked nor
+unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+:::
 
 #### `pressed`
 
@@ -888,11 +892,13 @@ For example, `getByRole('switch')` would always match
 `getByRole('checkbox', { queryFallbacks: true })` would enable all fallback
 roles and therefore match the same element.
 
-> An element doesn't have multiple roles in a given environment. It has a single
-> one. Multiple roles in the attribute are evaluated from left to right until
-> the environment finds the first role it understands. This is useful when new
-> roles get introduced and you want to start supporting those as well as older
-> environments that don't understand that role (yet).
+:::info
+An element doesn't have multiple roles in a given environment. It has a single
+one. Multiple roles in the attribute are evaluated from left to right until
+the environment finds the first role it understands. This is useful when new
+roles get introduced and you want to start supporting those as well as older
+environments that don't understand that role (yet).
+:::
 
 #### `level`
 
@@ -938,8 +944,10 @@ headings `<h1>-<h6>`.
 To learn more about the `aria-level` property, see
 [ARIA `aria-level`](https://www.w3.org/TR/wai-aria-1.2/#aria-level).
 
-> The `level` option is _only_ applicable to the `heading` role. An error will
-> be thrown when used with any other role.
+:::danger
+The `level` option is _only_ applicable to the `heading` role. An error will
+be thrown when used with any other role.
+:::
 
 ### `ByTestId`
 
@@ -993,13 +1001,15 @@ cy.findByTestId('custom-element').should('exist')
   </TabItem>
   </Tabs>
 
-> In the spirit of [the guiding principles](guiding-principles.mdx), it is
-> recommended to use this only after the other queries don't work for your use
-> case. Using data-testid attributes do not resemble how your software is used
-> and should be avoided if possible. That said, they are _way_ better than
-> querying based on DOM structure or styling css class names. Learn more about
-> `data-testid`s from the blog post
-> ["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
+:::caution
+In the spirit of [the guiding principles](guiding-principles.mdx), it is
+recommended to use this only after the other queries don't work for your use
+case. Using data-testid attributes do not resemble how your software is used
+and should be avoided if possible. That said, they are _way_ better than
+querying based on DOM structure or styling css class names. Learn more about
+`data-testid`s from the blog post
+["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
+:::
 
 #### Overriding `data-testid`
 
@@ -1042,11 +1052,11 @@ If you want to prevent that normalization, or provide alternative normalization
 function in the options object. This function will be given a string and is
 expected to return a normalized version of that string.
 
-> **Note**
->
-> Specifying a value for `normalizer` _replaces_ the built-in normalization, but
-> you can call `getDefaultNormalizer` to obtain a built-in normalizer, either to
-> adjust that normalization or to call it from your own normalizer.
+:::info
+Specifying a value for `normalizer` _replaces_ the built-in normalization, but
+you can call `getDefaultNormalizer` to obtain a built-in normalizer, either to
+adjust that normalization or to call it from your own normalizer.
+:::
 
 `getDefaultNormalizer` takes an options object which allows the selection of
 behaviour:

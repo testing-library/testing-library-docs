@@ -96,10 +96,11 @@ test('test title', () => {
 })
 ```
 
-> Note: you can also use `describe` and `it` blocks with React Testing Library.
-> React Testing Library doesn't replace Jest, just Enzyme. We recommend `test`
-> because it helps with this:
-> [Avoid Nesting When You're Testing](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing)
+:::info You can also use `describe` and `it` blocks with React Testing Library.
+React Testing Library doesn't replace Jest, just Enzyme. We recommend `test`
+because it helps with this:
+[Avoid Nesting When You're Testing](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing)
+:::
 
 ## Basic Enzyme to React Testing Library migration examples
 
@@ -125,13 +126,13 @@ different name, and the template updates accordingly. Check the live version on
 [Codesandbox](https://codesandbox.io/s/ecstatic-hellman-fh7in)
 
 ```jsx
-const Welcome = (props) => {
+const Welcome = props => {
   const [values, setValues] = useState({
     firstName: props.firstName,
     lastName: props.lastName,
   })
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
 
@@ -246,8 +247,8 @@ those who are using screen readers. This
 [section](dom-testing-library/api-queries.mdx#byrole) of the query page might
 help you to understand better.
 
-> Keep in mind that a `<form>` must have a `name` attribute in order to have an
-> implicit `role` of `form` (as required by the specification).
+:::caution A `<form>` must have a `name` attribute in order to have an implicit
+`role` of `form` (as required by the specification). :::
 
 React Testing Library aims to test the component, like how users would, users
 see the button, heading, form and other elements by their role, not by their

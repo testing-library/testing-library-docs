@@ -56,9 +56,9 @@ test('handles server error', async () => {
 })
 ```
 
-> We recommend using [Mock Service Worker](https://github.com/mswjs/msw) library
-> to declaratively mock API communication in your tests instead of stubbing
-> `window.fetch`, or relying on third-party adapters.
+:::tip We recommend using [Mock Service Worker](https://github.com/mswjs/msw)
+library to declaratively mock API communication in your tests instead of
+stubbing `window.fetch`, or relying on third-party adapters. :::
 
 ---
 
@@ -208,13 +208,13 @@ export default function Fetch({ url }) {
   const fetchGreeting = async () => {
     axios
       .get(url)
-      .then((response) => {
+      .then(response => {
         const { data } = response
         const { greeting } = data
         dispatch({ type: 'SUCCESS', greeting })
         setButtonClicked(true)
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({ type: 'ERROR', error })
       })
   }

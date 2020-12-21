@@ -7,12 +7,10 @@ A short guide to all the exported functions in `Vue Testing Library`.
 
 ## Queries
 
-> **Difference from DOM Testing Library**
->
-> The queries returned from `render` in `Vue Testing Library` are the same as
-> `DOM Testing Library`. Yet, they have the first argument bound to the
-> document, so instead of `getByText(node, 'text')` you write
-> `getByText('text')`.
+:::info Difference from DOM Testing Library The queries returned from `render`
+in `Vue Testing Library` are the same as `DOM Testing Library`. Yet, they have
+the first argument bound to the document, so instead of
+`getByText(node, 'text')` you write `getByText('text')`. :::
 
 ### Search variants
 
@@ -38,7 +36,7 @@ A short guide to all the exported functions in `Vue Testing Library`.
 | **...ByRole**            | ARIA role                        | `<div role="dialog" />`               |
 | **...ByTestId**          | data-testid attribute            | `<div data-testid="some-message" />`  |
 
-> You can write any combination of Search variants and Search types.
+:::info You can write any combination of Search variants and Search types. :::
 
 ### An example
 
@@ -63,7 +61,8 @@ For more information, see [Which query should I use?](guide-which-query.mdx).
 For more information, see
 [DOM Testing Library Async API](dom-testing-library/api-async.mdx).
 
-> Remember to `await` or `.then()` the result of async functions in your tests!
+:::caution Remember to `await` or `.then()` the result of async functions in
+your tests! :::
 
 ## Firing events
 
@@ -75,13 +74,13 @@ For more information, see
 
 For more information, see [Events API](dom-testing-library/api-events.mdx)
 
-> **Difference from DOM Testing Library**
->
-> The events returned from `Vue Testing Library` are all async, so you should
-> `await` or `then()` the result.
->
-> VTL also exposes `fireEvent.update(node, value)` event to deal with `v-model`.
-> See [the API](vue-testing-library/api.mdx#updateelem-value) for more details.
+:::info Difference from DOM Testing Library The events returned from
+`Vue Testing Library` are all async, so you should `await` or `then()` the
+result.
+
+VTL also exposes `fireEvent.update(node, value)` event to deal with `v-model`.
+See [the API](vue-testing-library/api.mdx#updateelem-value) for more details.
+:::
 
 ## Other
 

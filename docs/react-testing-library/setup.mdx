@@ -60,12 +60,10 @@ export * from '@testing-library/react'
 export { customRender as render }
 ```
 
-> **Note**
->
-> Babel versions lower than 7 throw an error when trying to override the named
-> export in the example above. See
-> [#169](https://github.com/testing-library/react-testing-library/issues/169)
-> and the workaround below.
+:::caution Babel versions lower than 7 throw an error when trying to override
+the named export in the example above. See
+[#169](https://github.com/testing-library/react-testing-library/issues/169) and
+the workaround below. :::
 
 <summary>Workaround for Babel 6</summary>
 
@@ -88,12 +86,10 @@ module.exports = {
 
 ### Add custom queries
 
-> **Note**
->
-> Generally you should not need to create custom queries for
-> react-testing-library. Where you do use it, you should consider whether your
-> new queries encourage you to test in a user-centric way, without testing
-> implementation details.
+:::tip Generally you should not need to create custom queries for
+react-testing-library. Where you do use it, you should consider whether your new
+queries encourage you to test in a user-centric way, without testing
+implementation details. :::
 
 You can define your own custom queries as described in the example in the
 [Helpers API](dom-testing-library/api-helpers.mdx) documentation, or via the

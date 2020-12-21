@@ -4,8 +4,8 @@ title: Example
 sidebar_label: Example
 ---
 
-> Preact Testing Library works with both Preact Hooks and Classes. Your tests
-> will be the same however you write your components.
+:::info Preact Testing Library works with both Preact Hooks and Classes. Your
+tests will be the same however you write your components. :::
 
 ## Component
 
@@ -19,7 +19,7 @@ function HiddenMessage({ children }) {
       <input
         id="toggle"
         type="checkbox"
-        onChange={(e) => setShowMessage(e.target.checked)}
+        onChange={e => setShowMessage(e.target.checked)}
         checked={showMessage}
       />
       {showMessage ? children : null}

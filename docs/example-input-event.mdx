@@ -4,11 +4,9 @@ title: Input Event
 sidebar_label: Input Event
 ---
 
-> **Note**
->
-> If you want to simulate a more natural typing behaviour while testing your
-> component, consider the companion library
-> [`user-event`](ecosystem-user-event.mdx)
+:::tip If you want to simulate a more natural typing behaviour while testing
+your component, consider the companion library
+[`user-event`](ecosystem-user-event.mdx) :::
 
 ```jsx
 import React, { useState } from 'react'
@@ -17,10 +15,10 @@ import { render, fireEvent } from '@testing-library/react'
 function CostInput() {
   const [value, setValue] = useState('')
 
-  removeDollarSign = (value) => (value[0] === '$' ? value.slice(1) : value)
-  getReturnValue = (value) => (value === '' ? '' : `$${value}`)
+  removeDollarSign = value => (value[0] === '$' ? value.slice(1) : value)
+  getReturnValue = value => (value === '' ? '' : `$${value}`)
 
-  handleChange = (ev) => {
+  handleChange = ev => {
     ev.preventDefault()
     const inputtedValue = ev.currentTarget.value
     const noDollarSign = removeDollarSign(inputtedValue)

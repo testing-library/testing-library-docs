@@ -81,8 +81,10 @@ Router.
 function callbackFunction(vueInstance, vuexStore, router) {}
 ```
 
-A callback function that receives the Vue instance as a parameter. Its return value is merged with [options](#options), allowing
-3rd party plugins to be installed prior to mount. To see how this works, see the example using [`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js).
+A callback function that receives the Vue instance as a parameter. Its return
+value is merged with [options](#options), allowing 3rd party plugins to be
+installed prior to mount. To see how this works, see the example using
+[`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js).
 
 The function will also receive the Store or the Router object if the associated
 option was passed in during render.
@@ -120,8 +122,8 @@ const { container } = render(TableBody, {
 })
 ```
 
-> Tip: To get the root element of your rendered element, use
-> `container.firstChild`.
+:::tip To get the root element of your rendered element, use
+`container.firstChild`. :::
 
 #### `baseElement`
 
@@ -226,9 +228,9 @@ See a working example of `update` in the
 Unmounts Vue trees that were mounted with
 [render](#rendercomponent-options-callback).
 
-> If you are using an environment that supports `afterEach` hook (as in Jest),
-> there's no need to call `cleanup` manually. Vue Testing Library handles it for
-> you.
+:::info If you are using an environment that supports `afterEach` hook (as in
+Jest), there's no need to call `cleanup` manually. Vue Testing Library handles
+it for you. :::
 
 Failing to call `cleanup` when you've called `render` could result in a memory
 leak and tests which are not idempotent (which can lead to difficult to debug

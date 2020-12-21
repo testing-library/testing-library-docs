@@ -31,11 +31,10 @@ test('loads items eventually', async () => {
 
 ## Queries
 
-> **Difference from DOM Testing Library**
->
-> The queries returned from `render` in `React Testing Library` are the same as
-> `DOM Testing Library` except they have the first argument bound to the
-> document, so instead of `getByText(node, 'text')` you do `getByText('text')`
+:::info Difference from DOM Testing Library The queries returned from `render`
+in `React Testing Library` are the same as `DOM Testing Library` except they
+have the first argument bound to the document, so instead of
+`getByText(node, 'text')` you do `getByText('text')` :::
 
 See [Which query should I use?](guide-which-query.mdx)
 
