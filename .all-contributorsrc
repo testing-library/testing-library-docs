@@ -1202,6 +1202,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "tonyhallett",
+      "name": "Tony Hallett",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11292998?v=4",
+      "profile": "https://github.com/tonyhallett",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
