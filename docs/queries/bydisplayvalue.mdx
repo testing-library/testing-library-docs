@@ -1,0 +1,154 @@
+---
+id: bydisplayvalue
+title: ByDisplayValue
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByDisplayValue, queryByDisplayValue, getAllByDisplayValue,
+> queryAllByDisplayValue, findByDisplayValue, findAllByDisplayValue
+
+## API
+
+```typescript
+getByDisplayValue(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  value: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+Returns the `input`, `textarea`, or `select` element that has the matching
+display value.
+
+### `input` tags
+
+```html
+<input type="text" id="lastName" />
+```
+
+```js
+document.getElementById('lastName').value = 'Norris'
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const lastNameInput = screen.getByDisplayValue('Norris')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const lastNameInput = screen.getByDisplayValue('Norris')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByDisplayValue('Norris').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+### `textarea` tags
+
+```html
+<textarea id="messageTextArea" />
+```
+
+```js
+document.getElementById('messageTextArea').value = 'Hello World'
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const messageTextArea = screen.getByDisplayValue('Hello World')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const messageTextArea = screen.getByDisplayValue('Hello World')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByDisplayValue('Hello World').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+### `select` tags
+
+In case of `select`, this will search for a `<select>` whose selected `<option>`
+matches the given [`TextMatch`](queries/about.mdx#textmatch).
+
+```html
+<select>
+  <option value="">State</option>
+  <option value="AL">Alabama</option>
+  <option selected value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+</select>
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const selectElement = screen.getByDisplayValue('Alaska')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const selectElement = screen.getByDisplayValue('Alaska')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByDisplayValue('Alaska').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+## Options
+
+[TextMatch](queries/about.mdx#textmatch) options

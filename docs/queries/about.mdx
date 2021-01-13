@@ -1,0 +1,417 @@
+---
+id: about
+title: About Queries
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## Overview
+
+Queries are the methods that Testing Library gives you to find elements on the
+page. There are several [types of queries](#types-of-queries) ("get", "find",
+"query"); the difference between them is whether the query will throw an error
+if no element is found or if it will return a Promise and retry. Depending on
+what page content you are selecting, different queries may be more or less
+appropriate. See the [priority guide](#priority) for recommendations on how to
+make use of semantic queries to test your page in the most accessible way.
+
+After selecting an element, you can use the
+[Events API](dom-testing-library/api-events.mdx) or
+[user-event](ecosystem-user-event.mdx) to fire events and simulate user
+interactions with the page, or use Jest and [jest-dom](ecosystem-jest-dom.mdx)
+to make assertions about the element.
+
+There are Testing Library helper methods that work with queries. As elements
+appear and disappear in response to actions,
+[Async APIs](dom-testing-library/api-async.mdx) like
+[`waitFor`](dom-testing-library/api-async.mdx#waitfor) or
+[`findBy` queries](dom-testing-library/api-async.mdx#findby-queries) can be used
+to await the changes in the DOM. To find only elements that are children of a
+specific element, you can use [`within`](dom-testing-library/api-within.mdx). If
+necessary, there are also a few options you can
+[configure](dom-testing-library/api-configuration.mdx), like the timeout for
+retries and the default testID attribute.
+
+## Example
+
+```jsx
+import { screen } from '@testing-library/react' // (or /dom, /vue, ...)
+
+test('should show login form', () => {
+  render(<Login />)
+  const input = screen.getByLabelText('Username')
+  // Events and assertions...
+})
+```
+
+## Types of Queries
+
+- Single Elements
+  - `getBy...`: Returns the matching node for a query, and throw a descriptive
+    error if no elements match _or_ if more than one match is found (use
+    `getAllBy` instead if more than one element is expected).
+  - `queryBy...`: Returns the first matching node for a query, and return `null`
+    if no elements match. This is useful for asserting an element that is not
+    present. Throws an error if more than one match is found (use `queryAllBy`
+    instead if this is OK).
+  - `findBy...`: Returns a Promise which resolves when an element is found which
+    matches the given query. The promise is rejected if no element is found or
+    if more than one element is found after a default timeout of 1000ms. If you
+    need to find more than one element, use `findAllBy`.
+- Multiple Elements
+  - `getAllBy...`: Returns an array of all matching nodes for a query, and
+    throws an error if no elements match.
+  - `queryAllBy...`: Returns an array of all matching nodes for a query, and
+    return an empty array (`[]`) if no elements match.
+  - `findAllBy...`: Returns a promise which resolves to an array of elements
+    when any elements are found which match the given query. The promise is
+    rejected if no elements are found after a default timeout of `1000`ms.
+    - `findBy` methods are a combination of `getBy*` queries and
+      [`waitFor`](../dom-testing-library/api-async.mdx#waitfor). They accept the
+      `waitFor` options as the last argument (i.e.
+      `await screen.findByText('text', queryOptions, waitForOptions)`)
+
+<details>
+
+<summary>Summary Table</summary>
+
+<br />
+
+| Type of Query         | 0 Matches     | 1 Match        | >1 Matches   | Retry (Async/Await) |
+| --------------------- | ------------- | -------------- | ------------ | :-----------------: |
+| **Single Element**    |               |                |              |                     |
+| `getBy...`            | Throw error   | Return element | Throw error  |         No          |
+| `queryBy...`          | Return `null` | Return element | Throw error  |         No          |
+| `findBy...`           | Throw error   | Return element | Throw error  |         Yes         |
+| **Multiple Elements** |               |                |              |                     |
+| `getAllBy...`         | Throw         | Return array   | Return array |         No          |
+| `queryAllBy...`       | Return `[]`   | Return array   | Return array |         No          |
+| `findAllBy...`        | Throw         | Return array   | Return array |         Yes         |
+
+</details>
+
+## Priority
+
+Based on [the Guiding Principles](guiding-principles.mdx), your test should
+resemble how users interact with your code (component, page, etc.) as much as
+possible. With this in mind, we recommend this order of priority:
+
+1. **Queries Accessible to Everyone** queries that reflect the experience of
+   visual/mouse users as well as those that use assistive technology
+   1. `getByRole`: This can be used to query every element that is exposed in
+      the
+      [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/AOM).
+      With the `name` option you can filter the returned elements by their
+      [accessible name](https://www.w3.org/TR/accname-1.1/). This should be your
+      top preference for just about everything. There's not much you can't get
+      with this (if you can't, it's possible your UI is inaccessible). Most
+      often, this will be used with the `name` option like so:
+      `getByRole('button', {name: /submit/i})`. Check the
+      [list of roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Roles).
+   1. `getByLabelText`: Only really good for form fields, but this is the number
+      one method a user finds those elements, so it should be your top
+      preference.
+   1. `getByPlaceholderText`:
+      [A placeholder is not a substitute for a label](https://www.nngroup.com/articles/form-design-placeholders/).
+      But if that's all you have, then it's better than alternatives.
+   1. `getByText`: Not useful for forms, but this is the number 1 method a user
+      finds most non-interactive elements (like divs and spans).
+   1. `getByDisplayValue`: The current value of a form element can be useful
+      when navigating a page with filled-in values.
+1. **Semantic Queries** HTML5 and ARIA compliant selectors. Note that the user
+   experience of interacting with these attributes varies greatly across
+   browsers and assistive technology.
+   1. `getByAltText`: If your element is one which supports `alt` text (`img`,
+      `area`, and `input`), then you can use this to find that element.
+   1. `getByTitle`: The title attribute is not consistently read by
+      screenreaders, and is not visible by default for sighted users
+1. **Test IDs**
+   1. `getByTestId`: The user cannot see (or hear) these, so this is only
+      recommended for cases where you can't match by role or text or it doesn't
+      make sense (e.g. the text is dynamic).
+
+## Using Queries
+
+The base queries from DOM Testing Library require you to pass a `container` as
+the first argument. Most framework-implementations of Testing Library provide a
+pre-bound version of these queries when you render your components with them
+which means you _do not have to provide a container_. In addition, if you just
+want to query `document.body` then you can use the [`screen`](#screen) export as
+demonstrated below (using `screen` is recommended).
+
+The primary argument to a query can be a _string_, _regular expression_, or
+_function_. There are also options to adjust how node text is parsed. See
+[TextMatch](#textmatch) for documentation on what can be passed to a query.
+
+Given the following DOM elements (which can be rendered by React, Vue, Angular,
+or plain HTML code):
+
+```js
+<body>
+  <div id="app">
+    <label for="username-input">Username</label>
+    <input id="username-input" />
+  </div>
+</body>
+```
+
+You can use a query to find an element (byLabelText, in this case):
+
+```js
+import { screen, getByLabelText } from '@testing-library/dom'
+
+// With screen:
+const inputNode1 = screen.getByLabelText('Username')
+
+// Without screen, you need to provide a container:
+const container = document.querySelector('#app')
+const inputNode2 = getByLabelText(container, 'Username')
+```
+
+### `screen`
+
+All of the queries exported by DOM Testing Library accept a `container` as the
+first argument. Because querying the entire `document.body` is very common, DOM
+Testing Library also exports a `screen` object which has every query that is
+pre-bound to `document.body` (using the
+[`within`](/docs/dom-testing-library/api-helpers#within-and-getqueriesforelement-apis)
+functionality). Wrappers such as React Testing Library re-export `screen` so you
+can use it the same way.
+
+Here's how you use it:
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <label for="example">Example</label>
+  <input id="example" />
+`
+
+const exampleInput = screen.getByLabelText('Example')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(
+  <div>
+    <label htmlFor="example">Example</label>
+    <input id="example" />
+  </div>
+)
+
+const exampleInput = screen.getByLabelText('Example')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByLabelText('Example').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+> **Note**
+>
+> You need a global DOM environment to use `screen`. If you're using jest, with
+> the
+> [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
+> set to `jsdom`, a global DOM environment will be available for you.
+>
+> If you're loading your test with a `script` tag, make sure it comes after the
+> `body`. An example can be seen
+> [here](https://github.com/testing-library/dom-testing-library/issues/700#issuecomment-692218886).
+
+## `TextMatch`
+
+Most of the query APIs take a `TextMatch` as an argument, which means the
+argument can be either a _string_, _regex_, or a _function_ which returns `true`
+for a match and `false` for a mismatch.
+
+### TextMatch Examples
+
+Given the following HTML:
+
+```html
+<div>Hello World</div>
+```
+
+**_Will_ find the div:**
+
+```javascript
+// Matching a string:
+screen.getByText('Hello World') // full string match
+screen.getByText('llo Worl', { exact: false }) // substring match
+screen.getByText('hello world', { exact: false }) // ignore case
+
+// Matching a regex:
+screen.getByText(/World/) // substring match
+screen.getByText(/world/i) // substring match, ignore case
+screen.getByText(/^hello world$/i) // full string match, ignore case
+screen.getByText(/Hello W?oRlD/i) // advanced regex
+
+// Matching with a custom function:
+screen.getByText((content, element) => content.startsWith('Hello'))
+```
+
+**_Will not_ find the div:**
+
+```javascript
+// full string does not match
+screen.getByText('Goodbye World')
+
+// case-sensitive regex with different case
+screen.getByText(/hello world/)
+
+// function looking for a span when it's actually a div:
+screen.getByText((content, element) => {
+  return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
+})
+```
+
+### Precision
+
+Queries that take a `TextMatch` also accept an object as the final argument that
+can contain options that affect the precision of string matching:
+
+- `exact`: Defaults to `true`; matches full strings, case-sensitive. When false,
+  matches substrings and is not case-sensitive.
+  - `exact` has no effect on `regex` or `function` arguments.
+  - In most cases using a regex instead of a string gives you more control over
+    fuzzy matching and should be preferred over `{ exact: false }`.
+- `normalizer`: An optional function which overrides normalization behavior. See
+  [`Normalization`](#normalization).
+
+### Normalization
+
+Before running any matching logic against text in the DOM, `DOM Testing Library`
+automatically normalizes that text. By default, normalization consists of
+trimming whitespace from the start and end of text, and collapsing multiple
+adjacent whitespace characters into a single space.
+
+If you want to prevent that normalization, or provide alternative normalization
+(e.g. to remove Unicode control characters), you can provide a `normalizer`
+function in the options object. This function will be given a string and is
+expected to return a normalized version of that string.
+
+> **Note**
+>
+> Specifying a value for `normalizer` _replaces_ the built-in normalization, but
+> you can call `getDefaultNormalizer` to obtain a built-in normalizer, either to
+> adjust that normalization or to call it from your own normalizer.
+
+`getDefaultNormalizer` takes an options object which allows the selection of
+behaviour:
+
+- `trim`: Defaults to `true`. Trims leading and trailing whitespace
+- `collapseWhitespace`: Defaults to `true`. Collapses inner whitespace
+  (newlines, tabs, repeated spaces) into a single space.
+
+#### Normalization Examples
+
+To perform a match against text without trimming:
+
+```javascript
+screen.getByText('text', {
+  normalizer: getDefaultNormalizer({ trim: false }),
+})
+```
+
+To override normalization to remove some Unicode characters whilst keeping some
+(but not all) of the built-in normalization behavior:
+
+```javascript
+screen.getByText('text', {
+  normalizer: (str) =>
+    getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
+})
+```
+
+## Debugging
+
+### `screen.debug()`
+
+For convenience screen also exposes a `debug` method in addition to the queries.
+This method is essentially a shortcut for `console.log(prettyDOM())`. It
+supports debugging the document, a single element, or an array of elements.
+
+```javascript
+import { screen } from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// debug document
+screen.debug()
+// debug single element
+screen.debug(screen.getByText('test'))
+// debug multiple elements
+screen.debug(screen.getAllByText('multi-test'))
+```
+
+### `screen.logTestingPlaygroundURL()`
+
+For debugging using [testing-playground](https://testing-playground.com), screen
+exposes this convenient method which logs a URL that can be opened in a browser.
+
+```javascript
+import { screen } from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// log entire document to testing-playground
+screen.logTestingPlaygroundURL()
+// log a single element
+screen.logTestingPlaygroundURL(screen.getByText('test'))
+```
+
+## Manual Queries
+
+On top of the queries provided by the testing library, you can use the regular
+[`querySelector` DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+to query elements. Note that using this as an escape hatch to query by class or
+id is not recommended because they are invisible to the user. Use a testid if
+you have to, to make your intention to fall back to non-semantic queries clear
+and establish a stable API contract in the HTML.
+
+```jsx
+// @testing-library/react
+const { container } = render(<MyComponent />)
+const foo = container.querySelector('[data-foo="bar"]')
+```
+
+## Chrome extension
+
+Do you still have problems knowing how to use Testing Library queries?
+
+There is a very cool Chrome extension named
+[Testing Playground](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano/related),
+and it helps you find the best queries to select elements. It allows you to
+inspect the element hierarchies in the Chrome Developer Tools, and provides you
+with suggestions on how to select them, while encouraging good testing
+practices.
+
+## Playground
+
+If you want to get more familiar with these queries, you can try them out on
+[testing-playground.com](https://testing-playground.com). Testing Playground is
+an interactive sandbox where you can run different queries against your own
+html, and get visual feedback matching the rules mentioned above.

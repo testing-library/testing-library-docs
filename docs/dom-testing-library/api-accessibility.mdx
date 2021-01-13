@@ -1,0 +1,92 @@
+---
+id: api-accessibility
+title: Accessibility
+---
+
+## Testing for Accessibility
+
+One of the guiding principles of the Testing Library APIs is that they should
+enable you to test your app the way your users use it, including through
+accessibility interfaces like screen readers.
+
+See the page on [queries](queries/about.mdx#priority) for details on how using a
+semantic HTML query can make sure your app works with browser accessibility
+APIs.
+
+## `getRoles`
+
+This function allows iteration over the implicit ARIA roles represented in a
+given tree of DOM nodes.
+
+It returns an object, indexed by role name, with each value being an array of
+elements which have that implicit ARIA role.
+
+See
+[ARIA in HTML](https://www.w3.org/TR/html-aria/#document-conformance-requirements-for-use-of-aria-attributes-in-html)
+for more information about implicit ARIA roles.
+
+```javascript
+import { getRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+console.log(getRoles(nav))
+
+// Object {
+//   navigation: [<nav />],
+//   list: [<ul />],
+//   listitem: [<li />, <li />]
+// }
+```
+
+## `isInaccessible`
+
+This function will compute if the given element should be excluded from the
+accessibility API by the browser. It implements every **MUST** criteria from the
+[Excluding Elements from the Accessibility Tree](https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion)
+section in WAI-ARIA 1.2 with the exception of checking the `role` attribute.
+
+It is defined as:
+
+```typescript
+function isInaccessible(element: Element): boolean
+```
+
+## `logRoles`
+
+This helper function can be used to print out a list of all the implicit ARIA
+roles within a tree of DOM nodes, each role containing a list of all of the
+nodes which match that role. This can be helpful for finding ways to query the
+DOM under test with [getByRole](queries/byrole.mdx)
+
+```javascript
+import { logRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+
+logRoles(nav)
+```
+
+Result:
+
+```
+navigation:
+<nav />
+--------------------------------------------------
+list:
+<ul />
+--------------------------------------------------
+listitem:
+<li />
+<li />
+--------------------------------------------------
+```

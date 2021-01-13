@@ -245,15 +245,15 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'introduction',
           label: 'Docs',
-          position: 'right',
+          position: 'left',
         },
         {
           type: 'doc',
           docId: 'recipes',
-          label: 'Recipes',
-          position: 'right',
+          label: 'Examples',
+          position: 'left',
         },
         {
           to: '/help',

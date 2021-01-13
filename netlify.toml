@@ -45,7 +45,21 @@
 # Screen error message to correct page
 [[redirects]]
   from = "/s/screen-global-error"
-  to = "/docs/dom-testing-library/api-queries#screen"
+  to = "/docs/queries/about#screen"
+
+# Obsolete or split pages
+[[redirects]]
+  from = "/docs/using-fake-timers"
+  to = "/docs/guide-using-fake-timers"
+[[redirects]]
+  from = "/docs/guide-which-query"
+  to = "/docs/queries/about#priority"
+[[redirects]]
+  from = "/docs/dom-testing-library/api-queries"
+  to = "/docs/queries/about"
+[[redirects]]
+  from = "/docs/dom-testing-library/api-helpers"
+  to = "/docs/dom-testing-library/api-accessibility"
 
 # Reorganization (do not redirect if route is not 404)
 [[redirects]]

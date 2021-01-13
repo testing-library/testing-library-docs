@@ -1,0 +1,132 @@
+---
+id: bylabeltext
+title: ByLabelText
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText,
+> findByLabelText, findAllByLabelText
+
+## API
+
+```typescript
+getByLabelText(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    selector?: string = '*',
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+This will search for the label that matches the given
+[`TextMatch`](queries/about.mdx#textmatch), then find the element associated
+with that label.
+
+The example below will find the input node for the following DOM structures:
+
+```js
+// for/htmlFor relationship between label and form element id
+<label for="username-input">Username</label>
+<input id="username-input" />
+
+// The aria-labelledby attribute with form elements
+<label id="username-label">Username</label>
+<input aria-labelledby="username-label" />
+
+// Wrapper labels
+<label>Username <input /></label>
+
+// Wrapper labels where the label text is in another child element
+<label>
+  <span>Username</span>
+  <input />
+</label>
+
+// aria-label attributes
+// Take care because this is not a label that users can see on the page,
+// so the purpose of your input must be obvious to visual users.
+<input aria-label="username" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const inputNode = screen.getByLabelText('Username')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<Login />)
+
+const inputNode = screen.getByLabelText('username')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByLabelText('username').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+## Options
+
+### `name`
+
+The example above NOT find the input node for label text broken up by elements.
+You can use `getByRole('textbox', { name: 'Username' })` instead which is robust
+against switching to `aria-label` or `aria-labelledby`.
+
+### `selector`
+
+If it is important that you query an actual `<label>` element you can provide a
+`selector` in the options:
+
+```js
+// Multiple elements labelled via aria-labelledby
+<label id="username">Username</label>
+<input aria-labelledby="username" />
+<span aria-labelledby="username">Please enter your username</span>
+
+// Multiple labels with the same text
+<label>
+  Username
+  <input />
+</label>
+<label>
+  Username
+  <textarea></textarea>
+</label>
+```
+
+```js
+const inputNode = screen.getByLabelText('Username', { selector: 'input' })
+```
+
+> **Note**
+>
+> `getByLabelText` will not work in the case where a `for` attribute on a
+> `<label>` element matches an `id` attribute on a non-form element.
+
+```js
+// This case is not valid
+// for/htmlFor between label and an element that is not a form element
+<section id="photos-section">
+  <label for="photos-section">Photos</label>
+</section>
+```

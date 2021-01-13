@@ -44,15 +44,13 @@ const HomeSplash = (props) => {
   )
 
   const Button = (props) => (
-    <div className="pluginWrapper buttonWrapper">
-      <a
-        className="button button--primary button--outline"
-        href={props.href}
-        target={props.target}
-      >
-        {props.children}
-      </a>
-    </div>
+    <a
+      className="button button--primary button--outline"
+      href={props.href}
+      target={props.target}
+    >
+      {props.children}
+    </a>
   )
 
   return (
@@ -60,7 +58,9 @@ const HomeSplash = (props) => {
       <Logo img_src={`${baseUrl}img/logo-large.png`} />
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
-        <Button href={docUrl('dom-testing-library/intro')}>Get Started</Button>
+        <div className="pluginWrapper buttonWrapper">
+          <Button href={'/docs/'}>Get Started</Button>
+        </div>
       </div>
     </SplashContainer>
   )

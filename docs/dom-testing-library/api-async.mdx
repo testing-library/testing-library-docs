@@ -1,13 +1,33 @@
 ---
 id: api-async
-title: Async Utilities
+title: Async Methods
 ---
 
 Several utilities are provided for dealing with asynchronous code. These can be
-useful to wait for an element to appear or disappear in response to an action.
-(See the [guide to testing disappearance](guide-disappearance.mdx).)
+useful to wait for an element to appear or disappear in response to an event,
+user action, timeout, or Promise. (See the
+[guide to testing disappearance](guide-disappearance.mdx).)
 
-All the async utils are built on top of `waitFor`.
+The async methods return Promises, so be sure to use `await` or `.then` when
+calling them.
+
+## `findBy` Queries
+
+`findBy` methods are a combination of `getBy`
+[queries](queries/about.mdx#types-of-queries) and [`waitFor`](#waitfor). They
+accept the waitFor options as the last argument (e.g.
+`await screen.findByText('text', queryOptions, waitForOptions)`).
+
+`findBy` queries work when you expect an element to appear but the change to the
+DOM might not happen immediately.
+
+```js
+const button = screen.getByRole('button', { name: 'Click Me' })
+fireEvent.click(button)
+await screen.findByText('Clicked once')
+fireEvent.click(button)
+await screen.findByText('Clicked twice')
+```
 
 ## `waitFor`
 
@@ -122,7 +142,20 @@ waitForElementToBeRemoved(() => getByText(/not here/i)).catch((err) =>
 
 The options object is forwarded to `waitFor`.
 
-## `wait` (DEPRECATED, use waitFor instead)
+## Deprecated Methods
+
+`wait`, `waitForDomChange`, and `waitForElement` have been combined into the
+`waitFor` method.
+
+<details>
+
+<br />
+
+<summary>Deprecated Methods</summary>
+
+### `wait`
+
+> (DEPRECATED, use waitFor instead)
 
 ```typescript
 function wait<T>(
@@ -144,7 +177,9 @@ Unlike wait, the callback parameter is mandatory in waitFor. Although you can
 migrate an existing `wait()` call to `waitFor( () => {} )`, it is considered bad
 practice to use an empty callback because it will make the tests more fragile.
 
-## `waitForDomChange` (DEPRECATED, use waitFor instead)
+### `waitForDomChange`
+
+> (DEPRECATED, use `waitFor` instead)
 
 ```typescript
 function waitForDomChange<T>(options?: {
@@ -205,7 +240,9 @@ will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
 changes.
 
-## `waitForElement` (DEPRECATED, use `find*` queries or `waitFor`)
+### `waitForElement`
+
+> (DEPRECATED, use `find*` queries or `waitFor`)
 
 ```typescript
 function waitForElement<T>(
@@ -263,3 +300,5 @@ The default `mutationObserverOptions` is
 will detect additions and removals of child elements (including text nodes) in
 the `container` and any of its descendants. It will also detect attribute
 changes.
+
+</details>

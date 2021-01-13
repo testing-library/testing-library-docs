@@ -10,10 +10,10 @@ import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { GridBlock } from '../components/GridBlock'
 
-const ExternalLink = props => (
+const ExternalLink = (props) => (
   <a target="_blank" rel="noreferrer noopener" {...props} />
 )
-const Link = props => <a {...props} />
+const Link = (props) => <a {...props} />
 
 export default function Help(props) {
   const { language = '' } = props
@@ -21,7 +21,7 @@ export default function Help(props) {
   const { baseUrl, docsUrl } = siteConfig
   const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
   const langPart = `${language ? `${language}/` : ''}`
-  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
+  const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`
 
   const supportLinks = [
     {
@@ -64,13 +64,18 @@ export default function Help(props) {
               <h1>Need help?</h1>
             </header>
             <GridBlock
-              contents={supportLinks}
+              contents={supportLinks.slice(0, 3)}
+              layout="threeColumn"
+              align="left"
+            />
+            <GridBlock
+              contents={supportLinks.slice(3)}
               layout="threeColumn"
               align="left"
             />
             <section>
-              <h2 align="center">Buy a Course</h2>
-              <p align="center">
+              <h2>Buy a Course</h2>
+              <p>
                 Learn how to test JavaScript with{' '}
                 <ExternalLink href="https://kentcdodds.com">
                   Kent C. Dodds
@@ -80,7 +85,7 @@ export default function Help(props) {
                   TestingJavaScript.com
                 </ExternalLink>
               </p>
-              <div align="center">
+              <div>
                 <ExternalLink href="https://testingjavascript.com">
                   <img
                     width="500"
