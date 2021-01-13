@@ -1,6 +1,6 @@
 ---
 id: api-configuration
-title: Configuration
+title: Configuration Options
 ---
 
 import Tabs from '@theme/Tabs'
@@ -16,7 +16,10 @@ The library can be configured via the `configure` function, which accepts:
   return a plain JS object which will be merged as above, e.g.
   `configure(existingConfig => ({something: [...existingConfig.something, 'extra value for the something array']}))`
 
-## Setup
+> **Note**
+>
+> Framework-specific wrappers like React Testing Library may add more options to
+> the ones shown below.
 
 <Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
@@ -58,7 +61,7 @@ configure({ testIdAttribute: 'data-my-test-id' })
   </TabItem>
   </Tabs>
 
-## Configuration options:
+## Options
 
 ### `computedStyleSupportsPseudoElements`
 

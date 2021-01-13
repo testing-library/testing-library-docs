@@ -1,29 +1,11 @@
 module.exports = {
-  queries: [
-    'queries/about',
-    {
-      type: 'category',
-      label: 'Queries',
-      collapsed: false,
-      items: [
-        'queries/byrole',
-        'queries/bylabeltext',
-        'queries/byplaceholdertext',
-        'queries/bytext',
-        'queries/bydisplayvalue',
-        'queries/byalttext',
-        'queries/bytitle',
-        'queries/bytestid',
-      ],
-    },
-  ],
   recipes: [
     'recipes',
     {
-      Guides: ['guide-disappearance', 'guide-events', 'using-fake-timers'],
-    },
-    {
-      Examples: [
+      type: 'category',
+      label: 'Examples',
+      collapsed: false,
+      items: [
         'example-codesandbox',
         'example-external',
         'example-findByText',
@@ -39,15 +21,67 @@ module.exports = {
         'example-react-modal',
         'example-update-props',
       ],
-      Help: ['learning', 'contributing'],
+    },
+    {
+      type: 'category',
+      label: 'Help',
+      collapsed: false,
+      items: ['learning', 'contributing'],
     },
   ],
   docs: [
     {
       'Getting Started': [
-        'intro',
+        'introduction',
         'guiding-principles',
         'dom-testing-library/faq',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Core API',
+      collapsed: true,
+      items: [
+        {
+          type: 'category',
+          label: 'Queries',
+          collapsed: false,
+          items: [
+            'queries/about',
+            'queries/byrole',
+            'queries/bylabeltext',
+            'queries/byplaceholdertext',
+            'queries/bytext',
+            'queries/bydisplayvalue',
+            'queries/byalttext',
+            'queries/bytitle',
+            'queries/bytestid',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'User Actions',
+          collapsed: false,
+          items: [
+            'dom-testing-library/api-events',
+            'dom-testing-library/api-async',
+            'guide-disappearance',
+            'guide-events',
+            'using-fake-timers',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advanced',
+          collapsed: false,
+          items: [
+            'dom-testing-library/api-accessibility',
+            'dom-testing-library/api-custom-queries',
+            'dom-testing-library/api-debugging',
+            'dom-testing-library/api-within',
+            'dom-testing-library/api-configuration',
+          ],
+        },
       ],
     },
     {
@@ -60,11 +94,7 @@ module.exports = {
             'dom-testing-library/install',
             'dom-testing-library/example-intro',
             'dom-testing-library/setup',
-            'dom-testing-library/api-queries',
-            'dom-testing-library/api-events',
-            'dom-testing-library/api-async',
-            'dom-testing-library/api-helpers',
-            'dom-testing-library/api-configuration',
+            'dom-testing-library/api',
             'dom-testing-library/cheatsheet',
           ],
         },
@@ -154,6 +184,5 @@ module.exports = {
         'ecosystem-testing-library-selector',
       ],
     },
-    { Help: ['learning', 'contributing'] },
   ],
 }

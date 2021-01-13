@@ -1,0 +1,114 @@
+---
+id: api-debugging
+title: Debugging
+---
+
+## Automatic Logging
+
+When you use any `get` calls in your test cases, the current state of the
+`container` (DOM) gets printed on the console. For example:
+
+```javascript
+// <div>Hello world</div>
+getByText(container, 'Goodbye world') // will fail by throwing error
+```
+
+The above test case will fail, however it prints the state of your DOM under
+test, so you will get to see:
+
+```
+Unable to find an element with the text: Goodbye world. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+Here is the state of your container:
+<div>
+  <div>
+    Hello world
+  </div>
+</div>
+```
+
+Note: Since the DOM size can get really large, you can set the limit of DOM
+content to be printed via environment variable `DEBUG_PRINT_LIMIT`. The default
+value is `7000`. You will see `...` in the console, when the DOM content is
+stripped off, because of the length you have set or due to default size limit.
+Here's how you might increase this limit when running tests:
+
+```
+DEBUG_PRINT_LIMIT=10000 npm test
+```
+
+This works on macOS/Linux, you'll need to do something else for Windows. If
+you'd like a solution that works for both, see
+[`cross-env`](https://www.npmjs.com/package/cross-env)
+
+## `prettyDOM`
+
+Built on top of
+[`pretty-format`](https://github.com/facebook/jest/tree/master/packages/pretty-format),
+this helper function can be used to print out readable representation of the DOM
+tree of a node. This can be helpful for instance when debugging tests.
+
+It is defined as:
+
+```typescript
+function prettyDOM(
+  node: HTMLElement,
+  maxLength?: number,
+  options?: Options
+): string
+```
+
+It receives the root node to print out, an optional extra parameter to limit the
+size of the resulting string, for cases when it becomes too large. It has a last
+parameter which allows you to configure your formatting as defined in the
+[options](https://github.com/facebook/jest/tree/master/packages/pretty-format#usage-with-options)
+of `pretty-format`.
+
+This function is usually used alongside `console.log` to temporarily print out
+DOM trees during tests for debugging purposes:
+
+```javascript
+const div = document.createElement('div')
+div.innerHTML = '<div><h1>Hello World</h1></div>'
+console.log(prettyDOM(div))
+// <div>
+//   <h1>Hello World</h1>
+// </div>
+```
+
+This function is what also powers
+[the automatic debugging output described above](#debugging).
+
+## `logRoles`
+
+This helper function can be used to print out a list of all the implicit ARIA
+roles within a tree of DOM nodes, each role containing a list of all of the
+nodes which match that role. This can be helpful for finding ways to query the
+DOM under test with [getByRole](queries/byrole.mdx)
+
+```javascript
+import { logRoles } from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+
+logRoles(nav)
+```
+
+Result:
+
+```
+navigation:
+<nav />
+--------------------------------------------------
+list:
+<ul />
+--------------------------------------------------
+listitem:
+<li />
+<li />
+--------------------------------------------------
+```

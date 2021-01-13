@@ -59,9 +59,7 @@ const HomeSplash = (props) => {
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
         <div className="pluginWrapper buttonWrapper">
-          <Button href={docUrl('dom-testing-library/intro')}>
-            Get Started
-          </Button>
+          <Button href={'/docs/'}>Get Started</Button>
         </div>
       </div>
     </SplashContainer>
