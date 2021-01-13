@@ -78,7 +78,7 @@ with a second argument e.g.
 ### `defaultHidden`
 
 The default value for the `hidden` option used by
-[`getByRole`](api-queries.mdx#byrole). Defaults to `false`.
+[`getByRole`](queries/byrole.mdx). Defaults to `false`.
 
 ### `showOriginalStackTrace`
 
@@ -103,14 +103,14 @@ screen.getByTestId('foo', { suggest: false }) // will not throw a suggestion
 
 ### `testIdAttribute`
 
-The attribute used by [`getByTestId`](api-queries.mdx#bytestid) and related
-queries. Defaults to `data-testid`.
+The attribute used by [`getByTestId`](queries/bytestid.mdx) and related queries.
+Defaults to `data-testid`.
 
 ### `getElementError`
 
-A function that returns the error used when [`getBy*`](api-queries.mdx#getby) or
-[`getAllBy*`](api-queries.mdx#getallby) fail. Takes the error message and
-container object as arguments.
+A function that returns the error used when
+[get or find queries](queries/about.mdx#types-of-queries) fail. Takes the error
+message and container object as arguments.
 
 ### `asyncUtilTimeout`
 
