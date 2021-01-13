@@ -247,13 +247,19 @@ module.exports = {
           type: 'doc',
           docId: 'intro',
           label: 'Docs',
-          position: 'right',
+          position: 'left',
+        },
+        {
+          type: 'doc',
+          docId: 'queries/about',
+          label: 'Queries',
+          position: 'left',
         },
         {
           type: 'doc',
           docId: 'recipes',
-          label: 'Recipes',
-          position: 'right',
+          label: 'Examples',
+          position: 'left',
         },
         {
           to: '/help',

@@ -1,0 +1,69 @@
+---
+id: byplaceholdertext
+title: ByPlaceHolderText
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
+> queryAllByPlaceholderText, findByPlaceholderText, findAllByPlaceholderText
+
+## API
+
+```typescript
+getByPlaceholderText(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+This will search for all elements with a placeholder attribute and find one that
+matches the given [`TextMatch`](queries/about.mdx#textmatch).
+
+```html
+<input placeholder="Username" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const inputNode = screen.getByPlaceholderText('Username')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const inputNode = screen.getByPlaceholderText('Username')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByPlaceholderText('Username').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+> **Note**
+>
+> A placeholder is not a good substitute for a label so you should generally use
+> `getByLabelText` instead.
+
+## Options
+
+[TextMatch](queries/about.mdx#textmatch) options

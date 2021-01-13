@@ -45,12 +45,18 @@
 # Screen error message to correct page
 [[redirects]]
   from = "/s/screen-global-error"
-  to = "/docs/dom-testing-library/api-queries#screen"
+  to = "/docs/queries/about#screen"
 
 # Reorganization (do not redirect if route is not 404)
 [[redirects]]
   from = "/docs/*"
   to = "/docs/dom-testing-library/:splat"
+[[redirects]]
+  from = "/docs/using-fake-timers"
+  to = "/docs/guide-using-fake-timers"
+[[redirects]]
+  from = "/docs/guide-which-query"
+  to = "/docs/queries/about#priority"
 
 # Landing pages
 [[redirects]]

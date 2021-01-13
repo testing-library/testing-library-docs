@@ -140,8 +140,8 @@ could do:
 ```js
 import { within } from '@testing-library/dom'
 
-const { getByText } = within(document.getElementById('messages'))
-const helloMessage = getByText('hello')
+const messages = document.getElementById('messages')
+const helloMessage = within(messages).getByText('hello')
 ```
 
   </TabItem>
@@ -167,7 +167,9 @@ cy.get('form').within(() => {
   </TabItem>
   </Tabs>
 
-## `getRoles`
+## Accessibility
+
+### `getRoles`
 
 This function allows iteration over the implicit ARIA roles represented in a
 given tree of DOM nodes.
@@ -197,7 +199,7 @@ console.log(getRoles(nav))
 // }
 ```
 
-## `isInaccessible`
+### `isInaccessible`
 
 This function will compute if the given element should be excluded from the
 accessibility API by the browser. It implements every **MUST** criteria from the

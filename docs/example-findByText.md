@@ -1,7 +1,6 @@
 ---
 id: example-findByText
-title: example `findByText`
-sidebar_label: findByText
+title: Using findByText
 ---
 
 ```javascript
@@ -19,7 +18,7 @@ import userEvent from '@testing-library/user-event'
 // i.e. `.toBeVisible`
 import '@testing-library/jest-dom'
 
-const renderContent = el => {
+const renderContent = (el) => {
   el.innerHTML = `
     <form id='login_form' method='post' name='login'>
       <label for='username'>User Name:</label>
@@ -88,7 +87,7 @@ const renderContent = el => {
     }
   })
 
-  formEl.addEventListener('submit', function(evt) {
+  formEl.addEventListener('submit', function (evt) {
     evt.preventDefault()
     window.history.back()
   })

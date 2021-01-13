@@ -11,20 +11,29 @@ vice versa.
 If you need to wait for an element to appear, the [async wait
 utilities][async-api] allow you to wait for an assertion to be satisfied before
 proceeding. The wait utilities retry until the query passes or times out. _The
-async methods return a Promise, so you must always use `await` or .then(done)
+async methods return a Promise, so you must always use `await` or `.then(done)`
 when calling them._
+
+### 1. Using `findBy` Queries
+
+```jsx
+test('movie title appears', async () => {
+  // element is initially not present...
+  // wait for appearance and return the element
+  const movie = await findByText('the lion king')
+})
+```
+
+### 2. Using `waitFor`
 
 ```jsx
 test('movie title appears', async () => {
   // element is initially not present...
 
-  // wait for appearance
+  // wait for appearance inside an assertion
   await waitFor(() => {
     expect(getByText('the lion king')).toBeInTheDocument()
   })
-
-  // wait for appearance and return the element
-  const movie = await findByText('the lion king')
 })
 ```
 

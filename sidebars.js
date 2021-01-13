@@ -1,7 +1,54 @@
 module.exports = {
+  queries: [
+    'queries/about',
+    {
+      type: 'category',
+      label: 'Queries',
+      collapsed: false,
+      items: [
+        'queries/byrole',
+        'queries/bylabeltext',
+        'queries/byplaceholdertext',
+        'queries/bytext',
+        'queries/bydisplayvalue',
+        'queries/byalttext',
+        'queries/bytitle',
+        'queries/bytestid',
+      ],
+    },
+  ],
+  recipes: [
+    'recipes',
+    {
+      Guides: ['guide-disappearance', 'guide-events', 'using-fake-timers'],
+    },
+    {
+      Examples: [
+        'example-codesandbox',
+        'example-external',
+        'example-findByText',
+        'example-input-event',
+        'example-react-context',
+        'example-react-hooks-useReducer',
+        'example-react-formik',
+        'example-react-intl',
+        'example-react-redux',
+        'example-react-router',
+        'example-reach-router',
+        'example-react-transition-group',
+        'example-react-modal',
+        'example-update-props',
+      ],
+      Help: ['learning', 'contributing'],
+    },
+  ],
   docs: [
     {
-      'Getting Started': ['intro', 'guiding-principles', 'using-fake-timers'],
+      'Getting Started': [
+        'intro',
+        'guiding-principles',
+        'dom-testing-library/faq',
+      ],
     },
     {
       type: 'category',
@@ -18,7 +65,6 @@ module.exports = {
             'dom-testing-library/api-async',
             'dom-testing-library/api-helpers',
             'dom-testing-library/api-configuration',
-            'dom-testing-library/faq',
             'dom-testing-library/cheatsheet',
           ],
         },
@@ -108,34 +154,6 @@ module.exports = {
         'ecosystem-testing-library-selector',
       ],
     },
-  ],
-  recipes: [
-    {
-      Guides: [
-        'recipes',
-        'guide-which-query',
-        'guide-disappearance',
-        'guide-events',
-      ],
-    },
-    {
-      Examples: [
-        'example-codesandbox',
-        'example-external',
-        'example-findByText',
-        'example-input-event',
-        'example-react-context',
-        'example-react-hooks-useReducer',
-        'example-react-formik',
-        'example-react-intl',
-        'example-react-redux',
-        'example-react-router',
-        'example-reach-router',
-        'example-react-transition-group',
-        'example-react-modal',
-        'example-update-props',
-      ],
-      Help: ['learning', 'contributing'],
-    },
+    { Help: ['learning', 'contributing'] },
   ],
 }
