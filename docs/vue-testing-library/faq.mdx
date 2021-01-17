@@ -73,8 +73,8 @@ something like the following:
 ```js
 expect(queryByText('submit')).toBeNull()
 
-// or, if using extend/expect:
-import '@testing-library/jest-dom/extend-expect'
+// or, if using jest-dom:
+import '@testing-library/jest-dom'
 expect(queryByText('submit')).not.toBeInTheDocument()
 ```
 
