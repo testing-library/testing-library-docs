@@ -205,7 +205,7 @@ export default function Fetch({ url }) {
   )
   const [buttonClicked, setButtonClicked] = useState(false)
 
-  const fetchGreeting = async () => {
+  const fetchGreeting = async url =>
     axios
       .get(url)
       .then((response) => {
@@ -217,13 +217,13 @@ export default function Fetch({ url }) {
       .catch((error) => {
         dispatch({ type: 'ERROR', error })
       })
-  }
+
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
 
   return (
     <div>
-      <button onClick={fetchGreeting} disabled={buttonClicked}>
+      <button onClick={() => fetchGreeting(url)} disabled={buttonClicked}>
         {buttonText}
       </button>
       {greeting && <h1>{greeting}</h1>}
