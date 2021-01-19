@@ -115,7 +115,7 @@ const { getByRowColumn, getByText } = render(<MyTable />, {
 })
 ```
 
-See [helpers](dom-testing-library/api-helpers.mdx) for guidance on using utility
+See [helpers](dom-testing-library/api-custom-queries.mdx) for guidance on using utility
 functions to create custom queries.
 
 Custom queries can also be added globally by following the
@@ -128,7 +128,7 @@ The `render` method returns an object that has a few properties:
 ### `...queries`
 
 The most important feature of `render` is that the queries from
-[DOM Testing Library](dom-testing-library/api-queries.mdx) are automatically
+[DOM Testing Library](queries/about.mdx) are automatically
 returned with their first argument bound to the [baseElement](#baseelement),
 which defaults to `document.body`.
 
@@ -197,7 +197,7 @@ debug()
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
-[`DOM Testing Library`](dom-testing-library/api-helpers.mdx#prettydom).
+[`DOM Testing Library`](dom-testing-library/api-debugging.mdx#prettydom).
 
 ### `rerender`
 
