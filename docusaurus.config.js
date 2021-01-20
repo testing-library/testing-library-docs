@@ -305,7 +305,7 @@ module.exports = {
             },
             {
               label: 'Discord',
-              href: 'https://discord.gg/c6JN9fM',
+              href: 'https://discord.gg/testing-library',
             },
           ],
         },

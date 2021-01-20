@@ -34,7 +34,7 @@ export default function Help(props) {
       title: 'Spectrum',
     },
     {
-      content: `Chat on [Discord](https://discord.gg/c6JN9fM)`,
+      content: `Chat on [Discord](https://discord.gg/testing-library)`,
       title: 'Discord',
     },
     {
