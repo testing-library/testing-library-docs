@@ -280,30 +280,11 @@ component.rerender({ count: 7 })
 expect(component.getByTestId('count-value').textContent).toBe('7')
 ```
 
-### `fireEvent.***`
+### `detectChanges`
 
-The `fireEvents` re-exported from
-[DOM Testing Library](https://testing-library.com/docs/dom-testing-library) that
-are automatically bound to the Angular Component. This to ensure that the
-Angular change detection has been run by invoking `detectChanges` after an event
-has been fired.
+Trigger a change detection cycle for the component.
 
-See
-[Firing Events](https://testing-library.com/docs/dom-testing-library/api-events)
-for a complete list.
-
-**example**:
-
-```typescript
-const component = await render(AppComponent)
-
-component.change(component.getByLabelText('Username'), {
-  target: {
-    value: 'Tim',
-  },
-})
-component.click(component.getByText('Login'))
-```
+For more info see the [Angular docs](https://angular.io/api/core/testing/ComponentFixture#detectChanges).
 
 ### `debugElement`
 
@@ -361,43 +342,3 @@ const component = await render(AppComponent)
 component.getByText('Hello world')
 component.queryByLabelText('First name:')
 ```
-
-### `selectOptions`
-
-Select an option(s) from a select field with the same interactions as the user
-would do.
-
-```typescript
-const component = await render(AppComponent)
-
-component.selectOptions(component.getByLabelText('Fruit'), 'Blueberry')
-component.selectOptions(component.getByLabelText('Fruit'), ['Blueberry'. 'Grape'])
-```
-
-### `type`
-
-Types a value in an input field with the same interactions as the user would do.
-
-```typescript
-const component = await render(AppComponent)
-
-component.type(component.getByLabelText('Username'), 'Tim')
-component.type(component.getByLabelText('Username'), 'Tim', { delay: 250 })
-```
-
-### `waitFor`
-
-When in need to wait for any period of time you can use waitFor, to wait for
-your expectations to pass. For more info see the
-[DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitFor).
-
-This function will also call `detectChanges` repeatably to update the DOM, which
-is helpful to test async functionalities.
-
-### `waitForElementToBeRemoved`
-
-Wait for the removal of element(s) from the DOM. For more info see the
-[DOM Testing Library docs](https://testing-library.com/docs/dom-testing-library/api-async#waitforelementtoberemoved).
-
-This function will also call `detectChanges` repeatably to update the DOM, which
-is helpful to test async functionalities.
