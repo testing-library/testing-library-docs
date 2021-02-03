@@ -306,6 +306,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/prsdta"><img src="https://avatars3.githubusercontent.com/u/19373361?v=4?s=100" width="100px;" alt=""/><br /><sub><b>prsdta</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=prsdta" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/tal-joffe"><img src="https://avatars0.githubusercontent.com/u/7221753?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tal-joffe</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tal-joffe" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://mayankjethva.xyz"><img src="https://avatars.githubusercontent.com/u/1103708?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mayank Jethva</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mayank23" title="Documentation">📖</a></td>
   </tr>
 </table>
 
