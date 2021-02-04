@@ -43,7 +43,7 @@ An object to set `@Input` and `@Output` properties of the component.
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   componentProperties: {
     counterValue: 10,
     send: (value) => { ... }
@@ -63,7 +63,7 @@ For more info see the
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   componentProviders: [AppComponentService],
 })
 ```
@@ -81,7 +81,7 @@ For more info see the
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   providers: [
     CustomersService,
     {
@@ -101,7 +101,7 @@ Will call `detectChanges` when the component is compiled
 **example**:
 
 ```typescript
-const component = await render(AppComponent, { detectChanges: false })
+await render(AppComponent, { detectChanges: false })
 ```
 
 ### `excludeComponentDeclaration`
@@ -114,7 +114,7 @@ needed when the component is declared in an imported module.
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   imports: [AppModule], // a module that includes AppComponent
   excludeComponentDeclaration: true,
 })
@@ -134,7 +134,7 @@ For more info see the
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   imports: [AppSharedModule, MaterialModule],
 })
 ```
@@ -149,7 +149,7 @@ merged.
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   queries: { ...queries, ...customQueries },
 })
 ```
@@ -165,7 +165,7 @@ The route configuration to set up the router service via
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   declarations: [ChildComponent],
   routes: [
     {
@@ -194,7 +194,7 @@ For more info see the
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   schemas: [NO_ERRORS_SCHEMA],
 })
 ```
@@ -208,7 +208,7 @@ Removes the Angular attributes (ng-version, and root-id) from the fixture.
 **example**:
 
 ```typescript
-const component = await render(AppComponent, {
+await render(AppComponent, {
   removeAngularAttributes: true,
 })
 ```
@@ -225,7 +225,7 @@ The template to render the directive.
 **example**:
 
 ```typescript
-const component = await render(SpoilerDirective, {
+await render(SpoilerDirective, {
   template: `<div spoiler message='SPOILER'></div>`,
 })
 ```
@@ -240,7 +240,7 @@ An Angular component to wrap the directive in.
 **example**:
 
 ```typescript
-const component = await render(SpoilerDirective, {
+await render(SpoilerDirective, {
   template: `<div spoiler message='SPOILER'></div>`
   wrapper: CustomWrapperComponent
 })
@@ -260,10 +260,9 @@ Prints out the component's DOM with syntax highlighting. Accepts an optional
 parameter, to print out a specific DOM node.
 
 ```typescript
-const component = await render(AppComponent)
+const { debug } = await render(AppComponent)
 
-component.debug()
-component.debug(component.getByRole('alert'))
+debug()
 ```
 
 ### `rerender`
@@ -272,12 +271,13 @@ Re-render the same component with different props. Will call `detectChanges`
 after props has been updated.
 
 ```typescript
-const component = await render(Counter, { componentProperties: { count: 4 } })
+const { rerender } = await render(Counter, { componentProperties: { count: 4 } })
 
-expect(component.getByTestId('count-value').textContent).toBe('4')
+expect(screen.getByTestId('count-value').textContent).toBe('4')
 
-component.rerender({ count: 7 })
-expect(component.getByTestId('count-value').textContent).toBe('7')
+rerender({ count: 7 })
+
+expect(screen.getByTestId('count-value').textContent).toBe('7')
 ```
 
 ### `detectChanges`
@@ -300,9 +300,9 @@ For more info see the
 [Angular docs](https://angular.io/api/core/testing/ComponentFixture).
 
 ```typescript
-const component = await render(AppComponent)
+const { fixture } = await render(AppComponent)
 
-const componentInstance = component.fixture.componentInstance as AppComponent
+const componentInstance = fixture.componentInstance as AppComponent
 ```
 
 > 🚨 If you find yourself using `fixture` to access the component's internal
@@ -316,12 +316,12 @@ Accepts a DOM element or a path as parameter. If an element is passed,
 passed, `navigate` will navigate to the path.
 
 ```typescript
-const component = await render(AppComponent, {
+const { navigate } = await render(AppComponent, {
   routes: [...]
 })
 
-await component.navigate(component.getByLabelText('To details'))
-await component.navigate('details/3')
+await navigate(component.getByLabelText('To details'))
+await navigate('details/3')
 ```
 
 ### `...queries`
@@ -337,8 +337,8 @@ for a complete list.
 **example**:
 
 ```typescript
-const component = await render(AppComponent)
+const { getByText, queryByLabelText} = await render(AppComponent)
 
-component.getByText('Hello world')
-component.queryByLabelText('First name:')
+getByText('Hello world')
+queryByLabelText('First name:')
 ```
