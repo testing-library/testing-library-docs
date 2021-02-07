@@ -143,12 +143,13 @@ module.exports = {
 > new queries encourage you to test in a user-centric way, without testing
 > implementation details.
 
-You can define your own custom queries as described in the example in the
-[Helpers API](dom-testing-library/api-helpers.mdx) documentation, or via the
-[`buildQueries`](dom-testing-library/api-helpers.mdx#buildqueries) helper. Then
-you can use them in any render call using the `queries` option. To make the
-custom queries available globally, you can add them to your custom render method
-as shown below.
+You can define your own custom queries as described in the
+[Custom Queries](dom-testing-library/api-custom-queries.mdx) documentation, or
+via the
+[`buildQueries`](dom-testing-library/api-custom-queries.mdx#buildqueries)
+helper. Then you can use them in any render call using the `queries` option. To
+make the custom queries available globally, you can add them to your custom
+render method as shown below.
 
 In the example below, a new set of query variants are created for getting
 elements by `data-cy`, a "test ID" convention mentioned in the
