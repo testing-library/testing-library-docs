@@ -88,7 +88,7 @@ cy.findByLabelText('username').should('exist')
 
 ### `name`
 
-The example above NOT find the input node for label text broken up by elements.
+The example above does NOT find the input node for label text broken up by elements.
 You can use `getByRole('textbox', { name: 'Username' })` instead which is robust
 against switching to `aria-label` or `aria-labelledby`.
 
