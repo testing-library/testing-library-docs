@@ -63,17 +63,47 @@ The valid Vue Component to be tested.
 An object containing additional information to be passed to `@vue/test-utils`
 [mount](https://vue-test-utils.vuejs.org/api/options.html#mounting-options).
 
-Additionally, the options object can also include the following three keys:
+Additionally, the following options can also be provided:
 
-1. `store` - The object definition of a [Vuex](https://vuex.vuejs.org/) store.
-2. `routes` - A set of routes for [Vue Router](https://router.vuejs.org/).
-3. `props` - It will be merged with `propsData`.
+##### `store` (`Object`)
 
-If a `store` object is provided, `Vue Testing Library` will import and configure
-a Vuex store.
+The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store`
+object is provided, `Vue Testing Library` will import and configure a Vuex
+store.
 
-Similarly, if `routes` is provided, the library will import and configure Vue
-Router.
+##### `routes` (`Array`)
+
+A set of routes for [Vue Router](https://router.vuejs.org/). If `routes` is
+provided, the library will import and configure Vue Router.
+
+##### `props` (`Object`)
+
+It will be merged with `propsData`.
+
+##### `container` (`HTMLElement`)
+
+By default, `Vue Testing Library` will create a `div` and append it to the
+`baseElement`. This is where your component will be rendered. If you provide
+your own `HTMLElement` container via this option, it will not be appended to the
+`baseElement` automatically.
+
+For example: If you are unit testing a `tablebody` element, it cannot be a child
+of a `div`. In this case, you can specify a `table` as the render `container`.
+
+```js
+const table = document.createElement('table')
+
+const { container } = render(TableBody, {
+  props,
+  container: document.body.appendChild(table),
+})
+```
+
+##### `baseElement` (`HTMLElement`)
+
+If the `container` is specified, then this defaults to that, otherwise this
+defaults to `document.body`. `baseElement` is used as the base element for the
+queries as well as what is printed when you use `debug()`.
 
 #### Callback Function
 
@@ -81,8 +111,10 @@ Router.
 function callbackFunction(vueInstance, vuexStore, router) {}
 ```
 
-A callback function that receives the Vue instance as a parameter. Its return value is merged with [options](#options), allowing
-3rd party plugins to be installed prior to mount. To see how this works, see the example using [`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js).
+A callback function that receives the Vue instance as a parameter. Its return
+value is merged with [options](#options), allowing 3rd party plugins to be
+installed prior to mount. To see how this works, see the example using
+[`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js).
 
 The function will also receive the Store or the Router object if the associated
 option was passed in during render.
@@ -94,9 +126,9 @@ The `render` method returns an object that has a few properties:
 #### `...queries`
 
 The most important feature of `render` is that the queries from
-[DOM Testing Library](queries/about.mdx) are automatically
-returned with their first argument bound to the [baseElement](#baseelement),
-which defaults to `document.body`.
+[DOM Testing Library](queries/about.mdx) are automatically returned with their
+first argument bound to the [baseElement](#baseelement), which defaults to
+`document.body`.
 
 See [Queries](queries/about.mdx) for a complete list.
 
@@ -106,30 +138,30 @@ const { getByLabelText, queryAllByTestId } = render(Component)
 
 #### `container`
 
-By default, `Vue Testing Library` will create a `div` and append it to the
-`baseElement`. This is where your component will be rendered. If you provide
-your own HTMLElement container via this option, it will not be appended to the
-`baseElement` automatically.
-
-```js
-const table = document.createElement('table')
-
-const { container } = render(TableBody, {
-  container: document.body.appendChild(table),
-})
-```
+The containing DOM node of your rendered Vue Component. By default it's a `div`.
+This is a regular DOM node, so you can call `container.querySelector` etc. to
+inspect the children.
 
 > Tip: To get the root element of your rendered element, use
 > `container.firstChild`.
 
+> 🚨 If you find yourself using `container` to query for rendered elements then
+> you should reconsider! The other queries are designed to be more resilient to
+> changes that will be made to the component you're testing. Avoid using
+> `container` to query for elements!
+
 #### `baseElement`
 
-`baseElement` is used as the base element for the queries as well as what is
-printed when you use `debug()`.
+The containing DOM node where your Vue Component is rendered in the `container`.
+If you don't specify the `baseElement` in the options of `render`, it will
+default to `document.body`.
 
-It matches `container` if no custom `baseElement` is provided. If neither
-`baseElement` or `container` options are provided, `baseElement` defaults to
-`document.body`.
+This is useful when the component you want to test renders something outside the
+container `div`, e.g. when you want to snapshot test your portal component which
+renders its HTML directly in the body.
+
+> Note: the queries returned by the `render` looks into `baseElement`, so you
+> can use queries to test your portal component without the `baseElement`.
 
 #### `debug(element)`
 
