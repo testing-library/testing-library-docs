@@ -1265,6 +1265,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "olivierwilkinson",
+      "name": "Olivier Wilkinson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15321261?v=4",
+      "profile": "https://github.com/olivierwilkinson",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
