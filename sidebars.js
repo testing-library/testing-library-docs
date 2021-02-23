@@ -166,6 +166,7 @@ module.exports = {
         'pptr-testing-library/intro',
         'testcafe-testing-library/intro',
         'nightwatch-testing-library/intro',
+        'webdriverio-testing-library/intro',
       ],
     },
     {
