@@ -310,6 +310,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/EladIsraeli"><img src="https://avatars.githubusercontent.com/u/13487086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Elad Israeli</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=EladIsraeli" title="Documentation">📖</a></td>
     <td align="center"><a href="https://francischartrand.com"><img src="https://avatars.githubusercontent.com/u/1503758?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Francis Chartrand</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=chartrandf" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/prestoncarman"><img src="https://avatars.githubusercontent.com/u/3517157?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Preston Carman</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=prestoncarman" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/olivierwilkinson"><img src="https://avatars.githubusercontent.com/u/15321261?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Olivier Wilkinson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=olivierwilkinson" title="Documentation">📖</a></td>
   </tr>
 </table>
 
