@@ -315,6 +315,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/amitmiran137"><img src="https://avatars.githubusercontent.com/u/47772523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amit Miran</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=amitmiran137" title="Documentation">📖</a></td>
     <td align="center"><a href="https://graficos.net"><img src="https://avatars.githubusercontent.com/u/6775220?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Melero</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=gangsthub" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://modo.sc"><img src="https://avatars.githubusercontent.com/u/2231664?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jonathan schatz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=modosc" title="Documentation">📖</a></td>
   </tr>
 </table>
 

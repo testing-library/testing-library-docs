@@ -1292,6 +1292,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "modosc",
+      "name": "jonathan schatz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2231664?v=4",
+      "profile": "https://modo.sc",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
