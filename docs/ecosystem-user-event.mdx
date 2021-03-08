@@ -446,7 +446,8 @@ test('should paste text in input', () => {
   render(<MyInput />)
 
   const text = 'Hello, world!'
-  userEvent.paste(getByRole('textbox', { name: /paste your greeting/i }), text)
+  const element = getByRole('textbox', { name: /paste your greeting/i })
+  userEvent.paste(element, text)
   expect(element).toHaveValue(text)
 })
 ```
