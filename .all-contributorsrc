@@ -1301,6 +1301,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rickysullivan",
+      "name": "Ricky Sullivan Himself",
+      "avatar_url": "https://avatars.githubusercontent.com/u/437480?v=4",
+      "profile": "https://github.com/rickysullivan",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
