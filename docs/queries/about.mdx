@@ -169,6 +169,19 @@ const container = document.querySelector('#app')
 const inputNode2 = getByLabelText(container, 'Username')
 ```
 
+Similarly, you can use a query to test the absence of an element (byLabelText, in this case):
+
+```js
+import { screen, queryByLabelText } from '@testing-library/dom'
+
+// With screen:
+expect(screen.queryAllByLabelText('Username')).toHaveLength(0);
+
+// Without screen, you need to provide a container:
+const container = document.querySelector('#app')
+expect(queryAllByLabelText(container, 'Username')).toHaveLength(0);
+```
+
 ### `screen`
 
 All of the queries exported by DOM Testing Library accept a `container` as the
