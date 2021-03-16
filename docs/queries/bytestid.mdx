@@ -1,0 +1,83 @@
+---
+id: bytestid
+title: ByTestId
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId, findByTestId,
+> findAllByTestId
+
+## API
+
+```typescript
+getByTestId(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+A shortcut to `` container.querySelector(`[data-testid="${yourId}"]`) `` (and it
+also accepts a [`TextMatch`](queries/about.mdx#textmatch)).
+
+```html
+<div data-testid="custom-element" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const element = screen.getByTestId('custom-element')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const element = screen.getByTestId('custom-element')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByTestId('custom-element').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+> In the spirit of [the guiding principles](guiding-principles.mdx), it is
+> recommended to use this only after the other queries don't work for your use
+> case. Using data-testid attributes do not resemble how your software is used
+> and should be avoided if possible. That said, they are _way_ better than
+> querying based on DOM structure or styling css class names. Learn more about
+> `data-testid`s from the blog post
+> ["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
+
+## Options
+
+[TextMatch](queries/about.mdx#textmatch) options
+
+## Overriding `data-testid`
+
+The `...ByTestId` functions in `DOM Testing Library` use the attribute
+`data-testid` by default, following the precedent set by
+[React Native Web](https://github.com/testing-library/react-testing-library/issues/1)
+which uses a `testID` prop to emit a `data-testid` attribute on the element, and
+we recommend you adopt that attribute where possible. But if you already have an
+existing codebase that uses a different attribute for this purpose, you can
+override this value via
+`configure({testIdAttribute: 'data-my-test-attribute'})`.

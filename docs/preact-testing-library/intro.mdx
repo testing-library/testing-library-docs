@@ -1,0 +1,46 @@
+---
+id: intro
+title: Intro
+sidebar_label: Introduction
+---
+
+[Preact Testing Library on GitHub][gh]
+
+[gh]: https://github.com/testing-library/preact-testing-library
+
+```
+npm install --save-dev @testing-library/preact
+```
+
+> This library is built on top of
+> [`DOM Testing Library`](dom-testing-library/intro.mdx) which is where most of
+> the logic behind the queries is.
+
+## The Problem
+
+You want to write tests for your Preact components so that they avoid including
+implementation details, and are maintainable in the long run.
+
+## This Solution
+
+The Preact Testing Library is a very lightweight solution for testing Preact
+components. It provides light utility functions on top of `preact/test-utils`,
+in a way that encourages better testing practices. Its primary guiding principle
+is:
+
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+
+See the [Dom introduction][dom-solution-explainer] and [React
+introduction][react-solution-explainer] for a more in-depth explanation.
+
+[dom-solution-explainer]: ../dom-testing-library/intro.mdx#this-solution
+[react-solution-explainer]: ../react-testing-library/intro.mdx#this-solution
+
+**What this library is not**:
+
+1.  A test runner or framework.
+2.  Specific to a testing framework.
+
+We recommend Jest as our preference. You can checkout
+[Using Without Jest](react-testing-library/setup.mdx#using-without-jest) if
+you're looking to use another framework.

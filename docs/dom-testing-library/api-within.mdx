@@ -1,0 +1,55 @@
+---
+id: api-within
+title: Querying Within Elements
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+`within` (an alias to `getQueriesForElement`) takes a DOM element and binds it
+to the raw query functions, allowing them to be used without specifying a
+container. It is the recommended approach for libraries built on this API and is
+used under the hood in React Testing Library and Vue Testing Library.
+
+Example: To get the text 'hello' only within a section called 'messages', you
+could do:
+
+  <Tabs
+    defaultValue="native"
+    values={[
+      { label: 'Native', value: 'native', },
+      { label: 'React', value: 'react', },
+      { label: 'Cypress', value: 'cypress', },
+    ]
+  }>
+  <TabItem value="native">
+
+```js
+import { within } from '@testing-library/dom'
+
+const messages = document.getElementById('messages')
+const helloMessage = within(messages).getByText('hello')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, within } from '@testing-library/react'
+
+const { getByLabelText } = render(<MyComponent />)
+const signinModal = getByLabelText('Sign In')
+within(signinModal).getByPlaceholderText('Username')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.get('form').within(() => {
+  cy.findByText('Button Text').should('be.disabled')
+})
+```
+
+  </TabItem>
+  </Tabs>

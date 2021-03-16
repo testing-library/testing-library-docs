@@ -1,0 +1,67 @@
+---
+id: introduction
+title: Introduction
+slug: /
+---
+
+The [`@testing-library`][npm] family of packages helps you test UI components in
+a user-centric way.
+
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](guiding-principles.mdx)
+
+## The problem
+
+You want to write maintainable tests that give you high confidence that your
+components are working for your users. As a part of this goal, you want your
+tests to avoid including implementation details so refactors of your components
+(changes to implementation but not functionality) don't break your tests and
+slow you and your team down.
+
+## The solution
+
+The core library, [`DOM Testing Library`][dom], is a light-weight solution for
+testing web pages by querying and interacting with DOM nodes (whether simulated
+with [`JSDOM`][jsdom]/[Jest][jest] or in the browser). The main utilities it
+provides involve querying the DOM for nodes in a way that's similar to how the
+user finds elements on the page. In this way, the library helps ensure your
+tests give you confidence that your application will work when a real user uses
+it.
+
+The core library has been wrapped to provide ergonomic APIs for several
+frameworks, including [React][react], [Angular][angular], and [Vue][vue]. There
+is also a plugin to use testing-library queries for end-to-end tests in
+[Cypress][cypress] and an implementation for [React Native][react-native].
+
+### What this library is not
+
+1.  A test runner or framework
+2.  Specific to a testing framework
+
+`DOM Testing Library` works with any environment that provides DOM APIs, such as
+Jest, Mocha + JSDOM, or a real browser
+
+### What you should avoid with Testing Library
+
+Testing Library encourages you to avoid testing
+[implementation details](https://kentcdodds.com/blog/testing-implementation-details)
+like the internals of a component you're testing (though it's still possible).
+[The Guiding Principles](/docs/guiding-principles) of this library emphasize a
+focus on tests that closely resemble how your web pages are interacted by the
+users.
+
+You may want to avoid the following implementation details:
+
+1. Internal state of a component
+1. Internal methods of a component
+1. Lifecycle methods of a component
+1. Child components
+
+[jest]: https://jestjs.io
+[jsdom]: https://github.com/jsdom/jsdom
+[dom]: dom-testing-library/intro.mdx
+[react]: react-testing-library/intro.mdx
+[angular]: angular-testing-library/intro.mdx
+[vue]: vue-testing-library/intro.mdx
+[cypress]: cypress-testing-library/intro.mdx
+[react-native]: react-native-testing-library/intro.mdx
+[npm]: https://www.npmjs.com/org/testing-library

@@ -1,0 +1,158 @@
+---
+id: api
+title: API
+sidebar_label: API
+---
+
+- [`@testing-library/dom`](#testing-library-dom)
+- [`render`](#render)
+- [`cleanup`](#cleanup)
+- [`act`](#act)
+- [`fireEvent`](#fireevent)
+
+---
+
+## `@testing-library/dom`
+
+This library re-exports everything from the DOM Testing Library
+(`@testing-library/dom`). See the
+[documentation](dom-testing-library/api-queries.mdx) to see what goodies you can
+use.
+
+## `render`
+
+```jsx
+import { render } from '@testing-library/preact'
+
+const { results } = render(<YourComponent />, { options })
+```
+
+### Options
+
+| Option        | Description                                                                                                                                                       | Default       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `container`   | The HTML element the component is mounted to.                                                                                                                     | baseElement   |
+| `baseElement` | The root HTML element to which the container is appended to.                                                                                                      | document.body |
+| `queries`     | Queries to bind to the baseElement. See [getQueriesForElement](dom-testing-library/api-helpers.mdx#within-and-getqueriesforelement-apis).                         | null          |
+| `hydrate`     | Used when the component has already been mounted and requires a rerender. Not needed for most people. The rerender function passed back to you does this already. | false         |
+| `wrapper`     | A parent component to wrap YourComponent.                                                                                                                         | null          |
+
+### Results
+
+| Result        | Description                                                                                                                                                                |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container`   | The HTML element the component is mounted to.                                                                                                                              |
+| `baseElement` | The root HTML element to which the container is appended to.                                                                                                               |
+| `debug`       | Logs the baseElement using [prettyDom](dom-testing-library/api-helpers.mdx#prettydom).                                                                                     |
+| `unmount`     | Unmounts the component from the container.                                                                                                                                 |
+| `rerender`    | Calls render again passing in the original arguments and sets hydrate to true.                                                                                             |
+| `asFragment`  | Returns the innerHTML of the container.                                                                                                                                    |
+| `...queries`  | Returns all [query functions](dom-testing-library/api-queries.mdx) to be used on the baseElement. If you pass in `query` arguments than this will be those, otherwise all. |
+
+## `cleanup`
+
+Unmounts the component from the container and destroys the container.
+
+📝 When you import anything from the library, this automatically runs after each
+test. If you'd like to disable this then set `process.env.PTL_SKIP_AUTO_CLEANUP`
+to true when running your tests.
+
+```jsx
+import { render, cleanup } from '@testing-library/preact'
+
+afterEach(() => {
+  cleanup()
+}) // Default on import: runs it after each test.
+
+render(<YourComponent />)
+
+cleanup() // Or like this for more control.
+```
+
+## `act`
+
+Just a convenience export that points to preact/test-utils/act. All renders and
+events being fired are wrapped in `act`, so you don't really need this. It's
+responsible for flushing all effects and rerenders after invoking it.
+
+📝 If you'd love to learn more, checkout
+[this explanation](https://github.com/threepointone/react-act-examples/blob/master/sync.md).
+Even though it's for React, it gives you an idea of why it's needed.
+
+## `fireEvent`
+
+Passes it to the @testing-library/dom
+[fireEvent](dom-testing-library/api-events.mdx). It's also wrapped in `act` so
+you don't need to worry about doing it.
+
+📝 Keep in mind mainly when using `h / Preact.createElement` that React uses a
+Synthetic event system, and Preact uses the browser's native `addEventListener`
+for event handling. This means events like `onChange` and `onDoubleClick` in
+React, are `onInput` and `onDblClick` in Preact. The double click example will
+give you an idea of how to test using those functions.
+
+### Example 1
+
+```jsx
+const cb = jest.fn();
+
+function Counter() {
+  useEffect(cb);
+
+  const [count, setCount] = useState(0);
+
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+
+const { container: { firstChild: buttonNode }, } = render(<Counter />);
+
+// Clear the first call to useEffect that the initial render triggers.
+cb.mockClear();
+
+// Fire event Option 1.
+fireEvent.click(buttonNode);
+
+// Fire event Option 2.
+fireEvent(
+buttonNode,
+new Event('MouseEvent', {
+  bubbles: true,
+  cancelable: true,
+  button: 0,
+});
+
+expect(buttonNode).toHaveTextContent('1');
+expect(cb).toHaveBeenCalledTimes(1);
+```
+
+### Example 2
+
+```jsx
+const handler = jest.fn()
+
+const {
+  container: { firstChild: input },
+} = render(<input type="text" onInput={handler} />)
+
+fireEvent.input(input, { target: { value: 'a' } })
+
+expect(handler).toHaveBeenCalledTimes(1)
+```
+
+### Example 3
+
+```jsx
+const ref = createRef()
+const spy = jest.fn()
+
+render(
+  h(elementType, {
+    onDblClick: spy,
+    ref,
+  })
+)
+
+fireEvent['onDblClick'](ref.current)
+
+expect(spy).toHaveBeenCalledTimes(1)
+```

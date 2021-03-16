@@ -1,0 +1,44 @@
+---
+id: intro
+title: Intro
+sidebar_label: Introduction
+---
+
+[Svelte Testing Library on GitHub][gh]
+
+[gh]: https://github.com/testing-library/svelte-testing-library
+
+```
+npm install --save-dev @testing-library/svelte
+```
+
+> This library is built on top of
+> [`DOM Testing Library`](dom-testing-library/intro.mdx) which is where most of
+> the logic behind the queries is.
+
+## The Problem
+
+You want to write tests for your Svelte components so that they avoid including
+implementation details, and are maintainable in the long run.
+
+## This Solution
+
+The Svelte Testing Library is a very lightweight solution for testing Svelte
+components. It provides light utility functions on top of `svelte`, in a way
+that encourages better testing practices. Its primary guiding principle is:
+
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+
+So rather than dealing with instances of rendered Svelte components, your tests
+will work with actual DOM nodes. See the [Dom
+Introduction][dom-solution-explainer] for a more in-depth explanation.
+
+[dom-solution-explainer]: ../dom-testing-library/intro.mdx#this-solution
+[react-solution-explainer]: ../react-testing-library/intro.mdx#this-solution
+
+**What this library is not**:
+
+1.  A test runner or framework.
+2.  Specific to a testing framework.
+
+We recommend Jest as our preference.

@@ -1,0 +1,293 @@
+---
+id: byrole
+title: ByRole
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByRole, queryByRole, getAllByRole, queryAllByRole, findByRole,
+> findAllByRole
+
+## API
+
+```typescript
+getByRole(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  role: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    hidden?: boolean = false,
+    name?: TextMatch,
+    normalizer?: NormalizerFn,
+    selected?: boolean,
+    checked?: boolean,
+    pressed?: boolean,
+    expanded?: boolean,
+    queryFallbacks?: boolean,
+    level?: number,
+  }): HTMLElement
+```
+
+Queries for elements with the given role (and it also accepts a
+[`TextMatch`](queries/about.mdx#textmatch)). Default roles are taken into
+consideration e.g. `<button />` has the `button` role without explicitly setting
+the `role` attribute. Here you can see
+[a table of HTML elements with their default and desired roles](https://www.w3.org/TR/html-aria/#docconformance).
+
+Please note that setting a `role` and/or `aria-*` attribute that matches the
+implicit ARIA semantics is unnecessary and is **not recommended** as these
+properties are already set by the browser, and we must not use the `role` and
+`aria-*` attributes in a manner that conflicts with the semantics described. For
+example, a `button` element can't have the `role` attribute of `heading`,
+because the `button` element has default characteristics that conflict with the
+`heading` role.
+
+> Roles are matched literally by string equality, without inheriting from the
+> ARIA role hierarchy. As a result, querying a superclass role like `checkbox`
+> will not include elements with a subclass role like `switch`.
+
+You can query the returned element(s) by their
+[accessible name](https://www.w3.org/TR/accname-1.1/). The accessible name is
+for simple cases equal to e.g. the label of a form element, or the text content
+of a button, or the value of the `aria-label` attribute. It can be used to query
+a specific element if multiple elements with the same role are present on the
+rendered content. For an in-depth guide check out
+["What is an accessible name?" from ThePacielloGroup](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/).
+If you only query for a single element with `getByText('The name')` it's
+oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The
+accessible name query does not replace other queries such as `*ByAlt` or
+`*ByTitle`. While the accessible name can be equal to these attributes, it does
+not replace the functionality of these attributes. For example
+`<img aria-label="fancy image" src="fancy.jpg" />` will be returned for both
+`getByAltText('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
+However, the image will not display its description if `fancy.jpg` could not be
+loaded. Whether you want assert this functionality in your test or not is up to
+you.
+
+## Options
+
+### `hidden`
+
+If you set `hidden` to `true` elements that are normally excluded from the
+accessibility tree are considered for the query as well. The default behavior
+follows https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion with the exception of
+`role="none"` and `role="presentation"` which are considered in the query in any
+case. For example in
+
+```html
+<body>
+  <main aria-hidden="true">
+    <button>Open dialog</button>
+  </main>
+  <div role="dialog">
+    <button>Close dialog</button>
+  </div>
+</body>
+```
+
+`getByRole('button')` would only return the `Close dialog`-button. To make
+assertions about the `Open dialog`-button you would need to use
+`getAllByRole('button', { hidden: true })`.
+
+The default value for `hidden` can
+[be configured](../dom-testing-library/api-configuration.mdx#configuration).
+
+### `selected`
+
+You can filter the returned elements by their selected state by setting
+`selected: true` or `selected: false`.
+
+For example in
+
+```html
+<body>
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Native</button>
+    <button role="tab" aria-selected="false">React</button>
+    <button role="tab" aria-selected="false">Cypress</button>
+  </div>
+</body>
+```
+
+you can get the "Native"-tab by calling `getByRole('tab', { selected: true })`.
+To learn more about the selected state and which elements can have this state
+see [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected).
+
+### `checked`
+
+You can filter the returned elements by their checked state by setting
+`checked: true` or `checked: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button role="checkbox" aria-checked="true">Sugar</button>
+    <button role="checkbox" aria-checked="false">Gummy bears</button>
+    <button role="checkbox" aria-checked="false">Whipped cream</button>
+  </section>
+</body>
+```
+
+you can get the "Sugar" option by calling
+`getByRole('checkbox', { checked: true })`. To learn more about the checked
+state and which elements can have this state see
+[ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked).
+
+> **Note**
+>
+> Checkboxes have a "mixed" state, which is considered neither checked nor
+> unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+
+### `pressed`
+
+Buttons can have a pressed state. You can filter the returned elements by their
+pressed state by setting `pressed: true` or `pressed: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
+To learn more about the pressed state see
+[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
+
+### `expanded`
+
+You can filter the returned elements by their expanded state by setting
+`expanded: true` or `expanded: false`.
+
+For example in
+
+```html
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a aria-expanded="false" aria-haspopup="true" href="..."
+          >Expandable Menu Item</a
+        >
+        <ul>
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Regular Menu Item</a></li>
+    </ul>
+  </nav>
+</body>
+```
+
+you can get the "Expandable Menu Item" link by calling
+`getByRole('link', { expanded: false })`. To learn more about the expanded state
+and which elements can have this state see
+[ARIA `aria-expanded`](https://www.w3.org/TR/wai-aria-1.2/#aria-expanded).
+
+```html
+<div role="dialog">...</div>
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const dialogContainer = screen.getByRole('dialog')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const dialogContainer = screen.getByRole('dialog')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByRole('dialog').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+### `queryFallbacks`
+
+By default, it's assumed that the first role of each element is supported, so
+only the first role can be queried. If you need to query an element by any of
+its fallback roles instead, you can use `queryFallbacks: true`.
+
+For example, `getByRole('switch')` would always match
+`<div role="switch checkbox" />` because it's the first role, while
+`getByRole('checkbox')` would not. However,
+`getByRole('checkbox', { queryFallbacks: true })` would enable all fallback
+roles and therefore match the same element.
+
+> An element doesn't have multiple roles in a given environment. It has a single
+> one. Multiple roles in the attribute are evaluated from left to right until
+> the environment finds the first role it understands. This is useful when new
+> roles get introduced and you want to start supporting those as well as older
+> environments that don't understand that role (yet).
+
+### `level`
+
+An element with the `heading` role can be queried by any heading level
+`getByRole('heading')` or by a specific heading level using the `level` option
+`getByRole('heading', { level: 2 })`.
+
+The `level` option queries the element(s) with the `heading` role matching the
+indicated level determined by the semantic HTML heading elements `<h1>-<h6>` or
+matching the `aria-level` attribute.
+
+Given the example below,
+
+```html
+<body>
+  <section>
+    <h1>Heading Level One</h1>
+    <h2>First Heading Level Two</h2>
+    <h3>Heading Level Three</h3>
+    <div role="heading" aria-level="2">Second Heading Level Two</div>
+  </section>
+</body>
+```
+
+you can query the `Heading Level Three` heading using
+`getByRole('heading', { level: 3 })`.
+
+```js
+getByRole('heading', { level: 1 })
+// <h1>Heading Level One</h1>
+
+getAllByRole('heading', { level: 2 })
+// [
+//   <h2>First Heading Level Two</h2>,
+//   <div role="heading" aria-level="2">Second Heading Level Two</div>
+// ]
+```
+
+While it is possible to explicitly set `role="heading"` and `aria-level`
+attribute on an element, it is **strongly encouraged** to use the semantic HTML
+headings `<h1>-<h6>`.
+
+To learn more about the `aria-level` property, see
+[ARIA `aria-level`](https://www.w3.org/TR/wai-aria-1.2/#aria-level).
+
+> The `level` option is _only_ applicable to the `heading` role. An error will
+> be thrown when used with any other role.

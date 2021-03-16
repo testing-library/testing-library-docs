@@ -1,0 +1,163 @@
+---
+id: intro
+title: WebdriverIO Testing Library
+---
+
+[`webdriverio-testing-library`][gh] allows the use of dom-testing-library
+queries in [WebdriverIO](https://webdriver.io/) for end-to-end web testing.
+
+## Install
+
+> Be sure to follow the
+> [WebdriverIO install & config instructions first](https://webdriver.io/docs/gettingstarted/)
+
+then just
+
+```
+npm install -D @testing-library/webdriverio
+```
+
+- [webdriverio-testing-library on GitHub][gh]
+
+## API
+
+### `setupBrowser`
+
+Accepts a WebdriverIO [browser object](https://webdriver.io/docs/browserobject)
+and returns dom-testing-library [queries](/docs/queries/about) modifed to return
+WebdriverIO elements like normal
+[selectors](https://webdriver.io/docs/selectors/). **All queries are async** and
+are bound to `document.body` by default.
+
+```javascript
+import { setupBrowser } from '@testing-library/webdriverio'
+
+it('can click button', async () => {
+  const { getByText } = setupBrowser(browser)
+
+  const button = await getByText('Button Text')
+  await button.click()
+
+  expect(await button.getText()).toEqual('Button Clicked')
+})
+```
+
+`setupBrowser` also adds queries as commands to the browser and to all
+WebdriverIO elements. The browser commands are scoped to `document.body`. The
+element commands are scoped to the element in the same way as if it was passed
+to [`within`](#within).
+
+```javascript
+it('adds queries as browser commands', async () => {
+  setupBrowser(browser)
+
+  expect(await browser.getByText('Page Heading')).toBeDefined()
+})
+
+it('adds queries as element commands scoped to element', async () => {
+  setupBrowser(browser)
+
+  const nested = await browser.$('*[data-testid="nested"]')
+  const button = await nested.getByText('Button Text')
+  await button.click()
+
+  expect(await button.getText()).toEqual('Button Clicked')
+})
+```
+
+When using [sync mode](https://webdriver.io/docs/sync-vs-async#sync-mode) these
+commands are also synchronous:
+
+```javascript
+it('adds queries as browser commands', async () => {
+  setupBrowser(browser)
+
+  expect(browser.getByText('Page Heading')).toBeDefined()
+})
+
+it('adds queries as element commands scoped to element', async () => {
+  setupBrowser(browser)
+
+  const nested = browser.$('*[data-testid="nested"]')
+  const button = nested.getByText('Button Text')
+  button.click()
+
+  expect(button.getText()).toEqual('Button Clicked')
+})
+```
+
+### `within`
+
+Accepts a WebdriverIO element and returns queries scoped to that element
+
+```javascript
+import { within } from '@testing-library/webdriverio'
+
+it('within scopes queries to element', async () => {
+  const nested = await browser.$('*[data-testid="nested"]')
+
+  const button = await within(nested).getByText('Button Text')
+  await button.click()
+
+  expect(await button.getText()).toEqual('Button Clicked')
+})
+```
+
+### `configure`
+
+Lets you [configure dom-testing-library][config]
+
+```javascript
+import { configure } from '@testing-library/webdriverio'
+
+beforeEach(() => {
+  configure({ testIdAttribute: 'data-automation-id' })
+})
+afterEach(() => {
+  configure(null)
+})
+
+it('lets you configure queries', async () => {
+  const { getByTestId } = setupBrowser(browser)
+
+  expect(await getByTestId('testid-in-data-automation-id-attr')).toBeDefined()
+})
+```
+
+## Typescript
+
+This library comes with full typescript definitions. To use the commands added
+by [`setupBrowser`](#setupbrowser) the `Browser` and `Element` interfaces in the
+global `WebdriverIO` namespace need to be extended. Add the following to a
+typescript module:
+
+```typescript
+import { WebdriverIOQueries } from '@testing-library/webdriverio'
+
+declare global {
+  namespace WebdriverIO {
+    interface Browser extends WebdriverIOQueries {}
+    interface Element extends WebdriverIOQueries {}
+  }
+}
+```
+
+If you are using the `@wdio/sync` package you will need to use the
+`WebdriverIOQueriesSync` type to extend the interfaces:
+
+```typescript
+import { WebdriverIOQueriesSync } from '@testing-library/webdriverio'
+
+declare global {
+  namespace WebdriverIO {
+    interface Browser extends WebdriverIOQueriesSync {}
+    interface Element extends WebdriverIOQueriesSync {}
+  }
+}
+```
+
+Additional information about using typescript with WebdriverIO can be found
+[here](https://webdriver.io/docs/typescript/)
+
+[config]: ../dom-testing-library/api-configuration.mdx
+[gh]: https://github.com/testing-library/webdriverio-testing-library

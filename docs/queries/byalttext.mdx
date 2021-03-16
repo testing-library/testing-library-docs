@@ -1,0 +1,70 @@
+---
+id: byalttext
+title: ByAltText
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByAltText, queryByAltText, getAllByAltText, queryAllByAltText,
+> findByAltText, findAllByAltText
+
+## API
+
+```typescript
+getByAltText(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+This will return the element (normally an `<img>`) that has the given `alt`
+text. Note that it only supports elements which accept an `alt` attribute:
+[`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img),
+[`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input),
+and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
+(intentionally excluding
+[`<applet>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet)
+as it's deprecated).
+
+```html
+<img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import { screen } from '@testing-library/dom'
+
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import { render, screen } from '@testing-library/react'
+
+render(<MyComponent />)
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByAltText(/incredibles.*? poster/i).should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+## Options
+
+[TextMatch](queries/about.mdx#textmatch) options
