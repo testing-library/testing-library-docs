@@ -14,7 +14,8 @@ your tests with fake ones. This should be used sporadically and not on a regular
 basis since using it contains some overhead.
 
 When using fake timers in your tests, all of the code inside your test uses fake
-timers.  
+timers.
+
 The common pattern to setup fake timers is usually within the `beforeEach`, for
 example:
 
@@ -26,18 +27,20 @@ beforeEach(() => {
 ```
 
 When using fake timers, you need to remember to restore the timers after your
-test runs.  
+test runs.
+
 The main reason to do that is to prevent 3rd party libraries running after your
 test finishes (e.g cleanup functions), from being coupled to your fake timers
-and use real timers instead.  
-For that you usually call `useRealTimers` in `afterEach`.  
+and use real timers instead. 
+
+For that you usually call `useRealTimers` in `afterEach`.
+
 It's important to also call `runOnlyPendingTimers` before switching to real
-timers.  
-This will ensure you flush all the pending timers before you switch to real
+timers. This will ensure you flush all the pending timers before you switch to real
 timers. If you don't progress the timers and just switch to real timers, the
-scheduled tasks won't get executed and you'll get an unexpected behavior.  
-This is mostly important for 3rd parties that schedule tasks without you being
-aware of it.  
+scheduled tasks won't get executed and you'll get an unexpected behavior. This is mostly important for 3rd parties that schedule tasks without you being
+aware of it.
+
 Here's an example of doing that using jest:
 
 ```js
