@@ -155,12 +155,6 @@ const users = [
     infoLink: 'https://www.walmartlabs.com/',
   },
   {
-    caption: 'CDK Global Inc.',
-    image: '/img/users/cdkglobal.png',
-    infoLink: 'https://www.cdkglobal.com/us',
-    pinned: true,
-  },
-  {
     caption: 'Wix.com',
     image: '/img/users/wix.svg',
     infoLink: 'https://www.wix.com',
