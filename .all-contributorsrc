@@ -1310,6 +1310,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "wuarmin",
+      "name": "Armin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9987680?v=4",
+      "profile": "https://github.com/wuarmin",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
