@@ -92,51 +92,20 @@ test('properly handles v-model', async () => {
 })
 ```
 
-## Example using `props` and [`stubs`](https://vue-test-utils.vuejs.org/api/options.html#stubs) for thrid party compoents like `bootstrap-vue`:
+## Example using `props`:
 
 ```html
 <template>
-  <b-row class="mb-1">
-    <b-col>
-      <label class="form-label mb-md-1">{{ label }}</label>
-
-      <b-form-input
-        type="text"
-        list="clist"
-        :disabled="isDisabled"
-        :placeholder="placeholder"
-        :value="value"
-        @input="$emit('input', $event)"
-      />
-
-      <datalist v-if="isSearchable" id="clist">
-        <option
-          v-for="(option, index) in searchOptions"
-          :key="index"
-          :value="option"
-        >
-          {{ option.suggestion }}
-        </option>
-      </datalist>
-    </b-col>
-  </b-row>
+  <div>
+    <label>{{ label }}</label>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'FormInput',
   props: {
-    label: { type: String, default: 'Default label' },
-    value: { type: String, default: '' },
-    inputType: { type: String, default: 'text' },
-    placeholder: { type: String, default: 'Default placeholder' },
-    searchOptions: {
-      type: Array,
-      default() {
-        return []
-      },
-    },
-    isSearchable: { type: Boolean, default: false },
+    label: { type: String, default: 'Default label' }
   },
 }
 </script>
@@ -144,19 +113,10 @@ export default {
 
 ```js
 import { render } from '@testing-library/vue'
-import { BRow, BCol, BFormInput } from 'bootstrap-vue'
 import FormInput from './FormInput.vue'
-const stubs = {
-  // used to register custom or third-party components
-  'b-form-input': BFormInput,
-  'b-row': BRow,
-  'b-col': BCol,
-}
 
 it('renders the correct default state', () => {
-  const { getByText } = render(FormInput, {
-    stubs,
-  })
+  const { getByText } = render(FormInput)
 
   // Asserts initial state.
   getByText('Default label')
@@ -167,7 +127,6 @@ it('renders the label prop', () => {
     label: 'The new label',
   }
   const { getByText } = render(FormInput, {
-    stubs,
     props,
   })
 
