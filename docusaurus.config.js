@@ -40,7 +40,8 @@ module.exports = {
       },
       {
         caption: 'CDK Global Inc.',
-        image: '/img/users/cdkglobal.png',
+        darkImage: '/img/users/cdkglobal.png',
+        lightImage: '/img/users/cdkglobal.png',
         infoLink: 'https://www.cdkglobal.com/us',
         pinned: true,
       },
