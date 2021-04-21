@@ -84,7 +84,7 @@ It also works with `input`s whose `type` attribute is either `submit` or
 The `ignore` option accepts a query selector. If the
 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
 returns true for that selector, the node will be ignored. This defaults to
-`'script'` because generally you don't want to select script tags, but if your
+`'script, style'` because generally you don't want to select these tags, but if your
 content is in an inline script file, then the script tag could be returned.
 
 If you'd rather disable this behavior, set `ignore` to `false`.
