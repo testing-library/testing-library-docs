@@ -158,10 +158,12 @@ await waitFor(() =>
 ### Assert
 
 ```jsx
-// assert that the alert message is correct.
+// assert that the alert message is correct using
+// toHaveTextContent, a custom matcher from jest-dom.
 expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
 
-// assert that the button is not disabled.
+// assert that the button is not disabled using
+// toBeDisabled, a custom matcher from jest-dom.
 expect(screen.getByRole('button')).not.toBeDisabled()
 ```
 
