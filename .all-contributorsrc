@@ -1337,6 +1337,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "naruthk",
+      "name": "Naruth Kongurai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9120451?v=4",
+      "profile": "https://naruth.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
