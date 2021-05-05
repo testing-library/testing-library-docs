@@ -344,6 +344,16 @@ html[data-theme='dark'] {
   text-align: center;
 }
 
+.awardsSection {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.awardsSection .imageAlignTop .blockImage {
+  max-width: 140px;
+  height: 100px;
+}
+
 .productShowcaseSection.paddingTop {
   padding-top: 20px;
 }
