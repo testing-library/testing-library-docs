@@ -1364,6 +1364,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "scoobster17",
+      "name": "Phil Gibbins",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12157029?v=4",
+      "profile": "https://github.com/scoobster17",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
