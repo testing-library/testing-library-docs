@@ -273,11 +273,13 @@ export default class Index extends React.Component {
                 image: `${baseUrl}img/impactful-conribution-award-399x544.png`,
                 imageAlign: 'top',
                 imageLink: 'https://osawards.com/react/2019',
+                imageAlt: 'Winner of the Open Source Awards 2019 in the category "The most impactful contribution to the community"',
               },
               {
                 image: `${baseUrl}img/highest-satisfaction-638x574.png`,
                 imageAlign: 'top',
                 imageLink: 'https://2020.stateofjs.com/en-US/awards/',
+                imageAlt: 'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users.',
               },
             ]}
           </Block>
