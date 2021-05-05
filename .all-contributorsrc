@@ -1402,6 +1402,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "drorheller",
+      "name": "dror-heller",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12750737?v=4",
+      "profile": "https://github.com/drorheller",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
