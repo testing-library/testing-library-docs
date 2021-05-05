@@ -4,6 +4,9 @@ title: Example
 sidebar_label: Example
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 ## Full Example
 
 See the following sections for a detailed breakdown of the test
@@ -167,9 +170,12 @@ expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
 
 ### System Under Test
 
-fetch.js
+  <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'Javascript',
+  value: 'jsx'}, {label: 'Typescript', value: 'tsx'}, ]}>
 
-```jsx
+  <TabItem value="jsx">
+
+```jsx title="fetch.jsx"
 import React, { useState, useReducer } from 'react'
 import axios from 'axios'
 
@@ -205,7 +211,7 @@ export default function Fetch({ url }) {
   )
   const [buttonClicked, setButtonClicked] = useState(false)
 
-  const fetchGreeting = async url =>
+  const fetchGreeting = async (url) =>
     axios
       .get(url)
       .then((response) => {
@@ -217,7 +223,6 @@ export default function Fetch({ url }) {
       .catch((error) => {
         dispatch({ type: 'ERROR', error })
       })
-
 
   const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
 
@@ -232,3 +237,75 @@ export default function Fetch({ url }) {
   )
 }
 ```
+
+  </TabItem>
+
+  <TabItem value="tsx">
+
+```tsx title="fetch.tsx"
+import React, { useState, useReducer } from 'react'
+import axios from 'axios'
+
+const initialState = {
+  error: null,
+  greeting: null,
+}
+
+function greetingReducer(state: any, action: any) {
+  switch (action.type) {
+    case 'SUCCESS': {
+      return {
+        error: null,
+        greeting: action.greeting,
+      }
+    }
+    case 'ERROR': {
+      return {
+        error: action.error,
+        greeting: null,
+      }
+    }
+    default: {
+      return state
+    }
+  }
+}
+
+export default function Fetch({ url }: { url: string }) {
+  const [{ error, greeting }, dispatch] = useReducer(
+    greetingReducer,
+    initialState
+  )
+  const [buttonClicked, setButtonClicked] = useState(false)
+
+  const fetchGreeting = async (url: string) =>
+    axios
+      .get(url)
+      .then((response) => {
+        const { data } = response
+        const { greeting } = data
+        dispatch({ type: 'SUCCESS', greeting })
+        setButtonClicked(true)
+      })
+      .catch((error) => {
+        dispatch({ type: 'ERROR', error })
+      })
+
+  const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
+
+  return (
+    <div>
+      <button onClick={() => fetchGreeting(url)} disabled={buttonClicked}>
+        {buttonText}
+      </button>
+      {greeting && <h1>{greeting}</h1>}
+      {error && <p role="alert">Oops, failed to fetch!</p>}
+    </div>
+  )
+}
+```
+
+  </TabItem>
+
+  </Tabs>
+
