@@ -78,7 +78,8 @@ export { customRender as render }
 ```
 
 ```tsx title="test-utils.tsx"
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
+import { Omit } from 'react-redux'
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
@@ -100,7 +101,6 @@ const customRender = (
 ) => render(ui, { wrapper: AllTheProviders, ...options })
 
 export * from '@testing-library/react'
-
 export { customRender as render }
 ```
 
@@ -119,12 +119,7 @@ export { customRender as render }
 
 You can use CommonJS modules instead of ES modules, which should work in Node:
 
-  <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'Javascript',
-  value: 'jsx'}, {label: 'Typescript', value: 'tsx'}, ]}>
-
-  <TabItem value="jsx">
-
-```jsx title="test-utils.js"
+```js title="test-utils.js"
 const rtl = require('@testing-library/react')
 
 const customRender = (ui, options) =>
@@ -138,32 +133,6 @@ module.exports = {
   render: customRender,
 }
 ```
-
-  </TabItem>
-
-  <TabItem value="tsx">
-
-```tsx title="test-utils.ts"
-const rtl = require('@testing-library/react')
-
-const customRender = (
-  ui: ReactElement,
-  options?: Omit<RenderOptions, 'queries'>
-) =>
-  rtl.render(ui, {
-    myDefaultOption: 'something',
-    ...options,
-  })
-
-module.exports = {
-  ...rtl,
-  render: customRender,
-}
-```
-
-  </TabItem>
-
-  </Tabs>
 
 ### Add custom queries
 
@@ -251,18 +220,17 @@ export { customRender as render }
 
 ```tsx title="test-utils.ts"
 // test-utils.ts
-import { render, queries } from '@testing-library/react'
+import { render, queries, RenderOptions } from '@testing-library/react'
 import * as customQueries from './custom-queries'
+import { ReactElement } from 'react'
+import { Omit } from 'react-redux'
 
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'queries'>
 ) => render(ui, { queries: { ...queries, ...customQueries }, ...options })
 
-// re-export everything
 export * from '@testing-library/react'
-
-// override render method
 export { customRender as render }
 ```
 
