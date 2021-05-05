@@ -417,8 +417,9 @@ html[data-theme='dark'] {
 }
 
 .awardsSection .imageAlignTop .blockImage {
-  max-width: 140px;
-  height: 100px;
+  max-width: 200px;
+  margin-bottom: 50px;
+  height: 200px;
 }
 
 body {

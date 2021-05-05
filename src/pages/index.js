@@ -272,8 +272,7 @@ export default class Index extends React.Component {
               {
                 image: `${baseUrl}img/impactful-conribution-award-399x544.png`,
                 imageAlign: 'top',
-                imageLink:
-                  'https://user-images.githubusercontent.com/1500684/106369944-ece62900-6312-11eb-9bbf-47bba0bf0d6f.png',
+                imageLink: 'https://osawards.com/react/2019',
               },
               {
                 image: `${baseUrl}img/highest-satisfaction-638x574.png`,
