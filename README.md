@@ -330,6 +330,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/EduardoSimon"><img src="https://avatars.githubusercontent.com/u/19764148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eduardo Simón Picón</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=EduardoSimon" title="Documentation">📖</a></td>
     <td align="center"><a href="https://thesanjeevsharma.now.sh"><img src="https://avatars.githubusercontent.com/u/29539278?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sanjeev Sharma</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thesanjeevsharma" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/drorheller"><img src="https://avatars.githubusercontent.com/u/12750737?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dror-heller</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=drorheller" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
