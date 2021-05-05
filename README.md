@@ -22,7 +22,7 @@ Documentation site for [React Testing Library](https://github.com/testing-librar
 [opencollective-badge]: https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
 [allcontributors-badge]: https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://github.com/testing-library/react-testing-library/blob/master/CODE_OF_CONDUCT.md
+[coc]: https://github.com/testing-library/react-testing-library/blob/main/CODE_OF_CONDUCT.md
 
 This website was created with [Docusaurus](https://v2.docusaurus.io).
 
