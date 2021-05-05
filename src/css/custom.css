@@ -411,6 +411,16 @@ html[data-theme='dark'] {
   }
 }
 
+.awardsSection {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.awardsSection .imageAlignTop .blockImage {
+  max-width: 140px;
+  height: 100px;
+}
+
 body {
   font-family: Source Sans Pro, 'sans-serif';
   font-size: 18px;
