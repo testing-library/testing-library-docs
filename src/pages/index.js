@@ -279,7 +279,7 @@ export default class Index extends React.Component {
                 image: `${baseUrl}img/highest-satisfaction-638x574.png`,
                 imageAlign: 'top',
                 imageLink: 'https://2020.stateofjs.com/en-US/awards/',
-                imageAlt: 'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users.',
+                imageAlt: 'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users',
               },
             ]}
           </Block>
