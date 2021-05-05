@@ -325,6 +325,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://naruth.dev"><img src="https://avatars.githubusercontent.com/u/9120451?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Naruth Kongurai</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=naruthk" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/ErfanMirzapour"><img src="https://avatars.githubusercontent.com/u/52346515?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erfan Mirzapour</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ErfanMirzapour" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/shemExelate"><img src="https://avatars.githubusercontent.com/u/46557021?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shem Mahluf</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=shemExelate" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/scoobster17"><img src="https://avatars.githubusercontent.com/u/12157029?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Phil Gibbins</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=scoobster17" title="Documentation">📖</a></td>
   </tr>
 </table>
 
