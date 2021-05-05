@@ -1392,6 +1392,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "thesanjeevsharma",
+      "name": "Sanjeev Sharma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29539278?v=4",
+      "profile": "https://thesanjeevsharma.now.sh",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
