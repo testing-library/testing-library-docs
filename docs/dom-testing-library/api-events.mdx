@@ -122,7 +122,8 @@ const myEvent = createEvent.click(node, { button: 2 })
 fireEvent(node, myEvent)
 // myEvent.timeStamp can be accessed just like any other properties from myEvent
 // note: The access to the events created by `createEvent` is based on the native event API,
-// Therefore, native properties of HTMLEvent object (e.g. `timeStamp`) should be set using Object.defineProperty
+// Therefore, native properties of HTMLEvent object (e.g. `timeStamp`, `cancelable`, `type`) should be set using Object.defineProperty
+// For more info see: https://developer.mozilla.org/en-US/docs/Web/API/Event
 ```
 
 You can also create generic events:
