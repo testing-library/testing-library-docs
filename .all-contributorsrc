@@ -1411,6 +1411,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "yialo",
+      "name": "Aleksei Arro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38593881?v=4",
+      "profile": "https://github.com/yialo",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
