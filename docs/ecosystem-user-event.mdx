@@ -264,8 +264,8 @@ import userEvent from '@testing-library/user-event'
 test('clear', () => {
   render(<textarea value="Hello, World!" />)
 
-  userEvent.clear(screen.getByRole('textbox', 'email'))
-  expect(screen.getByRole('textbox', 'email')).toHaveAttribute('value', '')
+  userEvent.clear(screen.getByRole('textbox'))
+  expect(screen.getByRole('textbox')).toHaveAttribute('value', '')
 })
 ```
 
