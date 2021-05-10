@@ -53,7 +53,9 @@ await render(AppComponent, {
 
 ### `componentProviders`
 
-A collection of providers to inject dependencies of the component.
+A collection of providers needed to render the component via Dependency Injection.
+
+These will be provided at the component level. To inject dependencies at the module level, use [`providers`](#providers).
 
 For more info see the
 [Angular docs](https://angular.io/api/core/Directive#providers).
@@ -70,11 +72,10 @@ await render(AppComponent, {
 
 ### `declarations`
 
-A collection of providers needed to render the component via Dependency
-Injection, for example, injectable services or tokens.
+A collection of components, directives and pipes needed to render the component. For example, nested components of the component.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#providers).
+[Angular docs](https://angular.io/api/core/NgModule#declarations).
 
 **default** : `[]`
 
@@ -82,13 +83,7 @@ For more info see the
 
 ```typescript
 await render(AppComponent, {
-  providers: [
-    CustomersService,
-    {
-      provide: MAX_CUSTOMERS_TOKEN,
-      useValue: 10,
-    },
-  ],
+  declarations: [ CustomerDetailComponent, ButtonComponent ]
 })
 ```
 
@@ -136,6 +131,31 @@ For more info see the
 ```typescript
 await render(AppComponent, {
   imports: [AppSharedModule, MaterialModule],
+})
+```
+
+### `providers`
+
+A collection of providers needed to render the component via Dependency Injection.
+
+These will be provided at the module level. To inject dependencies at the component level, use [`componentProviders`](#componentProviders).
+
+For more info see the
+[Angular docs](https://angular.io/api/core/NgModule#providers).
+
+**default** : `[]`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  providers: [
+    CustomersService,
+    {
+      provide: MAX_CUSTOMERS_TOKEN,
+      useValue: 10,
+    },
+  ],
 })
 ```
 
