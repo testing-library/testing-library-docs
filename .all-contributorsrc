@@ -1420,6 +1420,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "carlobeltrame",
+      "name": "Carlo Beltrame",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7566995?v=4",
+      "profile": "https://github.com/carlobeltrame",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
