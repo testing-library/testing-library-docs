@@ -35,7 +35,7 @@ test('loads and displays greeting', async () => {
   await waitFor(() => screen.getByRole('heading'))
 
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
-  expect(screen.getByRole('button')).toHaveAttribute('disabled')
+  expect(screen.getByRole('button')).toBeDisabled()
 })
 
 test('handles server error', async () => {
@@ -52,7 +52,7 @@ test('handles server error', async () => {
   await waitFor(() => screen.getByRole('alert'))
 
   expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
-  expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
+  expect(screen.getByRole('button')).not.toBeDisabled()
 })
 ```
 
@@ -158,11 +158,13 @@ await waitFor(() =>
 ### Assert
 
 ```jsx
-// assert that the alert message is correct.
+// assert that the alert message is correct using
+// toHaveTextContent, a custom matcher from jest-dom.
 expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
 
-// assert that the button is not disabled.
-expect(screen.getByRole('button')).not.toHaveAttribute('disabled')
+// assert that the button is not disabled using
+// toBeDisabled, a custom matcher from jest-dom.
+expect(screen.getByRole('button')).not.toBeDisabled()
 ```
 
 ### System Under Test
