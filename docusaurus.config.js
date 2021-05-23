@@ -283,7 +283,7 @@ module.exports = {
             },
             {
               label: 'API',
-              to: 'docs/dom-testing-library/api-queries',
+              to: 'docs/dom-testing-library/api',
             },
             {
               label: 'Help',
