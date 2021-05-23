@@ -1438,6 +1438,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mattstobbs",
+      "name": "mattstobbs",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15341757?v=4",
+      "profile": "https://blog.scottlogic.com/mstobbs/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
