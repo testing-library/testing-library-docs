@@ -334,6 +334,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/drorheller"><img src="https://avatars.githubusercontent.com/u/12750737?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dror-heller</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=drorheller" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/yialo"><img src="https://avatars.githubusercontent.com/u/38593881?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aleksei Arro</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=yialo" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/carlobeltrame"><img src="https://avatars.githubusercontent.com/u/7566995?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlo Beltrame</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=carlobeltrame" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/ggorlen"><img src="https://avatars.githubusercontent.com/u/17895165?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ggorlen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ggorlen" title="Documentation">📖</a></td>
   </tr>
 </table>
 
