@@ -49,8 +49,8 @@
 
 # Obsolete or split pages
 [[redirects]]
-  from = "/docs/using-fake-timers"
-  to = "/docs/guide-using-fake-timers"
+  from = "/docs/guide-using-fake-timers"
+  to = "/docs/using-fake-timers"
 [[redirects]]
   from = "/docs/guide-which-query"
   to = "/docs/queries/about#priority"
