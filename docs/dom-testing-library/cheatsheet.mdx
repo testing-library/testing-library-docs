@@ -90,8 +90,8 @@ See [Async API](dom-testing-library/api-async.mdx). Remember to `await` or
 > - **wait** (Promise) retry the function within until it stops throwing or
 >   times
 > - **waitForElement** (Promise) retry the function until it returns an element
->   or an array of elements. `findBy` and `findAllBy` queries are async and
->   retry until either a timeout or if the query returns successfully; they wrap
+>   or an array of elements. The `findBy` and `findAllBy` queries are async and
+>   retry until the query returns successfully, or when the query times out; they wrap
 >   `waitForElement`
 > - **waitForDomChange** (Promise) retry the function each time the DOM is
 >   changed
