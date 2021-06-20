@@ -156,6 +156,18 @@ declare global {
 }
 ```
 
+If you are finding an error similar to this:
+
+```typescript
+browser.getByRole('navigation')
+// "Argument of type '"navigation"' is not assignable to parameter of type 'ByRoleOptions | undefined'."
+```
+
+you need to include "DOM" in the
+[lib](https://www.typescriptlang.org/tsconfig#lib) option of your tsconfig. See
+[here](https://github.com/testing-library/webdriverio-testing-library/issues/22)
+for more information.
+
 Additional information about using typescript with WebdriverIO can be found
 [here](https://webdriver.io/docs/typescript/)
 
