@@ -50,6 +50,10 @@ tree of a node. This can be helpful for instance when debugging tests.
 It is defined as:
 
 ```typescript
+interface Options extends prettyFormat.OptionsReceived {
+  filterNode?: (node: Node) => boolean;
+}
+
 function prettyDOM(
   node: HTMLElement,
   maxLength?: number,
@@ -59,9 +63,12 @@ function prettyDOM(
 
 It receives the root node to print out, an optional extra parameter to limit the
 size of the resulting string, for cases when it becomes too large. It has a last
-parameter which allows you to configure your formatting as defined in the
-[options](https://github.com/facebook/jest/tree/master/packages/pretty-format#usage-with-options)
+parameter which allows you to configure your formatting.
+In addition to the options listed you can also pass the [options](https://github.com/facebook/jest/tree/master/packages/pretty-format#usage-with-options)
 of `pretty-format`.
+
+By default, `<style />`, `<script />` and comment nodes are ignored.
+You can configure this behavior by passing a custom `filterNode` function that should return `true` for every node that you wish to include in the output.
 
 This function is usually used alongside `console.log` to temporarily print out
 DOM trees during tests for debugging purposes:
