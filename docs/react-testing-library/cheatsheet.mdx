@@ -21,7 +21,7 @@ test('loads items eventually', async () => {
   render(<Page />)
 
   // Click button
-  fireEvent.click(getByText('Load'))
+  fireEvent.click(screen.getByText('Load'))
 
   // Wait for page to update with query text
   const items = await screen.findAllByText(/Item #[0-9]: /)
