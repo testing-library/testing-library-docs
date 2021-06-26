@@ -1483,6 +1483,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "votemike",
+      "name": "Michael Gwynne",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3957065?v=4",
+      "profile": "https://votemike.co.uk",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

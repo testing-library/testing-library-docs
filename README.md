@@ -342,6 +342,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://twitter.com/dylan_piercey"><img src="https://avatars.githubusercontent.com/u/4985201?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dylan Piercey</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=DylanPiercey" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/ruhollahh"><img src="https://avatars.githubusercontent.com/u/53814636?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ruhollah</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ruhollahh" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://votemike.co.uk"><img src="https://avatars.githubusercontent.com/u/3957065?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Gwynne</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=votemike" title="Documentation">📖</a></td>
   </tr>
 </table>
 
