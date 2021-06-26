@@ -14,9 +14,9 @@ import { Formik, Field, Form } from 'formik'
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
 export const MyForm = ({ onSubmit }) => {
-  const handleSubmit = async values => {
+  const handleSubmit = async (values, formikBag) => {
     await sleep(500)
-    onSubmit(values)
+    onSubmit(values, formikBag)
   }
 
   return (
