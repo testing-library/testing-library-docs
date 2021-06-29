@@ -80,6 +80,53 @@ expect(queryByText('submit')).not.toBeInTheDocument()
 
 </details>
 
+<details>
+  <summary>Why does my Vue Router state seem to be shared between tests?</summary>
+
+By default, Vue Router uses
+[`hash` routing mode](https://router.vuejs.org/api/#mode), which stores route
+updates in `window.location`. Test runners, such as Jest, do not reset the JSDOM
+environment in between test invocations, so route transitions from previous
+tests can leak into subsequent tests, even though a new Vue Router is created
+with each call to `render`.
+
+You can work around this in one of two ways:
+
+1. **Pass an instantiated router using `abstract` mode**. `abstract` mode does
+   not store route information on `window`, so transitions will not leak between
+   tests. For example:
+
+```js
+import { render, fireEvent } from '@testing-library/vue'
+import Component from './Component.vue'
+import VueRouter from 'vue-router'
+
+test('uses abstract mode for the router', () => {
+  render(Component, {
+    routes: new VueRouter({
+      mode: 'abstract',
+      routes: [
+        // Your routes here
+      ],
+    }),
+  })
+})
+```
+
+2. **Reset the window location `afterEach`**. If you don't want to pass an
+   instantiated Router, you can instead reset the `window.location` after each
+   test, like this:
+
+```js
+afterEach(() => {
+  window.location.replace('http://localhost')
+})
+```
+
+This will clear any route transitions stored in the `window` location property.
+
+</details>
+
 <!--
 Links:
 -->
