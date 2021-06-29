@@ -71,10 +71,11 @@ The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store`
 object is provided, `Vue Testing Library` will import and configure a Vuex
 store.
 
-##### `routes` (`Array`)
+##### `routes` (`Array` | `VueRouter`)
 
 A set of routes for [Vue Router](https://router.vuejs.org/). If `routes` is
-provided, the library will import and configure Vue Router.
+provided, the library will import and configure Vue Router. If an instantiated
+Vue Router is passed, it will be used.
 
 ##### `props` (`Object`)
 
