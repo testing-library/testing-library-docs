@@ -65,11 +65,11 @@ An object containing additional information to be passed to `@vue/test-utils`
 
 Additionally, the following options can also be provided:
 
-##### `store` (`Object`)
+##### `store` (`Object` | `Store`)
 
 The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store`
 object is provided, `Vue Testing Library` will import and configure a Vuex
-store.
+store. If an instantiated Vuex store is passed, it will be used.
 
 ##### `routes` (`Array`)
 
