@@ -90,40 +90,62 @@ environment in between test invocations, so route transitions from previous
 tests can leak into subsequent tests, even though a new Vue Router is created
 with each call to `render`.
 
-You can work around this in one of two ways:
-
-1. **Pass an instantiated router using `abstract` mode**. `abstract` mode does
-   not store route information on `window`, so transitions will not leak between
-   tests. For example:
+To work around this issue, pass an instantiated router using `abstract` mode.
+`abstract` mode does not store route information on the JSDOM `window`, so
+routing information will not leak between tests. For example:
 
 ```js
-import { render, fireEvent } from '@testing-library/vue'
+import { render } from '@testing-library/vue'
 import Component from './Component.vue'
 import VueRouter from 'vue-router'
 
-test('uses abstract mode for the router', () => {
-  render(Component, {
-    routes: new VueRouter({
-      mode: 'abstract',
-      routes: [
-        // Your routes here
-      ],
-    }),
+test('uses abstract mode for the router', async () => {
+  const router = new VueRouter({
+    mode: 'abstract',
+    routes: [
+      // Your routes here
+    ],
   })
+
+  const renderResult = render(Component, {
+    routes: router,
+  })
+
+  // Unlike the router in `hash` mode, the initial routing stack is empty. So,
+  // you need to push an initial route to the stack.
+  await router.push('/')
 })
 ```
 
-2. **Reset the window location `afterEach`**. If you don't want to pass an
-   instantiated Router, you can instead reset the `window.location` after each
-   test, like this:
+To reduce boilerplate, you can create a custom render function to use throughout
+your test suite. For example:
 
 ```js
-afterEach(() => {
-  window.location.replace('http://localhost')
-})
-```
+// test-utils.js
 
-This will clear any route transitions stored in the `window` location property.
+import { render } from '@testing-library/vue'
+import VueRouter from 'vue-router'
+
+export async function renderApp(component, options) {
+  const router = new VueRouter({
+    mode: 'abstract',
+    routes: [
+      // Your routes here
+    ],
+  })
+
+  const renderResult = render(component, {
+    routes: router,
+    ...options,
+  })
+
+  // Unlike the router in `hash` mode, the initial routing stack is empty. So,
+  // you need to push an initial route to the stack.
+  await router.push('/')
+
+  return renderResult
+}
+```
 
 </details>
 
