@@ -75,7 +75,7 @@ test('rendering and submitting a basic Formik form', async () => {
       email: 'john.dee@someemail.com',
       firstName: 'John',
       lastName: 'Dee',
-    }, expect.anything())
+    })
   )
 })
 ```
