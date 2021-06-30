@@ -1492,6 +1492,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "thetric",
+      "name": "Dominik Broj",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19861998?v=4",
+      "profile": "https://github.com/thetric",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
