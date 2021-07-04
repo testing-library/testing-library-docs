@@ -344,6 +344,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/ruhollahh"><img src="https://avatars.githubusercontent.com/u/53814636?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ruhollah</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ruhollahh" title="Documentation">📖</a></td>
     <td align="center"><a href="https://votemike.co.uk"><img src="https://avatars.githubusercontent.com/u/3957065?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Gwynne</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=votemike" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/thetric"><img src="https://avatars.githubusercontent.com/u/19861998?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dominik Broj</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thetric" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/stephenwade"><img src="https://avatars.githubusercontent.com/u/4148577?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Wade</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=stephenwade" title="Documentation">📖</a></td>
   </tr>
 </table>
 
