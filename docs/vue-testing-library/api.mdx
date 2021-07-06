@@ -65,16 +65,17 @@ An object containing additional information to be passed to `@vue/test-utils`
 
 Additionally, the following options can also be provided:
 
-##### `store` (`Object`)
+##### `store` (`Object` | `Store`)
 
 The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store`
 object is provided, `Vue Testing Library` will import and configure a Vuex
-store.
+store. If an instantiated Vuex store is passed, it will be used.
 
-##### `routes` (`Array`)
+##### `routes` (`Array` | `VueRouter`)
 
 A set of routes for [Vue Router](https://router.vuejs.org/). If `routes` is
-provided, the library will import and configure Vue Router.
+provided, the library will import and configure Vue Router. If an instantiated
+Vue Router is passed, it will be used.
 
 ##### `props` (`Object`)
 
@@ -114,7 +115,7 @@ function callbackFunction(vueInstance, vuexStore, router) {}
 A callback function that receives the Vue instance as a parameter. Its return
 value is merged with [options](#options), allowing 3rd party plugins to be
 installed prior to mount. To see how this works, see the example using
-[`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/vue-i18n.js).
+[`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/translations-vue-i18n.js).
 
 The function will also receive the Store or the Router object if the associated
 option was passed in during render.

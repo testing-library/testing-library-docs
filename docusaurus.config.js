@@ -217,7 +217,7 @@ module.exports = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           editUrl:
-            'https://github.com/testing-library/testing-library-docs/edit/master/',
+            'https://github.com/testing-library/testing-library-docs/edit/main/',
           path: './docs',
           sidebarPath: './sidebars.js',
         },
@@ -283,7 +283,7 @@ module.exports = {
             },
             {
               label: 'API',
-              to: 'docs/dom-testing-library/api-queries',
+              to: 'docs/dom-testing-library/api',
             },
             {
               label: 'Help',

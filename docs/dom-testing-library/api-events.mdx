@@ -41,13 +41,6 @@ Convenience methods for firing DOM events. Check out
 [src/event-map.js](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
 for a full list as well as default `eventProperties`.
 
-```javascript
-// <button>Submit</button>
-const rightClick = { button: 2 }
-fireEvent.click(getByText('Submit'), rightClick)
-// default `button` property for click events is set to `0` which is a left click.
-```
-
 **target**: When an event is dispatched on an element, the event has the
 subjected element on a property called `target`. As a convenience, if you
 provide a `target` property in the `eventProperties` (second argument), then
@@ -121,6 +114,9 @@ programmatically (such as `timeStamp`).
 const myEvent = createEvent.click(node, { button: 2 })
 fireEvent(node, myEvent)
 // myEvent.timeStamp can be accessed just like any other properties from myEvent
+// note: The access to the events created by `createEvent` is based on the native event API,
+// Therefore, native properties of HTMLEvent object (e.g. `timeStamp`, `cancelable`, `type`) should be set using Object.defineProperty
+// For more info see: https://developer.mozilla.org/en-US/docs/Web/API/Event
 ```
 
 You can also create generic events:

@@ -263,6 +263,30 @@ export default class Index extends React.Component {
       )
     }
 
+    const Awards = () => {
+      return (
+        <div className="awardsSection paddingBottom paddingTop">
+          <h2>Awards</h2>
+          <Block layout="threeColumn" background={null}>
+            {[
+              {
+                image: `${baseUrl}img/impactful-conribution-award-399x544.png`,
+                imageAlign: 'top',
+                imageLink: 'https://osawards.com/react/2019',
+                imageAlt: 'Winner of the Open Source Awards 2019 in the category "The most impactful contribution to the community"',
+              },
+              {
+                image: `${baseUrl}img/highest-satisfaction-638x574.png`,
+                imageAlign: 'top',
+                imageLink: 'https://2020.stateofjs.com/en-US/awards/',
+                imageAlt: 'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users',
+              },
+            ]}
+          </Block>
+        </div>
+      )
+    }
+
     return (
       <Layout
         permalink="/"
@@ -277,6 +301,7 @@ export default class Index extends React.Component {
           <Solution />
           <ShowcaseWrapper />
           <Ecosystem />
+          <Awards />
         </div>
       </Layout>
     )
