@@ -79,7 +79,6 @@ export { customRender as render }
 
 ```tsx title="test-utils.tsx"
 import React, { FC, ReactElement } from 'react'
-import { Omit } from 'react-redux'
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from 'my-ui-lib'
 import { TranslationProvider } from 'my-i18n-lib'
@@ -223,7 +222,6 @@ export { customRender as render }
 import { render, queries, RenderOptions } from '@testing-library/react'
 import * as customQueries from './custom-queries'
 import { ReactElement } from 'react'
-import { Omit } from 'react-redux'
 
 const customRender = (
   ui: ReactElement,
