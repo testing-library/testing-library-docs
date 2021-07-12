@@ -1510,6 +1510,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "luizbaldi",
+      "name": "Luiz Baldi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17226904?v=4",
+      "profile": "https://luizbaldi.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
