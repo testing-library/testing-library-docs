@@ -368,3 +368,29 @@ mocha -r @testing-library/react/dont-cleanup-after-each
 Alternatively, you could import `@testing-library/react/pure` in all your tests
 that you don't want the `cleanup` to run and the `afterEach` won't be setup
 automatically.
+
+### Auto Cleanup in Mocha's watch mode
+
+When using Mocha in watch mode, the globally registered cleanup is run only the
+first time after each test. Therefore, subsequent runs will most likely fail
+with a _TestingLibraryElementError: Found multiple elements_ error.
+
+To enable automatic cleanup in Mocha's watch mode, add a cleanup
+[root hook](https://mochajs.org/#root-hook-plugins). Create a
+`mocha-watch-cleanup-after-each.js` file with the following contents:
+
+```
+const { cleanup } = require("@testing-library/react");
+
+exports.mochaHooks = {
+  afterEach() {
+    cleanup();
+  },
+};
+```
+
+And register it using mocha's `-r` flag:
+
+```
+mocha -r ./mocha-watch-cleanup-after-each.js
+```
