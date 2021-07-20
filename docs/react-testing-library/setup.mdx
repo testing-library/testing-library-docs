@@ -155,6 +155,11 @@ elements by `data-cy`, a "test ID" convention mentioned in the
 [Cypress.io](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements)
 documentation.
 
+  <Tabs groupId="test-utils" defaultValue="js" values={[ {label: 'Javascript',
+  value: 'js'}, {label: 'Typescript', value: 'ts'}, ]}>
+
+  <TabItem value="js">
+
 ```js title="custom-queries.js"
 import { queryHelpers, buildQueries } from '@testing-library/react'
 
@@ -186,6 +191,54 @@ export {
   findByDataCy,
 }
 ```
+
+  </TabItem>
+
+  <TabItem value="ts">
+
+```js title="custom-queries.ts"
+import {
+  queryHelpers,
+  buildQueries,
+  Matcher,
+  MatcherOptions,
+} from '@testing-library/react'
+
+// The queryAllByAttribute is a shortcut for attribute-based matchers
+// You can also use document.querySelector or a combination of existing
+// testing library utilities to find matching nodes for your query
+const queryAllByDataCy = (
+  container: HTMLElement,
+  id: Matcher,
+  options?: MatcherOptions | undefined
+) => queryHelpers.queryAllByAttribute('data-cy', container, id, options)
+
+const getMultipleError = (c, dataCyValue) =>
+  `Found multiple elements with the data-cy attribute of: ${dataCyValue}`
+const getMissingError = (c, dataCyValue) =>
+  `Unable to find an element with the data-cy attribute of: ${dataCyValue}`
+
+const [
+  queryByDataCy,
+  getAllByDataCy,
+  getByDataCy,
+  findAllByDataCy,
+  findByDataCy,
+] = buildQueries(queryAllByDataCy, getMultipleError, getMissingError)
+
+export {
+  queryByDataCy,
+  queryAllByDataCy,
+  getByDataCy,
+  getAllByDataCy,
+  findAllByDataCy,
+  findByDataCy,
+}
+```
+
+  </TabItem>
+
+  </Tabs>
 
 You can then override and append the new queries via the render function by
 passing a [`queries`](api.mdx#render-options) option.
