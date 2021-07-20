@@ -6,7 +6,7 @@ title: React Router
 ```jsx
 // app.js
 import React from 'react'
-import { Link, Route, Switch, useLocation } from 'react-router-dom'
+import {Link, Route, Switch, useLocation} from 'react-router-dom'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
@@ -45,28 +45,28 @@ export const App = () => (
 
 ```jsx
 // app.test.js
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { createMemoryHistory } from 'history'
+import {createMemoryHistory} from 'history'
 import React from 'react'
-import { Router } from 'react-router-dom'
+import {Router} from 'react-router-dom'
 
 import '@testing-library/jest-dom/extend-expect'
 
-import { App, LocationDisplay } from './app'
+import {App, LocationDisplay} from './app'
 
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
   render(
     <Router history={history}>
       <App />
-    </Router>
+    </Router>,
   )
   // verify page content for expected route
   // often you'd use a data-testid or role query, but this is also possible
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
-  const leftClick = { button: 0 }
+  const leftClick = {button: 0}
   userEvent.click(screen.getByText(/about/i), leftClick)
 
   // check that the content changed to the new page
@@ -79,7 +79,7 @@ test('landing on a bad page', () => {
   render(
     <Router history={history}>
       <App />
-    </Router>
+    </Router>,
   )
 
   expect(screen.getByText(/no match/i)).toBeInTheDocument()
@@ -92,7 +92,7 @@ test('rendering a component that uses useLocation', () => {
   render(
     <Router history={history}>
       <LocationDisplay />
-    </Router>
+    </Router>,
   )
 
   expect(screen.getByTestId('location-display')).toHaveTextContent(route)
@@ -109,10 +109,10 @@ test('rendering a component that uses useLocation', () => {
    If you _do_ need to change the history, you could use `BrowserRouter`.
 
 ```jsx
-import { MemoryRouter } from 'react-router-dom'
+import {MemoryRouter} from 'react-router-dom'
 
 test('full app rendering/navigating', () => {
-  render(<App />, { wrapper: MemoryRouter })
+  render(<App />, {wrapper: MemoryRouter})
 
   // verify page content for expected route
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
@@ -124,10 +124,10 @@ test('full app rendering/navigating', () => {
 
 ```jsx
 // test utils file
-const renderWithRouter = (ui, { route = '/' } = {}) => {
+const renderWithRouter = (ui, {route = '/'} = {}) => {
   window.history.pushState({}, 'Test page', route)
 
-  return render(ui, { wrapper: BrowserRouter })
+  return render(ui, {wrapper: BrowserRouter})
 }
 ```
 
@@ -137,21 +137,21 @@ test('full app rendering/navigating', () => {
   renderWithRouter(<App />)
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
-  const leftClick = { button: 0 }
+  const leftClick = {button: 0}
   userEvent.click(screen.getByText(/about/i), leftClick)
 
   expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
 })
 
 test('landing on a bad page', () => {
-  renderWithRouter(<App />, { route: '/something-that-does-not-match' })
+  renderWithRouter(<App />, {route: '/something-that-does-not-match'})
 
   expect(screen.getByText(/no match/i)).toBeInTheDocument()
 })
 
 test('rendering a component that uses useLocation', () => {
   const route = '/some-route'
-  renderWithRouter(<LocationDisplay />, { route })
+  renderWithRouter(<LocationDisplay />, {route})
 
   expect(screen.getByTestId('location-display')).toHaveTextContent(route)
 })

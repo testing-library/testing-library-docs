@@ -15,7 +15,7 @@ A short guide to all the exported functions in `React Testing Library`
     `screen` import instead)
 
 ```jsx
-import { render, fireEvent, screen } from '@testing-library/react'
+import {render, fireEvent, screen} from '@testing-library/react'
 
 test('loads items eventually', async () => {
   render(<Page />)
@@ -154,8 +154,8 @@ Given the following HTML:
 ```javascript
 // Matching a string:
 getByText('Hello World') // full string match
-getByText('llo Worl', { exact: false }) // substring match
-getByText('hello world', { exact: false }) // ignore case
+getByText('llo Worl', {exact: false}) // substring match
+getByText('hello world', {exact: false}) // ignore case
 
 // Matching a regex:
 getByText(/World/) // substring match

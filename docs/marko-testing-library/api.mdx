@@ -33,18 +33,18 @@ function render(
 Render into a container which is appended to `document.body`.
 
 ```javascript
-import { render } from '@marko/testing-library'
+import {render} from '@marko/testing-library'
 import MyTemplate from './my-template.marko'
 
 render(MyTemplate)
 ```
 
 ```javascript
-import { render, screen } from '@marko/testing-library'
+import {render, screen} from '@marko/testing-library'
 import Greeting from './greeting.marko'
 
 test('renders a message', async () => {
-  const { container } = await render(Greeting, { name: 'Marko' })
+  const {container} = await render(Greeting, {name: 'Marko'})
   expect(screen.getByText(/Marko/)).toBeInTheDocument()
   expect(container.firstChild).toMatchInlineSnapshot(`
     <h1>Hello, Marko!</h1>
@@ -70,7 +70,7 @@ of a `div`. In this case, you can specify a `table` as the render `container`.
 ```javascript
 const table = document.createElement('table')
 
-const { container } = await render(MyTableBody, null, {
+const {container} = await render(MyTableBody, null, {
   container: document.body.appendChild(table),
 })
 ```
@@ -91,7 +91,7 @@ See [Queries](queries/about.mdx) for a complete list.
 **Example**
 
 ```javascript
-const { getByLabelText, queryAllByTestId } = await render(MyTemplate)
+const {getByLabelText, queryAllByTestId} = await render(MyTemplate)
 ```
 
 Alternatively, you can use the
@@ -111,10 +111,10 @@ This method is a shortcut for logging the `prettyDOM` for all children inside of
 the `container`.
 
 ```javascript
-import { render } from '@marko/testing-library'
+import {render} from '@marko/testing-library'
 import Greeting from './greeting.marko'
 
-const { debug } = await render(Greeting, { name: 'World' })
+const {debug} = await render(Greeting, {name: 'World'})
 debug()
 
 // <h1>Hello World</h1>
@@ -133,13 +133,13 @@ new data. You can simulate your component receiving new `input` by passing new
 data to the `rerender` helper.
 
 ```javascript
-import { render } from '@marko/testing-library'
+import {render} from '@marko/testing-library'
 import Greeting from './greeting.marko'
 
-const { rerender, debug } = await render(Greeting, { name: 'World' })
+const {rerender, debug} = await render(Greeting, {name: 'World'})
 
 // re-render the same component with different props
-await rerender({ name: 'Marko' })
+await rerender({name: 'Marko'})
 
 debug()
 // <h1>Hello Marko</h1>
@@ -156,10 +156,10 @@ events since the last call to the helper. You can also pass in an event type to
 filter the results.
 
 ```javascript
-import { render, fireEvent } from '@marko/testing-library'
+import {render, fireEvent} from '@marko/testing-library'
 import Counter from './counter.marko'
 
-const { getByText, emitted } = await render(Counter)
+const {getByText, emitted} = await render(Counter)
 
 const button = getByText('Increment')
 
@@ -224,7 +224,7 @@ This can be useful to validate that a component properly cleans up any DOM
 mutations once it has been destroyed.
 
 ```javascript
-import { render, screen, getRoles } from '@marko/testing-library'
+import {render, screen, getRoles} from '@marko/testing-library'
 import Main from './main.marko'
 import Dialog from './dialog.marko'
 
@@ -233,7 +233,7 @@ await render(Main)
 const main = screen.getByRole('main')
 expect(main).not.toHaveAttribute('aria-hidden')
 
-const { cleanup } = await render(Dialog)
+const {cleanup} = await render(Dialog)
 expect(main).toHaveAttribute('aria-hidden') // assert added attribute
 
 cleanup() // destroy the dialog
@@ -276,10 +276,10 @@ into `afterEach` in supported test frameworks. You can also manually call
 `cleanup` at any time which will remove all attached components.
 
 ```javascript
-import { render, cleanup, screen } from '@marko/testing-library'
+import {render, cleanup, screen} from '@marko/testing-library'
 import Greeting from './greeting.marko'
 
-await render(Greeting, { name: 'Marko' })
+await render(Greeting, {name: 'Marko'})
 
 expect(screen.getByText(/Marko/)).toBeInTheDocument()
 

@@ -22,9 +22,9 @@ use.
 ## `render`
 
 ```jsx
-import { render } from '@testing-library/preact'
+import {render} from '@testing-library/preact'
 
-const { results } = render(<YourComponent />, { options })
+const {results} = render(<YourComponent />, {options})
 ```
 
 ### Options
@@ -58,7 +58,7 @@ test. If you'd like to disable this then set `process.env.PTL_SKIP_AUTO_CLEANUP`
 to true when running your tests.
 
 ```jsx
-import { render, cleanup } from '@testing-library/preact'
+import {render, cleanup} from '@testing-library/preact'
 
 afterEach(() => {
   cleanup()
@@ -131,10 +131,10 @@ expect(cb).toHaveBeenCalledTimes(1);
 const handler = jest.fn()
 
 const {
-  container: { firstChild: input },
+  container: {firstChild: input},
 } = render(<input type="text" onInput={handler} />)
 
-fireEvent.input(input, { target: { value: 'a' } })
+fireEvent.input(input, {target: {value: 'a'}})
 
 expect(handler).toHaveBeenCalledTimes(1)
 ```
@@ -149,7 +149,7 @@ render(
   h(elementType, {
     onDblClick: spy,
     ref,
-  })
+  }),
 )
 
 fireEvent['onDblClick'](ref.current)

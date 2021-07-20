@@ -7,7 +7,7 @@
 
 import React from 'react'
 import classNames from 'classnames'
-import { MarkdownBlock } from '../MarkdownBlock'
+import {MarkdownBlock} from '../MarkdownBlock'
 
 const renderBlockImage = (image, imageLink, imageAlt) => {
   if (!image) {

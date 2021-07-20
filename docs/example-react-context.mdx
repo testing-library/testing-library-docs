@@ -5,9 +5,9 @@ title: React Context
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { NameContext, NameProvider, NameConsumer } from '../react-context'
+import {NameContext, NameProvider, NameConsumer} from '../react-context'
 
 /**
  * Test default values by rendering a context consumer without a
@@ -16,7 +16,7 @@ import { NameContext, NameProvider, NameConsumer } from '../react-context'
 test('NameConsumer shows default value', () => {
   render(<NameConsumer />)
   expect(screen.getByText(/^My Name Is:/)).toHaveTextContent(
-    'My Name Is: Unknown'
+    'My Name Is: Unknown',
   )
 })
 
@@ -27,10 +27,10 @@ test('NameConsumer shows default value', () => {
  *
  * @see https://testing-library.com/docs/react-testing-library/setup#custom-render
  */
-const customRender = (ui, { providerProps, ...renderOptions }) => {
+const customRender = (ui, {providerProps, ...renderOptions}) => {
   return render(
     <NameContext.Provider {...providerProps}>{ui}</NameContext.Provider>,
-    renderOptions
+    renderOptions,
   )
 }
 
@@ -38,7 +38,7 @@ test('NameConsumer shows value from provider', () => {
   const providerProps = {
     value: 'C3PO',
   }
-  customRender(<NameConsumer />, { providerProps })
+  customRender(<NameConsumer />, {providerProps})
   expect(screen.getByText(/^My Name Is:/)).toHaveTextContent('My Name Is: C3P0')
 })
 
@@ -53,9 +53,9 @@ test('NameProvider composes full name from first, last', () => {
   }
   customRender(
     <NameContext.Consumer>
-      {(value) => <span>Received: {value}</span>}
+      {value => <span>Received: {value}</span>}
     </NameContext.Consumer>,
-    { providerProps }
+    {providerProps},
   )
   expect(screen.getByText(/^Received:/).textContent).toBe('Received: Boba Fett')
 })
@@ -64,15 +64,15 @@ test('NameProvider composes full name from first, last', () => {
  * A tree containing both a providers and consumer can be rendered normally
  */
 test('NameProvider/Consumer shows name of character', () => {
-  const wrapper = ({ children }) => (
+  const wrapper = ({children}) => (
     <NameProvider first="Leia" last="Organa">
       {children}
     </NameProvider>
   )
 
-  render(<NameConsumer />, { wrapper })
+  render(<NameConsumer />, {wrapper})
   expect(screen.getByText(/^My Name Is:/).textContent).toBe(
-    'My Name Is: Leia Organa'
+    'My Name Is: Leia Organa',
   )
 })
 ```

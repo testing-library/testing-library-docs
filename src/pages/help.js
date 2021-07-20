@@ -8,20 +8,20 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { GridBlock } from '../components/GridBlock'
+import {GridBlock} from '../components/GridBlock'
 
-const ExternalLink = (props) => (
+const ExternalLink = props => (
   <a target="_blank" rel="noreferrer noopener" {...props} />
 )
-const Link = (props) => <a {...props} />
+const Link = props => <a {...props} />
 
 export default function Help(props) {
-  const { language = '' } = props
-  const { siteConfig } = useDocusaurusContext()
-  const { baseUrl, docsUrl } = siteConfig
+  const {language = ''} = props
+  const {siteConfig} = useDocusaurusContext()
+  const {baseUrl, docsUrl} = siteConfig
   const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
   const langPart = `${language ? `${language}/` : ''}`
-  const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`
+  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
 
   const supportLinks = [
     {

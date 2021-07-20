@@ -11,14 +11,14 @@ npm install --save-dev rtl-simple-queries
 ```
 
 ```jsx
-import { screen } from 'rtl-simple-queries'
+import {screen} from 'rtl-simple-queries'
 
-screen.fetchByText(/text/, { allowEmpty: true, allowMultiple: false })
-screen.fetchByText(/text/, { allowMultiple: false })
+screen.fetchByText(/text/, {allowEmpty: true, allowMultiple: false})
+screen.fetchByText(/text/, {allowMultiple: false})
 screen.fetchByText(/text/)
 
 // async
-await screen.fetchByTextAsync(/text/, { allowMultiple: true })
+await screen.fetchByTextAsync(/text/, {allowMultiple: true})
 ```
 
 - [rtl-simple-queries on GitHub][gh]

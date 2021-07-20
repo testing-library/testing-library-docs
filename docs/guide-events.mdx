@@ -11,11 +11,11 @@ possible. With this in mind, you should know that `fireEvent` isn't _exactly_
 how the user interacts with your application, but it's close enough for most
 scenarios.
 
-Consider `fireEvent.click`, which creates a click event and dispatches that event
-on the given DOM node. This works properly for most situations when you simply
-want to test what happens when your element is clicked, but when the _user_
-actually clicks your element, these are the events that are typically fired (in
-order):
+Consider `fireEvent.click`, which creates a click event and dispatches that
+event on the given DOM node. This works properly for most situations when you
+simply want to test what happens when your element is clicked, but when the
+_user_ actually clicks your element, these are the events that are typically
+fired (in order):
 
 - fireEvent.mouseOver(element)
 - fireEvent.mouseMove(element)
@@ -57,10 +57,9 @@ events.
 
 ### Focus/Blur
 
-If an element is focused, a focus event is dispatched, the active element 
-in the document changes, and the previously focused element is blurred. 
-To simulate this behavior you can simply replace `fireEvent`
-with imperative focus:
+If an element is focused, a focus event is dispatched, the active element in the
+document changes, and the previously focused element is blurred. To simulate
+this behavior you can simply replace `fireEvent` with imperative focus:
 
 ```diff
 - fireEvent.focus(getByText('focus me'));

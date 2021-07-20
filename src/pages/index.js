@@ -7,20 +7,20 @@
 
 import React from 'react'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { GridBlock } from '../components/GridBlock'
-import { Container } from '../components/Container'
-import { Showcase } from '../components/Showcase'
+import {GridBlock} from '../components/GridBlock'
+import {Container} from '../components/Container'
+import {Showcase} from '../components/Showcase'
 import Layout from '@theme/Layout'
 
-const HomeSplash = (props) => {
-  const { language = '' } = props
-  const { siteConfig } = useDocusaurusContext()
-  const { baseUrl, customFields } = siteConfig
+const HomeSplash = props => {
+  const {language = ''} = props
+  const {siteConfig} = useDocusaurusContext()
+  const {baseUrl, customFields} = siteConfig
   const docsPart = `${customFields.docsPath ? `${customFields.docsPath}/` : ''}`
   const langPart = `${language ? `${language}/` : ''}`
-  const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`
+  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
 
-  const SplashContainer = (props) => (
+  const SplashContainer = props => (
     <div className="homeContainer">
       <div className="homeSplashFade">
         <div className="wrapper homeWrapper">{props.children}</div>
@@ -28,7 +28,7 @@ const HomeSplash = (props) => {
     </div>
   )
 
-  const Logo = (props) => (
+  const Logo = props => (
     <div className="projectLogo">
       <img src={props.img_src} alt="Project Logo" />
     </div>
@@ -43,7 +43,7 @@ const HomeSplash = (props) => {
     </div>
   )
 
-  const Button = (props) => (
+  const Button = props => (
     <a
       className="button button--primary button--outline"
       href={props.href}
@@ -68,10 +68,10 @@ const HomeSplash = (props) => {
 
 export default class Index extends React.Component {
   render() {
-    const { config: siteConfig, language = '' } = this.props
-    const { baseUrl } = siteConfig
+    const {config: siteConfig, language = ''} = this.props
+    const {baseUrl} = siteConfig
 
-    const Block = (props) => (
+    const Block = props => (
       <Container
         padding={['bottom', 'top']}
         id={props.id}
@@ -88,7 +88,7 @@ export default class Index extends React.Component {
 
     const FeatureCallout = () => (
       <Container className="" background={'light'} padding={['top', 'bottom']}>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{textAlign: 'center'}}>
           <p>
             <i>
               The more your tests resemble the way your software is used, <br />
@@ -242,15 +242,14 @@ export default class Index extends React.Component {
         return null
       }
 
-      const pageUrl = (page) =>
-        baseUrl + (language ? `${language}/` : '') + page
+      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
 
       return (
         <div className="productShowcaseSection paddingBottom paddingTop">
           <h2>Who is Using This?</h2>
           <div className="logos">
             <Showcase
-              users={siteConfig.customFields.users.filter((u) => u.pinned)}
+              users={siteConfig.customFields.users.filter(u => u.pinned)}
             />
           </div>
           <a
@@ -273,13 +272,15 @@ export default class Index extends React.Component {
                 image: `${baseUrl}img/impactful-conribution-award-399x544.png`,
                 imageAlign: 'top',
                 imageLink: 'https://osawards.com/react/2019',
-                imageAlt: 'Winner of the Open Source Awards 2019 in the category "The most impactful contribution to the community"',
+                imageAlt:
+                  'Winner of the Open Source Awards 2019 in the category "The most impactful contribution to the community"',
               },
               {
                 image: `${baseUrl}img/highest-satisfaction-638x574.png`,
                 imageAlign: 'top',
                 imageLink: 'https://2020.stateofjs.com/en-US/awards/',
-                imageAlt: 'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users',
+                imageAlt:
+                  'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users',
               },
             ]}
           </Block>

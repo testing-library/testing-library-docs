@@ -202,7 +202,7 @@ label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
 ```js
-import { screen } from '@testing-library/dom'
+import {screen} from '@testing-library/dom'
 
 const dialogContainer = screen.getByRole('dialog')
 ```
@@ -211,7 +211,7 @@ const dialogContainer = screen.getByRole('dialog')
   <TabItem value="react">
 
 ```jsx
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
 const dialogContainer = screen.getByRole('dialog')
@@ -272,10 +272,10 @@ you can query the `Heading Level Three` heading using
 `getByRole('heading', { level: 3 })`.
 
 ```js
-getByRole('heading', { level: 1 })
+getByRole('heading', {level: 1})
 // <h1>Heading Level One</h1>
 
-getAllByRole('heading', { level: 2 })
+getAllByRole('heading', {level: 2})
 // [
 //   <h2>First Heading Level Two</h2>,
 //   <div role="heading" aria-level="2">Second Heading Level Two</div>

@@ -17,30 +17,30 @@ In summary:
 
 ```javascript
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import {render, fireEvent} from '@testing-library/react'
 
 test('change values via the fireEvent.change method', () => {
   const handleChange = jest.fn()
-  const { container } = render(<input type="text" onChange={handleChange} />)
+  const {container} = render(<input type="text" onChange={handleChange} />)
   const input = container.firstChild
-  fireEvent.change(input, { target: { value: 'a' } })
+  fireEvent.change(input, {target: {value: 'a'}})
   expect(handleChange).toHaveBeenCalledTimes(1)
   expect(input.value).toBe('a')
 })
 
 test('select drop-downs must use the fireEvent.change', () => {
   const handleChange = jest.fn()
-  const { container } = render(
+  const {container} = render(
     <select onChange={handleChange}>
       <option value="1">1</option>
       <option value="2">2</option>
-    </select>
+    </select>,
   )
   const select = container.firstChild
   const option1 = container.getElementsByTagName('option').item(0)
   const option2 = container.getElementsByTagName('option').item(1)
 
-  fireEvent.change(select, { target: { value: '2' } })
+  fireEvent.change(select, {target: {value: '2'}})
 
   expect(handleChange).toHaveBeenCalledTimes(1)
   expect(option1.selected).toBe(false)
@@ -49,9 +49,7 @@ test('select drop-downs must use the fireEvent.change', () => {
 
 test('checkboxes (and radios) must use fireEvent.click', () => {
   const handleChange = jest.fn()
-  const { container } = render(
-    <input type="checkbox" onChange={handleChange} />
-  )
+  const {container} = render(<input type="checkbox" onChange={handleChange} />)
   const checkbox = container.firstChild
   fireEvent.click(checkbox)
   expect(handleChange).toHaveBeenCalledTimes(1)
@@ -113,16 +111,16 @@ libraries. I don't want my tests to wait for animations to end.
 
 ```javascript
 jest.mock('react-transition-group', () => {
-  const FakeTransition = jest.fn(({ children }) => children)
-  const FakeCSSTransition = jest.fn((props) =>
-    props.in ? <FakeTransition>{props.children}</FakeTransition> : null
+  const FakeTransition = jest.fn(({children}) => children)
+  const FakeCSSTransition = jest.fn(props =>
+    props.in ? <FakeTransition>{props.children}</FakeTransition> : null,
   )
-  return { CSSTransition: FakeCSSTransition, Transition: FakeTransition }
+  return {CSSTransition: FakeCSSTransition, Transition: FakeTransition}
 })
 
 test('you can mock things with jest.mock', () => {
-  const { getByTestId, queryByTestId } = render(
-    <HiddenMessage initialShow={true} />
+  const {getByTestId, queryByTestId} = render(
+    <HiddenMessage initialShow={true} />,
   )
   expect(queryByTestId('hidden-message')).toBeTruthy() // we just care it exists
   // hide the message

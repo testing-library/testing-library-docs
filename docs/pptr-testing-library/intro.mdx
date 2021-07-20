@@ -16,9 +16,9 @@ npm install --save-dev puppeteer pptr-testing-library
 
 ```js
 const puppeteer = require('puppeteer')
-const { getDocument, queries, waitFor } = require('pptr-testing-library')
+const {getDocument, queries, waitFor} = require('pptr-testing-library')
 
-const { getByTestId, getByLabelText } = queries
+const {getByTestId, getByLabelText} = queries
 
 const browser = await puppeteer.launch()
 const page = await browser.newPage()
@@ -50,7 +50,7 @@ const $document = await page.getDocument()
 // query methods are added directly to prototype of ElementHandle
 const $form = await $document.getByTestId('my-form')
 // destructing works if you explicitly call getQueriesForElement
-const { getByLabelText } = $form.getQueriesForElement()
+const {getByLabelText} = $form.getQueriesForElement()
 // ...
 const $email = await getByLabelText('Email')
 ```

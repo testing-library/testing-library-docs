@@ -1,6 +1,4 @@
-testing-library-docs
---------------------
-
+## testing-library-docs
 
 <!-- prettier-ignore-start -->
 [![Open Collective Sponsors and Backers][opencollective-badge]][opencollective]
@@ -8,7 +6,10 @@ testing-library-docs
 [![Code of Conduct][coc-badge]][coc]
 <!-- prettier-ignore-end -->
 
-Documentation site for [React Testing Library](https://github.com/testing-library/react-testing-library), [DOM Testing Library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
+Documentation site for
+[React Testing Library](https://github.com/testing-library/react-testing-library),
+[DOM Testing Library](https://github.com/testing-library/dom-testing-library),
+and [related projects](https://github.com/testing-library)
 
 **https://testing-library.com**
 
@@ -16,13 +17,18 @@ Documentation site for [React Testing Library](https://github.com/testing-librar
 
 [![Netlify Status][netlify-badge]][build]
 
-[netlify-badge]: https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
+[netlify-badge]:
+  https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
 [build]: https://app.netlify.com/sites/testing-library/deploys
 [opencollective]: https://opencollective.com/testing-library/
-[opencollective-badge]: https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
-[allcontributors-badge]: https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
-[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://github.com/testing-library/react-testing-library/blob/main/CODE_OF_CONDUCT.md
+[opencollective-badge]:
+  https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
+[allcontributors-badge]:
+  https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
+[coc-badge]:
+  https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[coc]:
+  https://github.com/testing-library/react-testing-library/blob/main/CODE_OF_CONDUCT.md
 
 This website was created with [Docusaurus](https://v2.docusaurus.io).
 
@@ -69,8 +75,7 @@ For more information about docs, click [here](https://v2.docusaurus.io/docs)
 
 ## Editing an existing blog post
 
-Edit blog posts by navigating to `blog` and editing the corresponding
-post:
+Edit blog posts by navigating to `blog` and editing the corresponding post:
 
 `blog/post-to-be-edited.mdx`
 
@@ -126,7 +131,8 @@ For more information about adding new docs, click
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -354,4 +360,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!

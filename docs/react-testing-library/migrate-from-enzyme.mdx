@@ -85,7 +85,7 @@ import React from 'react'
  * render: lets us render the component (like how React would)
  * screen: Your utility for finding elements the same way the user does
  **/
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 ```
 
 The test structure is as same as how you would write it in Enzyme
@@ -125,14 +125,14 @@ different name, and the template updates accordingly. Check the live version on
 [Codesandbox](https://codesandbox.io/s/ecstatic-hellman-fh7in)
 
 ```jsx
-const Welcome = (props) => {
+const Welcome = props => {
   const [values, setValues] = useState({
     firstName: props.firstName,
     lastName: props.lastName,
   })
 
-  const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value })
+  const handleChange = event => {
+    setValues({...values, [event.target.name]: event.target.value})
   }
 
   return (

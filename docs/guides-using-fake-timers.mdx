@@ -31,14 +31,15 @@ test runs.
 
 The main reason to do that is to prevent 3rd party libraries running after your
 test finishes (e.g cleanup functions), from being coupled to your fake timers
-and use real timers instead. 
+and use real timers instead.
 
 For that you usually call `useRealTimers` in `afterEach`.
 
 It's important to also call `runOnlyPendingTimers` before switching to real
-timers. This will ensure you flush all the pending timers before you switch to real
-timers. If you don't progress the timers and just switch to real timers, the
-scheduled tasks won't get executed and you'll get an unexpected behavior. This is mostly important for 3rd parties that schedule tasks without you being
+timers. This will ensure you flush all the pending timers before you switch to
+real timers. If you don't progress the timers and just switch to real timers,
+the scheduled tasks won't get executed and you'll get an unexpected behavior.
+This is mostly important for 3rd parties that schedule tasks without you being
 aware of it.
 
 Here's an example of doing that using jest:
