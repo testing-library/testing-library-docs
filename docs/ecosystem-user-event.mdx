@@ -9,22 +9,28 @@ advanced simulation of browser interactions than the built-in
 
 [`user-event` on GitHub][gh]
 
-## Install
+## Installation
 
-```
+With NPM:
+
+```sh
 npm install --save-dev @testing-library/user-event @testing-library/dom
 ```
 
-```jsx
-import { screen } from '@testing-library/dom'
+With Yarn:
+
+```sh
+yarn add --dev @testing-library/user-event @testing-library/dom
+```
+
+Now simply import it in your tests:
+
+```js
 import userEvent from '@testing-library/user-event'
 
-test('types inside textarea', () => {
-  document.body.innerHTML = `<textarea />`
+// or
 
-  userEvent.type(screen.getByRole('textbox'), 'Hello, World!')
-  expect(screen.getByRole('textbox')).toHaveValue('Hello, World!')
-})
+const { default: userEvent } = require('@testing-library/user-event')
 ```
 
 ## API
