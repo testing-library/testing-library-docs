@@ -7,8 +7,6 @@ title: user-event
 advanced simulation of browser interactions than the built-in
 [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) method.
 
-[`user-event` on GitHub][gh]
-
 ## Installation
 
 With NPM:
@@ -568,10 +566,5 @@ test('delete characters within the selectedRange', () => {
   expect(input).toHaveValue('This is a good example')
 })
 ```
-
-## Known limitations
-
-- No `<input type="color" />` support.
-  [#423](https://github.com/testing-library/user-event/issues/423#issuecomment-669368863)
 
 [gh]: https://github.com/testing-library/user-event
