@@ -94,7 +94,7 @@ of a `div`. In this case, you can specify a `table` as the render `container`.
 ```js
 const table = document.createElement('table')
 
-const { container } = render(TableBody, {
+const {container} = render(TableBody, {
   props,
   container: document.body.appendChild(table),
 })
@@ -134,7 +134,7 @@ first argument bound to the [baseElement](#baseelement), which defaults to
 See [Queries](queries/about.mdx) for a complete list.
 
 ```js
-const { getByLabelText, queryAllByTestId } = render(Component)
+const {getByLabelText, queryAllByTestId} = render(Component)
 ```
 
 #### `container`

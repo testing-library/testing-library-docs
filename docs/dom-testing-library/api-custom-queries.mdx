@@ -24,15 +24,15 @@ to use a different data-attribute. (Note: test files would import
 ```js
 // test-utils.js
 const domTestingLib = require('@testing-library/dom')
-const { queryHelpers } = domTestingLib
+const {queryHelpers} = domTestingLib
 
 export const queryByTestId = queryHelpers.queryByAttribute.bind(
   null,
-  'data-test-id'
+  'data-test-id',
 )
 export const queryAllByTestId = queryHelpers.queryAllByAttribute.bind(
   null,
-  'data-test-id'
+  'data-test-id',
 )
 
 export function getAllByTestId(container, id, ...rest) {
@@ -40,7 +40,7 @@ export function getAllByTestId(container, id, ...rest) {
   if (!els.length) {
     throw queryHelpers.getElementError(
       `Unable to find an element by: [data-test-id="${id}"]`,
-      container
+      container,
     )
   }
   return els
@@ -52,7 +52,7 @@ export function getByTestId(...args) {
   if (result.length > 1) {
     throw queryHelpers.getElementError(
       `Found multiple elements with the [data-test-id="${id}"]`,
-      container
+      container,
     )
   }
   return result[0]

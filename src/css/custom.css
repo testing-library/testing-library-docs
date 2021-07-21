@@ -1,5 +1,5 @@
-:root{
-  --ifm-light-background-color: var(--ifm-color-emphasis-100)
+:root {
+  --ifm-light-background-color: var(--ifm-color-emphasis-100);
 }
 
 html[data-theme='dark'] {

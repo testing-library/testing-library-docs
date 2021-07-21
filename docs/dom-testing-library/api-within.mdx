@@ -25,7 +25,7 @@ could do:
   <TabItem value="native">
 
 ```js
-import { within } from '@testing-library/dom'
+import {within} from '@testing-library/dom'
 
 const messages = document.getElementById('messages')
 const helloMessage = within(messages).getByText('hello')
@@ -35,9 +35,9 @@ const helloMessage = within(messages).getByText('hello')
   <TabItem value="react">
 
 ```jsx
-import { render, within } from '@testing-library/react'
+import {render, within} from '@testing-library/react'
 
-const { getByLabelText } = render(<MyComponent />)
+const {getByLabelText} = render(<MyComponent />)
 const signinModal = getByLabelText('Sign In')
 within(signinModal).getByPlaceholderText('Username')
 ```

@@ -36,7 +36,7 @@ retries and the default testID attribute.
 ## Example
 
 ```jsx
-import { render, screen } from '@testing-library/react' // (or /dom, /vue, ...)
+import {render, screen} from '@testing-library/react' // (or /dom, /vue, ...)
 
 test('should show login form', () => {
   render(<Login />)
@@ -160,7 +160,7 @@ or plain HTML code):
 You can use a query to find an element (byLabelText, in this case):
 
 ```js
-import { screen, getByLabelText } from '@testing-library/dom'
+import {screen, getByLabelText} from '@testing-library/dom'
 
 // With screen:
 const inputNode1 = screen.getByLabelText('Username')
@@ -186,7 +186,7 @@ label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
 ```js
-import { screen } from '@testing-library/dom'
+import {screen} from '@testing-library/dom'
 
 document.body.innerHTML = `
   <label for="example">Example</label>
@@ -200,13 +200,13 @@ const exampleInput = screen.getByLabelText('Example')
   <TabItem value="react">
 
 ```jsx
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 
 render(
   <div>
     <label htmlFor="example">Example</label>
     <input id="example" />
-  </div>
+  </div>,
 )
 
 const exampleInput = screen.getByLabelText('Example')
@@ -252,8 +252,8 @@ Given the following HTML:
 ```javascript
 // Matching a string:
 screen.getByText('Hello World') // full string match
-screen.getByText('llo Worl', { exact: false }) // substring match
-screen.getByText('hello world', { exact: false }) // ignore case
+screen.getByText('llo Worl', {exact: false}) // substring match
+screen.getByText('hello world', {exact: false}) // ignore case
 
 // Matching a regex:
 screen.getByText(/World/) // substring match
@@ -324,7 +324,7 @@ To perform a match against text without trimming:
 
 ```javascript
 screen.getByText('text', {
-  normalizer: getDefaultNormalizer({ trim: false }),
+  normalizer: getDefaultNormalizer({trim: false}),
 })
 ```
 
@@ -333,8 +333,8 @@ To override normalization to remove some Unicode characters whilst keeping some
 
 ```javascript
 screen.getByText('text', {
-  normalizer: (str) =>
-    getDefaultNormalizer({ trim: false })(str).replace(/[\u200E-\u200F]*/g, ''),
+  normalizer: str =>
+    getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```
 
@@ -347,7 +347,7 @@ This method is essentially a shortcut for `console.log(prettyDOM())`. It
 supports debugging the document, a single element, or an array of elements.
 
 ```javascript
-import { screen } from '@testing-library/dom'
+import {screen} from '@testing-library/dom'
 
 document.body.innerHTML = `
   <button>test</button>
@@ -369,7 +369,7 @@ For debugging using [testing-playground](https://testing-playground.com), screen
 exposes this convenient method which logs a URL that can be opened in a browser.
 
 ```javascript
-import { screen } from '@testing-library/dom'
+import {screen} from '@testing-library/dom'
 
 document.body.innerHTML = `
   <button>test</button>
@@ -394,7 +394,7 @@ and establish a stable API contract in the HTML.
 
 ```jsx
 // @testing-library/react
-const { container } = render(<MyComponent />)
+const {container} = render(<MyComponent />)
 const foo = container.querySelector('[data-foo="bar"]')
 ```
 

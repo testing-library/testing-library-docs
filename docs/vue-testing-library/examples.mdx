@@ -29,12 +29,12 @@ title: Examples
 ```
 
 ```js
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import Component from './Component.vue'
 
 test('increments value on click', async () => {
   // The render method returns a collection of utilities to query your component.
-  const { getByText } = render(Component)
+  const {getByText} = render(Component)
 
   // getByText returns the first matching node for the provided text, and
   // throws an error if no elements match or if more than one match is found.
@@ -72,11 +72,11 @@ test('increments value on click', async () => {
 ```
 
 ```js
-import { render, fireEvent } from '@testing-library/vue'
+import {render, fireEvent} from '@testing-library/vue'
 import Component from './Component.vue'
 
 test('properly handles v-model', async () => {
-  const { getByLabelText, getByText } = render(Component)
+  const {getByLabelText, getByText} = render(Component)
 
   // Asserts initial state.
   getByText('Hi, my name is Alice')

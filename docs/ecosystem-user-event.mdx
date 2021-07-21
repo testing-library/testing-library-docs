@@ -36,7 +36,7 @@ import userEvent from '@testing-library/user-event'
 
 // or
 
-const { default: userEvent } = require('@testing-library/user-event')
+const {default: userEvent} = require('@testing-library/user-event')
 ```
 
 ## API
@@ -54,7 +54,7 @@ effects.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('click', () => {
@@ -62,7 +62,7 @@ test('click', () => {
     <div>
       <label htmlFor="checkbox">Check</label>
       <input id="checkbox" type="checkbox" />
-    </div>
+    </div>,
   )
 
   userEvent.click(screen.getByText('Check'))
@@ -73,7 +73,7 @@ test('click', () => {
 You can also ctrlClick / shiftClick etc with
 
 ```js
-userEvent.click(elem, { ctrlKey: true, shiftKey: true })
+userEvent.click(elem, {ctrlKey: true, shiftKey: true})
 ```
 
 See the
@@ -92,7 +92,7 @@ side effects.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('double click', () => {
@@ -111,7 +111,7 @@ Writes `text` inside an `<input>` or a `<textarea>`.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('type', () => {
@@ -172,7 +172,7 @@ An example of an usage with a selection range:
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('delete characters within the selectedRange', () => {
@@ -180,7 +180,7 @@ test('delete characters within the selectedRange', () => {
     <div>
       <label htmlFor="my-input">Example:</label>
       <input id="my-input" type="text" value="This is a bad example" />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/example/i)
   input.setSelectionRange(10, 13)
@@ -197,7 +197,7 @@ The following is an example of usage of this library with
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('types into the input', () => {
@@ -205,7 +205,7 @@ test('types into the input', () => {
     <>
       <label for="time">Enter a time</label>
       <input type="time" id="time" />
-    </>
+    </>,
   )
   const input = screen.getByLabelText(/enter a time/i)
   userEvent.type(input, '13:58')
@@ -266,7 +266,7 @@ keyboard operations.
 ```js
 const keyboardState = userEvent.keyboard('[ControlLeft>]') // keydown [ControlLeft]
 // ... inspect some changes ...
-userEvent.keyboard('a', { keyboardState }) // press [KeyA] with active ctrlKey modifier
+userEvent.keyboard('a', {keyboardState}) // press [KeyA] with active ctrlKey modifier
 ```
 
 The mapping of `key` to `code` is performed by a
@@ -275,7 +275,7 @@ portraying a "default" US-keyboard. You can provide your own local keyboard
 mapping per option.
 
 ```js
-userEvent.keyboard('?', { keyboardMap: myOwnLocaleKeyboardMap })
+userEvent.keyboard('?', {keyboardMap: myOwnLocaleKeyboardMap})
 ```
 
 > Future versions might try to interpolate the modifiers needed to reach a
@@ -294,17 +294,17 @@ the element, files that don't match will be discarded.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('upload file', () => {
-  const file = new File(['hello'], 'hello.png', { type: 'image/png' })
+  const file = new File(['hello'], 'hello.png', {type: 'image/png'})
 
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
       <input id="file-uploader" type="file" />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/upload file/i)
   userEvent.upload(input, file)
@@ -316,15 +316,15 @@ test('upload file', () => {
 
 test('upload multiple files', () => {
   const files = [
-    new File(['hello'], 'hello.png', { type: 'image/png' }),
-    new File(['there'], 'there.png', { type: 'image/png' }),
+    new File(['hello'], 'hello.png', {type: 'image/png'}),
+    new File(['there'], 'there.png', {type: 'image/png'}),
   ]
 
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
       <input id="file-uploader" type="file" multiple />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/upload file/i)
   userEvent.upload(input, files)
@@ -341,7 +341,7 @@ Selects the text inside an `<input>` or `<textarea>` and deletes it.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('clear', () => {
@@ -359,7 +359,7 @@ element.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('selectOptions', () => {
@@ -368,14 +368,14 @@ test('selectOptions', () => {
       <option value="1">A</option>
       <option value="2">B</option>
       <option value="3">C</option>
-    </select>
+    </select>,
   )
 
   userEvent.selectOptions(screen.getByRole('listbox'), ['1', '3'])
 
-  expect(screen.getByRole('option', { name: 'A' }).selected).toBe(true)
-  expect(screen.getByRole('option', { name: 'B' }).selected).toBe(false)
-  expect(screen.getByRole('option', { name: 'C' }).selected).toBe(true)
+  expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
+  expect(screen.getByRole('option', {name: 'B'}).selected).toBe(false)
+  expect(screen.getByRole('option', {name: 'C'}).selected).toBe(true)
 })
 ```
 
@@ -398,7 +398,7 @@ element.
 
 ```jsx
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('deselectOptions', () => {
@@ -407,7 +407,7 @@ test('deselectOptions', () => {
       <option value="1">A</option>
       <option value="2">B</option>
       <option value="3">C</option>
-    </select>
+    </select>,
   )
 
   userEvent.selectOptions(screen.getByRole('listbox'), '2')
@@ -443,7 +443,7 @@ Options:
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import userEvent from '@testing-library/user-event'
 
@@ -453,7 +453,7 @@ it('should cycle elements in document tab order', () => {
       <input data-testid="element" type="checkbox" />
       <input data-testid="element" type="radio" />
       <input data-testid="element" type="number" />
-    </div>
+    </div>,
   )
 
   const [checkbox, radio, number] = screen.getAllByTestId('element')
@@ -489,7 +489,7 @@ Hovers over `element`.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Tooltip from '../tooltip'
 
@@ -498,7 +498,7 @@ test('hover', () => {
   render(
     <Tooltip messageText={messageText}>
       <TrashIcon aria-label="Delete" />
-    </Tooltip>
+    </Tooltip>,
   )
 
   userEvent.hover(screen.getByLabelText(/delete/i))
@@ -523,7 +523,7 @@ test('should paste text in input', () => {
   render(<MyInput />)
 
   const text = 'Hello, world!'
-  const element = getByRole('textbox', { name: /paste your greeting/i })
+  const element = getByRole('textbox', {name: /paste your greeting/i})
   userEvent.paste(element, text)
   expect(element).toHaveValue(text)
 })
@@ -557,15 +557,15 @@ Usage example:
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import userEvent, { specialChars } from '@testing-library/user-event'
+import {render, screen} from '@testing-library/react'
+import userEvent, {specialChars} from '@testing-library/user-event'
 
 test('delete characters within the selectedRange', () => {
   render(
     <div>
       <label htmlFor="my-input">Example:</label>
       <input id="my-input" type="text" value="This is a bad example" />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/example/i)
   input.setSelectionRange(10, 13)

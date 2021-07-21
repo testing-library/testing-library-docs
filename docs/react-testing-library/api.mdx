@@ -33,24 +33,24 @@ function render(
   ui: React.ReactElement<any>,
   options?: {
     /* You won't often use this, expand below for docs on options */
-  }
+  },
 ): RenderResult
 ```
 
 Render into a container which is appended to `document.body`.
 
 ```jsx
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 
 render(<div />)
 ```
 
 ```jsx
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 test('renders a message', () => {
-  const { container, getByText } = render(<Greeting />)
+  const {container, getByText} = render(<Greeting />)
   expect(getByText('Hello, world!')).toBeInTheDocument()
   expect(container.firstChild).toMatchInlineSnapshot(`
     <h1>Hello, World!</h1>
@@ -76,7 +76,7 @@ of a `div`. In this case, you can specify a `table` as the render `container`.
 ```jsx
 const table = document.createElement('table')
 
-const { container } = render(<TableBody {...props} />, {
+const {container} = render(<TableBody {...props} />, {
   container: document.body.appendChild(table),
 })
 ```
@@ -108,15 +108,15 @@ merged.
 ```js
 // Example, a function to traverse table contents
 import * as tableQueries from 'my-table-query-libary'
-import { queries } from '@testing-library/react'
+import {queries} from '@testing-library/react'
 
-const { getByRowColumn, getByText } = render(<MyTable />, {
-  queries: { ...queries, ...tableQueries },
+const {getByRowColumn, getByText} = render(<MyTable />, {
+  queries: {...queries, ...tableQueries},
 })
 ```
 
-See [helpers](dom-testing-library/api-custom-queries.mdx) for guidance on using utility
-functions to create custom queries.
+See [helpers](dom-testing-library/api-custom-queries.mdx) for guidance on using
+utility functions to create custom queries.
 
 Custom queries can also be added globally by following the
 [custom render guide](setup.mdx#custom-render).
@@ -128,16 +128,16 @@ The `render` method returns an object that has a few properties:
 ### `...queries`
 
 The most important feature of `render` is that the queries from
-[DOM Testing Library](queries/about.mdx) are automatically
-returned with their first argument bound to the [baseElement](#baseelement),
-which defaults to `document.body`.
+[DOM Testing Library](queries/about.mdx) are automatically returned with their
+first argument bound to the [baseElement](#baseelement), which defaults to
+`document.body`.
 
 See [Queries](queries/about.mdx) for a complete list.
 
 **Example**
 
 ```jsx
-const { getByLabelText, queryAllByTestId } = render(<Component />)
+const {getByLabelText, queryAllByTestId} = render(<Component />)
 ```
 
 ### `container`
@@ -174,17 +174,17 @@ renders its HTML directly in the body.
 
 ### `debug`
 
-> NOTE: It's recommended to use
-> [`screen.debug`](queries/about.mdx#screendebug) instead.
+> NOTE: It's recommended to use [`screen.debug`](queries/about.mdx#screendebug)
+> instead.
 
 This method is a shortcut for `console.log(prettyDOM(baseElement))`.
 
 ```jsx
 import React from 'react'
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 
 const HelloWorld = () => <h1>Hello World</h1>
-const { debug } = render(<HelloWorld />)
+const {debug} = render(<HelloWorld />)
 debug()
 // <div>
 //   <h1>Hello World</h1>
@@ -208,9 +208,9 @@ prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
 ```jsx
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 
-const { rerender } = render(<NumberDisplay number={1} />)
+const {rerender} = render(<NumberDisplay number={1} />)
 
 // re-render the same component with different props
 rerender(<NumberDisplay number={2} />)
@@ -228,9 +228,9 @@ that you don't leave event handlers hanging around causing memory leaks).
 > `ReactDOM.unmountComponentAtNode`
 
 ```jsx
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 
-const { container, unmount } = render(<Login />)
+const {container, unmount} = render(<Login />)
 unmount()
 // your component has been unmounted and now: container.innerHTML === ''
 ```
@@ -241,20 +241,20 @@ Returns a `DocumentFragment` of your rendered component. This can be useful if
 you need to avoid live bindings and see how your component reacts to events.
 
 ```jsx
-import React, { useState } from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import React, {useState} from 'react'
+import {render, fireEvent} from '@testing-library/react'
 
 const TestComponent = () => {
   const [count, setCounter] = useState(0)
 
   return (
-    <button onClick={() => setCounter((count) => count + 1)}>
+    <button onClick={() => setCounter(count => count + 1)}>
       Click to increase: {count}
     </button>
   )
 }
 
-const { getByText, asFragment } = render(<TestComponent />)
+const {getByText, asFragment} = render(<TestComponent />)
 const firstRender = asFragment()
 
 fireEvent.click(getByText(/Click to increase/))
@@ -280,7 +280,7 @@ For example, if you're using the [ava](https://github.com/avajs/ava) testing
 framework, then you would need to use the `test.afterEach` hook like so:
 
 ```jsx
-import { cleanup, render } from '@testing-library/react'
+import {cleanup, render} from '@testing-library/react'
 import test from 'ava'
 
 test.afterEach(cleanup)

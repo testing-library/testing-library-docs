@@ -8,10 +8,10 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { Showcase } from '../components/Showcase'
+import {Showcase} from '../components/Showcase'
 
 export default function Users(props) {
-  const { siteConfig } = useDocusaurusContext()
+  const {siteConfig} = useDocusaurusContext()
   if ((siteConfig.customFields.users || []).length === 0) {
     return null
   }

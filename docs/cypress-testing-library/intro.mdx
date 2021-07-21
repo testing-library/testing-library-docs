@@ -53,19 +53,17 @@ To show some simple examples (from
 [cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/97939da7d4707a71049884c0324c0eda56e26fc2/cypress/integration/find.spec.js)):
 
 ```javascript
-cy.findByRole('button', { name: /Jackie Chan/i }).click()
-cy.findByRole('button', { name: /Button Text/i }).should('exist')
-cy.findByRole('button', { name: /Non-existing Button Text/i }).should(
-  'not.exist'
-)
-cy.findByLabelText(/Label text/i, { timeout: 7000 }).should('exist')
+cy.findByRole('button', {name: /Jackie Chan/i}).click()
+cy.findByRole('button', {name: /Button Text/i}).should('exist')
+cy.findByRole('button', {name: /Non-existing Button Text/i}).should('not.exist')
+cy.findByLabelText(/Label text/i, {timeout: 7000}).should('exist')
 
 // findAllByText _inside_ a form element
 cy.get('form')
-  .findByText('button', { name: /Button Text/i })
+  .findByText('button', {name: /Button Text/i})
   .should('exist')
 cy.findByRole('dialog').within(() => {
-  cy.findByRole('button', { name: /confirm/i })
+  cy.findByRole('button', {name: /confirm/i})
 })
 ```
 

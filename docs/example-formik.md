@@ -9,11 +9,11 @@ Example based in this
 ```jsx
 // myForm.js
 import React from 'react'
-import { Formik, Field, Form } from 'formik'
+import {Formik, Field, Form} from 'formik'
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
-export const MyForm = ({ onSubmit }) => {
+export const MyForm = ({onSubmit}) => {
   const handleSubmit = async values => {
     await sleep(500)
     onSubmit(values)
@@ -55,10 +55,10 @@ export const MyForm = ({ onSubmit }) => {
 ```jsx
 // myForm.test.js
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import {render, screen, waitFor} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { MyForm } from './myForm.js'
+import {MyForm} from './myForm.js'
 
 test('rendering and submitting a basic Formik form', async () => {
   const handleSubmit = jest.fn()
@@ -68,14 +68,14 @@ test('rendering and submitting a basic Formik form', async () => {
   userEvent.type(screen.getByLabelText(/last name/i), 'Dee')
   userEvent.type(screen.getByLabelText(/email/i), 'john.dee@someemail.com')
 
-  userEvent.click(screen.getByRole('button', { name: /submit/i }))
+  userEvent.click(screen.getByRole('button', {name: /submit/i}))
 
   await waitFor(() =>
     expect(handleSubmit).toHaveBeenCalledWith({
       email: 'john.dee@someemail.com',
       firstName: 'John',
       lastName: 'Dee',
-    })
+    }),
   )
 })
 ```

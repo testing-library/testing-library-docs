@@ -30,10 +30,10 @@ WebdriverIO elements like normal
 are bound to `document.body` by default.
 
 ```javascript
-import { setupBrowser } from '@testing-library/webdriverio'
+import {setupBrowser} from '@testing-library/webdriverio'
 
 it('can click button', async () => {
-  const { getByText } = setupBrowser(browser)
+  const {getByText} = setupBrowser(browser)
 
   const button = await getByText('Button Text')
   await button.click()
@@ -91,7 +91,7 @@ it('adds queries as element commands scoped to element', async () => {
 Accepts a WebdriverIO element and returns queries scoped to that element
 
 ```javascript
-import { within } from '@testing-library/webdriverio'
+import {within} from '@testing-library/webdriverio'
 
 it('within scopes queries to element', async () => {
   const nested = await browser.$('*[data-testid="nested"]')
@@ -108,17 +108,17 @@ it('within scopes queries to element', async () => {
 Lets you [configure dom-testing-library][config]
 
 ```javascript
-import { configure } from '@testing-library/webdriverio'
+import {configure} from '@testing-library/webdriverio'
 
 beforeEach(() => {
-  configure({ testIdAttribute: 'data-automation-id' })
+  configure({testIdAttribute: 'data-automation-id'})
 })
 afterEach(() => {
   configure(null)
 })
 
 it('lets you configure queries', async () => {
-  const { getByTestId } = setupBrowser(browser)
+  const {getByTestId} = setupBrowser(browser)
 
   expect(await getByTestId('testid-in-data-automation-id-attr')).toBeDefined()
 })
@@ -132,7 +132,7 @@ global `WebdriverIO` namespace need to be extended. Add the following to a
 typescript module:
 
 ```typescript
-import { WebdriverIOQueries } from '@testing-library/webdriverio'
+import {WebdriverIOQueries} from '@testing-library/webdriverio'
 
 declare global {
   namespace WebdriverIO {
@@ -146,7 +146,7 @@ If you are using the `@wdio/sync` package you will need to use the
 `WebdriverIOQueriesSync` type to extend the interfaces:
 
 ```typescript
-import { WebdriverIOQueriesSync } from '@testing-library/webdriverio'
+import {WebdriverIOQueriesSync} from '@testing-library/webdriverio'
 
 declare global {
   namespace WebdriverIO {
