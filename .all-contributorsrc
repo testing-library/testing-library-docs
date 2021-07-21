@@ -1519,6 +1519,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ravinggenius",
+      "name": "Thomas Ingram",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21517?v=4",
+      "profile": "http://www.ravinggenius.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
