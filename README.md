@@ -352,6 +352,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/thetric"><img src="https://avatars.githubusercontent.com/u/19861998?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dominik Broj</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thetric" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/stephenwade"><img src="https://avatars.githubusercontent.com/u/4148577?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Wade</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=stephenwade" title="Documentation">📖</a></td>
     <td align="center"><a href="https://luizbaldi.com"><img src="https://avatars.githubusercontent.com/u/17226904?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luiz Baldi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=luizbaldi" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.ravinggenius.com/"><img src="https://avatars.githubusercontent.com/u/21517?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas Ingram</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ravinggenius" title="Documentation">📖</a></td>
   </tr>
 </table>
 

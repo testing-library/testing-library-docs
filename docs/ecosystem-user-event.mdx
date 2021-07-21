@@ -3,28 +3,40 @@ id: ecosystem-user-event
 title: user-event
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 [`user-event`][gh] is a companion library for Testing Library that provides more
 advanced simulation of browser interactions than the built-in
 [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) method.
 
-[`user-event` on GitHub][gh]
+## Installation
 
-## Install
+  <Tabs defaultValue="npm" values={[{ label: 'npm', value: 'npm' }, { label: 'Yarn', value: 'yarn' }]}>
+  <TabItem value="npm">
 
-```
+```sh
 npm install --save-dev @testing-library/user-event @testing-library/dom
 ```
 
-```jsx
-import {screen} from '@testing-library/dom'
+  </TabItem>
+  <TabItem value="yarn">
+
+```sh
+yarn add --dev @testing-library/user-event @testing-library/dom
+```
+
+  </TabItem>
+  </Tabs>
+
+Now simply import it in your tests:
+
+```js
 import userEvent from '@testing-library/user-event'
 
-test('types inside textarea', () => {
-  document.body.innerHTML = `<textarea />`
+// or
 
-  userEvent.type(screen.getByRole('textbox'), 'Hello, World!')
-  expect(screen.getByRole('textbox')).toHaveValue('Hello, World!')
-})
+const {default: userEvent} = require('@testing-library/user-event')
 ```
 
 ## API
@@ -69,7 +81,9 @@ See the
 constructor documentation for more options.
 
 Note that `click` will trigger hover events before clicking. To disable this,
-set the `skipHover` option to `true`.
+set the `skipHover` option to `true`. Also note that trying to click an element
+with `pointer-events` being set to `"none"` (i.e. unclickable) will throw an
+error.
 
 ### `dblClick(element, eventInit, options)`
 
@@ -113,10 +127,6 @@ are typed. By default it's 0. You can use this option if your component has a
 different behavior for fast or slow users. If you do this, you need to make sure
 to `await`!
 
-> To be clear, `userEvent.type` _always_ returns a promise, but you _only_ need
-> to `await` the promise it returns if you're using the `delay` option.
-> Otherwise everything runs synchronously and you can ignore the promise.
-
 `type` will click the element before typing. To disable this, set the
 `skipClick` option to `true`.
 
@@ -136,6 +146,8 @@ The following special character strings are supported:
 | `{arrowright}` | ArrowRight | N/A                |                                                                                                                                                                     |
 | `{arrowup}`    | ArrowUp    | N/A                |                                                                                                                                                                     |
 | `{arrowdown}`  | ArrowDown  | N/A                |                                                                                                                                                                     |
+| `{home}`       | Home       | N/A                |                                                                                                                                                                     |
+| `{end}`        | End        | N/A                |                                                                                                                                                                     |
 | `{shift}`      | Shift      | `shiftKey`         | Does **not** capitalize following characters.                                                                                                                       |
 | `{ctrl}`       | Control    | `ctrlKey`          |                                                                                                                                                                     |
 | `{alt}`        | Alt        | `altKey`           |                                                                                                                                                                     |
@@ -184,7 +196,7 @@ The following is an example of usage of this library with
 `<input type="time" />`
 
 ```jsx
-import React from 'react
+import React from 'react'
 import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -192,11 +204,8 @@ test('types into the input', () => {
   render(
     <>
       <label for="time">Enter a time</label>
-      <input
-        type="time"
-        id="time"
-      />
-    </>
+      <input type="time" id="time" />
+    </>,
   )
   const input = screen.getByLabelText(/enter a time/i)
   userEvent.type(input, '13:58')
@@ -261,7 +270,7 @@ userEvent.keyboard('a', {keyboardState}) // press [KeyA] with active ctrlKey mod
 ```
 
 The mapping of `key` to `code` is performed by a
-[default key map](https://github.com/testing-library/user-event/blob/master/src/keyboard/keyMap.ts)
+[default key map](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)
 portraying a "default" US-keyboard. You can provide your own local keyboard
 mapping per option.
 
@@ -274,11 +283,14 @@ userEvent.keyboard('?', {keyboardMap: myOwnLocaleKeyboardMap})
 > CapsLock is not active and `A` is referenced. If you don't wish this behavior,
 > you can pass `autoModify: false` when using `userEvent.keyboard` in your code.
 
-### `upload(element, file, [{ clickInit, changeInit }])`
+### `upload(element, file, [{ clickInit, changeInit }], [options])`
 
 Uploads file to an `<input>`. For uploading multiple files use `<input>` with
 the `multiple` attribute and the second `upload` argument as an array. It's also
 possible to initialize a click or change event using a third argument.
+
+If `options.applyAccept` is set to `true` and there is an `accept` attribute on
+the element, files that don't match will be discarded.
 
 ```jsx
 import React from 'react'
@@ -527,15 +539,17 @@ method.
 
 | Key        | Character      |
 | ---------- | -------------- |
-| arrowLeft  | `{arrowLeft}`  |
-| arrowRight | `{arrowRight}` |
-| arrowDown  | `{arrowDown}`  |
-| arrowUp    | `{arrowUp}`    |
+| arrowLeft  | `{arrowleft}`  |
+| arrowRight | `{arrowright}` |
+| arrowDown  | `{arrowdown}`  |
+| arrowUp    | `{arrowup}`    |
+| home       | `{home}`       |
+| end        | `{end}`        |
 | enter      | `{enter}`      |
 | escape     | `{esc}`        |
 | delete     | `{del}`        |
 | backspace  | `{backspace}`  |
-| selectAll  | `{selectAll}`  |
+| selectAll  | `{selectall}`  |
 | space      | `{space}`      |
 | whitespace | `' '`          |
 
@@ -560,10 +574,5 @@ test('delete characters within the selectedRange', () => {
   expect(input).toHaveValue('This is a good example')
 })
 ```
-
-## Known limitations
-
-- No `<input type="color" />` support.
-  [#423](https://github.com/testing-library/user-event/issues/423#issuecomment-669368863)
 
 [gh]: https://github.com/testing-library/user-event
