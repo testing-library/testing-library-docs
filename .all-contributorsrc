@@ -1537,6 +1537,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "fildon",
+      "name": "Rupert McKay",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10462288?v=4",
+      "profile": "https://fildon.me",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
