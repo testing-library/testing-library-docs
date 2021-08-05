@@ -1528,6 +1528,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dwjohnston",
+      "name": "David Johnston",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2467377?v=4",
+      "profile": "https://blacksheepcode.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
