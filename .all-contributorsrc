@@ -1546,6 +1546,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "SebastianMaciel",
+      "name": "Sebastián Maciel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4841148?v=4",
+      "profile": "http://www.sebastianmaciel.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
