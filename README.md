@@ -358,6 +358,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://blacksheepcode.com"><img src="https://avatars.githubusercontent.com/u/2467377?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Johnston</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dwjohnston" title="Documentation">📖</a></td>
     <td align="center"><a href="https://fildon.me"><img src="https://avatars.githubusercontent.com/u/10462288?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rupert McKay</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=fildon" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.sebastianmaciel.com"><img src="https://avatars.githubusercontent.com/u/4841148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastián Maciel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=SebastianMaciel" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://stevenfrieson.com"><img src="https://avatars.githubusercontent.com/u/15187179?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Steven Frieson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=sfrieson" title="Documentation">📖</a></td>
   </tr>
 </table>
 
