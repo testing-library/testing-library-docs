@@ -1555,6 +1555,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "sfrieson",
+      "name": "Steven Frieson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15187179?v=4",
+      "profile": "http://stevenfrieson.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
