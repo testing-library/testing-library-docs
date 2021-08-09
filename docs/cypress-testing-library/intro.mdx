@@ -58,9 +58,9 @@ cy.findByRole('button', {name: /Button Text/i}).should('exist')
 cy.findByRole('button', {name: /Non-existing Button Text/i}).should('not.exist')
 cy.findByLabelText(/Label text/i, {timeout: 7000}).should('exist')
 
-// findAllByText _inside_ a form element
+// findByRole _inside_ a form element
 cy.get('form')
-  .findByText('button', {name: /Button Text/i})
+  .findByRole('button', {name: /Button Text/i})
   .should('exist')
 cy.findByRole('dialog').within(() => {
   cy.findByRole('button', {name: /confirm/i})
