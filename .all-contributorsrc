@@ -1573,6 +1573,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "claidler",
+      "name": "Christopher Laidler",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43636691?v=4",
+      "profile": "https://github.com/claidler",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
