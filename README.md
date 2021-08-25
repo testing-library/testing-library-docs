@@ -360,6 +360,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="http://www.sebastianmaciel.com"><img src="https://avatars.githubusercontent.com/u/4841148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastián Maciel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=SebastianMaciel" title="Documentation">📖</a></td>
     <td align="center"><a href="http://sidharth.dev"><img src="https://avatars.githubusercontent.com/u/10703445?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sidharth Vinod</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=sidharthv96" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/jankalfus"><img src="https://avatars.githubusercontent.com/u/12714276?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Honza Kalfus</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jankalfus" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/claidler"><img src="https://avatars.githubusercontent.com/u/43636691?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Laidler</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=claidler" title="Documentation">📖</a></td>
   </tr>
 </table>
 
