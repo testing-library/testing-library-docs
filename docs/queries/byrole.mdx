@@ -145,28 +145,23 @@ state and which elements can have this state see
 
 ### `current`
 
-Elements can represent the current item within a container or set of related
-elements.
-
-Despite current have list of values: `date`, `location`, `page`, `step`, `time`,
-`true`, `false`
-
-You can filter the returned elements by their current status by setting
-`current: true` (for any valid value) or `current: false` (for false).
+You can filter the returned elements by their current state by setting
+`current: boolean | string`.
+Note that no `aria-current` attribute will match `current: false` since `false` is the default value for `aria-current`.
 
 For example in
 
 ```html
 <body>
-  <section>
-    <link href="current/page" aria-current="true">👍</link>
-    <link href="another/page" aria-current="false">👎</link>
-  </section>
+  <nav>
+    <a href="current/page" aria-current="true">👍</a>
+    <a href="another/page">👎</a>
+  </nav>
 </body>
 ```
 
-you can get the "👍" link by calling `getByRole('button', { current: true })`.
-To learn more about the current status see
+you can get the "👍" link by calling `getByRole('link', { current: true })` and the "👎" by calling `getByRole('link', { current: false })`.
+To learn more about the current state see
 [ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current).
 
 ### `pressed`
