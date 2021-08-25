@@ -24,6 +24,7 @@ getByRole(
     selected?: boolean,
     checked?: boolean,
     pressed?: boolean,
+    current?: boolean | string,
     expanded?: boolean,
     queryFallbacks?: boolean,
     level?: number,
@@ -141,6 +142,27 @@ state and which elements can have this state see
 >
 > Checkboxes have a "mixed" state, which is considered neither checked nor
 > unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
+
+### `current`
+
+You can filter the returned elements by their current state by setting
+`current: boolean | string`.
+Note that no `aria-current` attribute will match `current: false` since `false` is the default value for `aria-current`.
+
+For example in
+
+```html
+<body>
+  <nav>
+    <a href="current/page" aria-current="true">👍</a>
+    <a href="another/page">👎</a>
+  </nav>
+</body>
+```
+
+you can get the "👍" link by calling `getByRole('link', { current: true })` and the "👎" by calling `getByRole('link', { current: false })`.
+To learn more about the current state see
+[ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current).
 
 ### `pressed`
 
