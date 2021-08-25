@@ -24,7 +24,7 @@ getByRole(
     selected?: boolean,
     checked?: boolean,
     pressed?: boolean,
-    current?: boolean,
+    current?: boolean | string,
     expanded?: boolean,
     queryFallbacks?: boolean,
     level?: number,
@@ -143,26 +143,6 @@ state and which elements can have this state see
 > Checkboxes have a "mixed" state, which is considered neither checked nor
 > unchecked (details [here](https://www.w3.org/TR/html-aam-1.0/#details-id-56)).
 
-### `pressed`
-
-Buttons can have a pressed state. You can filter the returned elements by their
-pressed state by setting `pressed: true` or `pressed: false`.
-
-For example in
-
-```html
-<body>
-  <section>
-    <button aria-pressed="true">👍</button>
-    <button aria-pressed="false">👎</button>
-  </section>
-</body>
-```
-
-you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
-To learn more about the pressed state see
-[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
-
 ### `current`
 
 Elements can represent the current item within a container or set of related
@@ -188,6 +168,26 @@ For example in
 you can get the "👍" link by calling `getByRole('button', { current: true })`.
 To learn more about the current status see
 [ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current).
+
+### `pressed`
+
+Buttons can have a pressed state. You can filter the returned elements by their
+pressed state by setting `pressed: true` or `pressed: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
+To learn more about the pressed state see
+[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
 
 ### `expanded`
 
