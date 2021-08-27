@@ -49,7 +49,7 @@ in
 
 ### `click(element, eventInit, options)`
 
-Clicks `element`, depending on what `element` is it can have different side
+Clicks `element`, depending on what `element` is clicked, calling `click()` can have different side
 effects.
 
 ```jsx
@@ -444,7 +444,7 @@ Options:
 ```jsx
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 
 it('should cycle elements in document tab order', () => {
