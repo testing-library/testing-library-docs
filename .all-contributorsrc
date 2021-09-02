@@ -1600,6 +1600,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "andrewarosario",
+      "name": "Andrew Rosário",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21269337?v=4",
+      "profile": "https://andrewrosario.medium.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
