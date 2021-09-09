@@ -71,6 +71,11 @@ test('should show login form', () => {
       [`waitFor`](../dom-testing-library/api-async.mdx#waitfor). They accept the
       `waitFor` options as the last argument (i.e.
       `await screen.findByText('text', queryOptions, waitForOptions)`)
+> **Note**
+>
+> All multiple elements queries with matching nodes will return an Array with a 
+> max of 10 elements.
+
 
 <details open>
 
