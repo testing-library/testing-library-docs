@@ -1609,6 +1609,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "brleinad",
+      "name": "Daniel RB",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12233785?v=4",
+      "profile": "http://danielrb.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
