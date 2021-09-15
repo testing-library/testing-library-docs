@@ -367,6 +367,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="http://stevenfrieson.com"><img src="https://avatars.githubusercontent.com/u/15187179?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Steven Frieson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=sfrieson" title="Documentation">📖</a></td>
     <td align="center"><a href="https://andrewrosario.medium.com/"><img src="https://avatars.githubusercontent.com/u/21269337?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Rosário</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=andrewarosario" title="Documentation">📖</a></td>
     <td align="center"><a href="http://danielrb.dev"><img src="https://avatars.githubusercontent.com/u/12233785?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel RB</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=brleinad" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/HonkingGoose"><img src="https://avatars.githubusercontent.com/u/34918129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>HonkingGoose</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=HonkingGoose" title="Documentation">📖</a></td>
   </tr>
 </table>
 
