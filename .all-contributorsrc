@@ -1627,6 +1627,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Daniel-Kolev",
+      "name": "Daniel Kolev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43587261?v=4",
+      "profile": "https://github.com/Daniel-Kolev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
