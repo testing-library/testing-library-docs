@@ -370,6 +370,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/HonkingGoose"><img src="https://avatars.githubusercontent.com/u/34918129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>HonkingGoose</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=HonkingGoose" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Daniel-Kolev"><img src="https://avatars.githubusercontent.com/u/43587261?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Kolev</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Daniel-Kolev" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.kopi.dev"><img src="https://avatars.githubusercontent.com/u/4743772?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arryangga Aliev Pratamaputra</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=arryanggaputra" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://arahansen.com"><img src="https://avatars.githubusercontent.com/u/8746094?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Hansen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=arahansen" title="Documentation">📖</a></td>
   </tr>
 </table>
 
