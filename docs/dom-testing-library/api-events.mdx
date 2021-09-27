@@ -91,7 +91,7 @@ fireEvent.drop(getByLabelText(/drop files here/i), {
 element in the DOM and the key you want to fire.
 
 ```javascript
-fireEvent.keyDown(domNode, {key: 'Enter', code: 'Enter'})
+fireEvent.keyDown(domNode, {key: 'Enter', code: 'Enter', charCode: 13})
 
 fireEvent.keyDown(domNode, {key: 'A', code: 'KeyA'})
 ```
