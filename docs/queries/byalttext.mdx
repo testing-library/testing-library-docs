@@ -23,7 +23,7 @@ getByAltText(
 ```
 
 This will return the element (normally an `<img>`) that has the given `alt`
-text. Note that it only supports elements which accept an `alt` attribute:
+text. Note that it only supports elements which accept an `alt` attribute or [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) (since we don't know if a custom element implements `alt` or not):
 [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img),
 [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input),
 and [`<area>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
