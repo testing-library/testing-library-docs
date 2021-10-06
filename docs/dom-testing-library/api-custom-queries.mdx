@@ -46,9 +46,9 @@ export function getAllByTestId(container, id, ...rest) {
   return els
 }
 
-export function getByTestId(...args) {
+export function getByTestId(container, id, ...rest) {
   // result >= 1
-  const result = getAllByTestId(...args)
+  const result = getAllByTestId(container, id, ...rest)
   if (result.length > 1) {
     throw queryHelpers.getElementError(
       `Found multiple elements with the [data-test-id="${id}"]`,
