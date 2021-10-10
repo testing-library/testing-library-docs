@@ -93,11 +93,12 @@ set `skipPointerEventsCheck` to `true`:
 userEvent.click(elem, undefined, {skipPointerEventsCheck: true})
 ```
 
-The `skipPointerEventsCheck` option can be passed to every event where there is
-a check for `pointer-events`: [dblClick](#dblclickelement-eventinit-options),
-[hover](#hoverelement-options), [unhover](#unhoverelement-options),
-[selectOptions](#selectoptionselement-values-options),
-[deselectOptions](#deselectoptionselement-values-options)
+The `skipPointerEventsCheck` option can be passed to any pointer related API including:
+- [dblClick](#dblclickelement-eventinit-options)
+- [hover](#hoverelement-options)
+- [unhover](#unhoverelement-options)
+- [selectOptions](#selectoptionselement-values-options)
+- [deselectOptions](#deselectoptionselement-values-options)
 
 ### `dblClick(element, eventInit, options)`
 
