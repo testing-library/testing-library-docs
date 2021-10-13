@@ -37,17 +37,17 @@ const helloMessage = within(messages).getByText('hello')
 ```jsx
 import {render, within} from '@testing-library/react'
 
-const {getByLabelText} = render(<MyComponent />)
-const signinModal = getByLabelText('Sign In')
-within(signinModal).getByPlaceholderText('Username')
+const {getByText} = render(<MyComponent />)
+const messages = getByText('messages')
+const helloMessage = within(messages).getByText('hello')
 ```
 
   </TabItem>
   <TabItem value="cypress">
 
 ```js
-cy.get('form').within(() => {
-  cy.findByText('Button Text').should('be.disabled')
+cy.findByText('messages').within(() => {
+  cy.findByText('hello')
 })
 ```
 
