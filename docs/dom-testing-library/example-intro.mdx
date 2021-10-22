@@ -17,7 +17,7 @@ import {
   waitFor,
 } from '@testing-library/dom'
 // adds special assertions like toHaveTextContent
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 
 function getExampleDOM() {
   // This is just a raw example of setting up some DOM
@@ -58,13 +58,13 @@ test('examples of some things', async () => {
   getByText(container, 'Print Username').click()
 
   await waitFor(() =>
-    expect(queryByTestId(container, 'printed-username')).toBeTruthy()
+    expect(queryByTestId(container, 'printed-username')).toBeTruthy(),
   )
 
   // getByTestId and queryByTestId are an escape hatch to get elements
   // by a test id (could also attempt to get this element by its text)
   expect(getByTestId(container, 'printed-username')).toHaveTextContent(
-    famousProgrammerInHistory
+    famousProgrammerInHistory,
   )
   // jest snapshots work great with regular DOM nodes!
   expect(container).toMatchSnapshot()

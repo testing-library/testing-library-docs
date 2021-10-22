@@ -13,7 +13,7 @@ state.
 ```jsx
 // example.js
 
-import React, { useReducer } from 'react'
+import React, {useReducer} from 'react'
 
 const initialState = {
   isConfirmed: false,
@@ -43,7 +43,7 @@ const Example = () => {
           <p>Waiting for confirmation...</p>
         )}
       </div>
-      <button onClick={() => dispatch({ type: 'SUCCESS' })}>Confirm</button>
+      <button onClick={() => dispatch({type: 'SUCCESS'})}>Confirm</button>
     </div>
   )
 }
@@ -58,11 +58,11 @@ reducer state.
 // example.test.js
 
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import {render, fireEvent} from '@testing-library/react'
 import Example from './example.js'
 
 it('shows success message after confirm button is clicked', () => {
-  const { getByText } = render(<Example />)
+  const {getByText} = render(<Example />)
 
   expect(getByText(/waiting/i)).toBeInTheDocument()
 

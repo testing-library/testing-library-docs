@@ -1,6 +1,4 @@
-testing-library-docs
---------------------
-
+## testing-library-docs
 
 <!-- prettier-ignore-start -->
 [![Open Collective Sponsors and Backers][opencollective-badge]][opencollective]
@@ -8,7 +6,10 @@ testing-library-docs
 [![Code of Conduct][coc-badge]][coc]
 <!-- prettier-ignore-end -->
 
-Documentation site for [React Testing Library](https://github.com/testing-library/react-testing-library), [DOM Testing Library](https://github.com/testing-library/dom-testing-library), and [related projects](https://github.com/testing-library)
+Documentation site for
+[React Testing Library](https://github.com/testing-library/react-testing-library),
+[DOM Testing Library](https://github.com/testing-library/dom-testing-library),
+and [related projects](https://github.com/testing-library)
 
 **https://testing-library.com**
 
@@ -16,13 +17,18 @@ Documentation site for [React Testing Library](https://github.com/testing-librar
 
 [![Netlify Status][netlify-badge]][build]
 
-[netlify-badge]: https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
+[netlify-badge]:
+  https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
 [build]: https://app.netlify.com/sites/testing-library/deploys
 [opencollective]: https://opencollective.com/testing-library/
-[opencollective-badge]: https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
-[allcontributors-badge]: https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
-[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
-[coc]: https://github.com/testing-library/react-testing-library/blob/master/CODE_OF_CONDUCT.md
+[opencollective-badge]:
+  https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
+[allcontributors-badge]:
+  https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
+[coc-badge]:
+  https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[coc]:
+  https://github.com/testing-library/react-testing-library/blob/main/CODE_OF_CONDUCT.md
 
 This website was created with [Docusaurus](https://v2.docusaurus.io).
 
@@ -69,8 +75,7 @@ For more information about docs, click [here](https://v2.docusaurus.io/docs)
 
 ## Editing an existing blog post
 
-Edit blog posts by navigating to `blog` and editing the corresponding
-post:
+Edit blog posts by navigating to `blog` and editing the corresponding post:
 
 `blog/post-to-be-edited.mdx`
 
@@ -126,7 +131,8 @@ For more information about adding new docs, click
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -312,6 +318,56 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/prestoncarman"><img src="https://avatars.githubusercontent.com/u/3517157?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Preston Carman</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=prestoncarman" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/olivierwilkinson"><img src="https://avatars.githubusercontent.com/u/15321261?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Olivier Wilkinson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=olivierwilkinson" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/amitmiran137"><img src="https://avatars.githubusercontent.com/u/47772523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amit Miran</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=amitmiran137" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://graficos.net"><img src="https://avatars.githubusercontent.com/u/6775220?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Melero</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=gangsthub" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://modo.sc"><img src="https://avatars.githubusercontent.com/u/2231664?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jonathan schatz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=modosc" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/rickysullivan"><img src="https://avatars.githubusercontent.com/u/437480?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricky Sullivan Himself</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rickysullivan" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/wuarmin"><img src="https://avatars.githubusercontent.com/u/9987680?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Armin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=wuarmin" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://linktr.ee/dalebaldwin"><img src="https://avatars.githubusercontent.com/u/403546?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dale Baldwin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dalebaldwin" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/adrisolid/"><img src="https://avatars.githubusercontent.com/u/25487037?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AdriSolid</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=AdriSolid" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://naruth.dev"><img src="https://avatars.githubusercontent.com/u/9120451?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Naruth Kongurai</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=naruthk" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/ErfanMirzapour"><img src="https://avatars.githubusercontent.com/u/52346515?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erfan Mirzapour</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ErfanMirzapour" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/shemExelate"><img src="https://avatars.githubusercontent.com/u/46557021?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shem Mahluf</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=shemExelate" title="Code">💻</a> <a href="#infra-shemExelate" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/testing-library/testing-library-docs/commits?author=shemExelate" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/scoobster17"><img src="https://avatars.githubusercontent.com/u/12157029?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Phil Gibbins</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=scoobster17" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Liadshiran"><img src="https://avatars.githubusercontent.com/u/18011106?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Liad Shiran</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Liadshiran" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/EduardoSimon"><img src="https://avatars.githubusercontent.com/u/19764148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eduardo Simón Picón</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=EduardoSimon" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://thesanjeevsharma.now.sh"><img src="https://avatars.githubusercontent.com/u/29539278?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sanjeev Sharma</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thesanjeevsharma" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/drorheller"><img src="https://avatars.githubusercontent.com/u/12750737?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dror-heller</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=drorheller" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/yialo"><img src="https://avatars.githubusercontent.com/u/38593881?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aleksei Arro</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=yialo" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/carlobeltrame"><img src="https://avatars.githubusercontent.com/u/7566995?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlo Beltrame</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=carlobeltrame" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/ggorlen"><img src="https://avatars.githubusercontent.com/u/17895165?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ggorlen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ggorlen" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://blog.scottlogic.com/mstobbs/"><img src="https://avatars.githubusercontent.com/u/15341757?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mattstobbs</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mattstobbs" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://vxxce.github.io"><img src="https://avatars.githubusercontent.com/u/38638365?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Zach</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vxxce" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/anpaopao"><img src="https://avatars.githubusercontent.com/u/44686792?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Angus J. Pope</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=anpaopao" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://twitter.com/dylan_piercey"><img src="https://avatars.githubusercontent.com/u/4985201?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dylan Piercey</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=DylanPiercey" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/ruhollahh"><img src="https://avatars.githubusercontent.com/u/53814636?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ruhollah</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ruhollahh" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://votemike.co.uk"><img src="https://avatars.githubusercontent.com/u/3957065?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Gwynne</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=votemike" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/thetric"><img src="https://avatars.githubusercontent.com/u/19861998?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dominik Broj</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thetric" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/stephenwade"><img src="https://avatars.githubusercontent.com/u/4148577?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Wade</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=stephenwade" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://luizbaldi.com"><img src="https://avatars.githubusercontent.com/u/17226904?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luiz Baldi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=luizbaldi" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.ravinggenius.com/"><img src="https://avatars.githubusercontent.com/u/21517?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas Ingram</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ravinggenius" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://blacksheepcode.com"><img src="https://avatars.githubusercontent.com/u/2467377?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Johnston</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dwjohnston" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://fildon.me"><img src="https://avatars.githubusercontent.com/u/10462288?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rupert McKay</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=fildon" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.sebastianmaciel.com"><img src="https://avatars.githubusercontent.com/u/4841148?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastián Maciel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=SebastianMaciel" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://sidharth.dev"><img src="https://avatars.githubusercontent.com/u/10703445?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sidharth Vinod</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=sidharthv96" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jankalfus"><img src="https://avatars.githubusercontent.com/u/12714276?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Honza Kalfus</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jankalfus" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/claidler"><img src="https://avatars.githubusercontent.com/u/43636691?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christopher Laidler</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=claidler" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/savcni01"><img src="https://avatars.githubusercontent.com/u/18025894?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nik Savchenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=savcni01" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://stevenfrieson.com"><img src="https://avatars.githubusercontent.com/u/15187179?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Steven Frieson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=sfrieson" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://andrewrosario.medium.com/"><img src="https://avatars.githubusercontent.com/u/21269337?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Rosário</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=andrewarosario" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://danielrb.dev"><img src="https://avatars.githubusercontent.com/u/12233785?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel RB</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=brleinad" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
@@ -319,4 +375,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!

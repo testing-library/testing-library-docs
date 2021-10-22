@@ -11,12 +11,12 @@ npm install --save-dev testing-library-selector
 ```
 
 ```typescript
-import { byLabelText, byRole, byTestId } from './selector'
+import {byLabelText, byRole, byTestId} from './selector'
 
 // define reusable selectors
 const ui = {
   container: byTestId('my-container'),
-  submitButton: byRole('button', { name: 'Submit' }),
+  submitButton: byRole('button', {name: 'Submit'}),
   usernameInput: byLabelText('Username:'),
 
   // can encode more specific html element type

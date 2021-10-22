@@ -25,7 +25,7 @@ You have two options:
       // That's the recommended way to test for ICU support according to Node.js docs
       try {
         const january = new Date(9e8)
-        const pt = new Intl.DateTimeFormat('pt', { month: 'long' })
+        const pt = new Intl.DateTimeFormat('pt', {month: 'long'})
         return pt.format(january) === 'janeiro'
       } catch (err) {
         return false
@@ -82,31 +82,31 @@ Our custom `render` function can look like this:
 ```jsx
 // test-utils.js
 import React from 'react'
-import { render as rtlRender } from '@testing-library/react'
-import { IntlProvider } from 'react-intl'
+import {render as rtlRender} from '@testing-library/react'
+import {IntlProvider} from 'react-intl'
 
-function render(ui, { locale = 'pt', ...renderOptions } = {}) {
-  function Wrapper({ children }) {
+function render(ui, {locale = 'pt', ...renderOptions} = {}) {
+  function Wrapper({children}) {
     return <IntlProvider locale={locale}>{children}</IntlProvider>
   }
-  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
+  return rtlRender(ui, {wrapper: Wrapper, ...renderOptions})
 }
 
 // re-export everything
 export * from '@testing-library/react'
 
 // override render method
-export { render }
+export {render}
 ```
 
 ## A complete example
 
 ```jsx
 import React from 'react'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 // We're importing from our own created test-utils and not RTL's
-import { render, screen, setupTests } from '../test-utils.js'
-import { FormattedDate } from 'react-intl'
+import {render, screen, setupTests} from '../test-utils.js'
+import {FormattedDate} from 'react-intl'
 
 const FormatDateView = () => {
   return (
@@ -129,3 +129,16 @@ test('it should render FormattedDate and have a formatted pt date', () => {
   expect(screen.getByTestId('date-display')).toHaveTextContent('11/03/2019')
 })
 ```
+
+## Translated components testing stategy
+
+When testing a translated component there can be different approches for
+achiving the wanted coverage, where the aimed goal should be to allow to test
+the component in a way that will simulate the user behavior as much as posible.
+
+| Approach                                   | Pros                                                                                                                                                                                                                                                                                 | Cons                                                                                                                                                                                                                                                                  |
+| ------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Use strings from the default language      | Test is easy to read, and asserts expected default output. If you have variables in your strings, you can test that they work properly with correct output.                                                                                                                          | 1. Strings hardcoded into tests mean you have to update both tests and code for any copy changes. 2. If multiple elements have the same string/substring text, find-and-replace may be hard to use reliably.                                                          |
+| Mock the translation library               | If your library is difficult to use in the test environment, you can mock it so it is easier. For example, you can add the message ID as a data-attribute to the text so you can query by that.                                                                                      | Test code deviates from what runs in production. Tests may assert about message IDs but not enough about content, so errors are possible.                                                                                                                             |
+| Use translation library in tests           | Decouples strings from tests, so you can update the message files in one place without worrying about breaking tests. Can run tests in another language or multiple languages. `const buttonText = getNodeText(<FormattedMessage id="buttonText" defaultMessage="Hello Button" />);` | Overhead - it takes more lines of code to write the test, and you need to know the variables and message IDs to create the right strings. It's not obvious what the text actually is when you read the test code, making maintaining it harder.                       |
+| Use translation library + inline snapshots | Same as above, but by adding an inline snapshot of the string, you can read the test code and see what strings are in use, but easily update them with `jest -u` if the messages change. `expect(buttonText).toMatchInlineSnapshot("'My button text'")`                              | Tests are longer because of the extra lines. You can wrap up some of the translation-related code into a helper function to make it a little more inline-able and avoid repeating yourself, but you still need to know the message IDs and variables inside the test. |

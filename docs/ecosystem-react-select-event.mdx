@@ -14,20 +14,20 @@ npm install --save-dev react-select-event
 ```jsx
 import React from 'react'
 import Select from 'react-select'
-import { render } from '@testing-library/react'
+import {render} from '@testing-library/react'
 import selectEvent from 'react-select-event'
 
-const { getByTestId, getByLabelText } = render(
+const {getByTestId, getByLabelText} = render(
   <form data-testid="form">
     <label htmlFor="food">Food</label>
     <Select options={OPTIONS} name="food" inputId="food" isMulti />
-  </form>
+  </form>,
 )
-expect(getByTestId('form')).toHaveFormValues({ food: '' }) // empty select
+expect(getByTestId('form')).toHaveFormValues({food: ''}) // empty select
 
 // select two values...
 await selectEvent.select(getByLabelText('Food'), ['Strawberry', 'Mango'])
-expect(getByTestId('form')).toHaveFormValues({ food: ['strawberry', 'mango'] })
+expect(getByTestId('form')).toHaveFormValues({food: ['strawberry', 'mango']})
 
 // ...and add a third one
 await selectEvent.select(getByLabelText('Food'), 'Chocolate')

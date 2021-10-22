@@ -38,7 +38,7 @@ nodes.**
 ## Usage
 
 ```javascript
-const { getQueriesFrom } = require('@testing-library/nightwatch')
+const {getQueriesFrom} = require('@testing-library/nightwatch')
 
 module.exports = {
   beforeEach(browser, done) {
@@ -47,7 +47,7 @@ module.exports = {
   },
 
   async getByLabelText(browser) {
-    const { getByLabelText } = getQueriesFrom(browser)
+    const {getByLabelText} = getQueriesFrom(browser)
 
     const input = await getByLabelText('Label Text')
     browser.setValue(input, '@TL FTW')
@@ -56,7 +56,7 @@ module.exports = {
   },
 
   async getByAltText(browser) {
-    const { getByAltText } = getQueriesFrom(browser)
+    const {getByAltText} = getQueriesFrom(browser)
     const image = await getByAltText('Image Alt Text')
 
     browser.click(image)
@@ -103,9 +103,9 @@ You can customize the testIdAttribute using the `configure` function just like
 [dom-testing-library][config]:
 
 ```javascript
-const { configure } = require('@testing-library/nightwatch')
+const {configure} = require('@testing-library/nightwatch')
 
-configure({ testIdAttribute: 'data-automation-id' })
+configure({testIdAttribute: 'data-automation-id'})
 ```
 
 ## Containers
@@ -117,7 +117,7 @@ can use `within`.
 ### Examples using `within`
 
 ```javascript
-const { getQueriesFrom, within } = require('@testing-library/nightwatch')
+const {getQueriesFrom, within} = require('@testing-library/nightwatch')
 
 module.exports = {
   beforeEach(browser, done) {
@@ -125,7 +125,7 @@ module.exports = {
     done()
   },
   async 'getByText within container'(browser) {
-    const { getByTestId } = getQueriesFrom(browser)
+    const {getByTestId} = getQueriesFrom(browser)
 
     const nested = await getByTestId('nested')
     const button = await within(nested).getByText('Button Text')

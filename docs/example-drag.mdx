@@ -13,7 +13,7 @@ sidebar_label: Drag
 
 ```js
 await drag(slider, {
-  delta: { x: -100, y: 0 },
+  delta: {x: -100, y: 0},
 })
 ```
 
@@ -24,7 +24,7 @@ await drag(slider, {
 # Code
 
 ```js
-import { fireEvent } from '@testing-library/dom'
+import {fireEvent} from '@testing-library/dom'
 
 // https://stackoverflow.com/a/53946549/1179377
 function isElement(obj) {
@@ -50,24 +50,24 @@ function isElement(obj) {
 }
 
 function getElementClientCenter(element) {
-  const { left, top, width, height } = element.getBoundingClientRect()
+  const {left, top, width, height} = element.getBoundingClientRect()
   return {
     x: left + width / 2,
     y: top + height / 2,
   }
 }
 
-const getCoords = (charlie) =>
+const getCoords = charlie =>
   isElement(charlie) ? getElementClientCenter(charlie) : charlie
 
-const sleep = (ms) =>
-  new Promise((resolve) => {
+const sleep = ms =>
+  new Promise(resolve => {
     setTimeout(resolve, ms)
   })
 
 export default async function drag(
   element,
-  { to: inTo, delta, steps = 20, duration = 500 }
+  {to: inTo, delta, steps = 20, duration = 500},
 ) {
   const from = getElementClientCenter(element)
   const to = delta

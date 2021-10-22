@@ -50,7 +50,7 @@ The example below will find the input node for the following DOM structures:
 // aria-label attributes
 // Take care because this is not a label that users can see on the page,
 // so the purpose of your input must be obvious to visual users.
-<input aria-label="username" />
+<input aria-label="Username" />
 ```
 
 <Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
@@ -58,7 +58,7 @@ label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
 <TabItem value="native">
 
 ```js
-import { screen } from '@testing-library/dom'
+import {screen} from '@testing-library/dom'
 
 const inputNode = screen.getByLabelText('Username')
 ```
@@ -67,18 +67,18 @@ const inputNode = screen.getByLabelText('Username')
   <TabItem value="react">
 
 ```jsx
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 
 render(<Login />)
 
-const inputNode = screen.getByLabelText('username')
+const inputNode = screen.getByLabelText('Username')
 ```
 
   </TabItem>
   <TabItem value="cypress">
 
 ```js
-cy.findByLabelText('username').should('exist')
+cy.findByLabelText('Username').should('exist')
 ```
 
   </TabItem>
@@ -88,9 +88,9 @@ cy.findByLabelText('username').should('exist')
 
 ### `name`
 
-The example above does NOT find the input node for label text broken up by elements.
-You can use `getByRole('textbox', { name: 'Username' })` instead which is robust
-against switching to `aria-label` or `aria-labelledby`.
+The example above does NOT find the input node for label text broken up by
+elements. You can use `getByRole('textbox', { name: 'Username' })` instead which
+is robust against switching to `aria-label` or `aria-labelledby`.
 
 ### `selector`
 
@@ -115,7 +115,7 @@ If it is important that you query an actual `<label>` element you can provide a
 ```
 
 ```js
-const inputNode = screen.getByLabelText('Username', { selector: 'input' })
+const inputNode = screen.getByLabelText('Username', {selector: 'input'})
 ```
 
 > **Note**

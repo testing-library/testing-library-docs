@@ -6,8 +6,6 @@ title: Custom Queries
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
-## Custom Queries
-
 `DOM Testing Library` exposes many of the helper functions that are used to
 implement the default queries. You can use the helpers to build custom queries.
 For example, the code below shows a way to override the default `testId` queries
@@ -26,15 +24,15 @@ to use a different data-attribute. (Note: test files would import
 ```js
 // test-utils.js
 const domTestingLib = require('@testing-library/dom')
-const { queryHelpers } = domTestingLib
+const {queryHelpers} = domTestingLib
 
 export const queryByTestId = queryHelpers.queryByAttribute.bind(
   null,
-  'data-test-id'
+  'data-test-id',
 )
 export const queryAllByTestId = queryHelpers.queryAllByAttribute.bind(
   null,
-  'data-test-id'
+  'data-test-id',
 )
 
 export function getAllByTestId(container, id, ...rest) {
@@ -42,18 +40,22 @@ export function getAllByTestId(container, id, ...rest) {
   if (!els.length) {
     throw queryHelpers.getElementError(
       `Unable to find an element by: [data-test-id="${id}"]`,
-      container
+      container,
     )
   }
   return els
 }
 
 export function getByTestId(...args) {
+  // result >= 1
   const result = getAllByTestId(...args)
-  if (result.length > 0) {
-    return result[0]
+  if (result.length > 1) {
+    throw queryHelpers.getElementError(
+      `Found multiple elements with the [data-test-id="${id}"]`,
+      container,
+    )
   }
-  return null
+  return result[0]
 }
 
 // re-export with overrides

@@ -3,45 +3,58 @@ id: ecosystem-user-event
 title: user-event
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 [`user-event`][gh] is a companion library for Testing Library that provides more
 advanced simulation of browser interactions than the built-in
 [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) method.
 
-[`user-event` on GitHub][gh]
+## Installation
 
-## Install
+  <Tabs defaultValue="npm" values={[{ label: 'npm', value: 'npm' }, { label: 'Yarn', value: 'yarn' }]}>
+  <TabItem value="npm">
 
+```sh
+npm install --save-dev @testing-library/user-event @testing-library/dom
 ```
-npm install --save-dev @testing-library/user-event
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```sh
+yarn add --dev @testing-library/user-event @testing-library/dom
 ```
 
-```jsx
-import { screen } from '@testing-library/dom'
+  </TabItem>
+  </Tabs>
+
+Now simply import it in your tests:
+
+```js
 import userEvent from '@testing-library/user-event'
 
-test('types inside textarea', () => {
-  document.body.innerHTML = `<textarea />`
+// or
 
-  userEvent.type(screen.getByRole('textbox'), 'Hello, World!')
-  expect(screen.getByRole('textbox')).toHaveValue('Hello, World!')
-})
+const {default: userEvent} = require('@testing-library/user-event')
 ```
 
 ## API
 
 Note: All userEvent methods are synchronous with one exception: when `delay`
-with `userEvent.type` as described below). We also discourage using `userEvent`
-inside `before/after` blocks at all, for important reasons described in
+option used with `userEvent.type` as described below. We also discourage using
+`userEvent` inside `before/after` blocks at all, for important reasons described
+in
 ["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
 
 ### `click(element, eventInit, options)`
 
-Clicks `element`, depending on what `element` is it can have different side
-effects.
+Clicks `element`, depending on what `element` is clicked, calling `click()` can
+have different side effects.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('click', () => {
@@ -49,7 +62,7 @@ test('click', () => {
     <div>
       <label htmlFor="checkbox">Check</label>
       <input id="checkbox" type="checkbox" />
-    </div>
+    </div>,
   )
 
   userEvent.click(screen.getByText('Check'))
@@ -60,7 +73,7 @@ test('click', () => {
 You can also ctrlClick / shiftClick etc with
 
 ```js
-userEvent.click(elem, { ctrlKey: true, shiftKey: true })
+userEvent.click(elem, {ctrlKey: true, shiftKey: true})
 ```
 
 See the
@@ -68,7 +81,9 @@ See the
 constructor documentation for more options.
 
 Note that `click` will trigger hover events before clicking. To disable this,
-set the `skipHover` option to `true`.
+set the `skipHover` option to `true`. Also note that trying to click an element
+with `pointer-events` being set to `"none"` (i.e. unclickable) will throw an
+error.
 
 ### `dblClick(element, eventInit, options)`
 
@@ -77,7 +92,7 @@ side effects.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('double click', () => {
@@ -96,7 +111,7 @@ Writes `text` inside an `<input>` or a `<textarea>`.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('type', () => {
@@ -111,10 +126,6 @@ test('type', () => {
 are typed. By default it's 0. You can use this option if your component has a
 different behavior for fast or slow users. If you do this, you need to make sure
 to `await`!
-
-> To be clear, `userEvent.type` _always_ returns a promise, but you _only_ need
-> to `await` the promise it returns if you're using the `delay` option.
-> Otherwise everything runs synchronously and you can ignore the promise.
 
 `type` will click the element before typing. To disable this, set the
 `skipClick` option to `true`.
@@ -135,6 +146,8 @@ The following special character strings are supported:
 | `{arrowright}` | ArrowRight | N/A                |                                                                                                                                                                     |
 | `{arrowup}`    | ArrowUp    | N/A                |                                                                                                                                                                     |
 | `{arrowdown}`  | ArrowDown  | N/A                |                                                                                                                                                                     |
+| `{home}`       | Home       | N/A                |                                                                                                                                                                     |
+| `{end}`        | End        | N/A                |                                                                                                                                                                     |
 | `{shift}`      | Shift      | `shiftKey`         | Does **not** capitalize following characters.                                                                                                                       |
 | `{ctrl}`       | Control    | `ctrlKey`          |                                                                                                                                                                     |
 | `{alt}`        | Alt        | `altKey`           |                                                                                                                                                                     |
@@ -159,7 +172,7 @@ An example of an usage with a selection range:
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('delete characters within the selectedRange', () => {
@@ -167,7 +180,7 @@ test('delete characters within the selectedRange', () => {
     <div>
       <label htmlFor="my-input">Example:</label>
       <input id="my-input" type="text" value="This is a bad example" />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/example/i)
   input.setSelectionRange(10, 13)
@@ -183,7 +196,7 @@ The following is an example of usage of this library with
 `<input type="time" />`
 
 ```jsx
-import React from 'react
+import React from 'react'
 import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -191,11 +204,8 @@ test('types into the input', () => {
   render(
     <>
       <label for="time">Enter a time</label>
-      <input
-        type="time"
-        id="time"
-      />
-    </>
+      <input type="time" id="time" />
+    </>,
   )
   const input = screen.getByLabelText(/enter a time/i)
   userEvent.type(input, '13:58')
@@ -203,25 +213,98 @@ test('types into the input', () => {
 })
 ```
 
-### `upload(element, file, [{ clickInit, changeInit }])`
+### `keyboard(text, options)`
+
+Simulates the keyboard events described by `text`. This is similar to
+`userEvent.type()` but without any clicking or changing the selection range.
+
+> You should use `userEvent.keyboard` if you want to just simulate pressing
+> buttons on the keyboard. You should use `userEvent.type` if you just want to
+> conveniently insert some text into an input field or textarea.
+
+Keystrokes can be described:
+
+- Per printable character
+  ```js
+  userEvent.keyboard('foo') // translates to: f, o, o
+  ```
+  The brackets `{` and `[` are used as special character and can be referenced
+  by doubling them.
+  ```js
+  userEvent.keyboard('{{a[[') // translates to: {, a, [
+  ```
+- Per
+  [KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
+  (only supports alphanumeric values of `key`)
+  ```js
+  userEvent.keyboard('{Shift}{f}{o}{o}') // translates to: Shift, f, o, o
+  ```
+  This does not keep any key pressed. So `Shift` will be lifted before pressing
+  `f`.
+- Per
+  [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+  ```js
+  userEvent.keyboard('[ShiftLeft][KeyF][KeyO][KeyO]') // translates to: Shift, f, o, o
+  ```
+- Per legacy `userEvent.type` modifier/specialChar The modifiers like `{shift}`
+  (note the lowercase) will automatically be kept pressed, just like before. You
+  can cancel this behavior by adding a `/` to the end of the descriptor.
+  ```js
+  userEvent.keyboard('{shift}{ctrl/}a{/shift}') // translates to: Shift(down), Control(down+up), a, Shift(up)
+  ```
+
+Keys can be kept pressed by adding a `>` to the end of the descriptor - and
+lifted by adding a `/` to the beginning of the descriptor:
+
+```js
+userEvent.keyboard('{Shift>}A{/Shift}') // translates to: Shift(down), A, Shift(up)
+```
+
+`userEvent.keyboard` returns a keyboard state that can be used to continue
+keyboard operations.
+
+```js
+const keyboardState = userEvent.keyboard('[ControlLeft>]') // keydown [ControlLeft]
+// ... inspect some changes ...
+userEvent.keyboard('a', {keyboardState}) // press [KeyA] with active ctrlKey modifier
+```
+
+The mapping of `key` to `code` is performed by a
+[default key map](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)
+portraying a "default" US-keyboard. You can provide your own local keyboard
+mapping per option.
+
+```js
+userEvent.keyboard('?', {keyboardMap: myOwnLocaleKeyboardMap})
+```
+
+> Future versions might try to interpolate the modifiers needed to reach a
+> printable key on the keyboard. E.g. Automatically pressing `{Shift}` when
+> CapsLock is not active and `A` is referenced. If you don't wish this behavior,
+> you can pass `autoModify: false` when using `userEvent.keyboard` in your code.
+
+### `upload(element, file, [{ clickInit, changeInit }], [options])`
 
 Uploads file to an `<input>`. For uploading multiple files use `<input>` with
-`multiple` attribute and the second `upload` argument must be array then. Also
-it's possible to initialize click or change event with using third argument.
+the `multiple` attribute and the second `upload` argument as an array. It's also
+possible to initialize a click or change event using a third argument.
+
+If `options.applyAccept` is set to `true` and there is an `accept` attribute on
+the element, files that don't match will be discarded.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('upload file', () => {
-  const file = new File(['hello'], 'hello.png', { type: 'image/png' })
+  const file = new File(['hello'], 'hello.png', {type: 'image/png'})
 
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
       <input id="file-uploader" type="file" />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/upload file/i)
   userEvent.upload(input, file)
@@ -233,15 +316,15 @@ test('upload file', () => {
 
 test('upload multiple files', () => {
   const files = [
-    new File(['hello'], 'hello.png', { type: 'image/png' }),
-    new File(['there'], 'there.png', { type: 'image/png' }),
+    new File(['hello'], 'hello.png', {type: 'image/png'}),
+    new File(['there'], 'there.png', {type: 'image/png'}),
   ]
 
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
       <input id="file-uploader" type="file" multiple />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/upload file/i)
   userEvent.upload(input, files)
@@ -258,14 +341,14 @@ Selects the text inside an `<input>` or `<textarea>` and deletes it.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('clear', () => {
   render(<textarea value="Hello, World!" />)
 
-  userEvent.clear(screen.getByRole('textbox', 'email'))
-  expect(screen.getByRole('textbox', 'email')).toHaveAttribute('value', '')
+  userEvent.clear(screen.getByRole('textbox'))
+  expect(screen.getByRole('textbox')).toHaveAttribute('value', '')
 })
 ```
 
@@ -276,29 +359,23 @@ element.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('selectOptions', () => {
   render(
-    <select multiple data-testid="select-multiple">
-      <option data-testid="val1" value="1">
-        A
-      </option>
-      <option data-testid="val2" value="2">
-        B
-      </option>
-      <option data-testid="val3" value="3">
-        C
-      </option>
-    </select>
+    <select multiple>
+      <option value="1">A</option>
+      <option value="2">B</option>
+      <option value="3">C</option>
+    </select>,
   )
 
-  userEvent.selectOptions(screen.getByTestId('select-multiple'), ['1', '3'])
+  userEvent.selectOptions(screen.getByRole('listbox'), ['1', '3'])
 
-  expect(screen.getByTestId('val1').selected).toBe(true)
-  expect(screen.getByTestId('val2').selected).toBe(false)
-  expect(screen.getByTestId('val3').selected).toBe(true)
+  expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
+  expect(screen.getByRole('option', {name: 'B'}).selected).toBe(false)
+  expect(screen.getByRole('option', {name: 'C'}).selected).toBe(true)
 })
 ```
 
@@ -321,7 +398,7 @@ element.
 
 ```jsx
 import * as React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('deselectOptions', () => {
@@ -330,7 +407,7 @@ test('deselectOptions', () => {
       <option value="1">A</option>
       <option value="2">B</option>
       <option value="3">C</option>
-    </select>
+    </select>,
   )
 
   userEvent.selectOptions(screen.getByRole('listbox'), '2')
@@ -366,8 +443,8 @@ Options:
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import {render, screen} from '@testing-library/react'
+import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 
 it('should cycle elements in document tab order', () => {
@@ -376,7 +453,7 @@ it('should cycle elements in document tab order', () => {
       <input data-testid="element" type="checkbox" />
       <input data-testid="element" type="radio" />
       <input data-testid="element" type="number" />
-    </div>
+    </div>,
   )
 
   const [checkbox, radio, number] = screen.getAllByTestId('element')
@@ -412,7 +489,7 @@ Hovers over `element`.
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Tooltip from '../tooltip'
 
@@ -421,7 +498,7 @@ test('hover', () => {
   render(
     <Tooltip messageText={messageText}>
       <TrashIcon aria-label="Delete" />
-    </Tooltip>
+    </Tooltip>,
   )
 
   userEvent.hover(screen.getByLabelText(/delete/i))
@@ -446,7 +523,8 @@ test('should paste text in input', () => {
   render(<MyInput />)
 
   const text = 'Hello, world!'
-  userEvent.paste(getByRole('textbox', { name: /paste your greeting/i }), text)
+  const element = getByRole('textbox', {name: /paste your greeting/i})
+  userEvent.paste(element, text)
   expect(element).toHaveValue(text)
 })
 ```
@@ -465,6 +543,8 @@ method.
 | arrowRight | `{arrowright}` |
 | arrowDown  | `{arrowdown}`  |
 | arrowUp    | `{arrowup}`    |
+| home       | `{home}`       |
+| end        | `{end}`        |
 | enter      | `{enter}`      |
 | escape     | `{esc}`        |
 | delete     | `{del}`        |
@@ -477,15 +557,15 @@ Usage example:
 
 ```jsx
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import userEvent, { specialChars } from '@testing-library/user-event'
+import {render, screen} from '@testing-library/react'
+import userEvent, {specialChars} from '@testing-library/user-event'
 
 test('delete characters within the selectedRange', () => {
   render(
     <div>
       <label htmlFor="my-input">Example:</label>
       <input id="my-input" type="text" value="This is a bad example" />
-    </div>
+    </div>,
   )
   const input = screen.getByLabelText(/example/i)
   input.setSelectionRange(10, 13)
@@ -494,10 +574,5 @@ test('delete characters within the selectedRange', () => {
   expect(input).toHaveValue('This is a good example')
 })
 ```
-
-## Known limitations
-
-- No `<input type="color" />` support.
-  [#423](https://github.com/testing-library/user-event/issues/423#issuecomment-669368863)
 
 [gh]: https://github.com/testing-library/user-event

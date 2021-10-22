@@ -35,13 +35,13 @@ export class CounterComponent {
 counter.component.spec.ts
 
 ```typescript
-import { render, screen, fireEvent } from '@testing-library/angular'
-import { CounterComponent } from './counter.component.ts'
+import {render, screen, fireEvent} from '@testing-library/angular'
+import {CounterComponent} from './counter.component.ts'
 
 describe('Counter', () => {
   test('should render counter', async () => {
     await render(CounterComponent, {
-      componentProperties: { counter: 5 },
+      componentProperties: {counter: 5},
     })
 
     expect(screen.getByText('Current Count: 5'))
@@ -49,7 +49,7 @@ describe('Counter', () => {
 
   test('should increment the counter on click', async () => {
     await render(CounterComponent, {
-      componentProperties: { counter: 5 },
+      componentProperties: {counter: 5},
     })
 
     fireEvent.click(screen.getByText('+'))
@@ -60,7 +60,7 @@ describe('Counter', () => {
 ```
 
 More examples can be found in the
-[GitHub project](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/app/examples).
+[GitHub project](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/src/app/examples).
 These examples include:
 
 - `@Input` and `@Output` properties

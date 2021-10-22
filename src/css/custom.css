@@ -1,5 +1,5 @@
-:root{
-  --ifm-light-background-color: var(--ifm-color-emphasis-100)
+:root {
+  --ifm-light-background-color: var(--ifm-color-emphasis-100);
 }
 
 html[data-theme='dark'] {
@@ -409,6 +409,17 @@ html[data-theme='dark'] {
     padding: 20px;
     width: 64px;
   }
+}
+
+.awardsSection {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.awardsSection .imageAlignTop .blockImage {
+  max-width: 200px;
+  margin-bottom: 50px;
+  height: 200px;
 }
 
 body {

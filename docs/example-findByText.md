@@ -8,17 +8,13 @@ title: Using findByText
 // This is an example of how to use findByText to query for text that
 // is not visible right away
 
-import {
-  getByRole,
-  findByText,
-  getByPlaceholderText,
-} from '@testing-library/dom'
+import {getByRole, findByText, getByPlaceholderText} from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 // provides a set of custom jest matchers that you can use to extend jest
 // i.e. `.toBeVisible`
 import '@testing-library/jest-dom'
 
-const renderContent = (el) => {
+const renderContent = el => {
   el.innerHTML = `
     <form id='login_form' method='post' name='login'>
       <label for='username'>User Name:</label>
@@ -108,7 +104,7 @@ describe('findByText Examples', () => {
     userEvent.click(
       getByRole(container, 'button', {
         name: 'Login',
-      })
+      }),
     )
 
     expect(await findByText(container, 'User Name Required')).toBeVisible()
@@ -132,7 +128,7 @@ describe('findByText Examples', () => {
     userEvent.click(
       getByRole(container, 'button', {
         name: 'Login',
-      })
+      }),
     )
 
     expect(await findByText(container, 'Invalid User Name')).toBeVisible()

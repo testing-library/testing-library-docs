@@ -1,6 +1,1 @@
-module.exports = {
-  proseWrap: 'always',
-  singleQuote: true,
-  semi: false,
-  trailingComma: 'es5',
-}
+module.exports = require('kcd-scripts/prettier')

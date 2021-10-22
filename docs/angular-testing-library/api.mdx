@@ -24,11 +24,11 @@ Angular:
 ```typescript
 async function render<ComponentType>(
   component: Type<ComponentType>,
-  renderOptions?: RenderComponentOptions<ComponentType>
+  renderOptions?: RenderComponentOptions<ComponentType>,
 ): Promise<RenderResult<ComponentType, ComponentType>>
 async function render<DirectiveType, WrapperType = WrapperComponent>(
   component: Type<DirectiveType>,
-  renderOptions?: RenderDirectiveOptions<DirectiveType, WrapperType>
+  renderOptions?: RenderDirectiveOptions<DirectiveType, WrapperType>,
 ): Promise<RenderResult<DirectiveType, WrapperType>>
 ```
 
@@ -53,7 +53,11 @@ await render(AppComponent, {
 
 ### `componentProviders`
 
-A collection of providers to inject dependencies of the component.
+A collection of providers needed to render the component via Dependency
+Injection.
+
+These will be provided at the component level. To inject dependencies at the
+module level, use [`providers`](#providers).
 
 For more info see the
 [Angular docs](https://angular.io/api/core/Directive#providers).
@@ -70,11 +74,11 @@ await render(AppComponent, {
 
 ### `declarations`
 
-A collection of providers needed to render the component via Dependency
-Injection, for example, injectable services or tokens.
+A collection of components, directives and pipes needed to render the component.
+For example, nested components of the component.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#providers).
+[Angular docs](https://angular.io/api/core/NgModule#declarations).
 
 **default** : `[]`
 
@@ -82,13 +86,7 @@ For more info see the
 
 ```typescript
 await render(AppComponent, {
-  providers: [
-    CustomersService,
-    {
-      provide: MAX_CUSTOMERS_TOKEN,
-      useValue: 10,
-    },
-  ],
+  declarations: [CustomerDetailComponent, ButtonComponent],
 })
 ```
 
@@ -101,7 +99,7 @@ Will call `detectChanges` when the component is compiled
 **example**:
 
 ```typescript
-await render(AppComponent, { detectChanges: false })
+await render(AppComponent, {detectChanges: false})
 ```
 
 ### `excludeComponentDeclaration`
@@ -139,6 +137,33 @@ await render(AppComponent, {
 })
 ```
 
+### `providers`
+
+A collection of providers needed to render the component via Dependency
+Injection.
+
+These will be provided at the module level. To inject dependencies at the
+component level, use [`componentProviders`](#componentProviders).
+
+For more info see the
+[Angular docs](https://angular.io/api/core/NgModule#providers).
+
+**default** : `[]`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  providers: [
+    CustomersService,
+    {
+      provide: MAX_CUSTOMERS_TOKEN,
+      useValue: 10,
+    },
+  ],
+})
+```
+
 ### `queries`
 
 Queries to bind. Overrides the default set from DOM Testing Library unless
@@ -150,7 +175,7 @@ merged.
 
 ```typescript
 await render(AppComponent, {
-  queries: { ...queries, ...customQueries },
+  queries: {...queries, ...customQueries},
 })
 ```
 
@@ -260,7 +285,7 @@ Prints out the component's DOM with syntax highlighting. Accepts an optional
 parameter, to print out a specific DOM node.
 
 ```typescript
-const { debug } = await render(AppComponent)
+const {debug} = await render(AppComponent)
 
 debug()
 ```
@@ -271,11 +296,11 @@ Re-render the same component with different props. Will call `detectChanges`
 after props has been updated.
 
 ```typescript
-const { rerender } = await render(Counter, { componentProperties: { count: 4 } })
+const {rerender} = await render(Counter, {componentProperties: {count: 4}})
 
 expect(screen.getByTestId('count-value').textContent).toBe('4')
 
-rerender({ count: 7 })
+rerender({count: 7})
 
 expect(screen.getByTestId('count-value').textContent).toBe('7')
 ```
@@ -284,7 +309,8 @@ expect(screen.getByTestId('count-value').textContent).toBe('7')
 
 Trigger a change detection cycle for the component.
 
-For more info see the [Angular docs](https://angular.io/api/core/testing/ComponentFixture#detectChanges).
+For more info see the
+[Angular docs](https://angular.io/api/core/testing/ComponentFixture#detectChanges).
 
 ### `debugElement`
 
@@ -300,7 +326,7 @@ For more info see the
 [Angular docs](https://angular.io/api/core/testing/ComponentFixture).
 
 ```typescript
-const { fixture } = await render(AppComponent)
+const {fixture} = await render(AppComponent)
 
 const componentInstance = fixture.componentInstance as AppComponent
 ```
@@ -337,7 +363,7 @@ for a complete list.
 **example**:
 
 ```typescript
-const { getByText, queryByLabelText} = await render(AppComponent)
+const {getByText, queryByLabelText} = await render(AppComponent)
 
 getByText('Hello world')
 queryByLabelText('First name:')
