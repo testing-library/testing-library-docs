@@ -172,13 +172,13 @@ This method is a shortcut for `console.log(prettyDOM(element))`.
 defaults to `baseElement`
 
 ```jsx
-import { render } from '@testing-library/vue'
+import {render} from '@testing-library/vue'
 
 const HelloWorldComponent = {
-  template: `<h1>Hello World</h1>`
+  template: `<h1>Hello World</h1>`,
 }
 
-const { debug } = render(HelloWorldComponent)
+const {debug} = render(HelloWorldComponent)
 debug()
 // <div>
 //   <h1>Hello World</h1>
