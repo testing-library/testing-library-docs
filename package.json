@@ -10,7 +10,7 @@
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
-    "format-docs": "prettier --write 'docs/**/*.mdx' --parser=mdx",
+    "format": "prettier --write '**/*.{js,json,mdx}'",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus"
@@ -28,11 +28,11 @@
         "git add"
       ],
       "*.mdx": [
-        "prettier --write --parser=mdx",
+        "prettier --write",
         "git add"
       ],
       "*.json": [
-        "prettier --write --parser=json",
+        "prettier --write ",
         "git add"
       ]
     }
