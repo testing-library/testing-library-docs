@@ -1618,6 +1618,60 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "HonkingGoose",
+      "name": "HonkingGoose",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34918129?v=4",
+      "profile": "https://github.com/HonkingGoose",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Daniel-Kolev",
+      "name": "Daniel Kolev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43587261?v=4",
+      "profile": "https://github.com/Daniel-Kolev",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "arryanggaputra",
+      "name": "Arryangga Aliev Pratamaputra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4743772?v=4",
+      "profile": "http://www.kopi.dev",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "arahansen",
+      "name": "Andrew Hansen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8746094?v=4",
+      "profile": "http://arahansen.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jgsneves",
+      "name": "JOAO GABRIEL SANTOS NEVES",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48700146?v=4",
+      "profile": "https://www.linkedin.com/in/jgsneves/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "lukeingalls",
+      "name": "Luke Ingalls",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45518011?v=4",
+      "profile": "http://lukeingalls.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
