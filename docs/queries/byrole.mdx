@@ -64,8 +64,8 @@ not replace the functionality of these attributes. For example
 `<img aria-label="fancy image" src="fancy.jpg" />` will be returned for both
 `getByAltText('fancy image')` and `getByRole('image', { name: 'fancy image' })`.
 However, the image will not display its description if `fancy.jpg` could not be
-loaded. Whether you want to assert this functionality in your test or not is up to
-you.
+loaded. Whether you want to assert this functionality in your test or not is up
+to you.
 
 ## Options
 
@@ -146,8 +146,8 @@ state and which elements can have this state see
 ### `current`
 
 You can filter the returned elements by their current state by setting
-`current: boolean | string`.
-Note that no `aria-current` attribute will match `current: false` since `false` is the default value for `aria-current`.
+`current: boolean | string`. Note that no `aria-current` attribute will match
+`current: false` since `false` is the default value for `aria-current`.
 
 For example in
 
@@ -160,8 +160,9 @@ For example in
 </body>
 ```
 
-you can get the "👍" link by calling `getByRole('link', { current: true })` and the "👎" by calling `getByRole('link', { current: false })`.
-To learn more about the current state see
+you can get the "👍" link by calling `getByRole('link', { current: true })` and
+the "👎" by calling `getByRole('link', { current: false })`. To learn more about
+the current state see
 [ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current).
 
 ### `pressed`
