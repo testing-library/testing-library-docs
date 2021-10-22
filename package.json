@@ -10,7 +10,7 @@
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
-    "format-docs": "prettier --write 'docs/**/*.mdx' --parser=mdx",
+    "format": "prettier --write '**/*.{js,json,mdx}'",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus"
@@ -23,9 +23,18 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": ["prettier --write", "git add"],
-      "*.mdx": ["prettier --write --parser=mdx", "git add"],
-      "*.json": ["prettier --write --parser=json", "git add"]
+      "*.js": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.mdx": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.json": [
+        "prettier --write ",
+        "git add"
+      ]
     }
   },
   "husky": {
