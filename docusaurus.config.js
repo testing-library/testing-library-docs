@@ -344,7 +344,8 @@ module.exports = {
       },
     },
     algolia: {
-      apiKey: 'bda29e6557dc5be1ce5c05f2dbff8f33',
+      appId: 'TUPO88CFRP',
+      apiKey: 'b232f752ed8fb44d7ff8e7883aa64668',
       indexName: 'testing-library',
     },
     gtag: {
