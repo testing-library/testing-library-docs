@@ -25,6 +25,7 @@ as these methods:
 - [`act`](#act)
 - [`renderHook`](#renderhook)
 - [`renderHook` Options](#renderhook-options)
+  - [`initialProps`](#initialprops)
   - [`wrapper`](#wrapper-1)
 - [`renderHook` Result](#renderhook-result)
   - [`result`](#result)
@@ -340,6 +341,24 @@ test('returns logged in user', () => {
 ```
 
 ## `renderHook` Options
+
+### `renderHook` Options `initialProps`
+
+Declares the props that are passed to the render-callback when first invoked.
+These will **not** be passed if you call `rerender` without props.
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+test('returns logged in user', () => {
+  const {result, rerender} = renderHook(({name} = {}) => name, {
+    initialProps: {name: 'Alice'},
+  })
+  expect(result.current).toEqual({name: 'Alice'})
+  rerender()
+  expect(result.current).toEqual({name: undefined})
+})
+```
 
 ### `renderHook` Options `wrapper`
 
