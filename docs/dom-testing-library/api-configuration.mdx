@@ -133,12 +133,12 @@ configure({
 
 The interface of the functions will take two arguments, `element` and `query`,
 which the wrapper can use. The expected return value is a single element (for
-queryElement) or a list of elements (for queryAllElements).
+`queryElement`) or a list of elements (for `queryAllElements`).
 
-This can be used to allow to extend queries to reach into the shadow dom or
+This can be used to extend queries to reach into the shadow dom or
 iframes. An example using the
 [query-selector-shadow-dom](https://github.com/Georgegriff/query-selector-shadow-dom)
-library would look like the following:
+library looks like the following:
 
 ```js
 import {
