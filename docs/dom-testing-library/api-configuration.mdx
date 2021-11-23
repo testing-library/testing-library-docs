@@ -131,12 +131,14 @@ configure({
 })
 ```
 
+Defaults to `element.querySelector` and `element.querySelectorAll`.
+
 The interface of the functions will take two arguments, `element` and `query`,
 which the wrapper can use. The expected return value is a single element (for
 `queryElement`) or a list of elements (for `queryAllElements`).
 
-This can be used to extend queries to reach into the shadow dom or
-iframes. An example using the
+This can be used to extend queries to reach into the shadow dom or iframes. An
+example using the
 [query-selector-shadow-dom](https://github.com/Georgegriff/query-selector-shadow-dom)
 library looks like the following:
 
@@ -150,5 +152,3 @@ configure({
   queryAllElements: querySelectorAllDeep,
 })
 ```
-
-Default to `element.querySelector` and `element.querySelectorAll`.
