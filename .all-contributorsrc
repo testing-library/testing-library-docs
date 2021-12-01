@@ -1681,6 +1681,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "zaicevas",
+      "name": "Tomas Zaicevas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34719980?v=4",
+      "profile": "https://medium.com/@zaicevas",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
