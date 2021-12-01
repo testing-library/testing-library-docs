@@ -376,6 +376,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://www.linkedin.com/in/jgsneves/"><img src="https://avatars.githubusercontent.com/u/48700146?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JOAO GABRIEL SANTOS NEVES</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jgsneves" title="Documentation">📖</a></td>
     <td align="center"><a href="http://lukeingalls.com"><img src="https://avatars.githubusercontent.com/u/45518011?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luke Ingalls</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=lukeingalls" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/levenleven"><img src="https://avatars.githubusercontent.com/u/6463364?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aleksey Levenstein</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=levenleven" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://medium.com/@zaicevas"><img src="https://avatars.githubusercontent.com/u/34719980?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomas Zaicevas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=zaicevas" title="Documentation">📖</a></td>
   </tr>
 </table>
 
