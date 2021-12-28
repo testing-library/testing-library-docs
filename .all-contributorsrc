@@ -1699,6 +1699,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "EstebanBorai",
+      "name": "Esteban Borai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34756077?v=4",
+      "profile": "http://estebanborai.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
