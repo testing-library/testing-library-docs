@@ -14,9 +14,7 @@ accepts a single pointer action or an array of them.
 type PointerInput = PointerActionInput | Array<PointerActionInput>
 ```
 
-## No-layout environment
-
-Our primary target audience tests per `jest` in a `jsdom` environment and there
+> Our primary target audience tests per `jest` in a `jsdom` environment and there
 is no layout in `jsdom`. This means that different from your browser the
 elements don't exist in a specific position, layer and size.  
 We don't try to determine if the pointer action you describe is possible at that
