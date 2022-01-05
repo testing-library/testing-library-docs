@@ -1,0 +1,122 @@
+---
+id: pointer
+title: Pointer
+---
+
+```ts
+pointer(input: PointerInput): Promise<void>
+```
+
+The `pointer` API allows to simulate interactions with pointer devices. It
+accepts a single pointer action or an array of them.
+
+```ts
+type PointerInput = PointerActionInput | Array<PointerActionInput>
+```
+
+## No-layout environment
+
+Our primary target audience tests per `jest` in a `jsdom` environment and there
+is no layout in `jsdom`. This means that different from your browser the
+elements don't exist in a specific position, layer and size.  
+We don't try to determine if the pointer action you describe is possible at that
+position in your layout.
+
+## Pointer action
+
+There are to types of actions: press and move.
+
+### <a name="press" href="#"/>Pressing a button or touching the screen
+
+A pointer action is a press action if it defines a key to be pressed, to be
+released, or both.
+
+```js
+pointer({keys: '[MouseLeft]'})
+```
+
+You can declare multiple press actions (on the same position) at once which will
+be resolved to multiple actions internally. If you don't need to declare any
+other properties you can also just supply the `keys` string.
+
+```js
+pointer({keys: '[MouseLeft][MouseRight]'})
+// or
+pointer('[MouseLeft][MouseRight]')
+```
+
+For pressing a button without releasing it, the button name is suffixed with
+`>`.  
+For just releasing a previously pressed button, the tag is started with `/`.
+
+```js
+pointer('[MouseLeft>]') // press the left mouse button
+pointer('[/MouseLeft]') // release the left mouse button
+```
+
+Which button are available depends on the [`pointerMap`](options#pointerMap).
+
+### <a name="move" href="#"/>Moving a pointer
+
+Every pointer action that is not a press action describes a pointer movement.
+
+You can declare which pointer is moved per `pointerName` property. This defaults
+to `mouse`.
+
+Note that the `mouse` pointer (`pointerId: 1`) is also the only pointer that
+always exists and has a position. A `touch` pointer only exists while the screen
+is touched and receives a new `pointerId` every time. For these we therefore use
+the "button" name from the press action as `pointerName`.
+
+```js
+pointer([
+  // touch the screen at element1
+  {keys: '[TouchA>]', target: element1},
+  // move the touch pointer to element2
+  {pointerName: 'TouchA', target: element2},
+  // release the touch pointer at the last position (element2)
+  {keys: '[/TouchA]'},
+])
+```
+
+## Pointer position
+
+### PointerTarget
+
+```ts
+interface PointerTarget {
+  target: Element
+  coords?: PointerCoords
+}
+```
+
+The `PointerTarget` props allows to describe the position of the pointer on the
+document.  
+The `coords` you provide are applied as-is to the resulting
+[`MouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) and
+can be omitted.  
+The `target` should be the element receiving the pointer input in the browser.
+This is the topmost element that can receive pointer event at those coordinates.
+
+### SelectionTarget
+
+```ts
+interface SelectionTarget {
+  node?: Node
+  offset?: number
+}
+```
+
+Pointer actions can alter the selection in the document.  
+In the browser every pointer position corresponds with a DOM position. This is a
+DOM node and a DOM offset which usually translates to the character closest to
+the pointer position.  
+As all character in a no-layout environment are in the same layout position we
+assume a pointer position to be closest to the last descendant of the pointer
+`target`.
+
+If you provide `offset`, we assume the pointer position to be closest to the
+`offset-th` character of `target.textContent`.
+
+If you also provide `node`, we treat `node` and `offset` as the exact DOM
+position to be used for any selection.

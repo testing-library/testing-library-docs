@@ -1,0 +1,118 @@
+---
+id: options
+title: Options
+---
+
+### applyAccept
+
+When using [`upload()`](utility#upload), automatically discard files that don't
+match an `accept` property if such property exists on the element.
+
+`default`: `true`
+
+### autoModify
+
+We intend to automatically apply modifier keys for printable characters in the
+future.  
+I.e. `A` implying `{Shift>}a{/Shift}` if caps lock is not active.
+
+This options allows you to opt out of this change in foresight.  
+The feature therefore will not constitute a breaking change.
+
+`default`: `true`
+
+### delay
+
+Between some subsequent inputs like typing a series of characters the code
+execution is delayed per `setTimeout` for (at least) `delay` seconds.
+
+This moves the next changes at least to the next macro task and allows other
+(asynchronous) code to run between events.
+
+`null` prevents `setTimeout` from being called.
+
+`default`: `0`
+
+### document
+
+The document.
+
+This defaults to the owner document of an element if an API is called
+[directly](setup#direct-api) with an element and without setup. Otherwise it
+falls back to the global document.
+
+`default`: `element.ownerDocument ?? global.document`
+
+### keyboardMap
+
+An array of keyboard keys the keyboard device consists of.
+
+This allows to plug in different layouts / localizations.
+
+`default`:
+[A "standard" US-104-QWERTY keyboard.](https://github.com/testing-library/user-event/blob/beta/src/keyboard/keyMap.ts)
+
+### pointerEventsCheck
+
+The pointer API includes a check if an element has or inherits
+`pointer-events: none`.  
+This check is known to be expensive and very expensive when checking deeply
+nested nodes.
+
+This option determines how often the pointer related APIs perform the check.
+
+This is a binary flag option. You can combine multiple Levels.
+
+- `PointerEventsCheckLevel.Never`:  
+   No pointer events check
+- `PointerEventsCheckLevel.EachTarget`:  
+   Check each event target once
+- `PointerEventsCheckLevel.EachApiCall`:  
+   Check each event target once
+- `PointerEventsCheckLevel.EachTrigger`:  
+   Check pointer events on every user interaction that triggers a bunch of events.
+  E.g. once for releasing a mouse button even though this triggers `pointerup`, `mouseup`,
+  `click`, etc...
+
+`default`: `PointerEventsCheckLevel.EachApiCall`
+
+### pointerMap
+
+An array of available pointer keys.
+
+This allows to plug in different pointer devices.
+
+`default`:
+[A simple mouse and a touchscreen](https://github.com/testing-library/user-event/blob/beta/src/pointer/keyMap.ts)
+
+### skipAutoClose
+
+[`type()`](utility#type) automatically releases any keys still pressed at the
+end of the call.  
+This option allows to opt out of this feature.
+
+`default`: false
+
+### skipClick
+
+[`type()`](utility#type) implies a click on the element.  
+This option allows to opt out of this feature.
+
+`default`: false
+
+### skipHover
+
+[`click()`](utility#click) implies moving the cursor to the target element
+first.  
+This options allows to opt out of this feature.
+
+### writeToClipboard
+
+Write selected data to
+[Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard) when
+a `cut` or `copy` is triggered. The Clipboard API is usually not available to
+test code. Our [`setup()`](setup) replaces the `navigator.clipboard` property
+with a stub.
+
+`default` when calling the APIs [directly](setup#direct-api): `false`  
+`default` when calling the APIs on an instance from `setup()`: `true`

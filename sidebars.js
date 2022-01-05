@@ -172,6 +172,19 @@ module.exports = {
     {
       Ecosystem: [
         'ecosystem-user-event',
+        {
+          'user-event v14': [
+            'user-event/intro',
+            'user-event/install',
+            'user-event/setup',
+            'user-event/options',
+            'user-event/pointer',
+            'user-event/keyboard',
+            'user-event/clipboard',
+            'user-event/utility',
+            'user-event/convenience',
+          ],
+        },
         'ecosystem-jest-dom',
         'ecosystem-bs-jest-dom',
         'ecosystem-jest-native',
