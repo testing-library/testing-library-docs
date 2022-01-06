@@ -58,7 +58,7 @@ import {App, LocationDisplay} from './app'
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <App />
     </Router>,
   )
@@ -77,7 +77,7 @@ test('landing on a bad page', () => {
   const history = createMemoryHistory()
   history.push('/some/bad/route')
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <App />
     </Router>,
   )
@@ -90,7 +90,7 @@ test('rendering a component that uses useLocation', () => {
   const route = '/some-route'
   history.push(route)
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <LocationDisplay />
     </Router>,
   )
