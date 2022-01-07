@@ -127,6 +127,17 @@ Type into an input element.
 1. Unless [`skipAutoClose`](options#skipautoclose) is `true`, release all
    pressed keys.
 
+```jsx
+test('type into an input field', async () => {
+  render(<input defaultValue="Hello,"/>)
+  const input = screen.getByRole('textbox')
+
+  await userEvent.type(input, ' World!')
+
+  expect(input).toHaveValue('Hello, World!')
+})
+```
+
 ## upload()
 
 ```ts
