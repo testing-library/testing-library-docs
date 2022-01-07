@@ -118,3 +118,21 @@ If you provide `offset`, we assume the pointer position to be closest to the
 
 If you also provide `node`, we treat `node` and `offset` as the exact DOM
 position to be used for any selection.
+
+```jsx
+// element: <div><span>foo</span><span>bar</span></div>
+// | marking the cursor.
+// [ ] marking a selection.
+
+pointer({target: element, offset: 2, keys: '[MouseLeft]'})
+// => <div><span>fo|o</span><span>bar</span></div>
+
+pointer([
+  {target: element, offset: 2, keys: '[MouseLeft>]'},
+  {offset: 5},
+])
+// => <div><span>fo[o</span><span>ba]r</span></div>
+
+pointer({target: element, node: element, offset: 1, keys: '[MouseLeft]'})
+// => <div><span>foo</span>|<span>bar</span></div>
+```
