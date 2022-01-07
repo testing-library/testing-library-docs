@@ -44,3 +44,17 @@ test('trigger some awesome feature when clicking the button', async () => {
     // ...assertions...
 })
 ```
+
+```js
+function setup(jsx) {
+    return {
+        user: userEvent.setup(),
+        ...render(<MyComponent/>),
+    }
+}
+
+test('render with a setup function', async () => {
+    const { user } = setup(<MyComponent/>)
+    // ...
+})
+```
