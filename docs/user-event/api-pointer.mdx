@@ -43,7 +43,7 @@ pointer({keys: '[MouseLeft][MouseRight]'})
 pointer('[MouseLeft][MouseRight]')
 ```
 
-For pressing a button without releasing it, the button name is suffixed with
+In order to press a button without releasing it, the button name is suffixed with
 `>`.  
 For just releasing a previously pressed button, the tag is started with `/`.
 
@@ -52,7 +52,7 @@ pointer('[MouseLeft>]') // press the left mouse button
 pointer('[/MouseLeft]') // release the left mouse button
 ```
 
-Which button are available depends on the [`pointerMap`](options#pointermap).
+Which buttons are available depends on the [`pointerMap`](options#pointermap).
 
 ### <a name="move" href="#"/>Moving a pointer
 
@@ -63,7 +63,7 @@ to `mouse`.
 
 Note that the `mouse` pointer (`pointerId: 1`) is also the only pointer that
 always exists and has a position. A `touch` pointer only exists while the screen
-is touched and receives a new `pointerId` every time. For these we therefore use
+is touched and receives a new `pointerId` every time. For these pointers, we use
 the "button" name from the press action as `pointerName`.
 
 ```js
