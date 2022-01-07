@@ -57,7 +57,7 @@ test('trigger some awesome feature when clicking the button', async () => {
 function setup(jsx) {
     return {
         user: userEvent.setup(),
-        ...render(<MyComponent/>),
+        ...render(jsx),
     }
 }
 
