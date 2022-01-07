@@ -22,11 +22,11 @@ This API can be used to easily clear an editable element.
 
 ```jsx
 test('clear', async () => {
-  render(<textarea value="Hello, World!" />)
+  render(<textarea defaultValue="Hello, World!" />)
 
   await userEvent.clear(screen.getByRole('textbox'))
 
-  expect(screen.getByRole('textbox')).toHaveAttribute('value', '')
+  expect(screen.getByRole('textbox')).toHaveValue('')
 })
 ```
 
