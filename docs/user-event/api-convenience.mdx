@@ -1,0 +1,83 @@
+---
+id: convenience
+title: Convenience APIs
+---
+
+The following APIs are shortcuts for equivalent calls to the underlying
+[`pointer()`](pointer) and [`keyboard()`](keyboard) APIs.
+
+## Clicks
+
+### click()
+
+```ts
+click(element: Element): Promise<void>
+```
+
+```js
+pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
+```
+
+The first action might be skipped per [`skipHover`](options#skiphover).
+
+### dblClick()
+
+```ts
+dblClick(element: Element): Promise<void>
+```
+
+```js
+pointer([{target: element}, {keys: '[MouseLeft][MouseLeft]', target: element}])
+```
+
+### tripleClick()
+
+```ts
+tripleClick(element: Element): Promise<void>
+```
+
+```js
+pointer([
+  {target: element},
+  {keys: '[MouseLeft][MouseLeft][MouseLeft]', target: element},
+])
+```
+
+## Mouse movement
+
+### hover()
+
+```ts
+hover(element: Element): Promise<void>
+```
+
+```js
+pointer({target: element})
+```
+
+### unhover()
+
+```ts
+hover(element: Element): Promise<void>
+```
+
+```js
+pointer({target: element.ownerDocument.body})
+```
+
+## Keyboard
+
+### tab()
+
+```ts
+tab(options: {shift?: boolean})
+```
+
+```js
+// without shift
+keyboard('{Tab}')
+// with shift=true
+keyboard('{Shift>}{Tab}{/Shift}')
+// with shift=false
+keyboard('[/ShiftLeft][/ShiftRight]{Tab}')
+```

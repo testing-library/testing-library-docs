@@ -1,0 +1,49 @@
+---
+id: clipboard
+title: Clipboard
+---
+
+Note that the
+[Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard) is
+usually not available outside of secure context.  
+To enable testing of workflows involving the clipboard,
+[`userEvent.setup()`](setup) replaces `window.navigator.clipboard` with a stub.
+
+## copy()
+
+```ts
+copy(): Promise<DataTransfer|undefined>
+```
+
+Copy the current selection.
+
+If [`writeToClipboard`](options#writetoclipboard) is `true`, this will also
+write the data to the `Clipboard`.
+
+## cut()
+
+```ts
+cut(): Promise<DataTransfer|undefined>
+```
+
+Cut the current selection.
+
+If [`writeToClipboard`](options#writetoclipboard) is `true`, this will also
+write the data to the `Clipboard`.
+
+When performed in editable context, it removes the selected content from the
+document.
+
+## paste()
+
+```ts
+paste(clipboardData?: DataTransfer|string): Promise<void>
+```
+
+Paste data into the document.
+
+When called without `clipboardData`, the content to be pasted is read from the
+`Clipboard`.
+
+When performed in editable context, the pasted content is inserted into to the
+document.
