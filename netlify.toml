@@ -103,3 +103,6 @@
 [[redirects]]
   from = "/nightwatch/"
   to = "/docs/nightwatch-testing-library/intro"
+[[redirects]]
+  from = "/user-event/"
+  to = "/docs/user-event/intro"
