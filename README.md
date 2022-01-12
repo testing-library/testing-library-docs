@@ -379,6 +379,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://medium.com/@zaicevas"><img src="https://avatars.githubusercontent.com/u/34719980?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomas Zaicevas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=zaicevas" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/tsriram"><img src="https://avatars.githubusercontent.com/u/450559?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sriram Thiagarajan</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tsriram" title="Documentation">📖</a></td>
     <td align="center"><a href="http://estebanborai.com"><img src="https://avatars.githubusercontent.com/u/34756077?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Esteban Borai</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=EstebanBorai" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitter.com/artivilla"><img src="https://avatars.githubusercontent.com/u/2120159?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arti Villa</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=artivilla" title="Documentation">📖</a></td>
   </tr>
 </table>
 
