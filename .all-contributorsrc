@@ -1708,6 +1708,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "artivilla",
+      "name": "Arti Villa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2120159?v=4",
+      "profile": "https://twitter.com/artivilla",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
