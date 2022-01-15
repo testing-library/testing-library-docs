@@ -237,6 +237,12 @@ module.exports = {
   ],
   plugins: [],
   themeConfig: {
+    image: 'img/octopus-128x128.png',
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: 'Testing Library',
       logo: {
@@ -267,7 +273,6 @@ module.exports = {
         },
       ],
     },
-    image: 'img/octopus-128x128.png',
     footer: {
       links: [
         {
