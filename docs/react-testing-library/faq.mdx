@@ -4,7 +4,7 @@ title: FAQ
 ---
 
 See also the [main FAQ](dom-testing-library/faq.mdx) for questions not specific
-to React testing
+to React testing.
 
 <details>
 
@@ -103,10 +103,10 @@ As you write your tests, keep in mind:
 </summary>
 
 In general, you should avoid mocking out components (see
-[the Guiding Principles section](guiding-principles.mdx)). However if you need
-to, then it's pretty trivial using
+[the Guiding Principles section](guiding-principles.mdx)). However, if you need
+to, then try using
 [Jest's mocking feature](https://facebook.github.io/jest/docs/en/manual-mocks.html).
-One case that I've found mocking to be especially useful is for animation
+One case where I've found mocking to be especially useful is for animation
 libraries. I don't want my tests to wait for animations to end.
 
 ```javascript
