@@ -20,7 +20,7 @@ some of the project's other libraries that can help you along the way:
 
 - **[@testing-library/jest-dom](https://github.com/testing-library/jest-dom)**:
   `jest-dom` provides a set of custom Jest matchers that you can use to extend
-  Jest. These will make your tests more declarative, clearer to read, and easier
+  Jest. These make your tests more declarative, clearer to read, and easier
   to maintain.
 
 - **[@testing-library/user-event](https://github.com/testing-library/user-event):**
@@ -105,7 +105,7 @@ test('test title', () => {
 One thing to keep in mind is that there's not a one-to-one mapping of Enzyme
 features to React Testing Library features. Many Enzyme features result in
 inefficient tests anyway, so some of the features you're accustomed to with
-Enzyme will need to be left behind (no more need for a `wrapper` variable or
+Enzyme need to be left behind (no more need for a `wrapper` variable or
 `wrapper.update()` calls, etc.).
 
 React Testing Library has helpful queries which let you access your component's
@@ -120,7 +120,7 @@ test this component:
 
 The following component gets a `name` from `props` and shows a welcome message
 in an `h1` element. It also has a text input which users can change to a
-different name, and the template will update accordingly. Check the live version
+different name, and the template updates accordingly. Check the live version
 on [CodeSandbox](https://codesandbox.io/s/ecstatic-hellman-fh7in).
 
 ```jsx
@@ -205,7 +205,7 @@ accessible, then it's harder to test).
 
 ### Test 2: Input texts must have correct value
 
-In the component above, the input values will be initialized with the
+In the component above, the input values are initialized with the
 `props.firstName` and `props.lastName` values. We need to check whether the
 value is correct or not.
 
@@ -247,14 +247,14 @@ of the query documentation might help you understand the concepts better.
 > A `<form>` element must have a `name` attribute in order to have an implicit
 > `role` of `'form'` (as required by the specification).
 
-React Testing Library aims to test the components how users will use them. Users
+React Testing Library aims to test the components how users use them. Users
 see buttons, headings, forms and other elements by their role, not by their
 `id`, `class`, or element tag name. Therefore, when you use React Testing
 Library you should avoid accessing the DOM with the `document.querySelector`
 API. (You _can_ use it in your tests, but it's not recommended for the reasons
 stated in this paragraph.)
 
-React Testing Library exposes some handy query APIs which will help you access
+React Testing Library exposes some handy query APIs which help you access
 the component elements efficiently. You can see the
 [list of available queries here](queries/about.mdx#types-of-queries). If you're
 not sure which query you should use in a given situation, we have a great page
