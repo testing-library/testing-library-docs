@@ -4,9 +4,10 @@ title: Examples
 sidebar_label: Examples
 ---
 
-> Read
-> [Good testing practices with 🦔 Angular Testing Library](https://timdeschryver.dev/posts/good-testing-practices-with-angular-testing-library)
-> for a guided example
+> Read about
+> [best practices](https://timdeschryver.dev/blog/good-testing-practices-with-angular-testing-library),
+> or follow the
+> [guided example](https://timdeschryver.dev/blog/getting-the-most-value-out-of-your-angular-component-tests)
 
 counter.component.ts
 
@@ -44,7 +45,7 @@ describe('Counter', () => {
       componentProperties: {counter: 5},
     })
 
-    expect(screen.getByText('Current Count: 5'))
+    expect(screen.getByText('Current Count: 5')).toBeInTheDocument()
   })
 
   test('should increment the counter on click', async () => {
@@ -54,7 +55,7 @@ describe('Counter', () => {
 
     fireEvent.click(screen.getByText('+'))
 
-    expect(screen.getByText('Current Count: 6'))
+    expect(screen.getByText('Current Count: 6')).toBeInTheDocument()
   })
 })
 ```
@@ -66,7 +67,8 @@ These examples include:
 - `@Input` and `@Output` properties
 - (Reactive) Forms
 - Integration with NgRx (mock) Store
-- And more
+- And
+  [more](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/src/app/examples)
 
 If you're looking for an example that isn't on the list, please feel free to
 create a

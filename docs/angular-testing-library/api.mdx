@@ -5,12 +5,9 @@ sidebar_label: API
 ---
 
 `Angular Testing Library` re-exports everything from `DOM Testing Library` as
-well as these methods:
+well as the `render` method.
 
-- [`render`](#render)
-
-Some of the `DOM Testing Library` re-exports are patched to work easier with
-Angular:
+The following re-exports are patched to make them easier to use with Angular:
 
 - The events on `fireEvent` automatically invoke a change detection cycle after
   the event has been fired
@@ -21,15 +18,61 @@ Angular:
 
 ## `render`
 
+With Angular Testing Library, the component can be rendered in two ways, via the
+component's type or with a template.
+
+> By default, `render` also imports the `NoopAnimationsModule`.
+
+## `Type`
+
+To render a component, you need to pass component's type to the `render` method.
+For components that don't use other parts of your application (for example
+design modules or services), rendering a component can be as simple as the
+following example.
+
 ```typescript
-async function render<ComponentType>(
+await render(AppComponent)
+```
+
+## `template`
+
+Instead of passing the component's type as first argument, you can also provide
+a template. This practice is required to render directives but can also be
+applied to components, it might even be more useful. The directive's (or
+component's) type must then be added to the `declarations`.
+
+**example with directive**:
+
+```typescript
+await render('<div appSpoiler></div>', {
+  declarations: [SpoilerDirective],
+})
+```
+
+**example with component**:
+
+```typescript
+await render(
+  '<app-component [value]="47" [otherValue]="anotherValue" (sendValue)="sendValue($event)"></app-component>',
+  {
+    declarations: [AppComponent],
+    componentProperties: {
+      anotherValue: 'valueOfAnotherProperty',
+      sendValue: jest.fn(),
+    },
+  },
+)
+```
+
+```typescript
+export async function render<ComponentType>(
   component: Type<ComponentType>,
   renderOptions?: RenderComponentOptions<ComponentType>,
 ): Promise<RenderResult<ComponentType, ComponentType>>
-async function render<DirectiveType, WrapperType = WrapperComponent>(
-  component: Type<DirectiveType>,
-  renderOptions?: RenderDirectiveOptions<DirectiveType, WrapperType>,
-): Promise<RenderResult<DirectiveType, WrapperType>>
+export async function render<WrapperType = WrapperComponent>(
+  template: string,
+  renderOptions?: RenderTemplateOptions<WrapperType>,
+): Promise<RenderResult<WrapperType>>
 ```
 
 ## Component RenderOptions
@@ -105,7 +148,8 @@ await render(AppComponent, {detectChanges: false})
 ### `excludeComponentDeclaration`
 
 Exclude the component to be automatically be added as a declaration. This is
-needed when the component is declared in an imported module.
+needed when the component is declared in an imported module, for example with
+SCAMs.
 
 **default** : `false`
 
@@ -238,39 +282,6 @@ await render(AppComponent, {
 })
 ```
 
-## Directive RenderOptions
-
-To test a directive, the render API is a bit different. The API has the same
-options as the Component RenderOptions, but has more options:
-
-### `template`
-
-The template to render the directive.
-
-**example**:
-
-```typescript
-await render(SpoilerDirective, {
-  template: `<div spoiler message='SPOILER'></div>`,
-})
-```
-
-### `wrapper`
-
-An Angular component to wrap the directive in.
-
-**default**: `WrapperComponent` , an empty component that strips the
-`ng-version` attribute.
-
-**example**:
-
-```typescript
-await render(SpoilerDirective, {
-  template: `<div spoiler message='SPOILER'></div>`
-  wrapper: CustomWrapperComponent
-})
-```
-
 ## `RenderResult`
 
 ### `container`
@@ -290,19 +301,46 @@ const {debug} = await render(AppComponent)
 debug()
 ```
 
-### `rerender`
+### `change`
 
-Re-render the same component with different props. Will call `detectChanges`
-after props has been updated.
+Change the input of the component. This calls `detectChanges` after the props
+are updated.
 
 ```typescript
-const {rerender} = await render(Counter, {componentProperties: {count: 4}})
+const {change} = await render(Counter, {
+  componentProperties: {count: 4, name: 'Sarah'},
+})
 
 expect(screen.getByTestId('count-value').textContent).toBe('4')
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
+
+change({count: 7})
+
+// count updated to 7
+expect(screen.getByTestId('count-value').textContent).toBe('7')
+// name keeps the same value
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
+```
+
+### `rerender`
+
+Re-render the same component with different props. Input properties that are not
+defined are cleared. This calls `detectChanges` after the props are updated.
+
+```typescript
+const {rerender} = await render(Counter, {
+  componentProperties: {count: 4, name: 'Sarah'},
+})
+
+expect(screen.getByTestId('count-value').textContent).toBe('4')
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
 rerender({count: 7})
 
+// count updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
+// name is undefined because it's not provided in rerender
+expect(screen.getByTestId('name-value').textContent).toBeUndefined()
 ```
 
 ### `detectChanges`
@@ -328,7 +366,8 @@ For more info see the
 ```typescript
 const {fixture} = await render(AppComponent)
 
-const componentInstance = fixture.componentInstance as AppComponent
+// componentInstance is typed as AppComponent
+const componentInstance = fixture.componentInstance
 ```
 
 > 🚨 If you find yourself using `fixture` to access the component's internal
@@ -363,6 +402,8 @@ See [Queries](queries/about.mdx) for a complete list.
 ```typescript
 const {getByText, queryByLabelText} = await render(AppComponent)
 
-getByText('Hello world')
-queryByLabelText('First name:')
+screen.getByRole('heading', {
+  name: /api/i,
+})
+queryByLabelText(/First name/i')
 ```
