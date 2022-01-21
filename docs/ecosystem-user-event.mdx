@@ -368,10 +368,10 @@ import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('clear', () => {
-  render(<textarea value="Hello, World!" />)
+  render(<textarea defaultValue="Hello, World!" />)
 
   userEvent.clear(screen.getByRole('textbox'))
-  expect(screen.getByRole('textbox')).toHaveAttribute('value', '')
+  expect(screen.getByRole('textbox')).toHaveValue('')
 })
 ```
 
