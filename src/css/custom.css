@@ -461,6 +461,12 @@ details.alert {
   border: none;
   background: none;
   box-shadow: none;
+  padding: 0;
+}
+
+details.alert div {
+  border-top: none;
+  padding-top: 0;
 }
 
 @media only screen and (min-width: 1024px) {
