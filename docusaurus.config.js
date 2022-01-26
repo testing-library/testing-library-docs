@@ -208,7 +208,6 @@ module.exports = {
     docsRepoUrl: 'https://github.com/testing-library/testing-library-docs',
     docsPath: 'docs',
   },
-  trailingSlash: false,
   onBrokenLinks: 'log',
   presets: [
     [
