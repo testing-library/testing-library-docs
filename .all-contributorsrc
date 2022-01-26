@@ -1735,6 +1735,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "moshfeu",
+      "name": "Mosh Feu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3723951?v=4",
+      "profile": "https://www.linkedin.com/in/moshfeu/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
