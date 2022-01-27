@@ -1745,6 +1745,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "make-github-pseudonymous-again",
+      "name": "Notas Hellout",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5165674?v=4",
+      "profile": "https://fosstodon.org/@sudonymouse",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
