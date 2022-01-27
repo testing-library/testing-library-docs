@@ -385,6 +385,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/jakeboone02"><img src="https://avatars.githubusercontent.com/u/366438?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jake Boone</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jakeboone02" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Dennis273"><img src="https://avatars.githubusercontent.com/u/19815164?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dennis273</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Dennis273" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/moshfeu/"><img src="https://avatars.githubusercontent.com/u/3723951?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mosh Feu</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=moshfeu" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://fosstodon.org/@sudonymouse"><img src="https://avatars.githubusercontent.com/u/5165674?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Notas Hellout</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=make-github-pseudonymous-again" title="Documentation">📖</a></td>
   </tr>
 </table>
 
