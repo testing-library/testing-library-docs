@@ -456,8 +456,17 @@ pre {
   max-width: 250px;
 }
 
-details > summary {
-  cursor: pointer;
+details.alert {
+  --ifm-alert-border-color: var(--ifm-link-color);
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+details.alert div {
+  border-top: none;
+  padding-top: 0;
 }
 
 @media only screen and (min-width: 1024px) {
