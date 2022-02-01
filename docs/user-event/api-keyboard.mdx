@@ -71,7 +71,7 @@ keyboard('{Shift>}A{/Shift}') // translates to: Shift(down), A, Shift(up)
 The mapping of `key` to `code` is performed by a
 [default key map](https://github.com/testing-library/user-event/blob/beta/src/keyboard/keyMap.ts)
 portraying a "default" US-keyboard. You can provide your own local keyboard
-mapping per [`keyboardMap`](options#keyboardmap) option.
+mapping per [`keyboardMap`](options.mdx#keyboardmap) option.
 
 Currently the different `key` meanings of single keys are treated as different
 keys.
@@ -79,5 +79,5 @@ keys.
 > Future versions might try to interpolate the modifiers needed to reach a
 > printable key on the keyboard. E.g. Automatically pressing `{Shift}` when
 > CapsLock is not active and `A` is referenced. If you don't wish this behavior,
-> you can deactivate the [`autoModify`](options#automodify) option to opt out
+> you can deactivate the [`autoModify`](options.mdx#automodify) option to opt out
 > of this non-breaking change.

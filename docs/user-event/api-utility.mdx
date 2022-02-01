@@ -96,7 +96,7 @@ test('deselectOptions', async () => {
 ```
 
 Note that this API triggers pointer events and is therefore subject to
-[pointerEventsCheck](options#pointereventscheck).
+[pointerEventsCheck](options.mdx#pointereventscheck).
 
 ## type()
 
@@ -115,16 +115,16 @@ type(
 
 Type into an input element.
 
-> You should use [`keyboard()`](keyboard) if you want to just simulate pressing
+> You should use [`keyboard()`](api-keyboard.mdx) if you want to just simulate pressing
 > buttons on the keyboard.  
 > You can use `type()` if you just want to conveniently insert some text into an
 > input field or textarea.
 
-1. Unless [`skipClick`](options#skipclick) is `true`, click the element.
+1. Unless [`skipClick`](options.mdx#skipclick) is `true`, click the element.
 1. If `initialSelectionStart` is set, set the selection on the element. If
    `initialSelectionEnd` is not set, this results in a collapsed selection.
-1. Type the given `text` per [`keyboard()`](keyboard).
-1. Unless [`skipAutoClose`](options#skipautoclose) is `true`, release all
+1. Type the given `text` per [`keyboard()`](api-keyboard.mdx).
+1. Unless [`skipAutoClose`](options.mdx#skipautoclose) is `true`, release all
    pressed keys.
 
 ```jsx
