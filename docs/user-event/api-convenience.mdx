@@ -4,7 +4,7 @@ title: Convenience APIs
 ---
 
 The following APIs are shortcuts for equivalent calls to the underlying
-[`pointer()`](pointer) and [`keyboard()`](keyboard) APIs.
+[`pointer()`](api-pointer.mdx) and [`keyboard()`](api-keyboard.mdx) APIs.
 
 ## Clicks
 
@@ -18,7 +18,7 @@ click(element: Element): Promise<void>
 pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
 ```
 
-The first action might be skipped per [`skipHover`](options#skiphover).
+The first action might be skipped per [`skipHover`](options.mdx#skiphover).
 
 ### dblClick()
 

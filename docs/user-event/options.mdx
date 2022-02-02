@@ -4,11 +4,11 @@ title: Options
 ---
 
 The following options allow to adjust the behavior of `user-event` APIs.
-They can be applied per [`setup()`](setup).
+They can be applied per [`setup()`](setup.mdx).
 
 ### applyAccept
 
-When using [`upload()`](utility#upload), automatically discard files that don't
+When using [`upload()`](api-utility.mdx#upload), automatically discard files that don't
 match an `accept` property if such property exists on the element.
 
 `default`: `true`
@@ -41,7 +41,7 @@ This moves the next changes at least to the next macro task and allows other
 The document.
 
 This defaults to the owner document of an element if an API is called
-[directly](setup#direct-api) with an element and without setup. Otherwise it
+[directly](setup.mdx#direct-api) with an element and without setup. Otherwise it
 falls back to the global document.
 
 `default`: `element.ownerDocument ?? global.document`
@@ -90,7 +90,7 @@ This allows to plug in different pointer devices.
 
 ### skipAutoClose
 
-[`type()`](utility#type) automatically releases any keys still pressed at the
+[`type()`](api-utility.mdx#type) automatically releases any keys still pressed at the
 end of the call.  
 This option allows to opt out of this feature.
 
@@ -98,14 +98,14 @@ This option allows to opt out of this feature.
 
 ### skipClick
 
-[`type()`](utility#type) implies a click on the element.  
+[`type()`](api-utility.mdx#type) implies a click on the element.  
 This option allows to opt out of this feature.
 
 `default`: false
 
 ### skipHover
 
-[`click()`](utility#click) implies moving the cursor to the target element
+[`click()`](api-utility.mdx#click) implies moving the cursor to the target element
 first.  
 This options allows to opt out of this feature.
 
@@ -114,8 +114,8 @@ This options allows to opt out of this feature.
 Write selected data to
 [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard) when
 a `cut` or `copy` is triggered. The Clipboard API is usually not available to
-test code. Our [`setup()`](setup) replaces the `navigator.clipboard` property
+test code. Our [`setup()`](setup.mdx) replaces the `navigator.clipboard` property
 with a stub.
 
-`default` when calling the APIs [directly](setup#direct-api): `false`  
+`default` when calling the APIs [directly](setup.mdx#direct-api): `false`  
 `default` when calling the APIs on an instance from `setup()`: `true`
