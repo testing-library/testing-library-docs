@@ -1,7 +1,6 @@
 ## testing-library-docs
 
 <!-- prettier-ignore-start -->
-[![Open Collective Sponsors and Backers][opencollective-badge]][opencollective]
 [![All Contributors][allcontributors-badge]](#contributors)
 [![Code of Conduct][coc-badge]][coc]
 <!-- prettier-ignore-end -->
@@ -20,9 +19,6 @@ and [related projects](https://github.com/testing-library)
 [netlify-badge]:
   https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
 [build]: https://app.netlify.com/sites/testing-library/deploys
-[opencollective]: https://opencollective.com/testing-library/
-[opencollective-badge]:
-  https://img.shields.io/opencollective/all/testing-library.svg?label=opencollective%20backers&style=flat-square
 [allcontributors-badge]:
   https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
 [coc-badge]:
