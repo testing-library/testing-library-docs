@@ -218,15 +218,8 @@ import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('prepend text', () => {
-  render(
-    <div>
-      <label htmlFor="my-input">Example:</label>
-      <input id="my-input" type="text" />
-    </div>,
-  )
-
-  const input = screen.getByLabelText(/example/i)
-  userEvent.type(element, 'World!')
+  render(<input defaultValue="World!"/>)
+  const element = screen.getByRole('textbox')
 
   // Prepend text
   element.setSelectionRange(0, 0)
