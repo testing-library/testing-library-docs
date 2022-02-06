@@ -210,6 +210,29 @@ test('delete characters within the selectedRange', () => {
   userEvent.type(input, '{backspace}good')
 
   expect(input).toHaveValue('This is a good example')
+```
+
+By default, `type` appends to the existing text. To prepend text, reset the
+element's selection range and provide the `initialSelectionStart` and
+`initialSelectionEnd` options:
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('prepend text', () => {
+  render(<input defaultValue="World!"/>)
+  const element = screen.getByRole('textbox')
+
+  // Prepend text
+  element.setSelectionRange(0, 0)
+  userEvent.type(element, 'Hello, ', {
+    initialSelectionStart: 0,
+    initialSelectionEnd: 0,
+  })
+
+  expect(element).toHaveValue('Hello, World!')
 })
 ```
 
