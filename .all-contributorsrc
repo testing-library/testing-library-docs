@@ -1754,6 +1754,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "msmolens",
+      "name": "Max Smolens",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7122091?v=4",
+      "profile": "https://maxsmolens.org",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
