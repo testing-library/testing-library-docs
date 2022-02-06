@@ -383,6 +383,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://www.linkedin.com/in/moshfeu/"><img src="https://avatars.githubusercontent.com/u/3723951?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mosh Feu</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=moshfeu" title="Documentation">📖</a></td>
     <td align="center"><a href="https://fosstodon.org/@sudonymouse"><img src="https://avatars.githubusercontent.com/u/5165674?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Notas Hellout</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=make-github-pseudonymous-again" title="Documentation">📖</a></td>
     <td align="center"><a href="https://maxsmolens.org"><img src="https://avatars.githubusercontent.com/u/7122091?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Smolens</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=msmolens" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/nimaebra"><img src="https://avatars.githubusercontent.com/u/78249749?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nima Ebrazeh</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=nimaebra" title="Documentation">📖</a></td>
   </tr>
 </table>
 
