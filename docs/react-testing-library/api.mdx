@@ -207,10 +207,15 @@ to ensure that the props are being updated correctly (see
 prefer to update the props of a rendered component in your test, this function
 can be used to update props of the rendered component.
 
+To use rerender it is necessary to use the unmount method to undo the previous rendering context.
+
 ```jsx
 import {render} from '@testing-library/react'
 
-const {rerender} = render(<NumberDisplay number={1} />)
+const {rerender, unmount} = render(<NumberDisplay number={1} />)
+
+// this will cause the rendered component to be unmounted
+unmount()
 
 // re-render the same component with different props
 rerender(<NumberDisplay number={2} />)
