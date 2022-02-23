@@ -49,7 +49,7 @@ const page = await browser.newPage()
 const $document = await page.getDocument()
 // query methods are added directly to prototype of ElementHandle
 const $form = await $document.getByTestId('my-form')
-// destructing works if you explicitly call getQueriesForElement
+// destructuring works if you explicitly call getQueriesForElement
 const {getByLabelText} = $form.getQueriesForElement()
 // ...
 const $email = await getByLabelText('Email')
