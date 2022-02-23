@@ -1781,6 +1781,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "clemp6r",
+      "name": "Clément Plantier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4757677?v=4",
+      "profile": "https://github.com/clemp6r",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
