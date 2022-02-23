@@ -386,6 +386,9 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/nimaebra"><img src="https://avatars.githubusercontent.com/u/78249749?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nima Ebrazeh</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=nimaebra" title="Documentation">📖</a></td>
     <td align="center"><a href="http://ph-fritsche.github.io"><img src="https://avatars.githubusercontent.com/u/39068198?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Philipp Fritsche</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/pulls?q=is%3Apr+reviewed-by%3Aph-fritsche" title="Reviewed Pull Requests">👀</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/clemp6r"><img src="https://avatars.githubusercontent.com/u/4757677?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Clément Plantier</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=clemp6r" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
