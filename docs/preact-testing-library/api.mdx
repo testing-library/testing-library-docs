@@ -113,12 +113,13 @@ fireEvent.click(buttonNode);
 
 // Fire event Option 2.
 fireEvent(
-buttonNode,
-new Event('MouseEvent', {
-  bubbles: true,
-  cancelable: true,
-  button: 0,
-});
+  buttonNode,
+  new Event('MouseEvent', {
+    bubbles: true,
+    cancelable: true,
+    button: 0,
+  })
+);
 
 expect(buttonNode).toHaveTextContent('1');
 expect(cb).toHaveBeenCalledTimes(1);
