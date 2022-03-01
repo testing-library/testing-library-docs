@@ -114,9 +114,10 @@ fireEvent.click(buttonNode);
 // Fire event Option 2.
 fireEvent(
   buttonNode,
-  new Event('MouseEvent', {
+  new MouseEvent('click', {
     bubbles: true,
     cancelable: true,
+    button: 0,
   })
 );
 
