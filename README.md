@@ -388,6 +388,7 @@ Thanks goes to these wonderful people
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/clemp6r"><img src="https://avatars.githubusercontent.com/u/4757677?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Clément Plantier</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=clemp6r" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/pppp606"><img src="https://avatars.githubusercontent.com/u/7203958?v=4?s=100" width="100px;" alt=""/><br /><sub><b>pppp606</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pppp606" title="Documentation">📖</a></td>
   </tr>
 </table>
 
