@@ -96,6 +96,9 @@ fireEvent.keyDown(domNode, {key: 'Enter', code: 'Enter', charCode: 13})
 fireEvent.keyDown(domNode, {key: 'A', code: 'KeyA'})
 ```
 
+> :warning: Be careful to provide the `charCode` property in case of firing the
+> `keyPress` event. Otherwise, it won't be fired.
+
 You can find out which key code to use at
 [https://keycode.info/](https://keycode.info/).
 
