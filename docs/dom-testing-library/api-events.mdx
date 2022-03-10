@@ -96,9 +96,8 @@ fireEvent.keyDown(domNode, {key: 'Enter', code: 'Enter', charCode: 13})
 fireEvent.keyDown(domNode, {key: 'A', code: 'KeyA'})
 ```
 
-> :warning: Be careful to provide the `charCode` property in case of firing the
-> `keyPress` event. Otherwise, it won't be fired.
-
+> :warning: `React` doesn't dispatch a `SyntheticEvent` for a native `keypress` event without `event.charCode === 13 || event.charCode >= 32`.
+> I.e. `onKeyPress` handlers will only be called if you include an appropriate `charCode` property.
 You can find out which key code to use at
 [https://keycode.info/](https://keycode.info/).
 
