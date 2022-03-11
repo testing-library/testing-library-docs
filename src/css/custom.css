@@ -370,7 +370,6 @@ html[data-theme='dark'] {
   .productShowcaseSection .logos img {
     max-height: 64px;
     padding: 20px;
-    width: 64px;
   }
 }
 
@@ -395,6 +394,7 @@ html[data-theme='dark'] {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .showcaseSection .logos img {
