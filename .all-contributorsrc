@@ -1799,6 +1799,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "bilouw",
+      "name": "Bilou",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7089641?v=4",
+      "profile": "https://github.com/bilouw",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
