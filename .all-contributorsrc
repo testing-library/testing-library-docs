@@ -1808,6 +1808,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dten",
+      "name": "David Hewson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1019038?v=4",
+      "profile": "https://github.com/dten",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
