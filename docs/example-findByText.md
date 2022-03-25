@@ -14,7 +14,8 @@ import userEvent from '@testing-library/user-event'
 // i.e. `.toBeVisible`
 import '@testing-library/jest-dom'
 
-const renderContent = el => {
+function renderApp() {
+  const el = document.body.appendChild(document.createElement('div'))
   el.innerHTML = `
     <form id='login_form' method='post' name='login'>
       <label for='username'>User Name:</label>
@@ -88,20 +89,15 @@ const renderContent = el => {
     window.history.back()
   })
 
-  return el
+  return { user: userEvent.setup() }
 }
 
+afterEach(() => document.body.innerHTML = ``)
+
 describe('findByText Examples', () => {
-  let div
-  let container
-
-  beforeEach(() => {
-    div = document.createElement('div')
-    container = renderContent(div)
-  })
-
   it('should show a required field warning for each empty input field', async () => {
-    userEvent.click(
+    const {user} = renderApp()
+    await user.click(
       getByRole(container, 'button', {
         name: 'Login',
       }),
@@ -113,19 +109,20 @@ describe('findByText Examples', () => {
   })
 
   it('should show invalid field errors for each invalid input field', async () => {
+    const {user} = renderApp()
     const userNameField = getByPlaceholderText(container, 'Enter user name')
     const passwordField = getByPlaceholderText(container, 'Enter password')
 
     expect(await findByText(container, 'Invalid Password')).not.toBeVisible()
     expect(await findByText(container, 'Invalid User Name')).not.toBeVisible()
 
-    userEvent.type(userNameField, 'Philchard')
-    userEvent.type(passwordField, 'theCat')
+    await user.type(userNameField, 'Philchard')
+    await user.type(passwordField, 'theCat')
 
     expect(userNameField).toHaveValue('Philchard')
     expect(passwordField).toHaveValue('theCat')
 
-    userEvent.click(
+    await user.click(
       getByRole(container, 'button', {
         name: 'Login',
       }),

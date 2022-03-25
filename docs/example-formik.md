@@ -63,12 +63,13 @@ import {MyForm} from './myForm.js'
 test('rendering and submitting a basic Formik form', async () => {
   const handleSubmit = jest.fn()
   render(<MyForm onSubmit={handleSubmit} />)
+  const user = userEvent.setup()
 
-  userEvent.type(screen.getByLabelText(/first name/i), 'John')
-  userEvent.type(screen.getByLabelText(/last name/i), 'Dee')
-  userEvent.type(screen.getByLabelText(/email/i), 'john.dee@someemail.com')
+  await user.type(screen.getByLabelText(/first name/i), 'John')
+  await user.type(screen.getByLabelText(/last name/i), 'Dee')
+  await user.type(screen.getByLabelText(/email/i), 'john.dee@someemail.com')
 
-  userEvent.click(screen.getByRole('button', {name: /submit/i}))
+  await user.click(screen.getByRole('button', {name: /submit/i}))
 
   await waitFor(() =>
     expect(handleSubmit).toHaveBeenCalledWith({
