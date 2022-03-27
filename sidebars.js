@@ -144,6 +144,7 @@ module.exports = {
             'angular-testing-library/intro',
             'angular-testing-library/examples',
             'angular-testing-library/api',
+            'angular-testing-library/faq',
           ],
         },
         {

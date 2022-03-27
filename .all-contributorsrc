@@ -1817,6 +1817,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "marcioggs",
+      "name": "Márcio Gabriel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2506127?v=4",
+      "profile": "https://github.com/marcioggs",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
