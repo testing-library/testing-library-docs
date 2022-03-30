@@ -11,6 +11,7 @@ as these methods:
   - [`container`](#container)
   - [`baseElement`](#baseelement)
   - [`hydrate`](#hydrate)
+  - [`legacyRoot`](#legacyroot)
   - [`wrapper`](#wrapper)
   - [`queries`](#queries)
 - [`render` Result](#render-result)
@@ -93,6 +94,15 @@ If hydrate is set to true, then it will render with
 [ReactDOM.hydrate](https://reactjs.org/docs/react-dom.html#hydrate). This may be
 useful if you are using server-side rendering and use ReactDOM.hydrate to mount
 your components.
+
+### `legacyRoot`
+
+By default we'll render with support for concurrent features (i.e.
+[`ReactDOMClient.createRoot`](https://reactjs.org/docs/react-dom-client.html#createroot)).
+However, if you're dealing with a legacy app that requires rendering like in
+React 17 (i.e.
+[`ReactDOM.render`](https://reactjs.org/docs/react-dom.html#render)) then you
+should enable this option.
 
 ### `wrapper`
 
