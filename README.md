@@ -391,6 +391,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/pppp606"><img src="https://avatars.githubusercontent.com/u/7203958?v=4?s=100" width="100px;" alt=""/><br /><sub><b>pppp606</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=pppp606" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/bilouw"><img src="https://avatars.githubusercontent.com/u/7089641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bilou</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bilouw" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dten"><img src="https://avatars.githubusercontent.com/u/1019038?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Hewson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dten" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/alex-kim-dev"><img src="https://avatars.githubusercontent.com/u/45559664?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Kim</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=alex-kim-dev" title="Documentation">📖</a></td>
   </tr>
 </table>
 
