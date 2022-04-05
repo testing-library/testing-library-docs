@@ -1817,6 +1817,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "alex-kim-dev",
+      "name": "Alex Kim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45559664?v=4",
+      "profile": "https://github.com/alex-kim-dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
