@@ -66,11 +66,7 @@ not replace the functionality of these attributes. For example
 `getByAltText('fancy image')` and `getByRole('img', { name: 'fancy image' })`.
 However, the image will not display its description if `fancy.jpg` could not be
 loaded. Whether you want to assert this functionality in your test or not is up
-to you.<br/> The accessible description is for cases where you have some
-elements which don't have a corresponding accessible name but they do have a
-description. For example, this can be the case for elements with 
-[alertdialog](https://www.w3.org/TR/wai-aria-1.1/#alertdialog) role, where
-the `aria-describedby` attribute is used to describe the elements content.
+to you.
 
 ## Options
 
@@ -319,3 +315,36 @@ To learn more about the `aria-level` property, see
 
 > The `level` option is _only_ applicable to the `heading` role. An error will
 > be thrown when used with any other role.
+
+### `description`
+
+You can filter the returned elements by their
+[accessible description](https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_description)
+for those cases where you have several elements with the same role and they
+don't have an accessible name but they do have a description.<br /> This would
+be the case for elements with
+[alertdialog](https://www.w3.org/TR/wai-aria-1.1/#alertdialog) role, where the
+`aria-describedby` attribute is used to describe the elements content.
+
+For example in
+
+```html
+<body>
+  <ul>
+    <li role="alertdialog" aria-describedby="notification-id-1">
+      <div><button>Close</button></div>
+      <div id="notification-id-1">You have unread emails</div>
+    </li>
+    <li role="alertdialog" aria-describedby="notification-id-2">
+      <div><button>Close</button></div>
+      <div id="notification-id-2">Your session is about to expire</div>
+    </li>
+  </ul>
+</body>
+```
+
+You can query an specific element like this
+
+```js
+getByrole('alertdialog', {description: 'Your session is about to expire'})
+```
