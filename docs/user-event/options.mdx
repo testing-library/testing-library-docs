@@ -6,6 +6,13 @@ title: Options
 The following options allow to adjust the behavior of `user-event` APIs. They
 can be applied per [`setup()`](setup.mdx).
 
+### advanceTimers
+
+A function to advance your fake timers (if applicable), when we
+[`delay`](#delay) subsequent calls.
+
+`default`: `() => Promise.resolve()`
+
 ### applyAccept
 
 When using [`upload()`](api-utility.mdx#upload), automatically discard files
