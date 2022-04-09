@@ -393,6 +393,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/dten"><img src="https://avatars.githubusercontent.com/u/1019038?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Hewson</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dten" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/alex-kim-dev"><img src="https://avatars.githubusercontent.com/u/45559664?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Kim</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=alex-kim-dev" title="Documentation">📖</a></td>
     <td align="center"><a href="http://paquitosoftware.com"><img src="https://avatars.githubusercontent.com/u/166022?v=4?s=100" width="100px;" alt=""/><br /><sub><b>PaquitoSoft</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=PaquitoSoft" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://br.linkedin.com/in/marcioggs"><img src="https://avatars.githubusercontent.com/u/2506127?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Márcio Gabriel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=marcioggs" title="Documentation">📖</a></td>
   </tr>
 </table>
 
