@@ -10,9 +10,14 @@ import TabItem from '@theme/TabItem'
 advanced simulation of browser interactions than the built-in
 [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) method.
 
-> This page describes `user-event@13.5.0`.
-If you are starting or actively working on a project,
-we recommend to use [`user-event@14.0.0-beta`](user-event/intro.mdx) instead, as it includes important bug fixes and new features.  
+:::caution End of life
+
+This page describes `user-event@13.5.0`.  
+This version is no longer maintained. Please use
+[`user-event@14`](user-event/intro.mdx) instead, as it includes important bug
+fixes and new features.
+
+:::
 
 ## Installation
 
@@ -222,7 +227,7 @@ import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 test('prepend text', () => {
-  render(<input defaultValue="World!"/>)
+  render(<input defaultValue="World!" />)
   const element = screen.getByRole('textbox')
 
   // Prepend text

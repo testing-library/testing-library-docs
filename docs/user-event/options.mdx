@@ -3,13 +3,13 @@ id: options
 title: Options
 ---
 
-The following options allow to adjust the behavior of `user-event` APIs.
-They can be applied per [`setup()`](setup.mdx).
+The following options allow to adjust the behavior of `user-event` APIs. They
+can be applied per [`setup()`](setup.mdx).
 
 ### applyAccept
 
-When using [`upload()`](api-utility.mdx#upload), automatically discard files that don't
-match an `accept` property if such property exists on the element.
+When using [`upload()`](api-utility.mdx#upload), automatically discard files
+that don't match an `accept` property if such property exists on the element.
 
 `default`: `true`
 
@@ -53,7 +53,7 @@ An array of keyboard keys the keyboard device consists of.
 This allows to plug in different layouts / localizations.
 
 `default`:
-[A "standard" US-104-QWERTY keyboard.](https://github.com/testing-library/user-event/blob/beta/src/keyboard/keyMap.ts)
+[A "standard" US-104-QWERTY keyboard.](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)
 
 ### pointerEventsCheck
 
@@ -71,7 +71,7 @@ This is a binary flag option. You can combine multiple Levels.
 - `PointerEventsCheckLevel.EachTarget`:  
    Check each event target once
 - `PointerEventsCheckLevel.EachApiCall`:  
-   Check each event target once
+   Check each event target once per API
 - `PointerEventsCheckLevel.EachTrigger`:  
    Check pointer events on every user interaction that triggers a bunch of events.
   E.g. once for releasing a mouse button even though this triggers `pointerup`, `mouseup`,
@@ -86,12 +86,12 @@ An array of available pointer keys.
 This allows to plug in different pointer devices.
 
 `default`:
-[A simple mouse and a touchscreen](https://github.com/testing-library/user-event/blob/beta/src/pointer/keyMap.ts)
+[A simple mouse and a touchscreen](https://github.com/testing-library/user-event/blob/main/src/pointer/keyMap.ts)
 
 ### skipAutoClose
 
-[`type()`](api-utility.mdx#type) automatically releases any keys still pressed at the
-end of the call.  
+[`type()`](api-utility.mdx#type) automatically releases any keys still pressed
+at the end of the call.  
 This option allows to opt out of this feature.
 
 `default`: false
@@ -105,8 +105,8 @@ This option allows to opt out of this feature.
 
 ### skipHover
 
-[`click()`](api-utility.mdx#click) implies moving the cursor to the target element
-first.  
+[`click()`](api-utility.mdx#click) implies moving the cursor to the target
+element first.  
 This options allows to opt out of this feature.
 
 ### writeToClipboard
@@ -114,8 +114,8 @@ This options allows to opt out of this feature.
 Write selected data to
 [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard) when
 a `cut` or `copy` is triggered. The Clipboard API is usually not available to
-test code. Our [`setup()`](setup.mdx) replaces the `navigator.clipboard` property
-with a stub.
+test code. Our [`setup()`](setup.mdx) replaces the `navigator.clipboard`
+property with a stub.
 
-`default` when calling the APIs [directly](setup.mdx#direct-api): `false`  
+`default` when calling the APIs [directly](setup.mdx#direct-apis): `false`  
 `default` when calling the APIs on an instance from `setup()`: `true`

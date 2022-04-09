@@ -20,8 +20,8 @@ some of the project's other libraries that can help you along the way:
 
 - **[@testing-library/jest-dom](https://github.com/testing-library/jest-dom)**:
   `jest-dom` provides a set of custom Jest matchers that you can use to extend
-  Jest. These make your tests more declarative, clearer to read, and easier
-  to maintain.
+  Jest. These make your tests more declarative, clearer to read, and easier to
+  maintain.
 
 - **[@testing-library/user-event](https://github.com/testing-library/user-event):**
   `user-event` tries to simulate the real events that happen in the browser as
@@ -120,8 +120,8 @@ test this component:
 
 The following component gets a `name` from `props` and shows a welcome message
 in an `h1` element. It also has a text input which users can change to a
-different name, and the template updates accordingly. Check the live version
-on [CodeSandbox](https://codesandbox.io/s/ecstatic-hellman-fh7in).
+different name, and the template updates accordingly. Check the live version on
+[CodeSandbox](https://codesandbox.io/s/ecstatic-hellman-fh7in).
 
 ```jsx
 const Welcome = props => {
@@ -247,15 +247,15 @@ of the query documentation might help you understand the concepts better.
 > A `<form>` element must have a `name` attribute in order to have an implicit
 > `role` of `'form'` (as required by the specification).
 
-React Testing Library aims to test the components how users use them. Users
-see buttons, headings, forms and other elements by their role, not by their
-`id`, `class`, or element tag name. Therefore, when you use React Testing
-Library you should avoid accessing the DOM with the `document.querySelector`
-API. (You _can_ use it in your tests, but it's not recommended for the reasons
-stated in this paragraph.)
+React Testing Library aims to test the components how users use them. Users see
+buttons, headings, forms and other elements by their role, not by their `id`,
+`class`, or element tag name. Therefore, when you use React Testing Library you
+should avoid accessing the DOM with the `document.querySelector` API. (You _can_
+use it in your tests, but it's not recommended for the reasons stated in this
+paragraph.)
 
-React Testing Library exposes some handy query APIs which help you access
-the component elements efficiently. You can see the
+React Testing Library exposes some handy query APIs which help you access the
+component elements efficiently. You can see the
 [list of available queries here](queries/about.mdx#types-of-queries). If you're
 not sure which query you should use in a given situation, we have a great page
 which explains [which query to use](queries/about.mdx#priority), so check it
@@ -330,10 +330,14 @@ input's "checked" property is properly set. Let's see how we might write a test
 for that case:
 
 ```jsx
-test('handles click correctly', () => {
+test('handles click correctly', async () => {
   render(<Checkbox />)
+  const user = userEvent.setup()
 
-  userEvent.click(screen.getByText('Check'))
+  // You can also call this method directly on userEvent,
+  // but using the methods from `.setup()` is recommended.
+  await user.click(screen.getByText('Check'))
+
   expect(screen.getByLabelText('Check')).toBeChecked()
 })
 ```

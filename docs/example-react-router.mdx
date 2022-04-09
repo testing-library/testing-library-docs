@@ -55,19 +55,19 @@ import '@testing-library/jest-dom'
 
 import {App, LocationDisplay} from './app'
 
-test('full app rendering/navigating', () => {
+test('full app rendering/navigating', async () => {
   const history = createMemoryHistory()
   render(
     <Router history={history}>
       <App />
     </Router>,
   )
+  const user = userEvent.setup()
   // verify page content for expected route
   // often you'd use a data-testid or role query, but this is also possible
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
-  const leftClick = {button: 0}
-  userEvent.click(screen.getByText(/about/i), leftClick)
+  await user.click(screen.getByText(/about/i))
 
   // check that the content changed to the new page
   expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
@@ -127,18 +127,20 @@ test('full app rendering/navigating', () => {
 const renderWithRouter = (ui, {route = '/'} = {}) => {
   window.history.pushState({}, 'Test page', route)
 
-  return render(ui, {wrapper: BrowserRouter})
+  return {
+    user: userEvent.setup(),
+    ...render(ui, {wrapper: BrowserRouter}),
+  }
 }
 ```
 
 ```jsx
 // app.test.js
-test('full app rendering/navigating', () => {
-  renderWithRouter(<App />)
+test('full app rendering/navigating', async () => {
+  const {user} = renderWithRouter(<App />)
   expect(screen.getByText(/you are home/i)).toBeInTheDocument()
 
-  const leftClick = {button: 0}
-  userEvent.click(screen.getByText(/about/i), leftClick)
+  await user.click(screen.getByText(/about/i))
 
   expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
 })

@@ -20,6 +20,7 @@ getByRole(
     exact?: boolean = true,
     hidden?: boolean = false,
     name?: TextMatch,
+    description?: TextMatch,
     normalizer?: NormalizerFn,
     selected?: boolean,
     checked?: boolean,
@@ -50,11 +51,11 @@ because the `button` element has default characteristics that conflict with the
 > will not include elements with a subclass role like `switch`.
 
 You can query the returned element(s) by their
-[accessible name](https://www.w3.org/TR/accname-1.1/). The accessible name is
-for simple cases equal to e.g. the label of a form element, or the text content
-of a button, or the value of the `aria-label` attribute. It can be used to query
-a specific element if multiple elements with the same role are present on the
-rendered content. For an in-depth guide check out
+[accessible name or description](https://www.w3.org/TR/accname-1.1/). The
+accessible name is for simple cases equal to e.g. the label of a form element,
+or the text content of a button, or the value of the `aria-label` attribute. It
+can be used to query a specific element if multiple elements with the same role
+are present on the rendered content. For an in-depth guide check out
 ["What is an accessible name?" from ThePacielloGroup](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/).
 If you only query for a single element with `getByText('The name')` it's
 oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The
@@ -314,3 +315,36 @@ To learn more about the `aria-level` property, see
 
 > The `level` option is _only_ applicable to the `heading` role. An error will
 > be thrown when used with any other role.
+
+### `description`
+
+You can filter the returned elements by their
+[accessible description](https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_description)
+for those cases where you have several elements with the same role and they
+don't have an accessible name but they do have a description.<br /> This would
+be the case for elements with
+[alertdialog](https://www.w3.org/TR/wai-aria-1.1/#alertdialog) role, where the
+`aria-describedby` attribute is used to describe the element's content.
+
+For example in
+
+```html
+<body>
+  <ul>
+    <li role="alertdialog" aria-describedby="notification-id-1">
+      <div><button>Close</button></div>
+      <div id="notification-id-1">You have unread emails</div>
+    </li>
+    <li role="alertdialog" aria-describedby="notification-id-2">
+      <div><button>Close</button></div>
+      <div id="notification-id-2">Your session is about to expire</div>
+    </li>
+  </ul>
+</body>
+```
+
+You can query a specific element like this
+
+```js
+getByrole('alertdialog', {description: 'Your session is about to expire'})
+```
