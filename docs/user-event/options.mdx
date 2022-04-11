@@ -8,8 +8,12 @@ can be applied per [`setup()`](setup.mdx).
 
 ### advanceTimers
 
-A function to advance your fake timers (if applicable), when we
-[`delay`](#delay) subsequent calls.
+If you are using fake timers, you need to advance your timers when we internally
+[delay](#delay) subsequent code.
+
+```ts
+(delay: number) => Promise<void> | void
+```
 
 `default`: `() => Promise.resolve()`
 
