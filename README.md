@@ -395,6 +395,9 @@ Thanks goes to these wonderful people
     <td align="center"><a href="http://paquitosoftware.com"><img src="https://avatars.githubusercontent.com/u/166022?v=4?s=100" width="100px;" alt=""/><br /><sub><b>PaquitoSoft</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=PaquitoSoft" title="Documentation">📖</a></td>
     <td align="center"><a href="https://br.linkedin.com/in/marcioggs"><img src="https://avatars.githubusercontent.com/u/2506127?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Márcio Gabriel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=marcioggs" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://krychaxp.pl"><img src="https://avatars.githubusercontent.com/u/55843050?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Krychaxp</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=krychaxp" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
