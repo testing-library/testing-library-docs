@@ -55,7 +55,7 @@ This defaults to the owner document of an element if an API is called
 [directly](setup.mdx#direct-api) with an element and without setup. Otherwise it
 falls back to the global document.
 
-`default`: `element.ownerDocument ?? global.document`
+`default`: `element.ownerDocument ?? globalThis.document`
 
 ### keyboardMap
 
