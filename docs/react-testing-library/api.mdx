@@ -24,6 +24,13 @@ as these methods:
   - [`asFragment`](#asfragment)
 - [`cleanup`](#cleanup)
 - [`act`](#act)
+- [`renderHook`](#renderhook)
+- [`renderHook` Options](#renderhook-options)
+  - [`initialProps`](#initialprops)
+  - [`wrapper`](#wrapper-1)
+- [`renderHook` Result](#renderhook-result)
+  - [`result`](#result)
+  - [`rerender`](#rerender-1)
 
 ---
 
@@ -316,3 +323,94 @@ This is a light wrapper around the
 All it does is forward all arguments to the act function if your version of
 react supports `act`. It is recommended to use the import from
 `@testing-library/react` over `react-dom/test-utils` for consistency reasons.
+
+## `renderHook`
+
+This is a convenience wrapper around `render` with a custom test component. The
+API emerged from a popular testing pattern and is mostly interesting for
+libraries publishing hooks. You should prefer `render` since a custom test
+component results in more readable and robust tests since the thing you want to
+test is not hidden behind an abstraction.
+
+```typescript
+function renderHook<Result, Props>(
+  render: (props: Props) => Result,
+  options?: RenderHookOptions<Props>,
+): RenderHookResult<Result, Props>
+```
+
+Example:
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+test('returns logged in user', () => {
+  const {result} = renderHook(() => useLoggedInUser())
+  expect(result.current).toEqual({name: 'Alice'})
+})
+```
+
+## `renderHook` Options
+
+### `renderHook` Options `initialProps`
+
+Declares the props that are passed to the render-callback when first invoked.
+These will **not** be passed if you call `rerender` without props.
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+test('returns logged in user', () => {
+  const {result, rerender} = renderHook(({name} = {}) => name, {
+    initialProps: {name: 'Alice'},
+  })
+  expect(result.current).toEqual({name: 'Alice'})
+  rerender()
+  expect(result.current).toEqual({name: undefined})
+})
+```
+
+### `renderHook` Options `wrapper`
+
+See [`wrapper` option for `render`](#wrapper)
+
+## `renderHook` Result
+
+The `renderHook` method returns an object that has a few properties:
+
+### `result`
+
+Holds the value of the most recently **committed** return value of the
+render-callback:
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+const {result} = renderHook(() => {
+  const [name, setName] = useState('')
+  React.useEffect(() => {
+    setName('Alice')
+  }, [])
+
+  return name
+})
+
+expect(result.current).toBe('Alice')
+```
+
+Note that the value is held in `result.current`. Think of `result` as a
+[ref](https://reactjs.org/docs/glossary.html#refs) for the most recently
+**committed** value.
+
+### `rerender`
+
+Renders the the previously rendered render-callback with the new props:
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+const {rerender} = renderHook(({name = 'Alice'} = {}) => name)
+
+// re-render the same hook with different props
+rerender({name: 'Bob'})
+```
