@@ -143,7 +143,8 @@ want to query `document.body` then you can use the [`screen`](#screen) export as
 demonstrated below (using `screen` is recommended).
 
 The primary argument to a query can be a _string_, _regular expression_, or
-_function_. There are also options to adjust how node text is parsed. See
+_function_. If you pass a function, it will receive `content` and `element` as parameters.
+There are also options to adjust how node text is parsed. See
 [TextMatch](#textmatch) for documentation on what can be passed to a query.
 
 Given the following DOM elements (which can be rendered by React, Vue, Angular,
@@ -169,6 +170,13 @@ const inputNode1 = screen.getByLabelText('Username')
 // Without screen, you need to provide a container:
 const container = document.querySelector('#app')
 const inputNode2 = getByLabelText(container, 'Username')
+```
+### `queryOptions`
+
+There are several options that you can pass to queries, though in most cases you won't need any. 
+
+```js
+screen.getByRole('list', { hidden: true })
 ```
 
 ### `screen`
@@ -238,7 +246,7 @@ cy.findByLabelText('Example').should('exist')
 
 Most of the query APIs take a `TextMatch` as an argument, which means the
 argument can be either a _string_, _regex_, or a _function_ which returns `true`
-for a match and `false` for a mismatch.
+for a match and `false` for a mismatch. If you pass a function, it will receive `content` and `element` as parameters.
 
 ### TextMatch Examples
 
