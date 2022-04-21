@@ -143,8 +143,7 @@ want to query `document.body` then you can use the [`screen`](#screen) export as
 demonstrated below (using `screen` is recommended).
 
 The primary argument to a query can be a _string_, _regular expression_, or
-_function_. If you pass a function, it will receive `content` and `element` as parameters.
-There are also options to adjust how node text is parsed. See
+_function_. There are also options to adjust how node text is parsed. See
 [TextMatch](#textmatch) for documentation on what can be passed to a query.
 
 Given the following DOM elements (which can be rendered by React, Vue, Angular,
@@ -173,11 +172,13 @@ const inputNode2 = getByLabelText(container, 'Username')
 ```
 ### `queryOptions`
 
-There are several options that you can pass to queries, though in most cases you won't need any. 
+You can pass a `queryOptions` object with the query type, e.g.:
 
 ```js
-screen.getByRole('list', { hidden: true })
+screen.getByRole('list', { hidden: true });
 ```
+
+Note that the available query options are different for each query type.
 
 ### `screen`
 
@@ -245,8 +246,8 @@ cy.findByLabelText('Example').should('exist')
 ## `TextMatch`
 
 Most of the query APIs take a `TextMatch` as an argument, which means the
-argument can be either a _string_, _regex_, or a _function_ which returns `true`
-for a match and `false` for a mismatch. If you pass a function, it will receive `content` and `element` as parameters.
+argument can be either a _string_, _regex_, or a _function_ of signature `(content?: string, element?: Element | null) => boolean` which returns `true`
+for a match and `false` for a mismatch.
 
 ### TextMatch Examples
 
