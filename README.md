@@ -397,6 +397,7 @@ Thanks goes to these wonderful people
   </tr>
   <tr>
     <td align="center"><a href="http://krychaxp.pl"><img src="https://avatars.githubusercontent.com/u/55843050?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Krychaxp</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=krychaxp" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mohetti"><img src="https://avatars.githubusercontent.com/u/73931283?v=4?s=100" width="100px;" alt=""/><br /><sub><b>momokolo</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mohetti" title="Documentation">📖</a></td>
   </tr>
 </table>
 
