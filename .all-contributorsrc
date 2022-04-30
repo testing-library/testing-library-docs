@@ -1853,6 +1853,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mohetti",
+      "name": "momokolo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/73931283?v=4",
+      "profile": "https://github.com/mohetti",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
