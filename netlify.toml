@@ -5,7 +5,7 @@
   publish = "build"
 
   # Default build command
-  command = "npm install; npm run format-docs; npm run build"
+  command = "npm install; npm run format; npm run build"
 
 [dev]
   # A Boolean value that determines if Netlify Dev launches the local server address in your browser
