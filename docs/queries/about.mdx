@@ -170,6 +170,9 @@ const inputNode1 = screen.getByLabelText('Username')
 const container = document.querySelector('#app')
 const inputNode2 = getByLabelText(container, 'Username')
 ```
+### `queryOptions`
+
+You can pass a `queryOptions` object with the query type. See the docs for each query type to see available options, e.g. [byRole API](queries/byrole.mdx#api).
 
 ### `screen`
 
@@ -237,7 +240,7 @@ cy.findByLabelText('Example').should('exist')
 ## `TextMatch`
 
 Most of the query APIs take a `TextMatch` as an argument, which means the
-argument can be either a _string_, _regex_, or a _function_ which returns `true`
+argument can be either a _string_, _regex_, or a _function_ of signature `(content?: string, element?: Element | null) => boolean` which returns `true`
 for a match and `false` for a mismatch.
 
 ### TextMatch Examples
