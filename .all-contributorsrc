@@ -1871,6 +1871,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jbutz",
+      "name": "Jason Butz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/736696?v=4",
+      "profile": "http://www.jasonbutz.info",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
