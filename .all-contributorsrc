@@ -1880,6 +1880,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "olejech",
+      "name": "Oleg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64708593?v=4",
+      "profile": "https://github.com/olejech",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
