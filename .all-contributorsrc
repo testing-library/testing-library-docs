@@ -1889,6 +1889,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "danywalls",
+      "name": "Dany Paredes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5494535?v=4",
+      "profile": "http://www.danywalls.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

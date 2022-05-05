@@ -401,6 +401,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/meatnordrink"><img src="https://avatars.githubusercontent.com/u/35735666?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AndyG</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=meatnordrink" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.jasonbutz.info"><img src="https://avatars.githubusercontent.com/u/736696?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jason Butz</b></sub></a><br /><a href="#infra-jbutz" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/olejech"><img src="https://avatars.githubusercontent.com/u/64708593?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Oleg</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=olejech" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.danywalls.com"><img src="https://avatars.githubusercontent.com/u/5494535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dany Paredes</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=danywalls" title="Documentation">📖</a></td>
   </tr>
 </table>
 
