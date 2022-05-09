@@ -9,10 +9,10 @@ with any testing framework and runner you're comfortable with.
 
 ## Jest
 
-1.  Install Jest
+1.  Install Jest & jest-environment-jsdom
 
     ```
-    npm install --save-dev jest
+    npm install --save-dev jest jest-environment-jsdom
     ```
 
 2.  Add the following to your `package.json`
@@ -42,7 +42,8 @@ with any testing framework and runner you're comfortable with.
         "transform": {
           "^.+\\.svelte$": "svelte-jester"
         },
-        "moduleFileExtensions": ["js", "svelte"]
+        "moduleFileExtensions": ["js", "svelte"],
+        "testEnvironment": "jsdom"
       }
     }
     ```
