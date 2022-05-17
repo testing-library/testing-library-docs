@@ -283,15 +283,19 @@ using Create React App without TypeScript, save this to `jsconfig.json` instead.
 }
 ```
 
-### Jest 27
+### Jest 28
 
-If you're using a recent version of Jest (27 or later), `jsdom` is no longer the
-default environment. You can enable `jsdom` globally by editing
+If you're using a recent version of Jest (28 or later), jest-environment-jsdom package now must be installed separately. 
+```
+npm install --save-dev jest-environment-jsdom
+```
+    
+`jsdom` is also no longer the default environment. You can enable `jsdom` globally by editing
 `jest.config.js`:
 
 ```diff title="jest.config.js"
  module.exports = {
-+  testEnvironment: 'jest-environment-jsdom',
++  testEnvironment: 'jsdom',
    // ... other options ...
  }
 ```
