@@ -1907,6 +1907,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "patrady",
+      "name": "Patrick Brady",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17067460?v=4",
+      "profile": "https://github.com/patrady",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
