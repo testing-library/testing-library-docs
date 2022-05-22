@@ -404,6 +404,9 @@ Thanks goes to these wonderful people
     <td align="center"><a href="http://www.danywalls.com"><img src="https://avatars.githubusercontent.com/u/5494535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dany Paredes</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=danywalls" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/abelhbeyene"><img src="https://avatars.githubusercontent.com/u/12272815?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abel</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=abelhbeyene" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/patrady"><img src="https://avatars.githubusercontent.com/u/17067460?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Patrick Brady</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=patrady" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
