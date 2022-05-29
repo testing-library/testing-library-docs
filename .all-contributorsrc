@@ -1925,6 +1925,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "aarondunphy",
+      "name": "Aaron Dunphy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5583119?v=4",
+      "profile": "https://aarondunphy.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
