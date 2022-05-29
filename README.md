@@ -407,6 +407,7 @@ Thanks goes to these wonderful people
   <tr>
     <td align="center"><a href="https://github.com/patrady"><img src="https://avatars.githubusercontent.com/u/17067460?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Patrick Brady</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=patrady" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/GrantIsEaton"><img src="https://avatars.githubusercontent.com/u/101603396?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Grant Eaton</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=GrantIsEaton" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://aarondunphy.com"><img src="https://avatars.githubusercontent.com/u/5583119?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Dunphy</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=aarondunphy" title="Documentation">📖</a></td>
   </tr>
 </table>
 
