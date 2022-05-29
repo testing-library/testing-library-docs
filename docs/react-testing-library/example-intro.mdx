@@ -116,7 +116,7 @@ afterAll(() => server.close())
 
 // ...
 
-test('handlers server error', async () => {
+test('handles server error', async () => {
   server.use(
     // override the initial "GET /greeting" request handler
     // to return a 500 Server Error
