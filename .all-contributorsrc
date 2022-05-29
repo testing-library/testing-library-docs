@@ -1916,6 +1916,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "GrantIsEaton",
+      "name": "Grant Eaton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/101603396?v=4",
+      "profile": "https://github.com/GrantIsEaton",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
