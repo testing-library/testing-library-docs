@@ -1934,6 +1934,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mrazauskas",
+      "name": "Tom Mrazauskas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72159681?v=4",
+      "profile": "https://github.com/mrazauskas",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
