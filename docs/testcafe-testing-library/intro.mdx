@@ -26,7 +26,7 @@ npm install --save-dev testcafe @testing-library/testcafe
 `testcafe-testing-library` provides custom Selectors allowing you to query the
 dom.
 
-Add the following to your .testcaferc.json file:
+Add the following to your `.testcaferc.json` file:
 
 ```json
   "clientScripts": [
@@ -37,7 +37,9 @@ Add the following to your .testcaferc.json file:
 You can now import `screen` which has all the get[All]By*, query[All]By*,
 find[All]By\* selectors that you can use in your tests.
 
-`import { screen } from '@testing-library/testcafe'`
+```js
+import {screen} from '@testing-library/testcafe'
+```
 
 [See `Queries` for reference](queries/about.mdx)
 

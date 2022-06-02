@@ -32,9 +32,7 @@ version of all modules as mentioned above.
 To test components rendered on the client-side, be sure to enable both the
 `browser` option and the preset and you are good to go!
 
-**jest.config.js**
-
-```javascript
+```js title="jest.config.js"
 module.exports = {
   preset: '@marko/jest/preset/browser',
 }
@@ -43,9 +41,7 @@ module.exports = {
 For testing components rendered on the server-side we can instead use
 `@marko/jest/preset/node` as our jest preset.
 
-**jest.config.js**
-
-```javascript
+```js title="jest.config.js"
 module.exports = {
   preset: '@marko/jest/preset/node',
 }
@@ -56,9 +52,7 @@ A Jest configuration can also have multiple
 which we can use to create a combined configuration for server-side tests, and
 client-side tests, like so:
 
-**jest.config.js**
-
-```javascript
+```js title="jest.config.js"
 module.exports = {
   projects: [
     {

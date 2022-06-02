@@ -114,6 +114,8 @@ export {customRender as render}
 > [#169](https://github.com/testing-library/react-testing-library/issues/169)
 > and the workaround below.
 
+<details>
+
 <summary>Workaround for Babel 6</summary>
 
 You can use CommonJS modules instead of ES modules, which should work in Node:
@@ -132,6 +134,8 @@ module.exports = {
   render: customRender,
 }
 ```
+
+</details>
 
 ### Add custom queries
 
@@ -198,8 +202,7 @@ render method:
 
   <TabItem value="jsx">
 
-```jsx title="test-utils.js"
-// test-utils.js
+```js title="test-utils.js"
 import {render, queries} from '@testing-library/react'
 import * as customQueries from './custom-queries'
 
@@ -217,8 +220,7 @@ export {customRender as render}
 
   <TabItem value="tsx">
 
-```tsx title="test-utils.ts"
-// test-utils.ts
+```ts title="test-utils.ts"
 import {render, queries, RenderOptions} from '@testing-library/react'
 import * as customQueries from './custom-queries'
 import {ReactElement} from 'react'
@@ -272,7 +274,7 @@ module.exports = {
 If you're using TypeScript, merge this into your `tsconfig.json`. If you're
 using Create React App without TypeScript, save this to `jsconfig.json` instead.
 
-```diff title="tsconfig.json"
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": "src",
@@ -398,14 +400,14 @@ To enable automatic cleanup in Mocha's watch mode, add a cleanup
 [root hook](https://mochajs.org/#root-hook-plugins). Create a
 `mocha-watch-cleanup-after-each.js` file with the following contents:
 
-```
-const { cleanup } = require("@testing-library/react");
+```js title="mocha-watch-cleanup-after-each.js"
+const {cleanup} = require('@testing-library/react')
 
 exports.mochaHooks = {
   afterEach() {
-    cleanup();
+    cleanup()
   },
-};
+}
 ```
 
 And register it using mocha's `-r` flag:

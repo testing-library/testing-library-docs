@@ -8,8 +8,7 @@ sidebar_label: Example
 
 See the following sections for a detailed breakdown of the test
 
-```jsx
-// __tests__/fetch.test.js
+```jsx title="__tests__/fetch.test.jsx"
 import React from 'react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
@@ -169,9 +168,7 @@ expect(screen.getByRole('button')).not.toBeDisabled()
 
 ### System Under Test
 
-fetch.js
-
-```jsx
+```jsx title="fetch.jsx"
 import React, {useState, useReducer} from 'react'
 import axios from 'axios'
 

@@ -9,9 +9,7 @@ sidebar_label: Examples
 > or follow the
 > [guided example](https://timdeschryver.dev/blog/getting-the-most-value-out-of-your-angular-component-tests)
 
-counter.component.ts
-
-```typescript
+```ts title="counter.component.ts"
 @Component({
   selector: 'counter',
   template: `
@@ -33,9 +31,7 @@ export class CounterComponent {
 }
 ```
 
-counter.component.spec.ts
-
-```typescript
+```ts title="counter.component.spec.ts"
 import {render, screen, fireEvent} from '@testing-library/angular'
 import {CounterComponent} from './counter.component.ts'
 
