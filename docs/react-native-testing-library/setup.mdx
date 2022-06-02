@@ -21,14 +21,12 @@ with this file in all your imports. See
 [below](#configuring-jest-with-test-utils) for a way to make your test util file
 accessible without using relative paths.
 
-```diff
-// my-component.test.js
+```diff title="my-component.test.js"
 - import { render, fireEvent } from '@testing-library/react-native';
 + import { render, fireEvent } from '../test-utils';
 ```
 
-```js
-// test-utils.js
+```jsx title="test-utils.js"
 import {render} from '@testing-library/react-native'
 import {ThemeProvider} from 'my-ui-lib'
 import {TranslationProvider} from 'my-i18n-lib'
@@ -63,14 +61,12 @@ Jest `moduleDirectories` option.
 This will make all the `.js` files in the test-utils directory importable
 without `../`.
 
-```diff
-// my-component.test.js
+```diff title="my-component.test.js"
 - import { render, fireEvent } from '../test-utils';
 + import { render, fireEvent } from 'test-utils';
 ```
 
-```diff
-// jest.config.js
+```diff title="jest.config.js"
 module.exports = {
   moduleDirectories: [
     'node_modules',

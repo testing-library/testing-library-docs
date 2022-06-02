@@ -15,7 +15,7 @@ TL;DR:
 
 In summary:
 
-```javascript
+```jsx
 import React from 'react'
 import {render, fireEvent} from '@testing-library/react'
 
@@ -109,7 +109,7 @@ to, then try to use
 One case where I've found mocking to be especially useful is for animation
 libraries. I don't want my tests to wait for animations to end.
 
-```javascript
+```jsx
 jest.mock('react-transition-group', () => {
   const FakeTransition = jest.fn(({children}) => children)
   const FakeCSSTransition = jest.fn(props =>
