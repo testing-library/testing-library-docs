@@ -410,6 +410,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://aarondunphy.com"><img src="https://avatars.githubusercontent.com/u/5583119?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Dunphy</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=aarondunphy" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/mrazauskas"><img src="https://avatars.githubusercontent.com/u/72159681?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tom Mrazauskas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mrazauskas" title="Documentation">📖</a></td>
     <td align="center"><a href="http://supermaryy.com"><img src="https://avatars.githubusercontent.com/u/12708942?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Supermaryy</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=LuckyMona" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://BenENewton.com"><img src="https://avatars.githubusercontent.com/u/458991?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben Newton</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bennewton999" title="Documentation">📖</a></td>
   </tr>
 </table>
 
