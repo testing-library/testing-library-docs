@@ -335,7 +335,7 @@ const {rerender} = await render(Counter, {
 expect(screen.getByTestId('count-value').textContent).toBe('4')
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
-rerender({count: 7})
+await rerender({count: 7})
 
 // count updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
