@@ -1952,6 +1952,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "bennewton999",
+      "name": "Ben Newton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/458991?v=4",
+      "profile": "http://BenENewton.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
