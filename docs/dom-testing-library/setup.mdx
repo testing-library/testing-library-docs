@@ -18,7 +18,9 @@ the DOM and browser APIs that runs in node. If you're not using Jest and you
 would like to run your tests in Node, then you must install jsdom yourself.
 There's also a package called
 [global-jsdom](https://github.com/modosc/global-jsdom) which can be used to
-setup the global environment to simulate the browser APIs.
+setup the global environment to simulate the browser APIs. Note that if you're using
+Vitest you only need to configure [`environment`](https://vitest.dev/config/#environment)
+to `jsdom` to achieve the same effect, you don't need global-jsdom.
 
 First, install jsdom and global-jsdom.
 
