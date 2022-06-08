@@ -1961,6 +1961,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "silvenon",
+      "name": "Matija Marohnić",
+      "avatar_url": "https://avatars.githubusercontent.com/u/471278?v=4",
+      "profile": "https://silvenon.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
