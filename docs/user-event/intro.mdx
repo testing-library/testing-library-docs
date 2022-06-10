@@ -21,8 +21,8 @@ with any framework as long as there is a DOM.
 ## Differences with `fireEvent`
 
 The built-in [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) is a
-utility for easily dispatching events. It dispatches exactly the events you tell it
-to and just those - even if those exact events would not have been dispatched in a
+utility for easily dispatching events. It dispatches exactly, and only, the events you tell it
+to - even if those exact events would not have been dispatched in a
 real browser interaction.
 
 `user-event` on the other hand dispatches events as they would be dispatched by a user interacting with the document in a browser. That might lead to the same events you previously dispatched per `fireEvent` directly, but it also might catch bugs
