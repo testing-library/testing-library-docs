@@ -32,8 +32,8 @@ to test interaction with your components.
 
 ## Writing tests with `userEvent`
 
-We recommend using [`userEvent.setup()`](setup.mdx) when rendering your
-component and inlining that rendering and setup in your test, or using a setup
+We recommend invoking [`userEvent.setup()`](setup.mdx) before the component is rendered.
+This can be done in the test itself, or by using a setup
 function. We discourage rendering or using any `userEvent` functions outside of
 the test itself - e.g. in a `before`/`after` hook - for reasons described in
 ["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
