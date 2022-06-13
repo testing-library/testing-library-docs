@@ -20,15 +20,9 @@ with any framework as long as there is a DOM.
 
 ## Differences from `fireEvent`
 
-The built-in [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) is a
-utility for easily dispatching events. It dispatches exactly, and only, the events you tell it
-to - even if those exact events would not have been dispatched in a
-real browser interaction.
+`fireEvent` simulates _browser events_, whereas `user-event` simulates full *interactions*, which may fire multiple events and do additional checks along the way.
 
-`user-event` on the other hand dispatches events as they would be dispatched by a user interacting with the document in a browser. That might lead to the same events you previously dispatched per `fireEvent` directly, but it also might catch bugs
-that make it impossible for a user to trigger said events. This is
-[why you should use `user-event`](https://ph-fritsche.github.io/blog/post/why-userevent)
-to test interaction with your components.
+Testing Library's built-in [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) is a lightweight wrapper around the browser's low-level `dispatchEvent` API, which allows developers to trigger any event on any element. This is often sufficient for testing simple behavior, e.g., checking that a click event triggers the right callback, but there are cases where the browser does more than just trigger one event for one interaction. For example, when a user types into a text box, the element is first focused, and then input events are fired as they type. `user-event` also adds visibility and interactability checks before triggering the flow, to simulate how a user wouldn't click an element they can't see, and the browser wouldn't let them type in a disabled text box.
 
 ## Writing tests with `userEvent`
 
