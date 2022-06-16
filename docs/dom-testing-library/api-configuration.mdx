@@ -80,6 +80,14 @@ with a second argument e.g.
 The default value for the `hidden` option used by
 [`getByRole`](queries/byrole.mdx). Defaults to `false`.
 
+### `defaultIgnore`
+
+The default value for the [`ignore` option](queries/bytext.mdx#ignore) used by
+[`getByText`](queries/bytext.mdx). Also determines the nodes that are being
+ignored when errors are printed.
+
+Defaults to `script, style`.
+
 ### `showOriginalStackTrace`
 
 By default, `waitFor` will ensure that the stack trace for errors thrown by
