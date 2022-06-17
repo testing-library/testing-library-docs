@@ -169,7 +169,7 @@ In React Router v5, you need to pass the history object as a whole to the Route 
 test('full app rendering/navigating', () => {
   const history = createMemoryHistory()
   render(
-    <Router history={history} />
+    <Router history={history}>
       <App />
     </Router>,
   )
