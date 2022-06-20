@@ -415,6 +415,7 @@ Thanks goes to these wonderful people
   </tr>
   <tr>
     <td align="center"><a href="https://thaddeusjiang.com/"><img src="https://avatars.githubusercontent.com/u/17308201?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thaddeus Jiang</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ThaddeusJiang" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.robin-drexler.com/"><img src="https://avatars.githubusercontent.com/u/474248?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Robin Drexler</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=robin-drexler" title="Documentation">📖</a></td>
   </tr>
 </table>
 
