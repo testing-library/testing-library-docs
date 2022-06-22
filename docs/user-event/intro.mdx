@@ -11,36 +11,49 @@ events that would happen if the interaction took place in a browser.
 
 These docs describe `user-event@14`. We recommend updating your projects to this
 version, as it includes important bug fixes and new features. You can find the
-docs for `user-event@13.5.0` [here](../ecosystem-user-event.mdx).
+docs for `user-event@13.5.0` [here](../ecosystem-user-event.mdx), and the
+changelog for the release
+[here](https://github.com/testing-library/user-event/releases/tag/v14.0.0).
 
 :::
 
 While most examples with `user-event` are for `React`, the library can be used
 with any framework as long as there is a DOM.
 
-## Difference to `fireEvent`
+## Differences from `fireEvent`
 
-The built-in [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) is a
-utility to easily dispatch events. It dispatches exactly the events you tell it
-to and just those - even if those exact events never had been dispatched in a
-real interaction in a browser.
+`fireEvent` dispatches _DOM events_, whereas `user-event` simulates full
+_interactions_, which may fire multiple events and do additional checks along
+the way.
 
-`user-event` on the other hand dispatches the events like they would happen if a
-user interacted with the document. That might lead to the same events you
-previously dispatched per `fireEvent` directly, but it also might catch bugs
-that make it impossible for a user to trigger said events. This is
+Testing Library's built-in
+[`fireEvent`](dom-testing-library/api-events.mdx#fireevent) is a lightweight
+wrapper around the browser's low-level `dispatchEvent` API, which allows
+developers to trigger any event on any element. The problem is that the browser
+usually does more than just trigger one event for one interaction. For example,
+when a user types into a text box, the element has to be focused, and then
+keyboard and input events are fired and the selection and value on the element
+are manipulated as they type.
+
+`user-event` allows you to describe a user interaction instead of a concrete
+event. It adds visibility and interactability checks along the way and
+manipulates the DOM just like a user interaction in the browser would. It
+factors in that the browser e.g. wouldn't let a user click a hidden element or
+type in a disabled text box.  
+This is
 [why you should use `user-event`](https://ph-fritsche.github.io/blog/post/why-userevent)
 to test interaction with your components.
 
 ## Writing tests with `userEvent`
 
-We recommend to use [`userEvent.setup()`](setup.mdx) when rendering your
-component and inline that rendering and setup in your test or use a setup
-function. We discourage rendering or using any `userEvent` functions outside of
-the test itself - e.g. in a `before`/`after` hook - for reasons described in
+We recommend invoking [`userEvent.setup()`](setup.mdx) before the component is
+rendered. This can be done in the test itself, or by using a setup function. We
+discourage rendering or using any `userEvent` functions outside of the test
+itself - e.g. in a `before`/`after` hook - for reasons described in
 ["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
 
 ```js
+// inlining
 test('trigger some awesome feature when clicking the button', async () => {
   const user = userEvent.setup()
   render(<MyComponent />)
@@ -52,6 +65,7 @@ test('trigger some awesome feature when clicking the button', async () => {
 ```
 
 ```js
+// setup function
 function setup(jsx) {
   return {
     user: userEvent.setup(),
@@ -64,3 +78,9 @@ test('render with a setup function', async () => {
   // ...
 })
 ```
+
+Note that, while directly invoking APIs such as `userEvent.click()` (which will
+trigger `setup` internally) is (still supported in
+v14)[https://testing-library.com/docs/user-event/setup#direct-apis], this option
+exists to ease the migration from v13 to v14, and for simple tests. We recommend
+using the methods on the instances returned by `userEvent.setup()`.
