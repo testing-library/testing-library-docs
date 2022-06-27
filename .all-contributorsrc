@@ -1988,6 +1988,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "caffeine-storm",
+      "name": "Thomas McKee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1609128?v=4",
+      "profile": "https://github.com/caffeine-storm",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
