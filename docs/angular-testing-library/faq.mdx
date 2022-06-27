@@ -31,12 +31,12 @@ As you write your tests, keep in mind:
 
 In general, you should avoid mocking out components (see
 [the Guiding Principles section](guiding-principles.mdx)). However, if you need
-to, then try to use [ng-mocks](https://ng-mocks.sudo.eu/).
+to, then try to use [ng-mocks](https://ng-mocks.sudo.eu/) and its [`MockBuilder`](https://ng-mocks.sudo.eu/extra/with-3rd-party#testing-libraryangular-and-mockbuilder).
 
 ```typescript
 import {Component, NgModule} from '@angular/core'
 import {render, screen} from '@testing-library/angular'
-import {ngMocks} from 'ng-mocks'
+import {MockBuilder} from 'ng-mocks'
 
 @Component({
   selector: 'app-parent-component',
@@ -57,7 +57,8 @@ export class AppModule {}
 
 describe('ParentComponent', () => {
   it('should not render ChildComponent when shallow rendering', async () => {
-    const dependencies = ngMocks.guts(null, AppModule, ParentComponent)
+    // all imports, declarations and exports of AppModule will be mocked.
+    const dependencies = MockBuilder(ParentComponent, AppModule).build();
 
     await render(ParentComponent, dependencies)
 
