@@ -418,6 +418,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://www.robin-drexler.com/"><img src="https://avatars.githubusercontent.com/u/474248?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Robin Drexler</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=robin-drexler" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/caffeine-storm"><img src="https://avatars.githubusercontent.com/u/1609128?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas McKee</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=caffeine-storm" title="Documentation">📖</a></td>
     <td align="center"><a href="https://sudo.eu/"><img src="https://avatars.githubusercontent.com/u/966305?v=4?s=100" width="100px;" alt=""/><br /><sub><b>satanTime</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=satanTime" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/polinamochan"><img src="https://avatars.githubusercontent.com/u/108654322?v=4?s=100" width="100px;" alt=""/><br /><sub><b>polinamochan</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=polinamochan" title="Documentation">📖</a></td>
   </tr>
 </table>
 
