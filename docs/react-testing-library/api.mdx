@@ -58,9 +58,9 @@ import {render} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 test('renders a message', () => {
-  const {container, getByText} = render(<Greeting />)
+  const {asFragment, getByText} = render(<Greeting />)
   expect(getByText('Hello, world!')).toBeInTheDocument()
-  expect(container.firstChild).toMatchInlineSnapshot(`
+  expect(asFragment()).toMatchInlineSnapshot(`
     <h1>Hello, World!</h1>
   `)
 })
