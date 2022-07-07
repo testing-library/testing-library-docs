@@ -47,6 +47,9 @@ to test interaction with your components.
 There are, however, some user interactions or aspects of these [that aren't yet implemented and thus can't yet be described with `user-event`](https://github.com/testing-library/user-event/issues?q=is%3Aopen+label%3Aaccuracy%2Cenhancement).
 In these cases you can use `fireEvent` to dispatch the concrete events that your software relies on.
 
+Note that this makes your component and/or test reliant upon your assumptions about the concrete aspects of the interaction being correct.
+Therefore if you already put in the work to specify the correct aspects of such interaction, please consider contributing to this project so that user-event might cover these cases too.
+
 ## Writing tests with `userEvent`
 
 We recommend invoking [`userEvent.setup()`](setup.mdx) before the component is
