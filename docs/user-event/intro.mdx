@@ -44,7 +44,8 @@ This is
 [why you should use `user-event`](https://ph-fritsche.github.io/blog/post/why-userevent)
 to test interaction with your components. 
 
-There are, however, some user interactions that can't yet be described with `user-event` - selecting values on a slider, for example - for which `fire-event` is necessary.
+There are, however, some user interactions or aspects of these [that aren't yet implemented and thus can't yet be described with `user-event`](https://github.com/testing-library/user-event/issues?q=is%3Aopen+label%3Aaccuracy%2Cenhancement).
+In these cases you can use `fireEvent` to dispatch the concrete events that your software relies on.
 
 ## Writing tests with `userEvent`
 
