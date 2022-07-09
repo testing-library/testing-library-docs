@@ -420,6 +420,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://sudo.eu/"><img src="https://avatars.githubusercontent.com/u/966305?v=4?s=100" width="100px;" alt=""/><br /><sub><b>satanTime</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=satanTime" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/polinamochan"><img src="https://avatars.githubusercontent.com/u/108654322?v=4?s=100" width="100px;" alt=""/><br /><sub><b>polinamochan</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=polinamochan" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/shaiRose"><img src="https://avatars.githubusercontent.com/u/4546940?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shai Rose</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=shaiRose" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/AldinRekic"><img src="https://avatars.githubusercontent.com/u/65592409?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AldinRekic</b></sub></a><br /><a href="#design-AldinRekic" title="Design">🎨</a></td>
   </tr>
 </table>
 
