@@ -136,8 +136,9 @@ test('rendering a component that uses useLocation', () => {
 Given your App uses the correct React Router v5 API.
 
 ```jsx
+// app.js
 import React from 'react'
-import { Link, Route, Switch, useLocation } from 'react-router-dom'
+import {Link, Route, Switch, useLocation} from 'react-router-dom'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
@@ -149,25 +150,23 @@ export const LocationDisplay = () => {
   return <div data-testid="location-display">{location.pathname}</div>
 }
 
-export const App = () => {
-  return (
-    <div>
-      <Link to="/">Home</Link>
+export const App = () => (
+  <div>
+    <Link to="/">Home</Link>
 
-      <Link to="/about">About</Link>
+    <Link to="/about">About</Link>
 
-      <Switch>
-        <Route exact path="/" component={Home} />
+    <Switch>
+      <Route exact path="/" component={Home} />
 
-        <Route path="/about" component={About} />
+      <Route path="/about" component={About} />
 
-        <Route component={NoMatch} />
-      </Switch>
+      <Route component={NoMatch} />
+    </Switch>
 
-      <LocationDisplay />
-    </div>
-  )
-}
+    <LocationDisplay />
+  </div>
+)
 ```
 
 In your tests, pass the history object as a whole to the Router component.
