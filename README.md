@@ -422,6 +422,9 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/shaiRose"><img src="https://avatars.githubusercontent.com/u/4546940?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shai Rose</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=shaiRose" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/AldinRekic"><img src="https://avatars.githubusercontent.com/u/65592409?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AldinRekic</b></sub></a><br /><a href="#design-AldinRekic" title="Design">🎨</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://sonng.dev/"><img src="https://avatars.githubusercontent.com/u/28614996?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Son Nguyen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thanhsonng" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
