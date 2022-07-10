@@ -2033,6 +2033,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "thanhsonng",
+      "name": "Son Nguyen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28614996?v=4",
+      "profile": "https://sonng.dev/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
