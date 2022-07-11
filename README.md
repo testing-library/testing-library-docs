@@ -424,6 +424,7 @@ Thanks goes to these wonderful people
   </tr>
   <tr>
     <td align="center"><a href="https://sonng.dev/"><img src="https://avatars.githubusercontent.com/u/28614996?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Son Nguyen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thanhsonng" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Lirlev48"><img src="https://avatars.githubusercontent.com/u/58209233?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lirlev48</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Lirlev48" title="Documentation">📖</a></td>
   </tr>
 </table>
 
