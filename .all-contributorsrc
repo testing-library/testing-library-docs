@@ -2051,6 +2051,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "tarjei",
+      "name": "Tarjei Huse",
+      "avatar_url": "https://avatars.githubusercontent.com/u/211263?v=4",
+      "profile": "https://github.com/tarjei",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
