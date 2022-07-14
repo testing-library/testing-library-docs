@@ -6,6 +6,7 @@ sidebar_label: API
 
 - [`@testing-library/dom`](#testing-library-dom)
 - [`render`](#render)
+- [`screen`](#screen)
 - [`cleanup`](#cleanup)
 - [`act`](#act-async)
 - [`fireEvent`](#fireevent-async)
@@ -43,15 +44,18 @@ React Testing Library re-export `screen` so you can use it the same way.
 import {render, screen} from '@testing-library/svelte'
 
 render(YourComponent, {ComponentOptions}, {RenderOptions})
-const result = screen.getByText('value');
+const result = screen.getByText('value')
 ```
+
 > **Note**
 >
-> You need a global DOM environment to use `screen`. If you're using jest,
-> with the [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
+> You need a global DOM environment to use `screen`. If you're using jest, with
+> the
+> [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
 > set to `jsdom`, a global DOM environment will be available for you.
 >
-> Detailed examples using screen can be viewed at [About Queries](https://testing-library.com/docs/queries/about/#screen)
+> Detailed examples using screen can be viewed at
+> [About Queries](https://testing-library.com/docs/queries/about/#screen)
 
 ### Component Options
 
@@ -64,13 +68,13 @@ in directly.
 
 ```js
 // With options.
-render(YourComponent, {
+const {results} = render(YourComponent, {
   target: MyTarget,
-  props: { myProp: 'value' },
+  props: {myProp: 'value'},
 })
 
 // Props only.
-render(YourComponent, { myProp: 'value' })
+const {results} = render(YourComponent, {myProp: 'value'})
 ```
 
 ### Render Options
@@ -151,22 +155,22 @@ import {render, fireEvent} from '@testing-library/svelte'
 import Comp from '..'
 
 test('count increments when button is clicked', async () => {
-  render(Comp);
-  const button = screen.getByText('Count is 0');
+  render(Comp)
+  const button = screen.getByText('Count is 0')
 
   // Option 1.
-  await fireEvent.click(button);
-  expect(button).toHaveTextContent('Count is 1');
+  await fireEvent.click(button)
+  expect(button).toHaveTextContent('Count is 1')
 
   // Option 2.
   await fireEvent(
-      button,
-      new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-      }),
-  );
-  expect(button).toHaveTextContent('Count is 2');
+    button,
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  )
+  expect(button).toHaveTextContent('Count is 2')
 })
 ```
 
