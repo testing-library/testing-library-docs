@@ -188,7 +188,8 @@ React Testing Library re-export `screen` so you can use it the same way.
 Here's how you use it:
 
 <Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', },
+{ label: 'Svelte', value: 'svelte', }, ] }>
 <TabItem value="native">
 
 ```js
@@ -223,6 +224,21 @@ const exampleInput = screen.getByLabelText('Example')
 
 ```js
 cy.findByLabelText('Example').should('exist')
+```
+
+  </TabItem>
+  <TabItem value="svelte">
+```js
+// Comp.svelte
+<div>
+  <label htmlFor="example">Example</label>
+  <input id="example" />
+</div>
+
+// comp.test.js
+import {render, screen} from '@testing-library/svelte'
+
+const exampleInput = screen.getByLabelText('Example')
 ```
 
   </TabItem>
