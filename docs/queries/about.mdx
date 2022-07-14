@@ -189,7 +189,7 @@ Here's how you use it:
 
 <Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
 label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', },
-{ label: 'Svelte', value: 'svelte', }, ] }>
+{ label: 'Svelte', value: 'svelte', },] }>
 <TabItem value="native">
 
 ```js
@@ -228,14 +228,8 @@ cy.findByLabelText('Example').should('exist')
 
   </TabItem>
   <TabItem value="svelte">
-```js
-// Comp.svelte
-<div>
-  <label htmlFor="example">Example</label>
-  <input id="example" />
-</div>
 
-// comp.test.js
+```js
 import {render, screen} from '@testing-library/svelte'
 
 const exampleInput = screen.getByLabelText('Example')
@@ -389,8 +383,8 @@ screen.debug(screen.getAllByText('multi-test'))
 ### `screen.logTestingPlaygroundURL()`
 
 For debugging using [testing-playground](https://testing-playground.com), screen
-exposes this convenient method which logs and returns a URL that can be opened in
-a browser.
+exposes this convenient method which logs and returns a URL that can be opened
+in a browser.
 
 ```javascript
 import {screen} from '@testing-library/dom'
