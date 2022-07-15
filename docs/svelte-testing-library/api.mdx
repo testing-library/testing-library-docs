@@ -31,32 +31,6 @@ import {render} from '@testing-library/svelte'
 const {results} = render(YourComponent, {ComponentOptions}, {RenderOptions})
 ```
 
-## `screen`
-
-All of the queries exported by DOM Testing Library accept a `container` as the
-first argument. Because querying the entire `document.body` is very common, DOM
-Testing Library also exports a `screen` object which has every query that is
-pre-bound to `document.body` (using the
-[`within`](dom-testing-library/api-within.mdx) functionality). Wrappers such as
-React Testing Library re-export `screen` so you can use it the same way.
-
-```js
-import {render, screen} from '@testing-library/svelte'
-
-render(YourComponent, {ComponentOptions}, {RenderOptions})
-const result = screen.getByText('value')
-```
-
-> **Note**
->
-> You need a global DOM environment to use `screen`. If you're using jest, with
-> the
-> [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
-> set to `jsdom`, a global DOM environment will be available for you.
->
-> Detailed examples using screen can be viewed at
-> [About Queries](https://testing-library.com/docs/queries/about/#screen)
-
 ### Component Options
 
 These are the options you pass when instantiating your Svelte `Component`.
@@ -150,7 +124,7 @@ changes.
 ```js
 import '@testing-library/jest-dom'
 
-import {render, fireEvent} from '@testing-library/svelte'
+import {render, fireEvent, screen} from '@testing-library/svelte'
 
 import Comp from '..'
 
