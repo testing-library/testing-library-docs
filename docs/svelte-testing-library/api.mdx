@@ -123,13 +123,13 @@ changes.
 ```js
 import '@testing-library/jest-dom'
 
-import {render, fireEvent} from '@testing-library/svelte'
+import {render, fireEvent, screen} from '@testing-library/svelte'
 
 import Comp from '..'
 
 test('count increments when button is clicked', async () => {
-  const {getByText} = render(Comp)
-  const button = getByText('Count is 0')
+  render(Comp)
+  const button = screen.getByText('Count is 0')
 
   // Option 1.
   await fireEvent.click(button)
