@@ -99,7 +99,72 @@ with any testing framework and runner you're comfortable with.
     ```
     npm run test
     ```
+## Vitest
+1.  Install Vitest and jsdom
 
+    ```
+    npm install --save-dev vitest jsdom
+    ```
+
+2.  Add the following to your `package.json`
+
+    ```json
+    {
+      "scripts": {
+        "test": "vitest run src",
+        "test:watch": "vitest src"
+      }
+    }
+    ```
+
+3.  You'll need to compile the Svelte components before using them in Vitest, so
+    you need to install
+    [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte) and Vite
+    
+
+    ```
+    npm install --save-dev @sveltejs/vite-plugin-svelte vite
+    ```
+
+4.  Add a `vitest.config.ts` configuration file to the root of your project
+
+    ```js
+    import { defineConfig } from 'vite';
+    import { svelte } from '@sveltejs/vite-plugin-svelte';
+
+    export default defineConfig({
+        plugins: [svelte({ hot: !process.env.VITEST })],
+        test: {
+            include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+            globals: true,
+            environment: 'jsdom'
+        }
+    });
+
+    ```
+
+5.  This is optional but it is recommended, you can install
+    [jest-dom](https://github.com/testing-library/jest-dom) to add handy
+    assertions to Jest
+
+    5.1 Install `jest-dom`
+
+    ```
+    npm install --save-dev @testing-library/jest-dom
+    ```
+
+    5.2 import `@testing-library/jest-dom` at the start of your test files
+
+    ```js
+    import '@testing-library/jest-dom';
+    ```
+
+6.  Create your component and a test file (checkout the rest of the docs to see how)
+    and run the following command to run the tests.
+
+    ```
+    npm run test
+    ```
 ## Typescript
 
 To use Typescript, you'll need to install and configure `svelte-preprocess` and
