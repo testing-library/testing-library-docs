@@ -427,6 +427,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/Lirlev48"><img src="https://avatars.githubusercontent.com/u/58209233?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lirlev48</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Lirlev48" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/tarjei"><img src="https://avatars.githubusercontent.com/u/211263?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tarjei Huse</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tarjei" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/obedmunozjr/"><img src="https://avatars.githubusercontent.com/u/5696449?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Obie Munoz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ObieMunoz" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/bertybot"><img src="https://avatars.githubusercontent.com/u/44912991?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bert B</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bertybot" title="Documentation">📖</a></td>
   </tr>
 </table>
 
