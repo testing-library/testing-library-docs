@@ -2069,6 +2069,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "bertybot",
+      "name": "Bert B",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44912991?v=4",
+      "profile": "https://github.com/bertybot",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
