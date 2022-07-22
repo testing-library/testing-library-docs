@@ -151,7 +151,7 @@ Change a file input as if a user clicked it and selected files in the resulting
 file upload dialog.
 
 ```jsx
-test('upload file', async () => {
+test('upload file', () => {
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
@@ -161,14 +161,14 @@ test('upload file', async () => {
   const file = new File(['hello'], 'hello.png', {type: 'image/png'})
   const input = screen.getByLabelText(/upload file/i)
 
-  await userEvent.upload(input, file)
+  userEvent.upload(input, file)
 
   expect(input.files[0]).toBe(file)
   expect(input.files.item(0)).toBe(file)
   expect(input.files).toHaveLength(1)
 })
 
-test('upload multiple files', async () => {
+test('upload multiple files', () => {
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
@@ -181,7 +181,7 @@ test('upload multiple files', async () => {
   ]
   const input = screen.getByLabelText(/upload file/i)
 
-  await userEvent.upload(input, files)
+  userEvent.upload(input, files)
 
   expect(input.files).toHaveLength(2)
   expect(input.files[0]).toBe(files[0])
