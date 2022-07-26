@@ -232,6 +232,9 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        gtag: {
+          trackingID: 'UA-137787095-1',
+        }
       },
     ],
   ],
@@ -352,9 +355,6 @@ module.exports = {
       appId: 'TUPO88CFRP',
       apiKey: 'b232f752ed8fb44d7ff8e7883aa64668',
       indexName: 'testing-library',
-    },
-    gtag: {
-      trackingID: 'UA-137787095-1',
     },
   },
 }

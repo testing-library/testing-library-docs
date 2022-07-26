@@ -1,15 +1,15 @@
 import React from 'react'
-import useThemeContext from '@theme/hooks/useThemeContext'
+import {useThemeConfig} from '@docusaurus/theme-common';
 
 export const Showcase = ({users}) => {
-  const {isDarkTheme} = useThemeContext()
-  return users.map(user => (
-    <a href={user.infoLink} key={user.infoLink}>
-      <img
-        src={isDarkTheme ? user.darkImage : user.lightImage}
-        alt={user.caption}
-        title={user.caption}
-      />
-    </a>
-  ))
+    const {isDarkTheme} = useThemeConfig()
+    return users.map(user => (
+        <a href={user.infoLink} key={user.infoLink}>
+            <img
+                src={isDarkTheme ? user.darkImage : user.lightImage}
+                alt={user.caption}
+                title={user.caption}
+            />
+        </a>
+    ))
 }
