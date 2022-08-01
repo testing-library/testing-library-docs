@@ -76,6 +76,8 @@ This function is usually used alongside `console.log` to temporarily print out
 DOM trees during tests for debugging purposes:
 
 ```javascript
+import {prettyDOM } from '@testing-library/dom'
+
 const div = document.createElement('div')
 div.innerHTML = '<div><h1>Hello World</h1></div>'
 console.log(prettyDOM(div))
