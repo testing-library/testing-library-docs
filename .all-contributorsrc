@@ -2087,6 +2087,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "glebinsky",
+      "name": "Gleb Radutsky",
+      "avatar_url": "https://avatars.githubusercontent.com/u/898643?v=4",
+      "profile": "https://github.com/glebinsky",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
