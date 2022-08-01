@@ -429,6 +429,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://www.linkedin.com/in/obedmunozjr/"><img src="https://avatars.githubusercontent.com/u/5696449?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Obie Munoz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ObieMunoz" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/bertybot"><img src="https://avatars.githubusercontent.com/u/44912991?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bert B</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bertybot" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/alirezahi"><img src="https://avatars.githubusercontent.com/u/16666064?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alireza Heydari</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=alirezahi" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/glebinsky"><img src="https://avatars.githubusercontent.com/u/898643?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gleb Radutsky</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=glebinsky" title="Documentation">📖</a></td>
   </tr>
 </table>
 
