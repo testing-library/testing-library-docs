@@ -2096,6 +2096,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "kksy",
+      "name": "Kylie Sy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10233535?v=4",
+      "profile": "http://kyliesy.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
