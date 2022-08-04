@@ -200,10 +200,6 @@ module.exports = {
         pinned: false,
       },
     ],
-    fonts: {
-      fontMain: ['Source Sans Pro', 'sans-serif'],
-      fontCode: ['IBM Plex Mono', 'monospace'],
-    },
     repoUrl: 'https://github.com/testing-library/dom-testing-library',
     docsRepoUrl: 'https://github.com/testing-library/testing-library-docs',
     docsPath: 'docs',
@@ -224,13 +220,12 @@ module.exports = {
         blog: {
           path: './blog',
           blogSidebarCount: 'ALL',
-          blogSidebarTitle: 'All posts',
           feedOptions: {
             type: 'all',
           },
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [require.resolve('./src/css/custom.css')],
         },
         gtag: {
           trackingID: 'UA-137787095-1',
@@ -249,6 +244,7 @@ module.exports = {
     navbar: {
       title: 'Testing Library',
       logo: {
+        alt: 'An octopus representing the DOM Testing Library Logo',
         src: 'img/octopus-64x64.png',
       },
       items: [
