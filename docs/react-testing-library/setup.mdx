@@ -288,10 +288,10 @@ using Create React App without TypeScript, save this to `jsconfig.json` instead.
 ### Jest 28
 
 If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately. 
-```
+```bash npm2yarn
 npm install --save-dev jest-environment-jsdom
 ```
-    
+
 `jsdom` is also no longer the default environment. You can enable `jsdom` globally by editing `jest.config.js`:
 
 ```diff title="jest.config.js"
