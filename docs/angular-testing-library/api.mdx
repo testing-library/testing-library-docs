@@ -133,6 +133,22 @@ await render(AppComponent, {
 })
 ```
 
+### `ɵcomponentImports`
+
+A collection of imports to override a standalone component's imports with.
+
+**default** : `undefined`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+    ɵcomponentImports: [
+        MockChildComponent
+    ]
+})
+```
+
 ### `detectChanges`
 
 Will call `detectChanges` when the component is compiled
