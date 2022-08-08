@@ -5,9 +5,9 @@ sidebar_label: Example
 ---
 
 ```jsx
-import React from 'react'
+import * as React from 'react'
 import {Button, Text, TextInput, View} from 'react-native'
-import {fireEvent, render, waitFor} from '@testing-library/react-native'
+import {render, screen, fireEvent} from '@testing-library/react-native'
 
 function Example() {
   const [name, setUser] = React.useState('')
@@ -45,6 +45,6 @@ test('examples of some things', async () => {
   // Using `toHaveTextContent` matcher from `@testing-library/jest-native` package.
   expect(usernameOutput).toHaveTextContent(expectedUsername);
   
-  expect(toJSON()).toMatchSnapshot()
+  expect(screen.toJSON()).toMatchSnapshot()
 })
 ```
