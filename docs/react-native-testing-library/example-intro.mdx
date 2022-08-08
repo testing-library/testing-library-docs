@@ -22,7 +22,7 @@ function Example() {
           // let's pretend this is making a server request, so it's async
           // (you'd want to mock this imaginary request in your unit tests)...
           setTimeout(() => {
-            setShow(!show)
+            setShow(true)
           }, Math.floor(Math.random() * 200))
         }}
       />
@@ -32,20 +32,19 @@ function Example() {
 }
 
 test('examples of some things', async () => {
-  const {getByTestId, getByText, queryByTestId, toJSON} = render(<Example />)
-  const famousProgrammerInHistory = 'Ada Lovelace'
+  const expectedUsername = 'Ada Lovelace'
+  
+  render(<Example />)
 
-  const input = getByTestId('input')
-  fireEvent.changeText(input, famousProgrammerInHistory)
-
-  const button = getByText('Print Username')
-  fireEvent.press(button)
-
-  await waitFor(() => expect(queryByTestId('printed-username')).toBeTruthy())
-
-  expect(getByTestId('printed-username').props.children).toBe(
-    famousProgrammerInHistory,
-  )
+  fireEvent.changeText(screen.getByTestId('input'), expectedUsername)
+  fireEvent.press(screen.getByText('Print Username'))
+  
+  // Using `findBy` query to wait for asynchronous operation to finish
+  const usernameOutput = await screen.findByTestId('printed-username')
+  
+  // Using `toHaveTextContent` matcher from `@testing-library/jest-native` package.
+  expect(usernameOutput).toHaveTextContent(expectedUsername);
+  
   expect(toJSON()).toMatchSnapshot()
 })
 ```
