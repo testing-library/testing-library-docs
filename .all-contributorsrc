@@ -2105,6 +2105,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mdjastrzebski",
+      "name": "Maciej Jastrzebski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6368606?v=4",
+      "profile": "https://github.com/mdjastrzebski",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
