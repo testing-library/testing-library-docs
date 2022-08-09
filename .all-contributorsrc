@@ -2114,6 +2114,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "semoal",
+      "name": "Sergio Moreno",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22656541?v=4",
+      "profile": "https://semoal.github.io/sergiomoreno/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
