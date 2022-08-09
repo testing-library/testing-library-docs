@@ -434,6 +434,7 @@ Thanks goes to these wonderful people
   <tr>
     <td align="center"><a href="https://github.com/giovanniPepi"><img src="https://avatars.githubusercontent.com/u/5255535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>giovanniPepi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=giovanniPepi" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/mdjastrzebski"><img src="https://avatars.githubusercontent.com/u/6368606?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maciej Jastrzebski</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mdjastrzebski" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://semoal.github.io/sergiomoreno/"><img src="https://avatars.githubusercontent.com/u/22656541?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sergio Moreno</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=semoal" title="Code">💻</a></td>
   </tr>
 </table>
 
