@@ -212,6 +212,9 @@ module.exports = {
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+          ],
           editUrl:
             'https://github.com/testing-library/testing-library-docs/edit/main/',
           path: './docs',
