@@ -50,50 +50,6 @@ test('increments value on click', async () => {
 })
 ```
 
-## Example updating properties:
-
-```html
-<template>
-  <div>
-    <p>The sky is {{ sky }}</p>
-    <p>And the grass is {{ grass }}</p>
-  </div>
-</template>
-
-<script>
-  export default {
-    props: {
-      sky: {type: String, default: 'green'},
-      grass: {type: String, default: 'blue'},
-    },
-  }
-</script>
-```
-
-```js
-import {render} from '@testing-library/vue'
-import Component from './Component.vue'
-
-test('properly handles property updates', async () => {
-  const {getByText, rerender} = render(Component, {
-    props: {
-      sky: 'green',
-      grass: 'blue',
-    },
-  })
-
-  // Asserts initial state.
-  getByText('The sky is green')
-  getByText('And the grass is blue')
-
-  await rerender({sky: 'Aquamarine'})
-
-  // Asserts updated state
-  getByText('The sky is Aquamarine')
-  getByText('And the grass is blue')
-})
-```
-
 ## Example using `v-model`:
 
 ```html

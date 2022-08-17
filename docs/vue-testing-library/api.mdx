@@ -15,7 +15,7 @@ It also exposes these methods:
     - [`...queries`](#queries)
     - [`container`](#container)
     - [`baseElement`](#baseelement)
-    - [`debug`](#debug)
+    - [`debug`](#debugelement)
     - [`unmount`](#unmount)
     - [`html`](#html)
     - [`emitted`](#emitted)
@@ -32,7 +32,7 @@ It also exposes these methods:
 The `render` function is the only way of rendering components in Vue Testing
 Library.
 
-It takes up to 3 parameters and returns an object with some helper methods.
+It takes up to 2 parameters and returns an object with some helper methods.
 
 ```js
 function render(Component, options, callbackFunction) {
@@ -40,11 +40,11 @@ function render(Component, options, callbackFunction) {
     ...DOMTestingLibraryQueries,
     container,
     baseElement,
-    debug,
+    debug(element),
     unmount,
     html,
     emitted,
-    rerender,
+    rerender(props),
   }
 }
 ```
@@ -147,7 +147,7 @@ renders its HTML directly in the body.
 > Note: the queries returned by the `render` looks into `baseElement`, so you
 > can use queries to test your portal component without the `baseElement`.
 
-#### `debug`
+#### `debug(element)`
 
 This method is a shortcut for `console.log(prettyDOM(element))`.
 
@@ -186,12 +186,9 @@ An alias for `@vue/test-utils`
 #### `rerender(props)`
 
 An alias for `@vue/test-utils`
-[setProps](https://vue-test-utils.vuejs.org/api/wrapper/#setprops).
+[setProps](https://test-utils.vuejs.org/api/#setprops).
 
 It returns a Promise through so you can `await rerender(...)`.
-
-See
-[update properties example](vue-testing-library/examples.mdx#example-updating-properties).
 
 ---
 
