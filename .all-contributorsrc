@@ -2123,6 +2123,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "davidnixon",
+      "name": "David Nixon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7536103?v=4",
+      "profile": "https://github.com/davidnixon",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
