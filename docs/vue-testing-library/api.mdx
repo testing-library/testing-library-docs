@@ -7,21 +7,19 @@ title: API
 
 It also exposes these methods:
 
-- [`render(Component, options, callback)`](#rendercomponent-options-callback)
+- [`render(Component, options)`](#rendercomponent-options)
   - [Parameters](#parameters)
     - [Component](#component)
     - [Options](#options)
-    - [Callback Function](#callback-function)
   - [`render` result](#render-result)
     - [`...queries`](#queries)
     - [`container`](#container)
     - [`baseElement`](#baseelement)
-    - [`debug(element)`](#debugelement)
-    - [`unmount()`](#unmount)
-    - [`isUnmounted()`](#isunmounted)
-    - [`html()`](#html)
-    - [`emitted()`](#emitted)
-    - [`updateProps(props)`](#updatepropsprops)
+    - [`debug`](#debugelement)
+    - [`unmount`](#unmount)
+    - [`html`](#html)
+    - [`emitted`](#emitted)
+    - [`rerender`](#rerenderprops)
 - [`fireEvent`](#fireevent)
   - [`touch(elem)`](#touchelem)
   - [`update(elem, value)`](#updateelem-value)
@@ -29,12 +27,12 @@ It also exposes these methods:
 
 ---
 
-## `render(Component, options, callback)`
+## `render(Component, options)`
 
 The `render` function is the only way of rendering components in Vue Testing
 Library.
 
-It takes up to 3 parameters and returns an object with some helper methods.
+It takes up to 2 parameters and returns an object with some helper methods.
 
 ```js
 function render(Component, options, callbackFunction) {
@@ -42,12 +40,11 @@ function render(Component, options, callbackFunction) {
     ...DOMTestingLibraryQueries,
     container,
     baseElement,
-    debug,
+    debug(element),
     unmount,
-    isUnmounted,
     html,
     emitted,
-    updateProps,
+    rerender(props),
   }
 }
 ```
@@ -106,20 +103,6 @@ If the `container` is specified, then this defaults to that, otherwise this
 defaults to `document.body`. `baseElement` is used as the base element for the
 queries as well as what is printed when you use `debug()`.
 
-#### Callback Function
-
-```js
-function callbackFunction(vueInstance, vuexStore, router) {}
-```
-
-A callback function that receives the Vue instance as a parameter. Its return
-value is merged with [options](#options), allowing 3rd party plugins to be
-installed prior to mount. To see how this works, see the example using
-[`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/translations-vue-i18n.js).
-
-The function will also receive the Store or the Router object if the associated
-option was passed in during render.
-
 ### `render` result
 
 The `render` method returns an object that has a few properties:
@@ -168,9 +151,6 @@ renders its HTML directly in the body.
 
 This method is a shortcut for `console.log(prettyDOM(element))`.
 
-`element` can either be a DOM element or an array containing DOM elements. It
-defaults to `baseElement`
-
 ```jsx
 import {render} from '@testing-library/vue'
 
@@ -183,8 +163,6 @@ debug()
 // <div>
 //   <h1>Hello World</h1>
 // </div>
-
-// you can also pass an element: debug(getByTestId('messages'))
 ```
 
 This is a simple wrapper around `prettyDOM` which is also exposed and comes from
@@ -194,10 +172,6 @@ This is a simple wrapper around `prettyDOM` which is also exposed and comes from
 
 An alias for `@vue/test-utils`
 [destroy](https://vue-test-utils.vuejs.org/api/wrapper/#destroy).
-
-#### `isUnmounted()`
-
-Returns whether if a Vue component has been destroyed.
 
 #### `html()`
 
@@ -209,12 +183,12 @@ An alias for `@vue/test-utils`
 An alias for `@vue/test-utils`
 [emitted](https://vue-test-utils.vuejs.org/api/wrapper/#emitted).
 
-#### `updateProps(props)`
+#### `rerender(props)`
 
 An alias for `@vue/test-utils`
-[setProps](https://vue-test-utils.vuejs.org/api/wrapper/#setprops).
+[setProps](https://test-utils.vuejs.org/api/#setprops).
 
-It returns a Promise through `wait()`, so you can `await updateProps(...)`.
+It returns a Promise through so you can `await rerender(...)`.
 
 ---
 
