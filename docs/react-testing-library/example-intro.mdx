@@ -6,26 +6,24 @@ sidebar_label: Example
 
 ## Quickstart
 
-This is a minimal setup to get you started. 
+This is a very simple setup to get you started. 
 If you want to see a description of what each line does, 
 scroll down to the [annotated version](#quickstart-annotated).
 Scroll down to [Full Example](#full-example) to see a more advanced test setup.
 
 ```jsx
-import {render, waitFor, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
-import Fetch from '../fetch'
-
-const setup = (jsx)=> ({ user: userEvent.setup(), ...render(jsx) })
+import Fetch from './fetch'
 
 test('loads and displays greeting', async () => {
 
   // ARRANGE
-  const { user } = setup(<Fetch url="/greeting" />)
+  render(<Fetch url="/greeting" />)
   
   // ACT
-  await user.click(screen.getByText('Load Greeting'))
+  await userEvent.click(screen.getByText('Load Greeting'))
   await screen.findByRole('heading')
   
   // ASSERT
@@ -40,23 +38,20 @@ test('loads and displays greeting', async () => {
 
   ```jsx
   // import react-testing methods
-  import {render, waitFor, screen} from '@testing-library/react'
+  import { render, screen } from '@testing-library/react'
+  // userEvent library simulates user interactions by dispatching the events that would happen if the interaction took place in a browser.
   import userEvent from '@testing-library/user-event'
   // add custom jest matchers from jest-dom
   import '@testing-library/jest-dom'
   // the component to test
-  import Fetch from '../fetch'
-
-  // Apply workarounds and mock the UI layer to simulate user interactions 
-  // like they would happen in the browser
-  const setup = (jsx)=> ({ user: userEvent.setup(), ...render(jsx) })
+  import Fetch from './fetch'
 
   test('loads and displays greeting', async () => {
 
-    // Run the UI setup and render a React element into the DOM
-    const { user } = setup(<Fetch url="/greeting" />)
+    // Render a React element into the DOM
+    render(<Fetch url="/greeting" />)
     
-    await user.click(screen.getByText('Load Greeting'))
+    await userEvent.click(screen.getByText('Load Greeting'))
     // wait before throwing an error if it cannot find an element
     await screen.findByRole('heading')
     
