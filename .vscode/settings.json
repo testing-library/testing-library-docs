@@ -5,8 +5,5 @@
   ],
   "files.associations": {
     "*.md": "mdx"
-  },
-  "githubPullRequests.ignoredPullRequestBranches": [
-    "main"
-  ]
+  }
 }
