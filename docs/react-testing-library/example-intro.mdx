@@ -49,7 +49,14 @@ test('loads and displays greeting', async () => {
 
   // Apply workarounds and mock the UI layer to simulate user interactions 
   // like they would happen in the browser
-  const setup = (jsx)=> ({ user: userEvent.setup(), ...render(jsx) })
+  function setup(jsx) {
+    return {
+      // create a user-event instance
+      user: userEvent.setup(),
+      // render a React element
+      ...render(jsx),
+    }
+  }
 
   test('loads and displays greeting', async () => {
 
