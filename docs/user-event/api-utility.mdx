@@ -149,6 +149,8 @@ upload(
 
 Change a file input as if a user clicked it and selected files in the resulting
 file upload dialog.
+Files that don't match an `accept` property will be automatically discarded,
+unless [`applyAccept`](options.mdx#applyaccept) is set to `false`.
 
 ```jsx
 test('upload file', async () => {
