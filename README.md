@@ -437,6 +437,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://semoal.github.io/sergiomoreno/"><img src="https://avatars.githubusercontent.com/u/22656541?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sergio Moreno</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=semoal" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/davidnixon"><img src="https://avatars.githubusercontent.com/u/7536103?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Nixon</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=davidnixon" title="Documentation">📖</a></td>
     <td align="center"><a href="http://technotes.khitrenovich.com/"><img src="https://avatars.githubusercontent.com/u/3424762?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anton Khitrenovich</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=khitrenovich" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://plethorathemes.com"><img src="https://avatars.githubusercontent.com/u/1638325?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kostas Minaidis</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=kostasx" title="Documentation">📖</a></td>
   </tr>
 </table>
 
