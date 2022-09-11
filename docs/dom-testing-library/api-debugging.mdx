@@ -5,8 +5,8 @@ title: Debugging
 
 ## Automatic Logging
 
-When you use any `get` calls in your test cases, the current state of the
-`container` (DOM) gets printed on the console. For example:
+When any `get` or `find` calls you use in your test cases fail, the current
+state of the `container` (DOM) gets printed on the console. For example:
 
 ```javascript
 // <div>Hello world</div>
@@ -26,7 +26,7 @@ Here is the state of your container:
 </div>
 ```
 
-Note: Since the DOM size can get really large, you can set the limit of DOM
+**Note**: Since the DOM size can get really large, you can set the limit of DOM
 content to be printed via environment variable `DEBUG_PRINT_LIMIT`. The default
 value is `7000`. You will see `...` in the console, when the DOM content is
 stripped off, because of the length you have set or due to default size limit.
@@ -34,6 +34,20 @@ Here's how you might increase this limit when running tests:
 
 ```
 DEBUG_PRINT_LIMIT=10000 npm test
+```
+
+This works on macOS/Linux, you'll need to do something else for Windows. If
+you'd like a solution that works for both, see
+[`cross-env`](https://www.npmjs.com/package/cross-env).
+
+**Note**: The output of the DOM is colorized by default if your tests are
+running in a node environment. However, you may sometimes want to turn off
+colors, such as in cases where the output is written to a log file for
+debugging purposes. You can use the environment variable `COLORS` to explicitly
+force the colorization off or on. For example:
+
+```
+COLORS=false npm test
 ```
 
 This works on macOS/Linux, you'll need to do something else for Windows. If
@@ -76,7 +90,7 @@ This function is usually used alongside `console.log` to temporarily print out
 DOM trees during tests for debugging purposes:
 
 ```javascript
-import {prettyDOM } from '@testing-library/dom'
+import {prettyDOM} from '@testing-library/dom'
 
 const div = document.createElement('div')
 div.innerHTML = '<div><h1>Hello World</h1></div>'
