@@ -120,4 +120,8 @@ getByText(/Hello W?oRlD/i) // advanced regex
 
 // Matching with a custom function:
 getByText((content, element) => content.startsWith('Hello'))
+
+getByTextId example:
+expect(screen.getByTestId("idname").textContent).toBe("somevalue");
 ```
+
