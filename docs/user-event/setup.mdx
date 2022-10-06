@@ -27,6 +27,8 @@ This allows to write multiple consecutive interactions that behave just like the
 described interactions by a real user.
 
 ```js
+import userEvent from "@testing-library/user-event";
+
 const user = userEvent.setup()
 
 await user.keyboard('[ShiftLeft>]') // Press Shift (without releasing it)
