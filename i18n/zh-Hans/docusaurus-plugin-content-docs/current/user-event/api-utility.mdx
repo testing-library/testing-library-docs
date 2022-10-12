@@ -1,0 +1,180 @@
+---
+id: utility
+title: 实用的 API
+---
+
+以下的 API 在真实的用户交互中没有一对一的对应关系。
+
+因此，他们的行为是对 "感知的" 用户交互如何转化为DOM上的实际事件的一种解释。
+
+## clear()
+
+```ts
+clear(element: Element): Promise<void>
+```
+
+此 API 可用于快速清除可编辑元素的内容。
+
+1. 聚焦元素
+1. 根据浏览器菜单选择所有内容
+1. 根据浏览器菜单删除内容
+
+```jsx
+test('clear', async () => {
+  render(<textarea defaultValue="Hello, World!" />)
+
+  await userEvent.clear(screen.getByRole('textbox'))
+
+  expect(screen.getByRole('textbox')).toHaveValue('')
+})
+```
+
+如果元素无法聚焦或无法选择内容，则 `Promise` 被拒绝。
+
+## <a name="selectoptions"/><a name="deselectoptions"/> selectOptions(), deselectOptions()
+
+```ts
+selectOptions(
+    element: Element,
+    values: HTMLElement | HTMLElement[] | string[] | string,
+): Promise<void>
+deselectOptions(
+    element: Element,
+    values: HTMLElement | HTMLElement[] | string[] | string,
+): Promise<void>
+```
+
+选择/取消选择
+[HTMLSelectElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement)
+或
+[列表框](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role).
+
+`values` 参数可以按其值指代一个选项，HTML内容或只是提供元素。它也接受一个这样的数组。
+
+> 选择多个选项和（或）取消选择 `HTMLSelectElement` 的选项只有在指定了 [multiple](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple) 的情况下才有可能。
+
+```jsx
+test('selectOptions', async () => {
+  render(
+    <select multiple>
+      <option value="1">A</option>
+      <option value="2">B</option>
+      <option value="3">C</option>
+    </select>,
+  )
+
+  await userEvent.selectOptions(screen.getByRole('listbox'), ['1', 'C'])
+
+  expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
+  expect(screen.getByRole('option', {name: 'B'}).selected).toBe(false)
+  expect(screen.getByRole('option', {name: 'C'}).selected).toBe(true)
+})
+```
+
+```jsx
+test('deselectOptions', async () => {
+  render(
+    <select multiple>
+      <option value="1">A</option>
+      <option value="2" selected>
+        B
+      </option>
+      <option value="3">C</option>
+    </select>,
+  )
+
+  await userEvent.deselectOptions(screen.getByRole('listbox'), '2')
+
+  expect(screen.getByText('B').selected).toBe(false)
+})
+```
+
+请注意，这个API会触发指针事件，因此要受到 [pointerEventsCheck](options.mdx#pointereventscheck) 的约束。
+
+## type()
+
+```ts
+type(
+    element: Element,
+    text: KeyboardInput,
+    options?: {
+        skipClick?: boolean
+        skipAutoClose?: boolean
+        initialSelectionStart?: number
+        initialSelectionEnd?: number
+    }
+): Promise<void>
+```
+
+在一个输入元素中打字。
+
+> 如果你想只是模拟按键盘上的按钮，你应该使用 [`keyboard()`](api-keyboard.mdx)。
+> 如果你只是想方便地在一个输入字段或文本区中插入一些文本，你可以使用 `type()`。
+
+1. 除非 [`skipClick`](options.mdx#skipclick) 为 `true`，否则点击该元素。
+1. 如果 `initialSelectionStart` 被设置，则在该元素上设置选中。如果 `initialSelectionEnd` 没有被设置，这将导致一个塌陷的选中。
+1. 按 [`keyboard()`](api-keyboard.mdx) 键入给定的 `text`。
+1. 除非 `skipAutoClose` 为 `true`，否则释放所有按下的键。
+
+```jsx
+test('type into an input field', async () => {
+  render(<input defaultValue="Hello,"/>)
+  const input = screen.getByRole('textbox')
+
+  await userEvent.type(input, ' World!')
+
+  expect(input).toHaveValue('Hello, World!')
+})
+```
+
+## upload()
+
+```ts
+upload(
+    element: HTMLElement,
+    fileOrFiles: File | File[],
+): Promise<void>
+```
+
+改变一个文件输入，就像用户点击它并在弹出的文件上传对话框中选择文件一样。
+
+> 不符合 `accept` 属性的文件将被自动丢弃，除非 [`applyAccept`](options.mdx#applyaccept) 被设置为false。
+
+```jsx
+test('upload file', async () => {
+  render(
+    <div>
+      <label htmlFor="file-uploader">Upload file:</label>
+      <input id="file-uploader" type="file" />
+    </div>,
+  )
+  const file = new File(['hello'], 'hello.png', {type: 'image/png'})
+  const input = screen.getByLabelText(/upload file/i)
+
+  await userEvent.upload(input, file)
+
+  expect(input.files[0]).toBe(file)
+  expect(input.files.item(0)).toBe(file)
+  expect(input.files).toHaveLength(1)
+})
+
+test('upload multiple files', async () => {
+  render(
+    <div>
+      <label htmlFor="file-uploader">Upload file:</label>
+      <input id="file-uploader" type="file" multiple />
+    </div>,
+  )
+  const files = [
+    new File(['hello'], 'hello.png', {type: 'image/png'}),
+    new File(['there'], 'there.png', {type: 'image/png'}),
+  ]
+  const input = screen.getByLabelText(/upload file/i)
+
+  await userEvent.upload(input, files)
+
+  expect(input.files).toHaveLength(2)
+  expect(input.files[0]).toBe(files[0])
+  expect(input.files[1]).toBe(files[1])
+})
+```

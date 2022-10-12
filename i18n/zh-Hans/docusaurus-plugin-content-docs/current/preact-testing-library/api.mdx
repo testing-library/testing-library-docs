@@ -1,0 +1,151 @@
+---
+id: api
+title: API
+sidebar_label: API
+---
+
+- [`@testing-library/dom`](#testing-library-dom)
+- [`render`](#render)
+- [`cleanup`](#cleanup)
+- [`act`](#act)
+- [`fireEvent`](#fireevent)
+
+---
+
+## `@testing-library/dom`
+
+这个库重新导出了DOM Testing Library（@testing-library/dom）的所有内容。
+请看[文档](queries/about.mdx)以了解你可以使用哪些好东西。
+
+## `render`
+
+```jsx
+import {render} from '@testing-library/preact'
+
+const {results} = render(<YourComponent />, {options})
+```
+
+### 选项
+
+| Option        | Description                                                                                                                                                       | Default       |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `container`   | The HTML element the component is mounted to.                                                                                                                     | baseElement   |
+| `baseElement` | The root HTML element to which the container is appended to.                                                                                                      | document.body |
+| `queries`     | Queries to bind to the baseElement. See [within](dom-testing-library/api-within.mdx).                                                                             | null          |
+| `hydrate`     | Used when the component has already been mounted and requires a rerender. Not needed for most people. The rerender function passed back to you does this already. | false         |
+| `wrapper`     | A parent component to wrap YourComponent.                                                                                                                         | null          |
+
+### 返回结果
+
+| Result        | Description                                                                                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container`   | The HTML element the component is mounted to.                                                                                                            |
+| `baseElement` | The root HTML element to which the container is appended to.                                                                                             |
+| `debug`       | Logs the baseElement using [prettyDom](dom-testing-library/api-debugging.mdx#prettydom).                                                                 |
+| `unmount`     | Unmounts the component from the container.                                                                                                               |
+| `rerender`    | Calls render again passing in the original arguments and sets hydrate to true.                                                                           |
+| `asFragment`  | Returns the innerHTML of the container.                                                                                                                  |
+| `...queries`  | Returns all [query functions](queries/about.mdx) to be used on the baseElement. If you pass in `query` arguments than this will be those, otherwise all. |
+
+## `cleanup`
+
+从容器中卸载组件并销毁容器。
+
+📝 当你从库中导入任何东西时，这将在每次测试后自动运行。如果你想禁用它，
+那么在运行你的测试时，将 `process.env.PTL_SKIP_AUTO_CLEANUP` 设置为 `true`。
+
+```jsx
+import {render, cleanup} from '@testing-library/preact'
+
+afterEach(() => {
+  cleanup()
+}) // Default on import: runs it after each test.
+
+render(<YourComponent />)
+
+cleanup() // Or like this for more control.
+```
+
+## `act`
+
+只是一个方便的导出，指向 `preact/test-utils/act`。所有被触发的渲染和事件都被包裹在 `act` 中，
+所以你并不真正需要这个。它负责在调用后刷新所有的效果和重新渲染。
+
+📝 如果你想了解更多，可以查看这个[解释](https://github.com/threepointone/react-act-examples/blob/master/sync.md)。尽管它是针对React的，但它让你知道为什么需要它。
+
+## `fireEvent`
+
+将其传递给@testing-library/dom [fireEvent](dom-testing-library/api-events.mdx)。
+它也被包裹在 `act` 中，所以你不需要担心做这件事。
+
+📝 在使用 `h / Preact.createElement` 时，请主要记住React使用的是合成事件系统，
+
+而Preact使用浏览器的本地 `addEventListener` 来处理事件。这意味着React中的 `onChange` 和 `onDoubleClick` 等事件，
+在Preact中是 `onInput` 和 `onDblClick` 。双击的例子会让你了解如何使用这些函数进行测试。
+
+### 示例 1
+
+```jsx
+const cb = jest.fn();
+
+function Counter() {
+  useEffect(cb);
+
+  const [count, setCount] = useState(0);
+
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+
+const { container: { firstChild: buttonNode }, } = render(<Counter />);
+
+// Clear the first call to useEffect that the initial render triggers.
+cb.mockClear();
+
+// Fire event Option 1.
+fireEvent.click(buttonNode);
+
+// Fire event Option 2.
+fireEvent(
+  buttonNode,
+  new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    button: 0,
+  })
+);
+
+expect(buttonNode).toHaveTextContent('1');
+expect(cb).toHaveBeenCalledTimes(1);
+```
+
+### 示例 2
+
+```jsx
+const handler = jest.fn()
+
+const {
+  container: {firstChild: input},
+} = render(<input type="text" onInput={handler} />)
+
+fireEvent.input(input, {target: {value: 'a'}})
+
+expect(handler).toHaveBeenCalledTimes(1)
+```
+
+### 示例 3
+
+```jsx
+const ref = createRef()
+const spy = jest.fn()
+
+render(
+  h(elementType, {
+    onDblClick: spy,
+    ref,
+  }),
+)
+
+fireEvent['onDblClick'](ref.current)
+
+expect(spy).toHaveBeenCalledTimes(1)
+```

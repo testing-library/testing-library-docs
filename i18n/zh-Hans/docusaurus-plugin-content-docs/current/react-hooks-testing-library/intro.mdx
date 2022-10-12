@@ -1,0 +1,31 @@
+---
+id: intro
+title: React Hooks Testing Library
+sidebar_label: 简介
+---
+
+## 问题
+
+想要为你写的自定义 hook 编写测试，但是通常看到以下错误：
+
+> Invariant Violation: Hooks can only be called inside the body of a function component.
+
+## 解决方案
+
+`react-hooks-testing-library`
+
+这个库的目标是提供一种接近真正组件中使用 Hook 的方式来测试 Hook
+
+使用了这个库来测试你的 Hook，你无需关心怎样和 React 组件进行构造，渲染和交互，直接调用 Hook 和 断言结果即可。
+
+## 何时使用这个库
+
+1. 一个或多个自定义 hook，且不绑定到某个组件
+
+2. 很难通过组件交互测试的 hook
+
+## 何时不使用这个库
+
+1. hook 存在于当前组件内且只被当前组件使用
+
+2. hook 能较容易地通过使用它的组件测试

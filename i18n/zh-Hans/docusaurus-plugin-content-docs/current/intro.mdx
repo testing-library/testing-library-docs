@@ -1,0 +1,56 @@
+---
+id: introduction
+title: 简介
+slug: /
+---
+
+[`@testing-library`][npm] 系列包可以帮助你以用户使用的方式来测试 UI 组件。
+
+> [测试代码与你的软件使用方式越相似，它们能给你的信心就越大](guiding-principles.mdx)
+
+## 问题
+
+想要编写可维护的测试代码，希望它们可以增加你对组件正常工作的信心。为了实现此目标，
+您希望你的测试避免包含实现细节，以便组件的重构（对实现的更改但不是功能的更改）时不会破坏原有的测试，并减慢团队的开发速度
+
+## 解决方案
+
+核心库 [`DOM Testing Library`][dom] 是一个轻量级的解决方案，
+用于通过查询和与 DOM 节点交互来测试网页（无论是用[`JSDOM`][jsdom]/[Jest][jest]模拟还是在浏览器中模拟）。
+库中提供的查询元素节点的工具函数运行方式和真正的用户在页面中查找元素在某种程度上是相似的。
+通过这种方式，该库有助于提升用测试代码来保证应用在真实用户使用时能够正常工作的信心。
+
+核心库通过封装为其它框架提供了便捷的 API，这些框架包括 
+ [React][react]， [Angular][angular] 和 [Vue][vue]。
+还有一个插件支持在 [Cypress][cypress] 的端到端测试中使用 testing-library 的查询，以及支持 [React Native][react-native].
+
+### Testing Library 不是什么
+
+1.  测试执行器 或 框架
+2.  特定的测试框架
+
+`DOM Testing Library` 适用于任何提供 DOM API 的环境，例如
+Jest, Mocha + JSDOM, 或真正的浏览器.
+
+### 使用 Testing Library 你应该避免什么
+
+Testing Library 鼓励你避免测试一个组件内部的
+[实现细节](https://kentcdodds.com/blog/testing-implementation-details)
+ （尽管你可以），该库的 [指导原则](/docs/guiding-principles) 强调测试的关注点应该与用户交互方式类似。
+
+你可以避免以下实现细节：
+
+1. 组件的内部状态
+1. 组件的内部方法
+1. 组件的声明周期方法
+1. 子组件
+
+[jest]: https://jestjs.io
+[jsdom]: https://github.com/jsdom/jsdom
+[dom]: dom-testing-library/intro.mdx
+[react]: react-testing-library/intro.mdx
+[angular]: angular-testing-library/intro.mdx
+[vue]: vue-testing-library/intro.mdx
+[cypress]: cypress-testing-library/intro.mdx
+[react-native]: react-native-testing-library/intro.mdx
+[npm]: https://www.npmjs.com/org/testing-library

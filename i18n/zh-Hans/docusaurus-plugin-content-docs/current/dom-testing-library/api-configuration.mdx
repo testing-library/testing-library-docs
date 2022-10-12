@@ -1,0 +1,113 @@
+---
+id: api-configuration
+title: 配置选项
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## 简介
+
+该库可以通过 `configure` 函数进行配置，该函数接受:
+
+- 一个普通的 JS 对象; 它会和现有配置进行合并。例如，
+  `configure({testIdAttribute: 'not-data-testid'})`
+- 一个函数; 函数的参数是现有配置，应该返回一个普通的 JS 对象，它会和现有配置进行合并。例如，
+  `configure(existingConfig => ({something: [...existingConfig.something, 'extra value for the something array']}))`
+
+> **注意**
+>
+> 特定框架封装器（如 React Testing Library）可能会在下面选项中添加更多选项配置。
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js title="setup-tests.js"
+import {configure} from '@testing-library/dom'
+import serialize from 'my-custom-dom-serializer'
+
+configure({
+  testIdAttribute: 'data-my-test-id',
+  getElementError: (message, container) => {
+    const customMessage = [message, serialize(container.firstChild)].join(
+      '\n\n',
+    )
+    return new Error(customMessage)
+  },
+})
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```js title="setup-tests.js"
+import {configure} from '@testing-library/react'
+
+configure({testIdAttribute: 'data-my-test-id'})
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js title="setup-tests.js"
+import {configure} from '@testing-library/cypress'
+
+configure({testIdAttribute: 'data-my-test-id'})
+```
+
+  </TabItem>
+  </Tabs>
+
+## 选项
+
+### `computedStyleSupportsPseudoElements`
+
+如果 `window.getComputedStyle` 支持伪元素，例如其第二个参数指定了，则设置为true。
+如果你在浏览器中使用 `Testing Library`，你几乎总是可以把它设置为 `true`。
+只有非常老的浏览器不支持这个属性（比如IE 8和更早的）。然而，`jsdom` 目前不支持第二个参数。
+这包括16.4.0之前的 `jsdom` 版本，以及任何在调用 `getComputedStyle` 时有第二个参数的版本，
+例如 `window.getComputedStyle(document.createElement('div'), '::after')`，都会出现未实现的警告。
+默认为false
+
+### `defaultHidden`
+
+[`getByRole`](queries/byrole.mdx) 查询参数 `hidden` 选项 的默认值。默认值为 `false`。
+
+### `defaultIgnore`
+
+[`getByText`](queries/bytext.mdx) 查询参数 [`ignore` 选项](queries/bytext.mdx#ignore) 的默认值。
+它同时还控制错误打印时被忽略的节点。
+
+默认值为 `script, style`。
+
+### `showOriginalStackTrace`
+
+默认情况下，`waitFor` 将确保 Testing Library 抛出的错误的堆栈跟踪被清理和缩短，
+以便你更容易识别你的代码中导致错误的部分（异步堆栈跟踪很难调试）。如果你想禁用这个功能，
+那么把 `showOriginalStackTrace `设置为 `false`。你也可以在传递给 `waitFor`的选项中为某个特定的调用禁用这个功能。
+
+### `throwSuggestions` (实验)
+
+启用后，如果有[更好的查询](queries/about.mdx#priority)可用，测试将会失败并提供一个推荐的查询方式。
+默认值为 `false`。
+
+要禁用单个查询的推荐功能，只需在查询选项中添加 `{suggest:false}`。
+
+```js
+screen.getByTestId('foo', {suggest: false}) // will not throw a suggestion
+```
+
+### `testIdAttribute`
+
+[`getByTestId`](queries/bytestid.mdx) 和相关查询使用的属性，
+默认值是 `data-testid`。
+
+### `getElementError`
+
+当 [get 或 find 查询](queries/about.mdx#types-of-queries) 失败时返回错误的函数，
+它接受错误消息和容器对象作为参数。
+
+### `asyncUtilTimeout`
+
+`waitFor` 工具函数使用的全局超时时间（以毫秒为单位），默认值是 1000ms。

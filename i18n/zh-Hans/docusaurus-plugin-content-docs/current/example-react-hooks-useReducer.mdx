@@ -1,0 +1,70 @@
+---
+id: example-react-hooks-useReducer
+title: useReducer
+---
+
+测试 `useReducer` 的基本示例。
+重要的是我们并没有直接测试 reducer，因为它是组件的实现细节! 相反我们测试组件对外的接口。
+
+我们测试的组件根据内部状态中的 `isConfirmed` 来改变显示的文案。
+
+```jsx
+// example.js
+
+import React, {useReducer} from 'react'
+
+const initialState = {
+  isConfirmed: false,
+}
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'SUCCESS':
+      return {
+        ...state,
+        isConfirmed: true,
+      }
+    default:
+      throw Error('unknown action')
+  }
+}
+
+const Example = () => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  return (
+    <div>
+      <div>
+        {state.isConfirmed ? (
+          <p>Confirmed!</p>
+        ) : (
+          <p>Waiting for confirmation...</p>
+        )}
+      </div>
+      <button onClick={() => dispatch({type: 'SUCCESS'})}>Confirm</button>
+    </div>
+  )
+}
+
+export default Example
+```
+
+测试根据 reducer 的状态 是否渲染正确的内容。
+
+```jsx
+// example.test.js
+
+import React from 'react'
+import {render, fireEvent} from '@testing-library/react'
+import Example from './example.js'
+
+it('shows success message after confirm button is clicked', () => {
+  const {getByText} = render(<Example />)
+
+  expect(getByText(/waiting/i)).toBeInTheDocument()
+
+  fireEvent.click(getByText('Confirm'))
+
+  expect(getByText('Confirmed!')).toBeInTheDocument()
+})
+```

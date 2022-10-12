@@ -1,0 +1,75 @@
+---
+id: intro
+title: Puppeteer Testing Library
+---
+
+[`pptr-testing-library`][gh] 是一个轻量级适配器，允许 `DOM Testing Library` 与 [`puppeteer`][ghpuppeteer] 一起使用。
+
+```bash npm2yarn
+npm install --save-dev puppeteer pptr-testing-library
+```
+
+- [pptr-testing-library on GitHub][gh]
+
+## 使用
+
+```js
+const puppeteer = require('puppeteer')
+const {getDocument, queries, waitFor} = require('pptr-testing-library')
+
+const {getByTestId, getByLabelText} = queries
+
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+
+// Grab ElementHandle for document
+const $document = await getDocument(page)
+// Your favorite query methods are available
+const $form = await getByTestId($document, 'my-form')
+// returned elements are Puppeteer ElementHandles too!
+const $email = await getByLabelText($form, 'Email')
+// interact with puppeteer like usual
+await $email.type('pptr@example.com')
+// waiting works too!
+await waitFor(() => getByText('Loading...'))
+```
+
+对你来说有点太不puppeteer了？你可以将所有的 `DOM Testing Library` 方法直接附加到puppeteer的 `ElementHandle` 上，而不是这样
+
+```js
+const puppeteer = require('puppeteer')
+require('pptr-testing-library/extend')
+
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+
+// getDocument is added to prototype of Page
+const $document = await page.getDocument()
+// query methods are added directly to prototype of ElementHandle
+const $form = await $document.getByTestId('my-form')
+// destructuring works if you explicitly call getQueriesForElement
+const {getByLabelText} = $form.getQueriesForElement()
+// ...
+const $email = await getByLabelText('Email')
+```
+
+### API
+
+独特的方法，不是 `DOM Testing Library` 的一部分。
+
+- `getDocument(page: puppeteer.Page): ElementHandle` - 获得文档的一个ElementHandle
+
+### 转发的方法
+
+`DOM Testing Library` 被注入 puppeteer 在每次查询时控制的页面中，因此所有结果都将是异步的。
+仍然建议你使用 puppeteer 的内置方法进行交互，而不是使用 `fireEvent`。
+
+## 已知的限制
+
+- `waitForElement` 方法没有公开。 Puppeteer有自己的一套等待工具，与 `DOM Testing Library` 中使用的风格有些冲突。
+  见 [GitHub上的问题](https://github.com/patrickhulce/pptr-testing-library/issues/3)。
+- `fireEvent` 方法未公开，使用puppeteer的内置插件。
+- `expect` 断言扩展不可用、
+
+[gh]: https://github.com/patrickhulce/pptr-testing-library
+[ghpuppeteer]: https://github.com/GoogleChrome/puppeteer

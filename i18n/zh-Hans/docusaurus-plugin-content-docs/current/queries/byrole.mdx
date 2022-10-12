@@ -1,0 +1,306 @@
+---
+id: byrole
+title: ByRole
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByRole, queryByRole, getAllByRole, queryAllByRole, findByRole,
+> findAllByRole
+
+## API
+
+```typescript
+getByRole(
+  // 如果使用了 `screen` 对象，则忽略 container 参数:
+  container: HTMLElement,
+  role: string,
+  options?: {
+    hidden?: boolean = false,
+    name?: TextMatch,
+    description?: TextMatch,
+    selected?: boolean,
+    checked?: boolean,
+    pressed?: boolean,
+    suggest?: boolean,
+    current?: boolean | string,
+    expanded?: boolean,
+    queryFallbacks?: boolean,
+    level?: number,
+  }): HTMLElement
+```
+
+根据指定角色来查询元素 (还支持接受一个 [`TextMatch`](queries/about.mdx#textmatch))。
+请考虑使用默认角色，例如 `<button />` 具有 `button` 角色，而无需显式设置 `role` 属性。 你可以参考 
+[带有默认和所需角色的HTML元素表](https://www.w3.org/TR/html-aria/#docconformance).
+
+请注意，设置与隐式的ARIA语义相匹配的 `role` 和（或）`aria-*` 属性是不必要的，也不推荐这样做，
+因为这些属性已经被浏览器设置了，而且我们在使用 `role` 和 `aria-*` 属性时，不能与所述的语义相冲突。
+例如，一个 `button` 元素不能有 `heading` 的角色属性，因为 `button` 元素的默认特性与 `heading` 角色相冲突。
+
+> 角色是按字面值匹配的，没有继承ARIA角色的层次结构。因此，查询像 `checkbox` 这样的超类角色
+> 将不包括像 `switch`这样的子类角色的元素。
+
+你可以通过他们的[可访问名称或描述](https://www.w3.org/TR/accname-1.1/)来查询返回的元素。
+在简单的情况下，可访问的名称等于例如表单元素的标签，或按钮的文本内容，或 `aria-label` 属性的值。
+如果在渲染的内容上有多个具有相同作用的元素，它可以用来查询一个特定的元素。关于深入的指南，
+请查看[TPGi上 "什么是可访问的名称？"](https://www.tpgi.com/what-is-an-accessible-name/)。
+如果你只用 `getByText('The name')` 查询一个元素，
+很多时候使用getByRole(expectedRole, { name: 'The name' })会更好。可访问名称查询并不取代其他查询，
+如 `*ByAlt` 或 `*ByTitle`。虽然可访问名称可以与这些属性相等，但它并不取代这些属性的功能。
+例如 `<img aria-label="fancy image" src="fancy.jpg" />` 会返回给 `getByAltText('fancy image')`。
+然而，如果 `fancy.jpg` 不能被加载，图片将不会显示其描述。否想在你的测试中断言这一功能，取决于你。
+
+## 选项
+
+### `hidden`
+
+如果你把 `hidden` 设置为 `true`，通常被排除在可访问性树之外的元素也会被考虑在查询中。
+默认行为遵循 https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion，
+但 `role="none"` 和 `role="presentation"` 除外，它们在任何情况下都会被考虑在查询中。例如，在
+
+```html
+<body>
+  <main aria-hidden="true">
+    <button>Open dialog</button>
+  </main>
+  <div role="dialog">
+    <button>Close dialog</button>
+  </div>
+</body>
+```
+
+`getByRole('button')` 将只返回 "关闭对话框" 的按钮。要对 "打开 "对话框按钮进行断言，
+你需要使用getAllByRole('button', { hidden: true })。
+
+`hidden` 的默认值可以被[配置](../dom-testing-library/api-configuration.mdx#configuration)。
+
+### `selected`
+
+你可以通过设置 `selected: true` 或 `selected: false` 来过滤返回的元素的选择状态。
+
+例如，在
+
+```html
+<body>
+  <div role="tablist">
+    <button role="tab" aria-selected="true">Native</button>
+    <button role="tab" aria-selected="false">React</button>
+    <button role="tab" aria-selected="false">Cypress</button>
+  </div>
+</body>
+```
+
+你可以通过调用 `getByRole('tab', { selected: true })` 来获得 "Native" 的tab。
+要了解更多关于选定状态和哪些元素可以有这种状态，请看 [ARIA `aria-selected`](https://www.w3.org/TR/wai-aria-1.2/#aria-selected)。
+
+### `checked`
+
+你可以通过设置 `checked: true` 或 `checked: false` 来过滤返回的元素的检查状态。
+
+例如，在
+
+```html
+<body>
+  <section>
+    <button role="checkbox" aria-checked="true">Sugar</button>
+    <button role="checkbox" aria-checked="false">Gummy bears</button>
+    <button role="checkbox" aria-checked="false">Whipped cream</button>
+  </section>
+</body>
+```
+
+你可以通过调用 `getByRole('checkbox', { checked: true })` 获得 "Sugar"选项。
+要了解更多关于检查状态和哪些元素可以有这种状态，请看[ARIA `aria-checked`](https://www.w3.org/TR/wai-aria-1.2/#aria-checked)。
+
+> **注意**
+>
+> 复选框有一个 "混合" 状态，它被认为既不是选中也不是未选中（详见[这里](https://www.w3.org/TR/html-aam-1.0/#details-id-56)）。
+
+### `current`
+
+你可以通过设置 `current: boolean | string` 来过滤返回的元素的当前状态。
+请注意，由于 `false` 是 `aria-current` 的默认值，所以没有 `aria-current` 属性会匹配 `current: false`。
+
+例如，在
+
+```html
+<body>
+  <nav>
+    <a href="current/page" aria-current="true">👍</a>
+    <a href="another/page">👎</a>
+  </nav>
+</body>
+```
+
+你可以通过调用 `getByRole('link', { current: true })` 得到"👍"链接，
+通过调用 `getByRole('link', { current: false })` 得到"👎"。要了解更多关于当前状态的信息，
+请参阅[ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current)。
+
+### `pressed`
+
+按钮可以有一个按下的状态。你可以通过设置 `pressed: true` 或 `pressed: false` 来过滤返回的元素的按下状态。
+
+例如，在
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+你可以通过调用 `getByRole('button', { pressed: true })` 获得"👍"按钮。
+要了解更多关于按下状态的信息，请参阅[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed)。
+
+### `suggest`
+
+通过将此值设置为`false`，可以禁用为特定查询[抛出建议](../dom-testing-library/api-configuration.mdx#throwsuggestions-experimental)的功能。
+如果将此值设置为`true`，则会对特定查询抛出建议。
+
+### `expanded`
+
+你可以通过设置 `expanded: true` 或 `expanded: false` 来过滤返回的元素的扩展状态。
+
+例如，在
+
+```html
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a aria-expanded="false" aria-haspopup="true" href="..."
+          >Expandable Menu Item</a
+        >
+        <ul>
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Regular Menu Item</a></li>
+    </ul>
+  </nav>
+</body>
+```
+
+你可以通过调用 `getByRole('link', { expanded: false })` 获得 "Expandable Menu Item"链接。
+要了解更多关于扩展状态以及哪些元素可以拥有这种状态，请看[ARIA `aria-expanded`](https://www.w3.org/TR/wai-aria-1.2/#aria-expanded)。
+
+```html
+<div role="dialog">...</div>
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import {screen} from '@testing-library/dom'
+
+const dialogContainer = screen.getByRole('dialog')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, screen} from '@testing-library/react'
+
+render(<MyComponent />)
+const dialogContainer = screen.getByRole('dialog')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByRole('dialog').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+### `queryFallbacks`
+
+默认情况下，它假定每个元素的第一个角色被支持，所以只有第一个角色可以被查询。
+如果你需要通过它的任何一个回退角色来查询一个元素，你可以使用 `queryFallbacks: true`。
+
+例如，`getByRole('switch')` 将总是匹配 `<div role="switch checkbox" />`，
+因为它是第一个角色，而 `getByRole('checkbox')` 就不会。然而，`getByRole('checkbox', { queryFallbacks: true })`
+会启用所有回退角色，因此会匹配同一个元素。
+
+> 一个元素在一个特定的环境中没有多种角色。它有一个单一的。属性中的多个角色被从左到右评估，
+> 直到环境找到它所理解的第一个角色。当新的角色被引入并且你想开始支持这些角色以及不理解该角色的旧环境时，这很有用。
+
+### `level`
+
+具有 `heading` 角色的元素可以通过任何标题级别 `getByRole('heading')`进行查询，
+或者通过使用 `level` 选项 `getByRole('heading', { level: 2 })` 查询特定的标题级别。
+
+`level` 选项查询具有 `heading` 角色的元素，这些元素与由语义HTML标题元素 `<h1>-<h6>` 确定的指定级别相匹配，
+或者与 `aria-level` 属性相匹配。
+
+示例如下,
+
+```html
+<body>
+  <section>
+    <h1>Heading Level One</h1>
+    <h2>First Heading Level Two</h2>
+    <h3>Heading Level Three</h3>
+    <div role="heading" aria-level="2">Second Heading Level Two</div>
+  </section>
+</body>
+```
+
+你可以使用 `getByRole('heading', { level: 3 })` 来查询 `Heading Level Three` 标题。
+
+```js
+getByRole('heading', {level: 1})
+// <h1>Heading Level One</h1>
+
+getAllByRole('heading', {level: 2})
+// [
+//   <h2>First Heading Level Two</h2>,
+//   <div role="heading" aria-level="2">Second Heading Level Two</div>
+// ]
+```
+
+虽然可以明确地在一个元素上设置 `role="heading"` 和 `aria-level` 属性，但强烈建议使用语义学上的HTML标题 `<h1>-<h6>`。
+
+要了解更多关于 `aria-level` 属性的信息，请参见 [ARIA `aria-level`](https://www.w3.org/TR/wai-aria-1.2/#aria-level)。
+
+> `level` 选项只适用于 `heading` 角色。当与任何其他角色一起使用时，会产生一个错误。
+
+### `description`
+
+你可以通过他们的[可访问描述](https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_description)来过滤返回的元素，
+用于那些你有几个具有相同角色的元素，他们没有一个可访问的名字，但他们有一个描述的情况。
+<br />
+这将是具有 `alerttdialog` 角色的元素的情况，其中的 `aria-describedby` 属性被用来描述元素的内容。
+
+例如，在
+
+```html
+<body>
+  <ul>
+    <li role="alertdialog" aria-describedby="notification-id-1">
+      <div><button>Close</button></div>
+      <div id="notification-id-1">You have unread emails</div>
+    </li>
+    <li role="alertdialog" aria-describedby="notification-id-2">
+      <div><button>Close</button></div>
+      <div id="notification-id-2">Your session is about to expire</div>
+    </li>
+  </ul>
+</body>
+```
+
+你可以像这样查询一个特定的元素:
+
+```js
+getByRole('alertdialog', {description: 'Your session is about to expire'})
+```

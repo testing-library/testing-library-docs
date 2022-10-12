@@ -1,0 +1,46 @@
+---
+id: intro
+title: 简介
+sidebar_label: 简介
+---
+
+React Native Testing Library 是一个用于 **React Native** 的测试库，其灵感来源于 `React Testing Library`。
+因为React Native不在浏览器环境中运行，所以核心查询是独立实现的，不像其他使用 `DOM Testing Library` 作为基础的封装器。
+你可以在项目网站上找到更多关于该库的信息，包括例子：
+
+- [文档][docs]
+- [项目][gh]
+
+该项目由
+[Callstack](https://callstack.com/open-source/?utm_source=testing-library.com&utm_medium=referral&utm_campaign=react-native-testing-library)
+维护，它是React Native
+[合作伙伴](https://github.com/facebook/react-native/blob/d48f7ba748a905818e8c64fe70fe5b24aa098b05/ECOSYSTEM.md#partners)
+之一，活跃在整个React Native社区。
+
+## 快速入门
+
+```bash npm2yarn
+npm install --save-dev @testing-library/react-native
+```
+
+- [React Native Testing Library on GitHub][gh]
+
+[docs]: https://callstack.github.io/react-native-testing-library/
+[gh]: https://github.com/callstack/react-native-testing-library
+
+## 问题
+
+你想为你的React Native组件编写可维护的测试。作为这个目标的一部分，你希望你的测试避免包括你的组件的实现细节，
+而是专注于使你的测试给你的信心，因为他们的目的。作为这个目标的一部分，你希望你的测试库从长远来看是可维护的，
+所以你的组件的重构（对实现的改变，但不是功能）不会破坏你的测试，也不会拖累你和你的团队。
+
+## 解决方案
+
+React Native Testing Library（RNTL）是一个测试React Native组件的轻量级解决方案。
+它在 `react-test-renderer` 之上提供了轻量级的实用功能，以鼓励更好的测试实践。它的主要指导原则是：
+
+> 你的测试越类似于你的软件的使用方式，他们就越能给你带来信心。
+
+这个项目经过测试可以与Jest一起使用，但它也可以与其他测试运行器一起使用。
+
+[jest]: https://jestjs.io

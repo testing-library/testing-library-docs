@@ -1,0 +1,60 @@
+---
+id: install
+title: 安装
+sidebar_label: 安装
+---
+
+```bash npm2yarn
+npm install --save-dev @testing-library/dom
+```
+
+## 封装器
+
+如果你在使用像 React 这样的框架或库时，你应该安装对应的封装器：
+
+- [React Testing Library](react-testing-library/intro.mdx)
+- [Reason Testing Library](bs-react-testing-library/intro.mdx)
+- [React Native Testing Library](react-native-testing-library/intro.mdx)
+- [Vue Testing Library](vue-testing-library/intro.mdx)
+- [Marko Testing Library](marko-testing-library/intro.mdx)
+- [Angular Testing Library](angular-testing-library/intro.mdx)
+- [Preact Testing Library](preact-testing-library/intro.mdx)
+- [Svelte Testing Library](svelte-testing-library/intro.mdx)
+- [Cypress Testing Library](cypress-testing-library/intro.mdx)
+- [Puppeteer Testing Library](pptr-testing-library/intro.mdx)
+- [Testcafe Testing Library](testcafe-testing-library/intro.mdx)
+- [Nightwatch Testing Library](nightwatch-testing-library/intro.mdx)
+
+## 生态
+
+`DOM Testing Library` 和下面这些配套库一起运行:
+
+- [user-event](user-event/intro.mdx) 模拟浏览器事件
+- [jest-dom](ecosystem-jest-dom.mdx) 自定义的 Jest 匹配器
+- [bs-jest-dom](ecosystem-bs-jest-dom.mdx) `bs-react-testing-library` 的配套库
+- [jest-native](ecosystem-jest-native.mdx) `React Native Testing Library` 的配套库
+- [react-select-event](ecosystem-react-select-event.mdx) `React Testing Library` 的配套库
+- [eslint-plugin-testing-library](ecosystem-eslint-plugin-testing-library.mdx)
+  Testing Library 的 ESLint 插件
+- [eslint-plugin-jest-dom](ecosystem-eslint-plugin-jest-dom.mdx) Jest DOM 的 ESLint 插件
+- [riot-testing-library](ecosystem-riot-testing-library.mdx) 支持 Riot.js 组件
+
+## Main Exports
+
+你可以查看
+[`DOM Testing Library` 的 package.json](https://unpkg.com/@testing-library/dom/package.json).
+
+特别是，`main`、`module`和`umd:main`字段很有用。每个字段都指向一个在某些情况下有用的文件。
+通常情况下，你的测试框架会根据你的情况解析到正确的文件，但如果它没有，那么你可以配置你的测试框架，
+在你 require/import `@testing-library/dom` 时解析到正确的文件，或者你可以更明确地导入你需要的文件。举例：
+
+```js
+import {within} from '@testing-library/dom/dist/@testing-library/dom.umd.js'
+```
+
+你可以在
+[这里](https://unpkg.com/@testing-library/dom/dist/)
+查看已发布的dist文件。
+
+`main` 文件被配置为支持 `package.json` `engines.node`字段中引用的node的版本。
+但 `module` 和 `umd:main` 文件被配置为支持IE10(旧的浏览器)。

@@ -1,0 +1,180 @@
+---
+id: intro
+title: Testcafe Testing Library
+---
+
+## 简介
+
+[`testcafe-testing-library`][gh] 允许在 [Testcafe](https://devexpress.github.io/testcafe/) 中使用 dom testing library 查询，
+进行跨浏览器的端到端网络测试。
+
+如果你是编写 testing-library 方法的新手，请查看关于[使用哪种查询的指南](queries/about.mdx#priority)，
+以及[小抄](dom-testing-library/cheatsheet.mdx)。
+
+## 安装
+
+```bash npm2yarn
+npm install --save-dev testcafe @testing-library/testcafe
+```
+
+- [testcafe-testing-library on GitHub][gh]
+
+## 使用
+
+`testcafe-testing-library` 提供自定义选择器，允许你查询dom。
+
+在你的 `.testcaferc.json` 文件中添加以下内容:
+
+```json
+  "clientScripts": [
+    { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
+  ],
+```
+
+你现在可以导入 `screen`，其中有所有get[All]By\*、query[All]By\*、find[All]By*选择器，你可以在测试中使用。
+
+```js
+import {screen} from '@testing-library/testcafe'
+```
+
+[参见查询，供参考](queries/about.mdx)
+
+> 关于testcafe中的查询的一个说明。Testcafe有[内置的等待](https://devexpress.github.io/testcafe/documentation/test-api/built-in-waiting-mechanisms.html#wait-mechanism-for-selectors)，由于这个原因，
+> 在testcafe测试库中 `queryBy` 和 `findBy` 查询没有区别。`getBy` 查询将抛出一个异常（按照设计），所以它们将立即失败，并且不能使用Testcafe提供的内置等待。
+
+## 示例
+
+为了显示一些简单的例子（来自https://github.com/testing-library/testcafe-testing-library/blob/master/tests/testcafe/selectors.ts）。
+
+```javascript
+import {screen} from '@testing-library/testcafe'
+
+test('getByPlaceHolderText', async t => {
+  await t.typeText(
+    screen.getByPlaceholderText('Placeholder Text'),
+    'Hello Placeholder',
+  )
+})
+test('getByText', async t => {
+  await t.click(screen.getByText('getByText'))
+})
+
+test('getByLabelText', async t => {
+  await t.typeText(
+    screen.getByLabelText('Label For Input Labelled By Id'),
+    'Hello Input Labelled By Id',
+  )
+})
+
+test('queryAllByText', async t => {
+  await t.expect(screen.queryAllByText('Button Text').exists).ok()
+  await t
+    .expect(screen.queryAllByText('Non-existing Button Text').exists)
+    .notOk()
+})
+```
+
+## 配置
+
+你可以使用 [DOM测试库的configure功能](config) 以几种不同的方式定制testIdAttribute。
+
+### 一旦在单个页面加载时:
+
+```javascript
+import {configureOnce, getByTestId} from '@testing-library/testcafe'
+
+test('can be configured once in a single page load', async t => {
+  await configureOnce({testIdAttribute: 'data-other-test-id'})
+  await t.click(screen.getByTestId('other-id'))
+})
+```
+
+### 对于夹具中的每个测试和页面加载:
+
+```javascript
+import {configure, screen} from '@testing-library/testcafe'
+
+fixture`configure`.clientScripts(
+  configure({testIdAttribute: 'data-automation-id'}),
+).page`http://localhost:13370`
+
+test('supports alternative testIdAttribute', async t => {
+  await t.click(screen.getByTestId('image-with-random-alt-tag'))
+})
+
+test('still works after browser page load and reload', async t => {
+  await t.click(screen.getByText('Go to Page 2'))
+
+  await t.eval(() => location.reload(true))
+
+  await t
+    .click(screen.getByTestId('page2-thing'))
+    .expect(screen.getByText('second page').exists)
+    .ok()
+})
+```
+
+### 通过[注入clientScripts](inject)，为所有固定装置、测试和页面加载提供全局支持
+
+> 注意：dom-testing-library umd必须在你的configure脚本之前出现。
+
+```json title=".testcaferc.json"
+  "clientScripts": [
+    "./node_modules/@testing-library/dom/dist/@testing-library/dom.umd.js",
+    "./path/to/my-app-testcafe.config.js"
+  ]
+```
+
+```js title="./path/to/my-app-testcafe.config.js"
+window.TestingLibraryDom.configure({testIdAttribute: 'data-automation-id'})
+```
+
+## 容器
+
+默认情况下，选择器会预先绑定在 `document.body` 上，所以不需要提供一个容器。
+然而，如果你想用一个容器来限制你的查询，你可以使用 `within`，它可以接受一个字符串或一个查询（get[All]By, query[All]By, find[All]By*）。
+
+### 使用 `within` 的例子
+
+```javascript
+import {within, screen} from '@testing-library/testcafe'
+
+fixture`within`.page`http://localhost:13370`
+
+test('works with getBy* selectors', async t => {
+  await t
+    .expect(
+      within(screen.getByTestId('nested')).getByText('Button Text').exists,
+    )
+    .ok()
+})
+
+test('works with CSS selector strings', async t => {
+  const {getByText} = await within('#nested')
+  await t.click(getByText('Button Text')).ok()
+})
+
+test('works on any testcafe selector', async t => {
+  const nested = Selector('#nested')
+
+  await t.expect(within(nested).getByText('Button Text').exists).ok()
+})
+
+test('works with results from "byAll" query with index - regex', async t => {
+  const nestedDivs = screen.getAllByTestId(/nested/)
+  await t.expect(nestedDivs.count).eql(2)
+
+  await t
+    .expect(within(nestedDivs.nth(0)).getByText('Button Text').exists)
+    .ok()
+    .expect(
+      within(nestedDivs.nth(1)).getByText('text only in 2nd nested').exists,
+    )
+    .ok()
+})
+```
+
+[config]: dom-testing-library/api-configuration.mdx
+[gh]: https://github.com/testing-library/testcafe-testing-library
+[inject]:
+  https://devexpress.github.io/testcafe/documentation/using-testcafe/common-concepts/inject-scripts-into-tested-pages.html#add-client-scripts-to-all-tests

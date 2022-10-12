@@ -1,0 +1,306 @@
+---
+id: migrate-from-enzyme
+title: 从 Enzyme 迁移
+sidebar_label: 从 Enzyme 迁移
+---
+
+此页面适用于那些使用过 Enzyme 并想了解如何迁移到 React Testing Library 的开发者，
+这里没有详细介绍如何迁移所有类型的测试，但它确实为那些将 Enzyme 与 React Testing Library进行比较的人提供了一些有用的信息。
+
+## 什么是 React Testing Library?
+
+React Testing Library 是开源项目
+[Testing Library](https://github.com/testing-library) 的一部分。项目中还有其他一些有用的工具和库，
+你可以使用它们来编写更简洁和有用的测试。除了 React Testing Library 之外，还有一些其它有用的库：
+
+- **[@testing-library/jest-dom](https://github.com/testing-library/jest-dom)**:
+  `jest-dom` 提供一组自定义 Jest 匹配器，你可以使用它们来扩展 Jest。这些使你的测试更具声明性、更清晰易读和更易于维护。
+
+- **[@testing-library/user-event](https://github.com/testing-library/user-event):**
+  `user-event` 尝试模拟用户在浏览器中与页面上的元素交互时派发的真正事件。例如，
+  `userEvent.click(checkbox)` 会改变复选框的状态。
+
+## 为什么我应该使用 React Testing Library?
+
+Enzyme是一个强大的测试库，它的贡献者为JavaScript社区做了很多事情。
+事实上，许多 React Testing Library 的维护者在开发和工作 React Testing Library 之前，
+已经使用和贡献Enzyme多年。因此，我们想对Enzyme的贡献者说声谢谢!
+
+React Testing Library 的主要目的是通过以用户使用的方式测试你的组件来增加你测试的信心。
+用户并不关心幕后发生了什么，他们只是看到输出并与之交互。与其访问组件的内部API或评估它们的`State`，
+不如根据组件的输出来编写测试，从而获得更大的信心。
+
+React Testing Library 旨在解决许多开发人员在使用Enzyme编写测试时遇到的问题，
+例如它允许（并鼓励）开发人员测试[实现细节]((https://kentcdodds.com/blog/testing-implementation-details))。
+这样做的测试最终会阻止你在不改变组件测试的情况下对其进行修改和重构。
+结果是，测试拖累了开发速度和生产力。每一个小的变化都可能需要重写你的测试的某些部分，即使这个变化并不影响组件的输出。
+
+在 React Testing Library 中重写你的测试是值得的，因为你将用拖慢你的测试来换取让你更有信心的测试，并在长期内提高你的生产力。
+
+## 如何从 Enzyme 迁移到 React 测试库？
+
+为了确保成功的迁移，我们建议通过在同一个应用程序中并排运行两个测试库来逐步进行，
+将你的Enzyme测试逐一移植到React测试库。这使得在不影响其他业务的情况下，
+即使是大型复杂的应用程序的迁移也是可能的，因为这项工作可以在一段时间内协作完成并分散进行。
+
+## 安装 React Testing Library
+
+首先，安装 React Testing Library 和 `jest-dom` 辅助库（你可以查看[这个页面](setup.mdx)的完整安装和设置指南）。
+
+```bash npm2yarn
+npm install --save-dev @testing-library/react @testing-library/jest-dom
+```
+
+## 将React Testing Library导入到你的测试中
+
+如果你使用Jest（你可以使用其他测试框架），那么你只需要在你的测试文件中导入以下模块:
+
+```jsx
+// import React so you can use JSX (React.createElement) in your test
+import React from 'react'
+
+/**
+ * render: lets us render the component as React would
+ * screen: a utility for finding elements the same way the user does
+ */
+import {render, screen} from '@testing-library/react'
+```
+
+测试结构可以和你用Enzyme写的一样:
+
+```jsx
+test('test title', () => {
+  // Your tests come here...
+})
+```
+
+> 注意：你也可以使用describe 和 it 集合React Testing Library。
+> React Testing Library并不取代Jest，只是取代Enzyme。我们推荐 `test`，因为它有助于此: 
+> [在测试时避免嵌套](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing)。
+
+## 基本的Enzyme到React Testing Library迁移实例
+
+需要记住的一点是，Enzyme的功能与React测试库的功能并不是一对一的对应的。
+许多Enzyme功能会导致低效的测试，所以一些你习惯于使用Enzyme的功能需要被留下（不再需要 `wrapper` 变量或 `wrapper.update()` 调用，等等）。
+
+React Testing Library有一些有用的查询，可以让你访问你的组件的元素和它们的属性。
+我们将展示一些典型的Enzyme测试，以及使用React Testing Library的替代方案。
+
+比方说，我们有一个显示 `Welcome` 的组件。我们将看看Enzyme和React Testing Library的测试，
+以了解我们如何测试这个组件:
+
+**React 组件**
+
+下面这个组件从 `props` 中获得一个 `name`，并在 `h1` 元素中显示一个欢迎信息。
+它也有一个文本输入，用户可以将其改为不同的名字，模板也会相应地更新。查看
+[CodeSandbox](https://codesandbox.io/s/ecstatic-hellman-fh7in)上的实时版本。
+
+```jsx
+const Welcome = props => {
+  const [values, setValues] = useState({
+    firstName: props.firstName,
+    lastName: props.lastName,
+  })
+
+  const handleChange = event => {
+    setValues({...values, [event.target.name]: event.target.value})
+  }
+
+  return (
+    <div>
+      <h1>
+        Welcome, {values.firstName} {values.lastName}
+      </h1>
+
+      <form name="userName">
+        <label>
+          First Name
+          <input
+            value={values.firstName}
+            name="firstName"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Last Name
+          <input
+            value={values.lastName}
+            name="lastName"
+            onChange={handleChange}
+          />
+        </label>
+      </form>
+    </div>
+  )
+}
+
+export default Welcome
+```
+
+### Test 1: 渲染组件，然后检查 `h1` 值是否正确。
+
+**Enzyme 测试t**
+
+```jsx
+test('has correct welcome text', () => {
+  const wrapper = shallow(<Welcome firstName="John" lastName="Doe" />)
+  expect(wrapper.find('h1').text()).toEqual('Welcome, John Doe')
+})
+```
+
+**React Testing library**
+
+```jsx
+test('has correct welcome text', () => {
+  render(<Welcome firstName="John" lastName="Doe" />)
+  expect(screen.getByRole('heading')).toHaveTextContent('Welcome, John Doe')
+})
+```
+
+正如你所看到的，这些测试是非常相似的。Enzyme的 `shallow` 渲染器不渲染子组件，
+所以React Testing Library的 `render` 方法与Enzyme的 `mount` 方法更相似。
+
+在React Testing Library中，你不需要将 `render` 分配给一个变量（如`wrapper`）。
+你可以简单地通过调用 `screen` 对象上的函数来访问渲染的输出。另一件好事是，
+React Testing Library 在每次测试后会自动清理环境，所以你不需要在 `afterEach` 或 `beforeEach` 函数中调用 `cleanup`。
+
+你可能注意到的另一件事是 `getByRole`，它的参数是'heading'。'heading'是 `h1` 元素的可访问角色。
+你可以在
+[查询文档页面](queries/byrole.mdx)
+上了解更多关于它们的信息。人们很快就会喜欢上 Testing Library 的一件事是，
+它鼓励你编写更多的无障碍应用程序（因为如果它不是无障碍的，那么它就更难测试）。
+
+### Test 2: 输入的文本必须有正确的值
+
+在上面的组件中，输入值被初始化为 `props.firstName` 和 `props.lastName` 值。我们需要检查该值是否正确。
+
+In the component above, the input values are initialized with the
+`props.firstName` and `props.lastName` values. We need to check whether the
+value is correct or not.
+
+**Enzyme**
+
+```jsx
+test('has correct input value', () => {
+  const wrapper = shallow(<Welcome firstName="John" lastName="Doe" />)
+  expect(wrapper.find('input[name="firstName"]').value).toEqual('John')
+  expect(wrapper.find('input[name="lastName"]').value).toEqual('Doe')
+})
+```
+
+**React Testing Library**
+
+```jsx
+test('has correct input value', () => {
+  render(<Welcome firstName="John" lastName="Doe" />)
+  expect(screen.getByRole('form')).toHaveFormValues({
+    firstName: 'John',
+    lastName: 'Doe',
+  })
+})
+```
+
+Cool! 这很简单，也很方便，测试也很清楚，我们不需要多说什么。
+你可能注意到的是， `<form>` 有一个 `role="form"` 属性，但它是什么？
+
+`role` 是与可访问性有关的属性之一，建议使用它来改善你的网络应用对残疾人的帮助。
+有些元素有默认的 `role` 值，你不需要为它们设置角色值，但其他一些元素如 `<div>` 没有默认的 `role` 值。
+你可以使用不同的方法来访问 `<div>` 元素，但我们建议你尝试通过隐含的 `role` 来访问元素，
+以确保你的组件能够被残疾人和使用屏幕阅读器的人所访问。
+[查询文档](queries/byrole.mdx)可能有助于你更好地理解这些概念。
+
+> 一个 `<form>` 元素必须有一个 `name` 属性，以便有一个 "form"的隐式角色（按照规范的要求）。
+
+React Testing Library的目的是测试用户如何使用这些组件。用户看到按钮、标题、表单和其他元素是通过它们的角色，
+而不是通过它们的 `id`、`class`或元素标签名称。因此，当你使用 React Testing Library 时，
+你应该避免使用 `document.querySelector` API 访问 DOM。(你可以在你的测试中使用它，但由于本段所述的原因，不建议这样做)。
+
+React Testing Library 暴露了一些方便的查询API，帮助你有效地访问组件元素。
+你可以在这里看到[可用的查询列表](queries/about.mdx#types-of-queries)。
+如果你不确定在特定情况下应该使用哪种查询，我们有一个很好的页面，解释了[应该使用哪种查询](queries/about.mdx#priority)，所以请查看它!
+
+如果你对使用哪个React Testing Library的查询仍有疑问，那么请查看[testing-playground.com](https://testing-playground.com)
+和附带的Chrome扩展工具**[Testing Playground](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano)**，
+它旨在使开发人员在编写测试时找到最佳查询。它还可以帮助你找到选择元素的最佳查询。
+它允许你检查Chrome开发者工具中的元素层次，并为你提供如何选择它们的建议，同时鼓励良好的测试实践。
+
+## 使用 act() 和 wrapper.update()
+
+在 Enzyme 中测试异步代码时，你通常需要调用 `act()` 来正确运行你的测试。
+当使用 React Testing Library 时，大多数时候你不需要明确地调用 `act()`，因为它默认用 `act()` 来包装API调用。
+
+`update()` 将Enzyme组件树快照与React组件树同步，所以你可能在Enzyme测试中看到 `wrapper.update()`。
+React Testing Library没有（或需要）类似的方法，这对你来说是好事，因为你需要处理的事情更少!
+
+## 模拟用户事件
+
+有两种方法可以用 React Testing Library 来模拟用户事件。一种方法是使用 [`user-event`](user-event/intro.mdx) 库，
+另一种方法是使用包含在 React Testing Library 中的 [`fireEvent`](dom-testing-library/api-events.mdx)。
+`user-event` 实际上是建立在 `fireEvent` 之上的（它只是在给定的元素上调用dispatchEvent）。
+`user-event` 通常被推荐的，因为它确保所有的事件都以正确的顺序被触发，用于典型的用户交互。
+这有助于确保你的测试类似于你的软件的实际使用方式。
+
+要使用 `@testing-library/user-event` 模块，首先要安装它:
+
+```bash npm2yarn
+npm install --save-dev @testing-library/user-event @testing-library/dom
+```
+
+现在你可以把它导入你的测试中:
+
+```jsx
+import userEvent from '@testing-library/user-event'
+```
+
+为了演示如何使用 `user-event` 库，设想我们有一个 `Checkbox` 组件，它显示一个复选框输入和一个相关的标签。
+我们想模拟一个用户点击复选框的事件:
+
+```jsx
+import React from 'react'
+
+const Checkbox = () => {
+  return (
+    <div>
+      <label htmlFor="checkbox">Check</label>
+      <input id="checkbox" type="checkbox" />
+    </div>
+  )
+}
+
+export default Checkbox
+```
+
+我们想测试一下，当用户点击复选框的相关标签时，输入的 "checked"属性被正确设置。让我们看看我们如何为这种情况写一个测试:
+
+```jsx
+test('handles click correctly', async () => {
+  render(<Checkbox />)
+  const user = userEvent.setup()
+
+  // You can also call this method directly on userEvent,
+  // but using the methods from `.setup()` is recommended.
+  await user.click(screen.getByText('Check'))
+
+  expect(screen.getByLabelText('Check')).toBeChecked()
+})
+```
+
+Nice!
+
+### 在测试中触发类方法 (`wrapper.instance()`)
+
+正如我们已经讨论过的，我们建议不要测试实现细节和用户不会感知到的东西。
+我们的目标是测试和与组件的交互，更像我们的用户会怎样使用组件。
+
+> 如果你的测试使用 \`instance()\` 或 \`state()\`，你要知道你在测试用户不可能知道甚至不关心的东西，
+> 这将使你的测试进一步让你相信，当你的用户使用它们时，事情会正常进行。- [Kent C. Dodds](https://kentcdodds.com/blog/why-i-never-use-shallow-rendering#calling-methods-in-react-components)
+
+如果你不确定如何测试你的组件内部的东西，那就退一步考虑。
+"用户会做什么来触发这段代码的运行？" 然后让你的测试做到这一点。
+
+### 怎样 `shallow` 渲染一个组件?
+
+一般来说，你应该避免对组件进行 mock。然而，如果你需要，那么可以尝试使用
+[Jest的mock功能](https://jestjs.io/docs/en/manual-mocks.html)
+。欲了解更多信息，请参见[FAQ](react-testing-library/faq.mdx)。

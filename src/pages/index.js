@@ -7,6 +7,7 @@
 
 import React from 'react'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Translate, {translate} from '@docusaurus/Translate'
 import {GridBlock} from '../components/GridBlock'
 import {Container} from '../components/Container'
 import {Showcase} from '../components/Showcase'
@@ -38,7 +39,9 @@ const HomeSplash = props => {
     <div>
       <h2 className="projectTitle">{siteConfig.title}</h2>
       <div className="projectTaglineWrapper">
-        <p className="projectTagline">{siteConfig.tagline}</p>
+        <p className="projectTagline">
+          <Translate id="pages.index.tagline">{siteConfig.tagline}</Translate>
+        </p>
       </div>
     </div>
   )
@@ -59,7 +62,9 @@ const HomeSplash = props => {
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
         <div className="pluginWrapper buttonWrapper">
-          <Button href={'/docs/'}>Get Started</Button>
+          <Button href={`${baseUrl}docs/`}>
+            <Translate id="pages.index.Get Started">Get Started</Translate>
+          </Button>
         </div>
       </div>
     </SplashContainer>
@@ -91,8 +96,16 @@ export default class Index extends React.Component {
         <div style={{textAlign: 'center'}}>
           <p>
             <i>
-              The more your tests resemble the way your software is used, <br />
-              the more confidence they can give you.
+              <Translate
+                id="pages.index.Guiding Principle.content"
+                values={{
+                  br: <br />,
+                }}
+              >
+                {
+                  'The more your tests resemble the way your software is used, {br} the more confidence they can give you.'
+                }
+              </Translate>
             </i>
           </p>
         </div>
@@ -105,8 +118,11 @@ export default class Index extends React.Component {
           {[
             {
               title: '',
-              content:
-                "## The Problem \n - You want tests for your UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+              content: translate({
+                id: 'pages.index.The Problem',
+                message:
+                  "## The Problem \n - You want tests for your UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
+              }),
               image: `${baseUrl}img/interrobang-128x128.png`,
               imageAlt: 'The problem (picture of a question mark)',
               imageAlign: 'left',
@@ -124,20 +140,29 @@ export default class Index extends React.Component {
             image: `${baseUrl}img/star-128x128.png`,
             imageAlign: 'right',
             imageAlt: 'The solution (picture of a star)',
-            content:
-              '## The Solution \n The Testing Library family of libraries is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
+            content: translate({
+              id: 'pages.index.The Solution',
+              message:
+                '## The Solution \n The Testing Library family of libraries is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
+            }),
           },
         ]}
       </Block>,
       <Block background={'light'} align="left">
         {[
           {
-            title: 'Guiding Principle',
+            title: translate({
+              id: 'pages.index.Guiding Principle',
+              message: 'Guiding Principle',
+            }),
             image: `${baseUrl}img/trophy-128x128.png`,
             imageAlign: 'left',
             imageAlt: 'The guiding principle (picture of a brick wall)',
-            content:
-              '_The more your tests resemble the way your software is used, the more confidence they can give you._',
+            content: translate({
+              id: 'pages.index.Guiding Principle.content',
+              message:
+                '_The more your tests resemble the way your software is used, the more confidence they can give you._',
+            }),
           },
         ]}
       </Block>,
@@ -147,24 +172,42 @@ export default class Index extends React.Component {
       <Block layout="twoColumn">
         {[
           {
-            content:
-              'Tests only break when your app breaks, not implementation details',
+            content: translate({
+              id: 'pages.index.Write Maintainable Tests.content',
+              message:
+                'Tests only break when your app breaks, not implementation details',
+            }),
             image: `${baseUrl}img/wrench-128x128.png`,
             imageAlign: 'top',
-            title: 'Write Maintainable Tests',
+            title: translate({
+              id: 'pages.index.Write Maintainable Tests.title',
+              message: 'Write Maintainable Tests',
+            }),
           },
           {
-            content: 'Interact with your app the same way as your users',
+            content: translate({
+              id: 'pages.index.Develop with Confidence.content',
+              message: 'Interact with your app the same way as your users',
+            }),
             image: `${baseUrl}img/check-128x128.png`,
             imageAlign: 'top',
-            title: 'Develop with Confidence',
+            title: translate({
+              id: 'pages.index.Develop with Confidence.title',
+              message: 'Develop with Confidence',
+            }),
           },
           {
-            content:
-              'Built-in selectors find elements the way users do to help you write inclusive code',
+            content: translate({
+              id: 'pages.index.Accessible by Default.content',
+              message:
+                'Built-in selectors find elements the way users do to help you write inclusive code',
+            }),
             image: `${baseUrl}img/tada-128x128.png`,
             imageAlign: 'top',
-            title: 'Accessible by Default',
+            title: translate({
+              id: 'pages.index.Accessible by Default.title',
+              message: 'Accessible by Default',
+            }),
           },
         ]}
       </Block>
@@ -246,7 +289,11 @@ export default class Index extends React.Component {
 
       return (
         <div className="productShowcaseSection paddingBottom paddingTop">
-          <h2>Who is Using This?</h2>
+          <h2>
+            <Translate id="pages.index.Who is Using This">
+              Who is Using This?
+            </Translate>
+          </h2>
           <div className="logos">
             <Showcase
               users={siteConfig.customFields.users.filter(u => u.pinned)}
@@ -256,7 +303,14 @@ export default class Index extends React.Component {
             className="button button--primary button--outline"
             href={pageUrl('users')}
           >
-            More {siteConfig.title} Users
+            <Translate
+              id="pages.index.More Users"
+              values={{
+                title: siteConfig.title,
+              }}
+            >
+              {'More {title} Users'}
+            </Translate>
           </a>
         </div>
       )
@@ -265,7 +319,9 @@ export default class Index extends React.Component {
     const Awards = () => {
       return (
         <div className="awardsSection paddingBottom paddingTop">
-          <h2>Awards</h2>
+          <h2>
+            <Translate id="pages.index.Awards">Awards</Translate>
+          </h2>
           <Block layout="threeColumn" background={null}>
             {[
               {

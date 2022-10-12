@@ -1,0 +1,69 @@
+---
+id: intro
+title: Cypress Testing Library
+---
+
+[`Cypress Testing Library`][gh]允许在[Cypress](https://cypress.io)端到端浏览器测试中使用dom-testing查询。
+
+```bash npm2yarn
+npm install --save-dev cypress @testing-library/cypress
+```
+
+- [Cypress Testing Library on GitHub][gh]
+
+## 使用
+
+`Cypress Testing Library` 扩展了Cypress的 `cy` 命令。
+
+在你项目的 `cypress/support/commands.js` 中添加这一行:
+
+```js
+import '@testing-library/cypress/add-commands'
+```
+
+你现在可以使用 `DOM Testing Library`' 的所有`findBy`, `findAllBy`, `queryBy`和`queryAllBy`命令，
+离开全局 `cy` 对象。请参阅[关于查询]((/docs/queries/about))的文档以获得参考。
+
+> 注意：不支持 `get*` 查询，因为对于合理的Cypress测试，你需要重试，而 `find*` 查询已经支持了。
+> `query*` 查询从v5开始就不再支持了，将在v6删除。`find*` 完全支持内置的Cypress断言（删除了`query*`的唯一用例）。
+
+## 使用 TypeScript
+
+应在 `tsconfig.json` 中添加以下类型:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["cypress", "@testing-library/cypress"]
+  }
+}
+```
+
+你可以在这里找到所有的
+[库定义](https://github.com/testing-library/cypress-testing-library/blob/master/types/index.d.ts)。
+
+## 示例
+
+为了展示一些简单的例子（来自[cypress/integration/find.spec.js](https://github.com/testing-library/cypress-testing-library/blob/97939da7d4707a71049884c0324c0eda56e26fc2/cypress/integration/find.spec.js)):
+）。
+
+```javascript
+cy.findByRole('button', {name: /Jackie Chan/i}).click()
+cy.findByRole('button', {name: /Button Text/i}).should('exist')
+cy.findByRole('button', {name: /Non-existing Button Text/i}).should('not.exist')
+cy.findByLabelText(/Label text/i, {timeout: 7000}).should('exist')
+
+// findByRole _inside_ a form element
+cy.get('form')
+  .findByRole('button', {name: /Button Text/i})
+  .should('exist')
+cy.findByRole('dialog').within(() => {
+  cy.findByRole('button', {name: /confirm/i})
+})
+```
+
+`Cypress Testing Library` 同时支持jQuery元素和DOM节点。这是必要的，因为Cypress使用jQuery元素，
+而 `Cypress Testing Library` 期望DOM节点。当你传递一个jQuery元素作为容器时，它将从集合中获得第一个DOM节点，
+并将其作为 `DOM Testing Library` 函数的 `container` 参数。
+
+[gh]: https://github.com/testing-library/cypress-testing-library

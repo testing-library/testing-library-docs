@@ -1,0 +1,74 @@
+---
+id: keyboard
+title: 键盘
+---
+
+```ts
+keyboard(input: KeyboardInput): Promise<void>
+```
+
+`keyboard` API允许模拟与键盘的交互。它接受一个描述按键动作的 `string`。
+
+按键可以被描述:
+
+- 按可打印的字符
+  ```js
+  keyboard('foo') // translates to: f, o, o
+  ```
+  大括号 `{` 和 `[` 是作为特殊字符使用的，可以通过将它们加倍来引用。
+ 
+  ```js
+  keyboard('{{a[[') // translates to: {, a, [
+  ```
+- 按
+  [KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
+
+  ```js
+  keyboard('{Shift}{f}{o}{o}') // translates to: Shift, f, o, o
+  ```
+
+  这不会使任何键保持按下。所以在按下 `f` 之前，`Shift` 会被解除。
+
+  键描述符中具有特殊意义的字符可以用 `\`（反斜杠）作为前缀来转义。
+
+  ```js
+  keyboard('{\}}') // translates to: }
+  ```
+
+- 按
+  [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+  ```js
+  keyboard('[ShiftLeft][KeyF][KeyO][KeyO]') // translates to: Shift, f, o, o
+  ```
+
+键可以通过在描述符的末尾添加一个 `>` 来保持按压。
+
+如果这应该导致重复的 `keydown` 事件，你可以加上重复的次数。
+
+如果在这之后还应该释放按键，可以在描述符的末尾添加一个斜线 `/`。
+
+```js
+keyboard('{a>}') // press a without releasing it
+keyboard('{a>5}') // press a without releasing it and trigger 5 keydown
+keyboard('{a>5/}') // press a for 5 keydown and then release it
+```
+
+以前按过的键可以通过在描述符前加上 `/` 来解除。
+
+```js
+keyboard('{/a}') // release a previously pressed a
+```
+
+这样就可以模拟按键组合。
+
+```js
+keyboard('{Shift>}A{/Shift}') // translates to: Shift(down), A, Shift(up)
+```
+
+`key` 与 `code` 的映射是由描绘 "default" 美国键盘的[默认键盘映射](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)执行的。
+你可以通过键盘地图选项提供你自己的本地[键盘映射](options.mdx#keyboardmap)。
+
+目前，单一按键的不同 `key` 含义被当作不同的按键对待。
+
+> 未来的版本可能会尝试插值修改器，以达到键盘上的可打印键。例如，当CapsLock没有激活，`A` 被引用时，自动按 `{Shift}`。
+如果你不希望有这种行为，你可以停用[自动修改](options.mdx#automodify)选项来选择不使用这种非破坏性的改变。

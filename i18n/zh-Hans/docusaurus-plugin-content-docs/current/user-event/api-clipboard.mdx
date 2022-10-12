@@ -1,0 +1,42 @@
+---
+id: clipboard
+title: 剪贴板
+---
+
+请注意，[剪贴板API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)通常在安全环境之外不可用。
+
+为了能够测试涉及剪贴板的工作流程，[`userEvent.setup()`](setup.mdx) 将 `window.navigator.clipboard` 替换为一个桩。
+
+## copy()
+
+```ts
+copy(): Promise<DataTransfer|undefined>
+```
+
+复制当前的选中的内容。
+
+如果 [`writeToClipboard`](options.mdx#writetoclipboard) 为 `true`，这也将把数据写到 `剪贴板` 上。
+
+## cut()
+
+```ts
+cut(): Promise<DataTransfer|undefined>
+```
+
+剪切当前的选中的内容。
+
+如果 [`writeToClipboard`](options.mdx#writetoclipboard) 为 `true`，这也将把数据写到 `剪贴板` 上。
+
+当在可编辑的上下文中执行时，它将从 document 中删除选定的内容。
+
+## paste()
+
+```ts
+paste(clipboardData?: DataTransfer|string): Promise<void>
+```
+
+将数据粘贴到 document 中。
+
+当调用时不包括 `clipboardData`，要粘贴的内容将从`剪贴板`中读取。
+
+当在可编辑的情况下执行时，粘贴的内容被插入到 document 中。

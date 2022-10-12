@@ -1,0 +1,41 @@
+---
+id: setup
+title: 设置
+---
+
+当用户在浏览器中通过按键盘键等方式进行交互时，他们与浏览器提供的UI界面层进行交互。
+然后，浏览器解释这些输入，可能会相应地改变底层的DOM，并派发[可信](https://developer.mozilla.org/en-US/docs/Web/API/Event/isTrusted)的事件。
+
+UI层和受信任的事件是不能以编程方式使用的。
+
+因此，`user-event` 必须应用变通方法和模拟UI层来模拟用户交互，就像在浏览器中发生的那样。
+
+## 按 `setup()` 开始一个会话
+
+```ts
+setup(options?: Options): UserEvent
+```
+
+`userEvent.setup()` API将这些变通方法应用到 document 中，并允许你[配置](options.mdx)一个 `user-event` 的 "实例"。
+
+这个实例上的方法共享一个输入设备状态，例如哪个键被按下。
+
+这允许编写多个连续的交互，这些交互的行为就像真实用户所描述的交互一样。
+
+```js
+const user = userEvent.setup()
+
+await user.keyboard('[ShiftLeft>]') // Press Shift (without releasing it)
+await user.click(element) // Perform a click with `shiftKey: true`
+```
+该实例暴露了另一个 `.setup()` API，允许配置另一个共享相同输入设备状态的实例。
+
+[剪贴板API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)通常在安全上下文之外不可用。
+
+为了能够测试涉及剪贴板的工作流程，[`userEvent.setup()`](setup.mdx) 用一个 stub 取代window.navigator.clipboard。
+
+## 直接 API
+
+你也可以直接在默认 export 上调用API。这将在内部调用 `setup`，然后在实例上使用该方法。
+
+这样做是为了方便过渡到 v14和编写简单的测试。建议在由 `userEvent.setup()` 返回的实例上使用这些方法。

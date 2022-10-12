@@ -1,0 +1,52 @@
+---
+id: api-within
+title: 元素内查询
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+`within` (`getQueriesForElement` 函数的别名) 接受一个 DOM 元素并将其绑定到原始的查询函数，
+这样你可以在不指定容器的情况下使用查询函数。React Testing Library 和 Vue Testing Library 在底层都在使用它.
+
+示例: 想要在名为 'messages' 的区域获取到文本 'hello'，你可以执行以下操作：
+
+  <Tabs
+    defaultValue="native"
+    values={[
+      { label: 'Native', value: 'native', },
+      { label: 'React', value: 'react', },
+      { label: 'Cypress', value: 'cypress', },
+    ]
+  }>
+  <TabItem value="native">
+
+```js
+import {within} from '@testing-library/dom'
+
+const messages = document.getElementById('messages')
+const helloMessage = within(messages).getByText('hello')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, within} from '@testing-library/react'
+
+const {getByText} = render(<MyComponent />)
+const messages = getByText('messages')
+const helloMessage = within(messages).getByText('hello')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByText('messages').within(() => {
+  cy.findByText('hello')
+})
+```
+
+  </TabItem>
+  </Tabs>

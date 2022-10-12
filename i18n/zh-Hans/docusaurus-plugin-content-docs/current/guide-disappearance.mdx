@@ -1,0 +1,94 @@
+---
+id: guide-disappearance
+title: 元素的出现和消失
+---
+
+有时你需要测试一个元素先出现然后消失，或者先消失然后出现。
+
+## 等待元素出现
+
+如果你需要等待一个元素出现，[异步等待工具函数][async-api]允许你在继续进行之前等待一个断言被满足。
+等待工具函数会重试，直到查询通过或超时。异步方法返回一个Promise，所以你在调用它们时必须始终使用`await`或`.then(done)`。
+
+### 1. 使用 `findBy` 查询
+
+```jsx
+test('movie title appears', async () => {
+  // 元素初始不存在...
+
+  // 等待元素出现，然后返回元素
+  const movie = await findByText('the lion king')
+})
+```
+
+### 2. 使用 `waitFor`
+
+```jsx
+test('movie title appears', async () => {
+  // 元素初始不存在...
+
+  // 在断言中等待元素出现
+  await waitFor(() => {
+    expect(getByText('the lion king')).toBeInTheDocument()
+  })
+})
+```
+
+## 等待元素消失
+
+`waitForElementToBeRemoved` [异步辅助函数][async-api]使用一个回调来查询每个DOM改变的元素，并在元素被移除时解析为 `true`。
+
+```jsx
+test('movie title no longer present in DOM', async () => {
+  // 移除元素
+  await waitForElementToBeRemoved(() => queryByText('the mummy'))
+})
+```
+
+使用
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+比定时轮训 DOM 的 `waitFor` 更高效。
+
+`waitFor` 是 [异步辅助函数][async-api] ，它会重试执行直到被包裹的函数停止抛出异常。
+它可用于断言元素从页面中消息。
+
+```jsx
+test('movie title goes away', async () => {
+  // 元素初始不存在...
+  // 注意需要使用 queryBy 而不是 getBy，queryBy 会返回 null，queryBy 抛出异常
+  await waitFor(() => {
+    expect(queryByText('i, robot')).not.toBeInTheDocument()
+  })
+})
+```
+
+## 断言元素不存在
+
+标准的 `getBy` 方法在找不到元素时会抛出异常，因此如果你想断言元素 _不在_ DOM 中，
+可以使用 `queryBy` API:
+
+```javascript
+const submitButton = screen.queryByText('submit')
+expect(submitButton).toBeNull() // 断言按钮不存在
+```
+
+`queryAll` API 会返回匹配的元素数组。数组的长度对于断言元素在 DOM 中被添加或删除时很有用。
+
+```javascript
+const submitButtons = screen.queryAllByText('submit')
+expect(submitButtons).toHaveLength(0) // 期待没有匹配元素
+```
+
+### `not.toBeInTheDocument`
+
+[`jest-dom`](ecosystem-jest-dom.mdx) 工具库提供了
+`.toBeInTheDocument()` 匹配器，它用于断言一个元素是否在于 HTML 文档的 body 中。这比断言查询结果是否为 null 更有意义。
+
+```javascript
+import '@testing-library/jest-dom'
+// 相对于 `getBy`，使用 `queryBy` 可以避免查询时抛出异常
+const submitButton = screen.queryByText('submit')
+expect(submitButton).not.toBeInTheDocument()
+```
+
+[async-api]: dom-testing-library/api-async.mdx

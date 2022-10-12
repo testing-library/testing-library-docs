@@ -1,0 +1,74 @@
+---
+id: setup
+title: 设置
+sidebar_label: 设置
+---
+
+`Marko Testing Library` 不依赖于任何测试运行器。然而，它依赖于测试环境。
+这个包适用于测试服务器端和客户端的Marko模板，并为每个模板提供了一个略微不同的优化实现。
+就像在Marko中一样，这是用一个[浏览器垫片](https://github.com/defunctzombie/package-browser-field-spec)完成的。
+
+[浏览器垫片](https://github.com/defunctzombie/package-browser-field-spec)被许多工具接收，包括所有打包器和一些测试运行器。
+
+下面是一些配置的例子，用一些流行的测试运行器测试服务器和浏览器组件。
+
+### [Jest](http://jestjs.io)
+
+为了让Jest能够理解Marko模板，你必须先[安装 `@marko/jest` 预设](https://github.com/marko-js/jest#installation)。
+这使得你的Marko模板可以被导入到你的测试中。
+
+在Jest中，有一个[浏览器选项](https://jestjs.io/docs/en/configuration#browser-boolean)，
+它将告诉Jest解决上面提到的所有模块的[浏览器垫片](https://github.com/defunctzombie/package-browser-field-spec)版本。
+
+要测试在客户端呈现的组件，请确保同时启用 `browser` 选项和预设，这样就可以了。
+
+```js title="jest.config.js"
+module.exports = {
+  preset: '@marko/jest/preset/browser',
+}
+```
+
+对于测试在服务器端渲染的组件，我们可以改用 `@marko/jest/preset/node` 作为我们的jest预设。
+
+```js title="jest.config.js"
+module.exports = {
+  preset: '@marko/jest/preset/node',
+}
+```
+
+一个Jest配置也可以有多个[项目](https://jestjs.io/docs/en/configuration#projects-array-string-projectconfig)，
+我们可以用它来创建一个服务器端测试和客户端测试的组合配置，像这样:
+
+```js title="jest.config.js"
+module.exports = {
+  projects: [
+    {
+      displayName: 'server',
+      preset: '@marko/jest/preset/node',
+      testRegex: '/__tests__/[^.]+\\.server\\.js$',
+    },
+    {
+      displayName: 'browser',
+      preset: '@marko/jest/preset/browser',
+      testRegex: '/__tests__/[^.]+\\.browser\\.js$',
+    },
+  ],
+}
+```
+
+### [Mocha](https://mochajs.org)
+
+Mocha对于测试Marko组件也非常有效。然而，Mocha并不了解[浏览器垫片](https://github.com/defunctzombie/package-browser-field-spec)，
+这意味着开箱即用，它只能用于服务器端的Marko组件。
+
+要用 `mocha` 运行服务器端的Marko测试，你可以简单地运行以下命令:
+
+```console
+mocha -r marko/node-require
+```
+
+这样就可以启用[Marko require hook](https://markojs.com/docs/installing/#require-marko-views)，
+允许你在测试中直接要求服务器端的Marko模板。
+
+对于使用Mocha的客户端测试组件，通常你会使用捆绑器来构建你的测试（这将正确解决上面提到的浏览器垫片），
+然后你可以在某种浏览器上下文中加载这些测试。

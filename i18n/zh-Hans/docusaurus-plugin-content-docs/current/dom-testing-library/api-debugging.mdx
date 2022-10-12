@@ -1,0 +1,123 @@
+---
+id: api-debugging
+title: 调试
+---
+
+## 自动日志记录
+
+当你的测试用例中使用 `get` 或 `find` 方法调用失败时，
+`container` (DOM) 的当前状态会在控制台中打印出来。例如：
+
+```javascript
+// <div>Hello world</div>
+getByText(container, 'Goodbye world') // 没有匹配将抛出错误
+```
+
+上面的测试用例会失败，但是它会打印出你正在测试的 DOM 的状态，所以你会看到：
+
+```
+Unable to find an element with the text: Goodbye world. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+Here is the state of your container:
+<div>
+  <div>
+    Hello world
+  </div>
+</div>
+```
+
+**注意**: 由于DOM的大小会变得非常大，你可以通过环境变量 `DEBUG_PRINT_LIMIT` 来设置打印的DOM内容的限制。
+默认值是7000。你会在控制台中看到 `...`，当DOM内容被缩略时，由于你所设置的长度或由于默认的大小限制。
+下面是你在运行测试时增加这个限制的方法（由于 DOM 可能会很大）:
+
+```
+DEBUG_PRINT_LIMIT=10000 npm test
+```
+
+此方式设置仅适用于 macOS/Linux平台，如果是 windows 你还需要执行其它操作。
+如果你想要一个两全其美的方案，请参考
+[`cross-env`](https://www.npmjs.com/package/cross-env).
+
+**Note**: 在 node环境下，DOM 的输出默认会被彩色化处理。如果你想关闭彩色化处理（例如将输出写入到日志文件中），
+你可以通过设置环境变量 `COLORS` 显式关闭和打开， 举例：
+
+```
+COLORS=false npm test
+```
+
+此方式设置仅适用于 macOS/Linux平台，如果是 windows 你还需要执行其它操作。
+如果你想要一个两全其美的方案，请参考
+[`cross-env`](https://www.npmjs.com/package/cross-env).
+
+## `prettyDOM`
+
+建立在[`pretty-format`](https://github.com/facebook/jest/tree/master/packages/pretty-format)之上，
+这个辅助函数可以用来打印出一个美观一点的节点的DOM树结构。例如，在调试测试时，这可能很有帮助。
+
+函数定义如下:
+
+```typescript
+interface Options extends prettyFormat.OptionsReceived {
+  filterNode?: (node: Node) => boolean
+}
+
+function prettyDOM(
+  node: HTMLElement,
+  maxLength?: number,
+  options?: Options,
+): string
+```
+
+它接收要打印出来的根节点，还有一个可选的额外参数，用于限制所产生的字符串的大小，
+以应对它变得太大的情况。它有一个最后的参数，允许你配置你的格式化。除了列出的选项外，你还可以传递 `pretty-format` 的
+[选项](https://github.com/facebook/jest/tree/master/packages/pretty-format#usage-with-options)。
+
+默认情况下，`<style />`，`<script />`和注释节点被忽略。
+你可以通过传递一个自定义的 `filterNode `函数来配置这种行为，该函数应该对你希望包含在输出中的每个节点返回true。
+
+这个函数通常与console.log一起使用，在测试过程中临时打印出DOM树，用于调试:
+
+```javascript
+import {prettyDOM} from '@testing-library/dom'
+
+const div = document.createElement('div')
+div.innerHTML = '<div><h1>Hello World</h1></div>'
+console.log(prettyDOM(div))
+// <div>
+//   <h1>Hello World</h1>
+// </div>
+```
+
+这个功能也是 [上述自动调试输出](#debugging) 的底层支持。
+
+## `logRoles`
+
+这个辅助函数可以用来打印出一个DOM节点树中所有隐式的ARIA角色的列表，
+每个角色都包含一个符合该角色的所有节点的列表。这对于找到使用[getByRole](queries/byrole.mdx)查询被测试的DOM的方法很有帮助。
+
+```javascript
+import {logRoles} from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+
+logRoles(nav)
+```
+
+返回结果:
+
+```
+navigation:
+<nav />
+--------------------------------------------------
+list:
+<ul />
+--------------------------------------------------
+listitem:
+<li />
+<li />
+--------------------------------------------------
+```

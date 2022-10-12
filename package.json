@@ -8,7 +8,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
-    "write-translations": "docusaurus-write-translations",
+    "write-translations": "docusaurus write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
     "format": "prettier --write '**/*.{js,json,mdx}'",

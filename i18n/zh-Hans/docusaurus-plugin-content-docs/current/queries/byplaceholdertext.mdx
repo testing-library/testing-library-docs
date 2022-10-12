@@ -1,0 +1,67 @@
+---
+id: byplaceholdertext
+title: ByPlaceholderText
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByPlaceholderText, queryByPlaceholderText, getAllByPlaceholderText,
+> queryAllByPlaceholderText, findByPlaceholderText, findAllByPlaceholderText
+
+## API
+
+```typescript
+getByPlaceholderText(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+将搜索所有具有 placeholder 属性的元素，且匹配指定的 [`TextMatch`](queries/about.mdx#textmatch)。
+
+```html
+<input placeholder="Username" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import {screen} from '@testing-library/dom'
+
+const inputNode = screen.getByPlaceholderText('Username')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, screen} from '@testing-library/react'
+
+render(<MyComponent />)
+const inputNode = screen.getByPlaceholderText('Username')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByPlaceholderText('Username').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+> **注意**
+>
+> placeholder 不是 label 的良好替代品，因此你通常应该使用 `getByLabelText`。
+
+## 选项
+
+[TextMatch](queries/about.mdx#textmatch) 选项

@@ -1,0 +1,127 @@
+---
+id: intro
+title: Nightwatch Testing Library
+---
+
+[`nightwatch-testing-library`][gh] 允许在 [Nightwatch](https://nightwatchjs.org) 中使用 dom-testing-library 查询来进行端到端的web测试。
+
+## 安装
+
+> 请务必先按照 [Nightwatch的安装和配置说明](https://nightwatchjs.org/gettingstarted/installation/) 进行操作。
+
+然后就
+
+```bash npm2yarn
+npm install -D @testing-library/nightwatch
+```
+
+- [nightwatch-testing-library on GitHub][gh]
+
+## 先看这个
+
+在它的核心部分，`nightwatch-testing-library`在dom-testing-library查询和css选择器之间进行转换。
+这是由于Nightwatch遵守了WebDriver的[定位器策略](https://www.w3.org/TR/webdriver/#locator-strategies)标准。
+目前，这意味着日志中会有一些非常详细的css路径。欢迎为解决这个问题🤗 [定制报告](https://nightwatchjs.org/guide/extending-nightwatch/#custom-reporter) 的PR。
+
+**所以请记住，NWTL查询的结果是WebDriver定位器，而不是DOM节点。**
+
+> 注意，在NWTL中，所有的查询必须是 `await`。
+
+## 使用
+
+```javascript
+const {getQueriesFrom} = require('@testing-library/nightwatch')
+
+module.exports = {
+  beforeEach(browser, done) {
+    browser.url('http://localhost:13370')
+    done()
+  },
+
+  async getByLabelText(browser) {
+    const {getByLabelText} = getQueriesFrom(browser)
+
+    const input = await getByLabelText('Label Text')
+    browser.setValue(input, '@TL FTW')
+
+    browser.expect.element(input).value.to.equal('@TL FTW')
+  },
+
+  async getByAltText(browser) {
+    const {getByAltText} = getQueriesFrom(browser)
+    const image = await getByAltText('Image Alt Text')
+
+    browser.click(image)
+    browser.expect
+      .element(image)
+      .to.have.css('border')
+      .which.equals('5px solid rgb(255, 0, 0)')
+  },
+}
+```
+
+### `AllBy` 查询
+
+`AllBy` 查询的结果有一个额外的功能：`nth`，它可以用于 nightwatch 功能以及NWTL的 `within` 功能。
+
+```javascript
+
+    async 'getAllByText - regex'(browser) {
+        const { getAllByText } = getQueriesFrom(browser);
+        const chans = await getAllByText(/Jackie Chan/)
+
+
+        browser.expect.elements(chans).count.to.equal(2)
+
+        const firstChan = chans.nth(0);
+        const secondChan = chans.nth(1);
+
+
+        browser.click(chans.nth(0));
+        browser.click(chans.nth(1));
+
+        browser.expect.element(secondChan).text.to.equal('Jackie Kicked');
+        browser.expect.element(firstChan).text.to.equal('Jackie Kicked');
+
+    },
+
+```
+
+## 配置
+
+你可以像 [dom-testing-library][config] 一样使用 `configure` 函数自定义testIdAttribute。
+
+```javascript
+const {configure} = require('@testing-library/nightwatch')
+
+configure({testIdAttribute: 'data-automation-id'})
+```
+
+## 容器
+
+默认情况下，查询会预先绑定到 `document.body`，所以不需要提供一个容器。然而，如果你想用一个容器来限制你的查询，你可以使用 `within`。
+
+### 使用 `within` 的例子
+
+```javascript
+const {getQueriesFrom, within} = require('@testing-library/nightwatch')
+
+module.exports = {
+  beforeEach(browser, done) {
+    browser.url('http://localhost:13370')
+    done()
+  },
+  async 'getByText within container'(browser) {
+    const {getByTestId} = getQueriesFrom(browser)
+
+    const nested = await getByTestId('nested')
+    const button = await within(nested).getByText('Button Text')
+
+    browser.click(button)
+    browser.expect.element(button).text.to.equal('Button Clicked')
+  },
+}
+```
+
+[config]: ../dom-testing-library/api-configuration.mdx
+[gh]: https://github.com/testing-library/nightwatch-testing-library

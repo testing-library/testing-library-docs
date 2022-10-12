@@ -1,0 +1,174 @@
+---
+id: cheatsheet
+title: 备忘单
+---
+
+**[获取可打印的备忘单][cheatsheet]**
+
+`React Testing Library` 中所有导出函数的简短使用指南。
+
+- **render** `const {/* */} = render(Component)` 返回:
+  - `unmount` 卸载组件的函数
+  - `container` 指向装载组件的 DOM 节点
+  - 所有来自 `DOM Testing Library` 的查询函数，已绑定到文档中，所以无需传递一个节点作为第一个参数
+    (通常你可以使用 `screen` 替代)
+
+```jsx
+import {render, fireEvent, screen} from '@testing-library/react'
+
+test('loads items eventually', async () => {
+  render(<Page />)
+
+  // Click button
+  fireEvent.click(screen.getByText('Load'))
+
+  // Wait for page to update with query text
+  const items = await screen.findAllByText(/Item #[0-9]: /)
+  expect(items).toHaveLength(10)
+})
+```
+
+## 查询
+
+> **与 DOM Testing Library 的区别**
+>
+> `React Testing Library` 中 `render` 返回的查询函数 和
+> `DOM Testing Library` 导出的查询函数是相同的，唯一不同点是`render` 返回的查询函数将第一个参数绑定到了文档上，
+> 所以查询应该不是 `getByText(node, 'text')` ，而是 `getByText('text')`
+
+参考 [我应该使用哪个查询函数?](queries/about.mdx#priority)
+
+|                | No Match | 1 Match | 1+ Match | Await? |
+| -------------- | -------- | ------- | -------- | ------ |
+| **getBy**      | throw    | return  | throw    | No     |
+| **findBy**     | throw    | return  | throw    | Yes    |
+| **queryBy**    | null     | return  | throw    | No     |
+| **getAllBy**   | throw    | array   | array    | No     |
+| **findAllBy**  | throw    | array   | array    | Yes    |
+| **queryAllBy** | []       | array   | array    | No     |
+
+- **ByLabelText** 通过 label 或 aria-label 文本内容来查找
+  - getByLabelText
+  - queryByLabelText
+  - getAllByLabelText
+  - queryAllByLabelText
+  - findByLabelText
+  - findAllByLabelText
+- **ByPlaceholderText** 通过输入框的占位符来查找
+  - getByPlaceholderText
+  - queryByPlaceholderText
+  - getAllByPlaceholderText
+  - queryAllByPlaceholderText
+  - findByPlaceholderText
+  - findAllByPlaceholderText
+- **ByText** 通过元素的文本内容来查找
+  - getByText
+  - queryByText
+  - getAllByText
+  - queryAllByText
+  - findByText
+  - findAllByText
+- **ByDisplayValue** 通过表单元素的当前值查找
+  - getByDisplayValue
+  - queryByDisplayValue
+  - getAllByDisplayValue
+  - queryAllByDisplayValue
+  - findByDisplayValue
+  - findAllByDisplayValue
+- **ByAltText** 通过 img 的 alt 属性来查找
+  - getByAltText
+  - queryByAltText
+  - getAllByAltText
+  - queryAllByAltText
+  - findByAltText
+  - findAllByAltText
+- **ByTitle** 通过 title 属性或 svg 中的 title 标签来查找
+  - getByTitle
+  - queryByTitle
+  - getAllByTitle
+  - queryAllByTitle
+  - findByTitle
+  - findAllByTitle
+- **ByRole** 通过 aria role 来查找
+  - getByRole
+  - queryByRole
+  - getAllByRole
+  - queryAllByRole
+  - findByRole
+  - findAllByRole
+- **ByTestId** 通过 data-testid 属性来查找
+  - getByTestId
+  - queryByTestId
+  - getAllByTestId
+  - queryAllByTestId
+  - findByTestId
+  - findAllByTestId
+
+## 异步
+
+The [dom-testing-library Async API](dom-testing-library/api-async.mdx) is
+re-exported from React Testing Library.
+
+- **waitFor** (Promise) retry the function within until it stops throwing or
+  times out
+- **waitForElementToBeRemoved** (Promise) retry the function until it no longer
+  returns a DOM node
+
+## 事件
+
+See [Events API](dom-testing-library/api-events.mdx)
+
+- **fireEvent** trigger DOM event: `fireEvent(node, event)`
+- **fireEvent.\*** helpers for default event types
+  - **click** `fireEvent.click(node)`
+  - [See all supported events](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
+- **act** wrapper around
+  [react-dom/test-utils act](https://reactjs.org/docs/test-utils.html#act);
+  React Testing Library wraps render and fireEvent in a call to `act` already so
+  most cases should not require using it manually
+
+## 其它
+
+See [Querying Within Elements](dom-testing-library/api-within.mdx),
+[Config API](dom-testing-library/api-configuration.mdx),
+[Cleanup](react-testing-library/api.mdx#cleanup),
+
+- **within** take a node and return an object with all the queries bound to the
+  node (used to return the queries from `React Testing Library`'s render
+  method): `within(node).getByText("hello")`
+- **configure** change global options:
+  `configure({testIdAttribute: 'my-data-test-id'})`
+- **cleanup** clears the DOM
+  ([use with `afterEach`](react-testing-library/api.mdx#cleanup) to reset DOM
+  between tests)
+
+## 文本匹配选项
+
+Given the following HTML:
+
+```html
+<div>Hello World</div>
+```
+
+**_Will_ find the div:**
+
+```javascript
+// Matching a string:
+getByText('Hello World') // full string match
+getByText('llo Worl', {exact: false}) // substring match
+getByText('hello world', {exact: false}) // ignore case
+
+// Matching a regex:
+getByText(/World/) // substring match
+getByText(/world/i) // substring match, ignore case
+getByText(/^hello world$/i) // full string match, ignore case
+getByText(/Hello W?oRlD/i) // advanced regex
+
+// Matching with a custom function:
+getByText((content, element) => content.startsWith('Hello'))
+```
+
+**[Get the printable cheat sheet][cheatsheet]**
+
+[cheatsheet]:
+  https://github.com/testing-library/react-testing-library/raw/main/other/cheat-sheet.pdf

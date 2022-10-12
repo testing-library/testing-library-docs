@@ -1,0 +1,57 @@
+---
+id: intro
+title: 简介
+sidebar_label: 简介
+---
+
+Vue Testing Library 建立在 `DOM Testing Library` 的基础上，增加了用于处理Vue组件的API。
+它建立在[@vue/test-utils](https://github.com/vuejs/vue-test-utils)（Vue的官方测试库）之上。
+
+- [Vue Testing Library on GitHub][gh]
+
+简而言之，Vue Testing Library 做了三件事:
+
+1. 从 `DOM Testing Library` 中重新导出查询工具函数和辅助工具函数。
+2. 隐藏与 Testing Library [指导原则](guiding-principles.mdx)相冲突的 `@vue/test-utils` 方法。
+3. 调整了两个来源的一些方法。
+
+## 快速入门
+
+如果使用的是 Vue2
+
+```bash npm2yarn
+npm install --save-dev @testing-library/vue@5
+```
+
+如果使用的是 Vue3
+
+```bash npm2yarn
+npm install --save-dev @testing-library/vue
+```
+
+你现在可以使用 `DOM Testing Library` 提供的所有`getBy`, `getAllBy`, `queryBy`和`queryAllBy`命令。
+请看这里的[完整查询列表](queries/about.mdx#types-of-queries)。
+
+你也可能对安装 `@testing-library/jest-dom` 感兴趣，这样你就可以使用DOM的 [自定义Jest匹配器](https://github.com/testing-library/jest-dom#readme)了
+
+## 问题
+
+你想为你的 Vue 组件编写可维护的测试。作为这个目标的一部分，**你希望你的测试能避免包括组件的实现细节**。
+你应该把重点放在让你的测试给你带来信心上，这也是他们的目的。
+
+## 解决方案
+
+`Vue Testing Library` 是一个非常轻量级的解决方案，用于测试Vue组件。
+它在 `@vue/test-utils` 的基础上提供了轻量级的实用功能，其方式是鼓励更好的测试实践。
+
+它的主要指导原则是:
+
+> [你的测试越像你的软件的使用方式，他们就越能给你信心](guiding-principles.mdx)
+
+因此，你的测试不是处理渲染的Vue组件的实例，而是**处理实际的DOM节点**。
+
+这个库所提供的工具有助于以用户的方式查询DOM。它们允许你通过标签文本找到元素，从文本中找到链接和按钮，并断言你的应用程序是**可访问**的。
+
+当文本内容和标签 “不可用” 的情况下，它提供另外一种推荐的查询元素方式，`data-testid`。
+
+[gh]: https://github.com/testing-library/vue-testing-library

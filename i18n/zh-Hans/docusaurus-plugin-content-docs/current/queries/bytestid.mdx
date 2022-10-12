@@ -1,0 +1,77 @@
+---
+id: bytestid
+title: ByTestId
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByTestId, queryByTestId, getAllByTestId, queryAllByTestId, findByTestId,
+> findAllByTestId
+
+## API
+
+```typescript
+getByTestId(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+`` container.querySelector(`[data-testid="${yourId}"]`) `` 的快捷方式。
+(同时它还接受一个 [`TextMatch`](queries/about.mdx#textmatch))。
+
+```html
+<div data-testid="custom-element" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import {screen} from '@testing-library/dom'
+
+const element = screen.getByTestId('custom-element')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, screen} from '@testing-library/react'
+
+render(<MyComponent />)
+const element = screen.getByTestId('custom-element')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByTestId('custom-element').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+> 依据 [指导原则](guiding-principles.mdx)，
+> 只有其它查询方式都不适用于你的测试用例时才推荐使用它。
+> 使用 data-testid 属性来查询与你的软使用方式不同，所以需要尽量避免使用。
+> 即便如此， data-testid 还是比基于 DOM 结构 或 css 样式的 class 来查询好得多。
+> 想要了解更多关于 `data-testid`，请参考博客
+> ["Making your UI tests resilient to change"](https://kentcdodds.com/blog/making-your-ui-tests-resilient-to-change)
+
+## 选项
+
+[TextMatch](queries/about.mdx#textmatch) 选项
+
+## 覆盖 `data-testid`
+
+`DOM Testing Library` 提供的 `...ByTestId` 函数默认使用 `data-testid` 属性, 我们也推荐你尽可能
+使用该属性。但是如果你的现有代码库已经使用了一个不同属性值来实现测试目的，你可以通过 
+`configure({testIdAttribute: 'data-my-test-attribute'})` 来覆盖这个值。

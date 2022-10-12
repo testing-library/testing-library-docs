@@ -1,0 +1,66 @@
+---
+id: intro
+title: React Testing Library
+sidebar_label: 简介
+---
+
+[`React Testing Library`][gh] 是在 `DOM Testing Library` 的基础上添加一些 API 来支持测试 React 组件。
+
+> 如果你的项目是使用 [`Create React App`](https://create-react-app.dev/) 初始化的，那么
+> **React Testing Library** 是开箱即用的。 如果不是的话，
+> 你可以通过 `npm` 或 `Yarn` 来添加:
+
+```bash npm2yarn
+npm install --save-dev @testing-library/react
+```
+
+- [React Testing Library 的 GitHub 地址][gh]
+
+[gh]: https://github.com/testing-library/react-testing-library
+
+## 问题
+
+想要编写可维护的测试代码，希望它们可以增加你对组件正常工作的信心。为了实现此目标， 您希望你的测试避免包含实现细节，
+以便组件的重构（对实现的更改但不是功能的更改）时不会破坏原有的测试，并减慢团队的开发速度。
+
+## 解决方案
+
+`React Testing Library` 是用来测试 React 组件的轻量级解决方案。
+它封装了 `react-dom` 和 `react-dom/test-utils` 并提供了更加小巧的工具函数，这样做某种程度上是更好的测试实践。
+它的测试指导原则是:
+
+> [测试代码与你的软件使用方式越相似，它们能给你的信心就越大](guiding-principles.mdx)
+
+你的测试代码应该测试组件渲染出的实际 DOM 节点，而不是操作组件实例。该库提供的工具函数可以让我们以用户在页面交互的方式来查询 DOM 节点。
+通过标签文本来查找表单元素(就像实际的用户那样)，根据文本找到超链接和按钮(就像实际的用户那样)。
+
+当文本内容和标签 “不可用” 的情况下，它提供另外一种推荐的查询元素方式，`data-testid`。
+
+该库是 [Enzyme](http://airbnb.io/enzyme/) 的替代品。虽然你也可以使用 Enzyme 并遵循这些指导原则，
+但是这样执行会很困难，因为 Enzyme 提供的工具函数更多是测试组件细节的。更多关于参阅
+[常见问题](react-testing-library/faq.mdx)。
+
+**该库不是什么**:
+
+1.  测试执行器 或 框架
+2.  特定的测试框架 (尽管我们推荐 Jest 作为首选项, 但是该库适用于其它框架。参考
+    [不使用 Jest](setup.mdx#using-without-jest))
+
+> 注意: 该库是基于
+> [`DOM Testing Library`](dom-testing-library/intro.mdx) 扩展的
+
+## 教程
+
+介绍该库的视频: "什么是 React Testing library?"
+
+<a href="https://youtu.be/JKOwJUM4_RM">
+  <img
+    width="200px"
+    alt="what is react testing library"
+    src="https://img.youtube.com/vi/JKOwJUM4_RM/0.jpg"
+    style={{marginLeft: 0}}
+  />
+</a>
+
+还有
+[React Testing Library教程](https://www.robinwieruch.de/react-testing-library).

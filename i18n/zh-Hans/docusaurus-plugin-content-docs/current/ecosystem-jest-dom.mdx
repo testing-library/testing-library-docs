@@ -1,0 +1,38 @@
+---
+id: ecosystem-jest-dom
+title: jest-dom
+---
+
+jest-dom是测试库的一个配套库，为Jest提供自定义的DOM元素匹配器。
+
+[`jest-dom`][gh] 是 Testing Library 的一个配套库，为Jest提供自定义的DOM元素匹配器。
+
+```bash npm2yarn
+npm install --save-dev @testing-library/jest-dom
+```
+
+然后按照jest-dom文档中的[用法部分][gh-usage]，将匹配器添加到Jest中。
+
+```jsx
+import {screen} from '@testing-library/dom'
+
+test('uses jest-dom', () => {
+  document.body.innerHTML = `
+    <span data-testid="not-empty"><span data-testid="empty"></span></span>
+    <div data-testid="visible">Visible Example</div>
+  `
+
+  expect(screen.queryByTestId('not-empty')).not.toBeEmptyDOMElement()
+  expect(screen.getByText('Visible Example')).toBeVisible()
+})
+```
+
+> 注意：当使用其中一些匹配器时，你可能需要确保你使用查询函数（如`queryByTestId`）而不是
+> 获取函数（如`getByTestId`）。否则，`get*` 函数可能会在你的断言之前抛出一个错误。
+
+请查阅[jest-dom的文档][gh]，了解可用匹配器的完整列表。
+
+- [jest-dom on GitHub][gh]
+
+[gh]: https://github.com/testing-library/jest-dom
+[gh-usage]: https://github.com/testing-library/jest-dom#usage

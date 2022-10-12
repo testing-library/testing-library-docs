@@ -1,0 +1,129 @@
+---
+id: bylabeltext
+title: ByLabelText
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByLabelText, queryByLabelText, getAllByLabelText, queryAllByLabelText,
+> findByLabelText, findAllByLabelText
+
+## API
+
+```typescript
+getByLabelText(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    selector?: string = '*',
+    exact?: boolean = true,
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+先搜索匹配指定 [`TextMatch`](queries/about.mdx#textmatch)的标签，然后再查找和标签关联的元素。
+
+下面的示例将演示如何在给定的 DOM 树中找到 input 节点：
+
+```js
+// for/htmlFor 关联了标签和表单元素 id
+<label for="username-input">Username</label>
+<input id="username-input" />
+
+// The aria-labelledby attribute with form elements
+<label id="username-label">Username</label>
+<input aria-labelledby="username-label" />
+
+// Wrapper labels
+<label>Username <input /></label>
+
+// Wrapper labels where the label text is in another child element
+<label>
+  <span>Username</span>
+  <input />
+</label>
+
+// aria-label attributes
+// Take care because this is not a label that users can see on the page,
+// so the purpose of your input must be obvious to visual users.
+<input aria-label="Username" />
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import {screen} from '@testing-library/dom'
+
+const inputNode = screen.getByLabelText('Username')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, screen} from '@testing-library/react'
+
+render(<Login />)
+
+const inputNode = screen.getByLabelText('Username')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByLabelText('Username').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+## 选项
+
+### `name`
+
+上面的示例没有找到按元素分解的标签文本的 input 节点。
+你可以使用 `getByRole('textbox', { name: 'Username' })` 来替代，相比切换到
+`aria-label` 或 `aria-labelledby`，它更加稳定。
+
+### `selector`
+
+如果查询实际上的 `<label>` 元素很重要，你可以在选项中指定 `selector`：
+
+```js
+// Multiple elements labelled via aria-labelledby
+<label id="username">Username</label>
+<input aria-labelledby="username" />
+<span aria-labelledby="username">Please enter your username</span>
+
+// Multiple labels with the same text
+<label>
+  Username
+  <input />
+</label>
+<label>
+  Username
+  <textarea></textarea>
+</label>
+```
+
+```js
+const inputNode = screen.getByLabelText('Username', {selector: 'input'})
+```
+
+> **注意**
+>
+> `<label>` 元素的 `for` 属性和一个非表单元素的 `id` 属性匹配时，
+> `getByLabelText` 在这种场景下是不起作用的。
+
+```js
+// 这种场景下是无效的
+// for/htmlFor between label and an element that is not a form element
+<section id="photos-section">
+  <label for="photos-section">Photos</label>
+</section>
+```

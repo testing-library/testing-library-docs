@@ -1,0 +1,82 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.recipes.category.Examples": {
+    "message": "示例",
+    "description": "The label for category Examples in sidebar recipes"
+  },
+  "sidebar.recipes.category.Help": {
+    "message": "帮助",
+    "description": "The label for category Help in sidebar recipes"
+  },
+  "sidebar.docs.category.Getting Started": {
+    "message": "快速上手",
+    "description": "The label for category Getting Started in sidebar docs"
+  },
+  "sidebar.docs.category.Core API": {
+    "message": "核心 API",
+    "description": "The label for category Core API in sidebar docs"
+  },
+  "sidebar.docs.category.Queries": {
+    "message": "查询",
+    "description": "The label for category Queries in sidebar docs"
+  },
+  "sidebar.docs.category.User Actions": {
+    "message": "用户动作",
+    "description": "The label for category User Actions in sidebar docs"
+  },
+  "sidebar.docs.category.Advanced": {
+    "message": "高级",
+    "description": "The label for category Advanced in sidebar docs"
+  },
+  "sidebar.docs.category.Frameworks": {
+    "message": "框架",
+    "description": "The label for category Frameworks in sidebar docs"
+  },
+  "sidebar.docs.category.DOM Testing Library": {
+    "message": "DOM Testing Library",
+    "description": "The label for category DOM Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.React Testing Library": {
+    "message": "React Testing Library",
+    "description": "The label for category React Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Reason Testing Library": {
+    "message": "Reason Testing Library",
+    "description": "The label for category Reason Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Native Testing Library": {
+    "message": "Native Testing Library",
+    "description": "The label for category Native Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Vue Testing Library": {
+    "message": "Vue Testing Library",
+    "description": "The label for category Vue Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Marko Testing Library": {
+    "message": "Marko Testing Library",
+    "description": "The label for category Marko Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Angular Testing Library": {
+    "message": "Angular Testing Library",
+    "description": "The label for category Angular Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Preact Testing Library": {
+    "message": "Preact Testing Library",
+    "description": "The label for category Preact Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.Svelte Testing Library": {
+    "message": "Svelte Testing Library",
+    "description": "The label for category Svelte Testing Library in sidebar docs"
+  },
+  "sidebar.docs.category.User Interactions": {
+    "message": "用户交互",
+    "description": "The label for category User Interactions in sidebar docs"
+  },
+  "sidebar.docs.category.Ecosystem": {
+    "message": "生态",
+    "description": "The label for category Ecosystem in sidebar docs"
+  }
+}

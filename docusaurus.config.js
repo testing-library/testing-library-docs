@@ -215,6 +215,7 @@ module.exports = {
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
           ],
+          editLocalizedFiles: true,
           editUrl:
             'https://github.com/testing-library/testing-library-docs/edit/main/',
           path: './docs',
@@ -262,6 +263,10 @@ module.exports = {
           docId: 'recipes',
           label: 'Examples',
           position: 'left',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         {
           to: '/help',
@@ -356,4 +361,8 @@ module.exports = {
       indexName: 'testing-library',
     },
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-Hans']
+  }
 }

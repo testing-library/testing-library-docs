@@ -1,0 +1,111 @@
+---
+id: api-custom-queries
+title: 自定义查询
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+`DOM Testing Library` 暴露了许多用于实现默认查询的辅助函数。
+你可以使用这些辅助函数来建立自定义查询。例如，下面的代码演示了一种覆盖默认testId查询的方法，
+以使用不同的 data-* 属性。(注意：测试文件将导入test-utils.js而不是直接使用DOM测试库）。
+
+> **注意**
+>
+> 自定义查询可以通过向 `React Testing Library` 的 选项配置对象添加`查询`实现。
+> 参考渲染[选项](react-testing-library/api.mdx#render-options)。
+
+> 自定义查询不同于
+> [自定义渲染](react-testing-library/setup.mdx#custom-render) 方法.
+
+```js title="test-utils.js"
+const domTestingLib = require('@testing-library/dom')
+const {queryHelpers} = domTestingLib
+
+export const queryByTestId = queryHelpers.queryByAttribute.bind(
+  null,
+  'data-test-id',
+)
+export const queryAllByTestId = queryHelpers.queryAllByAttribute.bind(
+  null,
+  'data-test-id',
+)
+
+export function getAllByTestId(container, id, ...rest) {
+  const els = queryAllByTestId(container, id, ...rest)
+  if (!els.length) {
+    throw queryHelpers.getElementError(
+      `Unable to find an element by: [data-test-id="${id}"]`,
+      container,
+    )
+  }
+  return els
+}
+
+export function getByTestId(container, id, ...rest) {
+  // result >= 1
+  const result = getAllByTestId(container, id, ...rest)
+  if (result.length > 1) {
+    throw queryHelpers.getElementError(
+      `Found multiple elements with the [data-test-id="${id}"]`,
+      container,
+    )
+  }
+  return result[0]
+}
+
+// re-export with overrides
+module.exports = {
+  ...domTestingLib,
+  getByTestId,
+  getAllByTestId,
+  queryByTestId,
+  queryAllByTestId,
+}
+```
+
+## `buildQueries`
+
+`buildQueries` 允许你用 testing-library 中的所有[标准查询](queries/about.mdx)来创建自定义查询。
+
+请参阅自定义渲染指南中的[添加自定义查询](react-testing-library/setup.mdx#add-custom-queries) 部分，获得更多示例用法。
+
+### 使用其它断言库
+
+如果你不使用Jest，你也许可以找到一套类似的自定义断言库。下面是其它可以替代 jest-dom 的流行断言库列表：
+
+- [chai-dom](https://github.com/nathanboktae/chai-dom)
+
+如果你知道一些其他的替代方案，请提一个 [pull request](https://github.com/testing-library/testing-library-docs/pulls) ，
+添加到这里！
+
+## `getNodeText`
+
+```typescript
+getNodeText(node: HTMLElement)
+```
+
+返回一个HTML元素的完整文本内容，去除任何多余的空白。这样做的目的是将节点中的文本与用户在浏览器中的感知方式完全一样，
+在html代码中的任何额外的空格在文本被渲染时是没有意义的。
+
+```javascript
+// <div>
+//   Hello
+//     World  !
+// </div>
+const text = getNodeText(container.querySelector('div')) // "Hello World !"
+```
+
+当通过文本内容查询节点时，这个函数也被内部使用，这使得像 `getByText` 和 `queryByText` 这样的函数能够像预期的那样工作，
+类似于用户在DOM中寻找元素。
+
+该函数对某些输入元素有一个特殊的行为:
+
+```javascript
+// <input type="submit" value="Send data" />
+// <input type="button" value="Push me" />
+const submitText = getNodeText(container.querySelector('input[type=submit]')) // "Send data"
+const buttonText = getNodeText(container.querySelector('input[type=button]')) // "Push me"
+
+这些元素使用属性 `value` 并向用户显示其值。
+```

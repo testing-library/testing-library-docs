@@ -1,0 +1,108 @@
+---
+id: cheatsheet
+title: 备忘单
+---
+
+关于 `Vue Testing Library` 中所有导出的函数的简短指南。
+
+## 查询
+
+> **与 DOM Testing Librar 的区别**
+>
+> `Vue Testing Library` 中从 `render` 返回的查询与 `DOM Testing Library` 相同。
+> 然而，它们的第一个参数是与文档绑定的，所以你写的是 `getByText(node, 'text')` 而不是 `getByText('text')`。
+
+### 搜索变体
+
+|                   | Return if no match | Return if 1 match | Return if 1+ match | Await? |
+| ----------------- | ------------------ | ----------------- | ------------------ | ------ |
+| **getBy...**      | throw              | return            | throw              | No     |
+| **findBy...**     | throw              | return            | throw              | Yes    |
+| **queryBy...**    | `null`             | return            | throw              | No     |
+| **getAllBy...**   | throw              | array             | array              | No     |
+| **findAllBy...**  | throw              | array             | array              | Yes    |
+| **queryAllBy...** | `[]`               | array             | array              | No     |
+
+### 搜索类型
+
+|                          | finds by...                      | DOM example                           |
+| ------------------------ | -------------------------------- | ------------------------------------- |
+| **...ByLabelText**       | label or aria-label content      | `<label for="element" />`             |
+| **...ByPlaceholderText** | input placeholder value          | `<input placeholder="name" />`        |
+| **...ByText**            | element text content             | `<p>Lorem ipsum</p>`                  |
+| **...ByDisplayValue**    | form element current value       | Current value of input element        |
+| **...ByAltText**         | img alt attribute                | `<img alt="movie poster" />`          |
+| **...ByTitle**           | title attribute or svg title tag | `<span title="Add" />` or `<title />` |
+| **...ByRole**            | ARIA role                        | `<div role="dialog" />`               |
+| **...ByTestId**          | data-testid attribute            | `<div data-testid="some-message" />`  |
+
+> 你可以编写任何搜索变体和搜索类型的组合。
+
+### 一个示例
+
+`getByLabelText('Username')` 将搜索一个包含字符串 "Username"的 `<label>`元素，并返回相关的 `input`。
+如果没有找到，或找到一个以上的，它将抛出一个错误。
+
+`queryAllByRole('nav')` 将同步寻找所有带有 `role="nav"` 属性的元素，并返回一个包含结果的数组（如果没有找到结果，则返回一个空数组）。
+
+更多信息，请看[我应该使用哪个查询？](queries/about.mdx#priority)
+
+## 异步工具
+
+- **waitFor** (Promise) 重试回调函数，直到它停止抛出或超时。
+- **waitForElement** (Promise) 重试回调函数或函数数组并返回结果。
+- `findBy` 和 `findAllBy` 查询是异步的，重试直到超时或查询成功返回；它们包裹着 `waitForElement`。
+
+更多信息，请参阅[DOM Testing Library异步API](dom-testing-library/api-async.mdx)。
+
+> 记住在你的测试中 `await`或 `.then()` 异步函数的结果!
+
+## 触发事件
+
+- **fireEvent()** 触发 DOM 事件: `fireEvent(node, event)`
+- **fireEvent.\***  默认事件类型的辅助函数
+  - **click** `fireEvent.click(node)`
+  - **input** `fireEvent.input(node, event)`
+  - [查看所有支持的事件](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
+
+欲了解更多信息，请参见 [事件API](dom-testing-library/api-events.mdx)
+
+> **与 DOM Testing Library 的区别**
+>
+> 从 `Vue Testing Library` 返回的事件都是异步的，所以你应该`await` 或 `then()`结果。
+>
+> VTL也暴露了 `fireEvent.update(node, value)` 事件来处理 `v-model`。更多细节见API[the API](vue-testing-library/api.mdx#updateelem-value)。
+
+## 其它
+
+- **within(node)** 接收一个节点并返回一个对象，其中包含所有与之绑定的查询：
+  `within(getByTestId("global-header")).getByText("hello")`。
+- **configure(config)** 改变全局选项：`configure({testIdAttribute: 'my-test-id'})`。
+
+欲了解更多信息，请参见[查询元素内](dom-testing-library/api-within.mdx)和[配置API](dom-testing-library/api-configuration.mdx)。
+
+## Text Match 选项
+
+给定以下 HTML:
+
+```html
+<div>Hello World</div>
+```
+
+所有这些匹配器都会找到该元素：
+
+```javascript
+// Matching a string:
+getByText('Hello World') // full string match
+getByText('llo Worl', {exact: false}) // substring match
+getByText('hello world', {exact: false}) // ignore case
+
+// Matching a regex:
+getByText(/World/) // substring match
+getByText(/world/i) // substring match, ignore case
+getByText(/^hello world$/i) // full string match, ignore case
+getByText(/Hello W?oRlD/i) // advanced regex
+
+// Matching with a custom function:
+getByText((content, element) => content.startsWith('Hello'))
+```

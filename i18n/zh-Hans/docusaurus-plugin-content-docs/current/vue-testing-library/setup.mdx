@@ -1,0 +1,16 @@
+---
+id: setup
+title: 设置
+---
+
+`Vue Testing Library` 不需要任何配置就可以直接使用。
+
+### 清理 {#cleanup}
+
+#### Jest
+
+Jest 每次测试后都会自动调用 [`cleanup`](./api#cleanup)，所以通常不需要更改任何内容。
+
+#### Vitest
+
+如果你正在使用Vitest，并希望在每次测试后进行清理，则需要通过其配置文件[启用全局](https://vitest.dev/config/#globals)设置。

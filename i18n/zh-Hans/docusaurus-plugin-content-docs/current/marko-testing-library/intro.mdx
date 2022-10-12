@@ -1,0 +1,41 @@
+---
+id: intro
+title: Marko Testing Library
+sidebar_label: 简介
+---
+
+[`Marko Testing Library`](https://github.com/marko-js/testing-library)建立在[`DOM Testing Library`](dom-testing-library/intro.mdx)的基础上，
+增加了与Marko组件一起工作的API。
+
+```bash npm2yarn
+npm install --save-dev @marko/testing-library
+```
+
+## 问题
+
+你想为你的Marko组件编写可维护的测试。作为这个目标的一部分，你希望你的测试避免包括你的组件的实现细节，
+而是专注于使你的测试给你带来信心，因为他们是为了这个目的。作为这个目标的一部分，
+你希望你的测试套件从长远来看是可维护的，所以你的组件的重构（实现的变化，但不是功能的变化）不会破坏你的测试，
+并减缓你和你的团队。
+
+## 解决方案
+
+`@marko/testing-library` 是一个非常轻量级的解决方案，用于测试Marko组件。
+它在 `@testing-library/dom` 的基础上提供轻量级的实用功能，以鼓励更好的测试实践。它的主要指导原则是:
+
+> [你的测试越像你的软件的使用方式，他们就越能给你信心](guiding-principles.mdx)
+
+因此，与其处理渲染的Marko组件的实例，你的测试将与实际的DOM节点一起工作。
+这个库所提供的工具有助于以用户的方式查询DOM。通过标签文本寻找元素（就像用户一样），
+通过文本寻找链接和按钮（就像用户一样）。它包含了一个小型的有针对性的API，
+如果需要的话，可以通过一些内置的逃生舱门来摆脱你的束缚。
+
+这个库鼓励你的应用程序更容易访问，并允许你让你的测试更接近于以用户的方式使用你的组件，
+这允许你的测试给你更多的信心，当一个真正的用户使用它时，你的应用程序会工作。
+
+**这个库不是什么**:
+
+1.  一个测试运行器或框架
+2.  特定一个测试框架，你可以[用Jest](setup.mdx#jest)、[mocha](setup.mdx#mocha)或其他测试运行器来使用它。
+
+> 注意：这个库是建立在 [`DOM Testing Library`](dom-testing-library/intro.mdx) 之上的，而 `DOM Testing Library` 是查询背后大部分逻辑的所在。

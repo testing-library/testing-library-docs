@@ -1,0 +1,598 @@
+---
+id: ecosystem-user-event
+title: user-event v13
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+[`user-event`][gh] 是 Testing Library 的配套库，相对比内置的
+[`fireEvent`](dom-testing-library/api-events.mdx#fireevent) 方法，它提供了更高级的浏览器交互模拟。
+
+:::caution 停止维护
+
+本文档是关于 `user-event@13.5.0`.  
+此版本不再维护。推荐使用
+[`user-event@14`](user-event/intro.mdx) ，因为它包含重要的缺陷修复和新功能。
+
+:::
+
+## 安装
+
+  <Tabs defaultValue="npm" values={[{ label: 'npm', value: 'npm' }, { label: 'Yarn', value: 'yarn' }]}>
+  <TabItem value="npm">
+
+```sh
+npm install --save-dev @testing-library/user-event @testing-library/dom
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```sh
+yarn add --dev @testing-library/user-event @testing-library/dom
+```
+
+  </TabItem>
+  </Tabs>
+
+现在只需在测试中导入它:
+
+```js
+import userEvent from '@testing-library/user-event'
+
+// 或者
+
+const {default: userEvent} = require('@testing-library/user-event')
+```
+
+## API
+
+注意：所有的 userEvent 方法都是同步的，只有一个例外：当 `delay` 选项与 `userEvent.type` 一起使用时，
+如下所示。我们也不鼓励在 `before`/`after` 块中使用 `userEvent`，
+因为在 ["测试时避免嵌套"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing)中描述了重要原因。
+
+### `click(element, eventInit, options)`
+
+点击 `element`。不同 `element` 被点击，调用 `click()` 可以有不同的副作用。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('click', () => {
+  render(
+    <div>
+      <label htmlFor="checkbox">Check</label>
+      <input id="checkbox" type="checkbox" />
+    </div>,
+  )
+
+  userEvent.click(screen.getByText('Check'))
+  expect(screen.getByLabelText('Check')).toBeChecked()
+})
+```
+
+你也可以 ctrl + 点击 / shift + 点击：
+
+```js
+userEvent.click(elem, {ctrlKey: true, shiftKey: true})
+```
+
+更多选项请参见 [`MouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent) 构造函数文档。
+
+注意，在 `click` 之前会触发 hover 事件。要禁用这一点，请将 `skipHover` 选项设置为 `true`。
+
+#### 指针事件选项
+
+在 `pointer-events` 被设置为 "none"（即不可点击）的情况下，试图点击一个元素将产生一个错误。
+如果你想禁用这种行为，你可以把 `skipPointerEventsCheck` 设置为 `true`。
+
+```js
+userEvent.click(elem, undefined, {skipPointerEventsCheck: true})
+```
+
+`skipPointerEventsCheck` 选项可以被传递给任何与指针相关的API，包括:
+
+- [dblClick](#dblclickelement-eventinit-options)
+- [hover](#hoverelement-options)
+- [unhover](#unhoverelement-options)
+- [selectOptions](#selectoptionselement-values-options)
+- [deselectOptions](#deselectoptionselement-values-options)
+
+### `dblClick(element, eventInit, options)`
+
+点击 `element` 两次，取决于是什么 `element`，可能会有不同的副作用。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('double click', () => {
+  const onChange = jest.fn()
+  render(<input type="checkbox" onChange={onChange} />)
+  const checkbox = screen.getByRole('checkbox')
+  userEvent.dblClick(checkbox)
+  expect(onChange).toHaveBeenCalledTimes(2)
+  expect(checkbox).not.toBeChecked()
+})
+```
+
+注：`options` 包括[指针事件选项](#pointer-events-options)
+
+### `type(element, text, [options])`
+
+在 `<input>` 或 `<textarea>` 中写入 `text`。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('type', () => {
+  render(<textarea />)
+
+  userEvent.type(screen.getByRole('textbox'), 'Hello,{enter}World!')
+  expect(screen.getByRole('textbox')).toHaveValue('Hello,\nWorld!')
+})
+```
+
+`options.delay` 是输入两个字符之间间隔的毫秒数。默认是 0。如果你的组件对快速或慢速用户有不同的行为，
+你可以使用这个选项。如果你这样做，你需要确保使用 `await`!
+
+`type` 将在打字前点击元素。要禁用这一点，请将 `skipClick` 选项设置为 `true`。
+
+#### 特殊字符
+
+支持以下特殊字符串:
+
+| Text string    | Key        | Modifier           | Notes                                                                                                                                                               |
+| -------------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{enter}`      | Enter      | N/A                | Will insert a newline character (`<textarea />` only).                                                                                                              |
+| `{space}`      | `' '`      | N/A                |                                                                                                                                                                     |
+| `{esc}`        | Escape     | N/A                |                                                                                                                                                                     |
+| `{backspace}`  | Backspace  | N/A                | Will delete the previous character (or the characters within the `selectedRange`, see example below).                                                               |
+| `{del}`        | Delete     | N/A                | Will delete the next character (or the characters within the `selectedRange`, see example below)                                                                    |
+| `{selectall}`  | N/A        | N/A                | Selects all the text of the element. Note that this will only work for elements that support selection ranges (so, not `email`, `password`, `number`, among others) |
+| `{arrowleft}`  | ArrowLeft  | N/A                |                                                                                                                                                                     |
+| `{arrowright}` | ArrowRight | N/A                |                                                                                                                                                                     |
+| `{arrowup}`    | ArrowUp    | N/A                |                                                                                                                                                                     |
+| `{arrowdown}`  | ArrowDown  | N/A                |                                                                                                                                                                     |
+| `{home}`       | Home       | N/A                |                                                                                                                                                                     |
+| `{end}`        | End        | N/A                |                                                                                                                                                                     |
+| `{shift}`      | Shift      | `shiftKey`         | Does **not** capitalize following characters.                                                                                                                       |
+| `{ctrl}`       | Control    | `ctrlKey`          |                                                                                                                                                                     |
+| `{alt}`        | Alt        | `altKey`           |                                                                                                                                                                     |
+| `{meta}`       | OS         | `metaKey`          |                                                                                                                                                                     |
+| `{capslock}`   | CapsLock   | `modifierCapsLock` | Fires both keydown and keyup when used (simulates a user clicking their "Caps Lock" button to enable caps lock).                                                    |
+
+> **关于修改器的说明:** 修改器键（`{shift}`、`{ctrl}`、`{alt}`、`{meta}`）将在类型命令的持续时间内激活其相应的事件修改器，
+或者直到它们被关闭（通过`{/shift}`、`{/ctrl}`等）。如果它们没有被明确关闭，
+那么事件将被触发以自动关闭它们（要禁用这一点，请将 `skipAutoClose` 选项设置为 `true`）。
+
+<!-- space out these notes -->
+
+> 我们采取与 [Cypress相同的立场](https://docs.cypress.io/api/commands/type.html#Modifiers)，
+即我们不模拟修改键组合发生的行为，因为不同的操作系统在这方面的功能不同。
+
+一个带有选择范围的用法的例子:
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('delete characters within the selectedRange', () => {
+  render(
+    <div>
+      <label htmlFor="my-input">Example:</label>
+      <input id="my-input" type="text" value="This is a bad example" />
+    </div>,
+  )
+  const input = screen.getByLabelText(/example/i)
+  input.setSelectionRange(10, 13)
+  userEvent.type(input, '{backspace}good')
+
+  expect(input).toHaveValue('This is a good example')
+```
+
+默认情况下，`type` 会附加到现有的文本上。要预置文本，重置元素的选择范围并提供 `initialSelectionStart` 和 `initialSelectionEnd` 选项:
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('prepend text', () => {
+  render(<input defaultValue="World!" />)
+  const element = screen.getByRole('textbox')
+
+  // Prepend text
+  element.setSelectionRange(0, 0)
+  userEvent.type(element, 'Hello, ', {
+    initialSelectionStart: 0,
+    initialSelectionEnd: 0,
+  })
+
+  expect(element).toHaveValue('Hello, World!')
+})
+```
+
+#### 支持 `<input type="time" />`
+
+下面是一个使用这个库的例子，`<input type="time" />`
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('types into the input', () => {
+  render(
+    <>
+      <label for="time">Enter a time</label>
+      <input type="time" id="time" />
+    </>,
+  )
+  const input = screen.getByLabelText(/enter a time/i)
+  userEvent.type(input, '13:58')
+  expect(input.value).toBe('13:58')
+})
+```
+
+### `keyboard(text, options)`
+
+模拟 `text` 描述的键盘事件。这类似于 `userEvent.type()`，但没有任何点击或改变选择范围。
+
+> 如果你想只是模拟在键盘上按下按钮，你应该使用 `userEvent.keyboard`。
+> 如果你只是想方便地将一些文本插入到一个输入字段或文本区域，你应该使用 `userEvent.type`。
+
+按键可以被描述:
+
+- 按可打印的字符
+  ```js
+  userEvent.keyboard('foo') // translates to: f, o, o
+  ```
+  大括号 `{` 和 `[` 是作为特殊字符使用的，可以通过将它们加倍来引用。
+  ```js
+  userEvent.keyboard('{{a[[') // translates to: {, a, [
+  ```
+- 按
+  [KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
+  (只支持字母数字值的 `key`)
+  ```js
+  userEvent.keyboard('{Shift}{f}{o}{o}') // translates to: Shift, f, o, o
+  ```
+  这不会使任何键保持按下。因此，在按下 `f` 之前，`Shift` 会被解除。
+- 按
+  [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+  ```js
+  userEvent.keyboard('[ShiftLeft][KeyF][KeyO][KeyO]') // translates to: Shift, f, o, o
+  ```
+- 按 遗留的 `userEvent.type` modifier/specialChar。像 `{shift}` 这样的修改器（注意是小写）会自动保持按下，
+  就像以前一样。你可以通过在描述符的末尾添加一个 `/` 来取消这种行为。
+
+  ```js
+  userEvent.keyboard('{shift}{ctrl/}a{/shift}') // translates to: Shift(down), Control(down+up), a, Shift(up)
+  ```
+
+在描述符的末尾加上一个 `>`，就可以保持按键，而在描述符的开头加上一个 `/`，就可以解除按键。
+
+```js
+userEvent.keyboard('{Shift>}A{/Shift}') // translates to: Shift(down), A, Shift(up)
+```
+
+`userEvent.keyboard` 返回一个键盘状态，可用于继续键盘操作。
+
+```js
+const keyboardState = userEvent.keyboard('[ControlLeft>]') // keydown [ControlLeft]
+// ... inspect some changes ...
+userEvent.keyboard('a', {keyboardState}) // press [KeyA] with active ctrlKey modifier
+```
+
+`key` 与 `code` 的映射是由一个[默认的键盘映射](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)来完成的，
+它描绘了一个 "default" 美国键盘。你可以为每个选项提供你自己的本地键盘映射。
+
+```js
+userEvent.keyboard('?', {keyboardMap: myOwnLocaleKeyboardMap})
+```
+
+> 未来的版本可能会尝试插值修改器，以达到键盘上的可打印键。
+> 例如，当CapsLock没有激活并且 `A` 被引用时，自动按下 `{Shift}`。如果你不希望有这种行为，
+> 你可以在你的代码中使用 `userEvent.keyboard` 时传递 `autoModify: false`。
+
+### `upload(element, file, [{ clickInit, changeInit }], [options])`
+
+上传文件到 `<input>`。要上传多个文件，请使用带有 `multiple` 属性的 `<input>` 
+且第二个 `upload` 参数作为数组。也可以使用第三个参数初始化单击或更改事件。
+
+如果 `options.applyAccept` 被设置为 `true`，并且元素上有一个 `accept` 属性，不匹配的文件将被丢弃。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('upload file', () => {
+  const file = new File(['hello'], 'hello.png', {type: 'image/png'})
+
+  render(
+    <div>
+      <label htmlFor="file-uploader">Upload file:</label>
+      <input id="file-uploader" type="file" />
+    </div>,
+  )
+  const input = screen.getByLabelText(/upload file/i)
+  userEvent.upload(input, file)
+
+  expect(input.files[0]).toStrictEqual(file)
+  expect(input.files.item(0)).toStrictEqual(file)
+  expect(input.files).toHaveLength(1)
+})
+
+test('upload multiple files', () => {
+  const files = [
+    new File(['hello'], 'hello.png', {type: 'image/png'}),
+    new File(['there'], 'there.png', {type: 'image/png'}),
+  ]
+
+  render(
+    <div>
+      <label htmlFor="file-uploader">Upload file:</label>
+      <input id="file-uploader" type="file" multiple />
+    </div>,
+  )
+  const input = screen.getByLabelText(/upload file/i)
+  userEvent.upload(input, files)
+
+  expect(input.files).toHaveLength(2)
+  expect(input.files[0]).toStrictEqual(files[0])
+  expect(input.files[1]).toStrictEqual(files[1])
+})
+```
+
+### `clear(element)`
+
+选择 `<input>` 或 `<textarea>` 内的文本并将其删除。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('clear', () => {
+  render(<textarea defaultValue="Hello, World!" />)
+
+  userEvent.clear(screen.getByRole('textbox'))
+  expect(screen.getByRole('textbox')).toHaveValue('')
+})
+```
+
+### `selectOptions(element, values, options)`
+
+选择 `<select>` 或 `<select multiple>` 元素的指定选项。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('selectOptions', () => {
+  render(
+    <select multiple>
+      <option value="1">A</option>
+      <option value="2">B</option>
+      <option value="3">C</option>
+    </select>,
+  )
+
+  userEvent.selectOptions(screen.getByRole('listbox'), ['1', '3'])
+
+  expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
+  expect(screen.getByRole('option', {name: 'B'}).selected).toBe(false)
+  expect(screen.getByRole('option', {name: 'C'}).selected).toBe(true)
+})
+```
+
+`values` 参数可以是一个值数组，也可以是一个单数标量值。
+
+它也接受选项节点:
+
+```js
+userEvent.selectOptions(screen.getByTestId('select-multiple'), [
+  screen.getByText('A'),
+  screen.getByText('B'),
+])
+```
+
+注意：`options` 包括 [指针事件选项](#pointer-events-options)
+
+### `deselectOptions(element, values, options)`
+
+删除 `<select multiple>` 元素中指定选项的选择。
+
+```jsx
+import * as React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('deselectOptions', () => {
+  render(
+    <select multiple>
+      <option value="1">A</option>
+      <option value="2">B</option>
+      <option value="3">C</option>
+    </select>,
+  )
+
+  userEvent.selectOptions(screen.getByRole('listbox'), '2')
+  expect(screen.getByText('B').selected).toBe(true)
+  userEvent.deselectOptions(screen.getByRole('listbox'), '2')
+  expect(screen.getByText('B').selected).toBe(false)
+  // can do multiple at once as well:
+  // userEvent.deselectOptions(screen.getByRole('listbox'), ['1', '2'])
+})
+```
+
+参数 `values` 可以是一个值数组，也可以是一个单数标量值。
+
+注意：`options` 包括 [指针事件选项](#pointer-events-options)
+
+### `tab({shift, focusTrap})`
+
+以浏览器的方式触发一个改变 `document.activeElement` 的 tab 事件。
+
+选项:
+
+- `shift` (默认是 `false`) 可以是 true 或 false 来反转 tab 方向。
+- `focusTrap` (默认是 `document`) 一个容器元素，用来限制 tab 范围的使用。
+
+> 关于 tab 的说明：
+> [jsdom不支持tab](https://github.com/jsdom/jsdom/issues/2102)，所以这个功能是使测试能够从终端用户的角度验证tab的方法。
+> 然而，jsdom的这种限制将意味着像 [focus-trap-react](https://github.com/davidtheclark/focus-trap-react) 这样的组件将不能与 `userEvent.tab()` 或 jsdom 一起工作。
+> 由于这个原因，`focusTrap` 选项可以让你确保你的用户在 focus-trap 中受到限制。
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import '@testing-library/jest-dom'
+import userEvent from '@testing-library/user-event'
+
+it('should cycle elements in document tab order', () => {
+  render(
+    <div>
+      <input data-testid="element" type="checkbox" />
+      <input data-testid="element" type="radio" />
+      <input data-testid="element" type="number" />
+    </div>,
+  )
+
+  const [checkbox, radio, number] = screen.getAllByTestId('element')
+
+  expect(document.body).toHaveFocus()
+
+  userEvent.tab()
+
+  expect(checkbox).toHaveFocus()
+
+  userEvent.tab()
+
+  expect(radio).toHaveFocus()
+
+  userEvent.tab()
+
+  expect(number).toHaveFocus()
+
+  userEvent.tab()
+
+  // cycle goes back to the body element
+  expect(document.body).toHaveFocus()
+
+  userEvent.tab()
+
+  expect(checkbox).toHaveFocus()
+})
+```
+
+### `hover(element, options)`
+
+在 `element` 上悬停.
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import Tooltip from '../tooltip'
+
+test('hover', () => {
+  const messageText = 'Hello'
+  render(
+    <Tooltip messageText={messageText}>
+      <TrashIcon aria-label="Delete" />
+    </Tooltip>,
+  )
+
+  userEvent.hover(screen.getByLabelText(/delete/i))
+  expect(screen.getByText(messageText)).toBeInTheDocument()
+  userEvent.unhover(screen.getByLabelText(/delete/i))
+  expect(screen.queryByText(messageText)).not.toBeInTheDocument()
+})
+```
+
+注意：`options` 包括 [指针事件选项](#pointer-events-options)
+
+### `unhover(element, options)`
+
+从一个 `element` 悬停出来.
+
+> 见[上面](#hoverelement)的例子
+
+注意：`options` 包括 [指针事件选项](#pointer-events-options)
+
+### `paste(element, text, eventInit, options)`
+
+允许你模拟用户将一些文本粘贴到一个输入框。
+
+```javascript
+test('should paste text in input', () => {
+  render(<MyInput />)
+
+  const text = 'Hello, world!'
+  const element = getByRole('textbox', {name: /paste your greeting/i})
+  userEvent.paste(element, text)
+  expect(element).toHaveValue(text)
+})
+```
+
+如果你要粘贴的东西应该有 `clipboardData`（如文件），你可以使用 `eventInit`。
+
+### `specialChars`
+
+在[类型](#typeelement-text-options)方法中使用的一组为数不多的特殊字符。
+
+| Key        | Character      |
+| ---------- | -------------- |
+| arrowLeft  | `{arrowleft}`  |
+| arrowRight | `{arrowright}` |
+| arrowDown  | `{arrowdown}`  |
+| arrowUp    | `{arrowup}`    |
+| home       | `{home}`       |
+| end        | `{end}`        |
+| enter      | `{enter}`      |
+| escape     | `{esc}`        |
+| delete     | `{del}`        |
+| backspace  | `{backspace}`  |
+| selectAll  | `{selectall}`  |
+| space      | `{space}`      |
+| whitespace | `' '`          |
+
+使用实例:
+
+```jsx
+import React, { useState } from 'react'
+import {render, screen} from '@testing-library/react'
+import userEvent, {specialChars} from '@testing-library/user-event'
+
+const InputElement = () => {
+  const [currentValue, setCurrentValue] = useState('This is a bad example');
+  return <div>
+    <label htmlFor='my-input'>Example:</label>
+    <input id='my-input' type='text' value={currentValue} onChange={(e) => setCurrentValue(e.target.value)} />
+  </div>;
+}
+
+test('delete characters within the selectedRange', () => {
+  render(
+    <InputElement/>,
+  )
+  const input = screen.getByLabelText(/example/i)
+  input.setSelectionRange(10, 13)
+  userEvent.type(input, `${specialChars.backspace}good`)
+
+  expect(input).toHaveValue('This is a good example')
+})
+```
+
+[gh]: https://github.com/testing-library/user-event

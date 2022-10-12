@@ -1,0 +1,45 @@
+---
+id: intro
+title: Angular Testing Library
+sidebar_label: 简介
+---
+
+[`Angular Testing Library`](https://github.com/testing-library/angular-testing-library)
+建立在
+[`DOM Testing Library`](https://github.com/testing-library/dom-testing-library)
+的基础上，增加了用于处理Angular组件的API。
+
+```bash npm2yarn
+npm install --save-dev @testing-library/angular
+```
+
+- [`@testing-library/angular-testing-library` on GitHub](https://github.com/testing-library/angular-testing-library)
+
+## 问题
+
+你想为你的 Angular 组件编写可维护的测试。作为这个目标的一部分，**你希望你的测试能避免包括组件的实现细节**。
+你应该把重点放在让你的测试给你带来信心上，这也是他们的目的。作为其中的一部分，你希望你的测试库从长远来看是可维护的，
+所以你的组件的重构（对实现的改变，但不是功能的改变）不会破坏你的测试，使你和你的团队慢下来。
+
+## 解决方案
+
+`Angular Testing Library` 是一个非常轻量级的解决方案，用于测试Angular组件。
+它在
+[`DOM Testing Library`](https://github.com/testing-library/dom-testing-library)
+的基础上提供轻量级的实用功能，以鼓励更好的测试实践。它的主要指导原则是:
+
+> [你的测试越像你的软件的使用方式，他们就越能给你信心](guiding-principles.mdx)
+
+因此，你的测试将与实际的DOM节点一起工作，而不是处理渲染的Angular组件实例。
+这个库所提供的工具便于用户以同样的方式查询DOM。通过标签文本找到表单元素（就像用户一样），
+通过文本找到链接和按钮（就像用户一样）。它还提供了一种推荐的方法，即通过 `data-testid` 来寻找元素，
+作为元素的 "逃生舱门"，在这种情况下，文本内容和标签没有意义或不实用。
+
+这个库鼓励你的应用程序更容易访问，并允许你让你的测试更接近于以用户的方式使用你的组件，
+这使得你的测试给你更多的信心，当真正的用户使用它时，你的应用程序会工作。
+
+`Angular Testing Library`:
+
+- 重新导出 [`DOM Testing Library`](https://github.com/testing-library/dom-testing-library) 中的 `query` 和 `fireEvent` 实用函数。
+- 封装你的组件的 `fireEvent` 函数，在事件发生后自动调用 `detectChanges()`
+- 与测试框架无关，它可以在每个测试框架上运行。
