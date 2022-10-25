@@ -370,6 +370,22 @@ test('returns logged in user', () => {
 })
 ```
 
+> NOTE: When using `renderHook` in conjunction with the `wrapper` and `initialProps` options, the `initialProps` are not passed to the `wrapper` component. To provide dependencies to the `wrapper` component, consider a solution like this:
+>
+> ```js
+> const createWrapper = (Wrapper, props) => {
+>   return function CreatedWrapper({ children }) {
+>     return <Wrapper {...props}>{children}</Wrapper>;
+>   };
+> };
+> 
+> ...
+> 
+> {
+>   wrapper: createWrapper(Wrapper, { dependency }),
+> }
+> ```
+
 ### `renderHook` Options `wrapper`
 
 See [`wrapper` option for `render`](#wrapper)
