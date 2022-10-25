@@ -45,7 +45,9 @@ function waitFor<T>(
 ```
 
 When in need to wait for any period of time you can use `waitFor`, to wait for
-your expectations to pass. Here's a simple example:
+your expectations to pass. Returning _a falsy condition is not sufficient_ to
+trigger a retry, the callback must throw an error in order to retry the
+condition. Here's a simple example:
 
 ```javascript
 // ...
@@ -61,6 +63,11 @@ options.
 
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
+
+The callback passed to `waitFor` _must throw an error_ for as long as it should
+be waited for. The error must be of the same form as failed `expect` errors.
+The simplest way to achieve that is to write the condition as an expectation
+(see example above).
 
 If you return a promise in the `waitFor` callback (either explicitly or
 implicitly with `async` syntax), then the `waitFor` utility will not call your
