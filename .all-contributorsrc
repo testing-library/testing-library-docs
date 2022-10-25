@@ -2177,6 +2177,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "louis-young",
+      "name": "Louis Young",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35606709?v=4",
+      "profile": "https://github.com/louis-young",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
