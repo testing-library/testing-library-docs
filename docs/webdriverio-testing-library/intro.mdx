@@ -86,6 +86,44 @@ it('adds queries as element commands scoped to element', async () => {
 })
 ```
 
+When using v7.19 or higher of WebdriverIO you can also use chainable queries.
+Chainable queries are added to the browser and element as commands with the
+format `{query}$`.
+
+```javascript
+it('can chain browser getBy queries', async () => {
+  setupBrowser(browser)
+
+  await browser.getByTestId$('nested').getByText$('Button Text').click()
+
+  const buttonText = await browser
+    .getByTestId$('nested')
+    .getByText$('Button Text')
+    .getText()
+
+  expect(buttonText).toEqual('Button Clicked')
+})
+
+it('can chain element getBy queries', async () => {
+  const {getByTestId} = setupBrowser(browser)
+
+  const nested = await getByTestId('nested')
+  await nested.getByText$('Button Text').click()
+
+  const buttonText = await browser.getByText$('Button Clicked').getText()
+
+  expect(buttonText).toEqual('Button Clicked')
+})
+
+it('can chain getAllBy queries', async () => {
+  setupBrowser(browser)
+
+  await browser.getByTestId$('nested').getAllByText$('Button Text')[0].click()
+
+  expect(await browser.getAllByText('Button Clicked')).toHaveLength(1)
+})
+```
+
 ### `within`
 
 Accepts a WebdriverIO element and returns queries scoped to that element
@@ -153,6 +191,29 @@ declare global {
     interface Browser extends WebdriverIOQueriesSync {}
     interface Element extends WebdriverIOQueriesSync {}
   }
+}
+```
+
+To add chainable query types you need to extend the above interfaces as well as
+`ChainablePromiseElement` with `WebdriverIOQueriesChainable`:
+
+```typescript
+import {WebdriverIOQueriesChainable, WebdriverIOQueries} from '../../src'
+
+declare global {
+  namespace WebdriverIO {
+    interface Browser
+      extends WebdriverIOQueries,
+        WebdriverIOQueriesChainable<Browser> {}
+    interface Element
+      extends WebdriverIOQueries,
+        WebdriverIOQueriesChainable<Element> {}
+  }
+}
+
+declare module 'webdriverio' {
+  interface ChainablePromiseElement<T extends WebdriverIO.Element | undefined>
+    extends WebdriverIOQueriesChainable<T> {}
 }
 ```
 
