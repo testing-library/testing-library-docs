@@ -64,11 +64,6 @@ options.
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
 
-The callback passed to `waitFor` _must throw an error_ for as long as it should
-be waited for. The error must be of the same form as failed `expect` errors.
-The simplest way to achieve that is to write the condition as an expectation
-(see example above).
-
 If you return a promise in the `waitFor` callback (either explicitly or
 implicitly with `async` syntax), then the `waitFor` utility will not call your
 callback again until that promise rejects. This allows you to `waitFor` things
