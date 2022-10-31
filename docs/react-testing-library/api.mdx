@@ -361,7 +361,7 @@ These will **not** be passed if you call `rerender` without props.
 import {renderHook} from '@testing-library/react'
 
 test('returns logged in user', () => {
-  const {result, rerender} = renderHook(({name} = {}) => name, {
+  const {result, rerender} = renderHook((props = {}) => props, {
     initialProps: {name: 'Alice'},
   })
   expect(result.current).toEqual({name: 'Alice'})
