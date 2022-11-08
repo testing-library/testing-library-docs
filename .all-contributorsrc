@@ -2195,6 +2195,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "lukaselmer",
+      "name": "Lukas Elmer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/326935?v=4",
+      "profile": "https://www.linkedin.com/in/lukaselmer/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
