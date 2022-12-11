@@ -2204,6 +2204,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "brentguf",
+      "name": "Brent Guffens",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16427929?v=4",
+      "profile": "https://github.com/brentguf",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
