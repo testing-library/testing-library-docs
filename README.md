@@ -448,6 +448,7 @@ Thanks goes to these wonderful people
       <td align="center"><a href="https://www.louisyoung.co.uk"><img src="https://avatars.githubusercontent.com/u/35606709?v=4?s=100" width="100px;" alt="Louis Young"/><br /><sub><b>Louis Young</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=louis-young" title="Documentation">📖</a></td>
       <td align="center"><a href="https://www.linkedin.com/in/lukaselmer/"><img src="https://avatars.githubusercontent.com/u/326935?v=4?s=100" width="100px;" alt="Lukas Elmer"/><br /><sub><b>Lukas Elmer</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=lukaselmer" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/brentguf"><img src="https://avatars.githubusercontent.com/u/16427929?v=4?s=100" width="100px;" alt="Brent Guffens"/><br /><sub><b>Brent Guffens</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=brentguf" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/estebanfelipep"><img src="https://avatars.githubusercontent.com/u/15718690?v=4?s=100" width="100px;" alt="Esteban"/><br /><sub><b>Esteban</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=estebanfelipep" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
