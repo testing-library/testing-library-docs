@@ -77,9 +77,44 @@ export async function render<WrapperType = WrapperComponent>(
 
 ## Component RenderOptions
 
+### `componentInputs`
+
+An object to set `@Input` properties of the component. Uses `setInput` to set
+the input property. Throws if the component property is not annotated with the
+`@Input` attribute.
+
+**default** : `{}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  componentInputs: {
+    counterValue: 10,
+  },
+})
+```
+
+### `componentOutputs`
+
+An object to set `@Output` properties of the component.
+
+**default** : `{}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  componentOutputs: {
+    clicked: (value) => { ... }
+  }
+})
+```
+
 ### `componentProperties`
 
-An object to set `@Input` and `@Output` properties of the component.
+An object to set `@Input` and `@Output` properties of the component. Doesn't
+have a fine-grained control as `componentInputs` and `componentOutputs`.
 
 **default** : `{}`
 
@@ -88,9 +123,31 @@ An object to set `@Input` and `@Output` properties of the component.
 ```typescript
 await render(AppComponent, {
   componentProperties: {
+    // an input
     counterValue: 10,
+    // an output
     send: (value) => { ... }
+    // a public property
+    name: 'Tim'
   }
+})
+```
+
+### `declarations`
+
+A collection of components, directives and pipes needed to render the component.
+For example, nested components of the component.
+
+For more info see the
+[Angular docs](https://angular.io/api/core/NgModule#declarations).
+
+**default** : `[]`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  declarations: [CustomerDetailComponent, ButtonComponent],
 })
 ```
 
@@ -115,25 +172,7 @@ await render(AppComponent, {
 })
 ```
 
-### `declarations`
-
-A collection of components, directives and pipes needed to render the component.
-For example, nested components of the component.
-
-For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#declarations).
-
-**default** : `[]`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  declarations: [CustomerDetailComponent, ButtonComponent],
-})
-```
-
-### `ɵcomponentImports`
+### `componentImports`
 
 A collection of imports to override a standalone component's imports with.
 
@@ -143,22 +182,54 @@ A collection of imports to override a standalone component's imports with.
 
 ```typescript
 await render(AppComponent, {
-    ɵcomponentImports: [
-        MockChildComponent
-    ]
+  componentImports: [MockChildComponent],
 })
 ```
 
-### `detectChanges`
+### `childComponentOverrides`
 
-Will call `detectChanges` when the component is compiled
+Collection of child component specified providers to override with.
+
+**default** : `undefined`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  childComponentOverrides: [
+    {
+      component: ChildOfAppComponent,
+      providers: [{provide: ChildService, useValue: {hello: 'world'}}],
+    },
+  ],
+})
+```
+
+### `detectChangesOnRender`
+
+Invokes `detectChanges` after the component is rendered.
 
 **default** : `true`
 
 **example**:
 
 ```typescript
-await render(AppComponent, {detectChanges: false})
+await render(AppComponent, {detectChangesOnRender: false})
+```
+
+### `autoDetectChanges`
+
+Automatically detect changes as a "real" running component would do. For
+example, runs a change detection cycle when an event has occured.
+
+**default** : `true`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  autoDetectChanges: false,
+})
 ```
 
 ### `excludeComponentDeclaration`
