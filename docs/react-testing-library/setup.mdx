@@ -256,23 +256,18 @@ If you want to add custom queries globally, you can do this by defining your cus
   <TabItem value="jsx">
 
 ```js title="test-utils.js"
-import {render, queries, screen, within} from '@testing-library/react'
+import {queries, within, render} from '@testing-library/react'
 import * as customQueries from './custom-queries'
-
-const customScreen = {
-  ...screen,
-  ...within(document.body, customQueries),
-}
 
 const allQueries = {
   ...queries,
   ...customQueries,
 }
 
+const customScreen = within(document.body, allQueries)
+const customWithin = element => within(element, allQueries)
 const customRender = (ui, options) =>
   render(ui, {queries: allQueries, ...options})
-
-const customWithin = element => within(element, allQueries)
 
 // re-export everything
 export * from '@testing-library/react'
@@ -280,8 +275,8 @@ export * from '@testing-library/react'
 // override render method
 export {
   customScreen as screen,
-  customRender as render,
   customWithin as within,
+  customRender as render,
 }
 ```
 
