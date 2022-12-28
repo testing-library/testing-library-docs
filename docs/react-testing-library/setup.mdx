@@ -491,3 +491,72 @@ And register it using mocha's `-r` flag:
 ```
 mocha -r ./mocha-watch-cleanup-after-each.js
 ```
+
+## Vitest
+
+When using the react-testing-library with [Vitest](https://vitest.dev/),
+you need to install jsdom and the @testing-library:
+
+```bash npm2yarn
+npm install --save-dev jsdom
+npm install --save-dev @testing-library/react @testing-library/jest-dom
+```
+
+Since the testing library uses jsdom, you must set the `environments`
+to `jsdom`.
+
+```js
+// vite.config.js
+export default defineConfig({
+  test: {
+    // highlight-next-line
+    environment: "jsdom",
+  },
+})
+```
+
+After installing the packages and setting the environment, you can start
+testing. However, some further steps might help you develop more efficiently.
+
+When utilizing testing-library APIs, you must first import
+`@testing-library/jest-dom` in every file. It's quite inconvenient.
+It is preferable to create a file that imports testing-library.
+
+```js
+// src/setupTests.js
+import '@testing-library/jest-dom'
+```
+
+By the config `setupFiles` in vitest, you can run it before each test file.
+
+```js
+// vite.config.js
+export default defineConfig({
+  test: {
+    environment: "jsdom",
+    // highlight-next-line
+    setupFiles: "src/setupTests.js"
+  },
+})
+```
+
+Now, you don't need to import testing-library in every test file.
+
+By default, vitest does not provide [global](https://vitest.dev/config/#globals) APIs
+for explicitness, so you have to import the `describe` or `test` from vitest
+when using them. If you want to use them globally without importing them,
+you can set `globals` to `true` in the `vite.config.js`.
+
+```js
+// vite.config.js
+export default defineConfig({
+  test: {
+    environment: "jsdom",
+    setupFiles: "src/setupTests.js"
+    // highlight-next-line
+    globals: true,
+  },
+})
+```
+
+Now, you don't need to import the `describe` and `test` manually from vitest.
