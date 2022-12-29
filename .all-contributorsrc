@@ -2222,6 +2222,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "tiborbarsi",
+      "name": "Tibor Barsi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21023594?v=4",
+      "profile": "https://github.com/tiborbarsi",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
