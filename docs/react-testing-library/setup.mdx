@@ -247,8 +247,8 @@ export {
 You can then override and append the new queries via the render function by
 passing a [`queries`](api.mdx#render-options) option.
 
-If you want to add custom queries globally, you can do this by defining a custom
-render method:
+If you want to add custom queries globally, you can do this by defining your customized
+`render`, `screen` and `within` methods:
 
   <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'Javascript',
   value: 'jsx'}, {label: 'Typescript', value: 'tsx'}, ]}>
@@ -256,17 +256,28 @@ render method:
   <TabItem value="jsx">
 
 ```js title="test-utils.js"
-import {render, queries} from '@testing-library/react'
+import {render, queries, within} from '@testing-library/react'
 import * as customQueries from './custom-queries'
 
+const allQueries = {
+  ...queries,
+  ...customQueries,
+}
+
+const customScreen = within(document.body, allQueries)
+const customWithin = element => within(element, allQueries)
 const customRender = (ui, options) =>
-  render(ui, {queries: {...queries, ...customQueries}, ...options})
+  render(ui, {queries: allQueries, ...options})
 
 // re-export everything
 export * from '@testing-library/react'
 
 // override render method
-export {customRender as render}
+export {
+  customScreen as screen,
+  customWithin as within,
+  customRender as render,
+}
 ```
 
   </TabItem>
@@ -274,17 +285,28 @@ export {customRender as render}
   <TabItem value="tsx">
 
 ```ts title="test-utils.ts"
-import {render, queries, RenderOptions} from '@testing-library/react'
+import {render, queries, within, RenderOptions} from '@testing-library/react'
 import * as customQueries from './custom-queries'
 import {ReactElement} from 'react'
 
+const allQueries = {
+  ...queries,
+  ...customQueries,
+}
+
+const customScreen = within(document.body, allQueries)
+const customWithin = (element: ReactElement) => within(element, allQueries)
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'queries'>,
-) => render(ui, {queries: {...queries, ...customQueries}, ...options})
+) => render(ui, {queries: allQueries, ...options})
 
 export * from '@testing-library/react'
-export {customRender as render}
+export {
+  customScreen as screen,
+  customWithin as within,
+  customRender as render,
+}
 ```
 
   </TabItem>
