@@ -2240,6 +2240,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "wtlin1228",
+      "name": "Leo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16910748?v=4",
+      "profile": "https://leonerd.gatsbyjs.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
