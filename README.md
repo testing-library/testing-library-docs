@@ -452,6 +452,7 @@ Thanks goes to these wonderful people
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/tiborbarsi"><img src="https://avatars.githubusercontent.com/u/21023594?v=4?s=100" width="100px;" alt="Tibor Barsi"/><br /><sub><b>Tibor Barsi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tiborbarsi" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/tnyo43"><img src="https://avatars.githubusercontent.com/u/11014018?v=4?s=100" width="100px;" alt="Tomoya Kashifuku"/><br /><sub><b>Tomoya Kashifuku</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tnyo43" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
