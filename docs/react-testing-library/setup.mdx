@@ -340,7 +340,7 @@ using Create React App without TypeScript, save this to `jsconfig.json` instead.
 
 ### Jest 28
 
-If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately. 
+If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separately.
 ```bash npm2yarn
 npm install --save-dev jest-environment-jsdom
 ```
@@ -492,7 +492,7 @@ And register it using mocha's `-r` flag:
 mocha -r ./mocha-watch-cleanup-after-each.js
 ```
 
-## Vitest
+### Vitest
 
 When using the react-testing-library with [Vitest](https://vitest.dev/),
 you need to install jsdom and the @testing-library:
@@ -552,7 +552,7 @@ you can set `globals` to `true` in the `vite.config.js`.
 export default defineConfig({
   test: {
     environment: "jsdom",
-    setupFiles: "src/setupTests.js"
+    setupFiles: "src/setupTests.js",
     // highlight-next-line
     globals: true,
   },
