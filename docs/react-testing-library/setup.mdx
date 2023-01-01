@@ -495,14 +495,26 @@ mocha -r ./mocha-watch-cleanup-after-each.js
 ### Vitest
 
 To test web applications with [Vitest](https://vitest.dev/),
-you need to install a browser-like environemnt such as `jsdom`.
+you need to install a browser-like environment such as `jsdom`.
 
 ```bash npm2yarn
 npm install --save-dev vitest jsdom
 npm install --save-dev @testing-library/react @testing-library/jest-dom
 ```
 
-Then set the `environment` to `jsdom`.
+In the `package.json`, you can setup the script for running the test by Vitest.
+
+```json
+// package.json
+{
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  }
+}
+```
+
+Then set the `environment` to `jsdom` in the `vite.config.js`.
 
 ```js
 // vite.config.js
@@ -514,17 +526,29 @@ export default defineConfig({
 })
 ```
 
+If you are using TypeScript, add a triple slash command at the top of the
+config file to reference Vitest types.
+
+```ts
+// vite.config.ts
+// highlight-next-line
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+  },
+});
+```
+
 > **NOTE**
 >
-> There is an altertive to JSDOM called [Happy DOM](https://github.com/capricorn86/happy-dom).
-> You can use browser-like environemnt through either `jsdom` or `happy-dom`.
+> An alternative to JSDOM is [Happy DOM](https://github.com/capricorn86/happy-dom).
+> You can use either `jsdom` or `happy-dom` to create a browser-like environment.
 
-After installing the packages and setting the environment, you can start
-testing. However, some further steps might help you develop more efficiently.
-
-By default, vitest does not provide [global](https://vitest.dev/config/#globals) APIs
-for explicitness, so you have to import the `describe` or `test` from vitest
-when using them. If you want to use them globally without importing them,
+By default, Vitest does not provide [global](https://vitest.dev/config/#globals) APIs.
+To use them without importing them like jest,
 you can set `globals` to `true` in the `vite.config.js`.
 
 ```js
@@ -532,35 +556,49 @@ you can set `globals` to `true` in the `vite.config.js`.
 export default defineConfig({
   test: {
     environment: "jsdom",
-    setupFiles: "src/setupTests.js",
     // highlight-next-line
     globals: true,
   },
 })
 ```
 
-Now, you don't need to import the `describe` and `test` manually from vitest.
+If you are using TypeScript, you need to add `vitest/global` to the `types` field in
+your `tsconfig.json`.
 
-When utilizing testing-library APIs, you must first import
-`@testing-library/jest-dom` in every file. It's quite inconvenient.
-It is preferable to create a file that imports testing-library.
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  }
+}
+```
+
+> **NOTE**
+>
+> Setting `test.globals` to `true` also improves compatibility when using
+> testing-library with Vitest, such as extending matchers and auto-cleanup, so
+> you don't have to set them up manually.
+
+To extends the matchers in Vitest, you just need to import the `@testing-library/jest-dom`
+after setting `test.globals` to `true`. To do this, create a `setupTests` file
+and import `@testing-library/jest-dom`.
 
 ```js
 // src/setupTests.js
 import '@testing-library/jest-dom'
 ```
 
-By the config `setupFiles` in vitest, you can run it before each test file.
+Vitest will run `src/setupTests.js` before each test file, as configured in `setupFiles`.
 
 ```js
 // vite.config.js
 export default defineConfig({
   test: {
     environment: "jsdom",
+    globals: true,
     // highlight-next-line
     setupFiles: "src/setupTests.js"
   },
 })
 ```
-
-Now, you don't need to import testing-library in every test file.
