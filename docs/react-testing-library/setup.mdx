@@ -494,16 +494,15 @@ mocha -r ./mocha-watch-cleanup-after-each.js
 
 ### Vitest
 
-When using the react-testing-library with [Vitest](https://vitest.dev/),
-you need to install jsdom and the @testing-library:
+To test web applications with [Vitest](https://vitest.dev/),
+you need to install a browser-like environemnt such as `jsdom`.
 
 ```bash npm2yarn
 npm install --save-dev vitest jsdom
 npm install --save-dev @testing-library/react @testing-library/jest-dom
 ```
 
-Since the testing library uses jsdom, you must set the `environments`
-to `jsdom`.
+Then set the `environment` to `jsdom`.
 
 ```js
 // vite.config.js
@@ -514,6 +513,11 @@ export default defineConfig({
   },
 })
 ```
+
+> **NOTE**
+>
+> There is an altertive to JSDOM called [Happy DOM](https://github.com/capricorn86/happy-dom).
+> You can use browser-like environemnt through either `jsdom` or `happy-dom`.
 
 After installing the packages and setting the environment, you can start
 testing. However, some further steps might help you develop more efficiently.
