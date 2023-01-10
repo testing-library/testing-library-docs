@@ -2249,6 +2249,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "erik-metz",
+      "name": "Erik Metz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69653055?v=4",
+      "profile": "http://spray-r.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
