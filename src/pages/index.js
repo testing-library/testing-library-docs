@@ -269,7 +269,7 @@ export default class Index extends React.Component {
           <Block layout="threeColumn" background={null}>
             {[
               {
-                image: `${baseUrl}img/impactful-conribution-award-399x544.png`,
+                image: `${baseUrl}img/impactful-contribution-award-399x544.png`,
                 imageAlign: 'top',
                 imageLink: 'https://osawards.com/react/2019',
                 imageAlt:
