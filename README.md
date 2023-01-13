@@ -455,6 +455,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tnyo43"><img src="https://avatars.githubusercontent.com/u/11014018?v=4?s=100" width="100px;" alt="Tomoya Kashifuku"/><br /><sub><b>Tomoya Kashifuku</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tnyo43" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://leonerd.gatsbyjs.io/"><img src="https://avatars.githubusercontent.com/u/16910748?v=4?s=100" width="100px;" alt="Leo"/><br /><sub><b>Leo</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=wtlin1228" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://spray-r.com"><img src="https://avatars.githubusercontent.com/u/69653055?v=4?s=100" width="100px;" alt="Erik Metz"/><br /><sub><b>Erik Metz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=erik-metz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mrtyagi07"><img src="https://avatars.githubusercontent.com/u/83115094?v=4?s=100" width="100px;" alt="Vaibhav Tyagi"/><br /><sub><b>Vaibhav Tyagi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mrtyagi07" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
