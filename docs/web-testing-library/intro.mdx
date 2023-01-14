@@ -1,0 +1,49 @@
+---
+id: intro
+title: Introduction
+---
+
+## The problem
+
+You want to write maintainable tests for the
+[Web Platform](https://proposal-common-min-api.deno.dev/) or React Native. As a
+part of this goal, you want your tests to avoid including implementation details
+of your components and rather focus on making your tests give you the confidence
+for which they are intended. As part of this, you want your testbase to be
+maintainable in the long run so refactors of your components (changes to
+implementation but not functionality) don't break your tests and slow you and
+your team down.
+
+## This solution
+
+The `Web Testing Library` is a very light-weight solution for testing code that
+runs on the Web Platform (a browser, [Node.js][node], [Deno](https://deno.land/)
+etc) or React Native. The main utilities it provides involve querying the DOM
+for nodes in a way that's similar to how the user finds elements on the page. In
+this way, the library helps ensure your tests give you confidence in your UI
+code. The `DOM Testing Library`'s primary guiding principle is:
+
+> The more your tests resemble the way your software is used, the more
+> confidence they can give you.
+
+We try to only expose methods and utilities that encourage you to write tests
+that closely resemble how your code is used on the Web Platform or React Native.
+
+Utilities are included in this project based on the following guiding
+principles:
+
+1. They should be usable on both the Web Platform **and** React Native
+2. It should be generally useful for testing the application in the way the user
+   would use it. We _are_ making some trade-offs here because we're using a
+   computer and often a simulated environment, but in general, utilities should
+   encourage tests that use the application the way they're intended to be used.
+3. Utility implementations and APIs should be simple and flexible.
+
+**What this library is not**:
+
+1.  A test runner or framework
+2.  Specific to a testing framework (though we do have better defaults for Jest
+    like support for fake timers).
+
+[jest]: https://jestjs.io
+[node]: https://nodejs.org/en/

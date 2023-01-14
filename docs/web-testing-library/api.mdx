@@ -1,0 +1,57 @@
+---
+id: api
+title: API
+---
+
+Several utilities are provided for dealing with asynchronous code. These can be
+useful to wait for an element to appear or disappear in response to an event,
+user action, timeout, or Promise. (See the
+[guide to testing disappearance](guide-disappearance.mdx).)
+
+The async methods return Promises, so be sure to use `await` or `.then` when
+calling them.
+
+## `waitFor`
+
+```typescript
+function waitFor<T>(
+  callback: () => T | Promise<T>,
+  options?: {
+    timeout?: number
+    interval?: number
+    onTimeout?: (error: Error) => Error
+  },
+): Promise<T>
+```
+
+When in need to wait for any period of time you can use `waitFor`, to wait for
+your expectations to pass. Here's a simple example:
+
+```javascript
+// ...
+// Wait until the callback does not throw an error. In this case, that means
+// it'll wait until the mock function has been called once.
+await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
+// ...
+```
+
+`waitFor` may run the callback a number of times until the timeout is reached.
+Note that the number of calls is constrained by the `timeout` and `interval`
+options.
+
+This can be useful if you have a unit test that mocks API calls and you need to
+wait for your mock promises to all resolve.
+
+If you return a promise in the `waitFor` callback (either explicitly or
+implicitly with `async` syntax), then the `waitFor` utility will not call your
+callback again until that promise rejects. This allows you to `waitFor` things
+that must be checked asynchronously.
+
+The default `interval` is `50ms`. However it will run your callback immediately
+before starting the intervals.
+
+The default `timeout` is `1000ms`.
+
+The default `onTimeout` takes the error and appends the `container`'s printed
+state to the error message which should hopefully make it easier to track down
+what caused the timeout.
