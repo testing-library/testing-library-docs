@@ -65,14 +65,14 @@ This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
 
 If you return a promise in the `waitFor` callback (either explicitly or
-implicitly with `async` syntax), then the `waitFor` utility will not call your
-callback again until that promise rejects. This allows you to `waitFor` things
-that must be checked asynchronously.
+implicitly with the `async` syntax), then the `waitFor` utility does not call
+your callback again until that promise rejects. This allows you to `waitFor`
+things that must be checked asynchronously.
 
 The default `container` is the global `document`. Make sure the elements you
 wait for are descendants of `container`.
 
-The default `interval` is `50ms`. However it will run your callback immediately
+The default `interval` is `50ms`. However it runs your callback immediately
 before starting the intervals.
 
 The default `timeout` is `1000ms`.
@@ -83,9 +83,9 @@ what caused the timeout.
 
 The default `mutationObserverOptions` is
 `{subtree: true, childList: true, attributes: true, characterData: true}` which
-will detect additions and removals of child elements (including text nodes) in
-the `container` and any of its descendants. It will also detect attribute
-changes. When any of those changes occur, it will re-run the callback.
+detects additions and removals of child elements (including text nodes) in the
+`container` and any of its descendants. It also detects attribute changes. When
+any of those changes occur, it re-runs the callback.
 
 ## `waitForElementToBeRemoved`
 
@@ -125,8 +125,8 @@ el.parentElement.removeChild(el)
 // logs 'Element no longer in DOM'
 ```
 
-`waitForElementToBeRemoved` will throw an error if the first argument is `null`
-or an empty array:
+`waitForElementToBeRemoved` throws an error if the first argument is `null` or
+an empty array:
 
 ```javascript
 waitForElementToBeRemoved(null).catch(err => console.log(err))
