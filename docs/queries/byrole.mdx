@@ -15,13 +15,11 @@ import TabItem from '@theme/TabItem'
 getByRole(
   // If you're using `screen`, then skip the container argument:
   container: HTMLElement,
-  role: TextMatch,
+  role: string,
   options?: {
-    exact?: boolean = true,
     hidden?: boolean = false,
     name?: TextMatch,
     description?: TextMatch,
-    normalizer?: NormalizerFn,
     selected?: boolean,
     checked?: boolean,
     pressed?: boolean,
