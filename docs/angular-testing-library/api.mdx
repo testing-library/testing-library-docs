@@ -411,8 +411,8 @@ expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
 ### `rerender`
 
-Create and render a new instance of the component.
-To update the existing component use [change](#change).
+Create and render a new instance of the component. Input properties that are not
+defined are cleared. To keep them use [change](#change).
 
 ```typescript
 const {rerender} = await render(Counter, {
