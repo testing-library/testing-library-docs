@@ -17,9 +17,11 @@ calling them.
 function waitFor<T>(
   callback: () => T | Promise<T>,
   options?: {
-    timeout?: number
     interval?: number
     onTimeout?: (error: Error) => Error
+    showOriginalStackTrace?: boolean
+    signal?: AbortSignal
+    timeout?: number
   },
 ): Promise<T>
 ```
@@ -47,10 +49,26 @@ implicitly with `async` syntax), then the `waitFor` utility will not call your
 callback again until that promise rejects. This allows you to `waitFor` things
 that must be checked asynchronously.
 
-The default `interval` is `50ms`. However it will run your callback immediately
-before starting the intervals.
+The default `interval` is `50ms`. However, it runs your callback
+immediatelybefore starting the intervals.
+
+The `onTimeout` callback receives the error with which `waitFor` should reject.
+You can return a more detailed error with which `waitFor` should reject. For
+example, in a DOM you can return a snapshot of the DOM at the time `waitFor`
+timed out.
+
+You can pass an
+[`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) if
+you want `waitFor` to stop checking the callback (e.g. if you want it to race
+against other observers like
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver)).
+`waitFor` will then reject with the
+[`reason` of the given `AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/reason).
+
+By default, `waitFor` will reject with the stack trace of the `waitFor` call.
+This is usually the more relevant stack trace for developers. However, you might
+want to trace the last call to the given `callback` that caused `waitFor` to
+reject. Then you can pass `showOriginalStackTrace: true`. We don't recommend
+using it unless you know what you're doing.
 
 The default `timeout` is `1000ms`.
-
-The default `onTimeout` receives the error which should hopefully make it easier
-to track down what caused the timeout.
