@@ -4,3 +4,15 @@ title: Setup
 ---
 
 `Vue Testing Library` does not require any configuration to be used.
+
+### Cleanup
+
+#### Jest
+
+[`cleanup`](./api#cleanup) will be called after each test automatically for
+Jest, so normally you don't need to change anything.
+
+#### Vitest
+
+Add `globals: true` to your `test` section of your vite config file to ensure we
+can access `afterEach` to do the cleanup.
