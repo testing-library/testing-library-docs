@@ -14,5 +14,4 @@ Jest, so normally you don't need to change anything.
 
 #### Vitest
 
-Add `globals: true` to your `test` section of your vite config file to ensure we
-can access `afterEach` to do the cleanup.
+If you're using Vitest and want to cleanup after each test, you need to [enable globals](https://vitest.dev/config/#globals) through its configuration file.
