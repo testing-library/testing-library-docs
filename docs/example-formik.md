@@ -65,9 +65,9 @@ test('rendering and submitting a basic Formik form', async () => {
   render(<MyForm onSubmit={handleSubmit} />)
   const user = userEvent.setup()
 
-  await user.type(screen.getByLabelText(/first name/i), 'John')
-  await user.type(screen.getByLabelText(/last name/i), 'Dee')
-  await user.type(screen.getByLabelText(/email/i), 'john.dee@someemail.com')
+  await user.type(screen.getByRole("textbox", { name: /first name/i }), 'John')
+  await user.type(screen.getByRole("textbox", { name: /last name/i }), 'Dee')
+  await user.type(screen.getByRole("textbox", { name: /email/i }), 'john.dee@someemail.com')
 
   await user.click(screen.getByRole('button', {name: /submit/i}))
 
