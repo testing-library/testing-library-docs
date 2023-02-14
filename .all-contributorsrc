@@ -2285,6 +2285,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jharlowuk",
+      "name": "John Harlow",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41212861?v=4",
+      "profile": "http://jharlow.uk",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
