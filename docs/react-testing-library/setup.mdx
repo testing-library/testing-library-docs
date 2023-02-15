@@ -542,13 +542,8 @@ export default defineConfig({
 });
 ```
 
-> **NOTE**
->
-> An alternative to JSDOM is [Happy DOM](https://github.com/capricorn86/happy-dom).
-> You can use either `jsdom` or `happy-dom` to create a browser-like environment.
-
 By default, Vitest does not provide [global](https://vitest.dev/config/#globals) APIs.
-To use them without importing them like jest,
+To use them without importing them as jest,
 you can set `globals` to `true` in the `vite.config.js`.
 
 ```js
@@ -574,45 +569,11 @@ your `tsconfig.json`.
 }
 ```
 
-> **NOTE**
->
-> Setting `test.globals` to `true` also improves compatibility when using
-> testing-library with Vitest, such as extending matchers and auto-cleanup, so
-> you don't have to set them up manually.
-
-To extends the matchers in Vitest, you just need to import the `@testing-library/jest-dom`
-after setting `test.globals` to `true`. To do this, create a `setupTests` file
-and import `@testing-library/jest-dom`.
-
-```js
-// src/setupTests.js
-import '@testing-library/jest-dom'
-```
-
-Vitest will run `src/setupTests.js` before each test file, as configured in `setupFiles`.
-
-```js
-// vite.config.js
-export default defineConfig({
-  test: {
-    environment: "jsdom",
-    globals: true,
-    // highlight-next-line
-    setupFiles: "src/setupTests.js"
-  },
-})
-```
-
-If you don't set `globals` to `true` as previously mentioned, you will need to
-extend the matchers and do the cleanup manually. You can do this in
-`setupFiles.js` as well.
+To extend the matchers and do the cleanup manually. You can do this in
+`setupFiles.js`.
 
 ```js
 // src/setupFiles.js
-
-/**
- * Do the setup here if you DO NOT set globals to true
- */
 import matchers from '@testing-library/jest-dom/matchers';
 import { cleanup } from '@testing-library/react';
 import { afterEach, expect } from 'vitest';
@@ -624,4 +585,18 @@ expect.extend(matchers);
 afterEach(() => {
   cleanup();
 });
+```
+
+Then set the `setupFiles` to `src/setupFiles.js` in the `vite.config.js`.
+
+```js
+// vite.config.js
+export default defineConfig({
+  test: {
+    environment: "jsdom",
+    globals: true,
+    // highlight-next-line
+    setupFiles: "src/setupTests.js"
+  },
+})
 ```
