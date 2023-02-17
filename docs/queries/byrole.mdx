@@ -23,6 +23,7 @@ getByRole(
     selected?: boolean,
     checked?: boolean,
     pressed?: boolean,
+    suggest?: boolean,
     current?: boolean | string,
     expanded?: boolean,
     queryFallbacks?: boolean,
@@ -182,6 +183,13 @@ For example in
 you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
 To learn more about the pressed state see
 [ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
+
+### `suggest`
+
+You can disable the ability to
+[throw suggestions](../dom-testing-library/api-configuration#throwsuggestions-experimental)
+for a specific query by setting this value to `false`.  
+Setting this value to `true` will throw suggestions for the specific query.
 
 ### `expanded`
 
