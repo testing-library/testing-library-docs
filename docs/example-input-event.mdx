@@ -16,10 +16,10 @@ import {render, fireEvent} from '@testing-library/react'
 function CostInput() {
   const [value, setValue] = useState('')
 
-  removeDollarSign = value => (value[0] === '$' ? value.slice(1) : value)
-  getReturnValue = value => (value === '' ? '' : `$${value}`)
+  const removeDollarSign = value => (value[0] === '$' ? value.slice(1) : value)
+  const getReturnValue = value => (value === '' ? '' : `$${value}`)
 
-  handleChange = ev => {
+  const handleChange = ev => {
     ev.preventDefault()
     const inputtedValue = ev.currentTarget.value
     const noDollarSign = removeDollarSign(inputtedValue)
