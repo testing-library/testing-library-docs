@@ -11,7 +11,7 @@ sidebar_label: Input Event
 
 ```jsx
 import React, {useState} from 'react'
-import {render, fireEvent} from '@testing-library/react'
+import {screen, render, fireEvent} from '@testing-library/react'
 
 function CostInput() {
   const [value, setValue] = useState('')
@@ -32,7 +32,7 @@ function CostInput() {
 
 const setup = () => {
   const utils = render(<CostInput />)
-  const input = utils.getByLabelText('cost-input')
+  const input = screen.getByLabelText('cost-input')
   return {
     input,
     ...utils,
