@@ -11,15 +11,15 @@ sidebar_label: Input Event
 
 ```jsx
 import React, {useState} from 'react'
-import {render, fireEvent} from '@testing-library/react'
+import {screen, render, fireEvent} from '@testing-library/react'
 
 function CostInput() {
   const [value, setValue] = useState('')
 
-  removeDollarSign = value => (value[0] === '$' ? value.slice(1) : value)
-  getReturnValue = value => (value === '' ? '' : `$${value}`)
+  const removeDollarSign = value => (value[0] === '$' ? value.slice(1) : value)
+  const getReturnValue = value => (value === '' ? '' : `$${value}`)
 
-  handleChange = ev => {
+  const handleChange = ev => {
     ev.preventDefault()
     const inputtedValue = ev.currentTarget.value
     const noDollarSign = removeDollarSign(inputtedValue)
@@ -32,7 +32,7 @@ function CostInput() {
 
 const setup = () => {
   const utils = render(<CostInput />)
-  const input = utils.getByLabelText('cost-input')
+  const input = screen.getByLabelText('cost-input')
   return {
     input,
     ...utils,
