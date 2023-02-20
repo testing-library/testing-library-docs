@@ -461,6 +461,7 @@ Thanks goes to these wonderful people
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://jharlow.uk"><img src="https://avatars.githubusercontent.com/u/41212861?v=4?s=100" width="100px;" alt="John Harlow"/><br /><sub><b>John Harlow</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jharlowuk" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/morgan121"><img src="https://avatars.githubusercontent.com/u/62575603?v=4?s=100" width="100px;" alt="Morgan Hunter"/><br /><sub><b>Morgan Hunter</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=morgan121" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
