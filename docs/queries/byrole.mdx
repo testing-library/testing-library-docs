@@ -55,7 +55,7 @@ accessible name is for simple cases equal to e.g. the label of a form element,
 or the text content of a button, or the value of the `aria-label` attribute. It
 can be used to query a specific element if multiple elements with the same role
 are present on the rendered content. For an in-depth guide check out
-["What is an accessible name?" from ThePacielloGroup](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/).
+["What is an accessible name?" from TPGi](https://www.tpgi.com/what-is-an-accessible-name/).
 If you only query for a single element with `getByText('The name')` it's
 oftentimes better to use `getByRole(expectedRole, { name: 'The name' })`. The
 accessible name query does not replace other queries such as `*ByAlt` or
