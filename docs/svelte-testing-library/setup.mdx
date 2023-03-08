@@ -66,6 +66,26 @@ with any testing framework and runner you're comfortable with.
     ```js
     import '@testing-library/jest-dom';
     ```
+    
+    To have Vitest import this automatically in _every_ test file, add the import statement to a new file, then add the file to the `setupFiles` array in the `vitest.config.ts` (in this case, the file is `vitest.include.jsdom.ts` in the project root)
+    
+    ```js
+    import { defineConfig } from 'vitest/config';
+    import { svelte } from '@sveltejs/vite-plugin-svelte';
+
+    export default defineConfig({
+        plugins: [svelte({ hot: !process.env.VITEST })],
+        test: {
+            include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+            globals: true,
+            environment: 'jsdom',
+            setupFiles: [
+                './vitest.include.jsdom.ts'
+            ]
+        }
+    });
+
+    ```
 
 6.  Create your component and a test file (checkout the rest of the docs to see how)
     and run the following command to run the tests.
