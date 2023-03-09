@@ -28,6 +28,12 @@ getByRole(
     expanded?: boolean,
     queryFallbacks?: boolean,
     level?: number,
+    value?: {
+      min?: number,
+      max?: number,
+      now?: number,
+      text?: TextMatch,
+    }
   }): HTMLElement
 ```
 
@@ -320,6 +326,70 @@ To learn more about the `aria-level` property, see
 
 > The `level` option is _only_ applicable to the `heading` role. An error will
 > be thrown when used with any other role.
+
+### `value`
+
+A range widget can be queried by any value `getByRole('heading')` or by a
+specific value using the `level` option
+`getByRole('heading', { value: { now: 5, min: 0, max: 10, text: 'medium' } })`.
+
+Note that you don't have to specify all properties in `value`. A subset is
+sufficient e.g. `getByRole('heading', { value: { now: 5, text: 'medium' } })`.
+
+Given the example below,
+
+```html
+<body>
+  <section>
+    <button
+      role="spinbutton"
+      aria-valuenow="5"
+      aria-valuemin="0"
+      aria-valuemax="10"
+      aria-valuetext="medium"
+    >
+      Volume
+    </button>
+    <button
+      role="spinbutton"
+      aria-valuenow="3"
+      aria-valuemin="0"
+      aria-valuemax="10"
+      aria-valuetext="medium"
+    >
+      Pitch
+    </button>
+  </section>
+</body>
+```
+
+you can query the `Volume` spinbutton using
+`getByRole('heading', { value: { now: 5 } })`.
+
+```js
+getByRole('heading', {value: {now: 5}})
+// <button>Volume</button>
+
+getAllByRole('heading', {value: {min: 0}})
+// [
+//   <button>Volume</button>>,
+//   <button>Pitch</button>
+// ]
+```
+
+> Every specified property in `value` must match. For example, if you query for
+> `{value: {min: 0, now: 3}}` `aria-valuemin` must be equal to 0 **AND**
+> `aria-valuenow` must be equal to 3
+
+> The `value` option is _only_ applicable to certain roles (check the linked MDN
+> pages below for applicable roles). An error will be thrown when used with any
+> other role.
+
+To learn more about the `aria-value*` properties, see
+[MDN `aria-valuemin`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemin),
+[MDN `aria-valuemax`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemax),
+[MDN `aria-valuenow`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuenow),
+[MDN `aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuetext).
 
 ### `description`
 
