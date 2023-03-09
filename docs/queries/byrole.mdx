@@ -165,26 +165,6 @@ the "👎" by calling `getByRole('link', { current: false })`. To learn more abo
 the current state see
 [ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current).
 
-### `pressed`
-
-Buttons can have a pressed state. You can filter the returned elements by their
-pressed state by setting `pressed: true` or `pressed: false`.
-
-For example in
-
-```html
-<body>
-  <section>
-    <button aria-pressed="true">👍</button>
-    <button aria-pressed="false">👎</button>
-  </section>
-</body>
-```
-
-you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
-To learn more about the pressed state see
-[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
-
 ### `disabled`
 
 You can filter elements by their disabled state by setting `disabled: true` or
@@ -206,6 +186,26 @@ you can get the "Login" button by calling
 state see
 [ARIA `aria-disabled`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed) and
 [MDN `disabled` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled).
+
+### `pressed`
+
+Buttons can have a pressed state. You can filter the returned elements by their
+pressed state by setting `pressed: true` or `pressed: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button aria-pressed="true">👍</button>
+    <button aria-pressed="false">👎</button>
+  </section>
+</body>
+```
+
+you can get the "👍" button by calling `getByRole('button', { pressed: true })`.
+To learn more about the pressed state see
+[ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed).
 
 ### `suggest`
 
