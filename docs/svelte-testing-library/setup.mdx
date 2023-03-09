@@ -67,7 +67,9 @@ with any testing framework and runner you're comfortable with.
     import '@testing-library/jest-dom';
     ```
     
-    To have Vitest import this automatically in _every_ test file, add the import statement to a new file, then add the file to the `setupFiles` array in the `vitest.config.ts` (in this case, the file is `vitest.include.jsdom.ts` in the project root)
+    5.3 Set up automatic imports (optional)
+
+    To import this automatically in _every_ test file, create a new file containing the import statement from the previous step, then add the file to the `setupFiles` array in the `vitest.config.ts` (in this case, the file is `vitest.include.jsdom.ts` in the project root)
     
     ```js
     import { defineConfig } from 'vitest/config';
