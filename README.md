@@ -463,6 +463,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="http://jharlow.uk"><img src="https://avatars.githubusercontent.com/u/41212861?v=4?s=100" width="100px;" alt="John Harlow"/><br /><sub><b>John Harlow</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=jharlowuk" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/morgan121"><img src="https://avatars.githubusercontent.com/u/62575603?v=4?s=100" width="100px;" alt="Morgan Hunter"/><br /><sub><b>Morgan Hunter</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=morgan121" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Mozl"><img src="https://avatars.githubusercontent.com/u/24245755?v=4?s=100" width="100px;" alt="Louis Moselhi"/><br /><sub><b>Louis Moselhi</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Mozl" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rydash"><img src="https://avatars.githubusercontent.com/u/9492442?v=4?s=100" width="100px;" alt="Ryan McGill"/><br /><sub><b>Ryan McGill</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rydash" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>

@@ -2312,6 +2312,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rydash",
+      "name": "Ryan McGill",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9492442?v=4",
+      "profile": "https://github.com/rydash",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
