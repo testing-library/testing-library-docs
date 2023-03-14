@@ -51,7 +51,7 @@ import Component from './Component'
 
 test('Can stub components', () => {
   render(Component, {
-    stubs: ['FontAwesomeIcon'],
+     global: { stubs: ['FontAwesomeIcon'] },
   })
 })
 ```
