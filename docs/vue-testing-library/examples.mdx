@@ -29,24 +29,24 @@ title: Examples
 ```
 
 ```js
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent, screen} from '@testing-library/vue'
 import Component from './Component.vue'
 
 test('increments value on click', async () => {
-  // The render method returns a collection of utilities to query your component.
-  const {getByText} = render(Component)
+  render(Component)
 
+  // screen has all queries that you can use in your tests.
   // getByText returns the first matching node for the provided text, and
   // throws an error if no elements match or if more than one match is found.
-  getByText('Times clicked: 0')
+  screen.getByText('Times clicked: 0')
 
-  const button = getByText('increment')
+  const button = screen.getByText('increment')
 
   // Dispatch a native click event to our button element.
   await fireEvent.click(button)
   await fireEvent.click(button)
 
-  getByText('Times clicked: 2')
+  screen.getByText('Times clicked: 2')
 })
 ```
 
@@ -72,23 +72,23 @@ test('increments value on click', async () => {
 ```
 
 ```js
-import {render, fireEvent} from '@testing-library/vue'
+import {render, fireEvent, screen} from '@testing-library/vue'
 import Component from './Component.vue'
 
 test('properly handles v-model', async () => {
-  const {getByLabelText, getByText} = render(Component)
+  render(Component)
 
   // Asserts initial state.
-  getByText('Hi, my name is Alice')
+  screen.getByText('Hi, my name is Alice')
 
   // Get the input DOM node by querying the associated label.
-  const usernameInput = getByLabelText(/username/i)
+  const usernameInput = screen.getByLabelText(/username/i)
 
   // Updates the <input> value and triggers an `input` event.
   // fireEvent.input() would make the test fail.
   await fireEvent.update(usernameInput, 'Bob')
 
-  getByText('Hi, my name is Bob')
+  screen.getByText('Hi, my name is Bob')
 })
 ```
 
