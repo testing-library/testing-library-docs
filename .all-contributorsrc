@@ -2321,6 +2321,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "renansoares",
+      "name": "Renan Andrade",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1657840?v=4",
+      "profile": "http://rensoares.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
