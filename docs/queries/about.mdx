@@ -306,8 +306,8 @@ can contain options that affect the precision of string matching:
 
 Before running any matching logic against text in the DOM, `DOM Testing Library`
 automatically normalizes that text. By default, normalization consists of
-trimming whitespace from the start and end of text, and collapsing multiple
-adjacent whitespace characters into a single space.
+trimming whitespace from the start and end of text, and **collapsing multiple
+adjacent whitespace characters within the string into a single space**.
 
 If you want to prevent that normalization, or provide alternative normalization
 (e.g. to remove Unicode control characters), you can provide a `normalizer`
