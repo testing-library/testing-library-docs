@@ -370,6 +370,31 @@ test('returns logged in user', () => {
 })
 ```
 
+If you have multiple props, try the following recipie
+```jsx
+function useMyGreetingHook(userA, userB) {
+  const greeting = React.useMemo(() => {
+    return 'Hello ' + userA + ' and ' + userB
+  }, [userA, userB])
+  return greeting
+}
+
+describe('useMyGreetingHook', () => {
+  test('greets given users', () => {
+    const {result, rerender} = renderHook((props) => {
+      const myGreeting = useMyGreetingHook(props.a, props.b)
+      return myGreeting
+    }, {
+      initialProps: {a: 'Alice', b: 'Bob'},
+    });
+    expect(result.current).toEqual('Hello Alice and Bob')
+    rerender({a: 'sam', b: 'bob'})
+    expect(result.current).toEqual('Hello sam and bob')
+  })
+})
+
+```
+
 > NOTE: When using `renderHook` in conjunction with the `wrapper` and `initialProps` options, the `initialProps` are not passed to the `wrapper` component.
 > To provide props to the `wrapper` component, consider a solution like this:
 >
