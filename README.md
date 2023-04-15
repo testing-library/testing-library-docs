@@ -466,6 +466,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rydash"><img src="https://avatars.githubusercontent.com/u/9492442?v=4?s=100" width="100px;" alt="Ryan McGill"/><br /><sub><b>Ryan McGill</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rydash" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://rensoares.com"><img src="https://avatars.githubusercontent.com/u/1657840?v=4?s=100" width="100px;" alt="Renan Andrade"/><br /><sub><b>Renan Andrade</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=renansoares" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/boldurean"><img src="https://avatars.githubusercontent.com/u/64642760?v=4?s=100" width="100px;" alt="Vasilii Boldurean"/><br /><sub><b>Vasilii Boldurean</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=boldurean" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://theoutsider.dev"><img src="https://avatars.githubusercontent.com/u/882253?v=4?s=100" width="100px;" alt="Josias Schneider"/><br /><sub><b>Josias Schneider</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=josiasds" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
