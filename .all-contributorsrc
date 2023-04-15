@@ -2348,6 +2348,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ledenis",
+      "name": "Denis LE",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2855723?v=4",
+      "profile": "https://github.com/ledenis",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
