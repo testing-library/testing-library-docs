@@ -2339,6 +2339,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "josiasds",
+      "name": "Josias Schneider",
+      "avatar_url": "https://avatars.githubusercontent.com/u/882253?v=4",
+      "profile": "http://theoutsider.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
