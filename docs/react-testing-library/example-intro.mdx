@@ -74,7 +74,7 @@ See the following sections for a detailed breakdown of the test
 import React from 'react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
-import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+import {render, fireEvent, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Fetch from '../fetch'
 
@@ -93,7 +93,7 @@ test('loads and displays greeting', async () => {
 
   fireEvent.click(screen.getByText('Load Greeting'))
 
-  await waitFor(() => screen.getByRole('heading'))
+  await screen.findByRole('heading')
 
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
   expect(screen.getByRole('button')).toBeDisabled()
@@ -110,7 +110,7 @@ test('handles server error', async () => {
 
   fireEvent.click(screen.getByText('Load Greeting'))
 
-  await waitFor(() => screen.getByRole('alert'))
+  await screen.findByRole('alert')
 
   expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
   expect(screen.getByRole('button')).not.toBeDisabled()
@@ -136,7 +136,7 @@ import {rest} from 'msw'
 import {setupServer} from 'msw/node'
 
 // import react-testing methods
-import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+import {render, fireEvent, screen} from '@testing-library/react'
 
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom'
@@ -207,13 +207,9 @@ events to simulate user actions.
 fireEvent.click(screen.getByText('Load Greeting'))
 
 // wait until the `get` request promise resolves and
-// the component calls setState and re-renders.
-// `waitFor` waits until the callback doesn't throw an error
-
-await waitFor(() =>
-  // getByRole throws an error if it cannot find an element
-  screen.getByRole('heading'),
-)
+// the component calls setState and re-renders,
+// throwing an error if it cannot find an element
+await screen.findByRole('heading')
 ```
 
 ### Assert
