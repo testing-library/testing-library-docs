@@ -388,7 +388,7 @@ const {debug} = await render(AppComponent)
 debug()
 ```
 
-### `change`
+### `change` Deprecated, use rerender instead.
 
 Change the input of the component. This calls `detectChanges` after the props
 are updated.
@@ -422,7 +422,7 @@ const {rerender} = await render(Counter, {
 expect(screen.getByTestId('count-value').textContent).toBe('4')
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
-await rerender({count: 7})
+await rerender({componentProperties: {count: 7}})
 
 // count updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
