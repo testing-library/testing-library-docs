@@ -351,12 +351,12 @@ To learn more about the `aria-level` property, see
 
 ### `value`
 
-A range widget can be queried by any value `getByRole('heading')` or by a
+A range widget can be queried by any value `getByRole('spinbutton')` or by a
 specific value using the `level` option
 `getByRole('spinbutton', { value: { now: 5, min: 0, max: 10, text: 'medium' } })`.
 
 Note that you don't have to specify all properties in `value`. A subset is
-sufficient e.g. `getByRole('heading', { value: { now: 5, text: 'medium' } })`.
+sufficient e.g. `getByRole('spinbutton', { value: { now: 5, text: 'medium' } })`.
 
 Given the example below,
 
@@ -388,10 +388,10 @@ Given the example below,
 you can query specific spinbutton(s) with the following queries,
 
 ```js
-getByRole('heading', {value: {now: 5}})
+getByRole('spinbutton', {value: {now: 5}})
 // <button>Volume</button>
 
-getAllByRole('heading', {value: {min: 0}})
+getAllByRole('spinbutton', {value: {min: 0}})
 // [
 //   <button>Volume</button>,
 //   <button>Pitch</button>
