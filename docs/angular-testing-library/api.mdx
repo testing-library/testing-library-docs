@@ -388,27 +388,6 @@ const {debug} = await render(AppComponent)
 debug()
 ```
 
-### `change` Deprecated, use rerender instead.
-
-Change the input of the component. This calls `detectChanges` after the props
-are updated.
-
-```typescript
-const {change} = await render(Counter, {
-  componentProperties: {count: 4, name: 'Sarah'},
-})
-
-expect(screen.getByTestId('count-value').textContent).toBe('4')
-expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
-
-change({count: 7})
-
-// count updated to 7
-expect(screen.getByTestId('count-value').textContent).toBe('7')
-// name keeps the same value
-expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
-```
-
 ### `rerender`
 
 Create and render a new instance of the component. Input properties that are not
