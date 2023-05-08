@@ -29,6 +29,7 @@ getByRole(
     expanded?: boolean,
     queryFallbacks?: boolean,
     level?: number,
+    disabled?: boolean,
     value?: {
       min?: number,
       max?: number,
@@ -443,4 +444,33 @@ You can query a specific element like this
 
 ```js
 getByRole('alertdialog', {description: 'Your session is about to expire'})
+```
+
+### `disabled`
+
+You can filter the returned elements by their disabled state by setting
+`disabled: true`, `disabled: false`, `aria-disabled: true` or
+`aria-disabled: false`.
+
+For example in
+
+```html
+<body>
+  <button disabled>disabled</button>
+  <button aria-disabled="true">aria-disabled</button>
+  <button>normal</button>
+</body>
+```
+
+you can query a specific element(s) like this
+
+```js
+getAllByRole('button', {disabled: true})
+// [
+//   <button disabled>disabled</button>,
+//   <button aria-disabled="true">aria-disabled</button>
+// ]
+
+getByRole('button', {disabled: false})
+// <button>normal</button>
 ```
