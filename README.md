@@ -471,6 +471,7 @@ Thanks goes to these wonderful people
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ledenis"><img src="https://avatars.githubusercontent.com/u/2855723?v=4?s=100" width="100px;" alt="Denis LE"/><br /><sub><b>Denis LE</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ledenis" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nicoss54"><img src="https://avatars.githubusercontent.com/u/24563545?v=4?s=100" width="100px;" alt="Nicolas Frizzarin"/><br /><sub><b>Nicolas Frizzarin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Nicoss54" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/santoshyadavdev"><img src="https://avatars.githubusercontent.com/u/11923975?v=4?s=100" width="100px;" alt="Santosh Yadav"/><br /><sub><b>Santosh Yadav</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=santoshyadavdev" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
