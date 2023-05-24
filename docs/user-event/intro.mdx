@@ -59,6 +59,8 @@ itself - e.g. in a `before`/`after` hook - for reasons described in
 ["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
 
 ```js
+import userEvent from '@testing-library/user-event'
+
 // inlining
 test('trigger some awesome feature when clicking the button', async () => {
   const user = userEvent.setup()
@@ -71,6 +73,8 @@ test('trigger some awesome feature when clicking the button', async () => {
 ```
 
 ```js
+import userEvent from '@testing-library/user-event'
+
 // setup function
 function setup(jsx) {
   return {
