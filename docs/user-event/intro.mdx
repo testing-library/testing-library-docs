@@ -60,6 +60,7 @@ itself - e.g. in a `before`/`after` hook - for reasons described in
 
 ```js
 import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/vue'
 
 // inlining
 test('trigger some awesome feature when clicking the button', async () => {
@@ -74,6 +75,7 @@ test('trigger some awesome feature when clicking the button', async () => {
 
 ```js
 import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/vue'
 
 // setup function
 function setup(jsx) {
