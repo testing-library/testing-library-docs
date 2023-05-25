@@ -473,6 +473,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nicoss54"><img src="https://avatars.githubusercontent.com/u/24563545?v=4?s=100" width="100px;" alt="Nicolas Frizzarin"/><br /><sub><b>Nicolas Frizzarin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Nicoss54" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/santoshyadavdev"><img src="https://avatars.githubusercontent.com/u/11923975?v=4?s=100" width="100px;" alt="Santosh Yadav"/><br /><sub><b>Santosh Yadav</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=santoshyadavdev" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://caian.dev"><img src="https://avatars.githubusercontent.com/u/7551787?v=4?s=100" width="100px;" alt="Ilê Caian"/><br /><sub><b>Ilê Caian</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=caiangums" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://claritydev.net"><img src="https://avatars.githubusercontent.com/u/8878045?v=4?s=100" width="100px;" alt="Alex Khomenko"/><br /><sub><b>Alex Khomenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Clarity-89" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
