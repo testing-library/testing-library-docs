@@ -64,7 +64,7 @@ import userEvent from '@testing-library/user-event'
 // inlining
 test('trigger some awesome feature when clicking the button', async () => {
   const user = userEvent.setup()
-  // Import `render` from the framework library of your choice.
+  // Import `render` and `screen` from the framework library of your choice.
   // See https://testing-library.com/docs/dom-testing-library/install#wrappers
   render(<MyComponent />)
 
@@ -88,8 +88,6 @@ function setup(jsx) {
 }
 
 test('render with a setup function', async () => {
-  // Import `setup` from the framework library of your choice.
-  // See https://testing-library.com/docs/dom-testing-library/install#wrappers
   const { user } = setup(<MyComponent />)
   // ...
 })
