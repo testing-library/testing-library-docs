@@ -59,28 +59,36 @@ itself - e.g. in a `before`/`after` hook - for reasons described in
 ["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
 
 ```js
+import userEvent from '@testing-library/user-event'
+
 // inlining
 test('trigger some awesome feature when clicking the button', async () => {
   const user = userEvent.setup()
+  // Import `render` and `screen` from the framework library of your choice.
+  // See https://testing-library.com/docs/dom-testing-library/install#wrappers
   render(<MyComponent />)
 
-  await user.click(screen.getByRole('button', {name: /click me!/i}))
+  await user.click(screen.getByRole('button', { name: /click me!/i }))
 
   // ...assertions...
 })
 ```
 
 ```js
+import userEvent from '@testing-library/user-event'
+
 // setup function
 function setup(jsx) {
   return {
     user: userEvent.setup(),
+    // Import `render` from the framework library of your choice.
+    // See https://testing-library.com/docs/dom-testing-library/install#wrappers
     ...render(jsx),
   }
 }
 
 test('render with a setup function', async () => {
-  const {user} = setup(<MyComponent />)
+  const { user } = setup(<MyComponent />)
   // ...
 })
 ```
