@@ -2393,6 +2393,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "LLCampos",
+      "name": "Luís Campos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12008784?v=4",
+      "profile": "https://llcampos.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
