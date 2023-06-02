@@ -477,6 +477,9 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://llcampos.com"><img src="https://avatars.githubusercontent.com/u/12008784?v=4?s=100" width="100px;" alt="Luís Campos"/><br /><sub><b>Luís Campos</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=LLCampos" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/YozhEzhi"><img src="https://avatars.githubusercontent.com/u/2706062?v=4?s=100" width="100px;" alt="Alexandr Zhidovlenko"/><br /><sub><b>Alexandr Zhidovlenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=YozhEzhi" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lyannel"><img src="https://avatars.githubusercontent.com/u/34246811?v=4?s=100" width="100px;" alt="lyannel"/><br /><sub><b>lyannel</b></sub></a><br /><a href="#a11y-lyannel" title="Accessibility">️️️️♿️</a></td>
+    </tr>
   </tbody>
 </table>
 
