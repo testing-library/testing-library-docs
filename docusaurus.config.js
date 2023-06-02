@@ -348,6 +348,7 @@ module.exports = {
       copyright: `Copyright © 2018-${new Date().getFullYear()} Kent C. Dodds and contributors`,
       logo: {
         src: 'img/octopus-128x128.png',
+        alt: 'An octopus representing the DOM Testing Library Logo'
       },
     },
     algolia: {
