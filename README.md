@@ -475,6 +475,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="http://caian.dev"><img src="https://avatars.githubusercontent.com/u/7551787?v=4?s=100" width="100px;" alt="Ilê Caian"/><br /><sub><b>Ilê Caian</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=caiangums" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://claritydev.net"><img src="https://avatars.githubusercontent.com/u/8878045?v=4?s=100" width="100px;" alt="Alex Khomenko"/><br /><sub><b>Alex Khomenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Clarity-89" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://llcampos.com"><img src="https://avatars.githubusercontent.com/u/12008784?v=4?s=100" width="100px;" alt="Luís Campos"/><br /><sub><b>Luís Campos</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=LLCampos" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/YozhEzhi"><img src="https://avatars.githubusercontent.com/u/2706062?v=4?s=100" width="100px;" alt="Alexandr Zhidovlenko"/><br /><sub><b>Alexandr Zhidovlenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=YozhEzhi" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
