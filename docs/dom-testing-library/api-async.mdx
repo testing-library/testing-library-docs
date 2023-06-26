@@ -58,8 +58,9 @@ await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
 ```
 
 `waitFor` may run the callback a number of times until the timeout is reached.
-Note that the number of calls is constrained by the `timeout` and `interval`
-options.
+Because of this, it's not a good idea to trigger mutations within the callback
+as that may leave the document in an unpredictable state. Note that the number
+of calls is constrained by the `timeout` and `interval` options.
 
 This can be useful if you have a unit test that mocks API calls and you need to
 wait for your mock promises to all resolve.
