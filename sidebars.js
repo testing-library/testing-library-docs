@@ -161,6 +161,7 @@ module.exports = {
             'svelte-testing-library/setup',
             'svelte-testing-library/example',
             'svelte-testing-library/api',
+            'svelte-testing-library/faq',
           ],
         },
         'cypress-testing-library/intro',
