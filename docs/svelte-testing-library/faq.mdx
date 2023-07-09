@@ -1,0 +1,22 @@
+---
+id: faq
+title: FAQ
+sidebar_label: FAQ
+---
+
+- [Testing file upload component](#testing-file-upload-component)
+
+---
+
+## Testing file upload component
+
+File upload handler not triggering? Use `happy-dom`, not `jsdom`, and make
+sure to use `fireEvent.change(...)` and not `fireEvent.input(...)`.  It seems
+that jsdom (which is at v22.1.0 at the time of this writing) doesn't fake all
+the File object as it should.
+
+
+See [svelte-testing-library's issue
+219](https://github.com/testing-library/svelte-testing-library/issues/219) for
+more details.
+
