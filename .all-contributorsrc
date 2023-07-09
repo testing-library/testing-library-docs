@@ -2420,6 +2420,15 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "yanick",
+      "name": "Yanick Champoux",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19954?v=4",
+      "profile": "https://techblog.babyl.ca",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
