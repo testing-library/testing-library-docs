@@ -144,6 +144,13 @@ module.exports = {
         pinned: false,
       },
       {
+        caption: 'Sunhat',
+        darkImage: '/img/users/sunhat.svg',
+        lightImage: '/img/users/sunhat.svg',
+        infoLink: 'https://www.getsunhat.com',
+        pinned: false,
+      },
+      {
         caption: 'Sweepbright',
         darkImage: '/img/users/sweepbright.svg',
         lightImage: '/img/users/sweepbright.svg',
