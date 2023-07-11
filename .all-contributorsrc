@@ -2429,6 +2429,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ali-kamalizade",
+      "name": "Ali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1886605?v=4",
+      "profile": "https://ali-dev.medium.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
