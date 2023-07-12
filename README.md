@@ -481,6 +481,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lyannel"><img src="https://avatars.githubusercontent.com/u/34246811?v=4?s=100" width="100px;" alt="lyannel"/><br /><sub><b>lyannel</b></sub></a><br /><a href="#a11y-lyannel" title="Accessibility">️️️️♿️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://techblog.babyl.ca"><img src="https://avatars.githubusercontent.com/u/19954?v=4?s=100" width="100px;" alt="Yanick Champoux"/><br /><sub><b>Yanick Champoux</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=yanick" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://ali-dev.medium.com"><img src="https://avatars.githubusercontent.com/u/1886605?v=4?s=100" width="100px;" alt="Ali"/><br /><sub><b>Ali</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ali-kamalizade" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/macmillen"><img src="https://avatars.githubusercontent.com/u/33156526?v=4?s=100" width="100px;" alt="Milan Jaritz"/><br /><sub><b>Milan Jaritz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=macmillen" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
