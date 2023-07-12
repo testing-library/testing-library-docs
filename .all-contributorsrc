@@ -2438,6 +2438,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "macmillen",
+      "name": "Milan Jaritz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33156526?v=4",
+      "profile": "https://github.com/macmillen",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
