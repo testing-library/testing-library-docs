@@ -390,8 +390,9 @@ debug()
 
 ### `rerender`
 
-Create and render a new instance of the component. Input properties that are not
-defined are cleared. To keep them use [change](#change).
+Changes the input properties of the existing component instance by following
+Angular component lifecycle events (i.e. `ngOnChanges` is called). Input
+properties that are not defined are cleared.
 
 ```typescript
 const {rerender} = await render(Counter, {
