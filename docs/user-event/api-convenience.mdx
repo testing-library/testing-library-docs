@@ -182,13 +182,15 @@ keyboard('[/ShiftLeft][/ShiftRight]{Tab}')
 test('tab', async () => {
   render(
     <div>
-      <input data-testid="element" type="checkbox" />
-      <input data-testid="element" type="radio" />
-      <input data-testid="element" type="number" />
+      <input type="checkbox" />
+      <input type="radio" />
+      <input type="number" />
     </div>,
   )
 
-  const [checkbox, radio, number] = screen.getAllByTestId('element')
+  const checkbox = screen.getByRole('checkbox')
+  const radio = screen.getByRole('radio')
+  const number = screen.getByRole('spinbutton')
 
   expect(document.body).toHaveFocus()
 
