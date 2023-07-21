@@ -18,6 +18,20 @@ click(element: Element): Promise<void>
 pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
 ```
 
+```js
+test("click", async () => {
+  render(
+    <div>
+      <label htmlFor="checkbox">Check</label>
+      <input id="checkbox" type="checkbox" />
+    </div>
+  );
+
+  await userEvent.click(screen.getByText("Check"));
+  expect(screen.getByLabelText("Check")).toBeChecked();
+});
+```
+
 The first action might be skipped per [`skipHover`](options.mdx#skiphover).
 
 ### dblClick()
@@ -28,6 +42,20 @@ dblClick(element: Element): Promise<void>
 
 ```js
 pointer([{target: element}, {keys: '[MouseLeft][MouseLeft]', target: element}])
+```
+
+```js
+test("double click", async () => {
+  const onChange = jest.fn();
+  render(<input type="checkbox" onChange={onChange} />);
+
+  const checkbox = screen.getByRole("checkbox");
+
+  await userEvent.dblClick(checkbox);
+
+  expect(onChange).toHaveBeenCalledTimes(2);
+  expect(checkbox).not.toBeChecked();
+});
 ```
 
 ### tripleClick()
@@ -43,6 +71,20 @@ pointer([
 ])
 ```
 
+```js
+test("triple click", async () => {
+  const onChange = jest.fn();
+  render(<input type="checkbox" onChange={onChange} />);
+
+  const checkbox = screen.getByRole("checkbox");
+
+  await userEvent.tripleClick(checkbox);
+
+  expect(onChange).toHaveBeenCalledTimes(3);
+  expect(checkbox).toBeChecked();
+});
+```
+
 ## Mouse movement
 
 ### hover()
@@ -55,6 +97,31 @@ hover(element: Element): Promise<void>
 pointer({target: element})
 ```
 
+```js
+const TestComponent = () => {
+  const [isHover, setIsHover] = useState(false);
+  return (
+    <div
+      style={{ backgroundColor: isHover ? "red" : "green" }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+    >
+      Hover
+    </div>
+  );
+};
+
+test("hover", async () => {
+  render(<TestComponent />);
+
+  const hoverBox = screen.getByText("Hover");
+
+  await userEvent.hover(hoverBox);
+
+  expect(hoverBox).toHaveStyle({ backgroundColor: "red" });
+});
+```
+
 ### unhover()
 
 ```ts
@@ -63,6 +130,35 @@ unhover(element: Element): Promise<void>
 
 ```js
 pointer({target: element.ownerDocument.body})
+```
+
+```js
+const TestComponent = () => {
+  const [isHover, setIsHover] = useState(false);
+  return (
+    <div
+      style={{ backgroundColor: isHover ? "red" : "green" }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+    >
+      Hover
+    </div>
+  );
+};
+
+test("unhover", async () => {
+  render(<TestComponent />);
+
+  const hoverBox = screen.getByText("Hover");
+
+  await userEvent.hover(hoverBox);
+
+  expect(hoverBox).toHaveStyle({ backgroundColor: "red" });
+
+  await userEvent.unhover(hoverBox);
+
+  expect(hoverBox).toHaveStyle({ backgroundColor: "green" });
+});
 ```
 
 ## Keyboard
@@ -80,4 +176,41 @@ keyboard('{Tab}')
 keyboard('{Shift>}{Tab}{/Shift}')
 // with shift=false
 keyboard('[/ShiftLeft][/ShiftRight]{Tab}')
+```
+
+```js
+test("tab", async () => {
+  render(
+    <div>
+      <input data-testid="element" type="checkbox" />
+      <input data-testid="element" type="radio" />
+      <input data-testid="element" type="number" />
+    </div>
+  );
+
+  const [checkbox, radio, number] = screen.getAllByTestId("element");
+
+  expect(document.body).toHaveFocus();
+
+  await userEvent.tab();
+
+  expect(checkbox).toHaveFocus();
+
+  await userEvent.tab();
+
+  expect(radio).toHaveFocus();
+
+  await userEvent.tab();
+
+  expect(number).toHaveFocus();
+
+  await userEvent.tab();
+
+  // cycle goes back to the body element
+  expect(document.body).toHaveFocus();
+
+  await userEvent.tab();
+
+  expect(checkbox).toHaveFocus();
+});
 ```
