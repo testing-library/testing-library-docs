@@ -1,0 +1,455 @@
+---
+id: api
+title: API
+sidebar_label: API
+---
+
+`Angular Testing Library`重新导出了 `DOM Testing Library` 的所有内容以及 `render` 方法。
+
+以下的重新导出是经过 patch 的，使其更容易与Angular一起使用：
+
+- `fireEvent` 上的事件在事件被触发后自动调用一个变化检测周期
+- `findBy` 查询会在调用函数之前自动调用一个变化检测周期
+- `waitFor` 函数在调用回调函数之前自动调用一个变化检测周期
+
+## `render`
+
+通过Angular Testing Library，可以用两种方式渲染组件，通过组件的类型或用模板。
+
+> 默认情况下，`render` 也会导入 `NoopAnimationsModule`。
+
+## `Type`
+
+要渲染一个组件，你需要将组件的类型传递给 `render` 方法。对于不使用你的应用程序的其他部分的组件（例如设计模块或服务），
+渲染一个组件可以像下面的例子一样简单。
+
+```typescript
+await render(AppComponent)
+```
+
+## `template`
+
+你也可以提供一个模板，而不是把组件的类型作为第一个参数传递。这种做法是渲染指令所需要的，
+但也可以应用于组件，它甚至可能更有用。然后，指令的（或组件的）类型必须被添加到 `declarations` 中。
+
+**指令示例**:
+
+```typescript
+await render('<div appSpoiler></div>', {
+  declarations: [SpoilerDirective],
+})
+```
+
+**组件示例**:
+
+```typescript
+await render(
+  '<app-component [value]="47" [otherValue]="anotherValue" (sendValue)="sendValue($event)"></app-component>',
+  {
+    declarations: [AppComponent],
+    componentProperties: {
+      anotherValue: 'valueOfAnotherProperty',
+      sendValue: jest.fn(),
+    },
+  },
+)
+```
+
+```typescript
+export async function render<ComponentType>(
+  component: Type<ComponentType>,
+  renderOptions?: RenderComponentOptions<ComponentType>,
+): Promise<RenderResult<ComponentType, ComponentType>>
+export async function render<WrapperType = WrapperComponent>(
+  template: string,
+  renderOptions?: RenderTemplateOptions<WrapperType>,
+): Promise<RenderResult<WrapperType>>
+```
+
+## Component RenderOptions
+
+### `componentInputs`
+
+用于设置组件的`@Input`属性的对象。使用`setInput`设置输入属性。如果组件属性未使用`@Input`属性进行注释，则抛出。
+
+**默认值** : `{}`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  componentInputs: {
+    counterValue: 10,
+  },
+})
+```
+
+### `componentOutputs`
+
+用于设置组件的`@Output`属性的对象。
+
+**默认值** : `{}`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  componentOutputs: {
+    clicked: (value) => { ... }
+  }
+})
+```
+
+### `componentProperties`
+
+一个用于设置组件的 `@Input` 和 `@Output` 属性的对象。没有像 `componentInputs`和`componentOutputs`那样的细粒度控制。
+
+**默认** : `{}`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  // an input
+    counterValue: 10,
+    // an output
+    send: (value) => { ... }
+    // a public property
+    name: 'Tim'
+})
+```
+
+### `declarations`
+
+渲染该组件所需的组件、指令和管道的集合。例如，组件的嵌套组件。
+
+更多信息见[Angular文档](https://angular.io/api/core/Directive#providers)。
+
+**默认** : `[]`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  declarations: [CustomerDetailComponent, ButtonComponent],
+})
+```
+
+### `componentProviders`
+
+通过依赖注入渲染组件所需的提供者的集合。
+
+这些将在组件级别上提供。要想在模块层面上注入依赖关系，请使用[`providers`](#providers)。
+
+更多信息请参见[Angular文档](https://angular.io/api/core/Directive#providers)。
+
+**默认** : `[]`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  componentProviders: [AppComponentService],
+})
+```
+
+### `ɵcomponentImports`
+
+一个导入的集合，用来覆盖一个独立组件的导入。
+
+**默认** : `undefined`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+    ɵcomponentImports: [
+        componentImports: [MockChildComponent],
+    ]
+})
+```
+
+### `childComponentOverrides`
+
+用于覆盖的子组件指定提供者的集合。
+
+**默认** : `undefined`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  childComponentOverrides: [
+    {
+      component: ChildOfAppComponent,
+      providers: [{provide: ChildService, useValue: {hello: 'world'}}],
+    },
+  ],
+})
+```
+
+### `detectChangesOnRender`
+
+当组件被渲染时，将调用 `detectChanges`。
+
+**默认** : `true`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {detectChangesOnRender: false})
+```
+
+### `autoDetectChanges`
+
+像“实际”运行的组件一样自动检测更改。例如，在发生事件时运行更改检测周期。
+
+**默认** : `true`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  autoDetectChanges: false,
+})
+```
+
+### `excludeComponentDeclaration`
+
+排除被自动添加为声明的组件。当组件在导入的模块中被声明时需要这样做，例如用SCAMs。
+
+**默认** : `false`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  imports: [AppModule], // a module that includes AppComponent
+  excludeComponentDeclaration: true,
+})
+```
+
+### `imports`
+
+渲染组件所需的导入集合，例如，共享模块。如果 `BrowserAnimationsModule` 没有被添加到集合中，默认会添加 `NoopAnimationsModule`。
+
+更多信息见[Angular文档](https://angular.io/api/core/NgModule#imports)。
+
+**默认** : `[NoopAnimationsModule]`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  imports: [AppSharedModule, MaterialModule],
+})
+```
+
+### `providers`
+
+通过依赖性注入渲染组件所需的提供者集合。
+
+这些将在模块级别上提供。要在组件级别上注入依赖关系，请使用 [`componentProviders`](#componentProviders)
+
+更多信息请参见[Angular文档](https://angular.io/api/core/NgModule#providers)。
+
+**默认** : `[]`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  providers: [
+    CustomersService,
+    {
+      provide: MAX_CUSTOMERS_TOKEN,
+      useValue: 10,
+    },
+  ],
+})
+```
+
+### `queries`
+
+要绑定的查询。覆盖DOM测试库的默认设置，除非合并。
+
+**默认** : `undefined`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  queries: {...queries, ...customQueries},
+})
+```
+
+### `routes`
+
+通过 `RouterTestingModule.withRoutes` 设置路由器服务的路由配置。
+更多信息见[Angular Routes文档](https://angular.io/api/router/Routes)。
+
+**默认** : `[]`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  declarations: [ChildComponent],
+  routes: [
+    {
+      path: '',
+      children: [
+        {
+          path: 'child/:id',
+          component: ChildComponent,
+        },
+      ],
+    },
+  ],
+})
+```
+
+### `schemas`
+
+渲染该组件所需的模式集合。允许的值是 `NO_ERRORS_SCHEMA` 和 `CUSTOM_ELEMENTS_SCHEMA`。
+
+更多信息见[Angular文档](https://angular.io/api/core/NgModule#schemas)。
+
+**默认** : `[]`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  schemas: [NO_ERRORS_SCHEMA],
+})
+```
+
+### `removeAngularAttributes`
+
+移除夹具中的Angular属性（ng-version和root-id）。
+
+**默认** : `false`
+
+**示例**:
+
+```typescript
+await render(AppComponent, {
+  removeAngularAttributes: true,
+})
+```
+
+## `RenderResult`
+
+### `container`
+
+你渲染的Angular Component的包含DOM节点。这是一个普通的DOM节点，所以你可以调用 `container.querySelector` 等来检查子节点。
+
+### `debug`
+
+打印出组件的DOM，并有语法高亮显示。接受一个可选的参数，以打印出一个特定的DOM节点。
+
+```typescript
+const {debug} = await render(AppComponent)
+
+debug()
+```
+
+### `change`
+
+改变组件的输入。这在道具更新后调用 `detectChanges`。
+
+```typescript
+const {change} = await render(Counter, {
+  componentProperties: {count: 4, name: 'Sarah'},
+})
+
+expect(screen.getByTestId('count-value').textContent).toBe('4')
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
+
+change({count: 7})
+
+// count updated to 7
+expect(screen.getByTestId('count-value').textContent).toBe('7')
+// name keeps the same value
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
+```
+
+### `rerender`
+
+创建并渲染一个新的组件实例。没有定义的输入属性会被清除。要保留它们，请使用[change](#change)。
+
+```typescript
+const {rerender} = await render(Counter, {
+  componentProperties: {count: 4, name: 'Sarah'},
+})
+
+expect(screen.getByTestId('count-value').textContent).toBe('4')
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
+
+await rerender({count: 7})
+
+// count updated to 7
+expect(screen.getByTestId('count-value').textContent).toBe('7')
+// name is undefined because it's not provided in rerender
+expect(screen.getByTestId('name-value').textContent).toBeUndefined()
+```
+
+### `detectChanges`
+
+触发该组件的变化检测周期。
+
+更多信息见[Angular文档](https://angular.io/api/core/testing/ComponentFixture#detectChanges)。
+
+### `debugElement`
+
+该组件的Angular `DebugElement`。
+
+更多信息请参见[Angular文档](https://angular.io/api/core/DebugElement)。
+
+### `fixture`
+
+该组件的Angular `ComponentFixture`。
+
+更多信息请参见[Angular文档](https://angular.io/api/core/testing/ComponentFixture)。
+
+```typescript
+const {fixture} = await render(AppComponent)
+
+// componentInstance is typed as AppComponent
+const componentInstance = fixture.componentInstance
+```
+
+> 🚨 如果你发现自己使用 `fixture` 来访问组件的内部值，你应该重新考虑！
+> 这可能意味着你正在测试实现细节。
+
+### `navigate`
+
+接受一个DOM元素或一个路径作为参数。如果一个元素被传递，`navigate` 将导航到该元素的 `href` 值。
+如果传递了一个路径，`navigate` 将导航到该路径。
+
+```typescript
+const { navigate } = await render(AppComponent, {
+  routes: [...]
+})
+
+await navigate(component.getByLabelText('To details'))
+await navigate('details/3')
+```
+
+### `...queries`
+
+`render` 最重要的特点是，[DOM Testing Library](/docs/dom-testing-library/intro) 的查询会自动返回，其第一个参数与被测组件绑定。
+
+完整的列表见[查询](queries/about.mdx)。
+
+**示例**:
+
+```typescript
+const {getByText, queryByLabelText} = await render(AppComponent)
+
+screen.getByRole('heading', {
+  name: /api/i,
+})
+queryByLabelText(/First name/i')
+```

@@ -1,0 +1,56 @@
+---
+id: guide-events
+title: fireEvent 的注意事项
+---
+
+## 交互 vs. 事件
+
+鉴于[指导原则](guiding-principles.mdx)，你的测试应该尽可能地类似于用户与你的代码（组件、页面等）的交互方式。
+考虑到这一点，你应该知道 `fireEvent` 并不完全是用户与你的应用程序进行交互的方式，但对于大多数情况来说，它已经足够接近了。
+
+考虑 `fireEvent.click`，它创建了一个点击事件并在给定的DOM节点上派发该事件。
+当你只是想测试当你的元素被点击时会发生什么时，这对大多数情况来说是正确的，但当用户真正点击你的元素时，这些事件通常会被触发（按顺序）:
+
+- fireEvent.mouseOver(element)
+- fireEvent.mouseMove(element)
+- fireEvent.mouseDown(element)
+- element.focus() (如果 element 可聚焦的)
+- fireEvent.mouseUp(element)
+- fireEvent.click(element)
+
+然后，如果该元素恰好是一个`label`的子元素，那么它也会将焦点移到标签所标注的表单控件上。
+所以，尽管你真正要测试的是点击处理程序，但如果简单地使用 `fireEvent.click`，
+你就会错过用户在使用过程中可能发生的其他几个重要事件。
+
+同样，在大多数情况下，这对你的测试并不重要，简单地使用 `fireEvent.click` 的权衡是值得的。
+
+## 替代方案
+
+我们将描述几个对你的测试的简单调整，这将增加你对你的组件的交互行为的信心。
+对于其他的交互行为，你可能要考虑使用[`user-event`](user-event/intro.mdx)或在真实环境中测试你的组件（例如，手动，用cypress自动，等等）
+
+### 键按下
+
+[一个键按下事件被派发到当前聚焦的元素、body元素或document元素上](https://w3c.github.io/uievents/#events-keyboard-event-order)。
+以下是你应该喜欢的：
+
+```diff
+- fireEvent.keyDown(getByText('click me'));
++ getByText('click me').focus();
++ fireEvent.keyDown(document.activeElement || document.body);
+```
+
+这也将测试有关的元素是否能够接收键盘事件。
+
+### 聚焦/失焦
+
+如果一个元素被聚焦，一个聚焦事件就会被派发，文档中的活动元素就会改变，而之前被聚焦的元素就会被失焦。
+为了模拟这种行为，你可以简单地用强制聚焦替换 `fireEvent`：
+
+```diff
+- fireEvent.focus(getByText('focus me'));
++ getByText('focus me').focus();
+```
+
+这种方法的一个很好的副作用是，如果元素不能被聚焦，任何关于被触发的焦点事件的断言都会失败。
+如果你用一个向下键事件来跟进，这一点尤其重要。

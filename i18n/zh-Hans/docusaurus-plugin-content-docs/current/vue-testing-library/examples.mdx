@@ -1,0 +1,105 @@
+---
+id: examples
+title: 示例
+---
+
+## 基础示例
+
+```html
+<template>
+  <div>
+    <p>Times clicked: {{ count }}</p>
+    <button @click="increment">increment</button>
+  </div>
+</template>
+
+<script>
+  export default {
+    data: () => ({
+      count: 0,
+    }),
+
+    methods: {
+      increment() {
+        this.count++
+      },
+    },
+  }
+</script>
+```
+
+```js
+import {render, fireEvent} from '@testing-library/vue'
+import Component from './Component.vue'
+
+test('increments value on click', async () => {
+  // The render method returns a collection of utilities to query your component.
+  const {getByText} = render(Component)
+
+  // getByText returns the first matching node for the provided text, and
+  // throws an error if no elements match or if more than one match is found.
+  getByText('Times clicked: 0')
+
+  const button = getByText('increment')
+
+  // Dispatch a native click event to our button element.
+  await fireEvent.click(button)
+  await fireEvent.click(button)
+
+  getByText('Times clicked: 2')
+})
+```
+
+## 使用 `v-model` 的例子:
+
+```html
+<template>
+  <div>
+    <p>Hi, my name is {{ user }}</p>
+
+    <label for="username">Username:</label>
+    <input v-model="user" id="username" name="username" />
+  </div>
+</template>
+
+<script>
+  export default {
+    data: () => ({
+      user: 'Alice',
+    }),
+  }
+</script>
+```
+
+```js
+import {render, fireEvent} from '@testing-library/vue'
+import Component from './Component.vue'
+
+test('properly handles v-model', async () => {
+  const {getByLabelText, getByText} = render(Component)
+
+  // Asserts initial state.
+  getByText('Hi, my name is Alice')
+
+  // Get the input DOM node by querying the associated label.
+  const usernameInput = getByLabelText(/username/i)
+
+  // Updates the <input> value and triggers an `input` event.
+  // fireEvent.input() would make the test fail.
+  await fireEvent.update(usernameInput, 'Bob')
+
+  getByText('Hi, my name is Bob')
+})
+```
+
+## 更多示例
+
+你可以在[测试目录](https://github.com/testing-library/vue-testing-library/tree/master/src/__tests__)中找到用不同库进行测试的例子。
+
+包括的内容有:
+
+- [`vuex`](https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuex.js)
+- [`vue-router`](https://github.com/testing-library/vue-testing-library/tree/main/src/__tests__/vue-router.js)
+- [`vue-validate`](https://github.com/testing-library/vue-testing-library/tree/main/src/__tests__/validate-plugin.js)
+- [`vue-i18n`](https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/translations-vue-i18n.js)
+- [`vuetify`](https://github.com/testing-library/vue-testing-library/blob/main/src/__tests__/vuetify.js)

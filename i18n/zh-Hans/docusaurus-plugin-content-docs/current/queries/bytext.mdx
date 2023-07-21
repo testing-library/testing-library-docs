@@ -1,0 +1,87 @@
+---
+id: bytext
+title: ByText
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> getByText, queryByText, getAllByText, queryAllByText, findByText,
+> findAllByText
+
+## API
+
+```typescript
+getByText(
+  // If you're using `screen`, then skip the container argument:
+  container: HTMLElement,
+  text: TextMatch,
+  options?: {
+    selector?: string = '*',
+    exact?: boolean = true,
+    ignore?: string|boolean = 'script, style',
+    normalizer?: NormalizerFn,
+  }): HTMLElement
+```
+
+搜索所有具有文本节点的元素，`textContent` 匹配指定  [`TextMatch`](queries/about.mdx#textmatch).
+
+```html
+<a href="/about">About ℹ️</a>
+```
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import {screen} from '@testing-library/dom'
+
+const aboutAnchorNode = screen.getByText(/about/i)
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, screen} from '@testing-library/react'
+
+render(<MyComponent />)
+const aboutAnchorNode = screen.getByText(/about/i)
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByText(/about/i).should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+它也适用于 `input` 的 `type` 属性为 `submit` 或 `button`:
+
+```js
+<input type="submit" value="Send data" />
+```
+
+## 选项
+
+[TextMatch](queries/about.mdx#textmatch) 选项, 和以下:
+
+### `selector`
+
+> **注意**
+>
+> 怎么和何时使用 `selector` 选项，详情请参考 [`getByLabelText`](queries/bylabeltext.mdx#selector)
+
+### `ignore`
+
+`ignore` 选项接受一个查询选择器。
+如果 [`node.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
+处理选择器返回 true 时，则节点会被忽略掉。
+`'script, style'` 默认会被忽略，因为通常你不想选择这些标签，但是如果你的内容位于内联的 script 文件中，则
+script 标签需要被返回。
+
+如果你想要禁用此行为，直接设置 `ignore` 为 `false`。

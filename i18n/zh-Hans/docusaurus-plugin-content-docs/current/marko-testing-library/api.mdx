@@ -1,0 +1,271 @@
+---
+id: api
+title: API
+---
+
+`Marko Testing Library` 重新导出了 `DOM Testing Library` 的所有内容以及这些方法：
+
+- [`render`](#render)
+  - [`render` 选项](#render-options)
+    - [`container`](#container)
+- [`render` 返回结果](#render-result)
+  - [`...queries`](#queries)
+  - [`debug`](#debug)
+  - [`rerender`](#rerender)
+  - [`emitted`](#emitted)
+  - [`cleanup`](#cleanup)
+  - [`container`](#container-1)
+- [`cleanup`](#cleanup-1)
+
+---
+
+## `render`
+
+```javascript
+function render(
+  template, // A Marko template to render
+  input, // Input for the above template
+  options // You won't often use this, expand below for docs on options
+)
+```
+
+渲染到一个容器内，容器附加在 `document.body` 上。
+
+```javascript
+import {render} from '@marko/testing-library'
+import MyTemplate from './my-template.marko'
+
+render(MyTemplate)
+```
+
+```javascript
+import {render, screen} from '@marko/testing-library'
+import Greeting from './greeting.marko'
+
+test('renders a message', async () => {
+  const {container} = await render(Greeting, {name: 'Marko'})
+  expect(screen.getByText(/Marko/)).toBeInTheDocument()
+  expect(container.firstChild).toMatchInlineSnapshot(`
+    <h1>Hello, Marko!</h1>
+  `)
+})
+```
+
+### `render` 选项
+
+你并不经常需要指定选项，但如果你需要的话，这里有一些可用的选项，你可以作为第三个参数提供给 `render`。
+
+#### `container`
+
+默认情况下，对于客户端测试，`Marko Testing Library`将创建一个 `div`，并将该 `div` 附加到 `document.body` 中，
+这就是你的组件将被呈现的地方。如果你通过这个选项提供你自己的HTMLElement `container`，它将不会被自动追加到 `document.body` 中。
+
+比如说。如果你正在单元测试一个 `tablebody` 元素，它不能是一个 `div` 的子元素。在这种情况下，你可以指定一个 `table` 作为渲染 `container`。
+
+```javascript
+const table = document.createElement('table')
+
+const {container} = await render(MyTableBody, null, {
+  container: document.body.appendChild(table),
+})
+```
+
+## `render` 返回结果
+
+`render` 方法返回一个 Promise，该 Promise 以一个具有一些属性的对象进行解析:
+
+### `...queries`
+
+`render` 最重要的特点是，来自
+[核心 API](queries/about.mdx)
+的查询会自动返回，其第一个参数与渲染你的组件的结果绑定。
+
+查看[查询](queries/about.mdx#types-of-queries)的完整列表。
+
+**示例**
+
+```javascript
+const {getByLabelText, queryAllByTestId} = await render(MyTemplate)
+```
+
+另外，你可以使用[顶级的`screen`方法](queries/about.mdx#screen)来查询 `document.body` 中所有当前渲染的组件，例如:
+
+```javascript
+import { render, screen } from "@marko/testing-library"
+
+await render(MyTemplate)
+const el = screen.getByText(...)
+```
+
+### `debug`
+
+这个方法是记录 `container` 内所有子节点的 `prettyDOM` 的一个快捷方式。
+
+```javascript
+import {render} from '@marko/testing-library'
+import Greeting from './greeting.marko'
+
+const {debug} = await render(Greeting, {name: 'World'})
+debug()
+
+// <h1>Hello World</h1>
+// you can also pass an element: debug(getByTestId('messages'))
+```
+
+这是对 `prettyDOM` 的一个简单包装，它也是公开的，来自[`DOM Testing Library`](dom-testing-library/api-debugging.mdx#prettydom)。
+
+### `rerender`
+
+一个Marko组件的 `input` 可以在任何时候从一个父组件中改变。尽管这种输入通常是通过你的组件声明性地传递的，
+但有时有必要确保你的组件对新数据作出适当的反应。你可以通过将新的数据传递给 `rerender` 来模拟你的组件接受新的 `input`。
+
+```javascript
+import {render} from '@marko/testing-library'
+import Greeting from './greeting.marko'
+
+const {rerender, debug} = await render(Greeting, {name: 'World'})
+
+// re-render the same component with different props
+await rerender({name: 'Marko'})
+
+debug()
+// <h1>Hello Marko</h1>
+```
+
+### `emitted`
+
+Marko组件也通过事件与它们的父辈交流。建议你也测试一下你的组件是否在正确的时间发出了正确的事件。
+
+`emitted` 就是这样做的。调用帮助器将返回自上次调用帮助器以来的所有发射的事件。你也可以传入一个事件类型来过滤结果。
+
+```javascript
+import {render, fireEvent} from '@marko/testing-library'
+import Counter from './counter.marko'
+
+const {getByText, emitted} = await render(Counter)
+
+const button = getByText('Increment')
+
+await fireEvent.click(button)
+await fireEvent.click(button)
+
+// Assuming the `Counter` component forwards these button clicks as `increment` events
+expect(emitted('increment')).toHaveProperty('length', 2)
+
+await fireEvent.click(button)
+
+// Note: the tracked events are cleared every time you read them.
+// Below we are snapshoting the events after our last assertion,
+// the return value will include an array with all of the arguments for each increment event.
+expect(emitted('increment')).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        Object {
+          "count": 3,
+        },
+      ],
+    ]
+`)
+
+// Without an event type will give you all events with their type and arguments.
+expect(emitted()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "args": Array [
+          Object {
+            "count": 0,
+          },
+        ],
+        "type": "increment",
+      },
+      Object {
+        "args": Array [
+          Object {
+            "count": 1,
+          },
+        ],
+        "type": "increment",
+      },
+      Object {
+        "args": Array [
+          Object {
+            "count": 3,
+          },
+        ],
+        "type": "increment",
+      }
+    ]
+  `)
+```
+
+### `cleanup`
+
+[和顶层清理方法](#cleanup-1)一样，这允许你在测试完成之前删除和销毁当前渲染的组件。
+
+这对于验证一个组件在被销毁后是否正确地清理了任何DOM的突变是很有用的。
+
+```javascript
+import {render, screen, getRoles} from '@marko/testing-library'
+import Main from './main.marko'
+import Dialog from './dialog.marko'
+
+await render(Main)
+
+const main = screen.getByRole('main')
+expect(main).not.toHaveAttribute('aria-hidden')
+
+const {cleanup} = await render(Dialog)
+expect(main).toHaveAttribute('aria-hidden') // assert added attribute
+
+cleanup() // destroy the dialog
+
+expect(main).not.toHaveAttribute('aria-hidden') // assert attribute removed
+```
+
+### `container`
+
+你渲染的Marko组件的包含DOM节点。对于服务器端的测试，这是一个[JSDOM.fragment](https://github.com/jsdom/jsdom#fragment)，
+而对于客户端的测试，这将是作为 `container` 渲染选项传递的任何内容。
+
+> 提示：要获得渲染元素的根元素，使用 `container.firstChild`。
+
+> 🚨 如果你发现自己使用 `container` 来查询渲染的元素，那么你应该重新考虑！其他的查询被设计成更容易使用。
+> 其他的查询被设计成对你正在测试的组件的变化有更强的适应性。避免使用容器来查询元素!
+
+## `fireEvent`
+
+因为Marko对DOM的更新进行了分批处理，以避免不必要的重新渲染，[fireEvent](dom-testing-library/api-events.mdx) 被作为 `async` 函数重新导出。
+等待确保DOM已经正确地更新了，以响应测试中触发的事件。
+
+```js
+await fireEvent.click(getByText('Click me'))
+```
+
+## `cleanup`
+
+通过客户端测试，你的组件被渲染成一个占位的HTMLElement。为了确保你的组件被正确地删除和销毁，
+在每次测试后，通过 hook 支持的测试框架中的 `afterEach`，`cleanup` 方法会自动为你调用。
+你也可以在任何时候手动调用 `cleanup` 方法，这将删除所有附加的组件。
+
+```javascript
+import {render, cleanup, screen} from '@marko/testing-library'
+import Greeting from './greeting.marko'
+
+await render(Greeting, {name: 'Marko'})
+
+expect(screen.getByText(/Marko/)).toBeInTheDocument()
+
+// manually cleanup the component before the test is finished
+cleanup()
+expect(screen.queryByText(/Marko/)).toBeNull()
+```
+
+你可以通过导入以下模块来关闭自动测试清理功能:
+
+```javascript
+import '@marko/testing-library/dont-cleanup-after-each'
+```
+
+在mocha中，你可以使用 `mocha -r @marko/testing-library/dont-cleanup-after-each` 作为快捷方式。
+
+如果你使用Jest，你可以在你的Jest配置中加入 `setupFilesAfterEnv: ["@marko/testing-library/dont-cleanup-after-each"]` 以避免在每个文件中这样做。

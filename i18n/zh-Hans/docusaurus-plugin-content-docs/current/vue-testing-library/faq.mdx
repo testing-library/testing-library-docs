@@ -1,0 +1,162 @@
+---
+id: faq
+title: FAQ
+---
+
+对于不针对 Vue 测试的问题，也请参见[主要的FAQ](dom-testing-library/faq.mdx)。
+
+<details>
+  <summary>Vue Testing Library 是官方 @vue/test-utils的替代品吗？</summary>
+
+Short answer: yes, it is. If you use Vue Testing Library (VTL) there's no need
+to install [@vue/test-utils][vue-test-utils].
+
+Longer answer: VTL is built on top of @vue/test-utils. The official library is
+used to render Vue components (by calling [`mount`][mount]) and exposes some of
+its methods (while hiding others). You can check the full list of available
+methods in the [API](vue-testing-library/api.mdx) section.
+
+</details>
+
+<details>
+  <summary>我需要安装 DOM Testing Library 吗?</summary>
+
+Nope! VTL imports everything it needs from DOM Testing Library, and then
+re-exports it.
+
+</details>
+
+<details>
+  <summary> Vue Testing Library 提供哪些查询?</summary>
+
+All queries from DOM Testing Library. See [Queries](queries/about.mdx) for full
+list.
+
+</details>
+
+<details>
+  <summary>如果我不能使用浅层渲染，我如何在测试中模拟出组件？</summary>
+
+In general, you should avoid mocking out components (see
+[the Guiding Principles section](guiding-principles.mdx)).
+
+However if you need to, you can either use Jest's
+[mocking feature](https://facebook.github.io/jest/docs/en/manual-mocks.html) or
+the [`stubs`][stubs] key provided by @vue/test-utils.
+
+```js
+import {render} from '@testing-library/vue'
+import Component from './Component'
+
+test('Can stub components', () => {
+  render(Component, {
+    stubs: ['FontAwesomeIcon'],
+  })
+})
+```
+
+You can check out a [working example][stubs-example] in the GitHub repository of
+VTL.
+
+</details>
+
+<details>
+  <summary>我如何测试一个元素是否出现/消失了？</summary>
+
+Check the [Appearance and Disappearance](guide-disappearance.mdx) section of the
+Guide for available methods to test appearance and disappearance.
+
+If you want to check if an element was never rendered, you might want to write
+something like the following:
+
+```js
+expect(queryByText('submit')).toBeNull()
+
+// or, if using jest-dom:
+import '@testing-library/jest-dom'
+expect(queryByText('submit')).not.toBeInTheDocument()
+```
+
+</details>
+
+<details>
+  <summary>为什么我的Vue Router状态似乎在测试之间被共享？</summary>
+
+By default, Vue Router uses
+[`hash` routing mode](https://router.vuejs.org/api/#mode), which stores route
+updates in `window.location`. Test runners, such as Jest, do not reset the JSDOM
+environment in between test invocations, so route transitions from previous
+tests can leak into subsequent tests, even though a new Vue Router is created
+with each call to `render`.
+
+To work around this issue, pass an instantiated router using `abstract` mode.
+`abstract` mode does not store route information on the JSDOM `window`, so
+routing information will not leak between tests. For example:
+
+```js
+import {render} from '@testing-library/vue'
+import Component from './Component.vue'
+import VueRouter from 'vue-router'
+
+test('uses abstract mode for the router', async () => {
+  const router = new VueRouter({
+    mode: 'abstract',
+    routes: [
+      // Your routes here
+    ],
+  })
+
+  const renderResult = render(Component, {
+    routes: router,
+  })
+
+  // Unlike the router in `hash` mode, the initial routing stack is empty. So,
+  // you need to push an initial route to the stack.
+  await router.push('/')
+})
+```
+
+To reduce boilerplate, you can create a custom render function to use throughout
+your test suite. For example:
+
+```js
+// test-utils.js
+
+import {render} from '@testing-library/vue'
+import VueRouter from 'vue-router'
+
+export async function renderApp(component, options) {
+  const router = new VueRouter({
+    mode: 'abstract',
+    routes: [
+      // Your routes here
+    ],
+  })
+
+  const renderResult = render(component, {
+    routes: router,
+    ...options,
+  })
+
+  // Unlike the router in `hash` mode, the initial routing stack is empty. So,
+  // you need to push an initial route to the stack.
+  await router.push('/')
+
+  return renderResult
+}
+```
+
+</details>
+
+<!--
+Links:
+-->
+
+<!-- prettier-ignore-start -->
+
+[vue-test-utils]: https://github.com/vuejs/vue-test-utils
+[mount]: https://vue-test-utils.vuejs.org/api/#mount
+[stubs]: https://vue-test-utils.vuejs.org/api/options.html#stubs
+[stubs-example]: https://github.com/testing-library/vue-testing-library/blob/master/src/__tests__/stubs.js
+
+<!-- prettier-ignore-end -->

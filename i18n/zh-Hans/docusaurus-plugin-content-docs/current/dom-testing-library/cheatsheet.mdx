@@ -1,0 +1,154 @@
+---
+id: cheatsheet
+title: 备忘单
+---
+
+`DOM Testing Library` 中所有导出函数的简短使用指南。
+
+## 查询
+
+参考 [我应该使用哪个查询函数?](queries/about.mdx#priority)
+
+|                | No Match | 1 Match | 1+ Match | Await? |
+| -------------- | -------- | ------- | -------- | ------ |
+| **getBy**      | throw    | return  | throw    | No     |
+| **findBy**     | throw    | return  | throw    | Yes    |
+| **queryBy**    | null     | return  | throw    | No     |
+| **getAllBy**   | throw    | array   | array    | No     |
+| **findAllBy**  | throw    | array   | array    | Yes    |
+| **queryAllBy** | []       | array   | array    | No     |
+
+- **ByLabelText** 通过 label 或 aria-label 文本内容来查找
+  - getByLabelText
+  - queryByLabelText
+  - getAllByLabelText
+  - queryAllByLabelText
+  - findByLabelText
+  - findAllByLabelText
+- **ByPlaceholderText** 通过输入框的占位符来查找
+  - getByPlaceholderText
+  - queryByPlaceholderText
+  - getAllByPlaceholderText
+  - queryAllByPlaceholderText
+  - findByPlaceholderText
+  - findAllByPlaceholderText
+- **ByText** 通过元素的文本内容来查找
+  - getByText
+  - queryByText
+  - getAllByText
+  - queryAllByText
+  - findByText
+  - findAllByText
+- **ByDisplayValue** 通过表单元素的当前值查找
+  - getByDisplayValue
+  - queryByDisplayValue
+  - getAllByDisplayValue
+  - queryAllByDisplayValue
+  - findByDisplayValue
+  - findAllByDisplayValue
+- **ByAltText** 通过 img 的 alt 属性来查找
+  - getByAltText
+  - queryByAltText
+  - getAllByAltText
+  - queryAllByAltText
+  - findByAltText
+  - findAllByAltText
+- **ByTitle** 通过 title 属性或 svg 中的 title 标签来查找
+  - getByTitle
+  - queryByTitle
+  - getAllByTitle
+  - queryAllByTitle
+  - findByTitle
+  - findAllByTitle
+- **ByRole** 通过 aria role 来查找
+  - getByRole
+  - queryByRole
+  - getAllByRole
+  - queryAllByRole
+  - findByRole
+  - findAllByRole
+- **ByTestId** 通过 data-testid 属性来查找
+  - getByTestId
+  - queryByTestId
+  - getAllByTestId
+  - queryAllByTestId
+  - findByTestId
+  - findAllByTestId
+
+## 异步
+
+参考 [异步 API](dom-testing-library/api-async.mdx)。记得在你的测试总使用 `await` 或
+`.then()` 等待和处理异步结果。
+
+- **waitFor** (Promise) 重试回调函数直到回调函数不抛出错误或超时
+- **waitForElementToBeRemoved** (Promise) 重试回调函数直到回调函数不返回 DOM 节点
+
+> **从 v7.0.0 开始弃用:**
+>
+> - **wait** (Promise) retry the function within until it stops throwing or
+>   times
+> - **waitForElement** (Promise) retry the function until it returns an element
+>   or an array of elements. The `findBy` and `findAllBy` queries are async and
+>   retry until the query returns successfully, or when the query times out;
+>   they wrap `waitForElement`
+> - **waitForDomChange** (Promise) retry the function each time the DOM is
+>   changed
+
+## 事件
+
+参考 [fireEvent 的注意事项](guide-events.mdx)，
+[事件 API](api-events.mdx)
+
+- **fireEvent** 触发 DOM 事件: `fireEvent(node, event)`
+- **fireEvent.\*** 默认的事件类型
+  - **click** `fireEvent.click(node)`
+  - 参考[所有支持的事件](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
+
+## 其它
+
+参考 [在元素内查询](api-within.mdx)，
+[配置 API](api-configuration.mdx)
+
+- **within** 接受一个节点元素并返回所有绑定到节点的查询函数
+  (`React Testing Library` 的 render 函数就是使用它): `within(node).getByText("hello")`
+- **configure** 改变全局选项:
+  `configure({testIdAttribute: 'my-data-test-id'})`
+
+## Text Match 选项
+
+给定以下 HTML:
+
+```html
+<div>Hello World</div>
+```
+
+**可以找到 div:**
+
+```javascript
+// Matching a string:
+getByText(container, 'Hello World') // full string match
+getByText(container, 'llo Worl', {exact: false}) // substring match
+getByText(container, 'hello world', {exact: false}) // ignore case
+
+// Matching a regex:
+getByText(container, /World/) // substring match
+getByText(container, /world/i) // substring match, ignore case
+getByText(container, /^hello world$/i) // full string match, ignore case
+getByText(container, /Hello W?oRlD/i) // advanced regex
+
+// Matching with a custom function:
+getByText(container, (content, element) => content.startsWith('Hello'))
+```
+
+给定一个按钮，点击后在一段时间后更新页面:
+
+```jsx
+test('loads items eventually', async () => {
+  // Click button
+  fireEvent.click(getByText(node, 'Load'))
+
+  // Wait for page to update with query text
+  const items = await findAllByText(node, /Item #[0-9]: /)
+  expect(items).toHaveLength(10)
+})
+```

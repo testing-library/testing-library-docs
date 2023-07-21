@@ -1,0 +1,107 @@
+---
+id: faq
+title: FAQ
+---
+
+对于不针对Angular测试的问题，也请参见[主要的FAQ](dom-testing-library/faq.mdx)。
+
+<details>
+
+<summary>我可以用这个库写单元测试吗？</summary>
+
+Definitely yes! You can write unit and integration tests with this library. See
+below for more on how to mock dependencies (because this library intentionally
+does NOT support shallow rendering) if you want to unit test a high level
+component. The tests in this project show several examples of unit testing with
+this library.
+
+As you write your tests, keep in mind:
+
+> The more your tests resemble the way your software is used, the more
+> confidence they can give you. - [17 Feb 2018][guiding-principle]
+
+</details>
+
+<details>
+
+<summary>
+  如果我不能使用浅层渲染，我如何在测试中模拟出组件？
+</summary>
+
+In general, you should avoid mocking out components (see
+[the Guiding Principles section](guiding-principles.mdx)). However, if you need
+to, then try to use [ng-mocks](https://ng-mocks.sudo.eu/) and its [`MockBuilder`](https://ng-mocks.sudo.eu/extra/with-3rd-party#testing-libraryangular-and-mockbuilder).
+
+```typescript
+import {Component, NgModule} from '@angular/core'
+import {render, screen} from '@testing-library/angular'
+import {MockBuilder} from 'ng-mocks'
+
+@Component({
+  selector: 'app-parent-component',
+  template: '<app-child-component></app-child-component>',
+})
+class ParentComponent {}
+
+@Component({
+  selector: 'app-child-component',
+  template: '<p>Child component</p>',
+})
+class ChildComponent {}
+
+@NgModule({
+  declarations: [ParentComponent, ChildComponent],
+})
+export class AppModule {}
+
+describe('ParentComponent', () => {
+  it('should not render ChildComponent when shallow rendering', async () => {
+    // all imports, declarations and exports of AppModule will be mocked.
+    const dependencies = MockBuilder(ParentComponent, AppModule).build();
+
+    await render(ParentComponent, dependencies)
+
+    expect(screen.queryByText('Child component')).toBeNull()
+  })
+})
+```
+
+</details>
+
+<details>
+
+<summary>
+  我应该测试组件树的哪一层？子组件，父组件，还是两者？
+</summary>
+
+Following the guiding principle of this library, it is useful to break down how
+tests are organized around how the user experiences and interacts with
+application functionality rather than around specific components themselves. In
+some cases, for example for reusable component libraries, it might be useful to
+include developers in the list of users to test for and test each of the
+reusable components individually. Other times, the specific break down of a
+component tree is just an implementation detail and testing every component
+within that tree individually can cause issues (see
+https://kentcdodds.com/blog/avoid-the-test-user).
+
+In practice this means that it is often preferable to test high enough up the
+component tree to simulate realistic user interactions. The question of whether
+it is worth additionally testing at a higher or lower level on top of this comes
+down to a question of tradeoffs and what will provide enough value for the cost
+(see https://kentcdodds.com/blog/unit-vs-integration-vs-e2e-tests on more info
+on different levels of testing).
+
+For a more in-depth discussion of this topic see
+[this video](https://youtu.be/0qmPdcV-rN8).
+
+</details>
+
+<!--
+Links:
+-->
+
+<!-- prettier-ignore-start -->
+
+[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
+
+<!-- prettier-ignore-end -->

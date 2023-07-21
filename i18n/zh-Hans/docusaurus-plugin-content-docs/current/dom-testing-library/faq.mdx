@@ -1,0 +1,121 @@
+---
+id: faq
+title: 常见问题
+---
+
+<details>
+
+<summary>我应该使用哪个 get 方法？</summary>
+
+参考 [我该使用哪个查询](queries/about.mdx#优先级)
+
+</details>
+
+<details>
+
+<summary>我能用这个库来编写单元测试吗？</summary>
+
+绝对可以！你可以使用该库编写单元、集成和端到端测试。
+
+在编写测试时，请牢记：
+
+> 测试代码与你的软件使用方式越相似，它们能给你的信心就越大 - [2018年2月17][guiding-principle]
+
+</details>
+
+<details>
+
+<summary>
+  如果应用或页面使用了国际化，无法在测试中获取到对应的文本，该怎么办？
+</summary>
+
+This is fairly common. Our first bit of advice is to try to get the default text
+used in your tests. That will make everything much easier (more than just using
+this utility). If that's not possible, then you're probably best to just stick
+with `data-testid`s (which is not bad anyway).
+
+</details>
+
+<details>
+
+<summary>
+  真心不喜欢使用 data-testids，但是其它的查询方式又感觉不合适，
+  一定要使用 data-testid 吗?
+</summary>
+
+Definitely not. That said, a common reason people don't like the `data-testid`
+attribute is they're concerned about shipping that to production. I'd suggest
+that you probably want some simple E2E tests that run in production on occasion
+to make certain that things are working smoothly. In that case the `data-testid`
+attributes will be very useful. Even if you don't run these in production, you
+may want to run some E2E tests that run on the same code you're about to ship to
+production. In that case, the `data-testid` attributes will be valuable there as
+well.
+
+All that said, if you really don't want to ship `data-testid` attributes, then
+you can use
+[this simple babel plugin](https://www.npmjs.com/package/babel-plugin-react-remove-properties)
+to remove them.
+
+If you don't want to use them at all, then you can simply use regular DOM
+methods and properties to query elements off your container.
+
+```javascript
+const firstLiInDiv = container.querySelector('div li')
+const allLisInDiv = container.querySelectorAll('div li')
+const rootElement = container.firstChild
+```
+
+</details>
+
+<details>
+
+<summary>
+  如果在一个列表中为每一项都添加了 data-testid="item" 属性，怎么样区分它们？
+</summary>
+
+You can make your selector just choose the one you want by including :nth-child
+in the selector.
+
+```javascript
+const thirdLiInUl = container.querySelector('ul > li:nth-child(3)')
+```
+
+Or you could use `getAllByRole` to query the `listitem` role and access the
+index in question:
+
+```javascript
+const items = [
+  /* your items */
+]
+const {container} = render(/* however you render this stuff */)
+const thirdItem = getAllByRole(container, 'listitem')[2]
+```
+
+</details>
+
+<details>
+<summary>
+  求救! 无法访问组件的方法或组件实例!
+</summary>
+
+This is **intentional**.
+
+We want you to focus on testing the output and functionality of the component as
+it is observed by the user and to **avoid worrying about the implementation
+details** of the component.
+
+We believe this leads to less brittle and more meaningful test code.
+
+Please refer to the [Guiding Principles](guiding-principles.mdx) of this testing
+library for more info.
+
+</details>
+
+<!-- Links: -->
+
+<!-- prettier-ignore-start -->
+
+[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
+
+<!-- prettier-ignore-end -->

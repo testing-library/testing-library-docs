@@ -1,0 +1,55 @@
+---
+id: example-react-modal
+title: 模态框
+---
+
+```jsx
+import React, {useEffect} from 'react'
+import ReactDOM from 'react-dom'
+import {render, fireEvent} from '@testing-library/react'
+
+const modalRoot = document.createElement('div')
+modalRoot.setAttribute('id', 'modal-root')
+document.body.appendChild(modalRoot)
+
+const Modal = ({onClose, children}) => {
+  const el = document.createElement('div')
+
+  useEffect(() => {
+    modalRoot.appendChild(el)
+
+    return () => modalRoot.removeChild(el)
+  })
+
+  return ReactDOM.createPortal(
+    <div onClick={onClose}>
+      <div onClick={e => e.stopPropagation()}>
+        {children}
+        <hr />
+        <button onClick={onClose}>Close</button>
+      </div>
+    </div>,
+    el,
+  )
+}
+
+test('modal shows the children and a close button', () => {
+  // 准备
+  const handleClose = jest.fn()
+
+  // 操作
+  const {getByText} = render(
+    <Modal onClose={handleClose}>
+      <div>test</div>
+    </Modal>,
+  )
+  // 断言
+  expect(getByText('test')).toBeTruthy()
+
+  // 操作
+  fireEvent.click(getByText(/close/i))
+
+  // 断言
+  expect(handleClose).toHaveBeenCalledTimes(1)
+})
+```

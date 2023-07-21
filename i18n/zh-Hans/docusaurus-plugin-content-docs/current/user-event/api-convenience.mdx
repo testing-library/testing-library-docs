@@ -1,0 +1,83 @@
+---
+id: convenience
+title: 快捷 API
+---
+
+以下 API 是对底层 API 
+[`pointer()`](api-pointer.mdx) 和 [`keyboard()`](api-keyboard.mdx) 的等效调用的快捷方式.
+
+## 点击
+
+### click()
+
+```ts
+click(element: Element): Promise<void>
+```
+
+```js
+pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
+```
+
+第一个动作可能会根据 [`skipHover`](options.mdx#skiphover) 而被跳过。
+
+### dblClick()
+
+```ts
+dblClick(element: Element): Promise<void>
+```
+
+```js
+pointer([{target: element}, {keys: '[MouseLeft][MouseLeft]', target: element}])
+```
+
+### tripleClick()
+
+```ts
+tripleClick(element: Element): Promise<void>
+```
+
+```js
+pointer([
+  {target: element},
+  {keys: '[MouseLeft][MouseLeft][MouseLeft]', target: element},
+])
+```
+
+## 鼠标移动
+
+### hover()
+
+```ts
+hover(element: Element): Promise<void>
+```
+
+```js
+pointer({target: element})
+```
+
+### unhover()
+
+```ts
+unhover(element: Element): Promise<void>
+```
+
+```js
+pointer({target: element.ownerDocument.body})
+```
+
+## 键盘
+
+### tab()
+
+```ts
+tab(options: {shift?: boolean}): Promise<void>
+```
+
+```js
+// without shift
+keyboard('{Tab}')
+// with shift=true
+keyboard('{Shift>}{Tab}{/Shift}')
+// with shift=false
+keyboard('[/ShiftLeft][/ShiftRight]{Tab}')
+```

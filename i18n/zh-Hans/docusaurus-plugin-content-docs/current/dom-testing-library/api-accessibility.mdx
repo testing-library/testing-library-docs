@@ -1,0 +1,82 @@
+---
+id: api-accessibility
+title: 无障碍访问
+---
+
+## 无障碍测试
+
+Testing Library API 的指导原则之一是，它们应使你能够以用户使用的方式来测试你的应用程序，包括通过屏幕阅读器等无障碍界面。
+
+关于如何使用语义HTML查询来确保你的应用程序与浏览器的可访问性API一起工作的细节，
+请参见[查询](queries/about.mdx#priority)页面。
+
+## `getRoles`
+
+这个函数允许在一个给定的DOM节点树中，遍历其上的隐式 ARIA 角色。
+
+它返回一个对象，以角色名称为键，每个值是一个具有该隐式ARIA角色的元素数组。
+
+关于隐式的ARIA角色的更多信息，请参见[HTML中的ARIA](https://www.w3.org/TR/html-aria/#document-conformance-requirements-for-use-of-aria-attributes-in-html)。
+
+```javascript
+import {getRoles} from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+console.log(getRoles(nav))
+
+// Object {
+//   navigation: [<nav />],
+//   list: [<ul />],
+//   listitem: [<li />, <li />]
+// }
+```
+
+## `isInaccessible`
+
+这个函数将判断给定的元素是否应该被浏览器可访问性API中排除。它实现了WAI-ARIA 1.2，
+[从无障碍访问树中排除元素](https://www.w3.org/TR/wai-aria-1.2/#tree_exclusion) 中所有**MUST**标准，
+但检查角色属性除外。
+
+函数的定义为:
+
+```typescript
+function isInaccessible(element: Element): boolean
+```
+
+## `logRoles`
+
+这个辅助函数可以用来打印出一个DOM节点树中所有隐式的ARIA角色的列表，
+每个角色都包含一个符合该角色的所有节点的列表。这对于使用 [getByRole](queries/byrole.mdx) 来查询 DOM 和测试很有帮助。
+
+```javascript
+import {logRoles} from '@testing-library/dom'
+
+const nav = document.createElement('nav')
+nav.innerHTML = `
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>`
+
+logRoles(nav)
+```
+
+返回结果:
+
+```
+navigation:
+<nav />
+--------------------------------------------------
+list:
+<ul />
+--------------------------------------------------
+listitem:
+<li />
+<li />
+--------------------------------------------------
+```

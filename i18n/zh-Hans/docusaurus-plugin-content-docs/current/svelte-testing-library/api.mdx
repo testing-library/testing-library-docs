@@ -1,0 +1,141 @@
+---
+id: api
+title: API
+sidebar_label: API
+---
+
+- [`@testing-library/dom`](#testing-library-dom)
+- [`render`](#render)
+- [`cleanup`](#cleanup)
+- [`act`](#act-async)
+- [`fireEvent`](#fireevent-async)
+
+---
+
+## `@testing-library/dom`
+
+这个库重新导出了DOM Testing Library（@testing-library/dom）的所有内容。
+请看[文档](queries/about.mdx)以了解你可以使用哪些好东西。
+
+📝 当从 `@testing-library/svelte` 导入时，`fireEvent` 是一个异步方法。
+这是因为它调用 [`tick`][svelte-tick]，告诉Svelte将任何新的变化应用到DOM上。
+
+## `render`
+
+```js
+import {render} from '@testing-library/svelte'
+
+const {results} = render(YourComponent, {ComponentOptions}, {RenderOptions})
+```
+
+### 组件选项
+
+这些是你在实例化你的Svelte `Component` 时传递的选项。
+请参考[客户端组件的API](https://svelte.dev/docs#run-time-client-side-component-api-creating-a-component)。
+
+📝 如果你要传入的唯一选项是 `props`，那么你可以直接传入它们。
+
+```js
+// With options.
+const {results} = render(YourComponent, {
+  target: MyTarget,
+  props: {myProp: 'value'},
+})
+
+// Props only.
+const {results} = render(YourComponent, {myProp: 'value'})
+```
+
+### 渲染选项
+
+| Option      | Description                                                                         | Default         |
+| ----------- | ----------------------------------------------------------------------------------- | --------------- |
+| `container` | The HTML element the component is mounted into.                                     | `document.body` |
+| `queries`   | Queries to bind to the container. See [within](dom-testing-library/api-within.mdx). | `null`          |
+
+### 返回结果
+
+| Result       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container`  | The HTML element the component is mounted into.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `component`  | The newly created Svelte component. Generally, this should only be used when testing exported functions, or when you're testing developer facing API's. Outside of said cases avoid using the component directly to build tests, instead of interacting with the rendered Svelte component, work with the DOM. Have a read of [Avoid the Test User](https://kentcdodds.com/blog/avoid-the-test-user) by Kent C. Dodds to understand the difference between the **end user** and **developer user**. |
+| `debug`      | Logs the `container` using [prettyDom](dom-testing-library/api-debugging.mdx/#prettydom).                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `unmount`    | Unmounts the component from the `target` by calling `component.$destroy()`.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `rerender`   | Calls render again destroying the old component, and mounting the new component on the original `target` with any new options passed in.                                                                                                                                                                                                                                                                                                                                                            |
+| `...queries` | Returns all [query functions](queries/about.mdx) that are bound to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                                                                                                                                                                                                                                                                        |
+
+## `cleanup`
+
+> 你不需要导入或使用这个，它是自动为你完成的!
+
+从容器中卸载组件并销毁容器。
+
+📝 当你从库中导入任何东西时，这将在每次测试后自动运行。如果你想禁用它，
+那么请将 `process.env.STL_SKIP_AUTO_CLEANUP` 设置为 `true`，或者从库中导入 `dont-clean-after-each`。
+
+```js
+import {render, cleanup} from '@testing-library/svelte'
+
+afterEach(() => {
+  cleanup()
+}) // Default on import: runs it after each test.
+
+render(YourComponent)
+
+cleanup() // Or like this for more control.
+```
+
+## `act` (`async`)
+
+一个 `异步` 辅助方法，接收一个立即被调用/解决的 `function` 或 `Promise`，
+然后调用 [`tick`][svelte-tick]，这样所有悬而未决的状态变化都被刷新，现在视图反映了对DOM的任何变化。
+
+## `fireEvent` (`async`)
+
+调用 `@testing-library/dom` [fireEvent](dom-testing-library/api-events.mdx)。
+这是一个异步方法，由于调用 [`tick`][svelte-tick]，它告诉Svelte刷新所有待定的状态变化，基本上它更新DOM以反映新的变化。
+
+**组件**
+
+```html
+<script>
+  let count = 0
+
+  function handleClick() {
+    count += 1
+  }
+</script>
+
+<button on:click="{handleClick}">Count is {count}</button>
+```
+
+**测试**
+
+```js
+import '@testing-library/jest-dom'
+
+import {render, fireEvent, screen} from '@testing-library/svelte'
+
+import Comp from '..'
+
+test('count increments when button is clicked', async () => {
+  render(Comp)
+  const button = screen.getByText('Count is 0')
+
+  // Option 1.
+  await fireEvent.click(button)
+  expect(button).toHaveTextContent('Count is 1')
+
+  // Option 2.
+  await fireEvent(
+    button,
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  )
+  expect(button).toHaveTextContent('Count is 2')
+})
+```
+
+[svelte-tick]: https://svelte.dev/docs#tick

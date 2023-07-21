@@ -1,0 +1,131 @@
+---
+id: examples
+title: Examples
+sidebar_label: 示例
+---
+
+> 阅读
+> [最佳实践](https://timdeschryver.dev/blog/good-testing-practices-with-angular-testing-library),
+> 或遵循
+> [指导性的例子](https://timdeschryver.dev/blog/getting-the-most-value-out-of-your-angular-component-tests)
+
+```ts title="counter.component.ts"
+@Component({
+  selector: 'counter',
+  template: `
+    <button (click)="decrement()">-</button>
+    <span data-testid="count">Current Count: {{ counter }}</span>
+    <button (click)="increment()">+</button>
+  `,
+})
+export class CounterComponent {
+  @Input() counter = 0
+
+  increment() {
+    this.counter += 1
+  }
+
+  decrement() {
+    this.counter -= 1
+  }
+}
+```
+
+```ts title="counter.component.spec.ts"
+import {render, screen, fireEvent} from '@testing-library/angular'
+import {CounterComponent} from './counter.component.ts'
+
+describe('Counter', () => {
+  test('should render counter', async () => {
+    await render(CounterComponent, {
+      componentProperties: {counter: 5},
+    })
+
+    expect(screen.getByText('Current Count: 5')).toBeInTheDocument()
+  })
+
+  test('should increment the counter on click', async () => {
+    await render(CounterComponent, {
+      componentProperties: {counter: 5},
+    })
+
+    fireEvent.click(screen.getByText('+'))
+
+    expect(screen.getByText('Current Count: 6')).toBeInTheDocument()
+  })
+})
+```
+
+## 使用独立的组件
+
+Angular Testing Library 也可以测试你的独立组件。事实上，它甚至变得更容易，
+因为你不需要设置整个Angular TestBed。
+这在以前只有当你[使用单组件Angular模块（SCAMs）时才能实现](https://timdeschryver.dev/blog/single-component-angular-modules-and-component-tests-go-hand-in-hand)。
+
+让我们把计数器组件迁移到一个独立的组件，让我们看看这对测试有什么影响。
+
+```ts title="counter.component.ts"
+@Component({
+  selector: 'counter',
+  template: `
+    <button (click)="decrement()">-</button>
+    <span data-testid="count">Current Count: {{ counter }}</span>
+    <button (click)="increment()">+</button>
+  `,
+  standalone: true,
+})
+export class CounterComponent {
+  @Input() counter = 0
+
+  increment() {
+    this.counter += 1
+  }
+
+  decrement() {
+    this.counter -= 1
+  }
+}
+```
+
+正如你所期望的，这并不影响测试案例。编写独立组件的测试与 "常规"组件的测试相同。
+
+```ts title="counter.component.spec.ts"
+import {render, screen, fireEvent} from '@testing-library/angular'
+import {CounterComponent} from './counter.component.ts'
+
+describe('Counter', () => {
+  test('should render counter', async () => {
+    await render(CounterComponent, {
+      componentProperties: {counter: 5},
+    })
+
+    expect(screen.getByText('Current Count: 5')).toBeInTheDocument()
+  })
+
+  test('should increment the counter on click', async () => {
+    await render(CounterComponent, {
+      componentProperties: {counter: 5},
+    })
+
+    fireEvent.click(screen.getByText('+'))
+
+    expect(screen.getByText('Current Count: 6')).toBeInTheDocument()
+  })
+})
+```
+
+要为你的组件测试覆盖一个独立组件的导入，你可以使用[`ɵcomponentImports` 属性](api.mdx#ɵcomponentImports])。
+
+## 更多示例
+
+更多的例子可以在
+[GitHub项目](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/src/app/examples).
+中找到。这些例子包括：
+
+- `@Input` 和 `@Output` 属性
+- 表单
+- 服务集成
+- 和 [更多](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/src/app/examples)
+
+如果你正在寻找一个不在清单上的例子，请随时创建一个新问题
+[新问题](https://github.com/testing-library/angular-testing-library/issues/new)。

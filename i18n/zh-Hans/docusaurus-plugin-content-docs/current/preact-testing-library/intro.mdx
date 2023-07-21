@@ -1,0 +1,39 @@
+---
+id: intro
+title: 简介
+sidebar_label: 简介
+---
+
+[Preact Testing Library on GitHub][gh]
+
+[gh]: https://github.com/testing-library/preact-testing-library
+
+```bash npm2yarn
+npm install --save-dev @testing-library/preact
+```
+
+> 这个库是建立在 [`DOM Testing Library`](dom-testing-library/intro.mdx) 之上的，
+> 而 [`DOM Testing Library`](dom-testing-library/intro.mdx) 是查询背后大部分逻辑的所在。
+
+## 问题
+
+你想为你的Preact组件编写测试，这样可以避免包括实现细节，并且从长远来看是可维护的。
+
+## 解决方案
+
+Preact Testing Library 是一个非常轻量级的解决方案，用于测试Preact组件。它在 `preact/test-utils` 的基础上提供轻量级的实用功能，
+以鼓励更好的测试实践。它的主要指导原则是:
+
+> [你的测试越像你的软件的使用方式，他们就越能给你信心](https://twitter.com/kentcdodds/status/977018512689455106)
+
+参见[Dom介绍][dom-solution-explainer]和[React介绍][react-solution-explainer]以获得更深入的解释。
+
+[dom-solution-explainer]: ../dom-testing-library/intro.mdx#this-solution
+[react-solution-explainer]: ../react-testing-library/intro.mdx#this-solution
+
+**这个库不是什么**:
+
+1.  一个测试运行器或框架.
+2.  具体到一个测试框架.
+
+我们推荐Jest作为我们的首选。如果你想使用其他框架，你可以查看 [不使用 Jest](react-testing-library/setup.mdx#using-without-jest)。

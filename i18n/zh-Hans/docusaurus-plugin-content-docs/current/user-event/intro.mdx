@@ -1,0 +1,75 @@
+---
+id: intro
+title: 简介
+---
+
+[`user-event`](https://github.com/testing-library/user-event) 是 Testing Library 的配套库，
+它通过派发事件的方式来模拟用户在浏览器中的交互.
+
+:::note 最新版本
+
+本文档是关于 `user-event@14`，我们建议将你的项目更新到此版本，
+因为它包含了重要的缺陷修复和新功能。你可以在
+[此处](../ecosystem-user-event.mdx) 找到 `user-event@13.5.0` 的文档，并且在
+[此处](https://github.com/testing-library/user-event/releases/tag/v14.0.0) 找到版本发布的变更日志。
+
+:::
+
+虽然大多数 `user-event` 的示例都使用 `React`，但只要有 DOM，它就可以和其它任何框架一起使用。
+
+## 区别于 `fireEvent`
+
+`fireEvent` 派发 _DOM 事件_，然而 `user-event` 会模拟完整的
+_交互_，它可能触发多个事件的派发以及额外的检查.
+
+Testing Library 内置的
+[`fireEvent`](dom-testing-library/api-events.mdx#fireevent) 是对浏览器底层API `dispatchEvent` 的轻量级封装，
+它允许开发人员在任何元素上触发任何事件。 问题是浏览器通常为一次交互不仅仅触发一个事件，例如，
+当用户在文本框中输入内容时，就必须先触发文本框的聚焦事件，然后触发键盘的输入事件.
+
+`user-event` 允许你描述一个用户交互而不是一个具体的事件。它沿途增加了可见性和交互性检查，
+并像用户在浏览器中的交互那样操作DOM。它考虑到浏览器不会让用户点击一个隐藏的元素或在一个禁用的文本框中输入。
+
+这就是[为什么你应该使用用户事件](https://ph-fritsche.github.io/blog/post/why-userevent)来测试与你的组件的交互。 
+
+然而，有一些用户交互或这些方面还没有实现，因此[还不能用 `user-event` 来描述](https://github.com/testing-library/user-event/issues?q=is%3Aopen+label%3Aaccuracy%2Cenhancement)。
+在这些情况下，你可以使用 `fireEvent` 来调度你的软件所依赖的具体事件。
+
+请注意，这使得你的组件和（或）测试依赖于你对交互的具体方面的假设是正确的。
+因此，如果你已经投入工作来指定这种交互的正确方面，请考虑为这个项目做出贡献代码，以便 `user-event` 也可以涵盖这些情况。
+
+## 使用 `userEvent` 编写测试
+
+我们建议在组件被渲染之前调用 [`userEvent.setup()`](setup.mdx)。
+这可以在测试本身中完成，或者通过使用一个setup函数。我们不鼓励在测试本身之外渲染或使用任何 `userEvent` 函数
+-- 例如在`before`/`after` hook中 -- 原因在 ["测试时避免嵌套"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing) 中描述。
+
+```js
+// inlining
+test('trigger some awesome feature when clicking the button', async () => {
+  const user = userEvent.setup()
+  render(<MyComponent />)
+
+  await user.click(screen.getByRole('button', {name: /click me!/i}))
+
+  // ...断言...
+})
+```
+
+```js
+// setup function
+function setup(jsx) {
+  return {
+    user: userEvent.setup(),
+    ...render(jsx),
+  }
+}
+
+test('render with a setup function', async () => {
+  const {user} = setup(<MyComponent />)
+  // ...
+})
+```
+
+请注意，虽然直接调用API，如 `userEvent.click()`（这将在内部触发 setup 函数）在[v14中仍然被支持](https://testing-library.com/docs/user-event/setup#direct-apis)，
+这个选项的存在是为了方便从v13到v14的迁移，以及简单的测试。我们建议使用由 `userEvent.setup()` 返回的实例上的方法。

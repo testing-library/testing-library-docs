@@ -1,0 +1,220 @@
+---
+id: intro
+title: WebdriverIO Testing Library
+---
+
+[`webdriverio-testing-library`][gh] 允许在 [WebdriverIO](https://webdriver.io/) 中使用 dom-testing-library 查询来进行端到端的web测试。
+
+## 安装
+
+> 请务必先按照 [WebdriverIO的安装和配置说明](https://webdriver.io/docs/gettingstarted/) 进行操作。
+
+然后
+
+```bash npm2yarn
+npm install -D @testing-library/webdriverio
+```
+
+- [webdriverio-testing-library on GitHub][gh]
+
+## API
+
+### `setupBrowser`
+
+接受一个 WebdriverIO [浏览器对象](https://webdriver.io/docs/browserobject) 并返回dom-testing-library [查询](/docs/queries/about)，
+修改后的查询像普通[选择器](https://webdriver.io/docs/selectors/)一样返回WebdriverIO元素。**所有的查询都是异步的**，默认情况下与 `document.body`绑定。
+
+```javascript
+import {setupBrowser} from '@testing-library/webdriverio'
+
+it('can click button', async () => {
+  const {getByText} = setupBrowser(browser)
+
+  const button = await getByText('Button Text')
+  await button.click()
+
+  expect(await button.getText()).toEqual('Button Clicked')
+})
+```
+
+`setupBrowser` 还将查询作为命令添加到浏览器和所有WebdriverIO元素中。
+浏览器命令的范围是 `document.body`。元素命令的范围与元素的范围相同，就像它被传递到 [`within`](#within) 一样。
+
+```javascript
+it('adds queries as browser commands', async () => {
+  setupBrowser(browser)
+
+  expect(await browser.getByText('Page Heading')).toBeDefined()
+})
+
+it('adds queries as element commands scoped to element', async () => {
+  setupBrowser(browser)
+
+  const nested = await browser.$('*[data-testid="nested"]')
+  const button = await nested.getByText('Button Text')
+  await button.click()
+
+  expect(await button.getText()).toEqual('Button Clicked')
+})
+```
+
+当使用[同步模式](https://webdriver.io/docs/sync-vs-async#sync-mode)时，这些命令也是同步的:
+
+```javascript
+it('adds queries as browser commands', async () => {
+  setupBrowser(browser)
+
+  expect(browser.getByText('Page Heading')).toBeDefined()
+})
+
+it('adds queries as element commands scoped to element', async () => {
+  setupBrowser(browser)
+
+  const nested = browser.$('*[data-testid="nested"]')
+  const button = nested.getByText('Button Text')
+  button.click()
+
+  expect(button.getText()).toEqual('Button Clicked')
+})
+```
+
+当使用v7.19或更高版本的 WebdriverIO 时，你也可以使用链式查询。链式查询作为命令添加到 browser 和 element 中，格式为 `{query}$`。
+
+```javascript
+it('can chain browser getBy queries', async () => {
+  setupBrowser(browser)
+
+  await browser.getByTestId$('nested').getByText$('Button Text').click()
+
+  const buttonText = await browser
+    .getByTestId$('nested')
+    .getByText$('Button Text')
+    .getText()
+
+  expect(buttonText).toEqual('Button Clicked')
+})
+
+it('can chain element getBy queries', async () => {
+  const {getByTestId} = setupBrowser(browser)
+
+  const nested = await getByTestId('nested')
+  await nested.getByText$('Button Text').click()
+
+  const buttonText = await browser.getByText$('Button Clicked').getText()
+
+  expect(buttonText).toEqual('Button Clicked')
+})
+
+it('can chain getAllBy queries', async () => {
+  setupBrowser(browser)
+
+  await browser.getByTestId$('nested').getAllByText$('Button Text')[0].click()
+
+  expect(await browser.getAllByText('Button Clicked')).toHaveLength(1)
+})
+```
+
+### `within`
+
+接受一个WebdriverIO元素并返回对该元素范围内的查询。
+
+```javascript
+import {within} from '@testing-library/webdriverio'
+
+it('within scopes queries to element', async () => {
+  const nested = await browser.$('*[data-testid="nested"]')
+
+  const button = await within(nested).getByText('Button Text')
+  await button.click()
+
+  expect(await button.getText()).toEqual('Button Clicked')
+})
+```
+
+### `configure`
+
+让你配置 [configure dom-testing-library][config]
+
+```javascript
+import {configure} from '@testing-library/webdriverio'
+
+beforeEach(() => {
+  configure({testIdAttribute: 'data-automation-id'})
+})
+afterEach(() => {
+  configure(null)
+})
+
+it('lets you configure queries', async () => {
+  const {getByTestId} = setupBrowser(browser)
+
+  expect(await getByTestId('testid-in-data-automation-id-attr')).toBeDefined()
+})
+```
+
+## Typescript
+
+这个库带有完整的类型脚本定义。为了使用 [`setupBrowser`](#setupbrowser) 添加的命令，
+需要扩展全局 `WebdriverIO` 命名空间中的 `Browser` 和 `Element` 接口。
+在typecript模块中添加以下内容:
+
+```typescript
+import {WebdriverIOQueries} from '@testing-library/webdriverio'
+
+declare global {
+  namespace WebdriverIO {
+    interface Browser extends WebdriverIOQueries {}
+    interface Element extends WebdriverIOQueries {}
+  }
+}
+```
+
+如果你使用 `@wdio/sync` 包，你将需要使用 `WebdriverIOQueriesSync` 类型来扩展接口:
+
+```typescript
+import {WebdriverIOQueriesSync} from '@testing-library/webdriverio'
+
+declare global {
+  namespace WebdriverIO {
+    interface Browser extends WebdriverIOQueriesSync {}
+    interface Element extends WebdriverIOQueriesSync {}
+  }
+}
+```
+
+要添加链式查询类型，你需要使用 `WebdriverIOQueriesChainable` 扩展上述接口以及 `ChainablePromiseElement` ：
+
+```typescript
+import {WebdriverIOQueriesChainable, WebdriverIOQueries} from '../../src'
+
+declare global {
+  namespace WebdriverIO {
+    interface Browser
+      extends WebdriverIOQueries,
+        WebdriverIOQueriesChainable<Browser> {}
+    interface Element
+      extends WebdriverIOQueries,
+        WebdriverIOQueriesChainable<Element> {}
+  }
+}
+
+declare module 'webdriverio' {
+  interface ChainablePromiseElement<T extends WebdriverIO.Element | undefined>
+    extends WebdriverIOQueriesChainable<T> {}
+}
+```
+
+如果你发现类似这样的错误:
+
+```typescript
+browser.getByRole('navigation')
+// "Argument of type '"navigation"' is not assignable to parameter of type 'ByRoleOptions | undefined'."
+```
+
+你需要在你的 tsconfig 的 [lib](https://www.typescriptlang.org/tsconfig#lib) 选项中包括 "DOM"。
+更多信息请看[这里](https://github.com/testing-library/webdriverio-testing-library/issues/22)。
+
+关于在WebdriverIO中使用typescript的其他信息可以在[这里](https://webdriver.io/docs/typescript/)找到。
+
+[config]: ../dom-testing-library/api-configuration.mdx
+[gh]: https://github.com/testing-library/webdriverio-testing-library

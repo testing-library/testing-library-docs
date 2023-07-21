@@ -1,0 +1,58 @@
+---
+id: ecosystem-bs-jest-dom
+title: bs-jest-dom
+---
+
+[`bs-jest-dom`][gh] 是 [`bs-react-testing-library`](bs-react-testing-library/intro.mdx) 的配套库，
+通过 [BuckleScript][bucklescript] 为 [ReasonML][re] 中的Jest提供自定义DOM元素匹配器。
+
+```bash npm2yarn
+npm install --save-dev bs-jest-dom
+```
+
+- [bs-jest-dom on GitHub][gh]
+
+请查阅[jest-dom的文档](https://github.com/testing-library/jest-dom)，了解可用匹配器的完整列表。
+
+[gh]: https://github.com/wyze/bs-jest-dom
+
+## 设置
+
+```json
+{
+  "bs-dev-dependencies": ["bs-jest-dom"]
+}
+```
+
+## 示例
+
+```reason title="A_test.re"
+open Jest;
+open JestDom;
+open ReactTestingLibrary;
+
+module Heading = {
+  let component = ReasonReact.statelessComponent("Heading");
+
+  let make = (~text, _children) => {
+    ...component,
+    render: _self =>
+      <h1> {ReasonReact.string(text)} </h1>,
+  };
+};
+
+test("renders with text", () =>
+  <Heading text="Hello, World!" />
+  |> render
+  |> getByText(~matcher=`Str("Hello, World!"))
+  |> expect
+  |> toBeInTheDocument
+);
+```
+
+## 更多示例
+
+你可以在 [wyze/bs-jest-dom/src/\_\_tests\_\_](https://github.com/wyze/bs-jest-dom/tree/master/src/__tests__) 找到更多 bs-jest-dom 的例子。
+
+[re]: https://reasonml.github.io/
+[bucklescript]: https://bucklescript.github.io/

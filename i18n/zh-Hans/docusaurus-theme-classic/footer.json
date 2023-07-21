@@ -1,0 +1,58 @@
+{
+  "link.title.Docs": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "更多",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "快速上手",
+    "description": "The label of footer link with label=Getting Started linking to docs"
+  },
+  "link.item.label.Examples": {
+    "message": "示例",
+    "description": "The label of footer link with label=Examples linking to docs/example-codesandbox"
+  },
+  "link.item.label.API": {
+    "message": "API",
+    "description": "The label of footer link with label=API linking to docs/dom-testing-library/api"
+  },
+  "link.item.label.Help": {
+    "message": "帮助",
+    "description": "The label of footer link with label=Help linking to docs/dom-testing-library/faq"
+  },
+  "link.item.label.Blog": {
+    "message": "博客",
+    "description": "The label of footer link with label=Blog linking to blog"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "The label of footer link with label=Stack Overflow linking to https://stackoverflow.com/questions/tagged/react-testing-library"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/testing-library"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/testing-library"
+  },
+  "link.item.label.Edit Docs on GitHub": {
+    "message": "在 GitHub 编辑中文文档",
+    "description": "The label of footer link with label=Edit Docs on GitHub linking to https://github.com/testing-library/testing-library-docs"
+  },
+  "link.item.label.Hosted by Netlify": {
+    "message": "网站由 Netlify 托管",
+    "description": "The label of footer link with label=Hosted by Netlify linking to https://netlify.com"
+  },
+  "copyright": {
+    "message": "Copyright © 2018-2022 Kent C. Dodds and contributors",
+    "description": "The footer copyright"
+  }
+}

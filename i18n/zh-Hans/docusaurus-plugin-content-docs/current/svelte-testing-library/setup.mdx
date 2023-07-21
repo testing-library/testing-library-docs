@@ -1,0 +1,167 @@
+---
+id: setup
+title: 设置
+sidebar_label: 设置
+---
+
+我们推荐使用 [Vitest](https://vitest.dev/)，但你可以自由地将该库与任何你熟悉的测试框架和运行器一起使用。
+
+## Vitest
+1.  暗转 Vitest 和 jsdom
+
+    ```
+    npm install --save-dev vitest jsdom
+    ```
+
+2.  添加以下到你的 `package.json`
+
+    ```json
+    {
+      "scripts": {
+        "test": "vitest run src",
+        "test:watch": "vitest src"
+      }
+    }
+    ```
+
+3.  在Vitest中使用Svelte组件之前，你需要编译它们，所以你需要安装 [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte) 和 Vite。
+
+    ```
+    npm install --save-dev @sveltejs/vite-plugin-svelte vite
+    ```
+
+4.  在你的项目的根部添加一个 `vitest.config.ts` 配置文件
+
+    ```js
+    import { defineConfig } from 'vitest/config';
+    import { svelte } from '@sveltejs/vite-plugin-svelte';
+
+    export default defineConfig({
+        plugins: [svelte({ hot: !process.env.VITEST })],
+        test: {
+            include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+            globals: true,
+            environment: 'jsdom'
+        }
+    });
+
+    ```
+
+5.  这是可选的，但建议你安装 [jest-dom](https://github.com/testing-library/jest-dom)，以便在Jest中添加方便的断言。
+
+    5.1 安装 `jest-dom`
+
+    ```
+    npm install --save-dev @testing-library/jest-dom
+    ```
+
+    5.2 在你的测试文件的开头导入 `@testing-library/jest-dom`。
+
+    ```js
+    import '@testing-library/jest-dom';
+    ```
+
+6.  创建你的组件和一个测试文件（查看文档的其他部分以了解如何创建），并运行以下命令来运行测试。
+
+    ```
+    npm run test
+    ```  
+### SvelteKit
+
+要在SvelteKit中使用Vitest，请安装 `vitest-svelte-kit`，它包括一个为SvelteKit项目预先配置的Vitest配置。
+你可以看一下 [`vitest-svelte-kit`的配置文档](https://github.com/nickbreaton/vitest-svelte-kit/tree/master/packages/vitest-svelte-kit#configuring)，以获得更多的指导。
+
+## Jest
+
+1.  安装 Jest & jest-environment-jsdom
+
+    ```
+    npm install --save-dev jest jest-environment-jsdom
+    ```
+
+2.  添加以下到你的 `package.json`
+
+    ```json
+    {
+      "scripts": {
+        "test": "jest src",
+        "test:watch": "npm run test -- --watch"
+      }
+    }
+    ```
+
+3.  在Jest中使用Svelte组件之前，你需要对其进行编译，所以我们需要安装 [svelte-jester](https://github.com/mihar-22/svelte-jester)
+
+    ```bash npm2yarn
+    npm install --save-dev svelte-jester
+    ```
+
+4.  添加如下Jest 配置到你的 `package.json`
+
+    ```json
+    {
+      "jest": {
+        "transform": {
+          "^.+\\.svelte$": "svelte-jester"
+        },
+        "moduleFileExtensions": ["js", "svelte"],
+        "testEnvironment": "jsdom"
+      }
+    }
+    ```
+
+5.  如果你在你的项目中使用ES6模块，你必须添加Jest的babel转换设置（它是默认设置的，但由于我们要覆盖转换配置，我们必须明确添加它）。
+
+    5.1 安装 `babel-jest`
+
+    ```bash npm2yarn
+    npm install --save-dev babel-jest
+    ```
+
+    5.2. 添加一个基础的 `.babelrc` 配置
+
+    ```json
+    {
+      "presets": [["@babel/preset-env", {"targets": {"node": "current"}}]]
+    }
+    ```
+
+    5.3. 更新 Jest transform 配置
+
+    ```json
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    ```
+
+6.  这是可选的，但建议你安装 [jest-dom](https://github.com/testing-library/jest-dom)，以便在Jest中添加方便的断言。
+
+    6.1 安装 `jest-dom`
+
+    ```bash npm2yarn
+    npm install --save-dev @testing-library/jest-dom
+    ```
+
+    6.2 添加如下Jest 配置到你的 `package.json`
+
+    ```json
+    {
+      "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
+    }
+    ```
+
+7.  创建你的组件+测试文件（查看文档的其他部分以了解如何操作）并运行它
+
+    ```bash npm2yarn
+    npm run test
+    ```
+
+### Typescript
+
+要在Jest中使用Typescript，你需要安装和配置 `svelte-preprocess` 和 `ts-jest`。
+完整的说明请见[`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript)文档。
+
+### 预处理器
+
+如果你想包含任何[Svelte预处理器](https://github.com/sveltejs/svelte-preprocess)，那么只需按照[svelte-jester](https://github.com/mihar-22/svelte-jester#babel)的说明即可。

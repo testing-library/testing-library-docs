@@ -1,0 +1,37 @@
+---
+id: example-update-props
+title: 更新组件 props
+sidebar_label: 更新组件 props
+---
+
+```jsx
+// 示例：更新已被渲染的组件的 props
+// 通过再次调用 `render` 来渲染组件，且需要使用第一次渲染的容器
+
+import React, {useRef} from 'react'
+import {render, screen} from '@testing-library/react'
+
+let idCounter = 1
+
+const NumberDisplay = ({number}) => {
+  const id = useRef(idCounter++) // 确保不会重新挂载不同的组件实例
+
+  return (
+    <div>
+      <span data-testid="number-display">{number}</span>
+      <span data-testid="instance-id">{id.current}</span>
+    </div>
+  )
+}
+
+test('calling render with the same component on the same container does not remount', () => {
+  const {rerender} = render(<NumberDisplay number={1} />)
+  expect(screen.getByTestId('number-display')).toHaveTextContent('1')
+
+  // 用不同的 props 重新渲染相同的组件
+  rerender(<NumberDisplay number={2} />)
+  expect(screen.getByTestId('number-display')).toHaveTextContent('2')
+
+  expect(screen.getByTestId('instance-id')).toHaveTextContent('1')
+})
+```

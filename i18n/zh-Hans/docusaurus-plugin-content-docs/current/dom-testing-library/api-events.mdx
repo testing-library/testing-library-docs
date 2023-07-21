@@ -1,0 +1,157 @@
+---
+id: api-events
+title: 触发事件
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+> **注意**
+>
+> 大多数项目都有一部分使用 `fireEvent` 的场景，但是大多数场景你可能应该使用
+> [`@testing-library/user-event`](user-event/intro.mdx).
+
+## `fireEvent`
+
+```typescript
+fireEvent(node: HTMLElement, event: Event)
+```
+
+触发 DOM 事件。
+
+```javascript
+// <button>提交</button>
+fireEvent(
+  getByText(container, '提交'),
+  new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+  }),
+)
+```
+
+## `fireEvent[eventName]`
+
+```typescript
+fireEvent[eventName](node: HTMLElement, eventProperties: Object)
+```
+
+请查看 src/event-map.js 以获得完整的列表以及默认的事件属性。
+触发 DOM 事件的快捷方式。请查看
+[src/event-map.js](https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js)
+以获得完整的列表以及默认的 `eventProperties`。
+
+**target**：当一个事件被派发到一个元素上时，该事件在一个叫做 `target` 的属性中指定元素。
+为了方便起见，如果你在eventProperties（第二个参数）中提供一个`target`属性，那么这些属性将被分配给接收事件的节点。
+
+这对一个 change 事件特别有用：
+
+```javascript
+fireEvent.change(getByLabelText(/username/i), {target: {value: 'a'}})
+
+// note: attempting to manually set the files property of an HTMLInputElement
+// results in an error as the files property is read-only.
+// this feature works around that by using Object.defineProperty.
+fireEvent.change(getByLabelText(/picture/i), {
+  target: {
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})],
+  },
+})
+
+// Note: The 'value' attribute must use ISO 8601 format when firing a
+// change event on an input of type "date". Otherwise the element will not
+// reflect the changed value.
+
+// Invalid:
+fireEvent.change(input, {target: {value: '24/05/2020'}})
+
+// Valid:
+fireEvent.change(input, {target: {value: '2020-05-24'}})
+```
+
+**dataTransfer**：拖动事件有一个dataTransfer属性，包含在操作过程中传输的数据。
+为了方便起见，如果你在 `eventProperties`（第二个参数）中提供一个 `dataTransfer` 属性，
+那么这些属性将被添加到事件中。
+
+这应该主要用于测试拖放交互。
+
+```javascript
+fireEvent.drop(getByLabelText(/drop files here/i), {
+  dataTransfer: {
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})],
+  },
+})
+```
+
+**Keyboard events**: 有三种与键盘输入有关的事件类型 - `keyPress`, `keyDown`, 和 `keyUp`。
+当启动这些事件时，你需要引用DOM中的一个元素和你想启动的键。
+
+```javascript
+fireEvent.keyDown(domNode, {key: 'Enter', code: 'Enter', charCode: 13})
+
+fireEvent.keyDown(domNode, {key: 'A', code: 'KeyA'})
+```
+
+你可以在 [https://www.toptal.com/developers/keycode](https://www.toptal.com/developers/keycode) 找出要使用的键码。
+
+## `createEvent[eventName]`
+
+```typescript
+createEvent[eventName](node: HTMLElement, eventProperties: Object)
+```
+
+创建DOM事件的便利方法，然后可以由 `fireEvent` 触发，允许你有一个对创建的事件的引用：
+如果你需要访问不能以编程方式启动的事件属性（如时间戳），这可能很有用。
+
+```javascript
+const myEvent = createEvent.click(node, {button: 2})
+fireEvent(node, myEvent)
+// myEvent.timeStamp can be accessed just like any other properties from myEvent
+// note: The access to the events created by `createEvent` is based on the native event API,
+// Therefore, native properties of HTMLEvent object (e.g. `timeStamp`, `cancelable`, `type`) should be set using Object.defineProperty
+// For more info see: https://developer.mozilla.org/en-US/docs/Web/API/Event
+```
+
+你还可以触发通用的事件:
+
+```javascript
+// 在 文件 input 上触发 'input' 事件
+fireEvent(
+  input,
+  createEvent('input', input, {
+    target: {files: inputFiles},
+    ...init,
+  }),
+)
+```
+
+## 使用 Jest 模拟函数
+
+[Jest的模拟函数](https://jestjs.io/docs/en/mock-functions) 可用于测试组件是否会调用
+其绑定的回调函数以响应特定的事件。
+
+  <Tabs
+    defaultValue="react"
+    values={[
+      { label: 'React', value: 'react', }
+    ]
+  }>
+  <TabItem value="react">
+
+```jsx
+import {render, screen, fireEvent} from '@testing-library/react'
+
+const Button = ({onClick, children}) => (
+  <button onClick={onClick}>{children}</button>
+)
+
+test('calls onClick prop when clicked', () => {
+  const handleClick = jest.fn()
+  render(<Button onClick={handleClick}>点击我</Button>)
+  fireEvent.click(screen.getByText(/点击我/i))
+  expect(handleClick).toHaveBeenCalledTimes(1)
+})
+```
+
+  </TabItem>
+  </Tabs>

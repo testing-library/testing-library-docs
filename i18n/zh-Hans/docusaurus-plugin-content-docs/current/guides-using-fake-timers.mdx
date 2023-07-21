@@ -1,0 +1,43 @@
+---
+id: using-fake-timers
+title: 使用模拟的计时器
+sidebar_label: 使用模拟的计时器
+---
+
+在某些情况下，当你的代码使用了计时器 (`setTimeout`, `setInterval`,
+`clearTimeout`, `clearInterval`)，你的测试可能会变得不可预测，缓慢或不稳定。
+
+为了解决这些问题，或者如果你需要在你的代码中依赖特定的时间戳，大多数测试框架提供的选项是用假的计时器替换你测试中的真实计时器。
+这应该是零星使用，而不是经常使用，因为使用它包含一些开销。
+
+当在你的测试中使用假的计时器时，你的测试里面的所有代码都使用假的计时器。
+
+设置假定时器的常见模式通常是在`beforeEach`内，例如:
+
+```js
+// 使用 Jest 模拟计时器
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+```
+
+一旦使用了模拟计时器，你需要记住在测试运行后恢复计时器。
+
+这样做的主要原因是为了防止在你的测试完成后运行的第三方库（如清理函数）与你的假计时器耦合，而使用真正的计时器。
+
+为此，你通常在 `afterEach` 中调用 `useRealTimers`。
+
+在切换到真正的定时器之前，调用`runOnlyPendingTimers`是很重要的。
+这将确保你在切换到真正的定时器之前冲刷所有的待定定时器。如果你不对定时器进行处理，
+而只是切换到真实的定时器，计划的任务将不会被执行，你会得到一个意外的行为。
+这对那些在你不知道的情况下安排任务的第三方来说非常重要。
+
+下面是一个用Jest实现的例子：
+
+```js
+// Running all pending timers and switching to real timers using Jest
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+```

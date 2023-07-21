@@ -1,0 +1,31 @@
+---
+id: setup
+title: 设置
+sidebar_label: 设置
+---
+
+如果你的测试代码是使用 webpack（或类似的） 打包运行在浏览器中，则 `DOM Testing Library` 是开箱即用的。
+但是，大多数人都是结合
+[Jest 测试框架](https://jestjs.io/) 一起使用，同时设置 Jest 的 `testEnvironment` 为
+[`jest-environment-jsdom`](https://www.npmjs.com/package/jest-environment-jsdom)
+
+## 不使用 Jest
+
+[jsdom](https://github.com/jsdom/jsdom) 是使用纯 Javascript 对 DOM 和浏览器 API 在 node 上的实现。
+如果你没有使用 Jest，且想要在 node 环境中测试，你需要自己安装 jsdom。
+同时还有一个名为
+[global-jsdom](https://github.com/modosc/global-jsdom) 的库帮助你设置全局的环境来模拟浏览器 API。
+注意，如果你在使用 Vitest，则你不需要安装 global-jsdom，你只需配置 [`environment`](https://vitest.dev/config/#environment)
+为 `jsdom` 即可。
+
+首先安装 jsdom 和 global-jsdom。
+
+```bash npm2yarn
+npm install --save-dev jsdom global-jsdom
+```
+
+使用 mocha 的情况下，测试命令应该如下：
+
+```
+mocha --require global-jsdom/register
+```

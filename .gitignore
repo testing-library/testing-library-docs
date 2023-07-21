@@ -8,7 +8,6 @@ lib/core/MetadataBlog.js
 
 translated_docs
 build/
-i18n/*
 .docusaurus
 .cache-loader
 

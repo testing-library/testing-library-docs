@@ -1,0 +1,368 @@
+---
+id: about
+title: 关于查询
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## 概述
+
+查询是 Testing Library 为你提供在页面上查找元素的方法。
+有三种 [查询类型](#查询类型) ("get", "find",
+"query")，它们之间区别在于当查找不到元素时是否抛出异常或是否返回一个Promise和重试。
+根据不同的页面场景，选择不同的查询方式，具体可参考 [优先级指引](#优先级)。
+
+获取到元素之后，你可以通过
+[事件 API](dom-testing-library/api-events.mdx) 或
+[user-event](user-event/intro.mdx) 来派发事件 来模拟页面上用户交互，
+或着使用 Jest 和 [jest-dom](ecosystem-jest-dom.mdx) 来对元素进行断言。
+
+Testing Library 为查询提供了一些辅助函数。当元素想要响应某些操作后出现和消失，可以使用
+[异步 API](dom-testing-library/api-async.mdx) 中的
+[`waitFor`](dom-testing-library/api-async.mdx#waitfor) 或
+[`findBy` 查询](dom-testing-library/api-async.mdx#findby-queries) 来等待在 DOM 中的更改。
+想要在某个元素下查询，你可以使用 [`within`](dom-testing-library/api-within.mdx)。 
+如果有必要的话，你也可以对 API 进行
+[配置](dom-testing-library/api-configuration.mdx)，例如重试的超时时间和默认的 testID 属性.
+
+## 示例
+
+```jsx
+import {render, screen} from '@testing-library/react' // (或 /dom, /vue, ...)
+
+test('should show login form', () => {
+  render(<Login />)
+  const input = screen.getByLabelText('Username')
+  // 派发事件和断言...
+})
+```
+
+## 查询类型
+
+- 返回单个元素
+  - `getBy...`: 返回查询的匹配元素，并在没有元素匹配或找到多个匹配时抛出错误（如果期望多个元素匹配，请使用 `getAllBy`）。
+  - `queryBy...`: 返回查询的匹配元素，如果没有元素匹配，则返回 null。这对断言不存在的元素很有用。
+    如果找到多个匹配项，则抛出错误（如果期望多个元素匹配，请使用 `queryAllBy`）。
+  - `findBy...`:返回 Promise，当给定的查询找到匹配的元素时，Promise 会 resolve。
+    如果在1000毫秒（默认超时时间）之后，没有元素匹配或找到多个匹配元素时，Promise 会 reject。
+    如果期望找到多个元素，请使用 `findAllBy`。
+- 返回多个元素
+  - `getAllBy...`: 返回查询的所有匹配节点的数组，如果没有元素匹配，则抛出错误。
+  - `queryAllBy...`: 返回查询的所有匹配节点的数组，如果没有元素匹配，则返回空数组（［］）。
+  - `findAllBy...`: 返回 Promise，当给定的查询找到匹配的元素时，Promise 会 resolve 元素数组。
+    如果在1000毫秒（默认超时时间）之后，没有元素匹配，则 Promise 会 reject。
+    - `findBy` 方法是 `getBy*` 查询和 
+      [`waitFor`](../dom-testing-library/api-async.mdx#waitfor) 的结合，它们接受 
+      `waitFor` 的配置项作为最后一个参数 (示例.
+      `await screen.findByText('text', queryOptions, waitForOptions)`)
+
+<details open>
+
+<summary>汇总表</summary>
+
+<br />
+
+| 查询类型               | 0 个匹配       | 1 个匹配        | >1 个匹配     | 是否重试(Async/Await) |
+| --------------------- | ------------- | -------------- | ------------ | :-----------------: |
+| **返回单个元素**        |               |                |              |                     |
+| `getBy...`            | 抛出错误       | 返回元素         | 抛出错误  |         否          |
+| `queryBy...`          | 返回 `null`    | 返回元素        | 抛出错误  |         否          |
+| `findBy...`           | 抛出错误       | 返回元素           | 抛出错误  |         是         |
+| **返回多个元素**        |               |                |              |                     |
+| `getAllBy...`         | 抛出错误       | 返回元素数组     | 返回元素数组 |         否          |
+| `queryAllBy...`       | 返回 `[]`      | 返回元素数组     | 返回元素数组 |         否          |
+| `findAllBy...`        | 抛出错误       | 返回元素数组     | 返回元素数组 |         是         |
+
+</details>
+
+## 优先级
+
+根据 [指导原则](guiding-principles.mdx)，你的测试应该尽可能和用户与你的组件或页面交互的方式接近，
+考虑到这一点，我们建议以下优先顺序:
+
+1. **每个人都可以访问的查询** 可以反映使用辅助技术（视觉或鼠标）的用户交互体验的查询。
+   1. `getByRole`: 这个方法适用于查询 [可访问性树](https://developer.mozilla.org/en-US/docs/Glossary/AOM) 
+      上暴露的每一个元素。使用 `name` 选项可以依据 [可访问性名称](https://www.w3.org/TR/accname-1.1/) 来过滤返回的元素数组。
+      这个方法应该是你最优先选择的查询方式，它几乎可以查询到所有元素 (如果元素查询不到, 有可能是你的 UI或元素 不具备可访问性). 
+      该方法通常会和结合 `name` 选项一起使用：
+      `getByRole('button', {name: /submit/i})`. 可参考 
+      [roles列表](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Roles).
+   1. `getByLabelText`: 这个方法对查询表单字段很有帮助。在浏览网站的表单时，用户使用标签文本来找到对应的元素，
+      此方法在模拟此动作，因此在此场景下应该是你的首选。
+   1. `getByPlaceholderText`:
+      [占位符不能替代标签](https://www.nngroup.com/articles/form-design-placeholders/).
+      But if that's all you have, then it's better than alternatives.
+   1. `getByText`: 在表单之外，文本内容是用户查找元素的主要方式。此方法可用于查找非交互元素（如div、span和p）。
+   1. `getByDisplayValue`: 当浏览一个具有填充值得页面时，表单元素的当前值可能很有用（例如编辑表单）
+1. **语义查询** HTML5和符合ARIA的选择器。请注意，与这些属性交互的用户体验因浏览器和辅助技术而异
+   1. `getByAltText`: 如果你的元素支持 `alt` 文本 (例如`img`,
+      `area`, `input` 和其它任何自定义元素)，则可以使用此方法查找该元素。
+   1. `getByTitle`: 不同屏幕阅读器对 title 属性读取不一致，且对正常视力的用户不可见。
+1. **Test IDs**
+   1. `getByTestId`: 用户无法看到或听到（或动态的文本）的内容，你将无法使用 `ByRole` 或 `ByText` 的方式来匹配它们，
+      此时才推荐使用此方法。
+
+## 使用查询
+
+DOM Testing Library 提供的基础查询需要你传递一个 `container` 作为第一个参数。
+大多数 Testing Library 实现的框架都提供了一个 “预绑定” 版本的查询，当你使用它们来渲染你的组件时，
+这意味着你不必提供 `container`。另外，如果你想在 `document.body` 下查询，你可以直接使用 [`screen`](#screen)，
+如下面示例所示 (推荐使用 `screen`)。
+
+查询的主要参数可以是一个 _字符串_， _正则表达式_， 或
+_函数_。还有一些选项可以调整节点文本的解析方式。有关查询传递的参数，可以参考文档
+[TextMatch](#textmatch) 。
+
+给定以下 DOM 元素结构 (可以使用 React, Vue, Angular,
+或普通的 HTML代码来渲染):
+
+```js
+<body>
+  <div id="app">
+    <label for="username-input">Username</label>
+    <input id="username-input" />
+  </div>
+</body>
+```
+
+你可以使用查询来查找元素 (例如使用标签文本):
+
+```js
+import {screen, getByLabelText} from '@testing-library/dom'
+
+// With screen:
+const inputNode1 = screen.getByLabelText('Username')
+
+// Without screen, you need to provide a container:
+const container = document.querySelector('#app')
+const inputNode2 = getByLabelText(container, 'Username')
+```
+
+### `queryOptions`
+
+可以为不同类型的查询传递 `queryOptions` 对象。不同类型查询下的 `queryOptions` 是不同的，
+具体可以参考 查询 API 文档，, 例如 [byRole API](queries/byrole.mdx#api).
+
+### `screen`
+
+所有 DOM Testing Library 导出的查询都接受 `container` 作为第一个参数。
+因为查询整个 `document.body` 是非常常见的，所以 DOM Testing Library 还导出了一个 `screen` 对象，
+该对象具有 “预绑定” 到 `document.body` 版本的查询（使用了 [`within`](dom-testing-library/api-within.mdx) 功能）。
+如 React Testing Library 就会重新导出 `screen`，因此你可以以相同的方式使用它。
+
+使用方式：
+
+<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
+label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<TabItem value="native">
+
+```js
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <label for="example">Example</label>
+  <input id="example" />
+`
+
+const exampleInput = screen.getByLabelText('Example')
+```
+
+  </TabItem>
+  <TabItem value="react">
+
+```jsx
+import {render, screen} from '@testing-library/react'
+
+render(
+  <div>
+    <label htmlFor="example">Example</label>
+    <input id="example" />
+  </div>,
+)
+
+const exampleInput = screen.getByLabelText('Example')
+```
+
+  </TabItem>
+  <TabItem value="cypress">
+
+```js
+cy.findByLabelText('Example').should('exist')
+```
+
+  </TabItem>
+  </Tabs>
+
+> **注意**
+>
+> 你需要全的 DOM 环境才能使用 `screen` 对象。如果你在使用 jest, 将
+> [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
+> 设置为 `jsdom`, 则可以使用全局的 DOM 环境。
+>
+> 如果你在使用 `script` 标签来加载测试，请确保它在 `body` 标签之后进行。示例参考
+> [这里](https://github.com/testing-library/dom-testing-library/issues/700#issuecomment-692218886).
+
+## `TextMatch`
+
+大多数查询 API 都会将 `TextMatch` 作为参数，意味着这个参数可以是字符串，正则表达式或
+以 `(content?: string, element?: Element | null) => boolean` 签名的函数（true代表匹配，fals为不匹配）。
+
+### TextMatch 示例
+
+给定以下 HTML:
+
+```html
+<div>Hello World</div>
+```
+
+**能查询到 div:**
+
+```javascript
+// 字符串匹配:
+screen.getByText('Hello World') // 全字符串匹配
+screen.getByText('llo Worl', {exact: false}) // 部分字符串匹配
+screen.getByText('hello world', {exact: false}) // 忽略大小写
+
+// 正则表达式匹配:
+screen.getByText(/World/) // 部分字符串匹配
+screen.getByText(/world/i) // 部分字符串匹配, 忽略大小写
+screen.getByText(/^hello world$/i) // 全字符串匹配, 忽略大小写
+screen.getByText(/Hello W?oRlD/i) // 部分字符串匹配, 忽略大小写, 搜索 "hello world" 或 "hello orld"
+
+// 自定义函数匹配:
+screen.getByText((content, element) => content.startsWith('Hello'))
+```
+
+**不能查询到 div:**
+
+```javascript
+// full string does not match
+screen.getByText('Goodbye World')
+
+// case-sensitive regex with different case
+screen.getByText(/hello world/)
+
+// function looking for a span when it's actually a div:
+screen.getByText((content, element) => {
+  return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
+})
+```
+
+### 精确
+
+使用 `TextMatch` 的查询也接受一个对象作为最终参数，该参数包含可以影响字符串匹配精确程度的选项：
+
+- `exact`: 默认值为true；匹配区分大小写的完整字符串。如果为false，则匹配子字符串且不区分大小写
+  - `exact` 对 `regex` 或 `function` 参数无效.
+  - `exact` 对使用`name` 选项 `*byRole` 查询指定的可访问名称没有影响。你可以使用正则表达式对可访问名称进行模糊匹配。
+  - 大多数情况下，正则表达式相对于字符串可以让你更好地控制模糊匹配，因此应该优先 `{ exact: false }`。
+- `normalizer`: An optional function which overrides normalization behavior. 详情参考
+  [`Normalization`](#normalization).
+
+### 规范化
+
+在 DOM 中针对文本运行任何匹配逻辑之前，`DOM Testing Library` 会自动将文本规范化。
+默认情况下，规范化包括从文本的开头和结尾修剪空格，并将多个相邻空格字符折迭到单个空格中。
+
+如果要防止这种规范化，或者想提供其它的规范化（例如删除Unicode控制字符），你可以在配置对象中提供一个
+`normalizer` 函数，这个函数将接受一个字符串且返回一个规范化的字符串。
+
+> **注意**
+>
+> 一旦指定了 `normalizer` 的值，它就会替换内置的规范化。但是，
+> 你可以通过调用 `getDefaultNormalizer` 来获取内置的规范化函数，要么用它来调整规范化，或在自己的规范化中调用它。
+
+`getDefaultNormalizer` 接受一个允许改变规范化行为的选项对象：
+
+- `trim`: 默认为true。修剪前导和尾随空格
+- `collapseWhitespace`: 默认为true。将内部空格（换行符、制表符、重复空格）折叠成一个空格。
+
+#### 规范化示例
+
+要在不修剪的情况下对文本执行匹配：
+
+```javascript
+screen.getByText('text', {
+  normalizer: getDefaultNormalizer({trim: false}),
+})
+```
+
+要覆盖内置规范化以删除一些 Unicode 字符，同时保留一些（不是全部）的内置规范化行为：
+
+```javascript
+screen.getByText('text', {
+  normalizer: str =>
+    getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
+})
+```
+
+## 调试
+
+### `screen.debug()`
+
+为了方便，screen 除了提供了查询，还暴露了一个 `debug` 方法。
+此方法本质上是 `console.log(prettyDOM())` 的快捷方式，它支持打印 document，单一元素和元素数组。
+
+```javascript
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// debug document
+screen.debug()
+// debug single element
+screen.debug(screen.getByText('test'))
+// debug multiple elements
+screen.debug(screen.getAllByText('multi-test'))
+```
+
+### `screen.logTestingPlaygroundURL()`
+
+对于使用 [testing-playground](https://testing-playground.com) 进行调试的，screen
+暴露了这个方便的方法，它打印日志并返回一个可以在浏览器中打开的 URL。
+
+```javascript
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// 打印整个 document 到 testing-playground
+screen.logTestingPlaygroundURL()
+// 打印单一元素
+screen.logTestingPlaygroundURL(screen.getByText('test'))
+```
+
+## 手动查询
+
+除了上面 testing library 提供的查询外，你还可以使用 
+[`querySelector` DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+来查询元素。请注意，因为 class 或 id 对于用户来说是不可见的，所以使用它们来查询是不推荐的（即使是作为“逃生窗口”）。
+如果你一定要用，请使用 testid，从而明确你确实想要回退到非语义的查询，并在 HTML 中建立稳定的 API 契约。
+
+```jsx
+// @testing-library/react
+const {container} = render(<MyComponent />)
+const foo = container.querySelector('[data-foo="bar"]')
+```
+
+## 浏览器扩展
+
+你是否仍然不知道如何使用 Testing Library 的查询？
+
+有一个非常酷的 Chrome 浏览器扩展，名为 [Testing Playground](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano/related)，
+它可以帮助你找到选择元素的最佳查询。
+它允许你在浏览器的开发人员工具中检查元素层次结构，并为你提供有关如何选择它们的建议，同时鼓励良好的测试实践。
+
+## 演练场
+
+如果你想更加深入了解这些查询的用法，可以在 [testing-playground.com](https://testing-playground.com) 上使用这些查询。
+Testing Playground 是一个交互式沙箱环境，你可以在里面针对自己的 html 运行不同的查询，并获得与上述规则匹配的视觉反馈。

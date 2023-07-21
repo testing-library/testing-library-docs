@@ -1,0 +1,124 @@
+---
+id: api-async
+title: 异步方法
+---
+
+为处理异步代码提供了一些实用工具函数。这些工具函数可以用来等待一个元素出现或消失，
+响应一个事件、用户操作、超时或Promise。(参见[测试元素消失的指南](guide-disappearance.mdx)）。
+
+异步方法返回 Promise ，所以在调用这些方法时一定要使用 await 或 .then。
+
+## `findBy` 查询
+
+`findBy` 方法是 `getBy` [查询](queries/about.mdx#types-of-queries)和 [`waitFor`](#waitfor) 的组合。
+它们接受 `waitFor`的选项作为最后一个参数。
+（例如， await screen.findByText('text', queryOptions, waitForOptions))
+
+当你期望一个元素出现，但 DOM 的变化可能不会立即发生时，`findBy`查询就能发挥作用。
+
+```js
+const button = screen.getByRole('button', {name: 'Click Me'})
+fireEvent.click(button)
+await screen.findByText('Clicked once')
+fireEvent.click(button)
+await screen.findByText('Clicked twice')
+```
+
+## `waitFor`
+
+```typescript
+function waitFor<T>(
+  callback: () => T | Promise<T>,
+  options?: {
+    container?: HTMLElement
+    timeout?: number
+    interval?: number
+    onTimeout?: (error: Error) => Error
+    mutationObserverOptions?: MutationObserverInit
+  },
+): Promise<T>
+```
+
+当需要等待任一时间时，你可以使用 `waitFor`，来等待你的期望值通过。返回一个falsy条件并不足以触发重试，回调必须抛出一个错误才能重试该条件。这里有一个简单的例子：
+
+```javascript
+// ...
+// Wait until the callback does not throw an error. In this case, that means
+// it'll wait until the mock function has been called once.
+await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
+// ...
+```
+
+`waitFor` 的回调可以多次运行，直到超时。注意，调用的次数受 `timeout` 和 `interval` 选项的限制。
+
+如果你有一个模拟API调用的单元测试，而你需要等待你的模拟 Promise 全部解决，这可能很有用。
+
+如果你在 `waitFor` 回调中返回一个Promise（无论是显式还是隐式的 `async` 语法），
+那么 `waitFor` 工具将不会再次调用你的回调，直到该 Promise 被拒绝。这允许你对那些必须异步检查的东西进行 `waitFor`。
+
+默认的 `container` 是全局的 `document`。 确保你的等待的元素是 `container` 的子节点。
+
+默认的 `interval` 是 `50ms`。然而，它将立即运行你的回调然后再启动间隔时间。
+
+默认的`timeout` 是 `1000ms`。
+
+默认的 `onTimeout` 接收错误，并将 `container` 的打印状态附加到错误信息中，这应该可以使我们更容易追踪到导致超时的原因。
+
+默认的 `mutationObserverOptions` 是 `{subtree: true, childList: true, attributes: true, characterData: true}`，
+它将检测 `container` 中的子元素（包括文本节点）的增加和删除，以及它的任何子节点。它还将检测属性的变化。
+当任何这些变化发生时，它将重新运行回调。
+
+## `waitForElementToBeRemoved`
+
+```typescript
+function waitForElementToBeRemoved<T>(
+  callback: (() => T) | T,
+  options?: {
+    container?: HTMLElement
+    timeout?: number
+    interval?: number
+    onTimeout?: (error: Error) => Error
+    mutationObserverOptions?: MutationObserverInit
+  },
+): Promise<void>
+```
+
+要等待元素从DOM中移除，你可以使用 `waitForElementToBeRemoved`。
+`waitForElementToBeRemoved` 函数是对 `waitFor` 工具的一个小包装。
+
+第一个参数必须是一个元素，元素数组，或一个返回元素或元素数组的回调。
+
+这里有一个例子，Promise 解决是因为元素被移除:
+
+```javascript
+const el = document.querySelector('div.getOuttaHere')
+
+waitForElementToBeRemoved(document.querySelector('div.getOuttaHere')).then(() =>
+  console.log('Element no longer in DOM'),
+)
+
+el.setAttribute('data-neat', true)
+// other mutations are ignored...
+
+el.parentElement.removeChild(el)
+// logs 'Element no longer in DOM'
+```
+
+`waitForElementToBeRemoved` 函数当第一个参数是`null`或空数组，将抛出一个错误:
+
+```javascript
+waitForElementToBeRemoved(null).catch(err => console.log(err))
+waitForElementToBeRemoved(queryByText(/not here/i)).catch(err =>
+  console.log(err),
+)
+waitForElementToBeRemoved(queryAllByText(/not here/i)).catch(err =>
+  console.log(err),
+)
+waitForElementToBeRemoved(() => getByText(/not here/i)).catch(err =>
+  console.log(err),
+)
+
+// Error: The element(s) given to waitForElementToBeRemoved are already removed. waitForElementToBeRemoved requires that the element(s) exist(s) before waiting for removal.
+```
+
+选项对象被转发到 `waitFor`。

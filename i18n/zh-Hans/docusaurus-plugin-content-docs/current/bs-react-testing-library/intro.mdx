@@ -1,0 +1,72 @@
+---
+id: intro
+title: Reason Testing Library
+sidebar_label: 简介
+---
+
+几个 testing-library 的绑定已经被移植到 [ReasonML][re]。
+
+[`bs-react-testing-library`][gh-react] 包含 `React Testing Library` 的 [BuckleScript](https://bucklescript.github.io/) 绑定。
+
+[`bs-dom-testing-library`][gh-dom] 包含 `DOM Testing Library` 的 [BuckleScript] 绑定。
+
+```bash npm2yarn
+npm install --save-dev bs-dom-testing-library
+npm install --save-dev bs-react-testing-library
+```
+
+- [bs-react-testing-library on GitHub][gh-react]
+- [bs-dom-testing-library on GitHub][gh-dom]
+
+[gh-dom]: https://github.com/wyze/bs-dom-testing-library
+[gh-react]: https://github.com/wyze/bs-react-testing-library
+
+## 设置
+
+安装后，你需要让你的包 bsconfig.json 文件如下配置：
+
+```json
+{
+  "bs-dev-dependencies": ["bs-react-testing-library"]
+}
+```
+
+_or_
+
+```json
+{
+  "bs-dev-dependencies": ["bs-dom-testing-library"]
+}
+```
+
+## 其它依赖
+
+### bs-platform
+
+这就是 [BuckleScript][bs] 用来将 [Reason][re] 代码编译成JS的工具。
+如果你的项目中没有它，你可以像这样安装它：
+
+```bash npm2yarn
+npm install --save-dev bs-platform
+```
+
+### bs-jest
+
+这是推荐的测试运行器，是一个围绕Jest的封装器。这里所有的例子都将使用它。
+
+- [bs-jest on GitHub](https://github.com/glennsl/bs-jest)
+
+```bash npm2yarn
+npm install --save-dev @glennsl/bs-jest
+```
+
+然后，更新 `bsconfig.json`:
+
+```json
+{
+  "bs-dev-dependencies": ["@glennsl/bs-jest"]
+}
+```
+
+[bs]: https://bucklescript.github.io/
+[re]: https://reasonml.github.io/

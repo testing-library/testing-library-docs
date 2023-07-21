@@ -1,0 +1,33 @@
+---
+id: install
+title: 安装
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+<Tabs defaultValue="npm" values={[
+    { label: 'npm', value: 'npm' },
+    { label: 'Yarn', value: 'yarn' },
+]}>
+<TabItem value="npm">
+
+```sh
+npm install --save-dev @testing-library/react-hooks
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```sh
+yarn add --dev @testing-library/react-hooks
+```
+
+</TabItem>
+</Tabs>
+
+注意： `@testing-library/user-event` 需要和 `@testing-library/dom` 一起使用。
+
+如果你使用了
+[框架包装器](../dom-testing-library/install.mdx#wrappers)，`@testing-library/dom` 作为_框架包装器_的依赖会被自动安装，  
+这意味着一旦使用了_框架包装器_，则无需将 `@testing-library/dom` 库加到项目的依赖中。

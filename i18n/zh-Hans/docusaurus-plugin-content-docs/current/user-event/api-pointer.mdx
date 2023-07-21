@@ -1,0 +1,125 @@
+---
+id: pointer
+title: 指针
+---
+
+```ts
+pointer(input: PointerInput): Promise<void>
+```
+
+`pointer` API 是用来模拟与指针设备的交互，它接受的参数可以是单个 pointer 动作或者是 pointer 动作数组。
+
+```ts
+type PointerInput = PointerActionInput | Array<PointerActionInput>
+```
+
+> 我们的主要目标受众是在 `jsdom` 环境下按 `jest` 测试的，`jsdom` 中没有布局。
+> 这意味着与你的浏览器不同，元素不存在于一个特定的位置、层和大小。
+
+我们并不试图确定你所描述的指针动作在你的布局中的那个位置是否可行。
+
+## 指针动作
+
+有两种类型的动作: 按下和移动.
+
+### <a name="press" href="#"/>按下按钮或触摸屏幕
+
+如果一个指针动作定义了一个要按下的键、要释放的键或两者都有，那么它就是一个按压动作。
+
+```js
+pointer({keys: '[MouseLeft]'})
+```
+
+你可以一次声明多个按压动作（在同一位置），这将在内部被解析为多个动作。如果你不需要声明任何其他属性，你也可以只提供 `keys` 字符串。
+
+```js
+pointer({keys: '[MouseLeft][MouseRight]'})
+// or
+pointer('[MouseLeft][MouseRight]')
+```
+
+为了按下一个按钮而不释放它，按钮名称的后缀是 `>`。
+
+如果只是释放一个先前按下的按钮，标签以 `/` 开头。
+
+```js
+pointer('[MouseLeft>]') // press the left mouse button
+pointer('[/MouseLeft]') // release the left mouse button
+```
+
+哪些按钮是可用的，取决于 [`pointerMap`](options.mdx#pointermap)。
+
+### <a name="move" href="#"/>移动指针
+
+每一个不是按压动作的指针动作都描述了一个指针的移动。
+
+你可以通过 `pointerName` 属性声明哪个指针被移动。这默认为 `mouse`。
+
+请注意，`mouse` 指针（pointerId: 1）也是唯一始终存在并有一个位置的指针。
+`touch` 指针只在屏幕被触摸时存在，每次都会收到一个新的 `pointerId`。
+对于这些指针，我们使用按下动作中的 "按钮" 名称作为 `pointerName`。
+
+```js
+pointer([
+  // touch the screen at element1
+  {keys: '[TouchA>]', target: element1},
+  // move the touch pointer to element2
+  {pointerName: 'TouchA', target: element2},
+  // release the touch pointer at the last position (element2)
+  {keys: '[/TouchA]'},
+])
+```
+
+## 指针位置
+
+### PointerTarget
+
+```ts
+interface PointerTarget {
+  target: Element
+  coords?: PointerCoords
+}
+```
+
+`PointerTarget` 属性允许描述指针在文档中的位置。
+
+你提供的 `coords` 会被原封不动地应用到产生的 [`MouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) 上，可以省略。
+
+`target` 应该是浏览器中接收指针输入的元素。这是能够在这些坐标上接收指针事件的最顶端的元素。
+
+### SelectionTarget
+
+```ts
+interface SelectionTarget {
+  node?: Node
+  offset?: number
+}
+```
+
+指针操作可以改变文档中的选择。
+
+在浏览器中，每个指针位置都与一个DOM位置相对应。这是一个DOM节点和一个DOM偏移量，通常转化为最接近指针位置的字符。
+
+由于在无布局环境中，所有的字符都处于相同的布局位置，我们假定一个指针位置最接近指针 `target` 的最后一个子代。
+
+如果你提供 `offset`，我们假定指针位置最接近 `target.textContent` 中偏移的第1个字符。
+
+如果你还提供了 `node`，我们将 `node` 和 `offset` 视为任何选择所要使用的确切的DOM位置。
+
+```jsx
+// element: <div><span>foo</span><span>bar</span></div>
+// | marking the cursor.
+// [ ] marking a selection.
+
+pointer({target: element, offset: 2, keys: '[MouseLeft]'})
+// => <div><span>fo|o</span><span>bar</span></div>
+
+pointer([
+  {target: element, offset: 2, keys: '[MouseLeft>]'},
+  {offset: 5},
+])
+// => <div><span>fo[o</span><span>ba]r</span></div>
+
+pointer({target: element, node: element, offset: 1, keys: '[MouseLeft]'})
+// => <div><span>foo</span>|<span>bar</span></div>
+```

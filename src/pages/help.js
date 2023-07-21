@@ -8,6 +8,7 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Translate, {translate} from '@docusaurus/Translate'
 import {GridBlock} from '../components/GridBlock'
 
 const ExternalLink = props => (
@@ -25,28 +26,56 @@ export default function Help(props) {
 
   const supportLinks = [
     {
-      content: `Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/react-testing-library)`,
+      content: translate({
+        id: 'pages.help.stackOverflow',
+        message: `Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/react-testing-library)`,
+      }),
       title: 'Stack Overflow',
     },
     {
-      content:
-        'Discuss issues with community members on [Spectrum](https://spectrum.chat/testing-library)',
+      content: translate({
+        id: 'pages.help.spectrum',
+        message:
+          'Discuss issues with community members on [Spectrum](https://spectrum.chat/testing-library)',
+      }),
       title: 'Spectrum',
     },
     {
-      content: `Chat on [Discord](https://discord.gg/testing-library)`,
+      content: translate({
+        id: 'pages.help.discord',
+        message: `Chat on [Discord](https://discord.gg/testing-library)`,
+      }),
       title: 'Discord',
     },
     {
-      content: `Stay up to date by following the [blog](${props.config.baseUrl}blog)`,
+      content: translate(
+        {
+          id: 'pages.help.blog',
+          message: 'Stay up to date by following the [blog]({baseUrl}blog)',
+        },
+        {
+          baseUrl: `${props.config.baseUrl}`,
+        },
+      ),
       title: 'Blog',
     },
     {
-      content: `Browse [Learning Material](/docs/learning)`,
+      content: translate({
+        id: 'pages.help.resources',
+        message: `Browse [Learning Material](/docs/learning)`,
+      }),
       title: 'Resources',
     },
     {
-      content: `Get support on [GitHub](${siteConfig.customFields.repoUrl})`,
+      content: translate(
+        {
+          id: 'pages.help.github',
+          message: `Get support on [GitHub]({repoUrl})`,
+        },
+        {
+          repoUrl: `${siteConfig.customFields.repoUrl}`,
+        },
+      ),
       title: 'GitHub',
     },
   ]
@@ -61,7 +90,9 @@ export default function Help(props) {
         <div className="mainContainer documentContainer postContainer helpContainer">
           <div>
             <header>
-              <h1>Need help?</h1>
+              <h1>
+                <Translate id="pages.help.Need help">Need help?</Translate>
+              </h1>
             </header>
             <GridBlock
               contents={supportLinks.slice(0, 3)}
@@ -74,16 +105,29 @@ export default function Help(props) {
               align="left"
             />
             <section>
-              <h2>Buy a Course</h2>
+              <h2>
+                <Translate id="pages.help.Buy a Course">Buy a Course</Translate>
+              </h2>
               <p>
-                Learn how to test JavaScript with{' '}
-                <ExternalLink href="https://kentcdodds.com">
-                  Kent C. Dodds
-                </ExternalLink>
-                , the creator of Testing Library, on{' '}
-                <ExternalLink href="https://testingjavascript.com">
-                  TestingJavaScript.com
-                </ExternalLink>
+                <Translate
+                  id="pages.help.Buy a Course.content"
+                  values={{
+                    kentcdodds: (
+                      <ExternalLink href="https://kentcdodds.com">
+                        Kent C. Dodds
+                      </ExternalLink>
+                    ),
+                    testingjavascript: (
+                      <ExternalLink href="https://testingjavascript.com">
+                        TestingJavaScript.com
+                      </ExternalLink>
+                    ),
+                  }}
+                >
+                  {
+                    'Learn how to test JavaScript with {kentcdodds}, the creator of Testing Library, on {testingjavascript}'
+                  }
+                </Translate>
               </p>
               <div>
                 <ExternalLink href="https://testingjavascript.com">
@@ -96,31 +140,48 @@ export default function Help(props) {
               </div>
             </section>
             <header className="postHeader">
-              <h1>Want to help?</h1>
+              <h1>
+                <Translate id="pages.help.Want to help">
+                  Want to help?
+                </Translate>
+              </h1>
             </header>
             <p>
-              Thanks! The Testing Library maintainers are happy to maintain this
-              library along with you, the community. We aren't looking for
-              funding, but we need everyone to pitch in to make this project and
-              community successful and improve tests for everyone in the long
-              run.
+              <Translate id="pages.help.Help maintain">
+                Thanks! The Testing Library maintainers are happy to maintain
+                this library along with you, the community. We aren't looking
+                for funding, but we need everyone to pitch in to make this
+                project and community successful and improve tests for everyone
+                in the long run.
+              </Translate>
             </p>
             <p>
-              Please consider helping us answer community questions and update
-              documentation content via the help links above. You can also help
-              support{' '}
-              <ExternalLink href="https://kentcdodds.com">
-                Kent C. Dodds
-              </ExternalLink>{' '}
-              financially by purchasing his{' '}
-              <ExternalLink href="https://kentcdodds.com/courses">
-                courses
-              </ExternalLink>{' '}
-              or{' '}
-              <ExternalLink href="https://kentcdodds.com/workshops/">
-                remote workshops
-              </ExternalLink>
-              .
+              <Translate
+                id="pages.help.Help answer question"
+                values={{
+                  kentcdodds: (
+                    <ExternalLink href="https://kentcdodds.com">
+                      Kent C. Dodds
+                    </ExternalLink>
+                  ),
+                  courses: (
+                    <ExternalLink href="https://kentcdodds.com/courses">
+                      <Translate id="pages.help.courses">courses</Translate>
+                    </ExternalLink>
+                  ),
+                  workshops: (
+                    <ExternalLink href="https://kentcdodds.com/workshops/">
+                      <Translate id="pages.help.remote workshops">
+                        remote workshops
+                      </Translate>
+                    </ExternalLink>
+                  ),
+                }}
+              >
+                {
+                  'Please consider helping us answer community questions and update documentation content via the help links above. You can also help support {kentcdodds} financially by purchasing his {courses} or {workshops}'
+                }
+              </Translate>
             </p>
           </div>
         </div>

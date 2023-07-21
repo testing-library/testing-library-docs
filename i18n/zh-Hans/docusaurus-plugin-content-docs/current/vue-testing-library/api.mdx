@@ -1,0 +1,215 @@
+---
+id: api
+title: API
+---
+
+`Vue Testing Library` 重新导出了 `DOM Testing Library` 的所有内容。
+
+它还暴露了这些方法：
+
+- [`render(Component, options)`](#rendercomponent-options)
+  - [Parameters](#parameters)
+    - [Component](#component)
+    - [Options](#options)
+  - [`render` result](#render-result)
+    - [`...queries`](#queries)
+    - [`container`](#container)
+    - [`baseElement`](#baseelement)
+    - [`debug`](#debugelement)
+    - [`unmount`](#unmount)
+    - [`html`](#html)
+    - [`emitted`](#emitted)
+    - [`rerender`](#rerenderprops)
+- [`fireEvent`](#fireevent)
+  - [`touch(elem)`](#touchelem)
+  - [`update(elem, value)`](#updateelem-value)
+- [`cleanup`](#cleanup)
+
+---
+
+## `render(Component, options)`
+
+`render` 函数是 Vue Testing Library 中渲染组件的唯一方法。
+
+它最多接收2个参数，并返回一个带有一些辅助方法的对象。
+
+```js
+function render(Component, options, callbackFunction) {
+  return {
+    ...DOMTestingLibraryQueries,
+    container,
+    baseElement,
+    debug(element),
+    unmount,
+    html,
+    emitted,
+    rerender(props),
+  }
+}
+```
+
+### 参数
+
+#### Component
+
+要测试的有效Vue组件。
+
+#### Options
+
+一个包含额外信息的对象，将被传递给 `@vue/test-utils` 的 [mount](https://vue-test-utils.vuejs.org/api/options.html#mounting-options)。
+
+此外，也可以提供以下选项：
+
+##### `store` (`Object` | `Store`)
+
+一个[Vuex](https://vuex.vuejs.org/)存储的对象定义。如果提供一个 `store` 对象，
+`Vue Testing Library` 将导入并配置一个Vuex存储。如果传递了一个实例化的Vuex存储，它将被使用。
+
+##### `routes` (`Array` | `VueRouter`)
+
+一组用于[Vue Router的路由](https://router.vuejs.org/)。如果提供了 `routes`，
+该库将导入并配置Vue Router。如果传递了一个实例化的Vue Router，它将被使用。
+
+##### `props` (`Object`)
+
+它将与 `propsData` 合并。
+
+##### `container` (`HTMLElement`)
+
+默认情况下，`Vue Testing Library` 会创建一个 `div` 并将其附加到 `baseElement` 上。
+这是你的组件将被渲染的地方。如果你通过这个选项提供你自己的 `HTMLElement` 容器，它将不会被自动附加到 `baseElement` 上。
+
+比如说。如果你正在单元测试一个 `tablebody` 元素，它不能是一个 `div` 的子元素。在这种情况下，你可以指定一个`table`作为渲染`container`。
+
+```js
+const table = document.createElement('table')
+
+const {container} = render(TableBody, {
+  props,
+  container: document.body.appendChild(table),
+})
+```
+
+##### `baseElement` (`HTMLElement`)
+
+如果指定了 `container`，则默认为 `container`的值，否则默认为 `document.body`。 
+`baseElement` 被用作查询的基础元素，也是你使用 `debug()` 时打印的内容。
+
+### `render` 返回结果
+
+`render` 方法返回一个有几个属性的对象。
+
+#### `...queries`
+
+`render` 最重要的特点是，[DOM Testing Library](queries/about.mdx)的查询会自动返回，
+其第一个参数绑定到 `baseElement`，默认为 `document.body`。
+
+查看[查询](queries/about.mdx)的完整列表。
+
+```js
+const {getByLabelText, queryAllByTestId} = render(Component)
+```
+
+#### `container`
+
+渲染后的Vue组件所包含的DOM节点。默认情况下，它是一个 `div`。这是一个普通的DOM节点，
+所以你可以调用 `container.querySelector` 等来检查子元素。
+
+> 提示：要获得你的渲染元素的根元素，可以使用 `container.firstChild`。
+
+> 🚨 如果你发现自己使用 `container` 来查询渲染的元素，那么你应该重新考虑一下! 
+> 其它的查询被设计成对你正在测试的组件的变化有更强的适应性。避免使用容器来查询元素!
+
+#### `baseElement`
+
+包含的DOM节点，你的Vue组件在 `container` 中被渲染。如果你没有在 `render` 的选项中指定 `baseElement` ，它将默认为 `document.body`。
+
+当你想测试的组件在容器 `div` 之外渲染时，这很有用，例如，当你想快照测试你的门户组件时，它直接在body中渲染其HTML。
+
+> 注意：由 `render` 返回的查询是针对 `baseElement` 的，所以你可以使用查询来测试你的门户组件，而不需要 `baseElement`。
+
+#### `debug(element)`
+
+这个方法是 `console.log(prettyDOM(element))` 的一个快捷方式。
+
+```jsx
+import {render} from '@testing-library/vue'
+
+const HelloWorldComponent = {
+  template: `<h1>Hello World</h1>`,
+}
+
+const {debug} = render(HelloWorldComponent)
+debug()
+// <div>
+//   <h1>Hello World</h1>
+// </div>
+```
+
+这是对 `prettyDOM` 的一个简单包装，它也是公开的，来自
+[`DOM Testing Library`](dom-testing-library/api-debugging.mdx/#prettydom)。
+
+#### `unmount()`
+
+`@vue/test-utils`
+[destroy](https://vue-test-utils.vuejs.org/api/wrapper/#destroy) 的别名.
+
+#### `html()`
+
+`@vue/test-utils`
+[html](https://vue-test-utils.vuejs.org/api/wrapper/#html) 的别名.
+
+#### `emitted()`
+
+`@vue/test-utils`
+[emitted](https://vue-test-utils.vuejs.org/api/wrapper/#emitted) 的别名.
+
+#### `rerender(props)`
+
+`@vue/test-utils`
+[setProps](https://test-utils.vuejs.org/api/#setprops) 的别名.
+
+它通过返回一个 Promise，所以你可以 `await rerender(...)`。
+
+---
+
+## `fireEvent`
+
+因为Vue在重渲染时异步应用DOM更新，所以 `fireEvent` 工具被重新导出为 `async` 函数。
+为了确保DOM在响应测试中的事件时被正确更新，建议总是 `await ` `fireEvent`。
+
+```js
+await fireEvent.click(getByText('Click me'))
+```
+
+此外，Vue测试库暴露了两个有用的方法:
+
+### `touch(elem)`
+
+它同时触发了 `focus()` 和 `blur()` 事件。
+
+```js
+await fireEvent.touch(getByLabelText('username'))
+
+// Same as:
+await fireEvent.focus(getByLabelText('username'))
+await fireEvent.blur(getByLabelText('username'))
+```
+
+### `update(elem, value)`
+
+正确处理由 `v-model` 控制的输入。它更新input/select/textarea的内部值，同时发出适当的本地事件。
+
+请看
+[v-model示例测试](vue-testing-library/examples.mdx#example-using-v-model)
+中的一个 `update` 运行实例。
+
+---
+
+## `cleanup`
+
+解除用 [render](#rendercomponent-options-callback) 挂载的Vue树。
+
+> 如果你使用的是支持 `afterEach` hook 的环境（如Jest），就没有必要手动调用清理。Vue Testing Library会帮你处理。
+
+如果在调用render时没有调用 `cleanup`，可能会导致内存泄漏和测试不幂等（这可能会导致测试中难以调试的错误）。
