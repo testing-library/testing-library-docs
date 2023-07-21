@@ -100,6 +100,7 @@ pointer({target: element})
 ```js
 const TestComponent = () => {
   const [isHover, setIsHover] = useState(false)
+
   return (
     <div
       style={{backgroundColor: isHover ? 'red' : 'green'}}
@@ -111,42 +112,7 @@ const TestComponent = () => {
   )
 }
 
-test('hover', async () => {
-  render(<TestComponent />)
-
-  const hoverBox = screen.getByText('Hover')
-
-  await userEvent.hover(hoverBox)
-
-  expect(hoverBox).toHaveStyle({backgroundColor: 'red'})
-})
-```
-
-### unhover()
-
-```ts
-unhover(element: Element): Promise<void>
-```
-
-```js
-pointer({target: element.ownerDocument.body})
-```
-
-```js
-const TestComponent = () => {
-  const [isHover, setIsHover] = useState(false)
-  return (
-    <div
-      style={{backgroundColor: isHover ? 'red' : 'green'}}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
-      Hover
-    </div>
-  )
-}
-
-test('unhover', async () => {
+test('hover/unhover', async () => {
   render(<TestComponent />)
 
   const hoverBox = screen.getByText('Hover')
@@ -159,6 +125,16 @@ test('unhover', async () => {
 
   expect(hoverBox).toHaveStyle({backgroundColor: 'green'})
 })
+```
+
+### unhover()
+
+```ts
+unhover(element: Element): Promise<void>
+```
+
+```js
+pointer({target: element.ownerDocument.body})
 ```
 
 ## Keyboard
