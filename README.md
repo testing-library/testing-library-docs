@@ -483,6 +483,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://ali-dev.medium.com"><img src="https://avatars.githubusercontent.com/u/1886605?v=4?s=100" width="100px;" alt="Ali"/><br /><sub><b>Ali</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ali-kamalizade" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/macmillen"><img src="https://avatars.githubusercontent.com/u/33156526?v=4?s=100" width="100px;" alt="Milan Jaritz"/><br /><sub><b>Milan Jaritz</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=macmillen" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/dzonatan"><img src="https://avatars.githubusercontent.com/u/5166666?v=4?s=100" width="100px;" alt="Rokas Brazdžionis"/><br /><sub><b>Rokas Brazdžionis</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=dzonatan" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://thomaslaforge.dev/home"><img src="https://avatars.githubusercontent.com/u/30832608?v=4?s=100" width="100px;" alt="Laforge Thomas"/><br /><sub><b>Laforge Thomas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tomalaforge" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
