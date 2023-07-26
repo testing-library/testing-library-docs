@@ -2456,6 +2456,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "tomalaforge",
+      "name": "Laforge Thomas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30832608?v=4",
+      "profile": "https://thomaslaforge.dev/home",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
