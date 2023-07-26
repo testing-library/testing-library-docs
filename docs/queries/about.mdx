@@ -347,52 +347,6 @@ screen.getByText('text', {
 })
 ```
 
-## Debugging
-
-### `screen.debug()`
-
-For convenience screen also exposes a `debug` method in addition to the queries.
-This method is essentially a shortcut for `console.log(prettyDOM())`. It
-supports debugging the document, a single element, or an array of elements.
-
-```javascript
-import {screen} from '@testing-library/dom'
-
-document.body.innerHTML = `
-  <button>test</button>
-  <span>multi-test</span>
-  <div>multi-test</div>
-`
-
-// debug document
-screen.debug()
-// debug single element
-screen.debug(screen.getByText('test'))
-// debug multiple elements
-screen.debug(screen.getAllByText('multi-test'))
-```
-
-### `screen.logTestingPlaygroundURL()`
-
-For debugging using [testing-playground](https://testing-playground.com), screen
-exposes this convenient method which logs and returns a URL that can be opened in
-a browser.
-
-```javascript
-import {screen} from '@testing-library/dom'
-
-document.body.innerHTML = `
-  <button>test</button>
-  <span>multi-test</span>
-  <div>multi-test</div>
-`
-
-// log entire document to testing-playground
-screen.logTestingPlaygroundURL()
-// log a single element
-screen.logTestingPlaygroundURL(screen.getByText('test'))
-```
-
 ## Manual Queries
 
 On top of the queries provided by the testing library, you can use the regular
