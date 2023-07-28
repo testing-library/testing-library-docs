@@ -21,14 +21,12 @@ pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
 ```js
 test('click', async () => {
   const user = userEvent.setup()
-  const onChange = jest.fn()
   render(<input type="checkbox" onChange={onChange} />)
 
   const checkbox = screen.getByRole('checkbox')
 
   await user.click(checkbox)
 
-  expect(onChange).toHaveBeenCalledTimes(1)
   expect(checkbox).toBeChecked()
 })
 ```
@@ -48,14 +46,12 @@ pointer([{target: element}, {keys: '[MouseLeft][MouseLeft]', target: element}])
 ```js
 test('double click', async () => {
   const user = userEvent.setup()
-  const onChange = jest.fn()
   render(<input type="checkbox" onChange={onChange} />)
 
   const checkbox = screen.getByRole('checkbox')
 
   await user.dblClick(checkbox)
 
-  expect(onChange).toHaveBeenCalledTimes(2)
   expect(checkbox).not.toBeChecked()
 })
 ```
@@ -76,14 +72,12 @@ pointer([
 ```js
 test('triple click', async () => {
   const user = userEvent.setup()
-  const onChange = jest.fn()
   render(<input type="checkbox" onChange={onChange} />)
 
   const checkbox = screen.getByRole('checkbox')
 
   await user.tripleClick(checkbox)
 
-  expect(onChange).toHaveBeenCalledTimes(3)
   expect(checkbox).toBeChecked()
 })
 ```
