@@ -20,13 +20,16 @@ pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
 
 ```js
 test('click', async () => {
+  const onChange = jest.fn()
   const user = userEvent.setup()
-  render(<input type="checkbox" />)
+
+  render(<input type="checkbox" onChange={onChange} />)
 
   const checkbox = screen.getByRole('checkbox')
 
   await user.click(checkbox)
 
+  expect(onChange).toHaveBeenCalledTimes(1)
   expect(checkbox).toBeChecked()
 })
 ```
@@ -45,13 +48,16 @@ pointer([{target: element}, {keys: '[MouseLeft][MouseLeft]', target: element}])
 
 ```js
 test('double click', async () => {
+  const onChange = jest.fn()
   const user = userEvent.setup()
-  render(<input type="checkbox" />)
+
+  render(<input type="checkbox" onChange={onChange} />)
 
   const checkbox = screen.getByRole('checkbox')
 
   await user.dblClick(checkbox)
 
+  expect(onChange).toHaveBeenCalledTimes(2)
   expect(checkbox).not.toBeChecked()
 })
 ```
@@ -71,13 +77,16 @@ pointer([
 
 ```js
 test('triple click', async () => {
+  const onChange = jest.fn()
   const user = userEvent.setup()
-  render(<input type="checkbox" />)
+
+  render(<input type="checkbox" onChange={onChange} />)
 
   const checkbox = screen.getByRole('checkbox')
 
   await user.tripleClick(checkbox)
 
+  expect(onChange).toHaveBeenCalledTimes(3)
   expect(checkbox).toBeChecked()
 })
 ```
@@ -95,33 +104,29 @@ pointer({target: element})
 ```
 
 ```js
-const TestComponent = () => {
-  const [isHover, setIsHover] = useState(false)
-
-  return (
-    <p
-      role="paragraph"
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
-      {isHover ? 'Hover' : 'UnHover'}
-    </p>
-  )
-}
-
 test('hover/unhover', async () => {
   const user = userEvent.setup()
-  render(<TestComponent />)
+  render(<div>Hover</div>)
 
-  const paragraph = screen.getByRole('paragraph')
+  const hoverBox = screen.getByText('Hover')
+  let isHover = false
 
-  await user.hover(paragraph)
+  hoverBox.addEventListener('mouseover', () => {
+    isHover = true
+  })
+  hoverBox.addEventListener('mouseout', () => {
+    isHover = false
+  })
 
-  expect(paragraph).toHaveTextContent('Hover')
+  expect(isHover).toBeFalsy()
 
-  await user.unhover(paragraph)
+  await user.hover(hoverBox)
 
-  expect(paragraph).toHaveTextContent('UnHover')
+  expect(isHover).toBeTruthy()
+
+  await user.unhover(hoverBox)
+
+  expect(isHover).toBeFalsy()
 })
 ```
 
