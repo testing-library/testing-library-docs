@@ -97,15 +97,15 @@ pointer({target: element})
 ```js
 const TestComponent = () => {
   const [isHover, setIsHover] = useState(false)
-
+  
   return (
-    <p
-      role="paragraph"
+    <div
+      style={{ backgroundColor: isHover ? 'red' : 'green' }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      {isHover ? 'Hover' : 'UnHover'}
-    </p>
+      Hover
+    </div>
   )
 }
 
@@ -113,15 +113,15 @@ test('hover/unhover', async () => {
   const user = userEvent.setup()
   render(<TestComponent />)
 
-  const paragraph = screen.getByRole('paragraph')
+  const hoverBox = screen.getByText('Hover')
 
-  await user.hover(paragraph)
+  await userEvent.hover(hoverBox)
 
-  expect(paragraph).toHaveTextContent('Hover')
+  expect(hoverBox).toHaveStyle({ backgroundColor: 'red' })
 
-  await user.unhover(paragraph)
+  await userEvent.unhover(hoverBox)
 
-  expect(paragraph).toHaveTextContent('UnHover')
+  expect(hoverBox).toHaveStyle({ backgroundColor: 'green' })
 })
 ```
 
