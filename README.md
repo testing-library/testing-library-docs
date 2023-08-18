@@ -486,6 +486,9 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://thomaslaforge.dev/home"><img src="https://avatars.githubusercontent.com/u/30832608?v=4?s=100" width="100px;" alt="Laforge Thomas"/><br /><sub><b>Laforge Thomas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=tomalaforge" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/StephNathai"><img src="https://avatars.githubusercontent.com/u/11414958?v=4?s=100" width="100px;" alt="Steph Nathai"/><br /><sub><b>Steph Nathai</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=StephNathai" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/friederbluemle"><img src="https://avatars.githubusercontent.com/u/743291?v=4?s=100" width="100px;" alt="Frieder Bluemle"/><br /><sub><b>Frieder Bluemle</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=friederbluemle" title="Documentation">📖</a></td>
+    </tr>
   </tbody>
 </table>
 
