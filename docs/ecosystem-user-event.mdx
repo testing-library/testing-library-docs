@@ -177,14 +177,14 @@ The following special character strings are supported:
 | `{home}`       | Home       | N/A                |                                                                                                                                                                     |
 | `{end}`        | End        | N/A                |                                                                                                                                                                     |
 | `{shift}`      | Shift      | `shiftKey`         | Does **not** capitalize following characters.                                                                                                                       |
-| `{ctrl}`       | Control    | `ctrlKey`          |                                                                                                                                                                     |
+| `{control}`    | Control    | `ctrlKey`          |                                                                                                                                                                     |
 | `{alt}`        | Alt        | `altKey`           |                                                                                                                                                                     |
 | `{meta}`       | OS         | `metaKey`          |                                                                                                                                                                     |
 | `{capslock}`   | CapsLock   | `modifierCapsLock` | Fires both keydown and keyup when used (simulates a user clicking their "Caps Lock" button to enable caps lock).                                                    |
 
-> **A note about modifiers:** Modifier keys (`{shift}`, `{ctrl}`, `{alt}`,
+> **A note about modifiers:** Modifier keys (`{shift}`, `{control}`, `{alt}`,
 > `{meta}`) will activate their corresponding event modifiers for the duration
-> of type command or until they are closed (via `{/shift}`, `{/ctrl}`, etc.). If
+> of type command or until they are closed (via `{/shift}`, `{/control}`, etc.). If
 > they are not closed explicitly, then events will be fired to close them
 > automatically (to disable this, set the `skipAutoClose` option to `true`).
 
@@ -301,7 +301,7 @@ Keystrokes can be described:
   (note the lowercase) will automatically be kept pressed, just like before. You
   can cancel this behavior by adding a `/` to the end of the descriptor.
   ```js
-  userEvent.keyboard('{shift}{ctrl/}a{/shift}') // translates to: Shift(down), Control(down+up), a, Shift(up)
+  userEvent.keyboard('{shift}{control/}a{/shift}') // translates to: Shift(down), Control(down+up), a, Shift(up)
   ```
 
 Keys can be kept pressed by adding a `>` to the end of the descriptor - and
