@@ -18,6 +18,22 @@ click(element: Element): Promise<void>
 pointer([{target: element}, {keys: '[MouseLeft]', target: element}])
 ```
 
+```js
+test('click', async () => {
+  const onChange = jest.fn()
+  const user = userEvent.setup()
+
+  render(<input type="checkbox" onChange={onChange} />)
+
+  const checkbox = screen.getByRole('checkbox')
+
+  await user.click(checkbox)
+
+  expect(onChange).toHaveBeenCalledTimes(1)
+  expect(checkbox).toBeChecked()
+})
+```
+
 The first action might be skipped per [`skipHover`](options.mdx#skiphover).
 
 ### dblClick()
@@ -28,6 +44,22 @@ dblClick(element: Element): Promise<void>
 
 ```js
 pointer([{target: element}, {keys: '[MouseLeft][MouseLeft]', target: element}])
+```
+
+```js
+test('double click', async () => {
+  const onChange = jest.fn()
+  const user = userEvent.setup()
+
+  render(<input type="checkbox" onChange={onChange} />)
+
+  const checkbox = screen.getByRole('checkbox')
+
+  await user.dblClick(checkbox)
+
+  expect(onChange).toHaveBeenCalledTimes(2)
+  expect(checkbox).not.toBeChecked()
+})
 ```
 
 ### tripleClick()
@@ -43,6 +75,22 @@ pointer([
 ])
 ```
 
+```js
+test('triple click', async () => {
+  const onChange = jest.fn()
+  const user = userEvent.setup()
+
+  render(<input type="checkbox" onChange={onChange} />)
+
+  const checkbox = screen.getByRole('checkbox')
+
+  await user.tripleClick(checkbox)
+
+  expect(onChange).toHaveBeenCalledTimes(3)
+  expect(checkbox).toBeChecked()
+})
+```
+
 ## Mouse movement
 
 ### hover()
@@ -53,6 +101,33 @@ hover(element: Element): Promise<void>
 
 ```js
 pointer({target: element})
+```
+
+```js
+test('hover/unhover', async () => {
+  const user = userEvent.setup()
+  render(<div>Hover</div>)
+
+  const hoverBox = screen.getByText('Hover')
+  let isHover = false
+
+  hoverBox.addEventListener('mouseover', () => {
+    isHover = true
+  })
+  hoverBox.addEventListener('mouseout', () => {
+    isHover = false
+  })
+
+  expect(isHover).toBeFalsy()
+
+  await user.hover(hoverBox)
+
+  expect(isHover).toBeTruthy()
+
+  await user.unhover(hoverBox)
+
+  expect(isHover).toBeFalsy()
+})
 ```
 
 ### unhover()
@@ -80,4 +155,44 @@ keyboard('{Tab}')
 keyboard('{Shift>}{Tab}{/Shift}')
 // with shift=false
 keyboard('[/ShiftLeft][/ShiftRight]{Tab}')
+```
+
+```js
+test('tab', async () => {
+  const user = userEvent.setup()
+  render(
+    <div>
+      <input type="checkbox" />
+      <input type="radio" />
+      <input type="number" />
+    </div>,
+  )
+
+  const checkbox = screen.getByRole('checkbox')
+  const radio = screen.getByRole('radio')
+  const number = screen.getByRole('spinbutton')
+
+  expect(document.body).toHaveFocus()
+
+  await user.tab()
+
+  expect(checkbox).toHaveFocus()
+
+  await user.tab()
+
+  expect(radio).toHaveFocus()
+
+  await user.tab()
+
+  expect(number).toHaveFocus()
+
+  await user.tab()
+
+  // cycle goes back to the body element
+  expect(document.body).toHaveFocus()
+
+  await user.tab()
+
+  expect(checkbox).toHaveFocus()
+})
 ```
