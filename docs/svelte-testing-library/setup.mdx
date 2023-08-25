@@ -75,8 +75,28 @@ with any testing framework and runner you're comfortable with.
     ```  
 ### SvelteKit
 
-To use Vitest with SvelteKit install `vitest-svelte-kit`, which includes a preconfigured Vitest configuration for SvelteKit projects.
-You can take a look at the [`vitest-svelte-kit` configuration docs](https://github.com/nickbreaton/vitest-svelte-kit/tree/master/packages/vitest-svelte-kit#configuring) for further instructions.
+Previously `vitest-svelte-kit` could be used, but it is not necessary anymore and depreceated since `svelte-kit` is now a vite plugin.
+
+If you struggle getting this working with the above vitest configuration, use the `mergeConfig` instead in `vitest.config.ts`:
+
+```ts
+
+import { mergeConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
+import viteConfig from './vite.config'
+
+// use vite.config (set for sveltekit) and add vitest specific config
+export default mergeConfig(
+    viteConfig,
+    defineConfig({
+        test: {
+            include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+            globals: true,
+            environment: 'jsdom',
+        },
+    })
+)
+```
 
 ## Jest
 
