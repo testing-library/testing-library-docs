@@ -4,85 +4,95 @@ title: Setup
 sidebar_label: Setup
 ---
 
-We recommend using [Vitest](https://vitest.dev/) but you're free to use the library
-with any testing framework and runner you're comfortable with.
+We recommend using [Vitest](https://vitest.dev/) but you're free to use the
+library with any testing framework and runner you're comfortable with.
 
 ## Vitest
-1.  Install Vitest and jsdom
 
-    ```
-    npm install --save-dev vitest jsdom
-    ```
+1. Install Vitest and jsdom
 
-2.  Add the following to your `package.json`
+We're using `jdom` here as the test environment, but you can use any other
+options e.g `happy-dom`.
 
-    ```json
-    {
-      "scripts": {
-        "test": "vitest run src",
-        "test:watch": "vitest src"
-      }
-    }
-    ```
+```bash npm2yarn
+npm install --save-dev vitest jsdom
+```
 
-3.  You'll need to compile the Svelte components before using them in Vitest, so
-    you need to install
-    [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte) and Vite
+Optionally install `@vitest/ui`, which opens a UI within a browser window to
+follow the progress and interact with your tests.
+
+```bash npm2yarn
+npm install --save-dev @vitest/ui
+```
+
+1. Add the test scipts to your `package.json` to run the tests with Vitest
+
+   ```json
+   {
+     "scripts": {
+       "test": "vitest run",
+       "test:ui": "vitest --ui",
+       "test:watch": "vitest"
+     }
+   }
+   ```
+
+2. To compile the Svelte components before using them in Vitest, you need to
+   install
+   [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte)
+   and Vite
+
+   ```bash npm2yarn
+   npm install --save-dev @sveltejs/vite-plugin-svelte vite
+   ```
+
+3. Add a `vitest.config.ts` configuration file to the root of your project
+
+   ```js
+   import {defineConfig} from 'vite'
+   import {svelte} from '@sveltejs/vite-plugin-svelte'
+
+   export default defineConfig({
+     plugins: [svelte({hot: !process.env.VITEST})],
+     test: {
+       globals: true,
+       environment: 'jsdom',
+     },
+   })
+   ```
+
+4. Optionally install [vitest-dom](https://github.com/chaance/vitest-dom) to add
+   handy assertions to Vitest
+
+   5.1 Install `vitest-dom`
+
+   ```bash npm2yarn
+   npm install --save-dev vitest-dom
+   ```
+
+   5.2 import `vitest-dom` at within the vitest setup file (usually `vitest-setup.(js|ts)`)
+
+   ```js
+    import * as matchers from "vitest-dom/matchers";
+    import { expect } from "vitest";
+    expect.extend(matchers);
     
+    // or:
+    import "vitest-dom/extend-expect";
+   ```
 
-    ```
-    npm install --save-dev @sveltejs/vite-plugin-svelte vite
-    ```
+5. Create your component and a test file (checkout the rest of the docs to see
+   how) and run the following command to run the tests.
 
-4.  Add a `vitest.config.ts` configuration file to the root of your project
-
-    ```js
-    import { defineConfig } from 'vitest/config';
-    import { svelte } from '@sveltejs/vite-plugin-svelte';
-
-    export default defineConfig({
-        plugins: [svelte({ hot: !process.env.VITEST })],
-        test: {
-            include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-            globals: true,
-            environment: 'jsdom'
-        }
-    });
-
-    ```
-
-5.  This is optional but it is recommended, you can install
-    [jest-dom](https://github.com/testing-library/jest-dom) to add handy
-    assertions to Jest
-
-    5.1 Install `jest-dom`
-
-    ```
-    npm install --save-dev @testing-library/jest-dom
-    ```
-
-    5.2 import `@testing-library/jest-dom` at the start of your test files
-
-    ```js
-    import '@testing-library/jest-dom';
-    ```
-
-6.  Create your component and a test file (checkout the rest of the docs to see how)
-    and run the following command to run the tests.
-
-    ```
-    npm run test
-    ```  
-### SvelteKit
-
-To use Vitest with SvelteKit install `vitest-svelte-kit`, which includes a preconfigured Vitest configuration for SvelteKit projects.
-You can take a look at the [`vitest-svelte-kit` configuration docs](https://github.com/nickbreaton/vitest-svelte-kit/tree/master/packages/vitest-svelte-kit#configuring) for further instructions.
+   ```bash npm2yarn
+   npm run test
+   ```
 
 ## Jest
 
 1.  Install Jest & jest-environment-jsdom
 
-    ```
+    ```bash npm2yarn
     npm install --save-dev jest jest-environment-jsdom
     ```
 
@@ -173,8 +183,8 @@ You can take a look at the [`vitest-svelte-kit` configuration docs](https://gith
 
 ### TypeScript
 
-To use TypeScript with Jest, you'll need to install and configure `svelte-preprocess` and
-`ts-jest`. For full instructions, see the
+To use TypeScript with Jest, you'll need to install and configure
+`svelte-preprocess` and `ts-jest`. For full instructions, see the
 [`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
 
 ### Preprocessors
