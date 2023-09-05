@@ -1,0 +1,48 @@
+---
+id: ecosystem-cli-testing-library
+title: cli-testing-library
+---
+
+[`CLI Testing Library`](https://github.com/crutchcorn/cli-testing-library) is a
+companion library to `Testing Library` that aims to mimic the API of
+`Testing Library` for testing CLI applications.
+
+```bash npm2yarn
+npm install --save-dev cli-testing-library
+```
+
+```js
+import {resolve} from 'path'
+import {render} from 'cli-testing-library'
+
+test('Is able to make terminal input and view in-progress stdout', async () => {
+  const {clear, findByText, queryByText, userEvent} = await render('node', [
+    resolve(__dirname, './execute-scripts/stdio-inquirer.js'),
+  ])
+
+  const instance = await findByText('First option')
+
+  expect(instance).toBeInTheConsole()
+
+  expect(await findByText('❯ One')).toBeInTheConsole()
+
+  clear()
+
+  userEvent('[ArrowDown]')
+
+  expect(await findByText('❯ Two')).toBeInTheConsole()
+
+  clear()
+
+  userEvent.keyboard('[Enter]')
+
+  expect(await findByText('First option: Two')).toBeInTheConsole()
+  expect(await queryByText('First option: Three')).not.toBeInTheConsole()
+})
+```
+
+Check out
+[CLI Testing Library's documentation](https://github.com/crutchcorn/cli-testing-library)
+for a full list of its API.
+
+- [CLI Testing Library on GitHub](https://github.com/crutchcorn/cli-testing-library)

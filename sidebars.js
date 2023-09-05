@@ -202,6 +202,7 @@ module.exports = {
         'ecosystem-query-extensions',
         'ecosystem-rtl-simple-queries',
         'ecosystem-testing-library-selector',
+        'ecosystem-cli-testing-library',
       ],
     },
   ],
