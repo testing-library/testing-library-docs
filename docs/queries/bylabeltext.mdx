@@ -53,8 +53,15 @@ The example below will find the input node for the following DOM structures:
 <input aria-label="Username" />
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -70,6 +77,17 @@ const inputNode = screen.getByLabelText('Username')
 import {render, screen} from '@testing-library/react'
 
 render(<Login />)
+
+const inputNode = screen.getByLabelText('Username')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(Login)
 
 const inputNode = screen.getByLabelText('Username')
 ```
@@ -94,8 +112,8 @@ is robust against switching to `aria-label` or `aria-labelledby`.
 
 ### `selector`
 
-If it is important that you query a specific element (e.g. an `<input>`) you can provide a
-`selector` in the options:
+If it is important that you query a specific element (e.g. an `<input>`) you can
+provide a `selector` in the options:
 
 ```js
 // Multiple elements labelled via aria-labelledby

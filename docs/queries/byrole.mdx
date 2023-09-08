@@ -254,8 +254,15 @@ and which elements can have this state see
 <div role="dialog">...</div>
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -271,6 +278,16 @@ const dialogContainer = screen.getByRole('dialog')
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const dialogContainer = screen.getByRole('dialog')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const dialogContainer = screen.getByRole('dialog')
 ```
 

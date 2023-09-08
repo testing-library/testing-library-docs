@@ -29,8 +29,15 @@ matches the given [`TextMatch`](queries/about.mdx#textmatch).
 <input placeholder="Username" />
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -46,6 +53,16 @@ const inputNode = screen.getByPlaceholderText('Username')
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const inputNode = screen.getByPlaceholderText('Username')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const inputNode = screen.getByPlaceholderText('Username')
 ```
 

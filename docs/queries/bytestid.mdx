@@ -29,8 +29,15 @@ also accepts a [`TextMatch`](queries/about.mdx#textmatch)).
 <div data-testid="custom-element" />
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -46,6 +53,16 @@ const element = screen.getByTestId('custom-element')
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const element = screen.getByTestId('custom-element')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const element = screen.getByTestId('custom-element')
 ```
 

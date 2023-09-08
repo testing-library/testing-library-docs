@@ -19,6 +19,7 @@ could do:
     values={[
       { label: 'Native', value: 'native', },
       { label: 'React', value: 'react', },
+      { label: 'Angular', value: 'angular', },
       { label: 'Cypress', value: 'cypress', },
     ]
   }>
@@ -38,6 +39,17 @@ const helloMessage = within(messages).getByText('hello')
 import {render, within} from '@testing-library/react'
 
 const {getByText} = render(<MyComponent />)
+const messages = getByText('messages')
+const helloMessage = within(messages).getByText('hello')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, within} from '@testing-library/angular'
+
+const {getByText} = await render(MyComponent)
 const messages = getByText('messages')
 const helloMessage = within(messages).getByText('hello')
 ```
