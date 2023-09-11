@@ -21,8 +21,15 @@ The library can be configured via the `configure` function, which accepts:
 > Framework-specific wrappers like React Testing Library may add more options to
 > the ones shown below.
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js title="setup-tests.js"
@@ -47,6 +54,19 @@ configure({
 import {configure} from '@testing-library/react'
 
 configure({testIdAttribute: 'data-my-test-id'})
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts title="setup-tests.ts"
+import {configure} from '@testing-library/angular'
+
+configure({
+  dom: {
+    testIdAttribute: 'data-my-test-id',
+  },
+})
 ```
 
   </TabItem>

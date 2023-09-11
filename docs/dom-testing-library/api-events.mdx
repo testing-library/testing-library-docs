@@ -136,12 +136,13 @@ fireEvent(
 
 [Jest's Mock functions](https://jestjs.io/docs/en/mock-functions) can be used to
 test that a component will call its bound callback in response to a particular
-event. 
+event.
 
   <Tabs
     defaultValue="react"
     values={[
-      { label: 'React', value: 'react', }
+      { label: 'React', value: 'react', },
+      { label: 'Angular', value: 'angular', },
     ]
   }>
   <TabItem value="react">
@@ -157,6 +158,31 @@ test('calls onClick prop when clicked', () => {
   const handleClick = jest.fn()
   render(<Button onClick={handleClick}>Click Me</Button>)
   fireEvent.click(screen.getByText(/click me/i))
+  expect(handleClick).toHaveBeenCalledTimes(1)
+})
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen, fireEvent} from '@testing-library/angular'
+
+@Component({
+  template: `<button (click)="handleClick.emit()">Click Me</button>`,
+})
+class ButtonComponent {
+  @Output() handleClick = new EventEmitter<void>()
+}
+
+test('calls onClick prop when clicked', async () => {
+  const handleClick = jest.fn()
+  await render(ButtonComponent, {
+    componentOutputs: {
+      handleClick: {emit: handleClick} as any,
+    },
+  })
+  await fireEvent.click(screen.getByText(/click me/i))
   expect(handleClick).toHaveBeenCalledTimes(1)
 })
 ```

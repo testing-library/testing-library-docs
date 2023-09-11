@@ -37,8 +37,15 @@ as it's deprecated).
 <img alt="Incredibles 2 Poster" src="/incredibles-2.png" />
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -54,6 +61,16 @@ const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const incrediblesPosterImg = screen.getByAltText(/incredibles.*? poster/i)
 ```
 

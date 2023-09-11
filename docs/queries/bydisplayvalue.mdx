@@ -35,8 +35,15 @@ display value.
 document.getElementById('lastName').value = 'Norris'
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -52,6 +59,16 @@ const lastNameInput = screen.getByDisplayValue('Norris')
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const lastNameInput = screen.getByDisplayValue('Norris')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const lastNameInput = screen.getByDisplayValue('Norris')
 ```
 
@@ -75,8 +92,15 @@ cy.findByDisplayValue('Norris').should('exist')
 document.getElementById('messageTextArea').value = 'Hello World'
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -92,6 +116,16 @@ const messageTextArea = screen.getByDisplayValue('Hello World')
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const messageTextArea = screen.getByDisplayValue('Hello World')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const messageTextArea = screen.getByDisplayValue('Hello World')
 ```
 
@@ -119,8 +153,15 @@ matches the given [`TextMatch`](queries/about.mdx#textmatch).
 </select>
 ```
 
-<Tabs defaultValue="native" values={[ { label: 'Native', value: 'native', }, {
-label: 'React', value: 'react', }, { label: 'Cypress', value: 'cypress', }, ] }>
+<Tabs
+  defaultValue="native"
+  values={[
+    { label: 'Native', value: 'native', },
+    { label: 'React', value: 'react', },
+    { label: 'Angular', value: 'angular', },
+    { label: 'Cypress', value: 'cypress', },
+  ]
+}>
 <TabItem value="native">
 
 ```js
@@ -136,6 +177,16 @@ const selectElement = screen.getByDisplayValue('Alaska')
 import {render, screen} from '@testing-library/react'
 
 render(<MyComponent />)
+const selectElement = screen.getByDisplayValue('Alaska')
+```
+
+  </TabItem>
+  <TabItem value="angular">
+
+```ts
+import {render, screen} from '@testing-library/angular'
+
+await render(MyComponent)
 const selectElement = screen.getByDisplayValue('Alaska')
 ```
 
