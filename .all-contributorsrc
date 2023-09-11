@@ -2510,6 +2510,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rbatsenko",
+      "name": "Roman Batsenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6410057?v=4",
+      "profile": "https://github.com/rbatsenko",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
