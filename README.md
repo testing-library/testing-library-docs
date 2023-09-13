@@ -492,6 +492,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/csantos1113"><img src="https://avatars.githubusercontent.com/u/9648559?v=4?s=100" width="100px;" alt="Cesar S"/><br /><sub><b>Cesar S</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=csantos1113" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://crutchcorn.dev"><img src="https://avatars.githubusercontent.com/u/9100169?v=4?s=100" width="100px;" alt="Corbin Crutchley"/><br /><sub><b>Corbin Crutchley</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=crutchcorn" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rbatsenko"><img src="https://avatars.githubusercontent.com/u/6410057?v=4?s=100" width="100px;" alt="Roman Batsenko"/><br /><sub><b>Roman Batsenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=rbatsenko" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/snjro"><img src="https://avatars.githubusercontent.com/u/34432943?v=4?s=100" width="100px;" alt="snjro"/><br /><sub><b>snjro</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=snjro" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
