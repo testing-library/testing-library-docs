@@ -2528,6 +2528,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "taro-28",
+      "name": "taro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66539019?v=4",
+      "profile": "https://bento.me/taro",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
