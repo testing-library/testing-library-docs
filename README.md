@@ -495,6 +495,9 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/snjro"><img src="https://avatars.githubusercontent.com/u/34432943?v=4?s=100" width="100px;" alt="snjro"/><br /><sub><b>snjro</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=snjro" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://bento.me/taro"><img src="https://avatars.githubusercontent.com/u/66539019?v=4?s=100" width="100px;" alt="taro"/><br /><sub><b>taro</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=taro-28" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/andnorda"><img src="https://avatars.githubusercontent.com/u/1894119?v=4?s=100" width="100px;" alt="Andreas Nordahl"/><br /><sub><b>Andreas Nordahl</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=andnorda" title="Documentation">📖</a></td>
+    </tr>
   </tbody>
 </table>
 
