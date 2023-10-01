@@ -2546,6 +2546,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "neaumusic",
+      "name": "neaumusic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3423750?v=4",
+      "profile": "https://neaumusic.github.io",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
