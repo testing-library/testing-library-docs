@@ -497,6 +497,7 @@ Thanks goes to these wonderful people
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/andnorda"><img src="https://avatars.githubusercontent.com/u/1894119?v=4?s=100" width="100px;" alt="Andreas Nordahl"/><br /><sub><b>Andreas Nordahl</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=andnorda" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://neaumusic.github.io"><img src="https://avatars.githubusercontent.com/u/3423750?v=4?s=100" width="100px;" alt="neaumusic"/><br /><sub><b>neaumusic</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=neaumusic" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
