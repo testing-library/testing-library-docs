@@ -22,9 +22,11 @@ This API can be used to easily clear an editable element.
 
 ```jsx
 test('clear', async () => {
+  const user = userEvent.setup()
+
   render(<textarea defaultValue="Hello, World!" />)
 
-  await userEvent.clear(screen.getByRole('textbox'))
+  await user.clear(screen.getByRole('textbox'))
 
   expect(screen.getByRole('textbox')).toHaveValue('')
 })
@@ -37,12 +39,12 @@ be selected.
 
 ```ts
 selectOptions(
-    element: Element,
-    values: HTMLElement | HTMLElement[] | string[] | string,
+  element: Element,
+  values: HTMLElement | HTMLElement[] | string[] | string,
 ): Promise<void>
 deselectOptions(
-    element: Element,
-    values: HTMLElement | HTMLElement[] | string[] | string,
+  element: Element,
+  values: HTMLElement | HTMLElement[] | string[] | string,
 ): Promise<void>
 ```
 
@@ -61,6 +63,8 @@ just provide the element. It also accepts an array of these.
 
 ```jsx
 test('selectOptions', async () => {
+  const user = userEvent.setup()
+
   render(
     <select multiple>
       <option value="1">A</option>
@@ -69,7 +73,7 @@ test('selectOptions', async () => {
     </select>,
   )
 
-  await userEvent.selectOptions(screen.getByRole('listbox'), ['1', 'C'])
+  await user.selectOptions(screen.getByRole('listbox'), ['1', 'C'])
 
   expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
   expect(screen.getByRole('option', {name: 'B'}).selected).toBe(false)
@@ -79,6 +83,8 @@ test('selectOptions', async () => {
 
 ```jsx
 test('deselectOptions', async () => {
+  const user = userEvent.setup()
+
   render(
     <select multiple>
       <option value="1">A</option>
@@ -89,7 +95,7 @@ test('deselectOptions', async () => {
     </select>,
   )
 
-  await userEvent.deselectOptions(screen.getByRole('listbox'), '2')
+  await user.deselectOptions(screen.getByRole('listbox'), '2')
 
   expect(screen.getByText('B').selected).toBe(false)
 })
@@ -102,14 +108,14 @@ Note that this API triggers pointer events and is therefore subject to
 
 ```ts
 type(
-    element: Element,
-    text: KeyboardInput,
-    options?: {
-        skipClick?: boolean
-        skipAutoClose?: boolean
-        initialSelectionStart?: number
-        initialSelectionEnd?: number
-    }
+  element: Element,
+  text: KeyboardInput,
+  options?: {
+    skipClick?: boolean
+    skipAutoClose?: boolean
+    initialSelectionStart?: number
+    initialSelectionEnd?: number
+  }
 ): Promise<void>
 ```
 
@@ -129,10 +135,12 @@ Type into an input element.
 
 ```jsx
 test('type into an input field', async () => {
-  render(<input defaultValue="Hello,"/>)
+  const user = userEvent.setup()
+
+  render(<input defaultValue="Hello," />)
   const input = screen.getByRole('textbox')
 
-  await userEvent.type(input, ' World!')
+  await user.type(input, ' World!')
 
   expect(input).toHaveValue('Hello, World!')
 })
@@ -142,8 +150,8 @@ test('type into an input field', async () => {
 
 ```ts
 upload(
-    element: HTMLElement,
-    fileOrFiles: File | File[],
+  element: HTMLElement,
+  fileOrFiles: File | File[],
 ): Promise<void>
 ```
 
@@ -155,6 +163,8 @@ file upload dialog.
 
 ```jsx
 test('upload file', async () => {
+  const user = userEvent.setup()
+
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
@@ -164,7 +174,7 @@ test('upload file', async () => {
   const file = new File(['hello'], 'hello.png', {type: 'image/png'})
   const input = screen.getByLabelText(/upload file/i)
 
-  await userEvent.upload(input, file)
+  await user.upload(input, file)
 
   expect(input.files[0]).toBe(file)
   expect(input.files.item(0)).toBe(file)
@@ -172,6 +182,8 @@ test('upload file', async () => {
 })
 
 test('upload multiple files', async () => {
+  const user = userEvent.setup()
+
   render(
     <div>
       <label htmlFor="file-uploader">Upload file:</label>
@@ -184,7 +196,7 @@ test('upload multiple files', async () => {
   ]
   const input = screen.getByLabelText(/upload file/i)
 
-  await userEvent.upload(input, files)
+  await user.upload(input, files)
 
   expect(input.files).toHaveLength(2)
   expect(input.files[0]).toBe(files[0])
