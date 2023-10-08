@@ -31,6 +31,8 @@ as these methods:
 - [`renderHook` Result](#renderhook-result)
   - [`result`](#result)
   - [`rerender`](#rerender-1)
+- [`configure`](#configure)
+- [`configure` Options](#configure-options)
 
 ---
 
@@ -431,3 +433,23 @@ const {rerender} = renderHook(({name = 'Alice'} = {}) => name)
 // re-render the same hook with different props
 rerender({name: 'Bob'})
 ```
+
+## `configure`
+
+Changes global options. Basic usage can be seen at
+[Configuration Options](dom-testing-library/api-configuration.mdx).
+
+React Testing Library also has dedicated options.
+
+```typescript
+import {configure} from '@testing-library/react'
+
+configure({reactStrictMode: true})
+```
+
+## `configure` Options
+
+### `reactStrictMode`
+
+When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
+rendered around the inner element. Defaults to `false`.
