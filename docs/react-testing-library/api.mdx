@@ -333,9 +333,15 @@ component results in more readable and robust tests since the thing you want to
 test is not hidden behind an abstraction.
 
 ```typescript
-function renderHook<Result, Props>(
-  render: (props: Props) => Result,
-  options?: RenderHookOptions<Props>,
+function renderHook<
+  Result,
+  Props,
+  Q extends Queries = typeof queries,
+  Container extends Element | DocumentFragment = HTMLElement,
+  BaseElement extends Element | DocumentFragment = Container,
+>(
+  render: (initialProps: Props) => Result,
+  options?: RenderHookOptions<Props, Q, Container, BaseElement>,
 ): RenderHookResult<Result, Props>
 ```
 
@@ -430,4 +436,16 @@ const {rerender} = renderHook(({name = 'Alice'} = {}) => name)
 
 // re-render the same hook with different props
 rerender({name: 'Bob'})
+```
+
+### `unmount`
+
+Unmounts the test hook.
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+const {unmount} = renderHook(({name = 'Alice'} = {}) => name)
+
+unmount()
 ```
