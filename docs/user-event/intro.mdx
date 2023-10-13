@@ -68,7 +68,7 @@ test('trigger some awesome feature when clicking the button', async () => {
   // See https://testing-library.com/docs/dom-testing-library/install#wrappers
   render(<MyComponent />)
 
-  await user.click(screen.getByRole('button', { name: /click me!/i }))
+  await userEvent.click(screen.getByRole('button', { name: /click me!/i }))
 
   // ...assertions...
 })
