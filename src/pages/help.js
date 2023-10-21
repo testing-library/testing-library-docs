@@ -61,9 +61,7 @@ export default function Help(props) {
         <div className="mainContainer documentContainer postContainer helpContainer">
           <div>
             <header>
-              <h1>
-                <p className="headings">Need help?</p>
-              </h1>
+              <h1 className="help-heading-1">Need help?</h1>
             </header>
             <GridBlock
               contents={supportLinks.slice(0, 3)}
@@ -76,9 +74,7 @@ export default function Help(props) {
               align="left"
             />
             <section>
-              <h1>
-                <p className="headings">Buy a course</p>
-              </h1>
+              <h2 className="help-heading-2">Buy a course</h2>
               <p>
                 Learn how to test JavaScript with{' '}
                 <ExternalLink href="https://kentcdodds.com">
@@ -100,9 +96,7 @@ export default function Help(props) {
               </div>
             </section>
             <header className="postHeader">
-              <h1>
-                <p className="headings">Want to help?</p>
-              </h1>
+              <h2 className="help-heading-2">Want to help?</h2>
             </header>
             <p>
               Thanks! The Testing Library maintainers are happy to maintain this
