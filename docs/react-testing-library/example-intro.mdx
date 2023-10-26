@@ -72,15 +72,15 @@ See the following sections for a detailed breakdown of the test
 
 ```jsx title="__tests__/fetch.test.jsx"
 import React from 'react'
-import {rest} from 'msw'
+import {httpm, HttpResponse} from 'msw'
 import {setupServer} from 'msw/node'
 import {render, fireEvent, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Fetch from '../fetch'
 
 const server = setupServer(
-  rest.get('/greeting', (req, res, ctx) => {
-    return res(ctx.json({greeting: 'hello there'}))
+  http.get('/greeting', () => {
+    return HttpResponse.json({greeting: 'hello there'})
   }),
 )
 
@@ -101,8 +101,8 @@ test('loads and displays greeting', async () => {
 
 test('handles server error', async () => {
   server.use(
-    rest.get('/greeting', (req, res, ctx) => {
-      return res(ctx.status(500))
+    http.get('/greeting', () => {
+      return new HttpResponse(null, { status: 500 })
     }),
   )
 
@@ -132,7 +132,7 @@ test('handles server error', async () => {
 import React from 'react'
 
 // import API mocking utilities from Mock Service Worker
-import {rest} from 'msw'
+import {http, HttpResponse} from 'msw'
 import {setupServer} from 'msw/node'
 
 // import react-testing methods
@@ -161,9 +161,9 @@ component makes.
 // declare which API requests to mock
 const server = setupServer(
   // capture "GET /greeting" requests
-  rest.get('/greeting', (req, res, ctx) => {
+  http.get('/greeting', (req, res, ctx) => {
     // respond using a mocked JSON body
-    return res(ctx.json({greeting: 'hello there'}))
+    return HttpResponse.json({greeting: 'hello there'})
   }),
 )
 
@@ -181,8 +181,8 @@ test('handles server error', async () => {
   server.use(
     // override the initial "GET /greeting" request handler
     // to return a 500 Server Error
-    rest.get('/greeting', (req, res, ctx) => {
-      return res(ctx.status(500))
+    http.get('/greeting', (req, res, ctx) => {
+      return new HttpResponse(null, { status: 500 })
     }),
   )
 
