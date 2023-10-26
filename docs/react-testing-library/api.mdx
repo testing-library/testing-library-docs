@@ -325,12 +325,6 @@ All it does is forward all arguments to the act function if your version of
 react supports `act`. It is recommended to use the import from
 `@testing-library/react` over `react-dom/test-utils` for consistency reasons.
 
-```typescript
-export const act: typeof reactAct extends undefined
-  ? (callback: () => void) => void
-  : typeof reactAct
-```
-
 ## `renderHook`
 
 This is a convenience wrapper around `render` with a custom test component. The
