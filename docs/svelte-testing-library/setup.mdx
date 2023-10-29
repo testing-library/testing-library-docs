@@ -55,7 +55,7 @@ npm install --save-dev @vitest/ui
    export default defineConfig({
      plugins: [svelte({hot: !process.env.VITEST})],
      test: {
-       globals: true
+       globals: true,
        environment: 'jsdom',
      },
    })
