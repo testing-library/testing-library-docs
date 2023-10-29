@@ -46,7 +46,7 @@ npm install --save-dev @vitest/ui
    npm install --save-dev @sveltejs/vite-plugin-svelte vite
    ```
 
-3. Add a `vitest.config.ts` configuration file to the root of your project
+3. Add a `vitest.config.ts` configuration file to the root of your project. Add `globals: true` so `cleanup()` runs after each test.
 
    ```js
    import {defineConfig} from 'vitest/config'
@@ -55,7 +55,7 @@ npm install --save-dev @vitest/ui
    export default defineConfig({
      plugins: [svelte({hot: !process.env.VITEST})],
      test: {
-       globals: true,
+       globals: true
        environment: 'jsdom',
      },
    })
