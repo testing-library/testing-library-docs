@@ -14,11 +14,11 @@ accepts a single pointer action or an array of them.
 type PointerInput = PointerActionInput | Array<PointerActionInput>
 ```
 
-> Our primary target audience tests per `jest` in a `jsdom` environment and there
-is no layout in `jsdom`. This means that different from your browser the
-elements don't exist in a specific position, layer and size.  
-We don't try to determine if the pointer action you describe is possible at that
-position in your layout.
+> Our primary target audience tests per `jest` in a `jsdom` environment and
+> there is no layout in `jsdom`. This means that different from your browser the
+> elements don't exist in a specific position, layer and size.  
+> We don't try to determine if the pointer action you describe is possible at
+> that position in your layout.
 
 ## Pointer action
 
@@ -43,8 +43,8 @@ pointer({keys: '[MouseLeft][MouseRight]'})
 pointer('[MouseLeft][MouseRight]')
 ```
 
-In order to press a button without releasing it, the button name is suffixed with
-`>`.  
+In order to press a button without releasing it, the button name is suffixed
+with `>`.  
 For just releasing a previously pressed button, the tag is started with `/`.
 
 ```js
@@ -52,7 +52,8 @@ pointer('[MouseLeft>]') // press the left mouse button
 pointer('[/MouseLeft]') // release the left mouse button
 ```
 
-Which buttons are available depends on the [`pointerMap`](options.mdx#pointermap).
+Which buttons are available depends on the
+[`pointerMap`](options.mdx#pointermap).
 
 ### <a name="move" href="#"/>Moving a pointer
 
@@ -127,10 +128,7 @@ position to be used for any selection.
 pointer({target: element, offset: 2, keys: '[MouseLeft]'})
 // => <div><span>fo|o</span><span>bar</span></div>
 
-pointer([
-  {target: element, offset: 2, keys: '[MouseLeft>]'},
-  {offset: 5},
-])
+pointer([{target: element, offset: 2, keys: '[MouseLeft>]'}, {offset: 5}])
 // => <div><span>fo[o</span><span>ba]r</span></div>
 
 pointer({target: element, node: element, offset: 1, keys: '[MouseLeft]'})

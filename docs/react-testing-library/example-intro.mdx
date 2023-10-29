@@ -6,65 +6,60 @@ sidebar_label: Example
 
 ## Quickstart
 
-This is a minimal setup to get you started. 
-If you want to see a description of what each line does, 
-scroll down to the [annotated version](#quickstart-annotated).
-Scroll down to [Full Example](#full-example) to see a more advanced test setup.
+This is a minimal setup to get you started. If you want to see a description of
+what each line does, scroll down to the
+[annotated version](#quickstart-annotated). Scroll down to
+[Full Example](#full-example) to see a more advanced test setup.
 
 ```jsx
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import Fetch from './fetch'
 
 test('loads and displays greeting', async () => {
-
   // ARRANGE
   render(<Fetch url="/greeting" />)
-  
+
   // ACT
   await userEvent.click(screen.getByText('Load Greeting'))
   await screen.findByRole('heading')
-  
+
   // ASSERT
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
   expect(screen.getByRole('button')).toBeDisabled()
-
 })
 ```
 
 <details id="quickstart-annotated">
   <summary>Quickstart (Annotated Example)</summary>
 
-  ```jsx
-  // import react-testing methods
-  import { render, screen } from '@testing-library/react'
-  // userEvent library simulates user interactions by dispatching the events that would happen if the interaction took place in a browser.
-  import userEvent from '@testing-library/user-event'
-  // add custom jest matchers from jest-dom
-  import '@testing-library/jest-dom'
-  // the component to test
-  import Fetch from './fetch'
+```jsx
+// import react-testing methods
+import {render, screen} from '@testing-library/react'
+// userEvent library simulates user interactions by dispatching the events that would happen if the interaction took place in a browser.
+import userEvent from '@testing-library/user-event'
+// add custom jest matchers from jest-dom
+import '@testing-library/jest-dom'
+// the component to test
+import Fetch from './fetch'
 
-  test('loads and displays greeting', async () => {
+test('loads and displays greeting', async () => {
+  // Render a React element into the DOM
+  render(<Fetch url="/greeting" />)
 
-    // Render a React element into the DOM
-    render(<Fetch url="/greeting" />)
-    
-    await userEvent.click(screen.getByText('Load Greeting'))
-    // wait before throwing an error if it cannot find an element
-    await screen.findByRole('heading')
-    
-    // assert that the alert message is correct using
-    // toHaveTextContent, a custom matcher from jest-dom.
-    expect(screen.getByRole('heading')).toHaveTextContent('hello there')
-    expect(screen.getByRole('button')).toBeDisabled()
+  await userEvent.click(screen.getByText('Load Greeting'))
+  // wait before throwing an error if it cannot find an element
+  await screen.findByRole('heading')
 
-  })
-  ```
+  // assert that the alert message is correct using
+  // toHaveTextContent, a custom matcher from jest-dom.
+  expect(screen.getByRole('heading')).toHaveTextContent('hello there')
+  expect(screen.getByRole('button')).toBeDisabled()
+})
+```
 
 </details>
-
 
 ## Full Example
 

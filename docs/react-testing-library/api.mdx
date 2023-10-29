@@ -339,7 +339,7 @@ function renderHook<
   Props,
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container,
+  BaseElement extends Element | DocumentFragment = Container
 >(
   render: (initialProps: Props) => Result,
   options?: RenderHookOptions<Props, Q, Container, BaseElement>,
@@ -377,8 +377,10 @@ test('returns logged in user', () => {
 })
 ```
 
-> NOTE: When using `renderHook` in conjunction with the `wrapper` and `initialProps` options, the `initialProps` are not passed to the `wrapper` component.
-> To provide props to the `wrapper` component, consider a solution like this:
+> NOTE: When using `renderHook` in conjunction with the `wrapper` and
+> `initialProps` options, the `initialProps` are not passed to the `wrapper`
+> component. To provide props to the `wrapper` component, consider a solution
+> like this:
 >
 > ```js
 > const createWrapper = (Wrapper, props) => {
@@ -386,9 +388,9 @@ test('returns logged in user', () => {
 >     return <Wrapper {...props}>{children}</Wrapper>;
 >   };
 > };
-> 
+>
 > ...
-> 
+>
 > {
 >   wrapper: createWrapper(Wrapper, { value: 'foo' }),
 > }

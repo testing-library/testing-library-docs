@@ -615,22 +615,27 @@ method.
 Usage example:
 
 ```jsx
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import {render, screen} from '@testing-library/react'
 import userEvent, {specialChars} from '@testing-library/user-event'
 
 const InputElement = () => {
-  const [currentValue, setCurrentValue] = useState('This is a bad example');
-  return <div>
-    <label htmlFor='my-input'>Example:</label>
-    <input id='my-input' type='text' value={currentValue} onChange={(e) => setCurrentValue(e.target.value)} />
-  </div>;
+  const [currentValue, setCurrentValue] = useState('This is a bad example')
+  return (
+    <div>
+      <label htmlFor="my-input">Example:</label>
+      <input
+        id="my-input"
+        type="text"
+        value={currentValue}
+        onChange={e => setCurrentValue(e.target.value)}
+      />
+    </div>
+  )
 }
 
 test('delete characters within the selectedRange', () => {
-  render(
-    <InputElement/>,
-  )
+  render(<InputElement />)
   const input = screen.getByLabelText(/example/i)
   input.setSelectionRange(10, 13)
   userEvent.type(input, `${specialChars.backspace}good`)

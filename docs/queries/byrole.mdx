@@ -373,7 +373,8 @@ specific value using the `level` option
 `getByRole('spinbutton', { value: { now: 5, min: 0, max: 10, text: 'medium' } })`.
 
 Note that you don't have to specify all properties in `value`. A subset is
-sufficient e.g. `getByRole('spinbutton', { value: { now: 5, text: 'medium' } })`.
+sufficient e.g.
+`getByRole('spinbutton', { value: { now: 5, text: 'medium' } })`.
 
 Given the example below,
 
@@ -416,7 +417,7 @@ getAllByRole('spinbutton', {value: {min: 0}})
 ```
 
 > Every specified property in `value` must match. For example, if you query for
-> `{value: {min: 0, now: 3}}` `aria-valuemin` must be equal to 0 **AND**
+> `{value: {min: 0, now: 3}}` `aria-valuemin` must be equal to 0 **AND** >
 > `aria-valuenow` must be equal to 3
 
 > The `value` option is _only_ applicable to certain roles (check the linked MDN

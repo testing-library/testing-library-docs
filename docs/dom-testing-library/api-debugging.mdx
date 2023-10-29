@@ -42,9 +42,9 @@ you'd like a solution that works for both, see
 
 **Note**: The output of the DOM is colorized by default if your tests are
 running in a node environment. However, you may sometimes want to turn off
-colors, such as in cases where the output is written to a log file for
-debugging purposes. You can use the environment variable `COLORS` to explicitly
-force the colorization off or on. For example:
+colors, such as in cases where the output is written to a log file for debugging
+purposes. You can use the environment variable `COLORS` to explicitly force the
+colorization off or on. For example:
 
 ```
 COLORS=false npm test
@@ -105,9 +105,9 @@ This function is what also powers
 
 ## `screen.debug()`
 
-For convenience `screen` also exposes a `debug` method.
-This method is essentially a shortcut for `console.log(prettyDOM())`. It
-supports debugging the document, a single element, or an array of elements.
+For convenience `screen` also exposes a `debug` method. This method is
+essentially a shortcut for `console.log(prettyDOM())`. It supports debugging the
+document, a single element, or an array of elements.
 
 ```javascript
 import {screen} from '@testing-library/dom'
@@ -129,8 +129,8 @@ screen.debug(screen.getAllByText('multi-test'))
 ## `screen.logTestingPlaygroundURL()`
 
 For debugging using [testing-playground](https://testing-playground.com), screen
-exposes this convenient method which logs and returns a URL that can be opened in
-a browser.
+exposes this convenient method which logs and returns a URL that can be opened
+in a browser.
 
 ```javascript
 import {screen} from '@testing-library/dom'
