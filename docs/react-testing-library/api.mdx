@@ -291,6 +291,7 @@ Unmounts React trees that were mounted with [render](#render).
 
 > This is called automatically if your testing framework (such as mocha, Jest or
 > Jasmine) injects a global `afterEach()` function into the testing environment.
+> If not, you will need to call `cleanup()` after each test.
 
 For example, if you're using the [ava](https://github.com/avajs/ava) testing
 framework, then you would need to use the `test.afterEach` hook like so:

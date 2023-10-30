@@ -72,6 +72,7 @@ const {results} = render(YourComponent, {myProp: 'value'})
 
 > This is called automatically if your testing framework (such as mocha, Jest or
 > Jasmine) injects a global `afterEach()` function into the testing environment.
+> If not, you will need to call `cleanup()` after each test.
 
 Unmounts the component from the container and destroys the container.
 

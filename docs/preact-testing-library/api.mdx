@@ -54,6 +54,7 @@ Unmounts the component from the container and destroys the container.
 
 > This is called automatically if your testing framework (such as mocha, Jest or
 > Jasmine) injects a global `afterEach()` function into the testing environment.
+> If not, you will need to call `cleanup()` after each test.
 
 If you'd like to disable this then set `process.env.PTL_SKIP_AUTO_CLEANUP` to
 true when running your tests.
