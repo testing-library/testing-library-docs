@@ -70,8 +70,8 @@ const {results} = render(YourComponent, {myProp: 'value'})
 
 ## `cleanup`
 
-> You don't need to import or use this, it's done automagically for you with
-> `globals: true` in your test config!
+> This is called automatically if your testing framework (such as mocha, Jest or
+> Jasmine) injects a global `afterEach()` function into the testing environment.
 
 Unmounts the component from the container and destroys the container.
 
