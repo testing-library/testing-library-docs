@@ -232,9 +232,8 @@ See a working example of `update` in the
 Unmounts Vue trees that were mounted with
 [render](#rendercomponent-options-callback).
 
-> If you are using an environment that supports `afterEach` hook (as in Jest),
-> there's no need to call `cleanup` manually. Vue Testing Library handles it for
-> you.
+> This is called automatically if your testing framework (such as mocha, Jest or
+> Jasmine) injects a global `afterEach()` function into the testing environment.
 
 Failing to call `cleanup` when you've called `render` could result in a memory
 leak and tests which are not idempotent (which can lead to difficult to debug
