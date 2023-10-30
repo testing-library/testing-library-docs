@@ -220,7 +220,7 @@ module.exports = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           remarkPlugins: [
-            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           ],
           editUrl:
             'https://github.com/testing-library/testing-library-docs/edit/main/',
@@ -239,7 +239,7 @@ module.exports = {
         },
         gtag: {
           trackingID: 'UA-137787095-1',
-        }
+        },
       },
     ],
   ],
@@ -355,7 +355,7 @@ module.exports = {
       copyright: `Copyright © 2018-${new Date().getFullYear()} Kent C. Dodds and contributors`,
       logo: {
         src: 'img/octopus-128x128.png',
-        alt: 'An octopus representing the DOM Testing Library Logo'
+        alt: 'An octopus representing the DOM Testing Library Logo',
       },
     },
     algolia: {

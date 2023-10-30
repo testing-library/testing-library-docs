@@ -42,13 +42,18 @@ factors in that the browser e.g. wouldn't let a user click a hidden element or
 type in a disabled text box.  
 This is
 [why you should use `user-event`](https://ph-fritsche.github.io/blog/post/why-userevent)
-to test interaction with your components. 
+to test interaction with your components.
 
-There are, however, some user interactions or aspects of these [that aren't yet implemented and thus can't yet be described with `user-event`](https://github.com/testing-library/user-event/issues?q=is%3Aopen+label%3Aaccuracy%2Cenhancement).
-In these cases you can use `fireEvent` to dispatch the concrete events that your software relies on.
+There are, however, some user interactions or aspects of these
+[that aren't yet implemented and thus can't yet be described with `user-event`](https://github.com/testing-library/user-event/issues?q=is%3Aopen+label%3Aaccuracy%2Cenhancement).
+In these cases you can use `fireEvent` to dispatch the concrete events that your
+software relies on.
 
-Note that this makes your component and/or test reliant upon your assumptions about the concrete aspects of the interaction being correct.
-Therefore if you already put in the work to specify the correct aspects of such interaction, please consider contributing to this project so that `user-event` might cover these cases too.
+Note that this makes your component and/or test reliant upon your assumptions
+about the concrete aspects of the interaction being correct. Therefore if you
+already put in the work to specify the correct aspects of such interaction,
+please consider contributing to this project so that `user-event` might cover
+these cases too.
 
 ## Writing tests with `userEvent`
 
@@ -68,7 +73,7 @@ test('trigger some awesome feature when clicking the button', async () => {
   // See https://testing-library.com/docs/dom-testing-library/install#wrappers
   render(<MyComponent />)
 
-  await user.click(screen.getByRole('button', { name: /click me!/i }))
+  await user.click(screen.getByRole('button', {name: /click me!/i}))
 
   // ...assertions...
 })
@@ -88,13 +93,13 @@ function setup(jsx) {
 }
 
 test('render with a setup function', async () => {
-  const { user } = setup(<MyComponent />)
+  const {user} = setup(<MyComponent />)
   // ...
 })
 ```
 
 Note that, while directly invoking APIs such as `userEvent.click()` (which will
-trigger `setup` internally) is [still supported in
-v14](https://testing-library.com/docs/user-event/setup#direct-apis), this option
-exists to ease the migration from v13 to v14, and for simple tests. We recommend
-using the methods on the instances returned by `userEvent.setup()`.
+trigger `setup` internally) is
+[still supported in v14](https://testing-library.com/docs/user-event/setup#direct-apis),
+this option exists to ease the migration from v13 to v14, and for simple tests.
+We recommend using the methods on the instances returned by `userEvent.setup()`.

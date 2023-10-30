@@ -93,23 +93,25 @@ give you an idea of how to test using those functions.
 ### Example 1
 
 ```jsx
-const cb = jest.fn();
+const cb = jest.fn()
 
 function Counter() {
-  useEffect(cb);
+  useEffect(cb)
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
-  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+  return <button onClick={() => setCount(count + 1)}>{count}</button>
 }
 
-const { container: { firstChild: buttonNode }, } = render(<Counter />);
+const {
+  container: {firstChild: buttonNode},
+} = render(<Counter />)
 
 // Clear the first call to useEffect that the initial render triggers.
-cb.mockClear();
+cb.mockClear()
 
 // Fire event Option 1.
-fireEvent.click(buttonNode);
+fireEvent.click(buttonNode)
 
 // Fire event Option 2.
 fireEvent(
@@ -118,11 +120,11 @@ fireEvent(
     bubbles: true,
     cancelable: true,
     button: 0,
-  })
-);
+  }),
+)
 
-expect(buttonNode).toHaveTextContent('1');
-expect(cb).toHaveBeenCalledTimes(1);
+expect(buttonNode).toHaveTextContent('1')
+expect(cb).toHaveBeenCalledTimes(1)
 ```
 
 ### Example 2
