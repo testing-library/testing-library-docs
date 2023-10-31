@@ -2573,6 +2573,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "kyle-n",
+      "name": "Kyle Nazario",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13384477?v=4",
+      "profile": "http://www.kylenazario.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
