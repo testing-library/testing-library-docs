@@ -3,9 +3,6 @@ id: ecosystem-user-event
 title: user-event v13
 ---
 
-import Tabs from '@theme/Tabs'
-import TabItem from '@theme/TabItem'
-
 [`user-event`][gh] is a companion library for Testing Library that provides more
 advanced simulation of browser interactions than the built-in
 [`fireEvent`](dom-testing-library/api-events.mdx#fireevent) method.
@@ -21,22 +18,9 @@ fixes and new features.
 
 ## Installation
 
-  <Tabs defaultValue="npm" values={[{ label: 'npm', value: 'npm' }, { label: 'Yarn', value: 'yarn' }]}>
-  <TabItem value="npm">
-
-```sh
+```bash npm2yarn
 npm install --save-dev @testing-library/user-event @testing-library/dom
 ```
-
-  </TabItem>
-  <TabItem value="yarn">
-
-```sh
-yarn add --dev @testing-library/user-event @testing-library/dom
-```
-
-  </TabItem>
-  </Tabs>
 
 Now simply import it in your tests:
 
