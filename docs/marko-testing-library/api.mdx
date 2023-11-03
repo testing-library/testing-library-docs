@@ -294,8 +294,8 @@ You can turn off the automatic test cleanup by importing the following module:
 import '@marko/testing-library/dont-cleanup-after-each'
 ```
 
-With mocha you can use `mocha -r @marko/testing-library/dont-cleanup-after-each`
-as a shorthand.
+With mocha you can use
+`mocha --require @marko/testing-library/dont-cleanup-after-each` as a shorthand.
 
 If you are using Jest, you can include
 `setupFilesAfterEnv: ["@marko/testing-library/dont-cleanup-after-each"]` in your
