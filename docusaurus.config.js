@@ -251,6 +251,9 @@ module.exports = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
+    prism: {
+      additionalLanguages: ['bash', 'diff', 'json'],
+    },
     navbar: {
       title: 'Testing Library',
       logo: {
