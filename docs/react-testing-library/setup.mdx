@@ -478,7 +478,7 @@ do this with Jest's `setupFiles` configuration:
 Or with mocha's `-r` flag:
 
 ```
-mocha -r @testing-library/react/dont-cleanup-after-each
+mocha --require @testing-library/react/dont-cleanup-after-each
 ```
 
 Alternatively, you could import `@testing-library/react/pure` in all your tests
@@ -508,5 +508,5 @@ exports.mochaHooks = {
 And register it using mocha's `-r` flag:
 
 ```
-mocha -r ./mocha-watch-cleanup-after-each.js
+mocha --require ./mocha-watch-cleanup-after-each.js
 ```
