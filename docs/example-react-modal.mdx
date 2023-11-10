@@ -4,32 +4,18 @@ title: Modals
 ---
 
 ```jsx
-import React, {useEffect} from 'react'
-import ReactDOM from 'react-dom'
-import {render, fireEvent} from '@testing-library/react'
+import React from 'react'
+import { render, fireEvent } from '@testing-library/react'
 
-const modalRoot = document.createElement('div')
-modalRoot.setAttribute('id', 'modal-root')
-document.body.appendChild(modalRoot)
-
-const Modal = ({onClose, children}) => {
-  const el = document.createElement('div')
-
-  useEffect(() => {
-    modalRoot.appendChild(el)
-
-    return () => modalRoot.removeChild(el)
-  })
-
-  return ReactDOM.createPortal(
+const Modal = ({ onClose, children }) => {
+  return (
     <div onClick={onClose}>
       <div onClick={e => e.stopPropagation()}>
         {children}
         <hr />
         <button onClick={onClose}>Close</button>
       </div>
-    </div>,
-    el,
+    </div>
   )
 }
 
@@ -38,10 +24,10 @@ test('modal shows the children and a close button', () => {
   const handleClose = jest.fn()
 
   // Act
-  const {getByText} = render(
+  const { getByText } = render(
     <Modal onClose={handleClose}>
       <div>test</div>
-    </Modal>,
+    </Modal>
   )
   // Assert
   expect(getByText('test')).toBeTruthy()
@@ -52,4 +38,5 @@ test('modal shows the children and a close button', () => {
   // Assert
   expect(handleClose).toHaveBeenCalledTimes(1)
 })
+
 ```
