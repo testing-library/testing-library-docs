@@ -211,7 +211,6 @@ export default {
     docsRepoUrl: 'https://github.com/testing-library/testing-library-docs',
     docsPath: 'docs',
   },
-  onBrokenLinks: 'log',
   presets: [
     [
       '@docusaurus/preset-classic',
