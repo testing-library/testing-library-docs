@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   title: 'Testing Library',
   tagline:
     'Simple and complete testing utilities that encourage good testing practices',
