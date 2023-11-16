@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   title: 'Testing Library',
   tagline:
     'Simple and complete testing utilities that encourage good testing practices',
@@ -211,7 +211,6 @@ module.exports = {
     docsRepoUrl: 'https://github.com/testing-library/testing-library-docs',
     docsPath: 'docs',
   },
-  onBrokenLinks: 'log',
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -250,6 +249,9 @@ module.exports = {
       defaultMode: 'light',
       disableSwitch: false,
       respectPrefersColorScheme: true,
+    },
+    prism: {
+      additionalLanguages: ['bash', 'diff', 'json'],
     },
     navbar: {
       title: 'Testing Library',
