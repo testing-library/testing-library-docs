@@ -502,6 +502,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/bsheps"><img src="https://avatars.githubusercontent.com/u/35780702?v=4?s=100" width="100px;" alt="bsheps"/><br /><sub><b>bsheps</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=bsheps" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.kylenazario.com"><img src="https://avatars.githubusercontent.com/u/13384477?v=4?s=100" width="100px;" alt="Kyle Nazario"/><br /><sub><b>Kyle Nazario</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=kyle-n" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/thefalked"><img src="https://avatars.githubusercontent.com/u/28029756?v=4?s=100" width="100px;" alt="Giuliano Crivelli"/><br /><sub><b>Giuliano Crivelli</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thefalked" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://t.me/markov_ka"><img src="https://avatars.githubusercontent.com/u/26799398?v=4?s=100" width="100px;" alt="mrkv"/><br /><sub><b>mrkv</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mroforolhc" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
