@@ -60,6 +60,10 @@
 [[redirects]]
   from = "/docs/dom-testing-library/api-helpers"
   to = "/docs/dom-testing-library/api-accessibility"
+[[redirects]]
+  from = "/docs/ecosystem-user-event"
+  to = "/docs/user-event/intro"
+
 
 # Reorganization (do not redirect if route is not 404)
 [[redirects]]

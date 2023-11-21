@@ -186,7 +186,7 @@ module.exports = {
         'user-event/clipboard',
         'user-event/utility',
         'user-event/convenience',
-        'ecosystem-user-event',
+        'user-event/v13',
       ],
     },
     {

@@ -245,7 +245,7 @@ export default class Index extends React.Component {
           {
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
-            title: '[And more...](./docs/ecosystem-user-event)',
+            title: '[And more...](./docs/user-event/v13)',
             imageAlt: '',
           },
         ]}
