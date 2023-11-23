@@ -2600,6 +2600,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "smk267",
+      "name": "smk267",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88115182?v=4",
+      "profile": "https://github.com/smk267",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
