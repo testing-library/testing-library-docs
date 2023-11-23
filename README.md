@@ -504,6 +504,9 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/thefalked"><img src="https://avatars.githubusercontent.com/u/28029756?v=4?s=100" width="100px;" alt="Giuliano Crivelli"/><br /><sub><b>Giuliano Crivelli</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=thefalked" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://t.me/markov_ka"><img src="https://avatars.githubusercontent.com/u/26799398?v=4?s=100" width="100px;" alt="mrkv"/><br /><sub><b>mrkv</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mroforolhc" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/smk267"><img src="https://avatars.githubusercontent.com/u/88115182?v=4?s=100" width="100px;" alt="smk267"/><br /><sub><b>smk267</b></sub></a><br /><a href="#infra-smk267" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    </tr>
   </tbody>
 </table>
 
