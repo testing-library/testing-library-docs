@@ -32,6 +32,11 @@
   from = "/discord"
   to = "https://discord.gg/testing-library"
 
+# Shortcuts to reproduction templates
+[[redirects]]
+  from = "/new-rtl"
+  to = "https://stackblitz.com/edit/rtl-template"
+
 # Support page to help page
 [[redirects]]
   from = "/support"
