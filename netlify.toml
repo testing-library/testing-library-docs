@@ -36,6 +36,9 @@
 [[redirects]]
   from = "/new-rtl"
   to = "https://stackblitz.com/edit/rtl-template"
+[[redirects]]
+  from = "/new-dtl"
+  to = "https://stackblitz.com/edit/dtl-template"
 
 # Support page to help page
 [[redirects]]
