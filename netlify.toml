@@ -39,6 +39,9 @@
 [[redirects]]
   from = "/new-dtl"
   to = "https://stackblitz.com/edit/dtl-template"
+[[redirects]]
+  from = "/new-atl"
+  to = "https://stackblitz.com/edit/atl-template"
 
 # Support page to help page
 [[redirects]]
