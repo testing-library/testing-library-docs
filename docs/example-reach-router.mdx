@@ -7,36 +7,49 @@ title: Reach Router
 import React from 'react'
 import {render} from '@testing-library/react'
 import {
-  Router,
+  createBrowserRouter,
+  RouterProvider,
   Link,
   createHistory,
   createMemorySource,
   LocationProvider,
-} from '@reach/router'
+} from '@react/router'
 import '@testing-library/jest-dom'
 
 const About = () => <div>You are on the about page</div>
 const Home = () => <div>You are home</div>
 const NoMatch = () => <div>No match</div>
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <NoMatch />
+  },
+   {
+    path: "/about",
+    element: <About />
+  }, 
+  {
+    path: "/error",
+    element: <Home />
+  },
+])
+
 function App() {
   return (
     <div>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
-      <Router>
-        <Home path="/" />
-        <About path="/about" />
-        <NoMatch default />
-      </Router>
+     <RouterProvider router={router} />
     </div>
   )
 }
 
 // Ok, so here's what your tests might look like
 
-// this is a handy function that I would utilize for any component
-// that relies on the router being in context
+// This is a handy function that I would utilize for any component
+// That relies on the router being in context
 function renderWithRouter(
   ui,
   {route = '/', history = createHistory(createMemorySource(route))} = {},
