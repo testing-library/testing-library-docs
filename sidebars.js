@@ -110,19 +110,6 @@ module.exports = {
           ],
         },
         {
-          'Reason Testing Library': [
-            'bs-react-testing-library/intro',
-            'bs-react-testing-library/examples',
-          ],
-        },
-        {
-          'Native Testing Library': [
-            'react-native-testing-library/intro',
-            'react-native-testing-library/example-intro',
-            'react-native-testing-library/setup',
-          ],
-        },
-        {
           'Vue Testing Library': [
             'vue-testing-library/intro',
             'vue-testing-library/examples',
@@ -130,13 +117,6 @@ module.exports = {
             'vue-testing-library/api',
             'vue-testing-library/cheatsheet',
             'vue-testing-library/faq',
-          ],
-        },
-        {
-          'Marko Testing Library': [
-            'marko-testing-library/intro',
-            'marko-testing-library/setup',
-            'marko-testing-library/api',
           ],
         },
         {
@@ -149,6 +129,22 @@ module.exports = {
           ],
         },
         {
+          'Svelte Testing Library': [
+            'svelte-testing-library/intro',
+            'svelte-testing-library/setup',
+            'svelte-testing-library/example',
+            'svelte-testing-library/api',
+            'svelte-testing-library/faq',
+          ],
+        },
+        {
+          'Marko Testing Library': [
+            'marko-testing-library/intro',
+            'marko-testing-library/setup',
+            'marko-testing-library/api',
+          ],
+        },
+        {
           'Preact Testing Library': [
             'preact-testing-library/intro',
             'preact-testing-library/example',
@@ -157,12 +153,16 @@ module.exports = {
           ],
         },
         {
-          'Svelte Testing Library': [
-            'svelte-testing-library/intro',
-            'svelte-testing-library/setup',
-            'svelte-testing-library/example',
-            'svelte-testing-library/api',
-            'svelte-testing-library/faq',
+          'Reason Testing Library': [
+            'bs-react-testing-library/intro',
+            'bs-react-testing-library/examples',
+          ],
+        },
+        {
+          'Native Testing Library': [
+            'react-native-testing-library/intro',
+            'react-native-testing-library/example-intro',
+            'react-native-testing-library/setup',
           ],
         },
         'cypress-testing-library/intro',
