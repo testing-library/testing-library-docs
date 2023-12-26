@@ -189,7 +189,7 @@ export default class Index extends React.Component {
             imageAlt: 'Vue logo',
           },
           {
-            image: `${baseUrl}img/angular-1920x1920.png`,
+            image: `${baseUrl}img/angular-128x128.png`,
             imageAlign: 'top',
             title: '[Angular](./docs/angular-testing-library/intro)',
             imageAlt: 'Angular logo',
