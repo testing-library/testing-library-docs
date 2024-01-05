@@ -424,7 +424,7 @@ await rerender({componentInputs: {count: 7}, partialUpdate: true})
 
 // count is updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
-// name is rendered because of the partial update
+// name is still rendered as "Sarah" because of the partial update
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 ```
 
