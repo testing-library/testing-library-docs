@@ -506,6 +506,7 @@ Thanks goes to these wonderful people
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/smk267"><img src="https://avatars.githubusercontent.com/u/88115182?v=4?s=100" width="100px;" alt="smk267"/><br /><sub><b>smk267</b></sub></a><br /><a href="#infra-smk267" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.dylangordon.co.nz/"><img src="https://avatars.githubusercontent.com/u/3656794?v=4?s=100" width="100px;" alt="Dylan Gordon"/><br /><sub><b>Dylan Gordon</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=agentdylan" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
