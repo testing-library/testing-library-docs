@@ -2609,6 +2609,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "agentdylan",
+      "name": "Dylan Gordon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3656794?v=4",
+      "profile": "https://www.dylangordon.co.nz/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
