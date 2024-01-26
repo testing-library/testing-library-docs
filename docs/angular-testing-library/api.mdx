@@ -150,6 +150,42 @@ await render(AppComponent, {
 })
 ```
 
+### `deferBlockBehavior`
+
+Set the defer blocks behavior.
+
+For more info see the
+[Angular docs](https://angular.io/api/core/testing/DeferBlockBehavior)
+
+**default** : `undefined` (uses the Angular default, which is
+`DeferBlockBehavior.Manual`)
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  deferBlockBehavior: DeferBlockBehavior.Playthrough,
+})
+```
+
+### `deferBlockStates`
+
+Set the initial state of a deferrable blocks in a component.
+
+For more info see the
+[Angular docs](https://angular.io/api/core/testing/DeferBlockState)
+
+**default** : `undefined` (uses the Angular default, which is
+`DeferBlockState.Placeholder`)
+
+**example**:
+
+```typescript
+await render(FixtureComponent, {
+  deferBlockStates: DeferBlockState.Loading,
+})
+```
+
 ### `componentProviders`
 
 A collection of providers needed to render the component via Dependency
