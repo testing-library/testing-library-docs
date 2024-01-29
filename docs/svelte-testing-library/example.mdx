@@ -4,53 +4,279 @@ title: Example
 sidebar_label: Example
 ---
 
-## Component
+- [Basic](#basic)
+- [Events](#events)
+- [Slots](#slots)
+- [Two-way data binding](#two-way-data-binding)
+- [Contexts](#contexts)
 
-```html
+For additional resources, patterns, and best practices about testing Svelte
+components and other Svelte features, take a look at the [Svelte Society testing
+recipes][testing-recipes].
+
+[testing-recipes]:
+  https://sveltesociety.dev/recipes/testing-and-debugging/unit-testing-svelte-component
+
+## Basic
+
+### Component
+
+```html filename="src/greeter.svelte"
 <script>
   export let name
 
-  let buttonText = 'Button'
+  let showGreeting = false
 
-  function handleClick() {
-    buttonText = 'Button Clicked'
-  }
+  const handleClick = () => (showGreeting = true)
 </script>
 
-<h1>Hello {name}!</h1>
+<button on:click="{handleClick}">Greet</button>
 
-<button on:click="{handleClick}">{buttonText}</button>
+{#if showGreeting}
+<p>Hello {name}</p>
+{/if}
 ```
 
-## Test
+### Tests
 
-```js
-// NOTE: jest-dom adds handy assertions to Jest (and Vitest) and it is recommended, but not required.
-import '@testing-library/jest-dom'
+```js filename="src/__tests__/greeter.test.js"
+import {test} from 'vitest'
 
-import {render, fireEvent, screen} from '@testing-library/svelte'
+import {render, screen} from '@testing-library/svelte'
+import userEvent from '@testing-library/user-event'
 
-import Comp from '../Comp'
+import Greeter from '../greeter.svelte'
 
-test('shows proper heading when rendered', () => {
-  render(Comp, {name: 'World'})
-  const heading = screen.getByText('Hello World!')
-  expect(heading).toBeInTheDocument()
+test('no initial greeting', () => {
+  render(Greeter, {name: 'World'})
+
+  const button = screen.getByRole('button', {name: 'Greet'})
+  const greeting = screen.queryByText(/hello/iu)
+
+  expect(button).toBeInTheDocument()
+  expect(greeting).not.toBeInTheDocument()
 })
 
-// Note: This is as an async test as we are using `fireEvent`
-test('changes button text on click', async () => {
-  render(Comp, {name: 'World'})
+test('greeting appears on click', async () => {
+  const user = userEvent.setup()
+  render(Greeter, {name: 'World'})
+
   const button = screen.getByRole('button')
+  await user.click(button)
+  const greeting = screen.getByText(/hello world/iu)
 
-  // Using await when firing events is unique to the svelte testing library because
-  // we have to wait for the next `tick` so that Svelte flushes all pending state changes.
-  await fireEvent.click(button)
-
-  expect(button).toHaveTextContent('Button Clicked')
+  expect(greeting).toBeInTheDocument()
 })
 ```
 
-For additional resources, patterns and best practices about testing svelte
-components and other svelte features take a look at the
-[Svelte Society testing recipe](https://sveltesociety.dev/recipes/testing-and-debugging/unit-testing-svelte-component).
+## Events
+
+Events can be tested using spy functions. Function props are more
+straightforward to use and test than events, so consider using them if they make
+sense for your project.
+
+### Component
+
+```html filename="src/button-with-event.svelte"
+<button on:click>click me</button>
+```
+
+```html filename="src/button-with-prop.svelte"
+<script>
+  export let onClick
+</script>
+
+<button on:click="{onClick}">click me</button>
+```
+
+### Tests
+
+```js filename="src/__tests__/button.test.ts"
+import {test, vi} from 'vitest'
+
+import {render, screen} from '@testing-library/svelte'
+import userEvent from '@testing-library/user-event'
+
+import ButtonWithEvent from '../button-with-event.svelte'
+import ButtonWithProp from '../button-with-prop.svelte'
+
+test('button with event', async () => {
+  const user = userEvent.setup()
+  const onClick = vi.fn()
+
+  const {component} = render(ButtonWithEvent)
+  component.$on('click', onClick)
+
+  const button = screen.getByRole('button')
+  await userEvent.click(button)
+
+  expect(onClick).toHaveBeenCalledOnce()
+})
+
+test('button with function prop', async () => {
+  const user = userEvent.setup()
+  const onClick = vi.fn()
+
+  render(ButtonWithProp, {onClick})
+
+  const button = screen.getByRole('button')
+  await userEvent.click(button)
+
+  expect(onClick).toHaveBeenCalledOnce()
+})
+```
+
+## Slots
+
+To test slots, create a wrapper component for your test. Since slots are a
+developer-facing API, test IDs can be helpful.
+
+### Component
+
+```html filename="src/heading.svelte"
+<h1>
+  <slot />
+</h1>
+```
+
+### Tests
+
+```html filename="src/__tests__/heading.test.svelte"
+<script>
+  import Heading from '../heading.svelte'
+</script>
+
+<Heading>
+  <span data-testid="child" />
+</Heading>
+```
+
+```js filename="src/__tests__/heading.test.js"
+import {test} from 'vitest'
+import {render, screen, within} from '@testing-library/svelte'
+
+import HeadingTest from './heading.test.svelte'
+
+test('heading with slot', () => {
+  render(HeadingTest)
+
+  const heading = screen.getByRole('heading')
+  const child = within(heading).getByTestId('child')
+
+  expect(child).toBeInTheDocument()
+})
+```
+
+## Two-way data binding
+
+Two-way data binding can be difficult to test directly. It's usually best to
+structure your code so that you can test the user-facing results, leaving the
+binding as an implementation detail.
+
+However, if two-way binding is an important developer-facing API of your
+component, you can use a wrapper component and writable stores to test the
+binding itself.
+
+### Component
+
+```html filename="src/text-input.svelte"
+<script>
+  export let value = ''
+</script>
+
+<input type="text" bind:value="{value}" />
+```
+
+### Tests
+
+```html filename="src/__tests__/text-input.test.svelte"
+<script>
+  import TextInput from '../text-input.svelte'
+
+  export let valueStore
+</script>
+
+<TextInput bind:value="{$valueStore}" />
+```
+
+```js filename="src/__tests__/text-input.test.js"
+import {test} from 'vitest'
+
+import {render, screen} from '@testing-library/svelte'
+import userEvent from '@testing-library/user-event'
+import {get, writable} from 'svelte/store'
+
+import TextInputTest from './text-input.test.svelte'
+
+test('text input with value binding', async () => {
+  const user = userEvent.setup()
+  const valueStore = writable('')
+
+  render(TextInputTest, {valueStore})
+
+  const input = screen.getByRole('textbox')
+  await user.type(input, 'hello world')
+
+  expect(get(valueStore)).toBe('hello world')
+})
+```
+
+## Contexts
+
+If your component requires access to contexts, you can pass those contexts in
+when you [`render`][component-options] the component. When you use options like
+`context`, be sure to place any props in the `props` key.
+
+[component-options]: ./api.mdx#component-options
+
+### Components
+
+```html filename="src/messages-provider.svelte"
+<script>
+  import {setContext} from 'svelte'
+  import {writable} from 'svelte/stores'
+
+  setContext('messages', writable([]))
+</script>
+```
+
+```html filename="src/notifications.svelte"
+<script>
+  import {getContext} from 'svelte'
+
+  export let label
+
+  const messages = getContext('messages')
+</script>
+
+<div role="status" aria-label="{label}">
+  {#each $messages as message (message.id)}
+  <p>{message.text}</p>
+  {/each}
+</div>
+```
+
+### Tests
+
+```js filename="src/__tests__/notifications.test.js"
+import {test} from 'vitest'
+
+import {render, screen} from '@testing-library/svelte'
+import userEvent from '@testing-library/user-event'
+import {readable} from 'svelte/store'
+
+import Notifications from '../notifications.svelte'
+
+test('text input with value binding', async () => {
+  const messages = readable(['hello', 'world'])
+
+  render(TextInputTest, {
+    context: new Map([['messages', messages]]),
+    props: {label: 'Notifications'},
+  })
+
+  const status = screen.getByRole('status', {name: 'Notifications'})
+
+  expect(status).toHaveTextContent('hello world')
+})
+```
