@@ -150,6 +150,42 @@ await render(AppComponent, {
 })
 ```
 
+### `deferBlockBehavior`
+
+Set the defer blocks behavior.
+
+For more info see the
+[Angular docs](https://angular.io/api/core/testing/DeferBlockBehavior)
+
+**default** : `undefined` (uses the Angular default, which is
+`DeferBlockBehavior.Manual`)
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  deferBlockBehavior: DeferBlockBehavior.Playthrough,
+})
+```
+
+### `deferBlockStates`
+
+Set the initial state of a deferrable blocks in a component.
+
+For more info see the
+[Angular docs](https://angular.io/api/core/testing/DeferBlockState)
+
+**default** : `undefined` (uses the Angular default, which is
+`DeferBlockState.Placeholder`)
+
+**example**:
+
+```typescript
+await render(FixtureComponent, {
+  deferBlockStates: DeferBlockState.Loading,
+})
+```
+
 ### `componentProviders`
 
 A collection of providers needed to render the component via Dependency
@@ -395,18 +431,37 @@ properties that are not defined are cleared.
 
 ```typescript
 const {rerender} = await render(Counter, {
-  componentProperties: {count: 4, name: 'Sarah'},
+  componentInputs: {count: 4, name: 'Sarah'},
 })
 
 expect(screen.getByTestId('count-value').textContent).toBe('4')
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
-await rerender({componentProperties: {count: 7}})
+await rerender({componentInputs: {count: 7}})
 
-// count updated to 7
+// count is updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
 // name is undefined because it's not provided in rerender
 expect(screen.getByTestId('name-value').textContent).toBeUndefined()
+```
+
+Using `partialUpdate`, only the newly provided properties will be updated. Other
+input properties that aren't provided won't be cleared.
+
+```typescript
+const {rerender} = await render(Counter, {
+  componentInputs: {count: 4, name: 'Sarah'},
+})
+
+expect(screen.getByTestId('count-value').textContent).toBe('4')
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
+
+await rerender({componentInputs: {count: 7}, partialUpdate: true})
+
+// count is updated to 7
+expect(screen.getByTestId('count-value').textContent).toBe('7')
+// name is still rendered as "Sarah" because of the partial update
+expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 ```
 
 ### `detectChanges`
@@ -472,4 +527,23 @@ screen.getByRole('heading', {
   name: /api/i,
 })
 queryByLabelText(/First name/i')
+```
+
+### `renderDeferBlock`
+
+To test [Deferrable views](https://angular.dev/guide/defer#defer), you can make
+use of `renderDeferBlock`. `renderDeferBlock` will set the desired defer state
+for a specific deferrable block. The default value of a deferrable view is
+`Placeholder`, but you can also set the initial state while rendering the
+component.
+
+```typescript
+const {renderDeferBlock} = await render(FixtureComponent, {
+  deferBlockStates: DeferBlockState.Loading,
+})
+
+expect(screen.getByText(/loading/i)).toBeInTheDocument()
+
+await renderDeferBlock(DeferBlockState.Complete)
+expect(screen.getByText(/completed/i)).toBeInTheDocument()
 ```

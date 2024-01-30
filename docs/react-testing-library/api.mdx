@@ -31,6 +31,7 @@ as these methods:
 - [`renderHook` Result](#renderhook-result)
   - [`result`](#result)
   - [`rerender`](#rerender-1)
+  - [`unmount`](#unmount-1)
 - [`configure`](#configure)
 - [`configure` Options](#configure-options)
 
@@ -290,10 +291,9 @@ expect(firstRender).toMatchDiffSnapshot(asFragment())
 
 Unmounts React trees that were mounted with [render](#render).
 
-> Please note that this is done automatically if the testing framework you're
-> using supports the `afterEach` global and it is injected to your testing
-> environment (like mocha, Jest, and Jasmine). If not, you will need to do
-> manual cleanups after each test.
+> This is called automatically if your testing framework (such as mocha, Jest or
+> Jasmine) injects a global `afterEach()` function into the testing environment.
+> If not, you will need to call `cleanup()` after each test.
 
 For example, if you're using the [ava](https://github.com/avajs/ava) testing
 framework, then you would need to use the `test.afterEach` hook like so:
@@ -335,9 +335,15 @@ component results in more readable and robust tests since the thing you want to
 test is not hidden behind an abstraction.
 
 ```typescript
-function renderHook<Result, Props>(
-  render: (props: Props) => Result,
-  options?: RenderHookOptions<Props>,
+function renderHook<
+  Result,
+  Props,
+  Q extends Queries = typeof queries,
+  Container extends Element | DocumentFragment = HTMLElement,
+  BaseElement extends Element | DocumentFragment = Container,
+>(
+  render: (initialProps: Props) => Result,
+  options?: RenderHookOptions<Props, Q, Container, BaseElement>,
 ): RenderHookResult<Result, Props>
 ```
 
@@ -372,8 +378,10 @@ test('returns logged in user', () => {
 })
 ```
 
-> NOTE: When using `renderHook` in conjunction with the `wrapper` and `initialProps` options, the `initialProps` are not passed to the `wrapper` component.
-> To provide props to the `wrapper` component, consider a solution like this:
+> NOTE: When using `renderHook` in conjunction with the `wrapper` and
+> `initialProps` options, the `initialProps` are not passed to the `wrapper`
+> component. To provide props to the `wrapper` component, consider a solution
+> like this:
 >
 > ```js
 > const createWrapper = (Wrapper, props) => {
@@ -381,9 +389,9 @@ test('returns logged in user', () => {
 >     return <Wrapper {...props}>{children}</Wrapper>;
 >   };
 > };
-> 
+>
 > ...
-> 
+>
 > {
 >   wrapper: createWrapper(Wrapper, { value: 'foo' }),
 > }
@@ -434,6 +442,18 @@ const {rerender} = renderHook(({name = 'Alice'} = {}) => name)
 rerender({name: 'Bob'})
 ```
 
+### `unmount`
+
+Unmounts the test hook.
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+const {unmount} = renderHook(({name = 'Alice'} = {}) => name)
+
+unmount()
+```
+
 ## `configure`
 
 Changes global options. Basic usage can be seen at
@@ -453,3 +473,4 @@ configure({reactStrictMode: true})
 
 When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
 rendered around the inner element. Defaults to `false`.
+

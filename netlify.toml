@@ -32,6 +32,17 @@
   from = "/discord"
   to = "https://discord.gg/testing-library"
 
+# Shortcuts to reproduction templates
+[[redirects]]
+  from = "/new-rtl"
+  to = "https://stackblitz.com/edit/rtl-template"
+[[redirects]]
+  from = "/new-dtl"
+  to = "https://stackblitz.com/edit/dtl-template"
+[[redirects]]
+  from = "/new-atl"
+  to = "https://stackblitz.com/edit/atl-template"
+
 # Support page to help page
 [[redirects]]
   from = "/support"
@@ -60,6 +71,10 @@
 [[redirects]]
   from = "/docs/dom-testing-library/api-helpers"
   to = "/docs/dom-testing-library/api-accessibility"
+[[redirects]]
+  from = "/docs/ecosystem-user-event"
+  to = "/docs/user-event/intro"
+
 
 # Reorganization (do not redirect if route is not 404)
 [[redirects]]

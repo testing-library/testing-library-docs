@@ -2555,6 +2555,69 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "JoyelJohny",
+      "name": "Joyel Johny",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81413791?v=4",
+      "profile": "https://github.com/JoyelJohny",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bsheps",
+      "name": "bsheps",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35780702?v=4",
+      "profile": "https://github.com/bsheps",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "kyle-n",
+      "name": "Kyle Nazario",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13384477?v=4",
+      "profile": "http://www.kylenazario.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "thefalked",
+      "name": "Giuliano Crivelli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28029756?v=4",
+      "profile": "https://github.com/thefalked",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "mroforolhc",
+      "name": "mrkv",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26799398?v=4",
+      "profile": "https://t.me/markov_ka",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "smk267",
+      "name": "smk267",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88115182?v=4",
+      "profile": "https://github.com/smk267",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "agentdylan",
+      "name": "Dylan Gordon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3656794?v=4",
+      "profile": "https://www.dylangordon.co.nz/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -1,10 +1,7 @@
 ---
-id: ecosystem-user-event
+id: v13
 title: user-event v13
 ---
-
-import Tabs from '@theme/Tabs'
-import TabItem from '@theme/TabItem'
 
 [`user-event`][gh] is a companion library for Testing Library that provides more
 advanced simulation of browser interactions than the built-in
@@ -21,22 +18,9 @@ fixes and new features.
 
 ## Installation
 
-  <Tabs defaultValue="npm" values={[{ label: 'npm', value: 'npm' }, { label: 'Yarn', value: 'yarn' }]}>
-  <TabItem value="npm">
-
-```sh
+```bash npm2yarn
 npm install --save-dev @testing-library/user-event @testing-library/dom
 ```
-
-  </TabItem>
-  <TabItem value="yarn">
-
-```sh
-yarn add --dev @testing-library/user-event @testing-library/dom
-```
-
-  </TabItem>
-  </Tabs>
 
 Now simply import it in your tests:
 
@@ -615,22 +599,27 @@ method.
 Usage example:
 
 ```jsx
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import {render, screen} from '@testing-library/react'
 import userEvent, {specialChars} from '@testing-library/user-event'
 
 const InputElement = () => {
-  const [currentValue, setCurrentValue] = useState('This is a bad example');
-  return <div>
-    <label htmlFor='my-input'>Example:</label>
-    <input id='my-input' type='text' value={currentValue} onChange={(e) => setCurrentValue(e.target.value)} />
-  </div>;
+  const [currentValue, setCurrentValue] = useState('This is a bad example')
+  return (
+    <div>
+      <label htmlFor="my-input">Example:</label>
+      <input
+        id="my-input"
+        type="text"
+        value={currentValue}
+        onChange={e => setCurrentValue(e.target.value)}
+      />
+    </div>
+  )
 }
 
 test('delete characters within the selectedRange', () => {
-  render(
-    <InputElement/>,
-  )
+  render(<InputElement />)
   const input = screen.getByLabelText(/example/i)
   input.setSelectionRange(10, 13)
   userEvent.type(input, `${specialChars.backspace}good`)
