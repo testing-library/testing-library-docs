@@ -19,7 +19,7 @@ runner that's ESM compatible.
    - [`@sveltejs/vite-plugin-svelte`][@sveltejs/vite-plugin-svelte]
    - [`vitest`][vitest]
    - [`jsdom`][jsdom], [`happy-dom`][happy-dom], or other [Vitest DOM
-     environment][]
+     environment][vitest dom]
 
    ```bash npm2yarn
    npm install --save-dev \
@@ -37,11 +37,10 @@ runner that's ESM compatible.
    npm install --save-dev @vitest/ui
    ```
 
-2. Add a `vitest-setup.js` file to configure cleanup and
-   [`@testing-library/jest-dom`][@testing-library/jest-dom], if using.
+2. Add a `vitest-setup.js` file to optionally set up automatic post-test cleanup
+   and [`@testing-library/jest-dom`][@testing-library/jest-dom] expect matchers.
 
-   ```ts
-   // vitest-setup.js
+   ```ts title="vitest-setup.js"
    import '@testing-library/svelte/vitest'
    import '@testing-library/jest-dom/vitest'
    ```
@@ -50,8 +49,7 @@ runner that's ESM compatible.
    Svelte files, resolve browser exports during tests, use the [jsdom][] (or
    [happy-dom][]) environment, and run your setup file.
 
-   ```js
-   // vitest.config.js
+   ```js title="vitest.config.js"
    import {defineConfig} from 'vitest/config'
    import {svelte} from '@sveltejs/vite-plugin-svelte'
 
@@ -77,9 +75,9 @@ runner that's ESM compatible.
    alternative configuration options to ensure Svelte's browser bundle is used.
    :::
 
-4. Add test scipts to your `package.json` to run the tests with Vitest
+4. Add test scripts to your `package.json` to run the tests with Vitest
 
-   ```json
+   ```json title="package.json"
    {
      "scripts": {
        "test": "vitest run",
@@ -103,7 +101,7 @@ runner that's ESM compatible.
 [jsdom]: https://github.com/jsdom/jsdom
 [happy-dom]: https://github.com/capricorn86/happy-dom
 [@vitest/ui]: https://vitest.dev/guide/ui.html
-[vitest dom environment]: https://vitest.dev/guide/environment.html
+[vitest dom]: https://vitest.dev/guide/environment.html
 [testing-library/svelte-testing-library#222]:
   https://github.com/testing-library/svelte-testing-library/issues/222
 
@@ -133,15 +131,13 @@ you must use Jest in [ESM mode][jest esm mode].
 2. Add a `jest-setup.js` file to configure
    [`@testing-library/jest-dom`][@testing-library/jest-dom], if using.
 
-   ```ts
-   // jest-setup.js
+   ```ts title="jest-setup.js"
    import '@testing-library/jest-dom'
    ```
 
 3. Configure Jest to use jsdom, transform Svelte files, and use your setup file
 
-   ```js
-   // jest.config.js
+   ```js title="jest.config.js"
    module.exports = {
      "transform": {
        "^.+\\.svelte$": "svelte-jester"
@@ -155,7 +151,7 @@ you must use Jest in [ESM mode][jest esm mode].
 
 4. Add the following to your `package.json`
 
-   ```json
+   ```json title="package.json"
    {
      "scripts": {
        "test": "npx --node-options=\"--experimental-vm-modules\" jest src",
