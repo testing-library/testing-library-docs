@@ -18,7 +18,7 @@ project.
 ## `onMount` isn't called when rendering components
 
 Since the test is running in a Node environment instead of a browser
-environment, it uses the SSR exports from svelte, which declare 
+environment, it uses the SSR exports from Svelte, which declare 
 all lifecycle events as no-ops.
 
 One solution is to configure Vite to use browser resolutions in tests. 
