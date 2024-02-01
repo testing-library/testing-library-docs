@@ -5,6 +5,7 @@ sidebar_label: FAQ
 ---
 
 - [Does this library also work with SvelteKit?](#does-this-library-also-work-with-sveltekit)
+- [`onMount` isn't called when rendering components](#onmount-isnt-called-when-rendering-compoments)
 - [Testing file upload component](#testing-file-upload-component)
 
 ---
@@ -13,6 +14,37 @@ sidebar_label: FAQ
 
 Yes, it does. It requires the same [setup](setup.mdx) as a "normal" Svelte
 project.
+
+## `onMount` isn't called when rendering components
+
+Since the test is running in a Node environment instead of a browser
+environment, it uses the SSR exports from Svelte, which declare 
+all lifecycle events as no-ops.
+
+One solution is to configure Vite to use browser resolutions in tests. 
+
+```js title="vite.config.js"
+
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { defineConfig } from 'vite';
+
+export default defineConfig(({ mode }) => ({
+  plugins: [svelte()],
+  resolve: {
+    // the default would be [ 'svelte', 'node' ] 
+    // as set by vite-plugin-svelte and vitest
+    conditions: mode === 'test' ? ['browser'] : [],
+  },
+  test: {
+    environment: 'jsdom',
+  },
+};
+
+```
+
+See
+[svelte-testing-library's issue 222](https://github.com/testing-library/svelte-testing-library/issues/222)
+for more details.
 
 ## Testing file upload component
 
