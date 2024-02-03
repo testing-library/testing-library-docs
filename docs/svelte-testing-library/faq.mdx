@@ -5,54 +5,95 @@ sidebar_label: FAQ
 ---
 
 - [Does this library also work with SvelteKit?](#does-this-library-also-work-with-sveltekit)
-- [`onMount` isn't called when rendering components](#onmount-isnt-called-when-rendering-compoments)
-- [Testing file upload component](#testing-file-upload-component)
+- [Why isn't `onMount` called when rendering components?](#why-isnt-onmount-called-when-rendering-components)
+- [How do I test file upload?](#how-do-i-test-file-upload)
+- [Why aren't transition events running?](#why-arent-transition-events-running)
 
 ---
 
 ## Does this library also work with SvelteKit?
 
-Yes, it does. It requires the same [setup](setup.mdx) as a "normal" Svelte
-project.
+Yes, it does. It requires the same [setup][] as a "normal" Svelte project.
 
-## `onMount` isn't called when rendering components
+## Why isn't `onMount` called when rendering components?
 
 Since the test is running in a Node environment instead of a browser
-environment, it uses the SSR exports from Svelte, which declare 
-all lifecycle events as no-ops.
+environment, it uses the SSR exports from Svelte, which declare all lifecycle
+events as no-ops.
 
-One solution is to configure Vite to use browser resolutions in tests. 
+One solution is to configure Vite to use browser resolutions in tests.
 
 ```js title="vite.config.js"
+import {svelte} from '@sveltejs/vite-plugin-svelte'
+import {defineConfig} from 'vite'
 
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { defineConfig } from 'vite';
-
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({mode}) => ({
   plugins: [svelte()],
   resolve: {
-    // the default would be [ 'svelte', 'node' ] 
+    // the default would be [ 'svelte', 'node' ]
     // as set by vite-plugin-svelte and vitest
     conditions: mode === 'test' ? ['browser'] : [],
   },
   test: {
     environment: 'jsdom',
   },
-};
-
+}))
 ```
 
-See
-[svelte-testing-library's issue 222](https://github.com/testing-library/svelte-testing-library/issues/222)
-for more details.
+See svelte-testing-library's [issue 222][] for more details.
 
-## Testing file upload component
+[setup]: ./setup.mdx
+[issue 222]:
+  https://github.com/testing-library/svelte-testing-library/issues/222
 
-File upload handler not triggering? Use `happy-dom`, not `jsdom`, and make sure
-to use `fireEvent.change(...)` and not `fireEvent.input(...)`. It seems that
-jsdom (which is at v22.1.0 at the time of this writing) doesn't fake all the
-File object as it should.
+## How do I test file upload?
 
-See
-[svelte-testing-library's issue 219](https://github.com/testing-library/svelte-testing-library/issues/219)
-for more details.
+Use the [upload][] utility from `@testing-library/user-event` rather than
+`fireEvent`. It works well in both [jsdom][] and [happy-dom][].
+
+```js
+test('upload file', async () => {
+  const user = userEvent.setup()
+
+  render(Uploader)
+  const file = new File(['hello'], 'hello.png', {type: 'image/png'})
+  const input = screen.getByLabelText(/upload file/i)
+
+  await user.upload(input, file)
+
+  expect(input.files[0]).toBe(file)
+  expect(input.files.item(0)).toBe(file)
+  expect(input.files).toHaveLength(1)
+})
+```
+
+[upload]: https://testing-library.com/docs/user-event/utility#upload
+[jsdom]: https://github.com/jsdom/jsdom
+[happy-dom]: https://github.com/capricorn86/happy-dom
+
+## Why aren't [transition events][] running?
+
+The [jsdom][] `requestAnimationFrame` implementation can be unreliable in
+Vitest. To work around it, you can try a few things:
+
+- Switch [happy-dom][], if you are able, which does not exhibit the same issues
+- Replace the implementation of `requestAnimationFrame`
+
+```js
+beforeEach(() => {
+  const raf = fn => setTimeout(() => fn(new Date()), 16)
+  vi.stubGlobal('requestAnimationFrame', raf)
+})
+
+// Alternatively, set `unstubGlobals: true` in vitest.config.js
+afterEach(() => {
+  vi.unstubAllGlobals()
+})
+```
+
+See svelte-testing-library's [issue 206][] for more details.
+
+[transition events]:
+  https://svelte.dev/docs/element-directives#transition-events
+[issue 206]:
+  https://github.com/testing-library/svelte-testing-library/issues/206
