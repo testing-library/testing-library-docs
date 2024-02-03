@@ -30,8 +30,9 @@ import {defineConfig} from 'vite'
 export default defineConfig(({mode}) => ({
   plugins: [svelte()],
   resolve: {
-    // the default would be [ 'svelte', 'node' ]
-    // as set by vite-plugin-svelte and vitest
+    // The default would be [ 'svelte', 'node' ]
+    // as set by vite-plugin-svelte and vitest.
+    // This sets [ 'browser', 'svelte', 'node' ]
     conditions: mode === 'test' ? ['browser'] : [],
   },
   test: {
@@ -73,10 +74,11 @@ test('upload file', async () => {
 
 ## Why aren't [transition events][] running?
 
-The [jsdom][] `requestAnimationFrame` implementation can be unreliable in
-Vitest. To work around it, you can try a few things:
+The [jsdom][] implementation of `requestAnimationFrame` can be unreliable in
+Vitest. To work around it, you can:
 
-- Switch [happy-dom][], if you are able, which does not exhibit the same issues
+- Switch to [happy-dom][], if you are able, which does not exhibit the same
+  issues
 - Replace the implementation of `requestAnimationFrame`
 
 ```js
