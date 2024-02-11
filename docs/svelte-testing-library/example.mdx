@@ -4,12 +4,6 @@ title: Example
 sidebar_label: Example
 ---
 
-- [Basic](#basic)
-- [Events](#events)
-- [Slots](#slots)
-- [Two-way data binding](#two-way-data-binding)
-- [Contexts](#contexts)
-
 For additional resources, patterns, and best practices about testing Svelte
 components and other Svelte features, take a look at the [Svelte Society testing
 recipes][testing-recipes].
@@ -19,9 +13,7 @@ recipes][testing-recipes].
 
 ## Basic
 
-### Component
-
-```html filename="src/greeter.svelte"
+```html title="src/greeter.svelte"
 <script>
   export let name
 
@@ -37,9 +29,7 @@ recipes][testing-recipes].
 {/if}
 ```
 
-### Tests
-
-```js filename="src/__tests__/greeter.test.js"
+```js title="src/__tests__/greeter.test.js"
 import {test} from 'vitest'
 
 import {render, screen} from '@testing-library/svelte'
@@ -75,13 +65,11 @@ Events can be tested using spy functions. Function props are more
 straightforward to use and test than events, so consider using them if they make
 sense for your project.
 
-### Component
-
-```html filename="src/button-with-event.svelte"
+```html title="src/button-with-event.svelte"
 <button on:click>click me</button>
 ```
 
-```html filename="src/button-with-prop.svelte"
+```html title="src/button-with-prop.svelte"
 <script>
   export let onClick
 </script>
@@ -89,9 +77,7 @@ sense for your project.
 <button on:click="{onClick}">click me</button>
 ```
 
-### Tests
-
-```js filename="src/__tests__/button.test.ts"
+```js title="src/__tests__/button.test.ts"
 import {test, vi} from 'vitest'
 
 import {render, screen} from '@testing-library/svelte'
@@ -131,17 +117,13 @@ test('button with function prop', async () => {
 To test slots, create a wrapper component for your test. Since slots are a
 developer-facing API, test IDs can be helpful.
 
-### Component
-
-```html filename="src/heading.svelte"
+```html title="src/heading.svelte"
 <h1>
   <slot />
 </h1>
 ```
 
-### Tests
-
-```html filename="src/__tests__/heading.test.svelte"
+```html title="src/__tests__/heading.test.svelte"
 <script>
   import Heading from '../heading.svelte'
 </script>
@@ -151,7 +133,7 @@ developer-facing API, test IDs can be helpful.
 </Heading>
 ```
 
-```js filename="src/__tests__/heading.test.js"
+```js title="src/__tests__/heading.test.js"
 import {test} from 'vitest'
 import {render, screen, within} from '@testing-library/svelte'
 
@@ -174,12 +156,10 @@ structure your code so that you can test the user-facing results, leaving the
 binding as an implementation detail.
 
 However, if two-way binding is an important developer-facing API of your
-component, you can use a wrapper component and writable stores to test the
+component, you can use a wrapper component and writable store to test the
 binding itself.
 
-### Component
-
-```html filename="src/text-input.svelte"
+```html title="src/text-input.svelte"
 <script>
   export let value = ''
 </script>
@@ -187,9 +167,7 @@ binding itself.
 <input type="text" bind:value="{value}" />
 ```
 
-### Tests
-
-```html filename="src/__tests__/text-input.test.svelte"
+```html title="src/__tests__/text-input.test.svelte"
 <script>
   import TextInput from '../text-input.svelte'
 
@@ -199,7 +177,7 @@ binding itself.
 <TextInput bind:value="{$valueStore}" />
 ```
 
-```js filename="src/__tests__/text-input.test.js"
+```js title="src/__tests__/text-input.test.js"
 import {test} from 'vitest'
 
 import {render, screen} from '@testing-library/svelte'
@@ -229,9 +207,7 @@ when you [`render`][component-options] the component. When you use options like
 
 [component-options]: ./api.mdx#component-options
 
-### Components
-
-```html filename="src/messages-provider.svelte"
+```html title="src/messages-provider.svelte"
 <script>
   import {setContext} from 'svelte'
   import {writable} from 'svelte/stores'
@@ -240,7 +216,7 @@ when you [`render`][component-options] the component. When you use options like
 </script>
 ```
 
-```html filename="src/notifications.svelte"
+```html title="src/notifications.svelte"
 <script>
   import {getContext} from 'svelte'
 
@@ -256,9 +232,7 @@ when you [`render`][component-options] the component. When you use options like
 </div>
 ```
 
-### Tests
-
-```js filename="src/__tests__/notifications.test.js"
+```js title="src/__tests__/notifications.test.js"
 import {test} from 'vitest'
 
 import {render, screen} from '@testing-library/svelte'
