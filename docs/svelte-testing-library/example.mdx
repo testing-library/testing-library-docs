@@ -13,7 +13,15 @@ recipes][testing-recipes].
 
 ## Basic
 
-```html title="src/greeter.svelte"
+This basic example demonstrates how to:
+
+- Pass props to your Svelte component using `render`
+- Query the structure of your component's DOM elements using `screen`
+- Interact with your component using [`@testing-library/user-event`][user-event]
+- Make assertions using `expect`, using methods added by
+  [`@testing-library/jest-dom`][jest-dom]
+
+```html title="greeter.svelte"
 <script>
   export let name
 
@@ -29,13 +37,12 @@ recipes][testing-recipes].
 {/if}
 ```
 
-```js title="src/__tests__/greeter.test.js"
-import {test} from 'vitest'
-
+```js title="greeter.test.js"
 import {render, screen} from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
+import {expect, test} from 'vitest'
 
-import Greeter from '../greeter.svelte'
+import Greeter from './greeter.svelte'
 
 test('no initial greeting', () => {
   render(Greeter, {name: 'World'})
@@ -59,17 +66,20 @@ test('greeting appears on click', async () => {
 })
 ```
 
+[user-event]: ../user-event/intro.mdx
+[jest-dom]: https://github.com/testing-library/jest-dom
+
 ## Events
 
-Events can be tested using spy functions. Function props are more
-straightforward to use and test than events, so consider using them if they make
-sense for your project.
+Events can be tested using spy functions, like those provided by
+[`vi.fn()`][vi-fn]. Function props are more straightforward to use and test than
+events, so consider using them if they make sense for your project.
 
-```html title="src/button-with-event.svelte"
+```html title="button-with-event.svelte"
 <button on:click>click me</button>
 ```
 
-```html title="src/button-with-prop.svelte"
+```html title="button-with-prop.svelte"
 <script>
   export let onClick
 </script>
@@ -77,14 +87,13 @@ sense for your project.
 <button on:click="{onClick}">click me</button>
 ```
 
-```js title="src/__tests__/button.test.ts"
-import {test, vi} from 'vitest'
-
+```js title="button.test.ts"
 import {render, screen} from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
+import {expect, test, vi} from 'vitest'
 
-import ButtonWithEvent from '../button-with-event.svelte'
-import ButtonWithProp from '../button-with-prop.svelte'
+import ButtonWithEvent from './button-with-event.svelte'
+import ButtonWithProp from './button-with-prop.svelte'
 
 test('button with event', async () => {
   const user = userEvent.setup()
@@ -94,7 +103,7 @@ test('button with event', async () => {
   component.$on('click', onClick)
 
   const button = screen.getByRole('button')
-  await userEvent.click(button)
+  await user.click(button)
 
   expect(onClick).toHaveBeenCalledOnce()
 })
@@ -106,26 +115,33 @@ test('button with function prop', async () => {
   render(ButtonWithProp, {onClick})
 
   const button = screen.getByRole('button')
-  await userEvent.click(button)
+  await user.click(button)
 
   expect(onClick).toHaveBeenCalledOnce()
 })
 ```
 
+[vi-fn]: https://vitest.dev/api/vi.html#vi-fn
+
 ## Slots
 
-To test slots, create a wrapper component for your test. Since slots are a
-developer-facing API, test IDs can be helpful.
+Slots cannot be tested directly. It's usually easier to structure your code so
+that you can test the user-facing results, leaving any slots as an
+implementation detail.
 
-```html title="src/heading.svelte"
+However, if slots are an important developer-facing API of your component, you
+can use a wrapper component and "dummy" children to test them. Test IDs can be
+helpful when testing slots in this manner.
+
+```html title="heading.svelte"
 <h1>
   <slot />
 </h1>
 ```
 
-```html title="src/__tests__/heading.test.svelte"
+```html title="heading.test.svelte"
 <script>
-  import Heading from '../heading.svelte'
+  import Heading from './heading.svelte'
 </script>
 
 <Heading>
@@ -133,9 +149,9 @@ developer-facing API, test IDs can be helpful.
 </Heading>
 ```
 
-```js title="src/__tests__/heading.test.js"
-import {test} from 'vitest'
+```js title="heading.test.js"
 import {render, screen, within} from '@testing-library/svelte'
+import {expect, test} from 'vitest'
 
 import HeadingTest from './heading.test.svelte'
 
@@ -151,15 +167,15 @@ test('heading with slot', () => {
 
 ## Two-way data binding
 
-Two-way data binding can be difficult to test directly. It's usually best to
-structure your code so that you can test the user-facing results, leaving the
-binding as an implementation detail.
+Two-way data binding cannot be tested directly. It's usually easier to structure
+your code so that you can test the user-facing results, leaving the binding as
+an implementation detail.
 
 However, if two-way binding is an important developer-facing API of your
 component, you can use a wrapper component and writable store to test the
 binding itself.
 
-```html title="src/text-input.svelte"
+```html title="text-input.svelte"
 <script>
   export let value = ''
 </script>
@@ -167,9 +183,9 @@ binding itself.
 <input type="text" bind:value="{value}" />
 ```
 
-```html title="src/__tests__/text-input.test.svelte"
+```html title="text-input.test.svelte"
 <script>
-  import TextInput from '../text-input.svelte'
+  import TextInput from './text-input.svelte'
 
   export let valueStore
 </script>
@@ -177,12 +193,11 @@ binding itself.
 <TextInput bind:value="{$valueStore}" />
 ```
 
-```js title="src/__tests__/text-input.test.js"
-import {test} from 'vitest'
-
+```js title="text-input.test.js"
 import {render, screen} from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
 import {get, writable} from 'svelte/store'
+import {expect, test} from 'vitest'
 
 import TextInputTest from './text-input.test.svelte'
 
@@ -203,11 +218,11 @@ test('text input with value binding', async () => {
 
 If your component requires access to contexts, you can pass those contexts in
 when you [`render`][component-options] the component. When you use options like
-`context`, be sure to place any props in the `props` key.
+`context`, be sure to place props under the `props` key.
 
 [component-options]: ./api.mdx#component-options
 
-```html title="src/messages-provider.svelte"
+```html title="notifications-provider.svelte"
 <script>
   import {setContext} from 'svelte'
   import {writable} from 'svelte/stores'
@@ -216,7 +231,7 @@ when you [`render`][component-options] the component. When you use options like
 </script>
 ```
 
-```html title="src/notifications.svelte"
+```html title="notifications.svelte"
 <script>
   import {getContext} from 'svelte'
 
@@ -228,23 +243,25 @@ when you [`render`][component-options] the component. When you use options like
 <div role="status" aria-label="{label}">
   {#each $messages as message (message.id)}
   <p>{message.text}</p>
+  <hr />
   {/each}
 </div>
 ```
 
-```js title="src/__tests__/notifications.test.js"
-import {test} from 'vitest'
-
+```js title="notifications.test.js"
 import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
 import {readable} from 'svelte/store'
+import {expect, test} from 'vitest'
 
-import Notifications from '../notifications.svelte'
+import Notifications from './notifications.svelte'
 
-test('text input with value binding', async () => {
-  const messages = readable(['hello', 'world'])
+test('notifications with messages from context', async () => {
+  const messages = readable([
+    {id: 'abc', text: 'hello'},
+    {id: 'def', text: 'world'},
+  ])
 
-  render(TextInputTest, {
+  render(Notifications, {
     context: new Map([['messages', messages]]),
     props: {label: 'Notifications'},
   })
