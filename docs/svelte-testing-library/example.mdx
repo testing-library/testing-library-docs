@@ -18,7 +18,7 @@ This basic example demonstrates how to:
 - Pass props to your Svelte component using `render`
 - Query the structure of your component's DOM elements using `screen`
 - Interact with your component using [`@testing-library/user-event`][user-event]
-- Make assertions using `expect`, using methods added by
+- Make assertions using `expect`, using matchers from
   [`@testing-library/jest-dom`][jest-dom]
 
 ```html title="greeter.svelte"
@@ -71,9 +71,14 @@ test('greeting appears on click', async () => {
 
 ## Events
 
-Events can be tested using spy functions, like those provided by
-[`vi.fn()`][vi-fn]. Function props are more straightforward to use and test than
-events, so consider using them if they make sense for your project.
+Events can be tested using spy functions. 
+If you're using Vitest you can use [`vi.fn()`][vi-fn] to create a spy.
+
+:::info
+
+Consider using function props to make testing events easier.
+
+:::
 
 ```html title="button-with-event.svelte"
 <button on:click>click me</button>
