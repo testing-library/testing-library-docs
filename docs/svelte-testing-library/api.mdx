@@ -4,149 +4,321 @@ title: API
 sidebar_label: API
 ---
 
-- [`@testing-library/dom`](#testing-library-dom)
-- [`render`](#render)
-- [`cleanup`](#cleanup)
-- [`act`](#act-async)
-- [`fireEvent`](#fireevent-async)
+## `@testing-library/svelte`
 
----
-
-## `@testing-library/dom`
-
-This library re-exports everything from the DOM Testing Library
-(`@testing-library/dom`). See the [documentation](queries/about.mdx) to see what
+This library re-exports everything from DOM Testing Library. Check the
+[`@testing-library/dom` API documentation][@testing-library/dom] to see what
 goodies you can use.
 
-📝 `fireEvent` is an `async` method when imported from
-`@testing-library/svelte`. This is because it calls [`tick`][svelte-tick] which
-tells Svelte to apply any new changes to the DOM.
+:::info
+
+Unlike other methods which are passed through unmodified,
+[`fireEvent`](#fireevent-async) is an `async` method when imported from
+`@testing-library/svelte` to ensure Svelte applies new changes to the DOM after
+the event is fired.
+
+:::
+
+```js
+import {screen, within, fireEvent /* ... */} from '@testing-library/svelte'
+```
+
+[@testing-library/dom]: ../dom-testing-library/api.mdx
 
 ## `render`
 
+Render your component to the DOM with Svelte. By default, the component will be
+rendered into a `<div>` appended to `document.body`.
+
 ```js
 import {render} from '@testing-library/svelte'
+import MyComponent from './MyComponent.svelte'
 
-const view = render(YourComponent, {ComponentOptions}, {RenderOptions})
+const result = render(MyComponent, componentOptions, renderOptions)
 ```
 
 ### Component Options
 
-These are the options you pass when instantiating your Svelte `Component`.
-Please refer to the
-[Client-side component API](https://svelte.dev/docs#run-time-client-side-component-api-creating-a-component).
+You may customize how the component is created and mounted. These options are
+passed directly to Svelte.
 
-📝 If the only option you're passing in is `props`, then you can just pass them
-in directly.
+If you only need to send props to your component, you may pass props directly,
+as long as those props don't share a name with a component option.
 
 ```js
-// With options.
-const view = render(YourComponent, {
-  target: MyTarget,
-  props: {myProp: 'value'},
-})
+// pass props to component
+render(YourComponent, {myProp: 'value'})
 
-// Props only.
-const view = render(YourComponent, {myProp: 'value'})
+// pass props and other options to component
+render(YourComponent, {
+  props: {myProp: 'value'},
+  context: new Map([[('theme': 'dark')]]),
+})
 ```
+
+The most common options you will need are:
+
+| Option    | Description                                             | Default                             |
+| --------- | ------------------------------------------------------- | ----------------------------------- |
+| `props`   | Props to pass to the component.                         | N/A                                 |
+| `context` | A `Map` of context values to render the component with. | N/A                                 |
+| `target`  | An `HTMLElement` to render the component into.          | `<div>` appended to `document.body` |
+
+If you specify the `target` option, the `target` element will _not_ be appended
+to `document.body` automatically, and it will be used as the base element for
+[bound queries](#queries) and [`debug`](#debug).
+
+Refer to the [Svelte client-side component API docs][svelte-component-api] for
+all available options.
+
+[svelte-component-api]: https://svelte.dev/docs/client-side-component-api
 
 ### Render Options
 
-| Option      | Description                                                                         | Default         |
-| ----------- | ----------------------------------------------------------------------------------- | --------------- |
-| `container` | The HTML element the component is mounted into.                                     | `document.body` |
-| `queries`   | Queries to bind to the container. See [within](dom-testing-library/api-within.mdx). | `null`          |
+You may also customize how Svelte Testing Library renders your component. Most
+of the time, you shouldn't need to modify these options.
 
-### Results
+:::caution
 
-| Result       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `container`  | The HTML element the component is mounted into.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `component`  | The newly created Svelte component. Generally, this should only be used when testing exported functions, or when you're testing developer facing API's. Outside of said cases avoid using the component directly to build tests, instead of interacting with the rendered Svelte component, work with the DOM. Have a read of [Avoid the Test User](https://kentcdodds.com/blog/avoid-the-test-user) by Kent C. Dodds to understand the difference between the **end user** and **developer user**. |
-| `debug`      | Logs the `container` using [prettyDom](dom-testing-library/api-debugging.mdx/#prettydom).                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `unmount`    | Unmounts the component from the `target` by calling `component.$destroy()`.                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `rerender`   | Calls render again destroying the old component, and mounting the new component on the original `target` with any new options passed in.                                                                                                                                                                                                                                                                                                                                                            |
-| `...queries` | Returns all [query functions](queries/about.mdx) that are bound to the `container`. If you pass in `query` arguments than this will be those, otherwise all.                                                                                                                                                                                                                                                                                                                                        |
+Prior to `@testing-library/svelte@5.0.0`, the `baseElement` option was named
+`container`.
+
+:::
+
+| Option        | Description                                         | Default                                    |
+| ------------- | --------------------------------------------------- | ------------------------------------------ |
+| `baseElement` | The base element for queries and [`debug`](#debug). | `componentOptions.target ?? document.body` |
+| `queries`     | [Custom Queries][custom-queries].                   | N/A                                        |
+
+[custom-queries]: ../dom-testing-library/api-custom-queries.mdx
+
+### Render Results
+
+| Result                        | Description                                           |
+| ----------------------------- | ----------------------------------------------------- |
+| [`baseElement`](#baseelement) | The base DOM element used for queries.                |
+| [`component`](#component)     | The created Svelte component.                         |
+| [`container`](#container)     | The DOM element the component is mounted to.          |
+| [`debug`](#debug)             | Logs the `baseElement` using [prettyDom][pretty-dom]. |
+| [`rerender`](#rerender)       | Update the component's props .                        |
+| [`unmount`](#unmount)         | Unmount and destroy the component.                    |
+| [`...queries`](#queries)      | [Query functions][queries] bound to `baseElement`.    |
+
+[pretty-dom]: ../dom-testing-library/api-debugging.mdx#prettydom
+[queries]: ../queries/about.mdx
+
+#### `baseElement`
+
+_Added in `@testing-library/svelte@5.0.0`_
+
+The base DOM element that queries are bound to. Corresponds to
+`renderOptions.baseElement`.
+
+#### `container`
+
+The DOM element the component is mounted in. Corresponds to
+`componentOptions.target`. In general, avoid using `container` to query for
+elements; use [testing-library queries][queries] instead.
+
+:::tip
+
+Use `container.firstChild` to get the first rendered element of your component.
+
+:::
+
+:::caution
+
+Prior to `@testing-library/svelte@5.0.0`, `container` was set to the base
+element, which made the first rendered element of the component
+`container.firstChild.firstChild`.
+
+:::
+
+#### `component`
+
+The Svelte component instance. See the [Svelte component
+API][svelte-component-api] for more details.
+
+:::tip
+
+Avoid using `component` except to test developer facing API's, like exported
+functions. Instead, prefer of interacting with the DOM. Read [Avoid the Test
+User][test-user] by Kent C. Dodds to understand the difference between the **end
+user** and **developer user**.
+
+:::
+
+[test-user]: https://kentcdodds.com/blog/avoid-the-test-user
+
+#### `debug`
+
+Log any passed element, or the `baseElement` by default, using
+[prettyDOM][pretty-dom].
+
+:::tip
+
+If your `baseElement` is the default `document.body`, we recommend using
+[`screen.debug`][screen-debug] rather than the bound `debug`..
+
+```js
+import {render, screen} from '@testing-library/svelte'
+
+render(MyComponent, {myProp: 'value'})
+
+screen.debug()
+```
+
+:::
+
+```js
+const {debug} = render(MyComponent, {myProp: 'value'})
+
+const button = screen.getByRole('button')
+
+// log the baseElement
+debug()
+
+// log a specific element
+debug(button)
+```
+
+[screen-debug]: ../dom-testing-library/api-debugging.mdx#screendebug
+
+#### `rerender`
+
+Update one or more of the component's props.
+
+```js
+const {rerender} = render(MyComponent, {myProp: 'value'})
+
+await rerender({myProp: 'new value'}))
+```
+
+:::caution
+
+Prior to `@testing-library/svelte@5.0.0`, `rerender` would umount the component.
+To update props witohut unmounting in earlier versions of
+`@testing-library/svelte`, use `component.$set` and [`act`](#act-async):
+
+```js
+const {component} = render(MyComponent, {myProp: 'value'})
+
+await act(() => component.$set({myProp: 'new value'}))
+```
+
+:::
+
+#### `unmount`
+
+Unmount and destroy the Svelte component.
+
+```js
+const {unmount} = render(MyComponent, {myProp: 'value'})
+
+unmount()
+```
+
+#### Queries
+
+[Query functions][queries] bound to the `baseElement`. If you passed [custom
+queries][custom-queries] to `render`, those will be available instead of the
+default queries.
+
+:::tip
+
+If your `baseElement` is the default `document.body`, we recommend using
+[`screen`][screen] rather than bound queries.
+
+```js
+import {render, screen} from '@testing-library/svelte'
+
+render(MyComponent, {myProp: 'value'})
+
+const button = screen.getByRole('button')
+```
+
+:::
+
+```js
+const {getByRole} = render(MyComponent, {myProp: 'value'})
+
+const button = getByRole('button')
+```
+
+[screen]: ../queries/about.mdx#screen
 
 ## `cleanup`
 
-> This is called automatically if your testing framework (such as mocha, Jest or
-> Jasmine) injects a global `afterEach()` function into the testing environment.
-> If not, you will need to call `cleanup()` after each test.
+Unmount all components and remove any elements added to `document.body`.
 
-Unmounts the component from the container and destroys the container.
+:::info
 
-📝 When you import anything from the library, this automatically runs after each
-test. If you'd like to disable this then set `process.env.STL_SKIP_AUTO_CLEANUP`
-to true or import `dont-clean-up-after-each` from the library.
+`cleanup` is called automatically if your testing framework adds a global
+`afterEach` method (e.g. Mocha, Jest, or Jasmine), or if you use
+`import '@testing-library/svelte/vitest'` in your [Vitest setup
+file][vitest-setup].
+
+If you'd like to disable automatic cleanup in a framework that uses the
+`afterEach` global method, set `process.env.STL_SKIP_AUTO_CLEANUP`.
+
+:::
 
 ```js
 import {render, cleanup} from '@testing-library/svelte'
 
-afterEach(() => {
+// Default: runs after each test
+afterEach(async () => {
   cleanup()
-}) // Default on import: runs it after each test.
+})
 
 render(YourComponent)
 
-cleanup() // Or like this for more control.
+// Called manually for more control
+cleanup()
 ```
 
-## `act` (`async`)
+[vitest-setup]: ./setup.mdx#vitest
 
-An `async` helper method that takes in a `function` or `Promise` that is
-immediately called/resolved, and then calls [`tick`][svelte-tick] so all pending
-state changes are flushed, and the view now reflects any changes made to the
-DOM.
+## `act` (async)
 
-## `fireEvent` (`async`)
+Ensure all pending updates from Svelte are applied to the DOM. Optionally, you
+may pass a function to be called before flushing updates. If the function
+returns a `Promise`, that promise will be resolved before flushing updates.
 
-Calls `@testing-library/dom` [fireEvent](dom-testing-library/api-events.mdx). It
-is an `async` method due to calling [`tick`][svelte-tick] which tells Svelte to
-flush all pending state changes, basically it updates the DOM to reflect the new
-changes.
-
-**Component**
-
-```html
-<script>
-  let count = 0
-
-  function handleClick() {
-    count += 1
-  }
-</script>
-
-<button on:click="{handleClick}">Count is {count}</button>
-```
-
-**Test**
+Uses Svelte's [`tick`][svelte-tick] method to flush updates.
 
 ```js
-import '@testing-library/jest-dom'
+import {act, render} from '@testing-library/svelte'
 
-import {render, fireEvent, screen} from '@testing-library/svelte'
+const {component} = render(MyComponent)
 
-import Comp from '..'
-
-test('count increments when button is clicked', async () => {
-  render(Comp)
-  const button = screen.getByText('Count is 0')
-
-  // Option 1.
-  await fireEvent.click(button)
-  expect(button).toHaveTextContent('Count is 1')
-
-  // Option 2.
-  await fireEvent(
-    button,
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  )
-  expect(button).toHaveTextContent('Count is 2')
+act(() => {
+  component.updateSomething()
 })
 ```
 
 [svelte-tick]: https://svelte.dev/docs/svelte#tick
+
+## `fireEvent` (async)
+
+Call DOM Testing Library's [`fireEvent`][fire-event], wrapped in
+[`act`](#act-async) to ensure Svelte updates the DOM.
+
+:::tip
+
+Where possible, we recommend [`@testing-library/user-event`][user-event] instead
+of `fireEvent`.
+
+:::
+
+```js
+import {fireEvent, render, screen} from '@testing-library/svelte'
+
+render(MyComponent)
+
+const button = screen.getByRole('button')
+await fireEvent.click(button)
+```
+
+[fire-event]: ../dom-testing-library/api-events.mdx
+[user-event]: ../user-event/intro.mdx
