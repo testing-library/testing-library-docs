@@ -4,24 +4,13 @@ title: API
 sidebar_label: API
 ---
 
-## `@testing-library/svelte`
+`@testing-library/svelte` re-exports everything from
+[`@testing-library/dom`][@testing-library/dom], as well as:
 
-This library re-exports everything from DOM Testing Library. Check the
-[`@testing-library/dom` API documentation][@testing-library/dom] to see what
-goodies you can use.
-
-:::info
-
-Unlike other methods which are passed through unmodified,
-[`fireEvent`](#fireevent-async) is an `async` method when imported from
-`@testing-library/svelte` to ensure Svelte applies new changes to the DOM after
-the event is fired.
-
-:::
-
-```js
-import {screen, within, fireEvent /* ... */} from '@testing-library/svelte'
-```
+- [`render`](#render)
+- [`act`](#act)
+- [`cleanup`](#cleanup)
+- [`fireEvent` (async)](#fireevent-async)
 
 [@testing-library/dom]: ../dom-testing-library/api.mdx
 
@@ -94,31 +83,32 @@ Prior to `@testing-library/svelte@5.0.0`, the `baseElement` option was named
 
 ### Render Results
 
-| Result                        | Description                                           |
-| ----------------------------- | ----------------------------------------------------- |
-| [`baseElement`](#baseelement) | The base DOM element used for queries.                |
-| [`component`](#component)     | The created Svelte component.                         |
-| [`container`](#container)     | The DOM element the component is mounted to.          |
-| [`debug`](#debug)             | Logs the `baseElement` using [prettyDom][pretty-dom]. |
-| [`rerender`](#rerender)       | Update the component's props .                        |
-| [`unmount`](#unmount)         | Unmount and destroy the component.                    |
-| [`...queries`](#queries)      | [Query functions][queries] bound to `baseElement`.    |
+| Result                        | Description                                                |
+| ----------------------------- | ---------------------------------------------------------- |
+| [`baseElement`](#baseelement) | The base DOM element used for queries.                     |
+| [`component`](#component)     | The mounted Svelte component.                              |
+| [`container`](#container)     | The DOM element the component is mounted to.               |
+| [`debug`](#debug)             | Log elements using [`prettyDOM`][pretty-dom].              |
+| [`rerender`](#rerender)       | Update the component's props.                              |
+| [`unmount`](#unmount)         | Unmount and destroy the component.                         |
+| [`...queries`](#queries)      | [Query functions][query-functions] bound to `baseElement`. |
 
 [pretty-dom]: ../dom-testing-library/api-debugging.mdx#prettydom
-[queries]: ../queries/about.mdx
+[query-functions]: ../queries/about.mdx
 
 #### `baseElement`
 
 _Added in `@testing-library/svelte@5.0.0`_
 
 The base DOM element that queries are bound to. Corresponds to
-`renderOptions.baseElement`.
+`renderOptions.baseElement`. If you do not use `componentOptions.target` nor
+`renderOptions.baseElement`, this will be `document.body`.
 
 #### `container`
 
 The DOM element the component is mounted in. Corresponds to
-`componentOptions.target`. In general, avoid using `container` to query for
-elements; use [testing-library queries][queries] instead.
+`componentOptions.target`. In general, avoid using `container` directly to query
+for elements; use [testing-library queries][query-functions] instead.
 
 :::tip
 
@@ -129,8 +119,8 @@ Use `container.firstChild` to get the first rendered element of your component.
 :::caution
 
 Prior to `@testing-library/svelte@5.0.0`, `container` was set to the base
-element, which made the first rendered element of the component
-`container.firstChild.firstChild`.
+elemen. Use `container.firstChild.firstChild` to get the first rendered element
+of the component in earlier versions.
 
 :::
 
@@ -142,9 +132,9 @@ API][svelte-component-api] for more details.
 :::tip
 
 Avoid using `component` except to test developer facing API's, like exported
-functions. Instead, prefer of interacting with the DOM. Read [Avoid the Test
-User][test-user] by Kent C. Dodds to understand the difference between the **end
-user** and **developer user**.
+functions. Instead, interact with the DOM. Read [Avoid the Test User][test-user]
+by Kent C. Dodds to understand the difference between the **end user** and
+**developer user**.
 
 :::
 
@@ -152,33 +142,30 @@ user** and **developer user**.
 
 #### `debug`
 
-Log any passed element, or the `baseElement` by default, using
-[prettyDOM][pretty-dom].
+Log the `baseElement` or a given element using [`prettyDOM`][pretty-dom].
 
 :::tip
 
 If your `baseElement` is the default `document.body`, we recommend using
-[`screen.debug`][screen-debug] rather than the bound `debug`..
-
-```js
-import {render, screen} from '@testing-library/svelte'
-
-render(MyComponent, {myProp: 'value'})
-
-screen.debug()
-```
+[`screen.debug`][screen-debug].
 
 :::
 
 ```js
+import {render, screen} from '@testing-library/svelte'
+
 const {debug} = render(MyComponent, {myProp: 'value'})
 
 const button = screen.getByRole('button')
 
-// log the baseElement
+// log `document.body`
+screen.debug()
+
+// log your custom `target` or `baseElement`
 debug()
 
 // log a specific element
+screen.debug(button)
 debug(button)
 ```
 
@@ -186,7 +173,7 @@ debug(button)
 
 #### `rerender`
 
-Update one or more of the component's props.
+Update one or more of the component's props and wait for Svelte to update.
 
 ```js
 const {rerender} = render(MyComponent, {myProp: 'value'})
@@ -196,9 +183,9 @@ await rerender({myProp: 'new value'}))
 
 :::caution
 
-Prior to `@testing-library/svelte@5.0.0`, `rerender` would umount the component.
-To update props witohut unmounting in earlier versions of
-`@testing-library/svelte`, use `component.$set` and [`act`](#act-async):
+Prior to `@testing-library/svelte@5.0.0`, calling `rerender` would destroy and
+remount the component. Use `component.$set` and [`act`](#act) to update props in
+earlier versions:
 
 ```js
 const {component} = render(MyComponent, {myProp: 'value'})
@@ -220,28 +207,26 @@ unmount()
 
 #### Queries
 
-[Query functions][queries] bound to the `baseElement`. If you passed [custom
-queries][custom-queries] to `render`, those will be available instead of the
-default queries.
+[Query functions][query-functions] bound to the [`baseElement`](#baseelement).
+If you passed [custom queries][custom-queries] to `render`, those will be
+available instead of the default queries.
 
 :::tip
 
-If your `baseElement` is the default `document.body`, we recommend using
-[`screen`][screen] rather than bound queries.
-
-```js
-import {render, screen} from '@testing-library/svelte'
-
-render(MyComponent, {myProp: 'value'})
-
-const button = screen.getByRole('button')
-```
+If your [`baseElement`](#baseelement) is the default `document.body`, we
+recommend using [`screen`][screen] rather than bound queries.
 
 :::
 
 ```js
+import {render, screen} from '@testing-library/svelte'
+
 const {getByRole} = render(MyComponent, {myProp: 'value'})
 
+// query `document.body`
+const button = screen.getByRole('button')
+
+// query using a custom `target` or `baseElement`
 const button = getByRole('button')
 ```
 
@@ -249,17 +234,17 @@ const button = getByRole('button')
 
 ## `cleanup`
 
-Unmount all components and remove any elements added to `document.body`.
+Destroy all components and remove any elements added to `document.body`.
 
 :::info
 
 `cleanup` is called automatically if your testing framework adds a global
 `afterEach` method (e.g. Mocha, Jest, or Jasmine), or if you use
 `import '@testing-library/svelte/vitest'` in your [Vitest setup
-file][vitest-setup].
+file][vitest-setup]. Usually, you shouldn't need to call `cleanup` yourself.
 
-If you'd like to disable automatic cleanup in a framework that uses the
-`afterEach` global method, set `process.env.STL_SKIP_AUTO_CLEANUP`.
+If you'd like to disable automatic cleanup in a framework that uses a global
+`afterEach` method, set `process.env.STL_SKIP_AUTO_CLEANUP`.
 
 :::
 
@@ -267,7 +252,7 @@ If you'd like to disable automatic cleanup in a framework that uses the
 import {render, cleanup} from '@testing-library/svelte'
 
 // Default: runs after each test
-afterEach(async () => {
+afterEach(() => {
   cleanup()
 })
 
@@ -279,20 +264,20 @@ cleanup()
 
 [vitest-setup]: ./setup.mdx#vitest
 
-## `act` (async)
+## `act`
 
 Ensure all pending updates from Svelte are applied to the DOM. Optionally, you
-may pass a function to be called before flushing updates. If the function
-returns a `Promise`, that promise will be resolved before flushing updates.
+may pass a function to be called before updates are applied. If the function
+returns a `Promise`, it will be resolved first.
 
-Uses Svelte's [`tick`][svelte-tick] method to flush updates.
+Uses Svelte's [`tick`][svelte-tick] method to apply updates.
 
 ```js
 import {act, render} from '@testing-library/svelte'
 
 const {component} = render(MyComponent)
 
-act(() => {
+await act(() => {
   component.updateSomething()
 })
 ```
@@ -301,8 +286,8 @@ act(() => {
 
 ## `fireEvent` (async)
 
-Call DOM Testing Library's [`fireEvent`][fire-event], wrapped in
-[`act`](#act-async) to ensure Svelte updates the DOM.
+Fire an event and wait for Svelte to update the DOM. An asynchronous wrapper of
+DOM Testing Library's [`fireEvent`][fire-event].
 
 :::tip
 
