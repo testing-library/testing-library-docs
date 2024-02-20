@@ -165,6 +165,12 @@ module.exports = {
             'react-native-testing-library/setup',
           ],
         },
+        {
+          'Solid Testing Library': [
+            'solid-testing-library/intro',
+            'solid-testing-library/api',
+          ],
+        },
         'cypress-testing-library/intro',
         'pptr-testing-library/intro',
         'testcafe-testing-library/intro',
