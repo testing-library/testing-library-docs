@@ -121,3 +121,6 @@
 [[redirects]]
   from = "/user-event/"
   to = "/docs/user-event/intro"
+[[redirects]]
+  from = "/solid/"
+  to = "/docs/solid-testing-library/intro"

@@ -11,20 +11,18 @@ its page for more information.
 
 There are several key differences, to be aware of.
 
-## Differences from the Preact Testing Library
+- [`render`](#render)
+- [`renderHook`](#renderHook)
+- [`renderDirective`](#renderDirective)
+- [`Async methods`](#async-methods)
+- [`Know issues`](#known-issues)
 
-### `render`
+## `render`
 
 The `render` function takes in a function that returns a Solid Component, rather
 than simply the component itself.
 
 ```tsx
-// With @testing-library/preact
-const results = render(<YourComponent />, options)
-```
-
-```tsx
-// With solid-testing-library
 const results = render(() => <YourComponent />, options)
 ```
 
@@ -41,10 +39,10 @@ need to first use asynchronous queries (`findBy`) after employing it:
 ```tsx
 it('uses params', async () => {
   const App = () => (
-    <Routes>
+    <>
       <Route path="/ids/:id" component={() => <p>Id: {useParams()?.id}</p>} />
       <Route path="/" component={() => <p>Start</p>} />
-    </Routes>
+    </>
   )
   const {findByText} = render(() => <App />, {location: 'ids/1234'})
   expect(await findByText('Id: 1234')).not.toBeFalsy()
@@ -55,14 +53,15 @@ It uses `@solidjs/router`, so if you want to use a different router, you should
 consider the `wrapper` option instead. If you attempt to use this without having
 the package installed, you will receive an error message.
 
-### `renderHook`
+## `renderHook`
 
 Solid.js external reactive state does not require any DOM elements to run in, so
 our `renderHook` call to test hooks in the context of a component (if your hook
 does not require the context of a component, `createRoot` should suffice to test
 the reactive behavior; for convenience, we also have `createEffect`, which is
-described later) has no `container`, `baseElement` or queries in its options or
-return value. Instead, it has an `owner` to be used with
+described in the [`Async methods`](#async-methods) section) has no `container`,
+`baseElement` or queries in its options or return value. Instead, it has an
+`owner` to be used with
 [`runWithOwner`](https://www.solidjs.com/docs/latest/api#runwithowner) if
 required. It also exposes a `cleanup` function, though this is already
 automatically called after the test is finished.
@@ -93,6 +92,8 @@ return `props.children` - especially if you are using a context with
 asynchronous code together with `<Show>`, because this is required to get the
 value from the hook and it is only obtained synchronously once and you will
 otherwise only get `undefined` and wonder why this is the case.
+
+## `renderDirective`
 
 Solid.js supports
 [custom directives](https://www.solidjs.com/docs/latest/api#use___), which is a
@@ -129,7 +130,7 @@ setArg('perfect')
 expect(asFragment()).toBe('<div data-directive="perfect"></div>')
 ```
 
-### Async methods
+## Async methods
 
 Solid.js reactive changes are pretty instantaneous, so there is rarely need to
 use `waitFor(…)`, `await findByRole(…)` and other asynchronous queries to test
