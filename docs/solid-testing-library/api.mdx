@@ -33,7 +33,7 @@ reactive state that change the DOM, therefore there is no `rerender` method. You
 can use global signals to manipulate your test component in a way that causes it
 to update.
 
-In extension of the original API, the render function of this testing library
+In addition to the original API, the render function of this testing library
 supports a convenient `location` option that will set up an in-memory router
 pointing at the specified location. Since this setup is not instantaneous, you
 need to first use asynchronous queries (`findBy`) after employing it:
