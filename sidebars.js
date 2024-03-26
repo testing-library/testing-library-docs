@@ -171,6 +171,14 @@ module.exports = {
             'solid-testing-library/api',
           ],
         },
+        {
+          'Web Testing Library': [
+            'web-testing-library/intro',
+            'web-testing-library/install',
+            'web-testing-library/api',
+            'web-testing-library/faq',
+          ],
+        },
         'cypress-testing-library/intro',
         'pptr-testing-library/intro',
         'testcafe-testing-library/intro',
