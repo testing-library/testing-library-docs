@@ -107,7 +107,11 @@ your components.
 
 ### `legacyRoot`
 
-**WARNING**: This option is only available when tests run with React 18 and earlier.
+:::warning
+
+This option is only available when tests run with React 18 and earlier.
+
+:::
 
 By default we'll render with support for concurrent features (i.e.
 [`ReactDOMClient.createRoot`](https://reactjs.org/docs/react-dom-client.html#createroot)).
@@ -342,7 +346,7 @@ function renderHook<
   Props,
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container,
+  BaseElement extends Element | DocumentFragment = Container
 >(
   render: (initialProps: Props) => Result,
   options?: RenderHookOptions<Props, Q, Container, BaseElement>,
@@ -475,4 +479,3 @@ configure({reactStrictMode: true})
 
 When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
 rendered around the inner element. Defaults to `false`.
-
