@@ -35,10 +35,10 @@ If you only need to send props to your component, you may pass props directly,
 as long as those props don't share a name with a component option.
 
 ```js
-// pass props to component
+// pass props to the component
 render(YourComponent, {myProp: 'value'})
 
-// pass props and other options to component
+// pass props and other options to the component
 render(YourComponent, {
   props: {myProp: 'value'},
   context: new Map([[('theme': 'dark')]]),
@@ -131,7 +131,7 @@ API][svelte-component-api] for more details.
 
 :::tip
 
-Avoid using `component` except to test developer facing API's, like exported
+Avoid using `component` except to test developer-facing APIs, like exported
 functions. Instead, interact with the DOM. Read [Avoid the Test User][test-user]
 by Kent C. Dodds to understand the difference between the **end user** and
 **developer user**.
