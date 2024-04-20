@@ -1,0 +1,53 @@
+---
+id: intro
+title: Intro
+sidebar_label: Introduction
+---
+
+[Solid Testing Library on GitHub][gh]
+
+> Inspired completely by [preact-testing-library][preact-docs]
+
+[preact-docs]: ../preact-testing-library/intro.mdx
+[gh]: https://github.com/solidjs/solid-testing-library
+
+```bash npm2yarn
+npm install --save-dev @solidjs/testing-library
+```
+
+> This library is built on top of
+> [`DOM Testing Library`](dom-testing-library/intro.mdx) which is where most of
+> the logic behind the queries is.
+
+## The Problem
+
+You want to write tests for your Solid components so that they avoid including
+implementation details, and are maintainable in the long run.
+
+## This Solution
+
+The Solid Testing Library is a very lightweight solution for testing Solid
+components. Its primary guiding principle is:
+
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+
+See the [Dom introduction][dom-solution-explainer] and [React
+introduction][react-solution-explainer] for a more in-depth explanation.
+
+[dom-solution-explainer]: ../dom-testing-library/intro.mdx#this-solution
+[react-solution-explainer]: ../react-testing-library/intro.mdx#this-solution
+
+**What this library is not**:
+
+1.  A test runner or framework.
+2.  Specific to a testing framework.
+
+If you using Jest we recommend using
+[solid-jest](https://github.com/solidjs/solid-jest) to properly resolve the
+browser version of Solid as Jest will default to the server version when run in
+Node.
+
+💡 If you are using Jest or vitest, you may also be interested in installing
+`@testing-library/jest-dom` so you can use [the custom jest matchers][jest-dom].
+
+[jest-dom]: ../ecosystem-jest-dom
