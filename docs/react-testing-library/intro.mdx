@@ -7,15 +7,20 @@ sidebar_label: Introduction
 [`React Testing Library`][gh] builds on top of `DOM Testing Library` by adding
 APIs for working with React components.
 
-> Projects created with [`Create React App`](https://create-react-app.dev/) have
-> out of the box support for **React Testing Library**. If that is not the case,
-> you can add it via `npm` like so:
+## Installation
 
 ```bash npm2yarn
 npm install --save-dev @testing-library/react
 ```
 
-- [React Testing Library on GitHub][gh]
+### With TypeScript
+
+To get full type coverage, you need to install the types for `react-dom` as well:
+
+```bash npm2yarn
+npm install --save-dev @testing-library/react @types/react-dom
+```
+
 
 [gh]: https://github.com/testing-library/react-testing-library
 
