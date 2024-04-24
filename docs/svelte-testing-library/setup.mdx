@@ -37,42 +37,55 @@ runner that's ESM compatible.
    npm install --save-dev @vitest/ui
    ```
 
-2. Add a `vitest-setup.js` file to optionally set up automatic post-test cleanup
-   and [`@testing-library/jest-dom`][@testing-library/jest-dom] expect matchers.
+2. Add a `vitest-setup.js` file to optionally set up
+   [`@testing-library/jest-dom`][@testing-library/jest-dom] expect matchers.
 
-   ```ts title="vitest-setup.js"
-   import '@testing-library/svelte/vitest'
+   ```js title="vitest-setup.js"
    import '@testing-library/jest-dom/vitest'
    ```
 
-3. Add `vitest.config.js`, or update your existing `vite.config.js`, to process
-   Svelte files, resolve browser exports during tests, use the [jsdom][] (or
-   [happy-dom][]) environment, and run your setup file.
+3. Add `vitest.config.js`, or update your existing `vite.config.js`, with the
+   `svelte` and `svelteTesting` Vite plugins. Set the testing environment to
+   your DOM library of choice and optionally configure your setup file from step
+   (2).
 
    ```js title="vitest.config.js"
    import {defineConfig} from 'vitest/config'
    import {svelte} from '@sveltejs/vite-plugin-svelte'
+   import {svelteTesting} from '@testing-library/svelte/vite'
 
-   export default defineConfig(({mode}) => ({
-     plugins: [svelte()],
-     resolve: {
-       conditions: mode === 'test' ? ['browser'] : [],
-     },
+   export default defineConfig({
+     plugins: [svelte(), svelteTesting()],
      test: {
        environment: 'jsdom',
        setupFiles: ['./vitest-setup.js'],
      },
-   }))
+   })
    ```
 
    :::note
 
-   Prepending the `browser` resolve condition to Vite's default conditions may
-   cause issues if you have a complex Vite configuration or dependencies that
-   cannot be loaded into Node.js
+   The `svelteTesting` plugin:
 
-   See [testing-library/svelte-testing-library#222][] for more information and
-   alternative configuration options to ensure Svelte's browser bundle is used.
+   - Adds an automatic cleanup fixture to [`test.setupFiles`][test-setup-files]
+   - Adds `browser` to [`resolve.conditions`][resolve-conditions]
+
+   If needed, you can disable either behavior. Disabling both options is
+   equivalent to omitting the plugin.
+
+   ```js
+   svelteTesting({
+     // disable auto cleanup
+     autoCleanup: false,
+     // disable browser resolution condition
+     resolveBrowser: false,
+   })
+   ```
+
+   Resolving the `browser` condition may cause issues if you have a complex Vite
+   configuration or dependencies that cannot be loaded into Node.js. See
+   [testing-library/svelte-testing-library#222][] for more information and
+   alternative configuration options to ensure Svelte's browser code is used.
    :::
 
 4. Add test scripts to your `package.json` to run the tests with Vitest
@@ -104,6 +117,9 @@ runner that's ESM compatible.
 [vitest dom]: https://vitest.dev/guide/environment.html
 [testing-library/svelte-testing-library#222]:
   https://github.com/testing-library/svelte-testing-library/issues/222
+[test-setup-files]: https://vitest.dev/config/#setupfiles
+[resolve-conditions]:
+  https://vitejs.dev/config/shared-options.html#resolve-conditions
 
 ## Jest
 
