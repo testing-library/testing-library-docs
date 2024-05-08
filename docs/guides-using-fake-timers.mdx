@@ -10,11 +10,13 @@ flaky.
 
 To solve these problems, or if you need to rely on specific timestamps in your
 code, most testing frameworks offer the option to replace the real timers in
-your tests with fake ones. This should be used sporadically and not on a regular
-basis since using it contains some overhead.
+your tests with fake ones. This has a side effect - when using fake timers in
+your tests, _all_ of the code inside your test uses fake timers.
 
-When using fake timers in your tests, all of the code inside your test uses fake
-timers.
+This becomes apparent when using [`user-event`](user-event/intro.mdx) to test
+user interactions. Internally, it uses `setTimeout` to
+[`delay`](user-event/options.mdx#delay) subsequent actions and allow
+asynchronous code to run between the inputs.
 
 The common pattern to setup fake timers is usually within the `beforeEach`, for
 example:
@@ -26,12 +28,10 @@ beforeEach(() => {
 })
 ```
 
-When using fake timers, you need to remember to restore the timers after your
-test runs.
-
-The main reason to do that is to prevent 3rd party libraries running after your
-test finishes (e.g cleanup functions), from being coupled to your fake timers
-and use real timers instead.
+Since fake timers are mocking native timer functions, it is necessary to restore
+the timers after your test runs, just like regular mocks. This prevents fake
+timers leaking into other test cases and cleanup functions, where real timers
+are expected.
 
 For that you usually call `useRealTimers` in `afterEach`.
 
@@ -51,3 +51,21 @@ afterEach(() => {
   jest.useRealTimers()
 })
 ```
+
+## Using fake timers together with `user-event`
+
+`user-event` internally uses `setTimeout` to delay subsequent actions. Using
+fake timers in such tests will cause timeouts, since the `setTimeout` callbacks
+do not get executed. In order to allow `user-event` to advance the fake timers,
+it is necessary to set [`advanceTimers`](user-event/options.mdx#advancetimers)
+option in `userEvent.setup()`:
+
+```js
+const user = userEvent.setup({advanceTimers: jest.advanceTimersByTime})
+```
+
+:::caution
+You may find suggestions to set `delay: null` in `userEvent.setup()` in
+order to solve this issue. That is not recommended, as it may cause unexpected
+behaviour.
+:::
