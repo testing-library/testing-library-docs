@@ -462,3 +462,20 @@ You can query a specific element like this
 ```js
 getByRole('alertdialog', {description: 'Your session is about to expire'})
 ```
+
+## Performance
+
+`getByRole` is the most preferred query to use as it most closely resembles the
+user experience, however the calculations it must perform to provide this
+confidence can be expensive (particularly with large DOM trees).
+
+Where test performance is a concern it may be desirable to trade some of this
+confidence for improved performance.
+
+`getByRole` performance can be improved by setting the option
+[`hidden`](#hidden) to `true` and thereby avoid expensive visibility checks.
+Note that in doing so inaccessible elements will now be included in the result.
+
+Another option may be to substitute `getByRole` for simpler `getByLabelText` and
+`getByText` queries which can be significantly faster though less robust
+alternatives.

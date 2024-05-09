@@ -2611,9 +2611,38 @@
       ]
     },
     {
+      "login": "agentdylan",
+      "name": "Dylan Gordon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3656794?v=4",
+      "profile": "https://www.dylangordon.co.nz/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "mcous",
+      "name": "Michael Cousins",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2963448?v=4",
+      "profile": "https://michael.cousins.io",
+      "contributions": [
+        "doc",
+        "review"
+      ]
+    },
+    {
+      "login": "kettanaito",
+      "name": "Artem Zakharchenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14984911?v=4",
+      "profile": "https://kettanaito.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "vadimshvetsov",
       "name": "Vadim Shvetsov",
       "avatar_url": "https://avatars.githubusercontent.com/u/16336572?v=4",
+      "profile": "https://github.com/vadimshvetsov",
       "contributions": [
         "doc"
       ]

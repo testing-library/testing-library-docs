@@ -110,6 +110,49 @@ module.exports = {
           ],
         },
         {
+          'Vue Testing Library': [
+            'vue-testing-library/intro',
+            'vue-testing-library/examples',
+            'vue-testing-library/setup',
+            'vue-testing-library/api',
+            'vue-testing-library/cheatsheet',
+            'vue-testing-library/faq',
+          ],
+        },
+        {
+          'Angular Testing Library': [
+            'angular-testing-library/intro',
+            'angular-testing-library/examples',
+            'angular-testing-library/api',
+            'angular-testing-library/version-compatibility',
+            'angular-testing-library/faq',
+          ],
+        },
+        {
+          'Svelte Testing Library': [
+            'svelte-testing-library/intro',
+            'svelte-testing-library/setup',
+            'svelte-testing-library/example',
+            'svelte-testing-library/api',
+            'svelte-testing-library/faq',
+          ],
+        },
+        {
+          'Marko Testing Library': [
+            'marko-testing-library/intro',
+            'marko-testing-library/setup',
+            'marko-testing-library/api',
+          ],
+        },
+        {
+          'Preact Testing Library': [
+            'preact-testing-library/intro',
+            'preact-testing-library/example',
+            'preact-testing-library/api',
+            'preact-testing-library/learn',
+          ],
+        },
+        {
           'Reason Testing Library': [
             'bs-react-testing-library/intro',
             'bs-react-testing-library/examples',
@@ -123,46 +166,9 @@ module.exports = {
           ],
         },
         {
-          'Vue Testing Library': [
-            'vue-testing-library/intro',
-            'vue-testing-library/examples',
-            'vue-testing-library/setup',
-            'vue-testing-library/api',
-            'vue-testing-library/cheatsheet',
-            'vue-testing-library/faq',
-          ],
-        },
-        {
-          'Marko Testing Library': [
-            'marko-testing-library/intro',
-            'marko-testing-library/setup',
-            'marko-testing-library/api',
-          ],
-        },
-        {
-          'Angular Testing Library': [
-            'angular-testing-library/intro',
-            'angular-testing-library/examples',
-            'angular-testing-library/api',
-            'angular-testing-library/version-compatibility',
-            'angular-testing-library/faq',
-          ],
-        },
-        {
-          'Preact Testing Library': [
-            'preact-testing-library/intro',
-            'preact-testing-library/example',
-            'preact-testing-library/api',
-            'preact-testing-library/learn',
-          ],
-        },
-        {
-          'Svelte Testing Library': [
-            'svelte-testing-library/intro',
-            'svelte-testing-library/setup',
-            'svelte-testing-library/example',
-            'svelte-testing-library/api',
-            'svelte-testing-library/faq',
+          'Solid Testing Library': [
+            'solid-testing-library/intro',
+            'solid-testing-library/api',
           ],
         },
         'cypress-testing-library/intro',

@@ -4,30 +4,109 @@ title: Setup
 sidebar_label: Setup
 ---
 
-We recommend using [Vitest](https://vitest.dev/) but you're free to use the
-library with any testing framework and runner you're comfortable with.
+We recommend using [Vitest][], but you're free to use the library with any test
+runner that's ESM compatible.
+
+[vitest]: https://vitest.dev/
 
 ## Vitest
 
-1. Install Vitest and jsdom
+1. Add development dependencies
 
-We're using `jsdom` here as the test environment, but you can use any other
-options e.g `happy-dom`.
+   - [`@testing-library/svelte`][@testing-library/svelte]
+   - [`@testing-library/jest-dom`][@testing-library/jest-dom] (Optional, but
+     highly recommended)
+   - [`@sveltejs/vite-plugin-svelte`][@sveltejs/vite-plugin-svelte]
+   - [`vitest`][vitest]
+   - [`jsdom`][jsdom], [`happy-dom`][happy-dom], or other [Vitest DOM
+     environment][vitest dom]
 
-```bash npm2yarn
-npm install --save-dev vitest jsdom
-```
+   ```bash npm2yarn
+   npm install --save-dev \
+     @testing-library/svelte \
+     @testing-library/jest-dom \
+     @sveltejs/vite-plugin-svelte \
+     vitest \
+     jsdom
+   ```
 
-Optionally install `@vitest/ui`, which opens a UI within a browser window to
-follow the progress and interact with your tests.
+   Optionally install [`@vitest/ui`][@vitest/ui], which opens a UI within a
+   browser window to follow the progress and interact with your tests.
 
-```bash npm2yarn
-npm install --save-dev @vitest/ui
-```
+   ```bash npm2yarn
+   npm install --save-dev @vitest/ui
+   ```
 
-1. Add the test scipts to your `package.json` to run the tests with Vitest
+2. Add a `vitest-setup.js` file to optionally set up
+   [`@testing-library/jest-dom`][@testing-library/jest-dom] expect matchers.
 
-   ```json
+   ```js title="vitest-setup.js"
+   import '@testing-library/jest-dom/vitest'
+   ```
+
+3. Add `vitest.config.js`, or update your existing `vite.config.js`, with the
+   `svelte` and `svelteTesting` Vite plugins. Set the testing environment to
+   your DOM library of choice and optionally configure your setup file from step
+   (2).
+
+   ```js title="vite.config.js"
+   import {defineConfig} from 'vitest/config'
+   import {svelte} from '@sveltejs/vite-plugin-svelte'
+   import {svelteTesting} from '@testing-library/svelte/vite'
+
+   export default defineConfig({
+     plugins: [svelte(), svelteTesting()],
+     test: {
+       environment: 'jsdom',
+       setupFiles: ['./vitest-setup.js'],
+     },
+   })
+   ```
+
+   Or, if you're using [SvelteKit][sveltekit]:
+
+   ```js title="vite.config.js"
+   import {defineConfig} from 'vitest/config'
+   import {sveltekit} from '@sveltejs/kit/vite'
+   import {svelteTesting} from '@testing-library/svelte/vite'
+
+   export default defineConfig({
+     plugins: [sveltekit(), svelteTesting()],
+     test: {
+       environment: 'jsdom',
+       setupFiles: ['./vitest-setup.js'],
+     },
+   })
+   ```
+
+   :::note
+
+   The `svelteTesting` plugin:
+
+   - Adds an automatic cleanup fixture to [`test.setupFiles`][test-setup-files]
+   - Adds `browser` to [`resolve.conditions`][resolve-conditions]
+
+   If needed, you can disable either behavior. Disabling both options is
+   equivalent to omitting the plugin.
+
+   ```js
+   svelteTesting({
+     // disable auto cleanup
+     autoCleanup: false,
+     // disable browser resolution condition
+     resolveBrowser: false,
+   })
+   ```
+
+   Resolving the `browser` condition may cause issues if you have a complex Vite
+   configuration or dependencies that cannot be loaded into Node.js. See
+   [testing-library/svelte-testing-library#222][] for more information and
+   alternative configuration options to ensure Svelte's browser code is used.
+   :::
+
+4. Add test scripts to your `package.json` to run the tests with Vitest
+
+   ```json title="package.json"
    {
      "scripts": {
        "test": "vitest run",
@@ -37,52 +116,6 @@ npm install --save-dev @vitest/ui
    }
    ```
 
-2. To compile the Svelte components before using them in Vitest, you need to
-   install
-   [@sveltejs/vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte)
-   and Vite
-
-   ```bash npm2yarn
-   npm install --save-dev @sveltejs/vite-plugin-svelte vite
-   ```
-
-3. Add a `vitest.config.ts` configuration file to the root of your project. Add
-   `globals: true` so `cleanup()` runs after each test.
-
-   ```js
-   import {defineConfig} from 'vitest/config'
-   import {svelte} from '@sveltejs/vite-plugin-svelte'
-
-   export default defineConfig({
-     plugins: [svelte({hot: !process.env.VITEST})],
-     test: {
-       globals: true,
-       environment: 'jsdom',
-     },
-   })
-   ```
-
-4. Optionally install [vitest-dom](https://github.com/chaance/vitest-dom) to add
-   handy assertions to Vitest
-
-   4.1 Install `vitest-dom`
-
-   ```bash npm2yarn
-   npm install --save-dev vitest-dom
-   ```
-
-   4.2 import `vitest-dom` at within the vitest setup file (usually
-   `vitest-setup.(js|ts)`)
-
-   ```js
-   import * as matchers from 'vitest-dom/matchers'
-   import {expect} from 'vitest'
-   expect.extend(matchers)
-
-   // or:
-   import 'vitest-dom/extend-expect'
-   ```
-
 5. Create your component and a test file (checkout the rest of the docs to see
    how) and run the following command to run the tests.
 
@@ -90,108 +123,99 @@ npm install --save-dev @vitest/ui
    npm test
    ```
 
+[@testing-library/svelte]:
+  https://github.com/testing-library/svelte-testing-library
+[@testing-library/jest-dom]: https://github.com/testing-library/jest-dom
+[@sveltejs/vite-plugin-svelte]: https://github.com/sveltejs/vite-plugin-svelte
+[jsdom]: https://github.com/jsdom/jsdom
+[happy-dom]: https://github.com/capricorn86/happy-dom
+[@vitest/ui]: https://vitest.dev/guide/ui.html
+[vitest dom]: https://vitest.dev/guide/environment.html
+[sveltekit]: https://kit.svelte.dev/
+[testing-library/svelte-testing-library#222]:
+  https://github.com/testing-library/svelte-testing-library/issues/222
+[test-setup-files]: https://vitest.dev/config/#setupfiles
+[resolve-conditions]:
+  https://vitejs.dev/config/shared-options.html#resolve-conditions
+
 ## Jest
 
-1.  Install Jest & jest-environment-jsdom
+[`@testing-library/svelte`][@testing-library/svelte] is ESM-only, which means
+you must use Jest in [ESM mode][jest esm mode].
 
-    ```bash npm2yarn
-    npm install --save-dev jest jest-environment-jsdom
-    ```
+1. Add development dependencies
 
-2.  Add the following to your `package.json`
+   - [`@testing-library/svelte`][@testing-library/svelte]
+   - [`@testing-library/jest-dom`][@testing-library/jest-dom] (Optional, but
+     highly recommended)
+   - [`svelte-jester`][svelte-jester]
+   - [`jest`][vitest]
+   - [`jest-environment-jsdom`][jest-environment-jsdom]
 
-    ```json
-    {
-      "scripts": {
-        "test": "jest src",
-        "test:watch": "jest src --watch"
-      }
-    }
-    ```
+   ```bash npm2yarn
+   npm install --save-dev \
+     @testing-library/svelte \
+     @testing-library/jest-dom \
+     svelte-jester \
+     jest \
+     jest-environment-jsdom
+   ```
 
-3.  You'll need to compile the Svelte components before using them in Jest, so
-    we need to install
-    [svelte-jester](https://github.com/mihar-22/svelte-jester)
+2. Add a `jest-setup.js` file to configure
+   [`@testing-library/jest-dom`][@testing-library/jest-dom], if using.
 
-    ```bash npm2yarn
-    npm install --save-dev svelte-jester
-    ```
+   ```ts title="jest-setup.js"
+   import '@testing-library/jest-dom'
+   ```
 
-4.  Add the following Jest configuration to your `package.json`
+3. Configure Jest to use jsdom, transform Svelte files, and use your setup file
 
-    ```json
-    {
-      "jest": {
-        "transform": {
-          "^.+\\.svelte$": "svelte-jester"
-        },
-        "moduleFileExtensions": ["js", "svelte"],
-        "testEnvironment": "jsdom"
-      }
-    }
-    ```
+   ```js title="jest.config.js"
+   module.exports = {
+     transform: {
+       '^.+\\.svelte$': 'svelte-jester',
+     },
+     moduleFileExtensions: ['js', 'svelte'],
+     extensionsToTreatAsEsm: ['.svelte'],
+     testEnvironment: 'jsdom',
+     setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+   }
+   ```
 
-5.  If you are using ES6 modules in your project you have to add Jest's babel
-    transform setting (it is set by default, but since we are overriding the
-    transform config, we have to add it explicitly)
+4. Add the following to your `package.json`
 
-    5.1 Install `babel-jest`
+   ```json title="package.json"
+   {
+     "scripts": {
+       "test": "npx --node-options=\"--experimental-vm-modules\" jest src",
+       "test:watch": "npx --node-options=\"--experimental-vm-modules\" jest src --watch"
+     }
+   }
+   ```
 
-    ```bash npm2yarn
-    npm install --save-dev babel-jest
-    ```
+5. Create your component + test file (checkout the rest of the docs to see how)
+   and run it
 
-    5.2. Add a basic `.babelrc` configuration
+   ```bash npm2yarn
+   npm test
+   ```
 
-    ```json
-    {
-      "presets": [["@babel/preset-env", {"targets": {"node": "current"}}]]
-    }
-    ```
+[jest esm mode]: https://jestjs.io/docs/ecmascript-modules
+[svelte-jester]: https://github.com/svelteness/svelte-jester
+[jest-environment-jsdom]:
+  https://jestjs.io/docs/configuration#testenvironment-string
 
-    5.3. Update the Jest transform configuration
-
-    ```json
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.svelte$": "svelte-jester"
-    },
-    ```
-
-6.  This is optional but it is recommended, you can install
-    [jest-dom](https://github.com/testing-library/jest-dom) to add handy
-    assertions to Jest
-
-    6.1 Install `jest-dom`
-
-    ```bash npm2yarn
-    npm install --save-dev @testing-library/jest-dom
-    ```
-
-    6.2 Add the following to your Jest configuration in `package.json`
-
-    ```json
-    {
-      "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
-    }
-    ```
-
-7.  Create your component + test file (checkout the rest of the docs to see how)
-    and run it
-
-    ```bash npm2yarn
-    npm test
-    ```
-
-### TypeScript
+### TypeScript and preprocessors
 
 To use TypeScript with Jest, you'll need to install and configure
 `svelte-preprocess` and `ts-jest`. For full instructions, see the
-[`svelte-jester`](https://github.com/mihar-22/svelte-jester#typescript) docs.
+[`svelte-jester` docs][svelte-jester typescript].
 
-### Preprocessors
+If you'd like include any other [Svelte preprocessors][svelte-preprocess], see
+the [`svelte-jester` docs][svelte-jester preprocess].
 
-If you'd like to also include any
-[Svelte preprocessors](https://github.com/sveltejs/svelte-preprocess) then
-simply follow the instructions over at
-[svelte-jester](https://github.com/mihar-22/svelte-jester#babel).
+[svelte-preprocess]: https://github.com/sveltejs/svelte-preprocess
+[svelte-jester typescript]:
+  https://github.com/svelteness/svelte-jester#typescript
+[svelte-jester preprocess]:
+  https://github.com/svelteness/svelte-jester#preprocess

@@ -317,12 +317,9 @@ can contain options that affect the precision of string matching:
 
 - `exact`: Defaults to `true`; matches full strings, case-sensitive. When false,
   matches substrings and is not case-sensitive.
-  - `exact` has no effect on `regex` or `function` arguments.
-  - `exact` has no effect on accessible names specified with the `name` option
-    of `*byRole` queries. You can use a regex for fuzzy matching on accessible
-    names.
-  - In most cases using a regex instead of a string gives you more control over
-    fuzzy matching and should be preferred over `{ exact: false }`.
+  - it has no effect when used together with `regex` or `function` arguments.
+  - in most cases, using a regex instead of a string combined with `{ exact: false }`
+    gives you more control over fuzzy matching so it should be preferred.
 - `normalizer`: An optional function which overrides normalization behavior. See
   [`Normalization`](#normalization).
 

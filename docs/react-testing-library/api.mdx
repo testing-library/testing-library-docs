@@ -32,6 +32,8 @@ as these methods:
   - [`result`](#result)
   - [`rerender`](#rerender-1)
   - [`unmount`](#unmount-1)
+- [`configure`](#configure)
+- [`configure` Options](#configure-options)
 
 ---
 
@@ -104,6 +106,12 @@ useful if you are using server-side rendering and use ReactDOM.hydrate to mount
 your components.
 
 ### `legacyRoot`
+
+:::warning
+
+This option is only available when tests run with React 18 and earlier.
+
+:::
 
 By default we'll render with support for concurrent features (i.e.
 [`ReactDOMClient.createRoot`](https://reactjs.org/docs/react-dom-client.html#createroot)).
@@ -338,7 +346,7 @@ function renderHook<
   Props,
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container,
+  BaseElement extends Element | DocumentFragment = Container
 >(
   render: (initialProps: Props) => Result,
   options?: RenderHookOptions<Props, Q, Container, BaseElement>,
@@ -451,3 +459,23 @@ const {unmount} = renderHook(({name = 'Alice'} = {}) => name)
 
 unmount()
 ```
+
+## `configure`
+
+Changes global options. Basic usage can be seen at
+[Configuration Options](dom-testing-library/api-configuration.mdx).
+
+React Testing Library also has dedicated options.
+
+```typescript
+import {configure} from '@testing-library/react'
+
+configure({reactStrictMode: true})
+```
+
+## `configure` Options
+
+### `reactStrictMode`
+
+When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
+rendered around the inner element. Defaults to `false`.

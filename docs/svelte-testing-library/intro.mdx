@@ -12,9 +12,10 @@ sidebar_label: Introduction
 npm install --save-dev @testing-library/svelte
 ```
 
-> This library is built on top of
-> [`DOM Testing Library`](dom-testing-library/intro.mdx) which is where most of
-> the logic behind the queries is.
+> This library is built on top of [`dom-testing-library`][dom-testing-library]
+> which is where most of the logic behind the queries is.
+
+[dom-testing-library]: ../dom-testing-library/intro.mdx
 
 ## The Problem
 
@@ -27,14 +28,16 @@ The Svelte Testing Library is a very lightweight solution for testing Svelte
 components. It provides light utility functions on top of `svelte`, in a way
 that encourages better testing practices. Its primary guiding principle is:
 
-> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+> [The more your tests resemble the way your software is used, the more
+> confidence they can give you.][testing-library-blurb]
 
 So rather than dealing with instances of rendered Svelte components, your tests
-will work with actual DOM nodes. See the [Dom
-Introduction][dom-solution-explainer] for a more in-depth explanation.
+will work with actual DOM nodes. See the
+[`dom-testing-library`][dom-solution-explainer] for a more in-depth explanation.
 
+[testing-library-blurb]:
+  https://twitter.com/kentcdodds/status/977018512689455106
 [dom-solution-explainer]: ../dom-testing-library/intro.mdx#this-solution
-[react-solution-explainer]: ../react-testing-library/intro.mdx#this-solution
 
 **What this library is not**:
 
