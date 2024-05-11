@@ -8,8 +8,19 @@ can be applied per [`setup()`](setup.mdx).
 
 ### advanceTimers
 
-If you are using fake timers, you need to advance your timers when we internally
-[delay](#delay) subsequent code.
+`user-event` adds a [delay](#delay) between some subsequent inputs. When using
+[fake timers](/guides-using-fake-timers.mdx) it is necessary to set this option
+to your test runner's time advancement function. For example,
+`jest.advanceTimersByTime`, `vi.advanceTimersByTime`, or `mock.timers.tick` for
+`node:test`.
+
+:::caution
+
+You may find suggestions to set `delay: null` to prevent test timeouts when
+using fake timers. That is not recommended, as it may cause unexpected
+behaviour. Starting from v14.1, we suggest using `advanceTimers` option instead.
+
+:::
 
 ```ts
 (delay: number) => Promise<void> | void
