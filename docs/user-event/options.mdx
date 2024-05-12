@@ -10,9 +10,11 @@ can be applied per [`setup()`](setup.mdx).
 
 `user-event` adds a [delay](#delay) between some subsequent inputs. When using
 [fake timers](/guides-using-fake-timers.mdx) it is necessary to set this option
-to your test runner's time advancement function. For example,
-`jest.advanceTimersByTime`, `vi.advanceTimersByTime`, or `mock.timers.tick` for
-`node:test`.
+to your test runner's time advancement function. For example:
+
+```js
+const user = userEvent.setup({advanceTimers: jest.advanceTimersByTime})
+```
 
 :::caution
 
