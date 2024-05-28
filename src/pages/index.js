@@ -31,10 +31,10 @@ const HomeSplash = props => {
   const Logo = props => (
     <div className="projectLogo">
       <img
-        src={props.img_src}
+        src={props.imgSrc}
         alt="Project Logo"
-        height={props.img_height}
-        width={props.img_width}
+        height={props.imgHeight}
+        width={props.imgWidth}
       />
     </div>
   )
@@ -61,9 +61,9 @@ const HomeSplash = props => {
   return (
     <SplashContainer>
       <Logo
-        img_src={`${baseUrl}img/logo-large.png`}
-        img_width={128}
-        img_height={128}
+        imgSrc={`${baseUrl}img/logo-large.png`}
+        imgWidth={128}
+        imgHeight={128}
       />
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
