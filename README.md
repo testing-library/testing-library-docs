@@ -511,6 +511,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://kettanaito.com"><img src="https://avatars.githubusercontent.com/u/14984911?v=4?s=100" width="100px;" alt="Artem Zakharchenko"/><br /><sub><b>Artem Zakharchenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=kettanaito" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/vadimshvetsov"><img src="https://avatars.githubusercontent.com/u/16336572?v=4?s=100" width="100px;" alt="Vadim Shvetsov"/><br /><sub><b>Vadim Shvetsov</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vadimshvetsov" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://domnantas.lt"><img src="https://avatars.githubusercontent.com/u/51953549?v=4?s=100" width="100px;" alt="Domantas Petrauskas"/><br /><sub><b>Domantas Petrauskas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=domnantas" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://portfolio.edkt.ru"><img src="https://avatars.githubusercontent.com/u/126895483?v=4?s=100" width="100px;" alt="Efim"/><br /><sub><b>Efim</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Efim-Kapliy" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
