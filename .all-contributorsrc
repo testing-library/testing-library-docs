@@ -2646,6 +2646,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "domnantas",
+      "name": "Domantas Petrauskas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51953549?v=4",
+      "profile": "https://domnantas.lt",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Efim-Kapliy",
+      "name": "Efim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/126895483?v=4",
+      "profile": "https://portfolio.edkt.ru",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
