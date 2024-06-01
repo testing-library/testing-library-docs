@@ -30,7 +30,12 @@ const HomeSplash = props => {
 
   const Logo = props => (
     <div className="projectLogo">
-      <img src={props.img_src} alt="Project Logo" />
+      <img
+        src={props.imgSrc}
+        alt="Project Logo"
+        height={props.imgHeight}
+        width={props.imgWidth}
+      />
     </div>
   )
 
@@ -55,7 +60,11 @@ const HomeSplash = props => {
 
   return (
     <SplashContainer>
-      <Logo img_src={`${baseUrl}img/logo-large.png`} />
+      <Logo
+        imgSrc={`${baseUrl}img/logo-large.png`}
+        imgWidth={128}
+        imgHeight={128}
+      />
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
         <div className="pluginWrapper buttonWrapper">
@@ -82,6 +91,8 @@ export default class Index extends React.Component {
           imageAlign={props.imageAlign || 'center'}
           contents={props.children}
           layout={props.layout}
+          imageHeight={props.imageHeight}
+          imageWidth={props.imageWidth}
         />
       </Container>
     )
@@ -109,6 +120,7 @@ export default class Index extends React.Component {
                 "## The Problem \n - You want tests for your UI that avoid including implementation details and rather focus on making your tests give you the confidence for which they are intended. \n - You want your tests to be maintainable so refactors _(changes to implementation but not functionality)_ don't break your tests and slow you and your team down.",
               image: `${baseUrl}img/interrobang-128x128.png`,
               imageAlt: 'The problem (picture of a question mark)',
+              imageHeight: 128,
               imageAlign: 'left',
             },
           ]}
@@ -124,6 +136,7 @@ export default class Index extends React.Component {
             image: `${baseUrl}img/star-128x128.png`,
             imageAlign: 'right',
             imageAlt: 'The solution (picture of a star)',
+            imageHeight: 128,
             content:
               '## The Solution \n The Testing Library family of libraries is a very light-weight solution for testing without all the implementation details. The main utilities it provides involve querying for nodes similarly to how users would find them. In this way, testing-library helps ensure your tests give you confidence in your UI code.',
           },
@@ -136,6 +149,7 @@ export default class Index extends React.Component {
             image: `${baseUrl}img/trophy-128x128.png`,
             imageAlign: 'left',
             imageAlt: 'The guiding principle (picture of a brick wall)',
+            imageHeight: 128,
             content:
               '_The more your tests resemble the way your software is used, the more confidence they can give you._',
           },
@@ -153,6 +167,8 @@ export default class Index extends React.Component {
             imageAlign: 'top',
             title: 'Write Maintainable Tests',
             imageAlt: '',
+            imageWidth: 80,
+            imageHeight: 80,
           },
           {
             content: 'Interact with your app the same way as your users',
@@ -160,6 +176,8 @@ export default class Index extends React.Component {
             imageAlign: 'top',
             title: 'Develop with Confidence',
             imageAlt: '',
+            imageWidth: 80,
+            imageHeight: 80,
           },
           {
             content:
@@ -168,6 +186,8 @@ export default class Index extends React.Component {
             imageAlign: 'top',
             title: 'Accessible by Default',
             imageAlt: '',
+            imageWidth: 80,
+            imageHeight: 80,
           },
         ]}
       </Block>
@@ -181,72 +201,84 @@ export default class Index extends React.Component {
             imageAlign: 'top',
             title: '[React](./docs/react-testing-library/intro)',
             imageAlt: 'React logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/vue-400x400.png`,
             imageAlign: 'top',
             title: '[Vue](./docs/vue-testing-library/intro)',
             imageAlt: 'Vue logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/angular-128x128.png`,
             imageAlign: 'top',
             title: '[Angular](./docs/angular-testing-library/intro)',
             imageAlt: 'Angular logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/svelte-logo.png`,
             imageAlign: 'top',
             title: '[Svelte](./docs/svelte-testing-library/intro)',
             imageAlt: 'Svelte logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/preact-128x128.png`,
             imageAlign: 'top',
             title: '[Preact](./docs/preact-testing-library/intro)',
             imageAlt: 'Preact logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/reason-200x200.png`,
             imageAlign: 'top',
             title: '[ReasonReact](./docs/bs-react-testing-library/intro)',
             imageAlt: 'ReasonReact logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/react-native-128x128.png`,
             imageAlign: 'top',
             title: '[React Native](./docs/react-native-testing-library/intro)',
             imageAlt: 'React Native logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/cypress-128x128.png`,
             imageAlign: 'top',
             title: '[Cypress](./docs/cypress-testing-library/intro)',
             imageAlt: 'Cypress logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/puppeteer-275x275.png`,
             imageAlign: 'top',
             title: '[Puppeteer](./docs/pptr-testing-library/intro)',
             imageAlt: 'Puppeteer logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/testcafe-128x128.jpg`,
             imageAlign: 'top',
             title: `[Testcafe](./docs/testcafe-testing-library/intro)`,
             imageAlt: 'Testcafe logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/nightwatch-128x128.png`,
             imageAlign: 'top',
             title: '[Nightwatch](./docs/nightwatch-testing-library/intro)',
             imageAlt: 'Nightwatch logo',
+            imageHeight: 80,
           },
           {
             image: `${baseUrl}img/construction-128x128.png`,
             imageAlign: 'top',
             title: '[And more...](./docs/user-event/intro)',
             imageAlt: '',
+            imageHeight: 80,
           },
         ]}
       </Block>
@@ -289,6 +321,7 @@ export default class Index extends React.Component {
                 imageLink: 'https://osawards.com/react/2019',
                 imageAlt:
                   'Winner of the Open Source Awards 2019 in the category "The most impactful contribution to the community"',
+                imageHeight: 273,
               },
               {
                 image: `${baseUrl}img/highest-satisfaction-638x574.png`,
@@ -296,6 +329,7 @@ export default class Index extends React.Component {
                 imageLink: 'https://2020.stateofjs.com/en-US/awards/',
                 imageAlt:
                   'Winner of the State of JS 2020 award for the technology with the highest percentage of satisfied users',
+                imageHeight: 180,
               },
             ]}
           </Block>
