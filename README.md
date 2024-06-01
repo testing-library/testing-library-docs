@@ -20,7 +20,7 @@ and [related projects](https://github.com/testing-library)
   https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
 [build]: https://app.netlify.com/sites/testing-library/deploys
 [allcontributors-badge]:
-  https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
+  https://img.shields.io/github/all-contributors/testing-library/testing-library-docs?color=ee8449&style=flat-square
 [coc-badge]:
   https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]:
