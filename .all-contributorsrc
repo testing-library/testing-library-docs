@@ -2664,6 +2664,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "denisx",
+      "name": "denisx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/427776?v=4",
+      "profile": "https://github.com/denisx",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
