@@ -513,6 +513,9 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://domnantas.lt"><img src="https://avatars.githubusercontent.com/u/51953549?v=4?s=100" width="100px;" alt="Domantas Petrauskas"/><br /><sub><b>Domantas Petrauskas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=domnantas" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://portfolio.edkt.ru"><img src="https://avatars.githubusercontent.com/u/126895483?v=4?s=100" width="100px;" alt="Efim"/><br /><sub><b>Efim</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Efim-Kapliy" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/denisx"><img src="https://avatars.githubusercontent.com/u/427776?v=4?s=100" width="100px;" alt="denisx"/><br /><sub><b>denisx</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=denisx" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
