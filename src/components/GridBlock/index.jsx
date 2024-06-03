@@ -9,7 +9,7 @@ import React from 'react'
 import classNames from 'classnames'
 import {MarkdownBlock} from '../MarkdownBlock'
 
-const renderBlockImage = (image, imageLink, imageAlt) => {
+const renderBlockImage = (image, imageLink, imageAlt, imageWidth, imageHeight) => {
   if (!image) {
     return null
   }
@@ -18,10 +18,10 @@ const renderBlockImage = (image, imageLink, imageAlt) => {
     <div className="blockImage">
       {imageLink ? (
         <a href={imageLink}>
-          <img src={image} alt={imageAlt} />
+          <img src={image} alt={imageAlt} width={imageWidth} height={imageHeight} />
         </a>
       ) : (
-        <img src={image} alt={imageAlt} />
+        <img src={image} alt={imageAlt} width={imageWidth} height={imageHeight} />
       )}
     </div>
   )
@@ -67,11 +67,11 @@ export const GridBlock = props => {
 
     const topLeftImage =
       (block.imageAlign === 'top' || block.imageAlign === 'left') &&
-      renderBlockImage(block.image, block.imageLink, block.imageAlt)
+      renderBlockImage(block.image, block.imageLink, block.imageAlt, block.imageWidth, block.imageHeight)
 
     const bottomRightImage =
       (block.imageAlign === 'bottom' || block.imageAlign === 'right') &&
-      renderBlockImage(block.image, block.imageLink, block.imageAlt)
+      renderBlockImage(block.image, block.imageLink, block.imageAlt, block.imageWidth, block.imageHeight)
 
     return (
       <div className={blockClasses} key={block.title}>

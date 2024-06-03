@@ -49,13 +49,29 @@ runner that's ESM compatible.
    your DOM library of choice and optionally configure your setup file from step
    (2).
 
-   ```js title="vitest.config.js"
+   ```js title="vite.config.js"
    import {defineConfig} from 'vitest/config'
    import {svelte} from '@sveltejs/vite-plugin-svelte'
    import {svelteTesting} from '@testing-library/svelte/vite'
 
    export default defineConfig({
      plugins: [svelte(), svelteTesting()],
+     test: {
+       environment: 'jsdom',
+       setupFiles: ['./vitest-setup.js'],
+     },
+   })
+   ```
+
+   Or, if you're using [SvelteKit][sveltekit]:
+
+   ```js title="vite.config.js"
+   import {defineConfig} from 'vitest/config'
+   import {sveltekit} from '@sveltejs/kit/vite'
+   import {svelteTesting} from '@testing-library/svelte/vite'
+
+   export default defineConfig({
+     plugins: [sveltekit(), svelteTesting()],
      test: {
        environment: 'jsdom',
        setupFiles: ['./vitest-setup.js'],
@@ -115,6 +131,7 @@ runner that's ESM compatible.
 [happy-dom]: https://github.com/capricorn86/happy-dom
 [@vitest/ui]: https://vitest.dev/guide/ui.html
 [vitest dom]: https://vitest.dev/guide/environment.html
+[sveltekit]: https://kit.svelte.dev/
 [testing-library/svelte-testing-library#222]:
   https://github.com/testing-library/svelte-testing-library/issues/222
 [test-setup-files]: https://vitest.dev/config/#setupfiles
@@ -155,13 +172,13 @@ you must use Jest in [ESM mode][jest esm mode].
 
    ```js title="jest.config.js"
    module.exports = {
-     "transform": {
-       "^.+\\.svelte$": "svelte-jester"
+     transform: {
+       '^.+\\.svelte$': 'svelte-jester',
      },
-     "moduleFileExtensions": ["js", "svelte"],
-     "extensionsToTreatAsEsm": ["svelte"]
-     "testEnvironment": "jsdom",
-     "setupFilesAfterEnv": ["<rootDir>/jest-setup.js"]
+     moduleFileExtensions: ['js', 'svelte'],
+     extensionsToTreatAsEsm: ['.svelte'],
+     testEnvironment: 'jsdom',
+     setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
    }
    ```
 

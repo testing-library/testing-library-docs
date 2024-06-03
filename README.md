@@ -20,7 +20,7 @@ and [related projects](https://github.com/testing-library)
   https://api.netlify.com/api/v1/badges/24366204-84ca-41e9-b573-2a64f0845e46/deploy-status
 [build]: https://app.netlify.com/sites/testing-library/deploys
 [allcontributors-badge]:
-  https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
+  https://img.shields.io/github/all-contributors/testing-library/testing-library-docs?color=ee8449&style=flat-square
 [coc-badge]:
   https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]:
@@ -509,6 +509,12 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://www.dylangordon.co.nz/"><img src="https://avatars.githubusercontent.com/u/3656794?v=4?s=100" width="100px;" alt="Dylan Gordon"/><br /><sub><b>Dylan Gordon</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=agentdylan" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://michael.cousins.io"><img src="https://avatars.githubusercontent.com/u/2963448?v=4?s=100" width="100px;" alt="Michael Cousins"/><br /><sub><b>Michael Cousins</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=mcous" title="Documentation">📖</a> <a href="https://github.com/testing-library/testing-library-docs/pulls?q=is%3Apr+reviewed-by%3Amcous" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://kettanaito.com"><img src="https://avatars.githubusercontent.com/u/14984911?v=4?s=100" width="100px;" alt="Artem Zakharchenko"/><br /><sub><b>Artem Zakharchenko</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=kettanaito" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vadimshvetsov"><img src="https://avatars.githubusercontent.com/u/16336572?v=4?s=100" width="100px;" alt="Vadim Shvetsov"/><br /><sub><b>Vadim Shvetsov</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=vadimshvetsov" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://domnantas.lt"><img src="https://avatars.githubusercontent.com/u/51953549?v=4?s=100" width="100px;" alt="Domantas Petrauskas"/><br /><sub><b>Domantas Petrauskas</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=domnantas" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://portfolio.edkt.ru"><img src="https://avatars.githubusercontent.com/u/126895483?v=4?s=100" width="100px;" alt="Efim"/><br /><sub><b>Efim</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=Efim-Kapliy" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/denisx"><img src="https://avatars.githubusercontent.com/u/427776?v=4?s=100" width="100px;" alt="denisx"/><br /><sub><b>denisx</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=denisx" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

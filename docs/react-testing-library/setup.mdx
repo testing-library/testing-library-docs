@@ -31,10 +31,10 @@ make your test util file accessible without using relative paths.
 The example below sets up data providers using the [`wrapper`](api.mdx#wrapper)
 option to `render`.
 
-  <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'JavaScript',
-  value: 'jsx'}, {label: 'TypeScript', value: 'tsx'}, ]}>
+  <Tabs groupId="test-utils" defaultValue="js" values={[ {label: 'JavaScript',
+  value: 'js'}, {label: 'TypeScript', value: 'ts'}, ]}>
 
-  <TabItem value="jsx">
+  <TabItem value="js">
 
 ```diff title="my-component.test.jsx"
 - import { render, fireEvent } from '@testing-library/react';
@@ -70,7 +70,7 @@ export {customRender as render}
 
   </TabItem>
 
-  <TabItem value="tsx">
+  <TabItem value="ts">
 
 ```diff title="my-component.test.tsx"
 - import { render, fireEvent } from '@testing-library/react';
@@ -250,10 +250,10 @@ passing a [`queries`](api.mdx#render-options) option.
 If you want to add custom queries globally, you can do this by defining your
 customized `render`, `screen` and `within` methods:
 
-  <Tabs groupId="test-utils" defaultValue="jsx" values={[ {label: 'JavaScript',
-  value: 'jsx'}, {label: 'TypeScript', value: 'tsx'}, ]}>
+  <Tabs groupId="test-utils" defaultValue="js" values={[ {label: 'JavaScript',
+  value: 'js'}, {label: 'TypeScript', value: 'ts'}, ]}>
 
-  <TabItem value="jsx">
+  <TabItem value="js">
 
 ```js title="test-utils.js"
 import {render, queries, within} from '@testing-library/react'
@@ -278,7 +278,7 @@ export {customScreen as screen, customWithin as within, customRender as render}
 
   </TabItem>
 
-  <TabItem value="tsx">
+  <TabItem value="ts">
 
 ```ts title="test-utils.ts"
 import {render, queries, within, RenderOptions} from '@testing-library/react'

@@ -256,6 +256,8 @@ module.exports = {
       logo: {
         alt: 'An octopus representing the DOM Testing Library Logo',
         src: 'img/octopus-64x64.png',
+        width: 32,
+        height: 32,
       },
       items: [
         {
@@ -314,7 +316,8 @@ module.exports = {
             },
             {
               label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/react-testing-library',
+              href:
+                'https://stackoverflow.com/questions/tagged/react-testing-library',
             },
             {
               label: 'Discord',
@@ -355,6 +358,8 @@ module.exports = {
       logo: {
         src: 'img/octopus-128x128.png',
         alt: 'An octopus representing the DOM Testing Library Logo',
+        width: 128,
+        height: 128,
       },
     },
     algolia: {

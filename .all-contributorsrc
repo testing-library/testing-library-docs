@@ -2637,6 +2637,42 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "vadimshvetsov",
+      "name": "Vadim Shvetsov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16336572?v=4",
+      "profile": "https://github.com/vadimshvetsov",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "domnantas",
+      "name": "Domantas Petrauskas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51953549?v=4",
+      "profile": "https://domnantas.lt",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Efim-Kapliy",
+      "name": "Efim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/126895483?v=4",
+      "profile": "https://portfolio.edkt.ru",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "denisx",
+      "name": "denisx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/427776?v=4",
+      "profile": "https://github.com/denisx",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
