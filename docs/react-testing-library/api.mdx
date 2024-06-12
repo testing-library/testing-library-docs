@@ -101,7 +101,7 @@ well as what is printed when you use `debug()`.
 ### `hydrate`
 
 If hydrate is set to true, then it will render with
-[ReactDOM.hydrate](https://reactjs.org/docs/react-dom.html#hydrate). This may be
+[ReactDOM.hydrate](https://react.dev/reference/react-dom/hydrate#hydrate). This may be
 useful if you are using server-side rendering and use ReactDOM.hydrate to mount
 your components.
 
@@ -114,10 +114,10 @@ This option is only available when tests run with React 18 and earlier.
 :::
 
 By default we'll render with support for concurrent features (i.e.
-[`ReactDOMClient.createRoot`](https://reactjs.org/docs/react-dom-client.html#createroot)).
+[`ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot)).
 However, if you're dealing with a legacy app that requires rendering like in
 React 17 (i.e.
-[`ReactDOM.render`](https://reactjs.org/docs/react-dom.html#render)) then you
+[`ReactDOM.render`](https://react.dev/reference/react-dom/render)) then you
 should enable this option by setting `legacyRoot: true`.
 
 ### `wrapper`
@@ -176,7 +176,7 @@ The containing DOM node of your rendered React Element (rendered using
 > `container.firstChild`.
 >
 > NOTE: When that root element is a
-> [React Fragment](https://reactjs.org/docs/fragments.html),
+> [React Fragment](https://react.dev/reference/react/Fragment),
 > `container.firstChild` will only get the first child of that Fragment, not the
 > Fragment itself.
 
@@ -327,10 +327,10 @@ errors in your tests).
 ## `act`
 
 This is a light wrapper around the
-[`react-dom/test-utils` `act` function](https://reactjs.org/docs/test-utils.html#act).
+[`react` `act` function](https://react.dev/reference/react/act).
 All it does is forward all arguments to the act function if your version of
 react supports `act`. It is recommended to use the import from
-`@testing-library/react` over `react-dom/test-utils` for consistency reasons.
+`@testing-library/react` over `react` for consistency reasons.
 
 ## `renderHook`
 
@@ -432,7 +432,7 @@ expect(result.current).toBe('Alice')
 ```
 
 Note that the value is held in `result.current`. Think of `result` as a
-[ref](https://reactjs.org/docs/glossary.html#refs) for the most recently
+[ref](https://react.dev/learn/referencing-values-with-refs) for the most recently
 **committed** value.
 
 ### `rerender`
