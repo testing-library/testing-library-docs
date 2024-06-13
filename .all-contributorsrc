@@ -2673,6 +2673,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ggualiato",
+      "name": "Giovanni Gualiato",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26698704?v=4",
+      "profile": "https://github.com/ggualiato",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
