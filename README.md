@@ -515,6 +515,7 @@ Thanks goes to these wonderful people
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/denisx"><img src="https://avatars.githubusercontent.com/u/427776?v=4?s=100" width="100px;" alt="denisx"/><br /><sub><b>denisx</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=denisx" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ggualiato"><img src="https://avatars.githubusercontent.com/u/26698704?v=4?s=100" width="100px;" alt="Giovanni Gualiato"/><br /><sub><b>Giovanni Gualiato</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ggualiato" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
