@@ -8,9 +8,17 @@ sidebar_label: Introduction
 builds on top of
 [`DOM Testing Library`](https://github.com/testing-library/dom-testing-library)
 by adding APIs for working with Angular components.
+Starting from ATL version 17, you also need to install `@testing-library/dom`:
 
 ```bash npm2yarn
-npm install --save-dev @testing-library/angular
+npm install --save-dev @testing-library/angular @testing-library/dom
+```
+
+Or, you can use the `ng add` command.
+This sets up your project to use Angular Testing Library, which also includes the installation of `@testing-library/dom`.
+
+```bash
+ng add @testing-library/angular
 ```
 
 - [`@testing-library/angular-testing-library` on GitHub](https://github.com/testing-library/angular-testing-library)
