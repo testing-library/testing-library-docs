@@ -171,7 +171,7 @@ you must use Jest in [ESM mode][jest esm mode].
 3. Configure Jest to use jsdom, transform Svelte files, and use your setup file
 
    ```js title="jest.config.js"
-   module.exports = {
+   export default {
      transform: {
        '^.+\\.svelte$': 'svelte-jester',
      },
@@ -181,6 +181,33 @@ you must use Jest in [ESM mode][jest esm mode].
      setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
    }
    ```
+
+   :::note
+
+   If you are using Svelte 5, you must use `svelte-jester@5` or later, and you
+   will need to make additional changes to your Jest configuration.
+
+   - Update `transform` to compile `.svelte.(js|ts)` modules
+   - Allow `@testing-library/svelte` to be transformed, even though it's in
+     `node_modules`
+
+   ```diff title="jest.config.js"
+     export default {
+       transform: {
+   -     '^.+\\.svelte$': 'svelte-jester',
+   +     '^.+\\.svelte(\\.(js|ts))?$': 'svelte-jester',
+       },
+   +   transformIgnorePatterns: [
+   +     '/node_modules/(?!@testing-library/svelte/)',
+   +   ],
+       moduleFileExtensions: ['js', 'svelte'],
+       extensionsToTreatAsEsm: ['.svelte'],
+       testEnvironment: 'jsdom',
+       setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+     }
+   ```
+
+   :::
 
 4. Add the following to your `package.json`
 
