@@ -2,22 +2,16 @@
   --ifm-light-background-color: var(--ifm-color-emphasis-100);
 }
 
-html[data-theme='light'] {
-  --ifm-color-primary: #1554B7;
-  --ifm-link-color: #1554B7;
-
-  .DocSearch-Button-Placeholder {
-    color: #494B5F;
-  }
-}
-
-html[data-theme='dark'] {
+[data-theme='dark']:root {
   --ifm-color-primary: #7FA8F1;
   --ifm-link-color: #7FA8F1;
+  --docsearch-muted-color: white;
+}
 
-  .DocSearch-Button-Placeholder {
-    color: white;
-  }
+[data-theme='light']:root {
+  --ifm-color-primary: #1554B7;
+  --ifm-link-color: #1554B7;
+  --docsearch-muted-color: #494B5F;
 }
 
 .wrapper {
