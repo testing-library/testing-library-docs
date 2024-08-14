@@ -2,8 +2,16 @@
   --ifm-light-background-color: var(--ifm-color-emphasis-100);
 }
 
-html[data-theme='dark'] {
-  --ifm-link-color: #679df5;
+[data-theme='dark']:root {
+  --ifm-color-primary: #7FA8F1;
+  --ifm-link-color: #7FA8F1;
+  --docsearch-muted-color: white;
+}
+
+[data-theme='light']:root {
+  --ifm-color-primary: #1554B7;
+  --ifm-link-color: #1554B7;
+  --docsearch-muted-color: #494B5F;
 }
 
 .wrapper {
@@ -73,6 +81,10 @@ html[data-theme='dark'] {
 .projectTitle {
   font-size: 250%;
   line-height: 1em;
+}
+
+.theme-doc-markdown {
+  --ifm-link-decoration: underline;
 }
 
 @media only screen and (min-width: 480px) {
