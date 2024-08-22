@@ -76,6 +76,44 @@ export async function render<WrapperType = WrapperComponent>(
 
 ## Component RenderOptions
 
+
+### `inputs`
+
+An object to set `@Input` or `input()` properties of the component.
+
+**default** : `{}`
+
+```typescript
+await render(AppComponent, {
+  inputs: {
+    counterValue: 10,
+    // explicitly define aliases using `aliasedInput`
+    ...aliasedInput('someAlias', 'someValue'),
+  },
+})
+```
+
+### `on`
+
+An object with callbacks to subscribe to `EventEmitters` and `Observables` of
+the component.
+
+**default** : `{}`
+
+```ts
+// using a manual callback
+const sendValue = (value) => { ... }
+// using a (jest) spy
+const sendValueSpy = jest.fn()
+
+await render(AppComponent, {
+  on: {
+    send: (value) => sendValue(value),
+    send: sendValueSpy
+  }
+})
+```
+
 ### `declarations`
 
 A collection of components, directives and pipes needed to render the component.
@@ -348,44 +386,65 @@ await render(AppComponent, {
 })
 ```
 
-## `RenderResult`
 
-### `inputs`
+### ~~`componentInputs`~~ (deprecated)
 
-An object to set `@Input` or `input()` properties of the component.
+An object to set `@Input` properties of the component. Uses `setInput` to set
+the input property. Throws if the component property is not annotated with the
+`@Input` attribute.
 
 **default** : `{}`
 
+**example**:
+
 ```typescript
 await render(AppComponent, {
-  inputs: {
+  componentInputs: {
     counterValue: 10,
-    // explicitly define aliases using `aliasedInput`
-    ...aliasedInput('someAlias', 'someValue'),
   },
 })
 ```
 
-### `on`
+### ~~`componentOutputs`~~ (deprecated)
 
-An object with callbacks to subscribe to `EventEmitters` and `Observables` of
-the component.
+An object to set `@Output` properties of the component.
 
 **default** : `{}`
 
-```ts
-// using a manual callback
-const sendValue = (value) => { ... }
-// using a (jest) spy
-const sendValueSpy = jest.fn()
+**example**:
 
+```typescript
 await render(AppComponent, {
-  on: {
-    send: (value) => sendValue(value),
-    send: sendValueSpy
+  componentOutputs: {
+    clicked: (value) => { ... }
   }
 })
 ```
+
+### ~~`componentProperties`~~ (deprecated)
+
+An object to set `@Input` and `@Output` properties of the component. Doesn't
+have a fine-grained control as `inputs` and `on`.
+
+**default** : `{}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  componentProperties: {
+    // an input
+    counterValue: 10,
+    // an output
+    send: (value) => { ... }
+    // a public property
+    name: 'Tim'
+  }
+})
+```
+
+
+## `RenderResult`
 
 ### `container`
 
@@ -529,60 +588,4 @@ expect(screen.getByText(/loading/i)).toBeInTheDocument()
 
 await renderDeferBlock(DeferBlockState.Complete)
 expect(screen.getByText(/completed/i)).toBeInTheDocument()
-```
-
-### ~~`componentInputs`~~ (deprecated)
-
-An object to set `@Input` properties of the component. Uses `setInput` to set
-the input property. Throws if the component property is not annotated with the
-`@Input` attribute.
-
-**default** : `{}`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  componentInputs: {
-    counterValue: 10,
-  },
-})
-```
-
-### ~~`componentOutputs`~~ (deprecated)
-
-An object to set `@Output` properties of the component.
-
-**default** : `{}`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  componentOutputs: {
-    clicked: (value) => { ... }
-  }
-})
-```
-
-### ~~`componentProperties`~~ (deprecated)
-
-An object to set `@Input` and `@Output` properties of the component. Doesn't
-have a fine-grained control as `inputs` and `on`.
-
-**default** : `{}`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  componentProperties: {
-    // an input
-    counterValue: 10,
-    // an output
-    send: (value) => { ... }
-    // a public property
-    name: 'Tim'
-  }
-})
 ```
