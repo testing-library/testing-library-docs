@@ -76,62 +76,6 @@ export async function render<WrapperType = WrapperComponent>(
 
 ## Component RenderOptions
 
-### ~~`componentInputs`~~ (deprecated)
-
-An object to set `@Input` properties of the component. Uses `setInput` to set
-the input property. Throws if the component property is not annotated with the
-`@Input` attribute.
-
-**default** : `{}`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  componentInputs: {
-    counterValue: 10,
-  },
-})
-```
-
-### ~~`componentOutputs`~~ (deprecated)
-
-An object to set `@Output` properties of the component.
-
-**default** : `{}`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  componentOutputs: {
-    clicked: (value) => { ... }
-  }
-})
-```
-
-### ~~`componentProperties`~~ (deprecated)
-
-An object to set `@Input` and `@Output` properties of the component. Doesn't
-have a fine-grained control as `componentInputs` and `componentOutputs`.
-
-**default** : `{}`
-
-**example**:
-
-```typescript
-await render(AppComponent, {
-  componentProperties: {
-    // an input
-    counterValue: 10,
-    // an output
-    send: (value) => { ... }
-    // a public property
-    name: 'Tim'
-  }
-})
-```
-
 ### `declarations`
 
 A collection of components, directives and pipes needed to render the component.
@@ -157,7 +101,8 @@ Set the defer blocks behavior.
 For more info see the
 [Angular docs](https://angular.io/api/core/testing/DeferBlockBehavior)
 
-**default** : `undefined` (uses `DeferBlockBehavior.Manual`, which is different from the Angular default of `DeferBlockBehavior.Playthrough`)
+**default** : `undefined` (uses `DeferBlockBehavior.Manual`, which is different
+from the Angular default of `DeferBlockBehavior.Playthrough`)
 
 **example**:
 
@@ -405,6 +350,43 @@ await render(AppComponent, {
 
 ## `RenderResult`
 
+### `inputs`
+
+An object to set `@Input` or `input()` properties of the component.
+
+**default** : `{}`
+
+```typescript
+await render(AppComponent, {
+  inputs: {
+    counterValue: 10,
+    // explicitly define aliases using `aliasedInput`
+    ...aliasedInput('someAlias', 'someValue'),
+  },
+})
+```
+
+### `on`
+
+An object with callbacks to subscribe to `EventEmitters` and `Observables` of
+the component.
+
+**default** : `{}`
+
+```ts
+// using a manual callback
+const sendValue = (value) => { ... }
+// using a (jest) spy
+const sendValueSpy = jest.fn()
+
+await render(AppComponent, {
+  on: {
+    send: (value) => sendValue(value),
+    send: sendValueSpy
+  }
+})
+```
+
 ### `container`
 
 The containing DOM node of your rendered Angular Component. This is a regular
@@ -430,13 +412,15 @@ properties that are not defined are cleared.
 
 ```typescript
 const {rerender} = await render(Counter, {
-  componentInputs: {count: 4, name: 'Sarah'},
+  inputs: {count: 4, name: 'Sarah'},
 })
 
 expect(screen.getByTestId('count-value').textContent).toBe('4')
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
-await rerender({componentInputs: {count: 7}})
+await rerender({
+  inputs: {count: 7}
+})
 
 // count is updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
@@ -449,13 +433,13 @@ input properties that aren't provided won't be cleared.
 
 ```typescript
 const {rerender} = await render(Counter, {
-  componentInputs: {count: 4, name: 'Sarah'},
+  inputs: {count: 4, name: 'Sarah'},
 })
 
 expect(screen.getByTestId('count-value').textContent).toBe('4')
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
-await rerender({componentInputs: {count: 7}, partialUpdate: true})
+await rerender({inputs: {count: 7}, partialUpdate: true})
 
 // count is updated to 7
 expect(screen.getByTestId('count-value').textContent).toBe('7')
@@ -545,4 +529,60 @@ expect(screen.getByText(/loading/i)).toBeInTheDocument()
 
 await renderDeferBlock(DeferBlockState.Complete)
 expect(screen.getByText(/completed/i)).toBeInTheDocument()
+```
+
+### ~~`componentInputs`~~ (deprecated)
+
+An object to set `@Input` properties of the component. Uses `setInput` to set
+the input property. Throws if the component property is not annotated with the
+`@Input` attribute.
+
+**default** : `{}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  componentInputs: {
+    counterValue: 10,
+  },
+})
+```
+
+### ~~`componentOutputs`~~ (deprecated)
+
+An object to set `@Output` properties of the component.
+
+**default** : `{}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  componentOutputs: {
+    clicked: (value) => { ... }
+  }
+})
+```
+
+### ~~`componentProperties`~~ (deprecated)
+
+An object to set `@Input` and `@Output` properties of the component. Doesn't
+have a fine-grained control as `inputs` and `on`.
+
+**default** : `{}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  componentProperties: {
+    // an input
+    counterValue: 10,
+    // an output
+    send: (value) => { ... }
+    // a public property
+    name: 'Tim'
+  }
+})
 ```
