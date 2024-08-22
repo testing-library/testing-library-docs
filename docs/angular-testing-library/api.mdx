@@ -76,7 +76,7 @@ export async function render<WrapperType = WrapperComponent>(
 
 ## Component RenderOptions
 
-### `componentInputs`
+### ~~`componentInputs`~~ (deprecated)
 
 An object to set `@Input` properties of the component. Uses `setInput` to set
 the input property. Throws if the component property is not annotated with the
@@ -94,7 +94,7 @@ await render(AppComponent, {
 })
 ```
 
-### `componentOutputs`
+### ~~`componentOutputs`~~ (deprecated)
 
 An object to set `@Output` properties of the component.
 
@@ -110,7 +110,7 @@ await render(AppComponent, {
 })
 ```
 
-### `componentProperties`
+### ~~`componentProperties`~~ (deprecated)
 
 An object to set `@Input` and `@Output` properties of the component. Doesn't
 have a fine-grained control as `componentInputs` and `componentOutputs`.
