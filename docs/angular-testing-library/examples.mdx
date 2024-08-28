@@ -8,116 +8,62 @@ title: Examples
 > or follow the
 > [guided example](https://timdeschryver.dev/blog/getting-the-most-value-out-of-your-angular-component-tests)
 
+Angular Testing Library can be used with standalone components and also with Angular components that uses Modules.
+The example below shows how to test a standalone component, but the same principles apply to Angular components that uses Modules.
+In fact, there should be no difference in how you test both types of components, only the setup might be different.
+
 ```ts title="counter.component.ts"
 @Component({
-  selector: 'counter',
+  selector: 'app-counter',
   template: `
+    <span>{{ hello() }}</span>
     <button (click)="decrement()">-</button>
-    <span data-testid="count">Current Count: {{ counter }}</span>
+    <span>Current Count: {{ counter() }}</span>
     <button (click)="increment()">+</button>
   `,
 })
 export class CounterComponent {
-  @Input() counter = 0
+  counter = model(0);
+  hello = input('Hi', { alias: 'greeting' });
 
   increment() {
-    this.counter += 1
+    this.counter.set(this.counter() + 1);
   }
 
   decrement() {
-    this.counter -= 1
+    this.counter.set(this.counter() - 1);
   }
 }
 ```
 
-```ts title="counter.component.spec.ts"
-import {render, screen, fireEvent} from '@testing-library/angular'
-import {CounterComponent} from './counter.component.ts'
+```typescript title="counter.component.spec.ts"
+import { render, screen, fireEvent, aliasedInput } from '@testing-library/angular';
+import { CounterComponent } from './counter.component';
 
 describe('Counter', () => {
-  test('should render counter', async () => {
+  it('should render counter', async () => {
     await render(CounterComponent, {
-      componentProperties: {counter: 5},
-    })
+      inputs: {
+        counter: 5,
+        // aliases need to be specified using aliasedInput
+        ...aliasedInput('greeting', 'Hello Alias!'),
+      },
+    });
 
-    expect(screen.getByText('Current Count: 5')).toBeInTheDocument()
-  })
+    expect(screen.getByText('Current Count: 5')).toBeVisible();
+    expect(screen.getByText('Hello Alias!')).toBeVisible();
+  });
 
-  test('should increment the counter on click', async () => {
-    await render(CounterComponent, {
-      componentProperties: {counter: 5},
-    })
+  it('should increment the counter on click', async () => {
+    await render(CounterComponent, { inputs: { counter: 5 } });
 
-    fireEvent.click(screen.getByText('+'))
+    const incrementButton = screen.getByRole('button', { name: '+' });
+    fireEvent.click(incrementButton);
 
-    expect(screen.getByText('Current Count: 6')).toBeInTheDocument()
-  })
-})
+    expect(screen.getByText('Current Count: 6')).toBeVisible();
+  });
+});
 ```
-
-## With Standalone Components
-
-Angular Testing Library can also test your standalone components. In fact, it
-even becomes easier because you don't have to set up the whole Angular TestBed.
-This was previously only
-[possible when you used Single Component Angular Modules (SCAMs)](https://timdeschryver.dev/blog/single-component-angular-modules-and-component-tests-go-hand-in-hand).
-
-Let's migrate the counter component to a standalone component, and let's take a
-look at how this affects the test.
-
-```ts title="counter.component.ts"
-@Component({
-  selector: 'counter',
-  template: `
-    <button (click)="decrement()">-</button>
-    <span data-testid="count">Current Count: {{ counter }}</span>
-    <button (click)="increment()">+</button>
-  `,
-  standalone: true,
-})
-export class CounterComponent {
-  @Input() counter = 0
-
-  increment() {
-    this.counter += 1
-  }
-
-  decrement() {
-    this.counter -= 1
-  }
-}
-```
-
-Just as you would've expected, this doesn't affect the test cases. Writing tests
-for standalone components remains the same as for "regular" components.
-
-```ts title="counter.component.spec.ts"
-import {render, screen, fireEvent} from '@testing-library/angular'
-import {CounterComponent} from './counter.component.ts'
-
-describe('Counter', () => {
-  test('should render counter', async () => {
-    await render(CounterComponent, {
-      componentProperties: {counter: 5},
-    })
-
-    expect(screen.getByText('Current Count: 5')).toBeInTheDocument()
-  })
-
-  test('should increment the counter on click', async () => {
-    await render(CounterComponent, {
-      componentProperties: {counter: 5},
-    })
-
-    fireEvent.click(screen.getByText('+'))
-
-    expect(screen.getByText('Current Count: 6')).toBeInTheDocument()
-  })
-})
-```
-
-To override an import of a standalone component for your component test, you can
-use the [`componentImports` property](api.mdx#componentImports).
 
 ## More examples
 
@@ -125,9 +71,9 @@ More examples can be found in the
 [GitHub project](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/src/app/examples).
 These examples include:
 
-- `@Input` and `@Output` properties
+- `input` and `output` properties
 - Forms
-- Integration with services
+- Integration injected services
 - And
   [more](https://github.com/testing-library/angular-testing-library/tree/master/apps/example-app/src/app/examples)
 
