@@ -12,6 +12,8 @@ as these methods:
   - [`baseElement`](#baseelement)
   - [`hydrate`](#hydrate)
   - [`legacyRoot`](#legacyroot)
+  - [`onCaughtError`](#oncaughterror)
+  - [`onRecoverableError`](#onrecoverableerror)
   - [`wrapper`](#wrapper)
   - [`queries`](#queries)
 - [`render` Result](#render-result)
@@ -27,6 +29,8 @@ as these methods:
 - [`renderHook`](#renderhook)
 - [`renderHook` Options](#renderhook-options)
   - [`initialProps`](#initialprops)
+  - [`onCaughtError`](#oncaughterror)
+  - [`onRecoverableError`](#onrecoverableerror)
   - [`wrapper`](#wrapper-1)
 - [`renderHook` Result](#renderhook-result)
   - [`result`](#result)
@@ -119,6 +123,16 @@ However, if you're dealing with a legacy app that requires rendering like in
 React 17 (i.e.
 [`ReactDOM.render`](https://react.dev/reference/react-dom/render)) then you
 should enable this option by setting `legacyRoot: true`.
+
+### `onCaughtError`
+
+Callback called when React catches an error in an Error Boundary.
+Behaves the same as [`onCaughtError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+
+### `onRecoverableError`
+
+Callback called when React automatically recovers from errors. 
+Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `wrapper`
 
@@ -402,6 +416,16 @@ test('returns logged in user', () => {
 >   wrapper: createWrapper(Wrapper, { value: 'foo' }),
 > }
 > ```
+
+### `onCaughtError`
+
+Callback called when React catches an error in an Error Boundary.
+Behaves the same as [`onCaughtError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+
+### `onRecoverableError`
+
+Callback called when React automatically recovers from errors. 
+Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `renderHook` Options `wrapper`
 
