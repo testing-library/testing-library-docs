@@ -98,6 +98,47 @@ As you write your tests, keep in mind:
 
 <details>
 
+<summary>How do I test thrown errors in a Component or Hook?</summary>
+
+If a component throws during render, the origin of the state update will throw if wrapped in `act`.
+By default, `render` and `fireEvent` are wrapped in `act`.
+You can just wrap it in a try-catch or use dedicated matchers if your test runner supports these.
+For example, in Jest you can use `toThrow`:
+
+```jsx
+function Thrower() {
+  throw new Error('I throw')
+}
+
+test('it throws', () => {
+  expect(() => render(<Thrower />)).toThrow('I throw')
+})
+```
+
+The same applies to Hooks and `renderHook`:
+
+```jsx
+function useThrower() {
+  throw new Error('I throw')
+}
+
+test('it throws', () => {
+  expect(() => renderHook(useThrower)).toThrow('I throw')
+})
+```
+
+:::info
+
+React 18 will call `console.error` with an extended error message.
+React 19 will call `console.warn` with an extended error message unless the state update is wrapped in `act`.
+`render`, `renderHook` and `fireEvent` are wrapped in `act` by default.
+
+:::
+
+</details>
+
+<details>
+
 <summary>
   If I can't use shallow rendering, how do I mock out components in tests?
 </summary>
