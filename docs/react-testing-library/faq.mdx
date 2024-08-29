@@ -81,6 +81,56 @@ as part of the `change` method call.
 
 <details>
 
+<summary>How do I test error boundaries</summary>
+
+To test if an error boundary successfully catches an error, you should make sure that if the fallback of the boundary is displayed when a child threw.
+
+Here's an example of how you can test an error boundary:
+
+```jsx
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+
+class ErrorBoundary extends React.Component {
+  state = {error: null}
+  static getDerivedStateFromError(error) {
+    return {error}
+  }
+  render() {
+    const {error} = this.state
+    if (error) {
+      return <div>Something went wrong</div>
+    }
+    return this.props.children
+  }
+}
+
+test('error boundary catches error', () => {
+  const {container} = render(
+    <ErrorBoundary>
+      <BrokenComponent />
+    </ErrorBoundary>,
+  )
+  expect(container.textContent).toEqual('Something went wrong.')
+})
+
+If the error boundary did not catch the error, the test would fail since the `render` call would throw the error the Component produced.
+
+
+:::info
+
+React 18 will call `console.error` with an extended error message.
+React 19 will call `console.warn` with an extended error message.
+
+To disable the additional `console.warn` call in React 19, you can provide a custom `onCaughtError` callback e.g. `render(<App />, {onCaughtError: () => {}})`
+`onCaughtError` is not supported in React 18.
+
+:::
+
+</details>
+
+<details>
+
 <summary>Can I write unit tests with this library?</summary>
 
 Definitely yes! You can write unit and integration tests with this library. See
