@@ -510,3 +510,9 @@ And register it using mocha's `-r` flag:
 ```
 mocha --require ./mocha-watch-cleanup-after-each.js
 ```
+
+### Auto Cleanup in Vitest
+
+If you're using Vitest and want automatic cleanup to work, you need to
+[enable globals](https://vitest.dev/config/#globals) through its configuration
+file.
