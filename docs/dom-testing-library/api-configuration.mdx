@@ -133,7 +133,7 @@ screen.getByTestId('foo', {suggest: false}) // will not throw a suggestion
 > **Note**
 >
 > When this option is enabled, the library may provide suggestions that lack an
-> intuitive implementation. This typically occurs for
+> intuitive implementation, this typically occurs for
 > [roles which can not be named](https://w3c.github.io/aria/#namefromprohibited),
 > most notably paragraphs. For instance, if you attempt to use
 > [`getByText`](queries/bytext.mdx), you may encounter the following error:
@@ -154,7 +154,7 @@ screen.getByTestId('foo', {suggest: false}) // will not throw a suggestion
 >
 > ```js
 > getByRole('paragraph', {
->   name: (_, element) => element.textContent === 'Hello world!',
+>   name: (_, element) => element.textContent === 'Hello world',
 > })
 > ```
 
