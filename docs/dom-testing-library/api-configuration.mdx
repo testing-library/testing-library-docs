@@ -130,33 +130,33 @@ option.
 screen.getByTestId('foo', {suggest: false}) // will not throw a suggestion
 ```
 
-> :::note
->
-> When this option is enabled, the library may provide suggestions that lack an
-> intuitive implementation, this typically occurs for
-> [roles which can not be named](https://w3c.github.io/aria/#namefromprohibited),
-> most notably paragraphs. For instance, if you attempt to use
-> [`getByText`](queries/bytext.mdx), you may encounter the following error:
->
-> ```
-> TestingLibraryElementError: A better query is available, try this:
->    getByRole('paragraph')
-> ```
->
-> However, there is no direct way to query paragraphs using an object as the
-> second parameter, such as in
-> `getByRole('paragraph', { name: 'Hello World' })`.
->
-> To address this issue, you can leverage a custom function to validate the
-> element's structure and suppress the error, see
-> [#1306](https://github.com/testing-library/dom-testing-library/issues/1306)
-> and the example below:
->
-> ```js
-> getByRole('paragraph', {
->   name: (_, element) => element.textContent === 'Hello world',
-> })
-> ```
+:::note
+
+When this option is enabled, the library may provide suggestions that lack an
+intuitive implementation, this typically occurs for
+[roles which can not be named](https://w3c.github.io/aria/#namefromprohibited),
+most notably paragraphs. For instance, if you attempt to use
+[`getByText`](queries/bytext.mdx), you may encounter the following error:
+
+```
+TestingLibraryElementError: A better query is available, try this:
+    getByRole('paragraph')
+```
+
+However, there is no direct way to query paragraphs using an object as the
+second parameter, such as in
+`getByRole('paragraph', { name: 'Hello World' })`.
+
+To address this issue, you can leverage a custom function to validate the
+element's structure and suppress the error, see
+[#1306](https://github.com/testing-library/dom-testing-library/issues/1306)
+and the example below:
+
+```js
+getByRole('paragraph', {
+  name: (_, element) => element.textContent === 'Hello world',
+})
+```
 
 ### `testIdAttribute`
 
