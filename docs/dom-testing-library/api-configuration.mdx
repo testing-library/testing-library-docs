@@ -132,9 +132,9 @@ screen.getByTestId('foo', {suggest: false}) // will not throw a suggestion
 
 :::note
 
-When this option is enabled, the library may provide suggestions that lack an
-intuitive implementation, this typically occurs for
-[roles which can not be named](https://w3c.github.io/aria/#namefromprohibited),
+When this option is enabled, it may provide suggestions that lack an
+intuitive implementation. Typically this happens for
+[roles which cannot be named](https://w3c.github.io/aria/#namefromprohibited),
 most notably paragraphs. For instance, if you attempt to use
 [`getByText`](queries/bytext.mdx), you may encounter the following error:
 
