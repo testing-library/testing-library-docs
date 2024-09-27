@@ -147,9 +147,8 @@ However, there is no direct way to query paragraphs using the config object para
 `getByRole('paragraph', { name: 'Hello World' })`.
 
 To address this issue, you can leverage a custom function to validate the
-element's structure and suppress the error, see
-[#1306](https://github.com/testing-library/dom-testing-library/issues/1306)
-and the example below:
+element's structure, as shown in the example below.
+More information can be found in the [GitHub issue](https://github.com/testing-library/dom-testing-library/issues/1306)
 
 ```js
 getByRole('paragraph', {
