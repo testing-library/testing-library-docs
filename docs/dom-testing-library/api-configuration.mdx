@@ -130,6 +130,34 @@ option.
 screen.getByTestId('foo', {suggest: false}) // will not throw a suggestion
 ```
 
+:::note
+
+When this option is enabled, it may provide suggestions that lack an
+intuitive implementation. Typically this happens for
+[roles which cannot be named](https://w3c.github.io/aria/#namefromprohibited),
+most notably paragraphs. For instance, if you attempt to use
+[`getByText`](queries/bytext.mdx), you may encounter the following error:
+
+```
+TestingLibraryElementError: A better query is available, try this:
+    getByRole('paragraph')
+```
+
+However, there is no direct way to query paragraphs using the config object parameter, such as in
+`getByRole('paragraph', { name: 'Hello World' })`.
+
+To address this issue, you can leverage a custom function to validate the
+element's structure, as shown in the example below.
+More information can be found in the [GitHub issue](https://github.com/testing-library/dom-testing-library/issues/1306)
+
+```js
+getByRole('paragraph', {
+  name: (_, element) => element.textContent === 'Hello world',
+})
+```
+
+:::
+
 ### `testIdAttribute`
 
 The attribute used by [`getByTestId`](queries/bytestid.mdx) and related queries.
