@@ -2710,6 +2710,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "enmanuelduran",
+      "name": "Enmanuel Durán",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8060530?v=4",
+      "profile": "https://enmascript.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
