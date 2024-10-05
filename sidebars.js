@@ -171,6 +171,15 @@ module.exports = {
             'solid-testing-library/api',
           ],
         },
+        {
+          'Qwik Testing Library': [
+            'qwik-testing-library/intro',
+            'qwik-testing-library/setup',
+            'qwik-testing-library/example',
+            'qwik-testing-library/api',
+            'qwik-testing-library/faq',
+          ],
+        },
         'cypress-testing-library/intro',
         'pptr-testing-library/intro',
         'testcafe-testing-library/intro',

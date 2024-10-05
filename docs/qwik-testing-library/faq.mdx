@@ -1,0 +1,34 @@
+---
+id: faq
+title: FAQ
+sidebar_label: FAQ
+---
+
+- [How do I test file upload?](#how-do-i-test-file-upload)
+
+---
+
+## How do I test file upload?
+
+Use the [upload][] utility from `@testing-library/user-event`. It works well in
+both [jsdom][] and [happy-dom][].
+
+```tsx
+test('upload file', async () => {
+  const user = userEvent.setup()
+
+  await render(<Uploader />)
+  const file = new File(['hello'], 'hello.png', {type: 'image/png'})
+  const input = screen.getByLabelText(/upload file/i)
+
+  await user.upload(input, file)
+
+  expect(input.files[0]).toBe(file)
+  expect(input.files.item(0)).toBe(file)
+  expect(input.files).toHaveLength(1)
+})
+```
+
+[upload]: ../user-event/api-utility.mdx#upload
+[jsdom]: https://github.com/jsdom/jsdom
+[happy-dom]: https://github.com/capricorn86/happy-dom

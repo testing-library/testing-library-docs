@@ -1,0 +1,41 @@
+---
+id: intro
+title: Intro
+sidebar_label: Introduction
+---
+
+[Qwik Testing Library on GitHub][gh]
+
+[gh]: https://github.com/ianlet/qwik-testing-library
+
+```bash npm2yarn
+npm run qwik add testing-library
+```
+
+> This library is built on top of [`dom-testing-library`][dom-testing-library]
+> which is where most of the logic behind the queries is.
+
+[dom-testing-library]: ../dom-testing-library/intro.mdx
+
+## The Problem
+
+You want to write maintainable tests for your [Qwik][qwik] components.
+
+[qwik]: https://qwik.dev/
+
+## This Solution
+
+The Qwik Testing Library is a lightweight library for testing Qwik components.
+It provides functions on top of `qwik` and `@testing-library/dom` so you can
+mount Qwik components and query their rendered output in the DOM. Its primary
+guiding principle is:
+
+> [The more your tests resemble the way your software is used, the more
+> confidence they can give you.][guiding-principle]
+
+[guiding-principle]: https://twitter.com/kentcdodds/status/977018512689455106
+
+**What this library is not**:
+
+1.  A test runner or framework.
+2.  Specific to a testing framework.

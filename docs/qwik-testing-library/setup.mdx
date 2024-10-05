@@ -1,0 +1,159 @@
+---
+id: setup
+title: Setup
+sidebar_label: Setup
+---
+
+The easiest way to get started with Qwik Testing Library is to use the Qwik CLI
+that comes with your Qwik project to automatically set it up for you:
+
+```bash npm2yarn
+npm run qwik add testing-library
+```
+
+If you prefer to set it up manually or want to understand what the setup script
+does, read along...
+
+## Manual Setup
+
+This module is distributed via [npm][npm] which is bundled with [node][node] and
+should be installed as one of your project's `devDependencies`:
+
+```bash npm2yarn
+npm install --save-dev @noma.to/qwik-testing-library
+```
+
+This library supports `qwik` versions `1.7.2` and above.
+
+You may also be interested in installing `@testing-library/jest-dom` and
+`@testing-library/user-event` so you can use [the custom jest
+matchers][jest-dom] and [the user event library][user-event] to test
+interactions with the DOM.
+
+```bash npm2yarn
+npm install --save-dev @testing-library/jest-dom @testing-library/user-event
+```
+
+Finally, we need a DOM environment to run the tests in. This library was tested
+(for now) only with `jsdom` so we recommend using it:
+
+```bash npm2yarn
+npm install --save-dev jsdom
+```
+
+[npm]: https://www.npmjs.com/
+[node]: https://nodejs.org
+[jest-dom]: https://github.com/testing-library/jest-dom
+[user-event]: https://github.com/testing-library/user-event
+
+## Vitest Configuration
+
+We recommend using `@noma.to/qwik-testing-library` with [Vitest][] as your test
+runner.
+
+If you haven't done so already, add vitest to your project using Qwik CLI:
+
+```bash npm2yarn
+npm run qwik add vitest
+```
+
+After that, we need to configure Vitest so it can run your tests. For this,
+create a _separate_ `vitest.config.ts` so you don't have to modify your
+project's `vite.config.ts`:
+
+```ts title="vitest.config.ts"
+import {defineConfig, mergeConfig} from 'vitest/config'
+import viteConfig from './vite.config'
+
+export default defineConfig(configEnv =>
+  mergeConfig(
+    viteConfig(configEnv),
+    defineConfig({
+      // qwik-testing-library needs to consider your project as a Qwik lib
+      // if it's already a Qwik lib, you can remove this section
+      build: {
+        target: 'es2020',
+        lib: {
+          entry: './src/index.ts',
+          formats: ['es', 'cjs'],
+          fileName: (format, entryName) =>
+            `${entryName}.qwik.${format === 'es' ? 'mjs' : 'cjs'}`,
+        },
+      },
+      // configure your test environment
+      test: {
+        environment: 'jsdom',
+        setupFiles: ['./vitest.setup.ts'],
+        globals: true,
+      },
+    }),
+  ),
+)
+```
+
+For now, `qwik-testing-library` needs to consider your project as a lib. Hence,
+the `build.lib` section in the config above.
+
+As the build will try to use `./src/index.ts` as the entry point, we need to
+create it:
+
+```ts title="src/index.ts"
+/**
+ * DO NOT DELETE THIS FILE
+ *
+ * This entrypoint is needed by @noma.to/qwik-testing-library to run your tests
+ */
+```
+
+Then, create the `vitest.setup.ts` file:
+
+```ts title="vitest.setup.ts"
+import {afterEach} from 'vitest'
+import '@testing-library/jest-dom/vitest'
+
+// This has to run before qdev.ts loads. `beforeAll` is too late
+globalThis.qTest = false // Forces Qwik to run as if it was in a Browser
+globalThis.qRuntimeQrl = true
+globalThis.qDev = true
+globalThis.qInspector = false
+
+afterEach(async () => {
+  const {cleanup} = await import('@noma.to/qwik-testing-library')
+  cleanup()
+})
+```
+
+This setup will make sure that Qwik is properly configured and that everything
+gets cleaned after each test.
+
+Additionally, it loads `@testing-library/jest-dom/vitest` in your test runner so
+you can use matchers like `expect(...).toBeInTheDocument()`.
+
+Now, edit your `tsconfig.json` to declare the following global types:
+
+```diff title="tsconfig.json"
+{
+  "compilerOptions": {
+    "types": [
++     "vitest/globals",
++     "@testing-library/jest-dom/vitest"
+    ]
+  },
+  "include": ["src"]
+}
+```
+
+[vitest]: https://vitest.dev/
+
+Finally, you can add test scripts to your `package.json` to run the tests with
+Vitest
+
+```json title="package.json"
+{
+  "scripts": {
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest"
+  }
+}
+```
