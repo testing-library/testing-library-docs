@@ -35,11 +35,12 @@ describe('<Counter />', () => {
     // retrieve the 'increment count' button
     const incrementBtn = screen.getByRole('button', {name: /increment count/})
     // click the button twice
-    await userEvent.click(incrementBtn)
-    await userEvent.click(incrementBtn)
+    const user = userEvent.setup()
+    await user.click(incrementBtn)
+    await user.click(incrementBtn)
 
     // assert that the counter is now 2
-    await waitFor(() => expect(screen.getByText(/count:2/)).toBeInTheDocument())
+    expect(await screen.findByText(/count:2/)).toBeInTheDocument()
   })
 })
 ```
@@ -54,6 +55,8 @@ a rather cryptic message (e.g.
 We're happy to discuss it on [Discord][discord], but we consider this failure to
 be a good thing: your components should be tested in isolation, so you will be
 forced to mock your server functions.
+
+[discord]: https://qwik.dev/chat
 
 Here is an example of how to test a component that uses `server$` calls:
 
@@ -85,9 +88,7 @@ describe('<LatestPostList />', () => {
   it('should render the latest posts', async () => {
     await render(<LatestPostList />)
 
-    await waitFor(() =>
-      expect(screen.queryAllByRole('listitem')).toHaveLength(2),
-    )
+    expect(await screen.findAllByRole('listitem')).toHaveLength(2)
   })
 })
 ```
@@ -97,5 +98,5 @@ being named as `getLatestPosts$`. This is caused by the Qwik optimizer renaming
 it to `Qrl`. So, we need to mock the `Qrl` function instead of the original `$`
 one.
 
-If your `server$` function doesn't end with `$`, the Qwik optimizer might not
-rename it to `Qrl`.
+If your function doesn't end with `$`, the Qwik optimizer will not rename it to
+`Qrl`.

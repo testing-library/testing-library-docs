@@ -14,14 +14,20 @@ sidebar_label: API
 
 ## `render`
 
-Render your component to the DOM with Qwik. By default, the component will be
-rendered into a `<host>` appended to `document.body`.
+Render your component to the DOM with Qwik. By default, when no options are
+provided, the component will be rendered into a `<host>` appended to
+`document.body`.
 
 ```tsx
 import {render} from '@noma.to/qwik-testing-library'
+import {MockProvider} from './MockProvider'
 import {MyComponent} from './MyComponent'
 
-const result = await render(<MyComponent />, renderOptions)
+const result = await render(<MyComponent />, {
+  baseElement: document.body,
+  container: document.createElement('host'),
+  wrapper: MockProvider,
+})
 ```
 
 ### Render Options
