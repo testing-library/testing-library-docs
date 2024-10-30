@@ -1,0 +1,203 @@
+---
+id: api
+title: API
+sidebar_label: API
+---
+
+`@noma.to/qwik-testing-library` re-exports everything from
+[`@testing-library/dom`][@testing-library/dom], as well as:
+
+- [`render`](#render)
+- [`cleanup`](#cleanup)
+
+[@testing-library/dom]: ../dom-testing-library/api.mdx
+
+## `render`
+
+Render your component to the DOM with Qwik. By default, when no options are
+provided, the component will be rendered into a `<host>` appended to
+`document.body`.
+
+```tsx
+import {render} from '@noma.to/qwik-testing-library'
+import {MockProvider} from './MockProvider'
+import {MyComponent} from './MyComponent'
+
+const result = await render(<MyComponent />, {
+  baseElement: document.body,
+  container: document.createElement('host'),
+  wrapper: MockProvider,
+})
+```
+
+### Render Options
+
+You may also customize how Qwik Testing Library renders your component. Most of
+the time, you shouldn't need to modify these options.
+
+| Option        | Description                                         | Default                          |
+| ------------- | --------------------------------------------------- | -------------------------------- |
+| `container`   | The container in which the component is rendered.   | `document.createElement('host')` |
+| `baseElement` | The base element for queries and [`debug`](#debug). | `document.body`                  |
+| `queries`     | [Custom Queries][custom-queries].                   | N/A                              |
+| `wrapper`     | The wrapper to provide a context to the component.  | N/A                              |
+
+[custom-queries]: ../dom-testing-library/api-custom-queries.mdx
+
+#### `wrapper`
+
+You can wrap your component into a wrapper to provide a context and other
+functionalities needed by the component under test.
+
+```tsx
+import {render} from '@noma.to/qwik-testing-library'
+import {QwikCityMockProvider} from '@builder.io/qwik-city'
+
+await render(<MyComponent />, {wrapper: QwikCityMockProvider})
+```
+
+### Render Results
+
+| Result                        | Description                                                |
+| ----------------------------- | ---------------------------------------------------------- |
+| [`baseElement`](#baseelement) | The base DOM element used for queries.                     |
+| [`container`](#container)     | The DOM element the component is mounted to.               |
+| [`asFragment`](#asFragment)   | Convert the DOM element to a `DocumentFragment`.           |
+| [`debug`](#debug)             | Log elements using [`prettyDOM`][pretty-dom].              |
+| [`unmount`](#unmount)         | Unmount and destroy the component.                         |
+| [`...queries`](#queries)      | [Query functions][query-functions] bound to `baseElement`. |
+
+[pretty-dom]: ../dom-testing-library/api-debugging.mdx#prettydom
+[query-functions]: ../queries/about.mdx
+
+#### `baseElement`
+
+The base DOM element that queries are bound to. Corresponds to
+`renderOptions.baseElement`. If you do not use `renderOptions.baseElement`, this
+will be `document.body`.
+
+#### `container`
+
+The DOM element the component is mounted in. Corresponds to
+`renderOptions.container`. If you do not use `renderOptions.container`, this
+will be `document.createElement('host')`. In general, avoid using `container`
+directly to query for elements; use [testing-library queries][query-functions]
+instead.
+
+#### `asFragment`
+
+Returns a `DocumentFragment` of your rendered component. This can be useful if
+you need to avoid live bindings and see how your component reacts to events.
+
+```tsx
+import {component$} from '@builder.io/qwik';
+import {render} from '@testing-library/react';
+import {userEvent} from "@testing-library/user-event";
+
+const TestComponent = component$(() => {
+  const count = useSignal(0);
+
+  return (
+    <button onClick$={() => (count.value++))}>
+      Click to increase: {count}
+    </button>
+  )
+});
+
+const {getByText, asFragment} = await render(<TestComponent />)
+const firstRender = asFragment()
+
+userEvent.click(getByText(/Click to increase/))
+
+// This will snapshot only the difference between the first render, and the
+// state of the DOM after the click event.
+// See https://github.com/jest-community/snapshot-diff
+expect(firstRender).toMatchDiffSnapshot(asFragment())
+```
+
+#### `debug`
+
+Log the `baseElement` or a given element using [`prettyDOM`][pretty-dom].
+
+:::tip
+
+If your `baseElement` is the default `document.body`, we recommend using
+[`screen.debug`][screen-debug].
+
+:::
+
+```tsx
+import {render, screen} from '@noma.to/qwik-testing-library'
+
+const {debug} = await render(<MyComponent />)
+
+const button = screen.getByRole('button')
+
+// log `document.body`
+screen.debug()
+
+// log your custom the `baseElement`
+debug()
+
+// log a specific element
+screen.debug(button)
+debug(button)
+```
+
+[screen-debug]: ../dom-testing-library/api-debugging.mdx#screendebug
+
+#### `unmount`
+
+Unmount and destroy the Qwik component.
+
+```tsx
+const {unmount} = await render(<MyComponent />)
+
+unmount()
+```
+
+#### Queries
+
+[Query functions][query-functions] bound to the [`baseElement`](#baseelement).
+If you passed [custom queries][custom-queries] to `render`, those will be
+available instead of the default queries.
+
+:::tip
+
+If your [`baseElement`](#baseelement) is the default `document.body`, we
+recommend using [`screen`][screen] rather than bound queries.
+
+:::
+
+```tsx
+import {render, screen} from '@noma.to/qwik-testing-library'
+
+const {getByRole} = await render(<MyComponent />)
+
+// query `document.body`
+const button = screen.getByRole('button')
+
+// query using a custom `target` or `baseElement`
+const button = getByRole('button')
+```
+
+[screen]: ../queries/about.mdx#screen
+
+## `cleanup`
+
+Destroy all components and remove any elements added to `document.body` or
+`renderOptions.baseElement`.
+
+```tsx
+import {render, cleanup} from '@noma.to/qwik-testing-library'
+
+// Default: runs after each test
+afterEach(() => {
+  cleanup()
+})
+
+await render(<MyComponent />)
+
+// Called manually for more control
+cleanup()
+```
