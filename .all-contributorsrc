@@ -2728,6 +2728,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ianlet",
+      "name": "Ian Létourneau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6018732?v=4",
+      "profile": "https://noma.to",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
