@@ -522,6 +522,9 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://enmascript.com"><img src="https://avatars.githubusercontent.com/u/8060530?v=4?s=100" width="100px;" alt="Enmanuel Durán"/><br /><sub><b>Enmanuel Durán</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=enmanuelduran" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gbhasha"><img src="https://avatars.githubusercontent.com/u/501794?v=4?s=100" width="100px;" alt="Galeel Bhasha Satthar"/><br /><sub><b>Galeel Bhasha Satthar</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=gbhasha" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://noma.to"><img src="https://avatars.githubusercontent.com/u/6018732?v=4?s=100" width="100px;" alt="Ian Létourneau"/><br /><sub><b>Ian Létourneau</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ianlet" title="Documentation">📖</a></td>
+    </tr>
   </tbody>
 </table>
 
