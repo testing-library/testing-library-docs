@@ -74,6 +74,12 @@ declaratively mock API communication in your tests instead of stubbing
 
 :::
 
+:::note 
+
+Our example here uses axios to make its API calls. If your application uses [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) to make its API calls, then be aware that by default JSDOM does not include fetch. If you are using vitest as your test runner, it will be included for you. For jest you may wish to manually polyfill `fetch()` or use the [jest-fixed-jsdom](https://github.com/mswjs/jest-fixed-jsdom) environment which includes fetch. 
+
+:::
+
 ```jsx title="__tests__/fetch.test.jsx"
 import React from 'react'
 import {http, HttpResponse} from 'msw'
