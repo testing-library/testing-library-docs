@@ -64,18 +64,20 @@ export default function Help(props) {
               <h1 className="help-heading-1">Need help?</h1>
             </header>
             <GridBlock
+              className="textBlockWithLinks"
               contents={supportLinks.slice(0, 3)}
               layout="threeColumn"
               align="left"
             />
             <GridBlock
+              className="textBlockWithLinks"
               contents={supportLinks.slice(3)}
               layout="threeColumn"
               align="left"
             />
             <section>
               <h2 className="help-heading-2">Buy a course</h2>
-              <p>
+              <p className="textBlockWithLinks">
                 Learn how to test JavaScript with{' '}
                 <ExternalLink href="https://kentcdodds.com">
                   Kent C. Dodds
@@ -105,7 +107,7 @@ export default function Help(props) {
               community successful and improve tests for everyone in the long
               run.
             </p>
-            <p>
+            <p className="textBlockWithLinks">
               Please consider helping us answer community questions and update
               documentation content via the help links above. You can also help
               support{' '}

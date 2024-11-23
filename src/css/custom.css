@@ -3,15 +3,15 @@
 }
 
 [data-theme='dark']:root {
-  --ifm-color-primary: #7FA8F1;
-  --ifm-link-color: #7FA8F1;
+  --ifm-color-primary: #7fa8f1;
+  --ifm-link-color: #7fa8f1;
   --docsearch-muted-color: white;
 }
 
 [data-theme='light']:root {
-  --ifm-color-primary: #1554B7;
-  --ifm-link-color: #1554B7;
-  --docsearch-muted-color: #494B5F;
+  --ifm-color-primary: #1554b7;
+  --ifm-link-color: #1554b7;
+  --docsearch-muted-color: #494b5f;
 }
 
 .wrapper {
@@ -481,6 +481,10 @@ details.alert {
 details.alert div {
   border-top: none;
   padding-top: 0;
+}
+
+.textBlockWithLinks a {
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 1024px) {
