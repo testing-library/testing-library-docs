@@ -2746,6 +2746,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ezzatron",
+      "name": "Erin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100152?v=4",
+      "profile": "https://github.com/ezzatron",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
