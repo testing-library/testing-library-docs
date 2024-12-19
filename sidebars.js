@@ -115,8 +115,8 @@ module.exports = {
             'vue-testing-library/examples',
             'vue-testing-library/setup',
             'vue-testing-library/api',
-            'vue-testing-library/cheatsheet',
             'vue-testing-library/faq',
+            'vue-testing-library/cheatsheet',
           ],
         },
         {
