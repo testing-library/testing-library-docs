@@ -2764,6 +2764,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "aburdiss",
+      "name": "Alexander Burdiss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31200600?v=4",
+      "profile": "http://alexanderburdiss.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
