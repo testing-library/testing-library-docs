@@ -527,6 +527,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/brianlu2610"><img src="https://avatars.githubusercontent.com/u/68666483?v=4?s=100" width="100px;" alt="brianlu2610"/><br /><sub><b>brianlu2610</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=brianlu2610" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ezzatron"><img src="https://avatars.githubusercontent.com/u/100152?v=4?s=100" width="100px;" alt="Erin"/><br /><sub><b>Erin</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=ezzatron" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/nan-chen-000/"><img src="https://avatars.githubusercontent.com/u/23487984?v=4?s=100" width="100px;" alt="Nan Chen"/><br /><sub><b>Nan Chen</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=nchen000" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://alexanderburdiss.com"><img src="https://avatars.githubusercontent.com/u/31200600?v=4?s=100" width="100px;" alt="Alexander Burdiss"/><br /><sub><b>Alexander Burdiss</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=aburdiss" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
