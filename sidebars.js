@@ -131,8 +131,8 @@ module.exports = {
         {
           'Svelte Testing Library': [
             'svelte-testing-library/intro',
-            'svelte-testing-library/setup',
             'svelte-testing-library/example',
+            'svelte-testing-library/setup',
             'svelte-testing-library/api',
             'svelte-testing-library/faq',
           ],
@@ -174,8 +174,8 @@ module.exports = {
         {
           'Qwik Testing Library': [
             'qwik-testing-library/intro',
-            'qwik-testing-library/setup',
             'qwik-testing-library/example',
+            'qwik-testing-library/setup',
             'qwik-testing-library/api',
             'qwik-testing-library/faq',
           ],
