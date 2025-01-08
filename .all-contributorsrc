@@ -2773,6 +2773,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "peterh-capella",
+      "name": "Peter Hentges",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1122723?v=4",
+      "profile": "https://github.com/peterh-capella",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
