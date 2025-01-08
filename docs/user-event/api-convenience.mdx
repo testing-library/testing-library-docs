@@ -191,8 +191,9 @@ test('tab', async () => {
   // cycle goes back to the body element
   expect(document.body).toHaveFocus()
 
-  await user.tab()
+  // simulate Shift-Tab
+  await user.tab({shift: true})
 
-  expect(checkbox).toHaveFocus()
+  expect(number).toHaveFocus()
 })
 ```
