@@ -3,7 +3,15 @@ id: examples
 title: Example
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 ## Basic example
+
+<Tabs groupId="test-utils" defaultValue="js" values={[ {label: 'JavaScript',
+  value: 'js'}, {label: 'TypeScript', value: 'ts'}, ]}>
+
+  <TabItem value="js">
 
 ```html
 <template>
@@ -50,7 +58,65 @@ test('increments value on click', async () => {
 })
 ```
 
+  </TabItem>
+
+  <TabItem value="ts">
+
+```html
+<template>
+  <div>
+    <p>Times clicked: {{ count }}</p>
+    <button @click="increment">increment</button>
+  </div>
+</template>
+
+<script lang="ts">
+  export default {
+    data: (): {count: number} => ({
+      count: 0,
+    }),
+
+    methods: {
+      increment(): void {
+        this.count++
+      },
+    },
+  }
+</script>
+```
+
+```ts
+import {render, fireEvent, screen} from '@testing-library/vue'
+import Component from './Component.vue'
+
+test('increments value on click', async () => {
+  render(Component)
+
+  // screen has all queries that you can use in your tests.
+  // getByText returns the first matching node for the provided text, and
+  // throws an error if no elements match or if more than one match is found.
+  screen.getByText('Times clicked: 0')
+
+  const button = screen.getByText('increment')
+
+  // Dispatch a native click event to our button element.
+  await fireEvent.click(button)
+  await fireEvent.click(button)
+
+  screen.getByText('Times clicked: 2')
+})
+```
+
+  </TabItem>
+
+  </Tabs>
+
 ## Example using `v-model`:
+
+<Tabs groupId="test-utils" defaultValue="js" values={[ {label: 'JavaScript',
+  value: 'js'}, {label: 'TypeScript', value: 'ts'}, ]}>
+
+  <TabItem value="js">
 
 ```html
 <template>
@@ -91,6 +157,54 @@ test('properly handles v-model', async () => {
   screen.getByText('Hi, my name is Bob')
 })
 ```
+
+</TabItem>
+
+  <TabItem value="ts">
+
+```html
+<template>
+  <div>
+    <p>Hi, my name is {{ user }}</p>
+
+    <label for="username">Username:</label>
+    <input v-model="user" id="username" name="username" />
+  </div>
+</template>
+
+<script lang="ts">
+  export default {
+    data: (): {user: string} => ({
+      user: 'Alice',
+    }),
+  }
+</script>
+```
+
+```ts
+import {render, fireEvent, screen} from '@testing-library/vue'
+import Component from './Component.vue'
+
+test('properly handles v-model', async () => {
+  render(Component)
+
+  // Asserts initial state.
+  screen.getByText('Hi, my name is Alice')
+
+  // Get the input DOM node by querying the associated label.
+  const usernameInput = screen.getByLabelText(/username/i)
+
+  // Updates the <input> value and triggers an `input` event.
+  // fireEvent.input() would make the test fail.
+  await fireEvent.update(usernameInput, 'Bob')
+
+  screen.getByText('Hi, my name is Bob')
+})
+```
+
+  </TabItem>
+
+  </Tabs>
 
 ## More examples
 
