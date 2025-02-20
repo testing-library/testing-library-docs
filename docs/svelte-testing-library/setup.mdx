@@ -138,6 +138,18 @@ runner that's ESM compatible.
 [resolve-conditions]:
   https://vitejs.dev/config/shared-options.html#resolve-conditions
 
+### TypeScript
+
+If you use TypeScript and want to use [`@testing-library/jest-dom`][@testing-library/jest-dom] you need to tell the TypeScript compiler about [`@testing-library/jest-dom`][@testing-library/jest-dom] by adding it in your `tsconfig.json` to the `compilerOptions`.
+
+```json title="package.json"
+{
+  "compilerOptions": {
+	"types": ["@testing-library/jest-dom"],
+  }
+}
+```
+
 ## Jest
 
 [`@testing-library/svelte`][@testing-library/svelte] is ESM-only, which means
