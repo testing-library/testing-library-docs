@@ -113,6 +113,7 @@ test('error boundary catches error', () => {
   )
   expect(container.textContent).toEqual('Something went wrong.')
 })
+```
 
 If the error boundary did not catch the error, the test would fail since the `render` call would throw the error the Component produced.
 
