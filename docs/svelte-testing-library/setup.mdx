@@ -140,9 +140,9 @@ runner that's ESM compatible.
 
 ### TypeScript
 
-If you use TypeScript and want to use [`@testing-library/jest-dom`][@testing-library/jest-dom] you need to tell the TypeScript compiler about [`@testing-library/jest-dom`][@testing-library/jest-dom] by adding it in your `tsconfig.json` to the `compilerOptions`.
+Include [`@testing-library/jest-dom`][@testing-library/jest-dom] to the TypeScript `types` to make the TypeScript compiler aware about the [`@testing-library/jest-dom`][@testing-library/jest-dom] matchers.
 
-```json title="package.json"
+```json title="tsconfig.json"
 {
   "compilerOptions": {
 	"types": ["@testing-library/jest-dom"],
