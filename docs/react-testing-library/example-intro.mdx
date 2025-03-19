@@ -13,7 +13,7 @@ what each line does, scroll down to the
 
 ```jsx
 import {render, screen} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import Fetch from './fetch'
 
@@ -38,7 +38,7 @@ test('loads and displays greeting', async () => {
 // import react-testing methods
 import {render, screen} from '@testing-library/react'
 // userEvent library simulates user interactions by dispatching the events that would happen if the interaction took place in a browser.
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom'
 // the component to test

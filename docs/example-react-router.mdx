@@ -42,7 +42,7 @@ export const App = () => (
 ```jsx
 // app.test.js
 import {render, screen} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import React from 'react'
 import '@testing-library/jest-dom'
 import {App, LocationDisplay} from './app'
@@ -175,7 +175,7 @@ so make sure you have the correct version of `history` installed.
 ```jsx
 // app.test.js
 import {render, screen} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import {createMemoryHistory} from 'history'
 import React from 'react'
 import {Router} from 'react-router-dom'

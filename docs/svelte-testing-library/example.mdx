@@ -39,7 +39,7 @@ This basic example demonstrates how to:
 
 ```js title="greeter.test.js"
 import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import {expect, test} from 'vitest'
 
 import Greeter from './greeter.svelte'
@@ -94,7 +94,7 @@ Consider using function props to make testing events easier.
 
 ```js title="button.test.ts"
 import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import {expect, test, vi} from 'vitest'
 
 import ButtonWithEvent from './button-with-event.svelte'
@@ -200,7 +200,7 @@ binding itself.
 
 ```js title="text-input.test.js"
 import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import {get, writable} from 'svelte/store'
 import {expect, test} from 'vitest'
 
