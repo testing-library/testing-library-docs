@@ -16,6 +16,7 @@ as these methods:
   - [`onRecoverableError`](#onrecoverableerror)
   - [`wrapper`](#wrapper)
   - [`queries`](#queries)
+  - [`reactStrictMode`](#render-options-reactstrictmode)
 - [`render` Result](#render-result)
   - [`...queries`](#queries-1)
   - [`container`](#container-1)
@@ -31,7 +32,8 @@ as these methods:
   - [`initialProps`](#initialprops)
   - [`onCaughtError`](#oncaughterror)
   - [`onRecoverableError`](#onrecoverableerror)
-  - [`wrapper`](#wrapper-1)
+  - [`wrapper`](#renderhook-options-wrapper)
+  - [`reactStrictMode`](#renderhook-options-reactstrictmode)
 - [`renderHook` Result](#renderhook-result)
   - [`result`](#result)
   - [`rerender`](#rerender-1)
@@ -160,6 +162,11 @@ utility functions to create custom queries.
 
 Custom queries can also be added globally by following the
 [custom render guide](setup.mdx#custom-render).
+
+### `render` Options `reactStrictMode`
+
+When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is rendered around the inner element.
+If defined, overrides the value of `reactStrictMode` set in [`configure`](https://testing-library.com/docs/react-testing-library/api/#configure-options).
 
 ## `render` Result
 
@@ -430,6 +437,11 @@ Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https:
 ### `renderHook` Options `wrapper`
 
 See [`wrapper` option for `render`](#wrapper)
+
+
+### `renderHook` Options `reactStrictMode`
+
+See [`reactStrictMode` option for `render`](#render-options-reactstrictmode)
 
 ## `renderHook` Result
 
