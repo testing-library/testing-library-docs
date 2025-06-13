@@ -4,48 +4,51 @@ title: Example
 sidebar_label: Example
 ---
 
-For additional resources, patterns, and best practices about testing Svelte
-components and other Svelte features, take a look at the [Svelte Society testing
-recipes][testing-recipes].
+:::tip
 
-[testing-recipes]:
-  https://sveltesociety.dev/recipes/testing-and-debugging/unit-testing-svelte-component
+See the [svelte-testing-library repository][repository-examples] for detailed
+examples, including examples for testing older Svelte 3 and 4 components.
 
-## Basic
+:::
 
 This basic example demonstrates how to:
 
-- Pass props to your Svelte component using `render`
-- Query the structure of your component's DOM elements using `screen`
+- Pass props to your Svelte component using [`render()`][render]
+- [Query][] the structure of your component's DOM elements using
+  [`screen`][screen]
 - Interact with your component using [`@testing-library/user-event`][user-event]
 - Make assertions using `expect`, using matchers from
   [`@testing-library/jest-dom`][jest-dom]
 
-```html title="greeter.svelte"
+For additional resources, patterns, and best practices about testing Svelte
+components and other Svelte features, take a look at the [Svelte Society testing
+recipes][testing-recipes].
+
+```html title="basic.svelte"
 <script>
-  export let name
+  let {name} = $props()
 
-  let showGreeting = false
+  let showGreeting = $state(false)
 
-  const handleClick = () => (showGreeting = true)
+  const onclick = () => (showGreeting = true)
 </script>
 
-<button on:click="{handleClick}">Greet</button>
+<button {onclick}>Greet</button>
 
 {#if showGreeting}
 <p>Hello {name}</p>
 {/if}
 ```
 
-```js title="greeter.test.js"
+```js title="basic.test.js"
 import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
+import {userEvent} from '@testing-library/user-event'
 import {expect, test} from 'vitest'
 
-import Greeter from './greeter.svelte'
+import Subject from './basic.svelte'
 
 test('no initial greeting', () => {
-  render(Greeter, {name: 'World'})
+  render(Subject, {name: 'World'})
 
   const button = screen.getByRole('button', {name: 'Greet'})
   const greeting = screen.queryByText(/hello/iu)
@@ -56,7 +59,7 @@ test('no initial greeting', () => {
 
 test('greeting appears on click', async () => {
   const user = userEvent.setup()
-  render(Greeter, {name: 'World'})
+  render(Subject, {name: 'World'})
 
   const button = screen.getByRole('button')
   await user.click(button)
@@ -66,213 +69,12 @@ test('greeting appears on click', async () => {
 })
 ```
 
+[repository-examples]:
+  https://github.com/testing-library/svelte-testing-library/tree/main/examples
+[testing-recipes]:
+  https://sveltesociety.dev/recipes/testing-and-debugging/unit-testing-svelte-component
+[query]: ../queries/about.mdx
+[screen]: ../queries/about.mdx#screen
+[render]: ./api.mdx#render
 [user-event]: ../user-event/intro.mdx
 [jest-dom]: https://github.com/testing-library/jest-dom
-
-## Events
-
-Events can be tested using spy functions. If you're using Vitest you can use
-[`vi.fn()`][vi-fn] to create a spy.
-
-:::info
-
-Consider using function props to make testing events easier.
-
-:::
-
-```html title="button-with-event.svelte"
-<button on:click>click me</button>
-```
-
-```html title="button-with-prop.svelte"
-<script>
-  export let onClick
-</script>
-
-<button on:click="{onClick}">click me</button>
-```
-
-```js title="button.test.ts"
-import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
-import {expect, test, vi} from 'vitest'
-
-import ButtonWithEvent from './button-with-event.svelte'
-import ButtonWithProp from './button-with-prop.svelte'
-
-test('button with event', async () => {
-  const user = userEvent.setup()
-  const onClick = vi.fn()
-
-  const {component} = render(ButtonWithEvent)
-  component.$on('click', onClick)
-
-  const button = screen.getByRole('button')
-  await user.click(button)
-
-  expect(onClick).toHaveBeenCalledOnce()
-})
-
-test('button with function prop', async () => {
-  const user = userEvent.setup()
-  const onClick = vi.fn()
-
-  render(ButtonWithProp, {onClick})
-
-  const button = screen.getByRole('button')
-  await user.click(button)
-
-  expect(onClick).toHaveBeenCalledOnce()
-})
-```
-
-[vi-fn]: https://vitest.dev/api/vi.html#vi-fn
-
-## Slots
-
-Slots cannot be tested directly. It's usually easier to structure your code so
-that you can test the user-facing results, leaving any slots as an
-implementation detail.
-
-However, if slots are an important developer-facing API of your component, you
-can use a wrapper component and "dummy" children to test them. Test IDs can be
-helpful when testing slots in this manner.
-
-```html title="heading.svelte"
-<h1>
-  <slot />
-</h1>
-```
-
-```html title="heading.test.svelte"
-<script>
-  import Heading from './heading.svelte'
-</script>
-
-<Heading>
-  <span data-testid="child" />
-</Heading>
-```
-
-```js title="heading.test.js"
-import {render, screen, within} from '@testing-library/svelte'
-import {expect, test} from 'vitest'
-
-import HeadingTest from './heading.test.svelte'
-
-test('heading with slot', () => {
-  render(HeadingTest)
-
-  const heading = screen.getByRole('heading')
-  const child = within(heading).getByTestId('child')
-
-  expect(child).toBeInTheDocument()
-})
-```
-
-## Two-way data binding
-
-Two-way data binding cannot be tested directly. It's usually easier to structure
-your code so that you can test the user-facing results, leaving the binding as
-an implementation detail.
-
-However, if two-way binding is an important developer-facing API of your
-component, you can use a wrapper component and writable store to test the
-binding itself.
-
-```html title="text-input.svelte"
-<script>
-  export let value = ''
-</script>
-
-<input type="text" bind:value="{value}" />
-```
-
-```html title="text-input.test.svelte"
-<script>
-  import TextInput from './text-input.svelte'
-
-  export let valueStore
-</script>
-
-<TextInput bind:value="{$valueStore}" />
-```
-
-```js title="text-input.test.js"
-import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
-import {get, writable} from 'svelte/store'
-import {expect, test} from 'vitest'
-
-import TextInputTest from './text-input.test.svelte'
-
-test('text input with value binding', async () => {
-  const user = userEvent.setup()
-  const valueStore = writable('')
-
-  render(TextInputTest, {valueStore})
-
-  const input = screen.getByRole('textbox')
-  await user.type(input, 'hello world')
-
-  expect(get(valueStore)).toBe('hello world')
-})
-```
-
-## Contexts
-
-If your component requires access to contexts, you can pass those contexts in
-when you [`render`][component-options] the component. When you use options like
-`context`, be sure to place props under the `props` key.
-
-[component-options]: ./api.mdx#component-options
-
-```html title="notifications-provider.svelte"
-<script>
-  import {setContext} from 'svelte'
-  import {writable} from 'svelte/stores'
-
-  setContext('messages', writable([]))
-</script>
-```
-
-```html title="notifications.svelte"
-<script>
-  import {getContext} from 'svelte'
-
-  export let label
-
-  const messages = getContext('messages')
-</script>
-
-<div role="status" aria-label="{label}">
-  {#each $messages as message (message.id)}
-  <p>{message.text}</p>
-  <hr />
-  {/each}
-</div>
-```
-
-```js title="notifications.test.js"
-import {render, screen} from '@testing-library/svelte'
-import {readable} from 'svelte/store'
-import {expect, test} from 'vitest'
-
-import Notifications from './notifications.svelte'
-
-test('notifications with messages from context', async () => {
-  const messages = readable([
-    {id: 'abc', text: 'hello'},
-    {id: 'def', text: 'world'},
-  ])
-
-  render(Notifications, {
-    context: new Map([['messages', messages]]),
-    props: {label: 'Notifications'},
-  })
-
-  const status = screen.getByRole('status', {name: 'Notifications'})
-
-  expect(status).toHaveTextContent('hello world')
-})
-```
