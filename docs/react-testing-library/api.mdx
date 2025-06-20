@@ -29,6 +29,7 @@ as these methods:
 - [`act`](#act)
 - [`renderHook`](#renderhook)
 - [`renderHook` Options](#renderhook-options)
+  - [`initialArgs`](#initialargs)
   - [`initialProps`](#initialprops)
   - [`onCaughtError`](#oncaughterror)
   - [`onRecoverableError`](#onrecoverableerror)
@@ -133,7 +134,7 @@ Behaves the same as [`onCaughtError` in `ReactDOMClient.createRoot`](https://rea
 
 ### `onRecoverableError`
 
-Callback called when React automatically recovers from errors. 
+Callback called when React automatically recovers from errors.
 Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `wrapper`
@@ -364,14 +365,14 @@ test is not hidden behind an abstraction.
 ```typescript
 function renderHook<
   Result,
-  Props,
+  Args extends any[],
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement,
   BaseElement extends Element | DocumentFragment = Container
 >(
-  render: (initialProps: Props) => Result,
-  options?: RenderHookOptions<Props, Q, Container, BaseElement>,
-): RenderHookResult<Result, Props>
+  render: (initialArgs: Args) => Result,
+  options?: RenderHookArgsOptions<Args, Q, Container, BaseElement>,
+): RenderHookArgsResult<Result, Args>
 ```
 
 Example:
@@ -387,7 +388,48 @@ test('returns logged in user', () => {
 
 ## `renderHook` Options
 
+### `renderHook` Options `initialArgs`
+
+Declares the arguments that are passed to the render-callback when first
+invoked. These will **not** be passed if you call `rerender` without arguments.
+
+```jsx
+import {renderHook} from '@testing-library/react'
+
+test('returns logged in user', () => {
+  const {result, rerender} = renderHook((...args) => args, {
+    initialArgs: ['Alice', 42],
+  })
+  expect(result.current).toEqual(['Alice', 42])
+  rerender()
+  expect(result.current).toEqual([])
+})
+```
+
+> NOTE: When using `renderHook` in conjunction with the `wrapper` and
+> `initialArgs` options, the `initialArgs` are not passed to the `wrapper`
+> component. To provide props to the `wrapper` component, consider a solution
+> like this:
+>
+> ```js
+> const createWrapper = (Wrapper, props) => {
+>   return function CreatedWrapper({ children }) {
+>     return <Wrapper {...props}>{children}</Wrapper>;
+>   };
+> };
+>
+> ...
+>
+> {
+>   wrapper: createWrapper(Wrapper, { value: 'foo' }),
+> }
+> ```
+
 ### `renderHook` Options `initialProps`
+
+> NOTE: This option is left for backwards compatibility: It allows to pass a
+> single hook argument only. Prefer using `initialArgs` which allows to pass
+> multiple arguments to the hook function.
 
 Declares the props that are passed to the render-callback when first invoked.
 These will **not** be passed if you call `rerender` without props.
@@ -431,7 +473,7 @@ Behaves the same as [`onCaughtError` in `ReactDOMClient.createRoot`](https://rea
 
 ### `onRecoverableError`
 
-Callback called when React automatically recovers from errors. 
+Callback called when React automatically recovers from errors.
 Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `renderHook` Options `wrapper`
@@ -478,10 +520,10 @@ Renders the previously rendered render-callback with the new props:
 ```jsx
 import {renderHook} from '@testing-library/react'
 
-const {rerender} = renderHook(({name = 'Alice'} = {}) => name)
+const {rerender} = renderHook((name, age) => {}, {initialArgs: ['Alice', 42]})
 
-// re-render the same hook with different props
-rerender({name: 'Bob'})
+// re-render the same hook with different arguments
+rerender('Bob', 84)
 ```
 
 ### `unmount`
@@ -516,4 +558,4 @@ configure({reactStrictMode: true})
 When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
 rendered around the inner element. Defaults to `false`.
 
-This setting can be changed for a single test by providing `reactStrictMode` in the options argument of the [`render`](#render-options-reactstrictmode) function. 
+This setting can be changed for a single test by providing `reactStrictMode` in the options argument of the [`render`](#render-options-reactstrictmode) function.
