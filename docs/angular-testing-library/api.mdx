@@ -103,12 +103,17 @@ the component.
 ```ts
 // using a manual callback
 const sendValue = (value) => { ... }
+await render(AppComponent, {
+  on: {
+    send: (value) => sendValue(value),
+  }
+})
+
 // using a (jest) spy
 const sendValueSpy = jest.fn()
 
 await render(AppComponent, {
   on: {
-    send: (value) => sendValue(value),
     send: sendValueSpy
   }
 })
