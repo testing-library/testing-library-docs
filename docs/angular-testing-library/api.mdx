@@ -38,7 +38,8 @@ await render(AppComponent)
 Instead of passing the component's type as first argument, you can also provide
 a template. This practice is required to render directives but can also be
 applied to components, it might even be more useful. The directive's (or
-component's) type must then be added to the `declarations`.
+component's) type must then be added to the `imports` (or `declarations` in case
+of non-standalone components).
 
 **example with directive**:
 
