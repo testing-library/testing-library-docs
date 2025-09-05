@@ -38,7 +38,8 @@ await render(AppComponent)
 Instead of passing the component's type as first argument, you can also provide
 a template. This practice is required to render directives but can also be
 applied to components, it might even be more useful. The directive's (or
-component's) type must then be added to the `declarations`.
+component's) type must then be added to the `imports` (or `declarations` in case
+of non-standalone components).
 
 **example with directive**:
 
@@ -103,12 +104,17 @@ the component.
 ```ts
 // using a manual callback
 const sendValue = (value) => { ... }
+await render(AppComponent, {
+  on: {
+    send: (value) => sendValue(value),
+  }
+})
+
 // using a (jest) spy
 const sendValueSpy = jest.fn()
 
 await render(AppComponent, {
   on: {
-    send: (value) => sendValue(value),
     send: sendValueSpy
   }
 })
@@ -120,7 +126,7 @@ A collection of components, directives and pipes needed to render the component.
 For example, nested components of the component.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#declarations).
+[Angular docs](https://angular.dev/guide/ngmodules/overview#declarations).
 
 **default** : `[]`
 
@@ -137,7 +143,7 @@ await render(AppComponent, {
 Set the defer blocks behavior.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/testing/DeferBlockBehavior)
+[Angular docs](https://angular.dev/api/core/testing/DeferBlockBehavior)
 
 **default** : `undefined` (uses `DeferBlockBehavior.Manual`, which is different
 from the Angular default of `DeferBlockBehavior.Playthrough`)
@@ -155,7 +161,7 @@ await render(AppComponent, {
 Set the initial state of a deferrable blocks in a component.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/testing/DeferBlockState)
+[Angular docs](https://angular.dev/api/core/testing/DeferBlockState)
 
 **default** : `undefined` (uses the Angular default, which is
 `DeferBlockState.Placeholder`)
@@ -177,7 +183,7 @@ These will be provided at the component level. To inject dependencies at the
 module level, use [`providers`](#providers).
 
 For more info see the
-[Angular docs](https://angular.io/api/core/Directive#providers).
+[Angular docs](https://angular.dev/guide/di/hierarchical-dependency-injection#example-providing-services-in-component).
 
 **default** : `[]`
 
@@ -273,7 +279,7 @@ modules. Adds `NoopAnimationsModule` by default if `BrowserAnimationsModule`
 isn't added to the collection
 
 For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#imports).
+[Angular docs](https://angular.dev/guide/components#imports-in-the-component-decorator).
 
 **default** : `[NoopAnimationsModule]`
 
@@ -294,7 +300,7 @@ These will be provided at the module level. To inject dependencies at the
 component level, use [`componentProviders`](#componentProviders).
 
 For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#providers).
+[Angular docs](https://angular.dev/guide/di/dependency-injection-providers#).
 
 **default** : `[]`
 
@@ -331,7 +337,7 @@ await render(AppComponent, {
 
 The route configuration to set up the router service via
 `RouterTestingModule.withRoutes`. For more info see the
-[Angular Routes docs](https://angular.io/api/router/Routes).
+[Angular Routes docs](https://angular.dev/api/router/Routes).
 
 **default** : `[]`
 
@@ -360,7 +366,7 @@ A collection of schemas needed to render the component. Allowed values are
 `NO_ERRORS_SCHEMA` and `CUSTOM_ELEMENTS_SCHEMA`.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/NgModule#schemas).
+[Angular docs](https://angular.dev/guide/components/advanced-configuration#custom-element-schemas).
 
 **default** : `[]`
 
@@ -511,20 +517,20 @@ expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 Trigger a change detection cycle for the component.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/testing/ComponentFixture#detectChanges).
+[Angular docs](https://angular.dev/api/core/testing/ComponentFixture#detectChanges).
 
 ### `debugElement`
 
 The Angular `DebugElement` of the component.
 
-For more info see the [Angular docs](https://angular.io/api/core/DebugElement).
+For more info see the [Angular docs](https://angular.dev/api/core/DebugElement).
 
 ### `fixture`
 
 The Angular `ComponentFixture` of the component.
 
 For more info see the
-[Angular docs](https://angular.io/api/core/testing/ComponentFixture).
+[Angular docs](https://angular.dev/api/core/testing/ComponentFixture).
 
 ```typescript
 const {fixture} = await render(AppComponent)

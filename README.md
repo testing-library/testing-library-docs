@@ -8,6 +8,7 @@
 Documentation site for
 [React Testing Library](https://github.com/testing-library/react-testing-library),
 [DOM Testing Library](https://github.com/testing-library/dom-testing-library),
+[Angular Testing Library](https://github.com/testing-library/angular-testing-library),
 and [related projects](https://github.com/testing-library)
 
 **https://testing-library.com**
