@@ -37,25 +37,28 @@ export class CounterComponent {
 ```
 
 ```typescript title="counter.component.spec.ts"
-import { render, screen, fireEvent, aliasedInput } from '@testing-library/angular';
+import { signal, inputBinding, twoWayBinding } from '@angular/core';
+import { render, screen, fireEvent } from '@testing-library/angular';
 import { CounterComponent } from './counter.component';
 
 describe('Counter', () => {
-  it('should render counter', async () => {
+  it('renders counter', async () => {
     await render(CounterComponent, {
-      inputs: {
-        counter: 5,
-        // aliases need to be specified using aliasedInput
-        ...aliasedInput('greeting', 'Hello Alias!'),
-      },
+      bindings: [
+        twoWayBinding('counter', signal(5)),
+        // aliases are handled naturally with inputBinding
+        inputBinding('greeting', () => 'Hello Alias!'),
+      ],
     });
 
     expect(screen.getByText('Current Count: 5')).toBeVisible();
     expect(screen.getByText('Hello Alias!')).toBeVisible();
   });
 
-  it('should increment the counter on click', async () => {
-    await render(CounterComponent, { inputs: { counter: 5 } });
+  it('increments the counter on click', async () => {
+    await render(CounterComponent, {
+      bindings: [twoWayBinding('counter', signal(5))],
+    });
 
     const incrementButton = screen.getByRole('button', { name: '+' });
     fireEvent.click(incrementButton);
