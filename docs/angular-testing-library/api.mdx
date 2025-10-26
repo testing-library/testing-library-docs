@@ -120,6 +120,63 @@ await render(AppComponent, {
 })
 ```
 
+### `bindings`
+
+An array of bindings to apply to the component using Angular's native bindings API. This provides a more direct way to bind inputs and outputs compared to the `inputs` and `on` options. The bindings API uses Angular's `inputBinding`, `outputBinding`, and `twoWayBinding` functions from `@angular/core`.
+
+**default** : `[]`
+
+```typescript
+import { inputBinding, outputBinding, twoWayBinding, signal } from '@angular/core'
+
+await render(AppComponent, {
+  bindings: [
+    // Bind a static input value
+    inputBinding('greeting', () => 'Hello'),
+    
+    // Bind a signal as an input
+    inputBinding('age', () => 25),
+    
+    // Two-way binding with a signal
+    twoWayBinding('name', signal('John')),
+    
+    // Output binding with a callback
+    outputBinding('submitValue', (event) => console.log(event)),
+  ],
+})
+```
+
+**Using signals for reactive updates**:
+
+```typescript
+const greetingSignal = signal('Good day')
+const nameSignal = signal('David')
+const ageSignal = signal(35)
+
+const { fixture } = await render(AppComponent, {
+  bindings: [
+    inputBinding('greeting', greetingSignal),
+    inputBinding('age', ageSignal),
+    twoWayBinding('name', nameSignal),
+  ],
+})
+
+// Update signals externally
+greetingSignal.set('Good evening')
+```
+
+**Handling outputs**:
+
+```typescript
+const submitHandler = jest.fn()
+
+await render(AppComponent, {
+  bindings: [
+    outputBinding('submit', submitHandler),
+  ],
+})
+```
+
 ### `declarations`
 
 A collection of components, directives and pipes needed to render the component.
