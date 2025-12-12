@@ -89,7 +89,9 @@ For example:
 ```js
 render(MyComponent, {
   slots: {
-    default: 'default content',
+    default: 'Default',
+    first: h('h1', {}, 'Named Slot'),
+    second: Bar
   },
 })
 ```
