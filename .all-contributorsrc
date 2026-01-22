@@ -2827,6 +2827,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "brandonzylstra",
+      "name": "Brandon Zylstra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9854?v=4",
+      "profile": "https://github.com/brandonzylstra",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
