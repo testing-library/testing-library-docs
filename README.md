@@ -538,6 +538,7 @@ Thanks goes to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/zakingslayerv22"><img src="https://avatars.githubusercontent.com/u/11926638?v=4?s=100" width="100px;" alt="zakingslayerv22"/><br /><sub><b>zakingslayerv22</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=zakingslayerv22" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/time1043"><img src="https://avatars.githubusercontent.com/u/132178516?v=4?s=100" width="100px;" alt="time1043"/><br /><sub><b>time1043</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=time1043" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/brandonzylstra"><img src="https://avatars.githubusercontent.com/u/9854?v=4?s=100" width="100px;" alt="Brandon Zylstra"/><br /><sub><b>Brandon Zylstra</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=brandonzylstra" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/flashgordon2016"><img src="https://avatars.githubusercontent.com/u/25541756?v=4?s=100" width="100px;" alt="Matt Morse"/><br /><sub><b>Matt Morse</b></sub></a><br /><a href="https://github.com/testing-library/testing-library-docs/commits?author=flashgordon2016" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
