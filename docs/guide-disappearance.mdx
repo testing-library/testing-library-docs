@@ -31,8 +31,10 @@ test('movie title appears', async () => {
   // element is initially not present...
 
   // wait for appearance inside an assertion
+  // note use of queryBy instead of getBy to return null
+  // instead of throwing in the query itself
   await waitFor(() => {
-    expect(getByText('the lion king')).toBeInTheDocument()
+    expect(queryByText('the lion king')).toBeInTheDocument()
   })
 })
 ```
