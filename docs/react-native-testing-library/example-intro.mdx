@@ -42,7 +42,7 @@ test('examples of some things', async () => {
   // Using `findBy` query to wait for asynchronous operation to finish
   const usernameOutput = await screen.findByTestId('printed-username')
 
-  // Using `toHaveTextContent` matcher from `@testing-library/jest-native` package.
+  // Using the built-in `toHaveTextContent` matcher from React Native Testing Library.
   expect(usernameOutput).toHaveTextContent(expectedUsername)
 
   expect(screen.toJSON()).toMatchSnapshot()

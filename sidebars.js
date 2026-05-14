@@ -208,7 +208,6 @@ module.exports = {
       Ecosystem: [
         'ecosystem-jest-dom',
         'ecosystem-bs-jest-dom',
-        'ecosystem-jest-native',
         'ecosystem-react-select-event',
         'ecosystem-eslint-plugin-testing-library',
         'ecosystem-eslint-plugin-jest-dom',
