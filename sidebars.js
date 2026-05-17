@@ -217,6 +217,8 @@ module.exports = {
         'ecosystem-rtl-simple-queries',
         'ecosystem-testing-library-selector',
         'ecosystem-cli-testing-library',
+        'ecosystem-accesslint-jest',
+        'ecosystem-accesslint-vitest',
       ],
     },
   ],
