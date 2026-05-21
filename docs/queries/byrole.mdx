@@ -26,6 +26,7 @@ getByRole(
     pressed?: boolean,
     suggest?: boolean,
     current?: boolean | string,
+    disabled?: boolean,
     expanded?: boolean,
     queryFallbacks?: boolean,
     level?: number,
@@ -199,6 +200,28 @@ you can get the "👍" link by calling `getByRole('link', { current: 'page' })`
 and the "👎" by calling `getByRole('link', { current: false })`. To learn more
 about the current state see
 [ARIA `aria-current`](https://www.w3.org/TR/wai-aria-1.2/#aria-current).
+
+### `disabled`
+
+You can filter elements by their disabled state by setting `disabled: true` or
+`disabled: false`.
+
+For example in
+
+```html
+<body>
+  <section>
+    <button disabled>Login</button>
+    <div role="alert" aria-disabled="false">Failed to login</button>
+  </section>
+</body>
+```
+
+you can get the "Login" button by calling
+`getByRole('button', { disabled: true })`. To learn more about the disabled
+state see
+[ARIA `aria-disabled`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed) and
+[MDN `disabled` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled).
 
 ### `pressed`
 
