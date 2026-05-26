@@ -230,6 +230,7 @@ module.exports = {
         blog: {
           path: './blog',
           blogSidebarCount: 'ALL',
+          onUntruncatedBlogPosts: 'ignore',
           feedOptions: {
             type: 'all',
           },
