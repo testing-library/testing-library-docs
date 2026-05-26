@@ -13,6 +13,15 @@ module.exports = {
     'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700|Source+Code+Pro:500,700|Source+Sans+Pro:400,400i,700',
   ],
   favicon: 'img/octopus-32x32.png',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+      },
+    },
+  ],
   customFields: {
     // List of projects/orgs using your project for the users page.
     // You should add a lightImage and a darkImage for each theme.
