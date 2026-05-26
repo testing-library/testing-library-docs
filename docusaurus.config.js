@@ -248,7 +248,7 @@ module.exports = {
   themeConfig: {
     image: 'img/octopus-128x128.png',
     prism: {
-      additionalLanguages: ['diff'],
+      additionalLanguages: ['bash', 'diff'],
     },
     colorMode: {
       defaultMode: 'light',
