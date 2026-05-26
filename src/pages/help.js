@@ -38,7 +38,7 @@ export default function Help(props) {
       title: 'Discord',
     },
     {
-      content: `Stay up to date by following the [blog](${props.config.baseUrl}blog)`,
+      content: `Stay up to date by following the [blog](${baseUrl}blog)`,
       title: 'Blog',
     },
     {

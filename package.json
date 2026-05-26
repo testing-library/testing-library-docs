@@ -23,6 +23,18 @@
     "lint-staged": "^8.1.0",
     "prettier": "^2.2.1"
   },
+  "overrides": {
+    "ajv": "^8.0.0",
+    "url-loader": {
+      "ajv": "^6.0.0"
+    },
+    "file-loader": {
+      "ajv": "^6.0.0"
+    },
+    "null-loader": {
+      "ajv": "^6.0.0"
+    }
+  },
   "lint-staged": {
     "linters": {
       "*.js": [
@@ -52,6 +64,7 @@
     "clsx": "^1.1.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "remarkable": "^2.0.1"
+    "remarkable": "^2.0.1",
+    "url-loader": "^4.1.1"
   }
 }

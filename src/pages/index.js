@@ -75,10 +75,9 @@ const HomeSplash = props => {
   )
 }
 
-export default class Index extends React.Component {
-  render() {
-    const {config: siteConfig, language = ''} = this.props
-    const {baseUrl} = siteConfig
+export default function Index() {
+  const {siteConfig} = useDocusaurusContext()
+  const {baseUrl} = siteConfig
 
     const Block = props => (
       <Container
@@ -289,7 +288,7 @@ export default class Index extends React.Component {
         return null
       }
 
-      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page
+      const pageUrl = page => `${baseUrl}${page}`
 
       return (
         <div className="productShowcaseSection paddingBottom paddingTop">
@@ -343,7 +342,7 @@ export default class Index extends React.Component {
         title={siteConfig.title}
         description={siteConfig.tagline}
       >
-        <HomeSplash siteConfig={siteConfig} language={language} />
+        <HomeSplash siteConfig={siteConfig} />
         <div className="mainContainer">
           <FeatureCallout />
           <Features />
@@ -355,5 +354,4 @@ export default class Index extends React.Component {
         </div>
       </Layout>
     )
-  }
 }
