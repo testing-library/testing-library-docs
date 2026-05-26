@@ -246,6 +246,9 @@ module.exports = {
   plugins: [],
   themeConfig: {
     image: 'img/octopus-128x128.png',
+    prism: {
+      additionalLanguages: ['diff'],
+    },
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,

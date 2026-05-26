@@ -470,8 +470,28 @@ pre {
   max-width: 250px;
 }
 
+/* Diff code block highlighting */
+.token.inserted:not(.prefix) {
+  background-color: #d4edda;
+  color: inherit;
+  display: block;
+}
+
+.token.deleted:not(.prefix) {
+  background-color: #fddde4;
+  color: inherit;
+  display: block;
+}
+
+[data-theme='dark'] .token.inserted:not(.prefix) {
+  background-color: #1e3a2b;
+}
+
+[data-theme='dark'] .token.deleted:not(.prefix) {
+  background-color: #3a1e24;
+}
+
 details.alert {
-  --ifm-alert-border-color: var(--ifm-link-color);
   border: none;
   background: none;
   box-shadow: none;
