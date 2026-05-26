@@ -12,7 +12,6 @@ runner that's ESM compatible.
 ## Vitest
 
 1. Add development dependencies
-
    - [`@testing-library/svelte`][@testing-library/svelte]
    - [`@testing-library/jest-dom`][@testing-library/jest-dom] (Optional, but
      highly recommended)
@@ -82,7 +81,6 @@ runner that's ESM compatible.
    :::note
 
    The `svelteTesting` plugin:
-
    - Adds an automatic cleanup fixture to [`test.setupFiles`][test-setup-files]
    - Adds `browser` to [`resolve.conditions`][resolve-conditions]
 
@@ -140,12 +138,14 @@ runner that's ESM compatible.
 
 ### TypeScript
 
-Include [`@testing-library/jest-dom`][@testing-library/jest-dom] to the TypeScript `types` to make the TypeScript compiler aware about the [`@testing-library/jest-dom`][@testing-library/jest-dom] matchers.
+Include [`@testing-library/jest-dom`][@testing-library/jest-dom] to the
+TypeScript `types` to make the TypeScript compiler aware about the
+[`@testing-library/jest-dom`][@testing-library/jest-dom] matchers.
 
 ```json title="tsconfig.json"
 {
   "compilerOptions": {
-	"types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom"]
   }
 }
 ```
@@ -156,7 +156,6 @@ Include [`@testing-library/jest-dom`][@testing-library/jest-dom] to the TypeScri
 you must use Jest in [ESM mode][jest esm mode].
 
 1. Add development dependencies
-
    - [`@testing-library/svelte`][@testing-library/svelte]
    - [`@testing-library/jest-dom`][@testing-library/jest-dom] (Optional, but
      highly recommended)
@@ -198,7 +197,6 @@ you must use Jest in [ESM mode][jest esm mode].
 
    If you are using Svelte 5, you must use `svelte-jester@5` or later, and you
    will need to make additional changes to your Jest configuration.
-
    - Update `transform` to compile `.svelte.(js|ts)` modules
    - Allow `@testing-library/svelte` to be transformed, even though it's in
      `node_modules`

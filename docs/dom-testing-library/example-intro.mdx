@@ -33,13 +33,16 @@ function getExampleDOM() {
   button.addEventListener('click', () => {
     // let's pretend this is making a server request, so it's async
     // (you'd want to mock this imaginary request in your unit tests)...
-    setTimeout(() => {
-      const printedUsernameContainer = document.createElement('div')
-      printedUsernameContainer.innerHTML = `
+    setTimeout(
+      () => {
+        const printedUsernameContainer = document.createElement('div')
+        printedUsernameContainer.innerHTML = `
         <div data-testid="printed-username">${input.value}</div>
       `
-      div.appendChild(printedUsernameContainer)
-    }, Math.floor(Math.random() * 200))
+        div.appendChild(printedUsernameContainer)
+      },
+      Math.floor(Math.random() * 200),
+    )
   })
   return div
 }

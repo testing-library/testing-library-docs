@@ -83,7 +83,8 @@ as part of the `change` method call.
 
 <summary>How do I test error boundaries</summary>
 
-To test if an error boundary successfully catches an error, you should make sure that if the fallback of the boundary is displayed when a child threw.
+To test if an error boundary successfully catches an error, you should make sure
+that if the fallback of the boundary is displayed when a child threw.
 
 Here's an example of how you can test an error boundary:
 
@@ -115,16 +116,18 @@ test('error boundary catches error', () => {
 })
 ```
 
-If the error boundary did not catch the error, the test would fail since the `render` call would throw the error the Component produced.
-
+If the error boundary did not catch the error, the test would fail since the
+`render` call would throw the error the Component produced.
 
 :::info
 
-React 18 will call `console.error` with an extended error message.
-React 19 will call `console.warn` with an extended error message.
+React 18 will call `console.error` with an extended error message. React 19 will
+call `console.warn` with an extended error message.
 
-To disable the additional `console.warn` call in React 19, you can provide a custom `onCaughtError` callback e.g. `render(<App />, {onCaughtError: () => {}})`
-`onCaughtError` is not supported in React 18.
+To disable the additional `console.warn` call in React 19, you can provide a
+custom `onCaughtError` callback e.g.
+`render(<App />, {onCaughtError: () => {}})` `onCaughtError` is not supported in
+React 18.
 
 :::
 
@@ -151,10 +154,10 @@ As you write your tests, keep in mind:
 
 <summary>How do I test thrown errors in a Component or Hook?</summary>
 
-If a component throws during render, the origin of the state update will throw if wrapped in `act`.
-By default, `render` and `fireEvent` are wrapped in `act`.
-You can just wrap it in a try-catch or use dedicated matchers if your test runner supports these.
-For example, in Jest you can use `toThrow`:
+If a component throws during render, the origin of the state update will throw
+if wrapped in `act`. By default, `render` and `fireEvent` are wrapped in `act`.
+You can just wrap it in a try-catch or use dedicated matchers if your test
+runner supports these. For example, in Jest you can use `toThrow`:
 
 ```jsx
 function Thrower() {
@@ -180,9 +183,10 @@ test('it throws', () => {
 
 :::info
 
-React 18 will call `console.error` with an extended error message.
-React 19 will call `console.warn` with an extended error message unless the state update is wrapped in `act`.
-`render`, `renderHook` and `fireEvent` are wrapped in `act` by default.
+React 18 will call `console.error` with an extended error message. React 19 will
+call `console.warn` with an extended error message unless the state update is
+wrapped in `act`. `render`, `renderHook` and `fireEvent` are wrapped in `act` by
+default.
 
 :::
 

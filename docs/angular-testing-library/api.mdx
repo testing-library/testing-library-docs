@@ -77,7 +77,6 @@ export async function render<WrapperType = WrapperComponent>(
 
 ## Component RenderOptions
 
-
 ### `inputs`
 
 An object to set `@Input` or `input()` properties of the component.
@@ -122,26 +121,29 @@ await render(AppComponent, {
 
 ### `bindings`
 
-An array of bindings to apply to the component using Angular's native bindings API. This provides a more direct way to bind inputs and outputs compared to the `inputs` and `on` options. The bindings API uses Angular's `inputBinding`, `outputBinding`, and `twoWayBinding` functions from `@angular/core`.
+An array of bindings to apply to the component using Angular's native bindings
+API. This provides a more direct way to bind inputs and outputs compared to the
+`inputs` and `on` options. The bindings API uses Angular's `inputBinding`,
+`outputBinding`, and `twoWayBinding` functions from `@angular/core`.
 
 **default** : `[]`
 
 ```typescript
-import { inputBinding, outputBinding, twoWayBinding, signal } from '@angular/core'
+import {inputBinding, outputBinding, twoWayBinding, signal} from '@angular/core'
 
 await render(AppComponent, {
   bindings: [
     // Bind a static input value
     inputBinding('greeting', () => 'Hello'),
-    
+
     // Bind a signal as an input
     inputBinding('age', () => 25),
-    
+
     // Two-way binding with a signal
     twoWayBinding('name', signal('John')),
-    
+
     // Output binding with a callback
-    outputBinding('submitValue', (event) => console.log(event)),
+    outputBinding('submitValue', event => console.log(event)),
   ],
 })
 ```
@@ -153,7 +155,7 @@ const greetingSignal = signal('Good day')
 const nameSignal = signal('David')
 const ageSignal = signal(35)
 
-const { fixture } = await render(AppComponent, {
+const {fixture} = await render(AppComponent, {
   bindings: [
     inputBinding('greeting', greetingSignal),
     inputBinding('age', ageSignal),
@@ -171,9 +173,7 @@ greetingSignal.set('Good evening')
 const submitHandler = jest.fn()
 
 await render(AppComponent, {
-  bindings: [
-    outputBinding('submit', submitHandler),
-  ],
+  bindings: [outputBinding('submit', submitHandler)],
 })
 ```
 
@@ -449,7 +449,6 @@ await render(AppComponent, {
 })
 ```
 
-
 ### ~~`componentInputs`~~ (deprecated)
 
 An object to set `@Input` properties of the component. Uses `setInput` to set
@@ -506,7 +505,6 @@ await render(AppComponent, {
 })
 ```
 
-
 ## `RenderResult`
 
 ### `container`
@@ -541,7 +539,7 @@ expect(screen.getByTestId('count-value').textContent).toBe('4')
 expect(screen.getByTestId('name-value').textContent).toBe('Sarah')
 
 await rerender({
-  inputs: {count: 7}
+  inputs: {count: 7},
 })
 
 // count is updated to 7

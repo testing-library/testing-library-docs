@@ -329,8 +329,7 @@ module.exports = {
             },
             {
               label: 'Stack Overflow',
-              href:
-                'https://stackoverflow.com/questions/tagged/react-testing-library',
+              href: 'https://stackoverflow.com/questions/tagged/react-testing-library',
             },
             {
               label: 'Discord',
