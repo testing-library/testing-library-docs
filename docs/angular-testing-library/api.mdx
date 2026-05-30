@@ -252,9 +252,25 @@ await render(AppComponent, {
 })
 ```
 
-### `componentImports`
+### `importOverrides`
 
-A collection of imports to override a standalone component's imports with.
+A collection of import overrides to replace specific imports of a standalone component without replacing the entire imports array. Each entry specifies which import to `replace` and what to replace it `with`. This is the preferred alternative to `componentImports` when you only want to stub a subset of a component's imports.
+
+**default** : `undefined`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  importOverrides: [
+    { replace: ChildComponent, with: MockChildComponent },
+  ],
+})
+```
+
+### ~~`componentImports`~~ (deprecated)
+
+A collection of imports to override **all** of a standalone component's imports with. Prefer [`importOverrides`](#importOverrides) when you only need to replace specific imports.
 
 **default** : `undefined`
 
