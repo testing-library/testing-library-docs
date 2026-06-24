@@ -74,12 +74,16 @@ Prior to `@testing-library/svelte@5.0.0`, the `baseElement` option was named
 
 :::
 
-| Option        | Description                                         | Default                                    |
-| ------------- | --------------------------------------------------- | ------------------------------------------ |
-| `baseElement` | The base element for queries and [`debug`](#debug). | `componentOptions.target ?? document.body` |
-| `queries`     | [Custom Queries][custom-queries].                   | N/A                                        |
+| Option         | Description                                                       | Default                                    |
+| -------------- | ----------------------------------------------------------------- | ------------------------------------------ |
+| `baseElement`  | The base element for queries and [`debug`](#debug).               | `componentOptions.target ?? document.body` |
+| `queries`      | [Custom Queries][custom-queries].                                 | N/A                                        |
+| `wrapper`      | A [wrapper component][wrappers-example] for component under test. | N/A                                        |
+| `wrapperProps` | Props to pass to the `wrapper` component.                         | N/A                                        |
 
 [custom-queries]: ../dom-testing-library/api-custom-queries.mdx
+[wrappers-example]:
+  https://github.com/testing-library/svelte-testing-library/tree/main/examples/wrappers
 
 ### Render Results
 
@@ -89,6 +93,7 @@ Prior to `@testing-library/svelte@5.0.0`, the `baseElement` option was named
 | [`component`](#component)     | The mounted Svelte component.                              |
 | [`container`](#container)     | The DOM element the component is mounted to.               |
 | [`debug`](#debug)             | Log elements using [`prettyDOM`][pretty-dom].              |
+| [`wrapper`](#wrapper)         | The mounted `wrapper` component, if provided.              |
 | [`rerender`](#rerender)       | Update the component's props.                              |
 | [`unmount`](#unmount)         | Unmount and destroy the component.                         |
 | [`...queries`](#queries)      | [Query functions][query-functions] bound to `baseElement`. |
@@ -139,6 +144,14 @@ by Kent C. Dodds to understand the difference between the **end user** and
 :::
 
 [test-user]: https://kentcdodds.com/blog/avoid-the-test-user
+
+#### `wrapper`
+
+_Added in `@testing-library/svelte@5.4.0`_
+
+The instance of the [`wrapper`](#wrapper) component, if one was provided via
+render options. Like [`component`](#component), this is the wrapper's exports.
+`undefined` if no `wrapper` was used.
 
 #### `debug`
 
