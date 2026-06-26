@@ -471,7 +471,6 @@ pre {
 }
 
 details.alert {
-  --ifm-alert-border-color: var(--ifm-link-color);
   border: none;
   background: none;
   box-shadow: none;

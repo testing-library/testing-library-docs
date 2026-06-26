@@ -13,6 +13,15 @@ module.exports = {
     'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700|Source+Code+Pro:500,700|Source+Sans+Pro:400,400i,700',
   ],
   favicon: 'img/octopus-32x32.png',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+      },
+    },
+  ],
   customFields: {
     // List of projects/orgs using your project for the users page.
     // You should add a lightImage and a darkImage for each theme.
@@ -230,6 +239,7 @@ module.exports = {
         blog: {
           path: './blog',
           blogSidebarCount: 'ALL',
+          onUntruncatedBlogPosts: 'ignore',
           feedOptions: {
             type: 'all',
           },
@@ -246,6 +256,9 @@ module.exports = {
   plugins: [],
   themeConfig: {
     image: 'img/octopus-128x128.png',
+    prism: {
+      additionalLanguages: ['bash', 'diff'],
+    },
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
@@ -316,8 +329,7 @@ module.exports = {
             },
             {
               label: 'Stack Overflow',
-              href:
-                'https://stackoverflow.com/questions/tagged/react-testing-library',
+              href: 'https://stackoverflow.com/questions/tagged/react-testing-library',
             },
             {
               label: 'Discord',

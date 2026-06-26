@@ -80,8 +80,8 @@ It will be merged with `propsData`.
 
 ##### `slots` (`Object`)
 
-Used to provide slot content when rendering the component. Keys are slot names, 
-and values can be strings, template snippets, or components, similar to how 
+Used to provide slot content when rendering the component. Keys are slot names,
+and values can be strings, template snippets, or components, similar to how
 [slots](https://test-utils.vuejs.org/api/#slots) are defined in Vue Test Utils.
 
 For example:
@@ -91,7 +91,7 @@ render(MyComponent, {
   slots: {
     default: 'Default',
     first: h('h1', {}, 'Named Slot'),
-    second: Bar
+    second: Bar,
   },
 })
 ```

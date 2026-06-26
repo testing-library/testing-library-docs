@@ -107,9 +107,9 @@ well as what is printed when you use `debug()`.
 ### `hydrate`
 
 If hydrate is set to true, then it will render with
-[ReactDOM.hydrate](https://react.dev/reference/react-dom/hydrate#hydrate). This may be
-useful if you are using server-side rendering and use ReactDOM.hydrate to mount
-your components.
+[ReactDOM.hydrate](https://react.dev/reference/react-dom/hydrate#hydrate). This
+may be useful if you are using server-side rendering and use ReactDOM.hydrate to
+mount your components.
 
 ### `legacyRoot`
 
@@ -128,13 +128,15 @@ should enable this option by setting `legacyRoot: true`.
 
 ### `onCaughtError`
 
-Callback called when React catches an error in an Error Boundary.
-Behaves the same as [`onCaughtError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+Callback called when React catches an error in an Error Boundary. Behaves the
+same as
+[`onCaughtError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `onRecoverableError`
 
-Callback called when React automatically recovers from errors. 
-Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+Callback called when React automatically recovers from errors. Behaves the same
+as
+[`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `wrapper`
 
@@ -165,8 +167,10 @@ Custom queries can also be added globally by following the
 
 ### `render` Options `reactStrictMode`
 
-When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is rendered around the inner element.
-If defined, overrides the value of `reactStrictMode` set in [`configure`](https://testing-library.com/docs/react-testing-library/api/#configure-options).
+When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
+rendered around the inner element. If defined, overrides the value of
+`reactStrictMode` set in
+[`configure`](https://testing-library.com/docs/react-testing-library/api/#configure-options).
 
 ## `render` Result
 
@@ -348,10 +352,10 @@ errors in your tests).
 ## `act`
 
 This is a light wrapper around the
-[`react` `act` function](https://react.dev/reference/react/act).
-All it does is forward all arguments to the act function if your version of
-react supports `act`. It is recommended to use the import from
-`@testing-library/react` over `react` for consistency reasons.
+[`react` `act` function](https://react.dev/reference/react/act). All it does is
+forward all arguments to the act function if your version of react supports
+`act`. It is recommended to use the import from `@testing-library/react` over
+`react` for consistency reasons.
 
 ## `renderHook`
 
@@ -367,7 +371,7 @@ function renderHook<
   Props,
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container
+  BaseElement extends Element | DocumentFragment = Container,
 >(
   render: (initialProps: Props) => Result,
   options?: RenderHookOptions<Props, Q, Container, BaseElement>,
@@ -426,18 +430,19 @@ test('returns logged in user', () => {
 
 ### `onCaughtError`
 
-Callback called when React catches an error in an Error Boundary.
-Behaves the same as [`onCaughtError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+Callback called when React catches an error in an Error Boundary. Behaves the
+same as
+[`onCaughtError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `onRecoverableError`
 
-Callback called when React automatically recovers from errors. 
-Behaves the same as [`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+Callback called when React automatically recovers from errors. Behaves the same
+as
+[`onRecoverableError` in `ReactDOMClient.createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters).
 
 ### `renderHook` Options `wrapper`
 
 See [`wrapper` option for `render`](#wrapper)
-
 
 ### `renderHook` Options `reactStrictMode`
 
@@ -468,8 +473,8 @@ expect(result.current).toBe('Alice')
 ```
 
 Note that the value is held in `result.current`. Think of `result` as a
-[ref](https://react.dev/learn/referencing-values-with-refs) for the most recently
-**committed** value.
+[ref](https://react.dev/learn/referencing-values-with-refs) for the most
+recently **committed** value.
 
 ### `rerender`
 
@@ -516,4 +521,6 @@ configure({reactStrictMode: true})
 When enabled, [`<StrictMode>`](https://react.dev/reference/react/StrictMode) is
 rendered around the inner element. Defaults to `false`.
 
-This setting can be changed for a single test by providing `reactStrictMode` in the options argument of the [`render`](#render-options-reactstrictmode) function. 
+This setting can be changed for a single test by providing `reactStrictMode` in
+the options argument of the [`render`](#render-options-reactstrictmode)
+function.

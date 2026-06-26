@@ -24,8 +24,8 @@ npm install --save-dev @testing-library/webdriverio
 ### `setupBrowser`
 
 Accepts a WebdriverIO [browser object](https://webdriver.io/docs/browserobject)
-and returns dom-testing-library [queries](/docs/queries/about.mdx) modified to return
-WebdriverIO elements like normal
+and returns dom-testing-library [queries](/docs/queries/about.mdx) modified to
+return WebdriverIO elements like normal
 [selectors](https://webdriver.io/docs/selectors/). **All queries are async** and
 are bound to `document.body` by default.
 
@@ -203,17 +203,16 @@ import {WebdriverIOQueriesChainable, WebdriverIOQueries} from '../../src'
 declare global {
   namespace WebdriverIO {
     interface Browser
-      extends WebdriverIOQueries,
-        WebdriverIOQueriesChainable<Browser> {}
+      extends WebdriverIOQueries, WebdriverIOQueriesChainable<Browser> {}
     interface Element
-      extends WebdriverIOQueries,
-        WebdriverIOQueriesChainable<Element> {}
+      extends WebdriverIOQueries, WebdriverIOQueriesChainable<Element> {}
   }
 }
 
 declare module 'webdriverio' {
-  interface ChainablePromiseElement<T extends WebdriverIO.Element | undefined>
-    extends WebdriverIOQueriesChainable<T> {}
+  interface ChainablePromiseElement<
+    T extends WebdriverIO.Element | undefined,
+  > extends WebdriverIOQueriesChainable<T> {}
 }
 ```
 

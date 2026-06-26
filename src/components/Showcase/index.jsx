@@ -1,8 +1,9 @@
 import React from 'react'
-import {useThemeConfig} from '@docusaurus/theme-common'
+import {useColorMode} from '@docusaurus/theme-common'
 
 export const Showcase = ({users}) => {
-  const {isDarkTheme} = useThemeConfig()
+  const {colorMode} = useColorMode()
+  const isDarkTheme = colorMode === 'dark'
   return users.map(user => (
     <a href={user.infoLink} key={user.infoLink}>
       <img

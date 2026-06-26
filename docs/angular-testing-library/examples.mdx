@@ -8,9 +8,11 @@ title: Example
 > or follow the
 > [guided example](https://timdeschryver.dev/blog/getting-the-most-value-out-of-your-angular-component-tests)
 
-Angular Testing Library can be used with standalone components and also with Angular components that uses Modules.
-The example below shows how to test a standalone component, but the same principles apply to Angular components that uses Modules.
-In fact, there should be no difference in how you test both types of components, only the setup might be different.
+Angular Testing Library can be used with standalone components and also with
+Angular components that uses Modules. The example below shows how to test a
+standalone component, but the same principles apply to Angular components that
+uses Modules. In fact, there should be no difference in how you test both types
+of components, only the setup might be different.
 
 ```ts title="counter.component.ts"
 @Component({
@@ -23,23 +25,23 @@ In fact, there should be no difference in how you test both types of components,
   `,
 })
 export class CounterComponent {
-  counter = model(0);
-  hello = input('Hi', { alias: 'greeting' });
+  counter = model(0)
+  hello = input('Hi', {alias: 'greeting'})
 
   increment() {
-    this.counter.set(this.counter() + 1);
+    this.counter.set(this.counter() + 1)
   }
 
   decrement() {
-    this.counter.set(this.counter() - 1);
+    this.counter.set(this.counter() - 1)
   }
 }
 ```
 
 ```typescript title="counter.component.spec.ts"
-import { signal, inputBinding, twoWayBinding } from '@angular/core';
-import { render, screen, fireEvent } from '@testing-library/angular';
-import { CounterComponent } from './counter.component';
+import {signal, inputBinding, twoWayBinding} from '@angular/core'
+import {render, screen, fireEvent} from '@testing-library/angular'
+import {CounterComponent} from './counter.component'
 
 describe('Counter', () => {
   it('renders counter', async () => {
@@ -49,23 +51,23 @@ describe('Counter', () => {
         // aliases are handled naturally with inputBinding
         inputBinding('greeting', () => 'Hello Alias!'),
       ],
-    });
+    })
 
-    expect(screen.getByText('Current Count: 5')).toBeVisible();
-    expect(screen.getByText('Hello Alias!')).toBeVisible();
-  });
+    expect(screen.getByText('Current Count: 5')).toBeVisible()
+    expect(screen.getByText('Hello Alias!')).toBeVisible()
+  })
 
   it('increments the counter on click', async () => {
     await render(CounterComponent, {
       bindings: [twoWayBinding('counter', signal(5))],
-    });
+    })
 
-    const incrementButton = screen.getByRole('button', { name: '+' });
-    fireEvent.click(incrementButton);
+    const incrementButton = screen.getByRole('button', {name: '+'})
+    fireEvent.click(incrementButton)
 
-    expect(screen.getByText('Current Count: 6')).toBeVisible();
-  });
-});
+    expect(screen.getByText('Current Count: 6')).toBeVisible()
+  })
+})
 ```
 
 ## More examples
