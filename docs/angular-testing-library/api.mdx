@@ -231,6 +231,9 @@ await render(FixtureComponent, {
 })
 ```
 
+To set the state of specific deferrable blocks, pass an array of
+`{deferBlockState, deferBlockIndex}` objects instead.
+
 ### `componentProviders`
 
 A collection of providers needed to render the component via Dependency
@@ -433,6 +436,25 @@ await render(AppComponent, {
 })
 ```
 
+### `initialRoute`
+
+Specifies which route should be initially navigated to. Use it together with
+[`routes`](#routes).
+
+**default** : `''`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  initialRoute: 'myroute',
+  routes: [
+    {path: '', component: HomeComponent},
+    {path: 'myroute', component: SecondaryComponent},
+  ],
+})
+```
+
 ### `schemas`
 
 A collection of schemas needed to render the component. Allowed values are
@@ -465,6 +487,39 @@ await render(AppComponent, {
 })
 ```
 
+### `configureTestBed`
+
+A callback to configure the `TestBed` before the components are compiled. Use
+it for `TestBed` configuration that isn't covered by the other options.
+
+**default** : `() => {}`
+
+**example**:
+
+```typescript
+await render(AppComponent, {
+  configureTestBed: testBed => {
+    testBed.overrideProvider(AppService, {useValue: appServiceMock})
+  },
+})
+```
+
+### `wrapper`
+
+Only available when rendering a [`template`](#template). The Angular component
+to wrap the template in, its template is overridden with the provided
+`template`. A standalone component cannot be used as a wrapper.
+
+**default** : `WrapperComponent`, an empty non-standalone component
+
+**example**:
+
+```typescript
+await render('<div appSpoiler></div>', {
+  declarations: [SpoilerDirective],
+  wrapper: CustomWrapperComponent,
+})
+```
 
 ### ~~`componentInputs`~~ (deprecated)
 
@@ -500,7 +555,7 @@ await render(AppComponent, {
 })
 ```
 
-### ~~`componentProperties`~~ (deprecated)
+### `componentProperties`
 
 An object to set `@Input` and `@Output` properties of the component. Doesn't
 have a fine-grained control as `inputs` and `on`.
@@ -620,7 +675,8 @@ const componentInstance = fixture.componentInstance
 
 Accepts a DOM element or a path as parameter. If an element is passed,
 `navigate` will navigate to the `href` value of the element. If a path is
-passed, `navigate` will navigate to the path.
+passed, `navigate` will navigate to the path. An optional second parameter,
+`basePath`, is prepended to the `href` or path.
 
 ```typescript
 const { navigate } = await render(AppComponent, {
@@ -667,4 +723,35 @@ expect(screen.getByText(/loading/i)).toBeInTheDocument()
 
 await renderDeferBlock(DeferBlockState.Complete)
 expect(screen.getByText(/completed/i)).toBeInTheDocument()
+```
+
+When the component contains multiple deferrable blocks, pass the index of the
+block as the second argument, for example
+`renderDeferBlock(DeferBlockState.Complete, 1)`.
+
+## `configure`
+
+Sets the global configuration that is used by every `render` call. It accepts a
+partial configuration object, or a callback that receives the current
+configuration and returns the new one.
+
+- `dom`: the
+  [DOM Testing Library configuration](dom-testing-library/api-configuration.mdx)
+- `defaultImports`: imports that are added to the `imports` of every `render`
+- `excludeComponentDeclaration`: the default value of the
+  [`excludeComponentDeclaration`](#excludecomponentdeclaration) render option
+
+```typescript
+import {configure} from '@testing-library/angular'
+
+configure({
+  defaultImports: [NoopAnimationsModule],
+  dom: {testIdAttribute: 'data-test'},
+})
+
+// or, based on the current configuration
+configure(config => ({
+  ...config,
+  defaultImports: [...(config.defaultImports ?? []), NoopAnimationsModule],
+}))
 ```
