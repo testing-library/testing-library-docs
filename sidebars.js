@@ -124,6 +124,7 @@ module.exports = {
             'angular-testing-library/intro',
             'angular-testing-library/examples',
             'angular-testing-library/api',
+            'angular-testing-library/zoneless',
             'angular-testing-library/version-compatibility',
             'angular-testing-library/faq',
           ],
