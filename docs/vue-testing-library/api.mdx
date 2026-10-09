@@ -62,17 +62,29 @@ An object containing additional information to be passed to `@vue/test-utils`
 
 Additionally, the following options can also be provided:
 
-##### `store` (`Object` | `Store`)
+##### ~~`store`~~ (deprecated)
 
-The object definition of a [Vuex](https://vuex.vuejs.org/) store. If a `store`
-object is provided, `Vue Testing Library` will import and configure a Vuex
-store. If an instantiated Vuex store is passed, it will be used.
+Removed in Vue Testing Library v6.4.0, passing it only logs a warning. Create a
+[Vuex](https://vuex.vuejs.org/) store instance and register it through
+`global.plugins` instead.
 
-##### `routes` (`Array` | `VueRouter`)
+```js
+render(Component, {
+  global: {plugins: [store]},
+})
+```
 
-A set of routes for [Vue Router](https://router.vuejs.org/). If `routes` is
-provided, the library will import and configure Vue Router. If an instantiated
-Vue Router is passed, it will be used.
+##### ~~`routes`~~ (deprecated)
+
+Removed in Vue Testing Library v6.4.0, passing it only logs a warning. Create a
+[Vue Router](https://router.vuejs.org/) instance and register it through
+`global.plugins` instead.
+
+```js
+render(Component, {
+  global: {plugins: [router]},
+})
+```
 
 ##### `props` (`Object`)
 
