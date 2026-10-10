@@ -9,6 +9,7 @@ sidebar_label: API
 
 - [`render`](#render)
 - [`act`](#act)
+- [`setup`](#setup)
 - [`cleanup`](#cleanup)
 - [`fireEvent` (async)](#fireevent-async)
 
@@ -32,7 +33,8 @@ You may customize how the component is created and mounted. These options are
 passed directly to Svelte.
 
 If you only need to send props to your component, you may pass props directly,
-as long as those props don't share a name with a component option.
+as long as those props don't share a name with a component option. Mixing props
+and component options in the same object throws an `UnknownSvelteOptionsError`.
 
 ```js
 // pass props to the component
@@ -208,6 +210,19 @@ await act(() => component.$set({myProp: 'new value'}))
 
 :::
 
+##### ~~`rerender({props})`~~ (deprecated)
+
+Passing props under a `props` key logs a deprecation warning. Pass the props
+directly to `rerender` instead.
+
+```js
+// deprecated
+await rerender({props: {myProp: 'new value'}})
+
+// use instead
+await rerender({myProp: 'new value'})
+```
+
 #### `unmount`
 
 Unmount and destroy the Svelte component.
@@ -244,6 +259,37 @@ const button = getByRole('button')
 ```
 
 [screen]: ../queries/about.mdx#screen
+
+## `setup`
+
+Prepare the test environment before rendering. `setup` configures
+[`@testing-library/dom`][@testing-library/dom] so that `fireEvent`,
+[`@testing-library/user-event`][user-event] and `waitFor` wait for Svelte to
+flush changes to the DOM, and loads the scaffolding required by the
+[`wrapper`](#render-options) render option.
+
+:::info
+
+`setup` is called automatically before each test if your testing framework adds
+a global `beforeEach` method (e.g. Mocha, Jest, or Jasmine), or if you use
+`import '@testing-library/svelte/vitest'` in your [Vitest setup
+file][vitest-setup]. Usually, you shouldn't need to call `setup` yourself.
+
+:::
+
+```js
+import {cleanup, render, setup} from '@testing-library/svelte'
+
+beforeEach(async () => {
+  await setup()
+})
+
+afterEach(() => {
+  cleanup()
+})
+
+render(YourComponent)
+```
 
 ## `cleanup`
 
