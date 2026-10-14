@@ -83,37 +83,44 @@ expect(queryByText('submit')).not.toBeInTheDocument()
 <details>
   <summary>Why does my Vue Router state seem to be shared between tests?</summary>
 
-By default, Vue Router uses
-[`hash` routing mode](https://router.vuejs.org/api/#mode), which stores route
-updates in `window.location`. Test runners, such as Jest, do not reset the JSDOM
-environment in between test invocations, so route transitions from previous
-tests can leak into subsequent tests, even though a new Vue Router is created
-with each call to `render`.
+The history implementations most apps use,
+[`createWebHistory`](https://router.vuejs.org/api/functions/createWebHistory.html)
+and
+[`createWebHashHistory`](https://router.vuejs.org/api/functions/createWebHashHistory.html),
+store the current URL in `window.location`. Test runners such as Jest and Vitest
+do not reset the JSDOM window between tests, so a navigation in one test leaks
+into the next, even when each test creates its own router.
 
-To work around this issue, pass an instantiated router using `abstract` mode.
-`abstract` mode does not store route information on the JSDOM `window`, so
-routing information will not leak between tests. For example:
+In tests, use
+[`createMemoryHistory`](https://router.vuejs.org/api/functions/createMemoryHistory.html)
+instead. It keeps the history stack in memory and never touches
+`window.location`, so nothing is shared between tests.
+
+Vue Router navigates asynchronously, and a freshly created router has not
+navigated anywhere yet. Navigate to the route under test and wait for that
+navigation to finish before rendering, so the component mounts on that route:
 
 ```js
 import {render} from '@testing-library/vue'
+import {createRouter, createMemoryHistory} from 'vue-router'
 import Component from './Component.vue'
-import VueRouter from 'vue-router'
 
-test('uses abstract mode for the router', async () => {
-  const router = new VueRouter({
-    mode: 'abstract',
+test('isolates router state with memory history', async () => {
+  const router = createRouter({
+    history: createMemoryHistory(),
     routes: [
       // Your routes here
     ],
   })
 
-  const renderResult = render(Component, {
-    routes: router,
-  })
-
-  // Unlike the router in `hash` mode, the initial routing stack is empty. So,
-  // you need to push an initial route to the stack.
+  // Awaiting push waits for the navigation to finish.
   await router.push('/')
+
+  render(Component, {
+    global: {
+      plugins: [router],
+    },
+  })
 })
 ```
 
@@ -124,26 +131,25 @@ your test suite. For example:
 // test-utils.js
 
 import {render} from '@testing-library/vue'
-import VueRouter from 'vue-router'
+import {createRouter, createMemoryHistory} from 'vue-router'
 
-export async function renderApp(component, options) {
-  const router = new VueRouter({
-    mode: 'abstract',
+export async function renderApp(component, options = {}) {
+  const router = createRouter({
+    history: createMemoryHistory(),
     routes: [
       // Your routes here
     ],
   })
 
-  const renderResult = render(component, {
-    routes: router,
-    ...options,
-  })
-
-  // Unlike the router in `hash` mode, the initial routing stack is empty. So,
-  // you need to push an initial route to the stack.
   await router.push('/')
 
-  return renderResult
+  return render(component, {
+    ...options,
+    global: {
+      ...options.global,
+      plugins: [router, ...(options.global?.plugins || [])],
+    },
+  })
 }
 ```
 
