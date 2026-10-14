@@ -318,8 +318,9 @@ can contain options that affect the precision of string matching:
 - `exact`: Defaults to `true`; matches full strings, case-sensitive. When false,
   matches substrings and is not case-sensitive.
   - it has no effect when used together with `regex` or `function` arguments.
-  - in most cases, using a regex instead of a string combined with `{ exact: false }`
-    gives you more control over fuzzy matching so it should be preferred.
+  - in most cases, using a regex instead of a string combined with
+    `{ exact: false }` gives you more control over fuzzy matching so it should
+    be preferred.
 - `normalizer`: An optional function which overrides normalization behavior. See
   [`Normalization`](#normalization).
 
@@ -382,17 +383,6 @@ and establish a stable API contract in the HTML.
 const {container} = render(<MyComponent />)
 const foo = container.querySelector('[data-foo="bar"]')
 ```
-
-## Browser extension
-
-Do you still have problems knowing how to use Testing Library queries?
-
-There is a very cool Browser extension for Chrome named
-[Testing Playground](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano),
-and it helps you find the best queries to select elements. It allows you to
-inspect the element hierarchies in the Browser's Developer Tools, and provides
-you with suggestions on how to select them, while encouraging good testing
-practices.
 
 ## Playground
 
