@@ -1,0 +1,35 @@
+---
+id: ecosystem-accesslint-vitest
+title: accesslint/vitest
+---
+
+[`@accesslint/vitest`][gh] is a companion library for Testing Library that adds
+a synchronous `toBeAccessible()` matcher for Vitest, covering WCAG 2.2 Level A
+and AA accessibility rules. Works under `jsdom` and `happy-dom`.
+
+```bash npm2yarn
+npm install --save-dev @accesslint/vitest
+```
+
+Add it as a setup file in your Vitest config, then assert on any rendered
+element:
+
+```jsx
+import { render } from '@testing-library/react'
+import { LoginForm } from './LoginForm'
+
+test('LoginForm is accessible', () => {
+  const { container } = render(<LoginForm />)
+  expect(container).toBeAccessible()
+})
+```
+
+Options include `disabledRules`, `failOn` impact thresholds, an opt-in audit
+memoization fixture for component tests that chain multiple assertions, and
+snapshot baselines that auto-ratchet as you fix violations.
+
+- [@accesslint/vitest on GitHub][gh]
+- [@accesslint/vitest on npm][npm]
+
+[gh]: https://github.com/AccessLint/accesslint/tree/main/vitest
+[npm]: https://www.npmjs.com/package/@accesslint/vitest

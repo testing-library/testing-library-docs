@@ -1,0 +1,38 @@
+---
+id: ecosystem-accesslint-jest
+title: accesslint/jest
+---
+
+[`@accesslint/jest`][gh] is a companion library for Testing Library that adds a
+synchronous `toBeAccessible()` matcher for Jest, covering WCAG 2.2 Level A and
+AA accessibility rules. Works under `jsdom` and `happy-dom`.
+
+```bash npm2yarn
+npm install --save-dev @accesslint/jest
+```
+
+Register the matcher once via `setupFilesAfterEnv` in your Jest config, then
+assert on any rendered element:
+
+```jsx
+import { render } from '@testing-library/react'
+import { LoginForm } from './LoginForm'
+
+test('LoginForm is accessible', () => {
+  const { container } = render(<LoginForm />)
+  expect(container).toBeAccessible()
+})
+```
+
+Violations are scoped to the element you pass, so components can be tested in
+isolation. Options include `disabledRules`, `failOn` impact thresholds, and
+snapshot baselines that auto-ratchet as you fix violations.
+
+Check out [@accesslint/jest's documentation][gh] for setup, options, and a
+migration guide from `jest-axe`.
+
+- [@accesslint/jest on GitHub][gh]
+- [@accesslint/jest on npm][npm]
+
+[gh]: https://github.com/AccessLint/accesslint/tree/main/jest
+[npm]: https://www.npmjs.com/package/@accesslint/jest
