@@ -18,9 +18,9 @@
     "docusaurus": "docusaurus"
   },
   "devDependencies": {
-    "husky": "^1.3.1",
-    "kcd-scripts": "^11.2.0",
-    "lint-staged": "^8.1.0",
+    "husky": "^9.1.7",
+    "kcd-scripts": "^17.0.0",
+    "lint-staged": "^17.3.0",
     "prettier": "^2.2.1"
   },
   "lint-staged": {
@@ -45,8 +45,8 @@
     }
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.1",
-    "@docusaurus/preset-classic": "^2.0.1",
+    "@docusaurus/core": "^3.10.2",
+    "@docusaurus/preset-classic": "^3.10.2",
     "@docusaurus/remark-plugin-npm2yarn": "^2.0.1",
     "classnames": "^2.3.1",
     "clsx": "^1.1.1",
