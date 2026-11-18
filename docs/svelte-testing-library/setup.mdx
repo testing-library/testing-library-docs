@@ -85,8 +85,10 @@ runner that's ESM compatible.
 
    - Adds an automatic cleanup fixture to [`test.setupFiles`][test-setup-files]
    - Adds `browser` to [`resolve.conditions`][resolve-conditions]
+   - Adds `@testing-library/svelte` to [`ssr.noExternal`][ssr-noexternal], so it
+     is processed by `@sveltejs/vite-plugin-svelte` in monorepo setups
 
-   If needed, you can disable either behavior. Disabling both options is
+   If needed, you can disable any of these behaviors. Disabling all options is
    equivalent to omitting the plugin.
 
    ```js
@@ -95,6 +97,8 @@ runner that's ESM compatible.
      autoCleanup: false,
      // disable browser resolution condition
      resolveBrowser: false,
+     // disable the ssr.noExternal rule
+     noExternal: false,
    })
    ```
 
@@ -137,6 +141,7 @@ runner that's ESM compatible.
 [test-setup-files]: https://vitest.dev/config/#setupfiles
 [resolve-conditions]:
   https://vitejs.dev/config/shared-options.html#resolve-conditions
+[ssr-noexternal]: https://vitejs.dev/config/ssr-options.html#ssr-noexternal
 
 ### TypeScript
 
