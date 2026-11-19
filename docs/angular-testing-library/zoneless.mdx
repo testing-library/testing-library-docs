@@ -1,0 +1,119 @@
+---
+id: zoneless
+title: Zoneless
+---
+
+For zoneless applications, Angular Testing Library provides a dedicated slim
+entry point.
+
+```typescript
+import {render, screen} from '@testing-library/angular/zoneless'
+```
+
+Compared to the main entry point, this `render` doesn't set up zone-based change
+detection. The `fireEvent`, `findBy` and `waitFor` re-exports from
+`DOM Testing Library` aren't patched to trigger a change detection cycle,
+instead, Angular's zoneless scheduler takes care of running change detection.
+Because this happens asynchronously, use the `findBy` queries or `waitFor` to
+wait for updates that aren't the result of a user interaction, for example when
+a signal is updated from within the test.
+
+## Migrating existing tests
+
+A schematic is available to migrate the imports of existing tests:
+
+```bash
+ng generate @testing-library/angular:migrate-to-zoneless
+```
+
+## `render`
+
+Just like the main entry point, `render` accepts a component's type or a
+template, but it supports a reduced set of options.
+
+```typescript
+await render(AppComponent)
+
+await render('<app-component [value]="value()" />', {
+  imports: [AppComponent],
+  wrapperProperties: {value: signal(47)},
+})
+```
+
+### Options
+
+The following options work the same as in the
+[main API](angular-testing-library/api.mdx):
+
+- [`queries`](angular-testing-library/api.mdx#queries)
+- [`providers`](angular-testing-library/api.mdx#providers)
+- [`configureTestBed`](angular-testing-library/api.mdx#configuretestbed)
+- [`bindings`](angular-testing-library/api.mdx#bindings) (component only)
+- [`importOverrides`](angular-testing-library/api.mdx#importoverrides)
+  (component only)
+- [`imports`](angular-testing-library/api.mdx#imports) and
+  [`wrapper`](angular-testing-library/api.mdx#wrapper) (template only)
+
+Additionally, the zoneless entry point adds the following options.
+
+#### `skipDetectChanges`
+
+Skips the initial `fixture.detectChanges()` after the component is created. The
+initial render then only happens when Angular schedules a change detection
+cycle, so wait for it, for example with a `findBy` query.
+
+**default** : `false`
+
+**example**:
+
+```typescript
+await render(AppComponent, {skipDetectChanges: true})
+
+expect(await screen.findByText('Hello world')).toBeInTheDocument()
+```
+
+#### `waitForStableOnRender`
+
+Awaits `fixture.whenStable()` after the component is rendered.
+
+**default** : `false`
+
+**example**:
+
+```typescript
+await render(AppComponent, {waitForStableOnRender: true})
+```
+
+#### `wrapperProperties`
+
+Only available when rendering a template. An object with properties to set on
+the wrapper component instance, which can be used in the template. Pass a signal
+to update the template from within the test.
+
+**default** : `undefined`
+
+**example**:
+
+```typescript
+const value = signal(10)
+const valueUpdated = jest.fn()
+
+await render(
+  '<app-counter [value]="value()" (valueUpdated)="valueUpdated($event)" />',
+  {
+    imports: [CounterComponent],
+    wrapperProperties: {value, valueUpdated},
+  },
+)
+
+value.set(20)
+expect(await screen.findByText('20')).toBeInTheDocument()
+```
+
+### Result
+
+`render` returns the [queries](angular-testing-library/api.mdx#queries) bound to
+the component, together with
+[`container`](angular-testing-library/api.mdx#container),
+[`debug`](angular-testing-library/api.mdx#debug) and
+[`fixture`](angular-testing-library/api.mdx#fixture).
