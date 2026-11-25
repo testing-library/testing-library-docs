@@ -69,7 +69,7 @@ interface Options extends prettyFormat.OptionsReceived {
 }
 
 function prettyDOM(
-  node: HTMLElement,
+  node?: Element | HTMLDocument | ShadowRoot,
   maxLength?: number,
   options?: Options,
 ): string
@@ -103,11 +103,34 @@ console.log(prettyDOM(div))
 This function is what also powers
 [the automatic debugging output described above](#automatic-logging).
 
+If an element has an open shadow root, the output includes its contents under
+`#shadow-root`. For example, a test might print a web component to see the
+button it renders:
+
+```javascript
+const host = document.createElement('save-button')
+const root = host.attachShadow({mode: 'open'})
+root.innerHTML = '<button>Save</button>'
+
+console.log(prettyDOM(host))
+// <save-button>
+//   #shadow-root
+//     <button>
+//       Save
+//     </button>
+// </save-button>
+```
+
+You can pass a `ShadowRoot` directly to `prettyDOM(root)` or
+`screen.debug(root)`. When printing a host element, only open shadow roots
+appear in the output, and queries starting on the host still stop at the shadow
+boundary.
+
 ## `screen.debug()`
 
 For convenience `screen` also exposes a `debug` method. This method is
 essentially a shortcut for `console.log(prettyDOM())`. It supports debugging the
-document, a single element, or an array of elements.
+document, an element or shadow root, or an array of those nodes.
 
 ```javascript
 import {screen} from '@testing-library/dom'
