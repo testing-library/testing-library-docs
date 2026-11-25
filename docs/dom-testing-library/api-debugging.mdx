@@ -121,9 +121,10 @@ console.log(prettyDOM(host))
 // </save-button>
 ```
 
-You can also pass the root directly to `prettyDOM(root)` or
-`screen.debug(root)`. Printing the host only shows shadow roots that are open.
-Queries on the host still stop at the shadow boundary.
+You can pass a `ShadowRoot` directly to `prettyDOM(root)` or
+`screen.debug(root)`. When printing a host element, only open shadow roots
+appear in the output, and queries starting on the host still stop at the shadow
+boundary.
 
 ## `screen.debug()`
 
