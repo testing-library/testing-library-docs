@@ -1,0 +1,74 @@
+---
+id: api
+title: API
+---
+
+Several utilities are provided for dealing with asynchronous code. These can be
+useful to wait for an element to appear or disappear in response to an event,
+user action, timeout, or Promise. (See the
+[guide to testing disappearance](guide-disappearance.mdx).)
+
+The async methods return Promises, so be sure to use `await` or `.then` when
+calling them.
+
+## `waitFor`
+
+```typescript
+function waitFor<T>(
+  callback: () => T | Promise<T>,
+  options?: {
+    interval?: number
+    onTimeout?: (error: Error) => Error
+    showOriginalStackTrace?: boolean
+    signal?: AbortSignal
+    timeout?: number
+  },
+): Promise<T>
+```
+
+When in need to wait for any period of time you can use `waitFor`, to wait for
+your expectations to pass. Here's a simple example:
+
+```javascript
+// ...
+// Wait until the callback does not throw an error. In this case, that means
+// it'll wait until the mock function has been called once.
+await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
+// ...
+```
+
+`waitFor` may run the callback a number of times until the timeout is reached.
+Note that the number of calls is constrained by the `timeout` and `interval`
+options.
+
+This can be useful if you have a unit test that mocks API calls and you need to
+wait for your mock promises to all resolve.
+
+If you return a promise in the `waitFor` callback (either explicitly or
+implicitly with the `async` syntax), then the `waitFor` utility does not call
+your callback again until that promise rejects. This allows you to `waitFor`
+things that must be checked asynchronously.
+
+The default `interval` is `50ms`. However, it runs your callback
+immediately before starting the intervals.
+
+The `onTimeout` callback receives the error with which `waitFor` should reject.
+You can return a more detailed error with which `waitFor` should reject. For
+example, in a DOM you can return a snapshot of the DOM at the time `waitFor`
+timed out.
+
+You can pass an
+[`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) if
+you want `waitFor` to stop checking the callback (e.g. if you want it to race
+against other observers like
+[`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver)).
+`waitFor` will then reject with the
+[`reason` of the given `AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/reason).
+
+By default, `waitFor` will reject with the stack trace of the `waitFor` call.
+This is usually the more relevant stack trace for developers. However, you might
+want to trace the last call to the given `callback` that caused `waitFor` to
+reject. Then you can pass `showOriginalStackTrace: true`. We don't recommend
+using it unless you know what you're doing.
+
+The default `timeout` is `1000ms`.
