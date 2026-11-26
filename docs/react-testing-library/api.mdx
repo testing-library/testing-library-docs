@@ -357,7 +357,10 @@ react supports `act`. It is recommended to use the import from
 
 This is a convenience wrapper around `render` with a custom test component. The
 API emerged from a popular testing pattern and is mostly interesting for
-libraries publishing hooks. You should prefer `render` since a custom test
+libraries publishing hooks. 
+
+Do not use `renderHook` when your hook is easy to test by just testing the components using it.
+Alternatively, you should prefer `render` since a custom test
 component results in more readable and robust tests since the thing you want to
 test is not hidden behind an abstraction.
 
